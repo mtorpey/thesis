@@ -1,0 +1,37 @@
+\documentclass[a4paper]{report}
+
+% Packages
+\usepackage[iso,UKenglish]{isodate}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{svg}
+\usepackage{tikz, pstricks, dot2texi}
+\usetikzlibrary{arrows,shapes}
+\usepackage{lipsum}
+
+% Macros
+\input{macros}
+
+% Style information
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+% TODO: Actual title
+\immediate\write18{git rev-parse --short HEAD > hash.info}
+\title{My PhD Thesis \\ \large{Version \input{hash.info}}}
+\author{Michael Torpey}
+
+\begin{document}
+
+\maketitle
+
+\include{abstract}
+
+\include{intro}
+
+\include{bibliography}
+
+\end{document}
