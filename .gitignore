@@ -1,0 +1,17 @@
+*.el
+*.toc
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.pdf
+*.vrb
+*.dvi
+
+*.dot
+*-dot2tex-fig*.tex
+
+*.pdf_tex
+
+_region_.tex
