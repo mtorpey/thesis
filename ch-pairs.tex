@@ -44,15 +44,43 @@ algorithms used, its advantages and disadvantages, and when it can be applied.
 Finally we will explain how the different algorithms are executed together, and
 consider their implementation in \cite{libsemigroups}.
 
-\section{Computation}
+\section{Parallelisation}
 
 Parallel processing has seen major advances in the last ten years, with
 multi-core processors becoming the norm in many types of computers, and
-processors with 4, 8, or even 16 cores becoming common on a desktop PC.
+processors with 4, 8, or even 16 cores becoming common on a desktop PC.  This
+being the case, it is desirable to parallelise mathematical algorithms wherever
+possible, and take advantage of the practical ability to execute multiple
+threads of instructions concurrently.  Some algorithms, such as simple binary
+searches, are ``embarrassingly parallel''---that is, they can be split into
+independent threads which require almost no communication with each other.
+These are suited so well to parallelisation that splitting the operation into
+$n$ parallel threads reduces the expected run-time to barely more than
+$\xfrac{1}{n}$ what it would be when run in a single thread.  Other
+algorithms do not parallelise so well: sometimes threads have to communicate, or
+use shared resources, causing significant slowdown and severely limiting the
+improvements which can be made by parallelising.
 
-Among algorithms, some are better than others, but we don't know in advance.
+When it comes to computing information about a congruence from generating pairs,
+there are various different approaches which can be taken: in Sections
+\ref{sec:tc, sec:kbfp}, \ref{sec:kbfp} and \ref{sec:p}, we describe three
+possible algorithms.  Depending on what sort of semigroup is described, several
+or all of these might be appropriate.  However, depending on certain properties
+of the congruence, one might perform far better than another.  For example, the
+pair orbit algorithm works well on congruences which contain few non-reflexive
+pairs, while the Todd-Coxeter algorithm tends to work well on congruences with
+few classes (i.e.~very many pairs).  Given only a set of generating pairs, these
+properties may be unknown in advance, which makes it difficult to choose a good
+algorithm in advance.
 
-Explain the basic idea.
+The natural answer to this problem is the core concept of this chapter: a
+parallel approach which does not attempt to parallelise individual algorithms,
+but which runs all known algorithms at the same time, each in a different
+thread, and simply halts all threads as soon as any one completes.  Since these
+algorithms do not interact with each other in any way, the total run-time will
+be close to the minimum run-time of all the different algorithms.  This is
+particularly important, since some of the algorithms never terminate for certain
+semigroups and congruences (for example, those of infinite size).
 
 \section{Types of semigroups}
 
