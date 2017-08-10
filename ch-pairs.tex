@@ -56,14 +56,14 @@ searches, are ``embarrassingly parallel''---that is, they can be split into
 independent threads which require almost no communication with each other.
 These are suited so well to parallelisation that splitting the operation into
 $n$ parallel threads reduces the expected run-time to barely more than
-$\xfrac{1}{n}$ what it would be when run in a single thread.  Other
+$\frac{1}{n}$ what it would be when run in a single thread.  Other
 algorithms do not parallelise so well: sometimes threads have to communicate, or
 use shared resources, causing significant slowdown and severely limiting the
 improvements which can be made by parallelising.
 
 When it comes to computing information about a congruence from generating pairs,
 there are various different approaches which can be taken: in Sections
-\ref{sec:tc, sec:kbfp}, \ref{sec:kbfp} and \ref{sec:p}, we describe three
+\ref{sec:tc}, \ref{sec:kbfp} and \ref{sec:p}, we describe three
 possible algorithms.  Depending on what sort of semigroup is described, several
 or all of these might be appropriate.  However, depending on certain properties
 of the congruence, one might perform far better than another.  For example, the
@@ -82,11 +82,32 @@ be close to the minimum run-time of all the different algorithms.  This is
 particularly important, since some of the algorithms never terminate for certain
 semigroups and congruences (for example, those of infinite size).
 
-\section{Types of semigroups}
+\section{Parameters}
 
-Concrete vs f.p.
+We need to know what sorts of semigroups and congruences we are considering, as
+well as what information we want to extract from them.
 
-Monoids are trivially different.
+\subsection{Types of semigroup}
+
+The type of element in a semigroup affects which methods will be most effective,
+or even which methods will be applicable.  For this purpose, we divide
+semigroups into two categories: finitely presented semigroups, and
+\textit{concrete} semigroups.  By \textit{concrete}, we mean a finite semigroup
+whose elements can be multiplied and compared quickly, without reference to the
+semigroup as a whole; these could be semigroups of transformations, partial
+permutations, bipartitions, matrices, or other finite objects.  Their elements
+will be known in advance.  Finitely presented semigroups are a different case,
+in that their elements are not known in advance, and indeed it may not be known
+whether or not they are finite.  Finitely presented monoids are treated as
+equivalent to finitely presented semigroups, since a semigroup presentation can
+be attained by simply adding a generator for the identity and relations to make
+it multiplicatively neutral.
+
+\subsection{Questions}
+
+Nr classes
+Pair inclusion
+Equivalence classes
 
 \section{Todd-Coxeter}
 \label{sec:tc}
