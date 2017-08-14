@@ -3,13 +3,13 @@
 
 A congruence is a binary relation, and is therefore formally described as a set
 of pairs.  In a computational setting, it is rarely practical to keep track of
-every pair in a congruence---a congruence on a semigroup of size $n$ contains
+every pair in a congruence; a congruence on a semigroup of size $n$ contains
 $n^2$ pairs in the worst case, and on an infinite semigroup contains an infinite
 number of pairs.  A congruence can be described in more concise ways utilising
 known theory: for example, taking advantage of its being an equivalence relation
 and recording only its equivalence classes; or in the case of a Rees congruence,
 storing a generating set for the ideal which defines it.  A variety of different
-ways to describe a congruence are described in Chapter \ref{chap:converting},
+ways to describe a congruence are explained in Chapter \ref{chap:converting},
 along with ways to convert one to another.  However, a congruence is still just
 a set of pairs, and by reducing the number of pairs we store, we can describe a
 congruence very concisely using them.
@@ -38,7 +38,7 @@ minor modifications to compute information about left and right congruences.
 
 This chapter describes a parallelised approach for computing a congruence from a
 set of generating pairs, as implemented in \texttt{libsemigroups}
-\cite{libsemigroups}.  First we will give a the general outline of the system
+\cite{libsemigroups}.  First we will give a general outline of the system
 and what questions it hopes to answer, then we will describe in detail each
 algorithms used, its advantages and disadvantages, and when it can be applied.
 Finally we will explain how the different algorithms are executed together, and
@@ -50,7 +50,7 @@ Parallel processing has seen major advances in the last ten years, with
 multi-core processors becoming the norm in many types of computers, and
 processors with 4, 8, or even 16 cores becoming common on a desktop PC.  This
 being the case, it is desirable to parallelise mathematical algorithms wherever
-possible, and take advantage of the practical ability to execute multiple
+possible, and take advantage of the ability to execute multiple
 threads of instructions concurrently.  Some algorithms, such as simple binary
 searches, are ``embarrassingly parallel''---that is, they can be split into
 independent threads which require almost no communication with each other.
@@ -71,7 +71,7 @@ pair orbit algorithm works well on congruences which contain few non-reflexive
 pairs, while the Todd-Coxeter algorithm tends to work well on congruences with
 few classes (i.e.~very many pairs).  Given only a set of generating pairs, these
 properties may be unknown in advance, which makes it difficult to choose a good
-algorithm in advance.
+algorithm.
 
 The natural answer to this problem is the core concept of this chapter: a
 parallel approach which does not attempt to parallelise individual algorithms,
@@ -105,12 +105,10 @@ it multiplicatively neutral.
 
 \subsection{Questions}
 
-So far in this chapter, we have nebulously referred to ``computing information
-about congruence'', a phrase which on its own does not describe the desired
-output of an algorithm.  Each method we are about to explain can provide a
-variety of information, but it is important to consider which questions we aim
-to answer.  Our system should be able to return the following information about
-a given congruence when requested:
+Each method we are about to explain can provide a variety of information, but it
+is important to consider which questions we aim to answer.  Our system should be
+able to return the following information about a given congruence when
+requested:
 
 \begin{itemize}
 \item Presence of a given pair $(x,y)$
