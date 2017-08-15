@@ -7,61 +7,61 @@ Green's relation structure is well-understood: for two mappings $\alpha, \beta
 \in \mathcal{T}_n$,
 
 \begin{itemize}
-\item $\alpha ~\mathcal{L}~ \beta$ if and only if $\im \alpha = \im \beta$,
-\item $\alpha ~\mathcal{R}~ \beta$ if and only if $\ker \alpha = \ker \beta$,\cite[9.2]{ruskuc-notes}
-\item $\alpha ~\mathcal{D}~ \beta$ if and only if $\rank \alpha = \rank \beta$.\cite[10.6]{ruskuc-notes}
+\item $\alpha \LL \beta$ if and only if $\im \alpha = \im \beta$,
+\item $\alpha \RR \beta$ if and only if $\ker \alpha = \ker \beta$,\cite[9.2]{ruskuc-notes}
+\item $\alpha \DD \beta$ if and only if $\rank \alpha = \rank \beta$.\cite[10.6]{ruskuc-notes}
 \end{itemize}
 
-This last allows us to name the semigroup's $\mathcal{D}$-classes $D_1, D_2,
-\dots, D_n$, where each $D_k$ is the $\mathcal{D}$-class consisting of
+This last allows us to name the semigroup's $\DD$-classes $D_1, D_2,
+\dots, D_n$, where each $D_k$ is the $\DD$-class consisting of
 transformations with rank $k$.  The usual partial ordering of
-$\mathcal{J}$-classes \cite[p.47]{howie} (which in a finite semigroup are the
-same as $\mathcal{D}$-classes) gives $D_1 < D_2 < \dots < D_n$.
+$\JJ$-classes \cite[p.47]{howie} (which in a finite semigroup are the
+same as $\DD$-classes) gives $D_1 < D_2 < \dots < D_n$.
 
-Inside a given $\mathcal{D}$-class $D_k$, elements are divided into
-$\mathcal{L}$-classes according to their image set; since all elements have rank
+Inside a given $\DD$-class $D_k$, elements are divided into
+$\LL$-classes according to their image set; since all elements have rank
 $k$, their images must have size $k$, and so there are $\binom{n}{k}$
-$\mathcal{L}$-classes in total.  Similarly, the elements of $D_k$ are divided
-into $\mathcal{R}$-classes according to their kernel; there is one class for
+$\LL$-classes in total.  Similarly, the elements of $D_k$ are divided
+into $\RR$-classes according to their kernel; there is one class for
 each possible $k$-partition of an $n$-set, so there are the Stirling number of
-the second kind, $S(n,k)$ $\mathcal{R}$-classes in total.
+the second kind, $S(n,k)$ $\RR$-classes in total.
 
-Each $\mathcal{H}$-class in $D_k$ is the intersection of an $\mathcal{L}$-class
-and an $\mathcal{R}$-class, so each one corresponds to an image-kernel pair
-(hence we will talk about the \textit{image} and \textit{kernel of an $\mathcal{H}$-class}).
+Each $\HH$-class in $D_k$ is the intersection of an $\LL$-class
+and an $\RR$-class, so each one corresponds to an image-kernel pair
+(hence we will talk about the \textit{image} and \textit{kernel of an $\HH$-class}).
 For a given kernel with $k$ classes and a given image with $k$ elements, there
 are $k!$ different ways to assign image elements to kernel classes, simply the
 permutations of $\{1 \dots k\}$.  Hence there are $k!$ elements in each
-$\mathcal{H}$-class.
+$\HH$-class.
 
-\section{Group $\mathcal{H}$-classes}
+\section{Group $\HH$-classes}
 \label{sec:grouphclasses}
-To determine which $\mathcal{H}$-classes of $D_k$ are groups, we recall that in any
-semigroup an $\mathcal{H}$-class H is a group if and only if it contains an idempotent
+To determine which $\HH$-classes of $D_k$ are groups, we recall that in any
+semigroup an $\HH$-class H is a group if and only if it contains an idempotent
 ($\alpha \alpha = \alpha$).  A transformation $\alpha \in \mathcal{T}_n$ is an idempotent
 if and only if each point in its image is mapped by $\alpha$ to itself:
 $$i \alpha = i \quad (\forall i \in \im \alpha)$$
 Given an image and a kernel, we can choose a transformation with the condition
 above if and only if no pair of points in the image are in the same
 kernel-class, i.e.~each image point is in a different kernel-class.
-Hence an $\mathcal{H}$-class of $D_k$ is a group if and only if its image is a transversal
+Hence an $\HH$-class of $D_k$ is a group if and only if its image is a transversal
 of its kernel.
 
 \begin{lemma}
 \label{lem:hclasses}
 \leavevmode
   \begin{enumerate}
-  \item For any two distinct $\mathcal{L}$-classes $L_1$ and $L_2$ of $D_k$ (for
-    $1 < k \leq n$) there is an $\mathcal{R}$-class $R$ such that $L_1 \cap R$
-    is a group $\mathcal{H}$-class, but $L_2 \cap R$ is not.
-  \item For any two distinct $\mathcal{R}$-classes $R_1$ and $R_2$ of $D_k$ (for
-    $1 \leq k \leq n$) there is an $\mathcal{L}$-class $L$ such that $L \cap
-    R_1$ is a group $\mathcal{H}$-class, but $L \cap R_2$ is not.
+  \item For any two distinct $\LL$-classes $L_1$ and $L_2$ of $D_k$ (for
+    $1 < k \leq n$) there is an $\RR$-class $R$ such that $L_1 \cap R$
+    is a group $\HH$-class, but $L_2 \cap R$ is not.
+  \item For any two distinct $\RR$-classes $R_1$ and $R_2$ of $D_k$ (for
+    $1 \leq k \leq n$) there is an $\LL$-class $L$ such that $L \cap
+    R_1$ is a group $\HH$-class, but $L \cap R_2$ is not.
   \end{enumerate}
   \begin{proof}
     \leavevmode
     \begin{enumerate}
-    \item Let $L_1$ and $L_2$ be distinct $\mathcal{L}$-classes of $D_k$, with
+    \item Let $L_1$ and $L_2$ be distinct $\LL$-classes of $D_k$, with
       $1 < k \leq n$.  These two classes correspond to distinct images of size
       $k$ in $\{1 \dots n\}$; let us call these images $I_1$ and $I_2$
       respectively.  w.l.o.g. let $I_1 = \{1, 2, \dots, k\}$.  Since $I_1 \neq
@@ -72,10 +72,10 @@ of its kernel.
       n\}$ (choosing $j \neq i$ requires $k > 1$).  Now $I_1$ is a transversal
       of $P$, having precisely one element from each class; but $I_2$ does not
       have an element from the class $\{i\}$, and so it is not a transversal of
-      $P$.  Let $R$ be the $\mathcal{R}$-class with kernel $P$, and we have that
-      $L_1 \cap R$ is a group $\mathcal{H}$-class but $L_2 \cap R$ is not.
+      $P$.  Let $R$ be the $\RR$-class with kernel $P$, and we have that
+      $L_1 \cap R$ is a group $\HH$-class but $L_2 \cap R$ is not.
 
-    \item Let $R_1$ and $R_2$ be distinct $\mathcal{R}$-classes of $D_k$.  These two classes
+    \item Let $R_1$ and $R_2$ be distinct $\RR$-classes of $D_k$.  These two classes
       correspond to distinct kernels $P_1$ and $P_2$, each partitioning $\{1,
       \dots, n\}$ into $k$ classes.  If $k=n$ then there is only one possible
       partition, $\big\{\{1\}, \dots, \{n\}\big\}$, and so $R_1$ and $R_2$
@@ -84,9 +84,9 @@ of its kernel.
       of $P_2$.  Let $X$ be a $k$-set containing one element from each class of
       $P_1$, including $i$ and $j$ -- clearly it is a transversal of $P_1$.  But
       now $X$ contains two elements from one class of $P_2$, so it is not a
-      transversal of $P_2$.  Hence, if $L$ is the $\mathcal{L}$-class corresponding to image
-      $X$, $L \cap R_1$ is a group $\mathcal{H}$-class but $L \cap R_2$ is not a group
-      $\mathcal{H}$-class.
+      transversal of $P_2$.  Hence, if $L$ is the $\LL$-class corresponding to image
+      $X$, $L \cap R_1$ is a group $\HH$-class but $L \cap R_2$ is not a group
+      $\HH$-class.
     \end{enumerate}
   \end{proof}
 \end{lemma}
@@ -96,7 +96,7 @@ of its kernel.
 
 \begin{definition}
 \label{def:principalfactor}
-The \textbf{principal factor} $D_k^*$ of a $\mathcal{D}$-class $D_k$ is the Rees
+The \textbf{principal factor} $D_k^*$ of a $\DD$-class $D_k$ is the Rees
 0-matrix semigroup $\mathcal{M}^0[G;I,\Lambda;P]$ isomorphic to the set $D_k \cup
 \{0\}$, with multiplication $*$ given by
 $$s * t = \left\{
@@ -106,14 +106,14 @@ $$s * t = \left\{
   \end{array}\right.$$
 \end{definition}
 
-The principal factor of a $\mathcal{D}$-class must always be a 0-simple
+The principal factor of a $\DD$-class must always be a 0-simple
 semigroup, and so we can use \textit{linked triples} to classify its
 congruences.\cite[3.5]{howie}
 
 Let $D_k^* = \mathcal{M}^0[G;I,\Lambda;P]$ as above.
-The rows and columns of the matrix $P$ correspond respectively to the $\mathcal{L}$-classes and
-$\mathcal{R}$-classes of $D_k$, and $G$ is the group isomorphic to each of $D_k$'s group
-$\mathcal{H}$-classes.  Since the elements of an $\mathcal{H}$-class here correspond to all the permutations
+The rows and columns of the matrix $P$ correspond respectively to the $\LL$-classes and
+$\RR$-classes of $D_k$, and $G$ is the group isomorphic to each of $D_k$'s group
+$\HH$-classes.  Since the elements of an $\HH$-class here correspond to all the permutations
 of its image (all the different ways to assign the $k$ image points to the $k$
 classes of the kernel) this group is isomorphic to the symmetric group $S_k$.
 
@@ -150,7 +150,7 @@ We shall first find all the triples which satisfy conditions (1) and (2), and
 then we shall show that in this case all of them satisfy condition (3).
 
 First, recall that an element $p_{\lambda i}$ is non-zero if and only if the
-corresponding $\mathcal{H}$-class is a group.  By Lemma \ref{lem:hclasses} we can see that
+corresponding $\HH$-class is a group.  By Lemma \ref{lem:hclasses} we can see that
 for any pair of columns $i,j \in I$ there exists a row $\lambda \in \Lambda$
 such that $p_{\lambda i} \neq 0 = p_{\lambda j}$.  Hence $\varepsilon_I =
 \Delta_I$.  Similarly, in the limited case that $k>1$, Lemma \ref{lem:hclasses}
@@ -160,7 +160,7 @@ then we have $\varepsilon_\Lambda = \Delta_\Lambda$.
 
 \subsection{Linked Triples for $k = 1$}
 \label{sec:k1}
-First let us consider the linked triples of $D_1^*$.  Since this $\mathcal{D}$-class
+First let us consider the linked triples of $D_1^*$.  Since this $\DD$-class
 consists of the transformations with rank $1$, there are $n$ possible images
 $$\{1\}, \{2\}, \dots, \{n\}$$ and only one possible kernel
 $$\big\{\{1 \dots n\}\big\}.$$
@@ -170,10 +170,10 @@ $$\begin{pmatrix}
   1 & 2 & \cdots & n \\
   i & i & \cdots & i
 \end{pmatrix}$$ for some $i \in \{1 \dots n\}$, so each element is an idempotent
-in its own $\mathcal{H}$-class.  Hence each $\mathcal{H}$-class is a group, so the matrix $P$ has no
+in its own $\HH$-class.  Hence each $\HH$-class is a group, so the matrix $P$ has no
 zeroes, and $\varepsilon_\Lambda = \Lambda \times \Lambda$.  The underlying
 group $G$ of the Rees 0-matrix semigroup $D_1^*$ must be trivial, since each
-$\mathcal{H}$-class contains just one element.
+$\HH$-class contains just one element.
 
 Taking all this information together, we can classify all the triples $(N,
 \mathcal{S}, \mathcal{T})$ which satisfy conditions (1) and (2) as follows:
@@ -235,9 +235,9 @@ We can now describe all the congruences of the principal factors $D_k^*$ of the
 full transformation monoid $\mathcal{T}_n$.  If $(N,\mathcal{S},\mathcal{T})$ is a linked
 triple on $D_k^*$, then let $[N,\mathcal{S},\mathcal{T}]$ be the non-universal
 congruence associated with that triple.
-
-For brevity, we let $u_n = \binom{n}{k} \cdot S(n,k)$, the number of
-$\mathcal{H}$-classes in $D_k$.
+For brevity, let $[N] = [N, \Delta_I, \Delta_\Lambda]$ and
+let $u_n = \binom{n}{k} \cdot S(n,k)$, the number of
+$\HH$-classes in $D_k$.
 
 \begin{theorem}
 The congruences of $D_k^*$ are as follows.
@@ -248,12 +248,12 @@ The congruences of $D_k^*$ are as follows.
     \hline
     \multicolumn{1}{|c|}{$k$} & \multicolumn{1}{|c|}{\textbf{Congruences of $D_k^*$}} & \textbf{Number} & \multicolumn{1}{|c|}{\textbf{Number of classes}} \\
     \hline
-    $1$ & $[1, \Delta_I, \mathcal{T}] (\forall \mathcal{T} \subseteq \Lambda \times \Lambda), D_1^* \times D_1^*$ & $B_n + 1$
-    & $|\Lambda/\mathcal{T}|+1 (\forall \mathcal{T} \subseteq \Lambda \times \Lambda)$, $1$ \\
-    $2$ & $[1, \Delta, \Delta], [S_2, \Delta, \Delta], D_2^* \times D_2^*$ & $3$ & $2u_2+1, u_2+1, 1$ \\
-    $3$ & $[1, \Delta, \Delta], [A_3, \Delta, \Delta], [S_3, \Delta, \Delta], D_3^* \times D_3^*$ & $4$ & $6u_3+1, 2u_3+1, u_3+1, 1$ \\
-    $4$ & $[1, \Delta, \Delta], [V_4, \Delta, \Delta], [A_4, \Delta, \Delta], [S_4, \Delta, \Delta], D_4^* \times D_4^*$ & $5$ & $24u_4+1, 6u_4+1, 2u_4+1, u_4+1, 1$ \\
-    $\geq 5$ & $[1, \Delta, \Delta], [A_k, \Delta, \Delta], [S_k, \Delta, \Delta], D_k^* \times D_k^*$ & $4$ & $k!u_k+1, 2u_k+1, u_k+1, 1$ \\
+    $1$ & $[1, \Delta_I, \mathcal{T}] (\forall \mathcal{T}), D_1^* \times D_1^*$ & $B_n + 1$
+    & $|\Lambda/\mathcal{T}|+1$, $1$ \\
+    $2$ & $[1], [S_2], D_2^* \times D_2^*$ & $3$ & $2u_2+1, u_2+1, 1$ \\
+    $3$ & $[1], [A_3], [S_3], D_3^* \times D_3^*$ & $4$ & $6u_3+1, 2u_3+1, u_3+1, 1$ \\
+    $4$ & $[1], [V_4], [A_4], [S_4], D_4^* \times D_4^*$ & $5$ & $24u_4+1, 6u_4+1, 2u_4+1, u_4+1, 1$ \\
+    $\geq 5$ & $[1], [A_k], [S_k], D_k^* \times D_k^*$ & $4$ & $k!u_k+1, 2u_k+1, u_k+1, 1$ \\
     \hline
   \end{tabular}
 % \end{table}
