@@ -9,6 +9,9 @@
 *.vrb
 *.dvi
 
+*.bbl
+*.blg
+
 *.dot
 *-dot2tex-fig*.tex
 
