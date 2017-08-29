@@ -44,7 +44,7 @@ algorithms used, its advantages and disadvantages, and when it can be applied.
 Finally we will explain how the different algorithms are executed together, and
 consider their implementation in \cite{libsemigroups}.
 
-\section{Parallelisation}
+\section{Why Parallelisation?}
 
 Parallel processing has seen major advances in the last ten years, with
 multi-core processors becoming the norm in many types of computers, and
@@ -82,12 +82,7 @@ be close to the minimum run-time of all the different algorithms.  This is
 particularly important, since some of the algorithms never terminate for certain
 semigroups and congruences (for example, those of infinite size).
 
-\section{Parameters}
-
-We need to know what sorts of semigroups and congruences we are considering, as
-well as what information we want to extract from them.
-
-\subsection{Types of semigroup}
+\section{Applicable types of semigroup}
 
 The type of element in a semigroup affects which methods will be most effective,
 or even which methods will be applicable.  For this purpose, we divide
@@ -103,7 +98,7 @@ equivalent to finitely presented semigroups, since a semigroup presentation can
 be attained by simply adding a generator for the identity and relations to make
 it multiplicatively neutral.
 
-\subsection{Questions}
+\section{Questions}
 
 Each method we are about to explain can provide a variety of information, but it
 is important to consider which questions we aim to answer.  Our system should be
@@ -121,7 +116,24 @@ Note that for finitely presented semigroups, these questions may be
 undecidable.  In the case that a question is decidable, our approach should
 return an answer in finite time.
 
-\section{Todd-Coxeter}
+\section{Finding a presentation}
+
+\section{The methods}
+
+\subsection{Pair orbit enumeration}
+\label{sec:p}
+
+Background
+
+The P algorithm
+
+Using Knuth-Bendix: KBP
+
+Semigroups/congs it works/works best on
+
+Complexity
+
+\subsection{Todd-Coxeter}
 \label{sec:tc}
 
 The Todd-Coxeter algorithm, as originally described in 1936 in
@@ -138,25 +150,12 @@ Semigroups/congs it works/works best on
 
 Complexity
 
-\section{KBFP}
+\subsection{Knuth-Bendix and Froidure-Pin}
 \label{sec:kbfp}
 
 Background
 
 The KBFP algorithm
-
-Semigroups/congs it works/works best on
-
-Complexity
-
-\section{Pair orbit enumeration}
-\label{sec:p}
-
-Background
-
-The P algorithm
-
-Using Knuth-Bendix: KBP
 
 Semigroups/congs it works/works best on
 
