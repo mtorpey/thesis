@@ -12,6 +12,15 @@
 
 \usepackage{lipsum}
 
+% Watermark with git hash
+\immediate\write18{git rev-parse --short HEAD > hash.info}
+\usepackage{draftwatermark}
+\SetWatermarkText{Last commit: \input{hash.info}}
+\SetWatermarkColor[gray]{0.75}
+\SetWatermarkFontSize{0.5cm}
+\SetWatermarkAngle{90}
+\SetWatermarkHorCenter{2cm}
+
 % Macros
 \input{macros}
 
@@ -24,8 +33,7 @@
 \newtheorem{example}[theorem]{Example}
 
 % TODO: Actual title
-\immediate\write18{git rev-parse --short HEAD > hash.info}
-\title{My PhD Thesis \\ \large{Last commit: \input{hash.info}}}
+\title{My PhD Thesis}
 \author{Michael Torpey}
 
 \begin{document}
