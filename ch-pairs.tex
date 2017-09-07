@@ -180,6 +180,27 @@ The first operation, \textsc{Add}, is simple.  A blank entry is found in the
 table, and a new row is added at the bottom.  The number of the new row is then
 written into the blank cell.
 
+\begin{algorithm}
+\caption{My algorithm}\label{euclid}
+\begin{algorithmic}[1]
+\Procedure{MyProcedure}{}
+\State $\textit{stringlen} \gets \text{length of }\textit{string}$
+\State $i \gets \textit{patlen}$
+\If {$i > \textit{stringlen}$} \Return false
+\EndIf
+\State $j \gets \textit{patlen}$
+\If {$\textit{string}(i) = \textit{path}(j)$}
+\State $j \gets j-1$.
+\State $i \gets i-1$.
+\State \textbf{goto} \emph{loop}.
+\State \textbf{close};
+\EndIf
+\State $i \gets i+\max(\textit{delta}_1(\textit{string}(i)),\textit{delta}_2(j))$.
+\State \textbf{goto} \emph{top}.
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
 \textsc{Trace} takes two arguments: a relation $w_1=w_2$ from $R$, and a row $i$
 in the table.  We start from row $i$, and process $w_1$ one letter at a time: we
 find the column corresponding to the letter, and look at that position in the
