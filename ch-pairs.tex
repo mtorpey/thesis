@@ -149,13 +149,61 @@ A variation of Todd-Coxeter for semigroups was described in 1967
 enumerates that semigroup's elements (this is equivalent to taking a congruence
 by generating pairs and enumerating its congruence classes).  The approach is
 very similar to the group version, simply excluding element inverses and
-ignoring the identity.
+ignoring the identity.  We will now describe the Todd-Coxeter method as used in
+the context of this chapter, while emphasising that this does not represent
+significant new work.
 
 The Todd-Coxeter algorithm is based on a table, where each row corresponds to a
 single congruence class (or equivalently, a single element of the quotient
 semigroup).  The columns of the table correspond to the generators of the
-semigroup.  The relations are then considered in order, and the following
-operations are applied:
+semigroup, and the entry in row $i$, column $j$ represents the element found by
+taking element $i$ and right-multiplying it by generator $j$.  These entries may
+be blank, and two different rows may be found to describe the same element.
+
+Suppose we have a semigroup presentation $\langle X | R \rangle$.  The table is
+initialised with a single row, numbered $1$, representing the identity.  If we
+are dealing with a monoid presentation, this will be the identity of that
+monoid, corresponding to the empty word $\varepsilon$; if instead we have just a
+semigroup presentation, then this row should be treated as an appended identity,
+to be ignored or discarded after the algorithm is completed.  The row is empty,
+containing a blank entry in all $|X|$ columns.
+
+The following 3 operations may now be applied to the table.
+
+\begin{itemize}
+\item \texttt{ADD}: Fill in a blank entry and add a row to the table;
+\item \texttt{TRACE}: Trace a relation from a row;
+\item \texttt{COINC}: Process a coincidence.
+\end{itemize}
+
+The first operation, \texttt{ADD}, is simple.  A blank entry is found in the
+table, and a new row is added at the bottom.  The number of the new row is then
+written into the blank cell.
+
+\texttt{TRACE} takes two arguments: a relation $w_1=w_2$ from $R$, and a row $i$
+in the table.  We start from row $i$, and process $w_1$ one letter at a time: we
+find the column corresponding to the letter, and look at that position in the
+table; this gives us the number of the new row which we move to.  If we
+encounter a blank entry before the final letter, we apply \texttt{ADD} to that
+cell, and follow the new entry.  At the end of the process we have an entry in
+the table, blank or filled, which we will call $i \cdot w_1$.  We repeat the
+process with the other word to find $i \cdot w_2$.
+
+To satisfy the relation, we need to set these two entries such that
+$i \cdot w_1 = i \cdot w_2$.
+\begin{itemize}
+\item If $i \cdot w_1$ and $i \cdot w_2$ are both blank, then we apply
+  \texttt{ADD} to $i \cdot w_1$ and copy the entry into $i \cdot w_2$.
+\item If just one of the entries is filled, then the filled entry is copied into
+  the blank one.
+\item If both entries are filled and equal, we need do nothing.
+\item If both entries are filled and are distinct, we apply \texttt{COINC} to
+  the two entries.
+\end{itemize}
+
+\texttt{COINC} is used when two rows in the table are found to refer to the same
+element.  The two rows are combined into one, with all known information being
+preserved, and the higher-numbered row being deleted for later use.
 
 Pre-filling the table
 
