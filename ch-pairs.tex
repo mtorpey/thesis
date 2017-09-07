@@ -171,20 +171,20 @@ containing a blank entry in all $|X|$ columns.
 The following 3 operations may now be applied to the table.
 
 \begin{itemize}
-\item \texttt{ADD}: Fill in a blank entry and add a row to the table;
-\item \texttt{TRACE}: Trace a relation from a row;
-\item \texttt{COINC}: Process a coincidence.
+\item \textsc{Add}: Fill in a blank entry and add a row to the table;
+\item \textsc{Trace}: Trace a relation from a row;
+\item \textsc{Coinc}: Process a coincidence.
 \end{itemize}
 
-The first operation, \texttt{ADD}, is simple.  A blank entry is found in the
+The first operation, \textsc{Add}, is simple.  A blank entry is found in the
 table, and a new row is added at the bottom.  The number of the new row is then
 written into the blank cell.
 
-\texttt{TRACE} takes two arguments: a relation $w_1=w_2$ from $R$, and a row $i$
+\textsc{Trace} takes two arguments: a relation $w_1=w_2$ from $R$, and a row $i$
 in the table.  We start from row $i$, and process $w_1$ one letter at a time: we
 find the column corresponding to the letter, and look at that position in the
 table; this gives us the number of the new row which we move to.  If we
-encounter a blank entry before the final letter, we apply \texttt{ADD} to that
+encounter a blank entry before the final letter, we apply \textsc{Add} to that
 cell, and follow the new entry.  At the end of the process we have an entry in
 the table, blank or filled, which we will call $i \cdot w_1$.  We repeat the
 process with the other word to find $i \cdot w_2$.
@@ -193,17 +193,18 @@ To satisfy the relation, we need to set these two entries such that
 $i \cdot w_1 = i \cdot w_2$.
 \begin{itemize}
 \item If $i \cdot w_1$ and $i \cdot w_2$ are both blank, then we apply
-  \texttt{ADD} to $i \cdot w_1$ and copy the entry into $i \cdot w_2$.
+  \textsc{Add} to $i \cdot w_1$ and copy the entry into $i \cdot w_2$.
 \item If just one of the entries is filled, then the filled entry is copied into
   the blank one.
 \item If both entries are filled and equal, we need do nothing.
-\item If both entries are filled and are distinct, we apply \texttt{COINC} to
+\item If both entries are filled and are distinct, we apply \textsc{Coinc} to
   the two entries.
 \end{itemize}
 
-\texttt{COINC} is used when two rows in the table are found to refer to the same
+\textsc{Coinc} is used when two rows in the table are found to refer to the same
 element.  The two rows are combined into one, with all known information being
-preserved, and the higher-numbered row being deleted for later use.
+preserved.  The higher-numbered row is deleted, and all occurrences of that
+number in the table are changed to the lower number.
 
 Pre-filling the table
 
