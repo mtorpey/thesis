@@ -16,6 +16,9 @@
 
 % Watermark with git hash
 \immediate\write18{git rev-parse --short HEAD > hash.info}
+%\immediate\write18{if [[ true ]]}
+%\immediate\write18{then echo (changed) >> hash.info}
+%\immediate\write18{fi}
 \usepackage{draftwatermark}
 \SetWatermarkText{Last commit: \input{hash.info}}
 \SetWatermarkColor[gray]{0.75}
