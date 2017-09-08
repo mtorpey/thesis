@@ -118,6 +118,8 @@ return an answer in finite time.
 
 \section{Finding a presentation}
 
+Where do we get the presentation from in the first place?
+
 \section{The methods}
 
 \subsection{Pair orbit enumeration}
@@ -300,6 +302,9 @@ to \textsc{Trace} may, of course, invoke calls to \textsc{Add} and
 \textsc{Coinc}, so rows will be appended to the list as the algorithm
 progresses.  When the end of the list is reached, the table should be a Cayley
 graph for the finitely presented semigroup (excluding the identity row $1$).
+Note that the end of the list is not guaranteed to be reached, for example in
+the case of an infinite semigroup whose table would grow indefinitely.  In this
+case, the procedure would run forever.
 
 \begin{algorithm}
 \caption{The \textsc{Todd-Coxeter} algorithm for semigroups}
@@ -316,9 +321,201 @@ graph for the finitely presented semigroup (excluding the identity row $1$).
 \end{algorithmic}
 \end{algorithm}
 
-(include pack phase)
+\subsubsection{An example}
+We now give an example of the Todd-Coxeter algorithm running on the semigroup
+presentation
+$$\langle a, b | a^2=a, ba=a, b^3=b, ab^2=a \rangle.$$
+We initialise the table to look like Table \ref{tab:tc1}:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c | c | c |}
+    \multicolumn{1}{c}{} &
+    \multicolumn{1}{c}{$a$} &
+    \multicolumn{1}{c}{$b$} \\
+    \cline{2-3}
+    1 & & \\
+    \cline{2-3}
+  \end{tabular}
+  \caption{Initial position}
+  \label{tab:tc1}
+\end{table}
+the $used$ list contains only a single entry, $1$.  We begin by tracing each
+relation on the row $1$, starting with $a^2=a$.  This relation makes us call
+\textsc{Add} on the cell $1 \cdot a$, creating a new row, $2$, which is added to
+$used$.  At the end of the \textsc{Trace}, we must set $2 \cdot a$ to $1 \cdot
+a$, so we write $2$ into $2 \cdot a$ (as in Table \ref{tab:tc2}).
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c | c | c |}
+    \multicolumn{1}{c}{} &
+    \multicolumn{1}{c}{$a$} &
+    \multicolumn{1}{c}{$b$} \\
+    \cline{2-3}
+    1 & 2 & \\
+    \cline{2-3}
+    2 & 2 & \\
+    \cline{2-3}
+  \end{tabular}
+  \caption{Position after \textsc{Trace}($1, a^2=a$)}
+  \label{tab:tc2}
+\end{table}
 
-Example
+Next, we apply \textsc{Trace}($1, ba=a$) and we must \textsc{Add} a new row for
+$1 \cdot b$.  After \textsc{Trace}, the new row also contains $2$ in the $a$
+column.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c | c | c |}
+    \multicolumn{1}{c}{} &
+    \multicolumn{1}{c}{$a$} &
+    \multicolumn{1}{c}{$b$} \\
+    \cline{2-3}
+    1 & 2 & 3 \\
+    \cline{2-3}
+    2 & 2 & \\
+    \cline{2-3}
+    3 & 2 & \\
+    \cline{2-3}
+  \end{tabular}
+  \caption{Position after \textsc{Trace}($1, ba=a$)}
+  \label{tab:tc3}
+\end{table}
+
+Still on row $1$, we apply \textsc{Trace} to the third relation, $b^3=b$.  This
+creates a new row for $1 \cdot b \cdot b = 3 \cdot b = 4$.  The new row's $b$
+entry is set to be the same as $1 \cdot b$.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c | c | c |}
+    \multicolumn{1}{c}{} &
+    \multicolumn{1}{c}{$a$} &
+    \multicolumn{1}{c}{$b$} \\
+    \cline{2-3}
+    1 & 2 & 3 \\
+    \cline{2-3}
+    2 & 2 & \\
+    \cline{2-3}
+    3 & 2 & 4 \\
+    \cline{2-3}
+    4 &  & 3 \\
+    \cline{2-3}
+  \end{tabular}
+  \caption{Position after \textsc{Trace}($1, ab^2=a$)}
+  \label{tab:tc4}
+\end{table}
+
+The final relation for row $1$ is $ab^2=a$.  A new row is added for $1 \cdot a
+\cdot b$, and its $b$ entry is set equal to $1 \cdot a = 2$ (as in Table
+\ref{tab:tc5}).
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c | c | c |}
+    \multicolumn{1}{c}{} &
+    \multicolumn{1}{c}{$a$} &
+    \multicolumn{1}{c}{$b$} \\
+    \cline{2-3}
+    1 & 2 & 3 \\
+    \cline{2-3}
+    2 & 2 & 5 \\
+    \cline{2-3}
+    3 & 2 & 4 \\
+    \cline{2-3}
+    4 &  & 3 \\
+    \cline{2-3}
+    5 & & 2 \\
+    \cline{2-3}
+  \end{tabular}
+  \caption{Position after \textsc{Trace}($1, ab^2=a$)}
+  \label{tab:tc5}
+\end{table}
+
+We have now finished with row $1$, and we proceed to the next row in the $used$
+list, which is $2$.  Accordingly, we apply the first relation,
+\textsc{Trace}($2, a^2=a$).  Since $2 \cdot a$ and $2 \cdot a \cdot a$ are both
+already set to $2$, we do nothing.  \textsc{Trace}($2, ba=a$) is more fruitful,
+setting $2 \cdot b \cdot a$ (that is, $5 \cdot a$) to $2$.  The last two
+relations make no changes to the table, and we have Table \ref{tab:tc6}.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c | c | c |}
+    \multicolumn{1}{c}{} &
+    \multicolumn{1}{c}{$a$} &
+    \multicolumn{1}{c}{$b$} \\
+    \cline{2-3}
+    1 & 2 & 3 \\
+    \cline{2-3}
+    2 & 2 & 5 \\
+    \cline{2-3}
+    3 & 2 & 4 \\
+    \cline{2-3}
+    4 &  & 3 \\
+    \cline{2-3}
+    5 & 2 & 2 \\
+    \cline{2-3}
+  \end{tabular}
+  \caption{Position after all relations on row $2$}
+  \label{tab:tc6}
+\end{table}
+
+Now we proceed to row $3$, applying each relation with \textsc{Trace}.  The only
+relation which affects the table is $ba=a$,
+which sets $4 \cdot a$ to the value of $3 \cdot a$ (which is $2$).
+All the relations are applied to rows $4$ and $5$, with no modification made to
+the table.  We end up with a completely filled table, as shown in Table
+\ref{tab:tc7}.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c | c | c |}
+    \multicolumn{1}{c}{} &
+    \multicolumn{1}{c}{$a$} &
+    \multicolumn{1}{c}{$b$} \\
+    \cline{2-3}
+    1 & 2 & 3 \\
+    \cline{2-3}
+    2 & 2 & 5 \\
+    \cline{2-3}
+    3 & 2 & 4 \\
+    \cline{2-3}
+    4 & 2 & 3 \\
+    \cline{2-3}
+    5 & 2 & 2 \\
+    \cline{2-3}
+  \end{tabular}
+  \caption{Position after completion}
+  \label{tab:tc7}
+\end{table}
+
+We can now delete row $1$, which acts as an appended identity, and we find a
+description of the semigroup's multiplication, with relation to its generators.
+It is isomorphic to the full transformation semigroup $\mathcal{T}_2$, where $a$
+is a constant map and $b$ is the transposition.
+\begin{figure}[H]
+  \centering
+  \begin{dot2tex}
+    //dot
+    digraph {
+      rankdir=LR
+      node [shape=circle]
+      2
+      3
+      4
+      5
+      2 -> 2 [label=a]
+      2 -> 5 [label=b, dir=both]
+      3 -> 2 [label=a]
+      3 -> 4 [label=b, dir=both]
+      4 -> 2 [label=a]
+      5 -> 2 [label=a]
+    }
+  \end{dot2tex}
+  \caption{Cayley graph of the semigroup}
+  \label{fig:tc-cayley-graph}
+\end{figure}
+
+\subsubsection{Improvements}
+Left/right congruences
+
+The pack phase
 
 Pre-filling the table
 
