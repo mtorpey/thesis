@@ -153,6 +153,8 @@ ignoring the identity.  We will now describe the Todd-Coxeter method as used in
 the context of this chapter, while emphasising that this does not represent
 significant new work.
 
+\subsubsection{Setup}
+
 The Todd-Coxeter algorithm is based on a table, where each row corresponds to a
 single congruence class (or equivalently, a single element of the quotient
 semigroup).  The columns of the table correspond to the generators of the
@@ -167,6 +169,16 @@ monoid, corresponding to the empty word $\varepsilon$; if instead we have just a
 semigroup presentation, then this row should be treated as an appended identity,
 to be ignored or discarded after the algorithm is completed.  The row is empty,
 containing a blank entry in all $|X|$ columns.
+
+Rows will be added to the table, and deleted from it.  A list must be kept of
+rows which are in use; when a row is added, its position in the table should be
+appended to this list at the end, and when a row is deleted it should be removed
+from its position in the list and added to a list of ``free rows'' which can be
+reused later.  The ``rows in use'' list is best implemented as a doubly-linked
+list, so that single entries can be added and removed with as little processor
+work as possible.
+
+\subsubsection{The three operations}
 
 The following 3 operations may now be applied to the table.
 
@@ -186,7 +198,7 @@ written into the blank cell.
 \Procedure{Add}{$row, col$}
 \State $i \gets \text{an unused row number}$
 \State $table[i] \gets \text{a blank row}$
-\State Add $i$ to list of used rows
+\State Append $i$ to $used$
 \State $table[row][col] \gets i$
 \EndProcedure
 \end{algorithmic}
@@ -254,7 +266,8 @@ element.  The two rows are combined into one, with all known information being
 preserved.  The higher-numbered row is deleted, and all occurrences of the
 higher number in the table are replaced by the lower number.  This may imply
 that another pair of rows are equal, another coincidence that should be
-processed with \textsc{Coinc}.
+processed by a recursive call to \textsc{Coinc} (or should be stored in a list
+for processing after this call is finished).
 
 \begin{algorithm}
 \caption{The \textsc{Coinc} algorithm (we write $a \cdot x$ for $table[a][x]$)}
@@ -268,8 +281,8 @@ processed with \textsc{Coinc}.
     \State \Call{Coinc}{$r \cdot i, s \cdot i$}
   \EndIf
 \EndFor
-\State Remove $s$ from list of used rows
-\For{each used row $\rho$}
+\State Remove $s$ from $used$
+\For{$\rho \in used$}
   \For{$i \in \left\{1, \dots, |X|\right\}$}
     \If{$\rho \cdot i = s$}
       \State $\rho \cdot i \gets r$
