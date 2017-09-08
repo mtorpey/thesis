@@ -293,7 +293,28 @@ for processing after this call is finished).
 \end{algorithmic}
 \end{algorithm}
 
-What order do we run these in?
+Now that we have these three operations, it is simple to describe the overall
+algorithm.  We go through the list of used rows, starting with row $1$.  To each
+of these rows we apply each relation from $R$, using \textsc{Trace}.  Each call
+to \textsc{Trace} may, of course, invoke calls to \textsc{Add} and
+\textsc{Coinc}, so rows will be appended to the list as the algorithm
+progresses.  When the end of the list is reached, the table should be a Cayley
+graph for the finitely presented semigroup (excluding the identity row $1$).
+
+\begin{algorithm}
+\caption{The \textsc{Todd-Coxeter} algorithm for semigroups}
+\begin{algorithmic}[1]
+\Procedure{Todd-Coxeter}{$\langle X | R \rangle$}
+\State $table \gets $ $1$ blank row with $|X|$ columns
+\State $used \gets (1)$
+\For{$row \in used$}
+  \For{$rel \in R$}
+    \State \Call{Trace}{$row, rel$}
+  \EndFor
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 (include pack phase)
 
