@@ -202,7 +202,8 @@ table, and a new row is added at the bottom.  The number of the new row is then
 written into the blank cell.
 
 \begin{algorithm}
-\caption{The \textsc{Add} algorithm}\label{euclid}
+\caption{The \textsc{Add} algorithm}
+\label{alg:add}
 \begin{algorithmic}[1]
 \Procedure{Add}{$row, col$}
 \State $i \gets \text{an unused row number}$
@@ -236,6 +237,7 @@ $r \cdot v = r \cdot w$.
 
 \begin{algorithm}
 \caption{The \textsc{Trace} algorithm (we write $a \cdot x$ for $table[a][x]$)}
+\label{alg:trace}
 \begin{algorithmic}[1]
 \Procedure{Trace}{$r, v = w$}
 \State Write $v = v_1 \dots v_m$ \Comment $(v_i \in X \text{~for~} 1 \leq i \leq m)$
@@ -280,6 +282,7 @@ for processing after this call is finished).
 
 \begin{algorithm}
 \caption{The \textsc{Coinc} algorithm (we write $a \cdot x$ for $table[a][x]$)}
+\label{alg:coinc}
 \begin{algorithmic}[1]
 \Procedure{Coinc}{$r, s$}
 \State wlog let $r < s$
@@ -315,6 +318,7 @@ case, the procedure would run forever.
 
 \begin{algorithm}
 \caption{The \textsc{Todd-Coxeter} algorithm for semigroups}
+\label{alg:tc}
 \begin{algorithmic}[1]
 \Procedure{Todd-Coxeter}{$\langle X | R \rangle$}
 \State $table \gets $ $1$ blank row with $|X|$ columns
