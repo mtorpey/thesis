@@ -17,11 +17,10 @@
 
 % Watermark with git hash
 \immediate\write18{git rev-parse --short HEAD > hash.info}
-%\immediate\write18{if [[ true ]]}
-%\immediate\write18{then echo (changed) >> hash.info}
-%\immediate\write18{fi}
+\immediate\write18{git diff --shortstat > changes.info}
+\immediate\write18{git diff --staged --shortstat >> changes.info}
 \usepackage{draftwatermark}
-\SetWatermarkText{Last commit: \input{hash.info}}
+\SetWatermarkText{Commit \input{hash.info} \quad \input{changes.info}}
 \SetWatermarkColor[gray]{0.75}
 \SetWatermarkFontSize{0.5cm}
 \SetWatermarkAngle{90}
