@@ -197,12 +197,12 @@ $\bar{\tau}: \mathbf{N} \times X^* \to \mathbf{N} \cup \{0\}$
 which follows an entire word through the table.  If $w_1, \dots, w_n \in X$,
 then we can define $\bar\tau$ recursively by
 $$
-(i, w_1 \dots w_n)\bar\tau =
-\begin{cases}
-  i \qquad\qquad\qquad\qquad\qquad \textnormal{if~} n=0,\\
-  0 \qquad\qquad\qquad\qquad\qquad \textnormal{if~} (i, w_1)\tau=0,\\
-  ((i, w_1)\tau, w_2 \dots w_n)\bar\tau \qquad \textnormal{otherwise}.
-\end{cases}
+(i, w_1 \dots w_n)\bar\tau = \left\{
+\begin{matrix*}[l]
+  i & \textnormal{if~} n=0,\\
+  0 & \textnormal{if~} (i, w_1)\tau=0,\\
+  ((i, w_1)\tau, w_2 \dots w_n)\bar\tau & \textnormal{otherwise}.
+\end{matrix*} \right.
 $$
 
 \subsubsection{The three operations}

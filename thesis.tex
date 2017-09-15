@@ -2,18 +2,21 @@
 
 % Packages
 \usepackage[iso,UKenglish]{isodate}
-\usepackage{setspace}
+\usepackage[nodisplayskipstretch]{setspace}
 \usepackage{amsmath, amsfonts, amsthm, amssymb, mathrsfs, cancel}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 \usepackage{float}
-\usepackage{longtable, array}
+\usepackage{longtable, array, mathtools}
 \usepackage{svg}
 \usepackage{tikz, pstricks, dot2texi}
 \usetikzlibrary{arrows,shapes}
 \usepackage{url}
 
 \usepackage{lipsum}
+
+\setlength{\jot}{-1ex}
+\renewcommand*\arraystretch{.7}
 
 % Watermark with git hash
 \immediate\write18{git rev-parse --short HEAD > hash.info}
