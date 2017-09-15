@@ -170,22 +170,38 @@ semigroup).  The columns of the table correspond to the generators of the
 semigroup, and the entry in row $i$, column $j$ represents the element found by
 taking element $i$ and right-multiplying it by generator $j$.  These entries may
 be blank, and two different rows may be found to describe the same element.
+Mathematically, we can view this table as a triple $(n, \mathbf{N}, \tau)$
+consisting of:
+\begin{itemize}
+\item an integer $n \in \mathbb{N}$ representing the number of rows in the table;
+\item a set $\mathbf{N} \subseteq \{1, \dots, n\}$ containing the indices of the
+  \textit{undeleted} rows; and
+\item a function $\tau: \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$, where
+  $(i, x)\tau$ is equal to the entry in row $i$ and the column corresponding to
+  generator $x$---with $0$ representing a blank entry.
+\end{itemize}
 
-Suppose we have a semigroup presentation $\langle X | R \rangle$.  The table is
-initialised with a single row, numbered $1$, representing the identity.  If we
-are dealing with a monoid presentation, this will be the identity of that
-monoid, corresponding to the empty word $\varepsilon$; if instead we have just a
-semigroup presentation, then this row should be treated as an appended identity,
-to be ignored or discarded after the algorithm is completed.  The row is empty,
-containing a blank entry in all $|X|$ columns.
+Suppose we have a semigroup presentation $\langle X | R \rangle$ for a semigroup
+$S$.  The table is initialised with a single row, numbered $1$.  This row
+corresponds to the empty word $\varepsilon$, or the adjoined identity of the
+monoid $S^1$.  The row is empty, containing a blank entry in all $|X|$ columns.
+In our mathematical notation, we define $n=1$ and
+$(1,x)\tau = 0$ for all $x \in X$.
 
-Rows will be added to the table, and deleted from it.  A list must be kept of
-rows which are in use; when a row is added, its position in the table should be
-appended to this list at the end, and when a row is deleted it should be removed
-from its position in the list and added to a list of ``free rows'' which can be
-reused later.  The ``rows in use'' list is best implemented as a doubly-linked
-list, so that single entries can be added and removed with as little processor
-work as possible.
+We can naturally extend the function
+$\tau: \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$
+to a function 
+$\bar{\tau}: \mathbf{N} \times X^* \to \mathbf{N} \cup \{0\}$
+which follows an entire word through the table.  If $w_1, \dots, w_n \in X$,
+then we can define $\bar\tau$ recursively by
+$$
+(i, w_1 \dots w_n)\bar\tau =
+\begin{cases}
+  i \qquad\qquad\qquad\qquad\qquad \textnormal{if~} n=0,\\
+  0 \qquad\qquad\qquad\qquad\qquad \textnormal{if~} (i, w_1)\tau=0,\\
+  ((i, w_1)\tau, w_2 \dots w_n)\bar\tau \qquad \textnormal{otherwise}.
+\end{cases}
+$$
 
 \subsubsection{The three operations}
 
@@ -197,37 +213,42 @@ The following 3 operations may now be applied to the table.
 \item \textsc{Coinc}: Process a coincidence.
 \end{itemize}
 
-The first operation, \textsc{Add}, is simple.  A blank cell is found in the
-table, and a new row is added at the bottom.  The number of the new row is then
-written into the blank cell.
+The first operation, \textsc{Add}, is simple.  A new row is added at the bottom,
+and its number is then written into the specified blank cell in the table.
+Pseudo-code for this operation is given in Algorithm \ref{alg:add}.
 
 \begin{algorithm}
 \caption{The \textsc{Add} algorithm}
 \label{alg:add}
 \begin{algorithmic}[1]
-\Procedure{Add}{$row, col$}
-\State $i \gets \text{an unused row number}$
-\State $table[i] \gets \text{a blank row}$
-\State Append $i$ to $used$
-\State $table[row][col] \gets i$
+\Procedure{Add}{$i, x$}
+\State $n \gets n + 1$
+\State $\mathbf{N} \gets \mathbf{N} \cup \{n\}$
+\For{$x \in X$}
+  \State $(n, x)\tau := 0$
+\EndFor
+\State $(i, x)\tau \gets n$  
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
-\textsc{Trace} takes two arguments: a relation $v=w$ from $R$, and a row $r$
-in the table.  We start from row $r$, and process $v$ one letter at a time: we
+\textsc{Trace} takes two arguments: a relation $v=w$ from $R$, and a row $e$
+in the table.  We now give an informal description of this procedure---see
+Algorithm \ref{alg:trace} for pseudo-code.
+
+We start from row $e$, and process $v$ one letter at a time: we
 find the column corresponding to the letter, and look at that position in the
 table; this gives us the number of the new row which we move to.  If we
 encounter a blank entry before the final letter, we apply \textsc{Add} to that
 cell, and follow the new entry.  At the end of the process we have an entry in
-the table, blank or filled, which we will call $r \cdot v$.  We repeat the
-process with the other word to find $r \cdot w$.
+the table, blank or filled, called $(e, v)\bar\tau$.  We repeat the
+process with the other word to find $(e, w)\bar\tau$.
 
 To satisfy the relation, we need to set these two entries such that
-$r \cdot v = r \cdot w$.
+$(e, v)\bar\tau = (e, w)\bar\tau$.
 \begin{itemize}
-\item If $r \cdot v$ and $r \cdot w$ are both blank, then we apply
-  \textsc{Add} to $r \cdot v$ and copy the entry into $r \cdot w$.
+\item If $(e, v)\bar\tau$ and $(e, w)\bar\tau$ are both blank, then we apply
+  \textsc{Add} to $(e, v)\bar\tau$ and copy the entry into $(e, w)\bar\tau$.
 \item If just one of the entries is filled, then the filled entry is copied into
   the blank one.
 \item If both entries are filled and equal, we need do nothing.
@@ -236,36 +257,36 @@ $r \cdot v = r \cdot w$.
 \end{itemize}
 
 \begin{algorithm}
-\caption{The \textsc{Trace} algorithm (we write $a \cdot x$ for $table[a][x]$)}
+\caption{The \textsc{Trace} algorithm}
 \label{alg:trace}
 \begin{algorithmic}[1]
-\Procedure{Trace}{$r, v = w$}
+\Procedure{Trace}{$e, v = w$}
 \State Write $v = v_1 \dots v_m$ \Comment $(v_i \in X \text{~for~} 1 \leq i \leq m)$
 \State Write $w = w_1 \dots w_n$ \Comment $(w_i \in X \text{~for~} 1 \leq i \leq n)$
-\State $s \gets r$
+\State $s \gets e$
 \For{$i \in \{1, \dots, m-1\}$}
-  \If{$s \cdot v_i = \varepsilon$}
+  \If{$(s, v_i)\tau = \varepsilon$}
     \State \Call{Add}{$s, v_i$}
   \EndIf
-  \State $s \gets s \cdot v_i$
+  \State $s \gets (s, v_i)\tau$
 \EndFor
-\State $t \gets r$
+\State $t \gets e$
 \For{$i \in \{1, \dots, n-1\}$}
-  \If{$t \cdot w_i = \varepsilon$}
+  \If{$(t, w_i)\tau = \varepsilon$}
     \State \Call{Add}{$t, w_i$}
   \EndIf
-  \State $t \gets t \cdot w_i$
+  \State $t \gets (t, w_i)\tau$
 \EndFor
 
-\If{$s \cdot v_m = t \cdot w_n = \varepsilon$}
+\If{$(s, v_m)\tau = (t, w_n)\tau = \varepsilon$}
   \State \Call{Add}{$s, v_m$}
-  \State $t \cdot w_n \gets s \cdot v_m$
-\ElsIf{$s \cdot v_m = \varepsilon$}
-  \State $s \cdot v_m \gets t \cdot w_n$
-\ElsIf{$t \cdot w_n = \varepsilon$}
-  \State $t \cdot w_n \gets s \cdot v_m$
-\ElsIf{$s \cdot v_m \neq t \cdot w_n$}
-  \State \Call{Coinc}{$s \cdot v_m, t \cdot w_n$}
+  \State $(t, w_n)\tau \gets (s, v_m)\tau$
+\ElsIf{$(s, v_m)\tau = \varepsilon$}
+  \State $(s, v_m)\tau \gets (t, w_n)\tau$
+\ElsIf{$(t, w_n)\tau = \varepsilon$}
+  \State $(t, w_n)\tau \gets (s, v_m)\tau$
+\ElsIf{$(s, v_m)\tau \neq (t, w_n)\tau$}
+  \State \Call{Coinc}{$(s, v_m)\tau, (t, w_n)\tau$}
 \EndIf
 
 \EndProcedure
@@ -273,7 +294,7 @@ $r \cdot v = r \cdot w$.
 \end{algorithm}
 
 \textsc{Coinc} is used when two rows in the table are found to refer to the same
-element.  The two rows are combined into one, with all known information being
+element of $S$.  The two rows are combined into one, with all known information being
 preserved.  The higher-numbered row is deleted, and all occurrences of the
 higher number in the table are replaced by the lower number.  This may imply
 that another pair of rows are equal, another coincidence that should be
@@ -281,23 +302,23 @@ processed by a recursive call to \textsc{Coinc} (or should be stored in a list
 for processing after this call is finished).
 
 \begin{algorithm}
-\caption{The \textsc{Coinc} algorithm (we write $a \cdot x$ for $table[a][x]$)}
+\caption{The \textsc{Coinc} algorithm}
 \label{alg:coinc}
 \begin{algorithmic}[1]
 \Procedure{Coinc}{$r, s$}
 \State wlog let $r < s$
-\For{$i \in \left\{1, \dots, |X|\right\}$}
-  \If{$r \cdot i = \varepsilon$}
-    \State $r \cdot i \gets s \cdot i$
-  \ElsIf{$r \cdot i \neq s \cdot i \neq \varepsilon$}
-    \State \Call{Coinc}{$r \cdot i, s \cdot i$}
+\For{$x \in X$}
+  \If{$(r, x)\tau = 0$}
+    \State $(r, x)\tau \gets (s, x)\tau$
+  \ElsIf{$(r, x)\tau \neq (s, x)\tau \textbf{~and~} (s, x)\tau \neq 0$}
+    \State \Call{Coinc}{$(r, x)\tau, (s, x)\tau$}
   \EndIf
 \EndFor
-\State Remove $s$ from $used$
-\For{$\rho \in used$}
-  \For{$i \in \left\{1, \dots, |X|\right\}$}
-    \If{$\rho \cdot i = s$}
-      \State $\rho \cdot i \gets r$
+\State $\mathbf{N} \gets \mathbf{N} \setminus \{s\}$
+\For{$e \in \mathbf{N}$}
+  \For{$x \in X$}
+    \If{$(e, x)\tau = s$}
+      \State $(e, x)\tau \gets r$
     \EndIf
   \EndFor
 \EndFor
@@ -321,11 +342,14 @@ case, the procedure would run forever.
 \label{alg:tc}
 \begin{algorithmic}[1]
 \Procedure{Todd-Coxeter}{$\langle X | R \rangle$}
-\State $table \gets $ $1$ blank row with $|X|$ columns
-\State $used \gets (1)$
-\For{$row \in used$}
-  \For{$rel \in R$}
-    \State \Call{Trace}{$row, rel$}
+\State $n := 1$
+\State $\mathbf{N} := \{1\}$
+\For{$x \in X$}
+  \State $(1, x)\tau := 0$
+\EndFor
+\For{$e \in \mathbf{N}$}
+  \For{$(u=v) \in R$}
+    \State \Call{Trace}{$e, u=v$}
   \EndFor
 \EndFor
 \EndProcedure
@@ -350,7 +374,7 @@ We initialise the table to look like Table \ref{tab:tc1}:
   \caption{Initial position}
   \label{tab:tc1}
 \end{table}
-the $used$ list contains only a single entry, $1$.  We begin by tracing each
+The $used$ list contains only a single entry, $1$.  We begin by tracing each
 relation on the row $1$, starting with $a^2=a$.  This relation makes us call
 \textsc{Add} on the cell $1 \cdot a$, creating a new row, $2$, which is added to
 $used$.  At the end of the \textsc{Trace}, we must set $2 \cdot a$ to $1 \cdot
@@ -519,20 +543,28 @@ is a constant map and $b$ is the transposition.
       5 -> 2 [label=a]
     }
   \end{dot2tex}
-  \caption{Cayley graph of the semigroup}
+  \caption{Right Cayley graph of the semigroup}
   \label{fig:tc-cayley-graph}
 \end{figure}
 
 \subsubsection{Improvements}
 Left/right congruences
 
-The pack phase
-
 Pre-filling the table
 
 Semigroups/congs it works/works best on
 
 Complexity
+
+\subsubsection{Implementation}
+
+Rows will be added to the table, and deleted from it.  A list must be kept of
+rows which are in use; when a row is added, its position in the table should be
+appended to this list at the end, and when a row is deleted it should be removed
+from its position in the list and added to a list of ``free rows'' which can be
+reused later.  The ``rows in use'' list is best implemented as a doubly-linked
+list, so that single entries can be added and removed with as little processor
+work as possible.
 
 \subsection{Knuth-Bendix and Froidure-Pin}
 \label{sec:kbfp}
@@ -550,6 +582,14 @@ Complexity
 How do we tie together all the different algorithms?
 
 \section{Implementation}
+
+Rows will be added to the table, and deleted from it.  A list must be kept of
+rows which are in use; when a row is added, its position in the table should be
+appended to this list at the end, and when a row is deleted it should be removed
+from its position in the list and added to a list of ``free rows'' which can be
+reused later.  The ``rows in use'' list is best implemented as a doubly-linked
+list, so that single entries can be added and removed with as little processor
+work as possible.
 
 Practical considerations in libsemigroups
 
