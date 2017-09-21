@@ -154,12 +154,12 @@ for a semigroup $S$ and computes the right regular representation of $S^1$ with
 respect to the generators $X$---that is, it computes all the elements of $S$ and
 the result of right-multiplying each element by each generator.  Since the
 original algorithm makes very little use of those properties unique to groups,
-there are not many modifications required in order to apply the method to
-semigroups.  Other descriptions of Todd-Coxeter for semigroups can be found in
-\cite[ch.~12]{ruskuc_thesis} and \cite[ch.~1.2]{walker_thesis}, and a variation
-specific to inverse semigroups can be found in \cite{cutting_thesis}.  A good
-implementation, which our version follows closely, is found in
-\cite[\texttt{lib/tcsemi.gi}]{gap}, and is based on \cite{walker_thesis}.
+the method applied to semigroups is essentially the same.  Other descriptions of
+Todd-Coxeter for semigroups can be found in \cite[Chapter 12]{ruskuc_thesis} and
+\cite[Chapter 1.2]{walker_thesis}, and a variation specific to inverse
+semigroups can be found in \cite{cutting_thesis}.  Our version of the algorithm
+is based closely on an implementation by G\"otz Pfeiffer, found in
+\cite[\texttt{lib/tcsemi.gi}]{gap}, and based on \cite{walker_thesis}.
 
 We will now describe the Todd-Coxeter method as used in the context of this
 chapter, while emphasising that this does not represent significant new work.
