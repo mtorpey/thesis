@@ -307,15 +307,8 @@ for processing after this call is finished).
 \caption{The \textsc{Coinc} algorithm}
 \label{alg:coinc}
 \begin{algorithmic}[1]
+\Require $r < s$
 \Procedure{Coinc}{$r, s$}
-\State wlog let $r < s$
-\For{$x \in X$}
-  \If{$(r, x)\tau = 0$}
-    \State $(r, x)\tau \gets (s, x)\tau$
-  \ElsIf{$(r, x)\tau \neq (s, x)\tau \textbf{~and~} (s, x)\tau \neq 0$}
-    \State \Call{Coinc}{$(r, x)\tau, (s, x)\tau$}
-  \EndIf
-\EndFor
 \State $\mathbf{N} \gets \mathbf{N} \setminus \{s\}$
 \For{$e \in \mathbf{N}$}
   \For{$x \in X$}
@@ -323,6 +316,13 @@ for processing after this call is finished).
       \State $(e, x)\tau \gets r$
     \EndIf
   \EndFor
+\EndFor
+\For{$x \in X$}
+  \If{$(r, x)\tau = 0$}
+    \State $(r, x)\tau \gets (s, x)\tau$
+  \ElsIf{$(r, x)\tau \neq (s, x)\tau \textbf{~and~} (s, x)\tau \neq 0$}
+    \State \Call{Coinc}{$(r, x)\tau, (s, x)\tau$}
+  \EndIf
 \EndFor
 \EndProcedure
 \end{algorithmic}
@@ -361,172 +361,165 @@ case, the procedure would run forever.
 \subsubsection{An example}
 We now give an example of the Todd-Coxeter algorithm running on the semigroup
 presentation
-$$\langle a, b | a^2=a, ba=a, b^3=b, ab^2=a \rangle.$$
-We initialise the table to look like Table \ref{tab:tc1}:
-\begin{table}[H]
-  \centering
-  \begin{tabular}{c | c | c |}
-    \multicolumn{1}{c}{} &
-    \multicolumn{1}{c}{$a$} &
-    \multicolumn{1}{c}{$b$} \\
-    \cline{2-3}
-    1 & & \\
-    \cline{2-3}
-  \end{tabular}
-  \caption{Initial position}
-  \label{tab:tc1}
-\end{table}
+$$\pres{a, b}{ba=ab, b^2=b, a^3=ab, a^2b=a^2}.$$
+We initialise the table to look like Table \ref{tab:tc1}.
+\tctableAB{tab:tc1}
+{Initial position}
+{ 1 & & \\ }
+
 The list $\mathbf{N}$ of undeleted rows contains only a single entry, $1$.  We
-begin by tracing each relation on the row $1$, starting with $a^2=a$.  This
-relation makes us call \textsc{Add} on the cell $(1, a)$, creating a new
-row, $2$, which is added to $\mathbf{N}$.  At the end of the \textsc{Trace}, we
-must set $(1, a^2)\bar\tau$ equal to $(1, a)\bar\tau$,
-so we set $(2, a)\tau \gets 2$ (as in Table \ref{tab:tc2}).
-\begin{table}[H]
-  \centering
-  \begin{tabular}{c | c | c |}
-    \multicolumn{1}{c}{} &
-    \multicolumn{1}{c}{$a$} &
-    \multicolumn{1}{c}{$b$} \\
-    \cline{2-3}
-    1 & 2 & \\
-    \cline{2-3}
-    2 & 2 & \\
-    \cline{2-3}
-  \end{tabular}
-  \caption{Position after \textsc{Trace}($1, a^2=a$)}
-  \label{tab:tc2}
-\end{table}
+begin by tracing each relation on the row $1$, starting with $ba=ab$.  This
+relation makes us call \textsc{Add} on the cell $(1, b)$, creating a new row,
+$2$, which is added to $\mathbf{N}$.  Similarly, we must call \textsc{Add} on
+the cell $(1, a)$, creating a row $3$.  At the end of the \textsc{Trace}, we
+must set $(1, ba)\bar\tau$ equal to $(1, ab)\bar\tau$, so we set both
+$(2, a)\tau$ and $(3, b)\tau$ to $4$ (as in Table \ref{tab:tc2}).
+\tctableAB{tab:tc2}
+{Position after \textsc{Trace}($1, ba=ab$)}
+{
+  1 & 3 & 2 \\
+  \cline{2-3}
+  2 & 4 & \\
+  \cline{2-3}
+  3 & & 4 \\
+  \cline{2-3}
+  4 & & \\
+}
+Next, we apply \textsc{Trace}($1, b^2=b$).  Since $(1, b)\bar\tau$ is already
+set, we just set $(1, b^2)\bar\tau$ equal to it: $(2, b)\tau \gets 2$.  See
+Table \ref{tab:tc3}.
+\tctableAB{tab:tc3}
+{Position after \textsc{Trace}($1, b^2=b$)}
+{
+  1 & 3 & 2 \\
+  \cline{2-3}
+  2 & 4 & 2 \\
+  \cline{2-3}
+  3 & & 4 \\
+  \cline{2-3}
+  4 & & \\
+}
+Still on row $1$, we apply \textsc{Trace} to the third relation, $a^3=ab$.  This
+creates a new row for $(1, a^2)\bar\tau = (3, a)\tau = 5$.  The new row's $a$
+entry is set to be the same as $(1, ab)\bar\tau$, which is $4$
+(see Table \ref{tab:tc4}).
+\tctableAB{tab:tc4}
+{Position after \textsc{Trace}($1, a^3=ab$)}
+{
+  1 & 3 & 2 \\
+  \cline{2-3}
+  2 & 4 & 2 \\
+  \cline{2-3}
+  3 & 5 & 4 \\
+  \cline{2-3}
+  4 & & \\
+  \cline{2-3}
+  5 & 4 & \\
+}
 
-Next, we apply \textsc{Trace}($1, ba=a$) and we must \textsc{Add} a new row for
-$(1, b)$.  After \textsc{Trace}, the new row also contains $2$ in the $a$
-column.
-\begin{table}[H]
-  \centering
-  \begin{tabular}{c | c | c |}
-    \multicolumn{1}{c}{} &
-    \multicolumn{1}{c}{$a$} &
-    \multicolumn{1}{c}{$b$} \\
-    \cline{2-3}
-    1 & 2 & 3 \\
-    \cline{2-3}
-    2 & 2 & \\
-    \cline{2-3}
-    3 & 2 & \\
-    \cline{2-3}
-  \end{tabular}
-  \caption{Position after \textsc{Trace}($1, ba=a$)}
-  \label{tab:tc3}
-\end{table}
-
-Still on row $1$, we apply \textsc{Trace} to the third relation, $b^3=b$.  This
-creates a new row for $(1, b^2)\bar\tau = (3, b)\tau = 4$.  The new row's $b$
-entry is set to be the same as $(1, b)\tau$ (see Table \ref{tab:tc4}).
-\begin{table}[H]
-  \centering
-  \begin{tabular}{c | c | c |}
-    \multicolumn{1}{c}{} &
-    \multicolumn{1}{c}{$a$} &
-    \multicolumn{1}{c}{$b$} \\
-    \cline{2-3}
-    1 & 2 & 3 \\
-    \cline{2-3}
-    2 & 2 & \\
-    \cline{2-3}
-    3 & 2 & 4 \\
-    \cline{2-3}
-    4 &  & 3 \\
-    \cline{2-3}
-  \end{tabular}
-  \caption{Position after \textsc{Trace}($1, b^3=b$)}
-  \label{tab:tc4}
-\end{table}
-
-The final relation for row $1$ is $ab^2=a$.
-A new row is added for $(1, ab)\bar\tau$, and its $b$ entry is set equal to
-$(1, a)\tau = 2$ (as in Table \ref{tab:tc5}).
-\begin{table}[H]
-  \centering
-  \begin{tabular}{c | c | c |}
-    \multicolumn{1}{c}{} &
-    \multicolumn{1}{c}{$a$} &
-    \multicolumn{1}{c}{$b$} \\
-    \cline{2-3}
-    1 & 2 & 3 \\
-    \cline{2-3}
-    2 & 2 & 5 \\
-    \cline{2-3}
-    3 & 2 & 4 \\
-    \cline{2-3}
-    4 &  & 3 \\
-    \cline{2-3}
-    5 & & 2 \\
-    \cline{2-3}
-  \end{tabular}
-  \caption{Position after \textsc{Trace}($1, ab^2=a$)}
-  \label{tab:tc5}
-\end{table}
-
+The final relation for row $1$ is $a^2b=a^2$.
+$(1, a^2b)\bar\tau$ is currently blank, and is set to the current value of
+$(1, a^2)\bar\tau$, which is $5$.  Hence $(5, b)\tau \gets 5$
+(as in Table \ref{tab:tc5}).
+\tctableAB{tab:tc5}
+{Position after \textsc{Trace}($1, a^2b=a^2$)}
+{
+  1 & 3 & 2 \\
+  \cline{2-3}
+  2 & 4 & 2 \\
+  \cline{2-3}
+  3 & 5 & 4 \\
+  \cline{2-3}
+  4 & & \\
+  \cline{2-3}
+  5 & 4 & 5 \\
+}
 We have now finished with row $1$, and we proceed to the next row in
 $\mathbf{N}$, which is $2$.  Accordingly, we apply the first relation,
-\textsc{Trace}($2, a^2=a$).  Since $(2, a)\bar\tau$ and $(2, a^2)\bar\tau$ are
-both already set to $2$, we do nothing.  \textsc{Trace}($2, ba=a$) is more
-fruitful, setting $(2, ba)\bar\tau$---that is, $(5, a)\tau$---to $2$.  The last
-two relations make no changes to the table, and we have Table \ref{tab:tc6}.
-\begin{table}[H]
-  \centering
-  \begin{tabular}{c | c | c |}
-    \multicolumn{1}{c}{} &
-    \multicolumn{1}{c}{$a$} &
-    \multicolumn{1}{c}{$b$} \\
-    \cline{2-3}
-    1 & 2 & 3 \\
-    \cline{2-3}
-    2 & 2 & 5 \\
-    \cline{2-3}
-    3 & 2 & 4 \\
-    \cline{2-3}
-    4 &  & 3 \\
-    \cline{2-3}
-    5 & 2 & 2 \\
-    \cline{2-3}
-  \end{tabular}
-  \caption{Position after all relations on row $2$}
-  \label{tab:tc6}
-\end{table}
-
-Now we proceed to row $3$, applying each relation with \textsc{Trace}.  The only
-relation which affects the table is $ba=a$,
-which sets $(4, a)\tau$ to the value of $(3, a)\tau$ (which is $2$).
-All the relations are applied to rows $4$ and $5$, with no modification made to
-the table.  We end up with a completely filled table, as shown in Table
-\ref{tab:tc7}.
-\begin{table}[H]
-  \centering
-  \begin{tabular}{c | c | c |}
-    \multicolumn{1}{c}{} &
-    \multicolumn{1}{c}{$a$} &
-    \multicolumn{1}{c}{$b$} \\
-    \cline{2-3}
-    1 & 2 & 3 \\
-    \cline{2-3}
-    2 & 2 & 5 \\
-    \cline{2-3}
-    3 & 2 & 4 \\
-    \cline{2-3}
-    4 & 2 & 3 \\
-    \cline{2-3}
-    5 & 2 & 2 \\
-    \cline{2-3}
-  \end{tabular}
-  \caption{Position after completion}
-  \label{tab:tc7}
-\end{table}
+\textsc{Trace}($2, ba=ab$).  The value of $(2, ba)\bar\tau$ is $4$, whereas the
+value of $(2, ab)\bar\tau$ has not yet been set.
+We set it by applying $(4, b)\tau \gets 4$.
+See Table \ref{tab:tc6}.
+\tctableAB{tab:tc6}
+{Position after \textsc{Trace}($2, ba=ab$)}
+{
+  1 & 3 & 2 \\
+  \cline{2-3}
+  2 & 4 & 2 \\
+  \cline{2-3}
+  3 & 5 & 4 \\
+  \cline{2-3}
+  4 & & 4 \\
+  \cline{2-3}
+  5 & 4 & 5 \\
+}
+Proceeding with \textsc{Trace}($2, b^2=b$), we find that
+$(2, b^2)\bar\tau = (2, b)\bar\tau$ already, so we make no modifications to the
+table.  Next, \textsc{Trace}($2, a^3=ab$) discovers that $(2, a^2)\bar\tau$ is
+not set, and so we call \textsc{Add}($4, a$), creating a new row $6$.
+Now $(6, a)\tau$ is set to $(2, ab)\bar\tau$ which is equal to $4$.
+See Table \ref{tab:tc7}.
+\tctableAB{tab:tc7}
+{Position after \textsc{Trace}($2, a^3=ab$)}
+{
+  1 & 3 & 2 \\
+  \cline{2-3}
+  2 & 4 & 2 \\
+  \cline{2-3}
+  3 & 5 & 4 \\
+  \cline{2-3}
+  4 & 6 & 4 \\
+  \cline{2-3}
+  5 & 4 & 5 \\
+  \cline{2-3}
+  6 & 4 & \\
+}
+The final relation for row $2$ is $a^2b=a^2$, setting $(6, b)\tau \gets 6$ (see
+Table \ref{tab:tc8}).
+\tctableAB{tab:tc8}
+{Position after all relations on row $2$}
+{
+  1 & 3 & 2 \\
+  \cline{2-3}
+  2 & 4 & 2 \\
+  \cline{2-3}
+  3 & 5 & 4 \\
+  \cline{2-3}
+  4 & 6 & 4 \\
+  \cline{2-3}
+  5 & 4 & 5 \\
+  \cline{2-3}
+  6 & 4 & 6 \\
+}
+Next we move onto row $3$, and we apply \textsc{Trace}($3, ba=ab$).  Inspecting
+the table shows $(3, ba)\bar\tau = 6$ but $(3, ab)\bar\tau = 5$, giving rise to
+a coincidence.  We apply \textsc{Coinc}($5, 6$), which deletes row $6$, rewrites
+any occurrences of $6$ in the table to $5$, and copies row $6$ into row $5$
+(yielding no new information).  The result is shown in Table \ref{tab:tc9}.  The
+rest of the relations are applied to row $3$, and to the remaining rows in the
+table, but no changes are made to the table, so Table \ref{tab:tc9} is the final
+state.
+\tctableAB{tab:tc9}
+{Final position}
+{
+  1 & 3 & 2 \\
+  \cline{2-3}
+  2 & 4 & 2 \\
+  \cline{2-3}
+  3 & 5 & 4 \\
+  \cline{2-3}
+  4 & \cancel{\textcolor{gray}{6}}5\!\!\! & 4 \\
+  \cline{2-3}
+  5 & 4 & 5 \\
+  \cline{2-3}
+  \textcolor{gray}{6} & \textcolor{gray}{4} & \textcolor{gray}{6} \\[-1.6ex]
+  \hline\noalign{\vspace{\dimexpr 1.4ex}} \cline{2-3}
+}
 
 We can now delete row $1$, which acts as an appended identity, and we find a
 description of the semigroup's multiplication, with relation to its generators.
-It is isomorphic to the full transformation semigroup $\mathcal{T}_2$, where $a$
-is a constant map and $b$ is the transposition.
+This description can be represented as a Cayley graph,
+as shown in Figure \ref{fig:tc-cayley-graph}.
 \begin{figure}[H]
   \centering
   \begin{dot2tex}
@@ -538,20 +531,21 @@ is a constant map and $b$ is the transposition.
       3
       4
       5
-      2 -> 2 [label=a]
-      2 -> 5 [label=b, dir=both]
-      3 -> 2 [label=a]
+      2 -> 4 [label=a]
+      2 -> 2 [label=b]
+      3 -> 5 [label=a]
       3 -> 4 [label=b, dir=both]
-      4 -> 2 [label=a]
-      5 -> 2 [label=a]
+      4 -> 5 [label=a, dir=both]
+      4 -> 4 [label=b]
+      5 -> 5 [label=b]
     }
   \end{dot2tex}
-  \caption{Right Cayley graph of the semigroup}
+  \caption{Right Cayley graph of $\pres{a, b}{ba=ab, b^2=b, a^3=ab, a^2b=a^2}$}
   \label{fig:tc-cayley-graph}
 \end{figure}
 It is worth noting that the columns of the table now give a right representation
 of $S$.  That is, $S$ is isomorphic to the semigroup generated by the
-transformations $\transV 22222$ and $\transV 35432$.
+transformations $\transV 34554$ and $\transV 22445$.
 
 \subsubsection{Improvements}
 Left/right congruences
