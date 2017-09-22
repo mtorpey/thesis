@@ -341,15 +341,15 @@ for processing after this call is finished).
 \end{algorithm}
 
 Now that we have these three operations, it is simple to describe the overall
-algorithm.  We go through the list of used rows, starting with row $1$.  To each
+algorithm.  We go through the list of used rows $\mathbf{N}$, starting with row $1$.  To each
 of these rows we apply each relation from $R$, using \textsc{Trace}.  Each call
 to \textsc{Trace} may, of course, invoke calls to \textsc{Add} and
 \textsc{Coinc}, so rows will be appended to the list as the algorithm
-progresses.  When the end of the list is reached, the table should be a Cayley
-graph for the finitely presented semigroup (excluding the identity row $1$).
-Note that the end of the list is not guaranteed to be reached, for example in
-the case of an infinite semigroup whose table would grow indefinitely.  In this
-case, the procedure would run forever.
+progresses.  When the end of $\mathbf{N}$ is reached, the table should
+completely describe the multiplication for the finitely presented semigroup:
+each row in $\mathbf{N} \setminus \{1\}$ represents one element of $S$, and
+$(i, x)\tau$ represents the element denoted by $i$ right-multiplied by the
+generator $x$.
 
 \begin{algorithm}
 \caption{The \textsc{Todd-Coxeter} algorithm for semigroups}
@@ -369,6 +369,15 @@ case, the procedure would run forever.
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+
+Note that there is no guarantee that the end of $\mathbf{N}$ will ever be
+reached: if the given presentation defines an infinite semigroup, the table will
+grow forever and the procedure will never terminate.  On the other hand, if the
+presentation defines a finite semigroup, the procedure is guaranteed to
+terminate eventually, though in an unbounded amount of time.  Since a user may
+not know in advance whether a presentation defines a finite or infinite
+semigroup---indeed, the question is undecidable in general---it is impossible to
+know, while the procedure is running, whether it will end.
 
 \subsubsection{An example}
 We now give an example of the Todd-Coxeter algorithm running on the semigroup
