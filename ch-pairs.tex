@@ -149,7 +149,7 @@ EDSAC II computer in Cambridge \cite{leech_1963}.  Since then, a wide variety of
 efficient, optimised versions have been implemented, for example \cite{ace}.
 
 A variation of Todd-Coxeter for semigroups was described in 1967
-\cite{neumann_1967}.  The algorithm takes a presentation $\langle X | R \rangle$
+\cite{neumann_1967}.  The algorithm takes a presentation $\pres X R$
 for a semigroup $S$ and computes the right regular representation of $S^1$ with
 respect to the generators $X$---that is, it computes all the elements of $S$ and
 the result of right-multiplying each element by each generator.  Since the
@@ -162,7 +162,9 @@ is based closely on an implementation by G\"otz Pfeiffer, found in
 \cite[\texttt{lib/tcsemi.gi}]{gap}, and based on \cite{walker_thesis}.
 
 We will now describe the Todd-Coxeter method as used in the context of this
-chapter, while emphasising that this does not represent significant new work.
+chapter.  Though this does not represent significant new work, it is an
+important part of the overall parallel approach, and in order to understand its
+uses and limitations, it is described here in full.
 
 \subsubsection{Setup}
 
@@ -183,7 +185,7 @@ consisting of:
   generator $x$---with $0$ representing a blank entry.
 \end{itemize}
 
-Suppose we have a semigroup presentation $\langle X | R \rangle$ for a semigroup
+Suppose that we have a semigroup presentation $\pres X R$ for a semigroup
 $S$.  The table is initialised with a single row, numbered $1$.  This row
 corresponds to the empty word $\varepsilon$, or the adjoined identity of the
 monoid $S^1$.  The row is empty, containing a blank entry in all $|X|$ columns.
@@ -194,20 +196,29 @@ We can naturally extend the function
 $\tau: \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$
 to a function 
 $\bar{\tau}: \mathbf{N} \times X^* \to \mathbf{N} \cup \{0\}$
-which follows an entire word through the table.  If $w_1, \dots, w_n \in X$,
+which is described as follows.
+If $w \in X^*$ and $w=w_1 \dots w_n$, where $w_1, \dots, w_n \in X$,
 then we can define $\bar\tau$ recursively by
 $$
-(i, w_1 \dots w_n)\bar\tau = \left\{
+(i, w)\bar\tau = \left\{
 \begin{matrix*}[l]
-  i & \textnormal{if~} n=0,\\
+  i & \textnormal{if~} w=\varepsilon,\\
   0 & \textnormal{if~} (i, w_1)\tau=0,\\
   ((i, w_1)\tau, w_2 \dots w_n)\bar\tau & \textnormal{otherwise}.
 \end{matrix*} \right.
 $$
 
-\subsubsection{The three operations}
+The effect of $\bar\tau$ is to trace an entire word through the table, starting
+at a given row.
 
-The following 3 operations may now be applied to the table.
+\subsubsection{Elementary operations}
+
+We now describe 3 operations which may be applied to the table.  These
+operations will be described loosely to give an intuition behind what they are
+designed to do, and then each one will be described formally in pseudo-code
+(Algorithms \ref{alg:add}, \ref{alg:trace} and \ref{alg:coinc}).  We will then
+describe the overall Todd-Coxeter procedure which uses these operations
+(Algorithm \ref{alg:tc}).
 
 \begin{itemize}
 \item \textsc{Add}: Fill in a blank entry and add a row to the table;
@@ -215,9 +226,10 @@ The following 3 operations may now be applied to the table.
 \item \textsc{Coinc}: Process a coincidence.
 \end{itemize}
 
-The first operation, \textsc{Add}, is simple.  A new row is added at the bottom,
-and its number is then written into the specified blank cell in the table.
-Pseudo-code for this operation is given in Algorithm \ref{alg:add}.
+The first operation, \textsc{Add}, is simple.  A new row is added at the bottom
+of the table, and its number is written into the blank cell in the table
+specified by the arguments given to \textsc{Add}.  Pseudo-code for this
+operation is given in Algorithm \ref{alg:add}.
 
 \begin{algorithm}
 \caption{The \textsc{Add} algorithm}
@@ -238,7 +250,7 @@ Pseudo-code for this operation is given in Algorithm \ref{alg:add}.
 in the table.  We now give an informal description of this procedure---see
 Algorithm \ref{alg:trace} for pseudo-code.
 
-We start from row $e$, and process $v$ one letter at a time: we
+We start from row $e$, and find $(e, v)\bar\tau$ by processing $v$ one letter at a time: we
 find the column corresponding to the letter, and look at that position in the
 table; this gives us the number of the new row which we move to.  If we
 encounter a blank entry before the final letter, we apply \textsc{Add} to that
@@ -246,7 +258,7 @@ cell, and follow the new entry.  At the end of the process we have an entry in
 the table, blank or filled, called $(e, v)\bar\tau$.  We repeat the
 process with the other word to find $(e, w)\bar\tau$.
 
-To satisfy the relation, we need to set these two entries such that
+To satisfy $v=w$, we need to set these two entries such that
 $(e, v)\bar\tau = (e, w)\bar\tau$.
 \begin{itemize}
 \item If $(e, v)\bar\tau$ and $(e, w)\bar\tau$ are both blank, then we apply
@@ -296,9 +308,9 @@ $(e, v)\bar\tau = (e, w)\bar\tau$.
 \end{algorithm}
 
 \textsc{Coinc} is used when two rows in the table are found to refer to the same
-element of $S$.  The two rows are combined into one, with all known information being
-preserved.  The higher-numbered row is deleted, and all occurrences of the
-higher number in the table are replaced by the lower number.  This may imply
+element of $S$.  The higher-numbered row is deleted, and all occurrences of the
+higher number in the table are replaced by the lower number.  The two rows are
+combined into one, with all known information being preserved.  This may imply
 that another pair of rows are equal, another coincidence that should be
 processed by a recursive call to \textsc{Coinc} (or should be stored in a list
 for processing after this call is finished).
@@ -343,7 +355,7 @@ case, the procedure would run forever.
 \caption{The \textsc{Todd-Coxeter} algorithm for semigroups}
 \label{alg:tc}
 \begin{algorithmic}[1]
-\Procedure{Todd-Coxeter}{$\langle X | R \rangle$}
+\Procedure{Todd-Coxeter}{$\pres X R$}
 \State $n := 1$
 \State $\mathbf{N} := \{1\}$
 \For{$x \in X$}
