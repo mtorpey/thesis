@@ -588,8 +588,41 @@ reused later.  The ``rows in use'' list is best implemented as a doubly-linked
 list, so that single entries can be added and removed with as little processor
 work as possible.
 
-\subsection{Knuth-Bendix and Froidure-Pin}
-\label{sec:kbfp}
+\subsection{Rewriting systems}
+\label{sec:kb}
+
+Another approach to calculating information about a finitely presented semigroup
+is using rewriting systems.  Given a semigroup $S$ with presentation
+$\pres X R$, we may be able to find a rewriting system which converts any word
+in $X^+$ to a canonical word representing the same semigroup element.  In order
+to describe the process, we must first explain some background theory.  A full
+description of these ideas can be found in \cite[Section 12.2]{cgt}.  Note that
+we shall again consider monoid presentations instead of semigroup presentations,
+since it is easy to change between the two by appending or removing an identity
+(the empty string $\varepsilon$).
+
+Let $X$ be an alphabet.  A \textit{rewriting system} $\mathscr{R}$ on $X^*$ is a
+set of ordered pairs $(u,v)$ where $u, v \in X^*$.
+A pair $(u,v) \in \mathscr{R}$ is called a \textit{rule}, and can be viewed as
+an operation which transforms an occurrence of $u$ in a word into an occurrence
+of $v$.  A rewriting system $\mathscr{R}$ extends to two relations
+$\to_\mathscr{R}$ and $\to_\mathscr{R}^*$, which describe how words are
+rewritten, and which are defined as follows.
+
+Let $u, v \in X^*$ and let $\mathscr{R}$ be a rewriting system.
+We write $u \to_\mathscr{R} v$ if there exist $(s, t) \in \mathscr{R}$ and
+$u_1, u_2, v_1, v_2 \in X^*$ such that $u=u_1su_2$ and $v=v_1tv_2$.
+That is, $u \to_\mathscr{R} v$ if a rule transforms a part of $u$ to turn it
+into $v$.  The relation $\to_\mathscr{R}^*$ is simply the reflexive transitive
+closure of $\to_\mathscr{R}$; that is, $u \to_\mathscr{R}^* v$ if and only if
+$$u = u_0 \to_\mathscr{R} u_1 \to_\mathscr{R} \dots \to_\mathscr{R} u_n = v,$$
+for some $u_1, \dots, u_{n-1} \in X^*$.
+Where there is no chance of ambiguity, we omit the subscript in these
+operations, just writing $\to$ and $\to^*$.
+
+See also \cite{knuth_bendix}.
+
+\subsection{Froidure-Pin}
 
 Background
 
