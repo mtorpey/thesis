@@ -662,22 +662,92 @@ this, we must ensure that the system is \textit{confluent}, as follows.
 The intuition behind this definition is that, as the name suggests, different
 paths ``flow together''.  The result is that, in a confluent terminating
 rewriting system, rules can be applied to a word in any order, and a canonical
-irreducible word will be found in a finite number of steps.  If $\mathscr{R}$ is
-a confluent terminating rewriting system, then let us write $(w)f_\mathscr{R}$
-or $(w)f$ for the unique irreducible word which $w$ can be written to.  Let
-$[w]_\mathscr{R}$ or $[w]$ be the set of all words $u \in X^*$ such that
-$u \to^* (w)f$.
+irreducible word will be found in a finite number of steps.
+% If $\mathscr{R}$ is
+% a confluent terminating rewriting system, then let us write $(w)f_\mathscr{R}$
+% or $(w)f$ for the unique irreducible word which $w$ can be written to.  Let
+% $[w]_\mathscr{R}$ or $[w]$ be the set of all words $u \in X^*$ such that
+% $u \to^* (w)f$.
 
 We can now see an application of rewriting systems to the word problem in a
-finitely presented monoid.  Given a monoid $M$ with a presentation $\pres X R$,
-if there is a confluent terminating rewriting system $\mathscr{R}$ such that
-$[w]$ is the set of words equal to $w$ in the monoid (for each $w \in X^*$) then
-two elements represented by the words $u$ and $v$ are equal if and only if
-$(u)f = (v)f$.  The only difficulty is in finding such a rewriting system---but
-we can find one, by starting with the relations $R$, and then using the
-Knuth-Bendix completion algorithm.
+finitely presented monoid.  Indeed, given an alphabet $X$ and a rewriting system
+$\mathscr{R}$, the quotient $X^* / \leftrightarrow^*$ is described by the monoid
+presentation $\pres{X}{\mathscr{R}}$.  Hence given a monoid $M$ with a
+presentation $\pres X R$, if there is a confluent terminating rewriting system
+$\mathscr{R}$ such that the word equality relation $=_M$ is the same as the
+relation $\leftrightarrow_\mathscr{R}^*$, then the word problem can be solved
+simply by rewriting two words using $\mathscr{R}$ until their irreducible
+representatives are found, and then comparing them.  The only difficulty is in
+finding a rewriting system which is confluent and terminating---but we can find
+one, by starting with the relations $R$, and then using the Knuth-Bendix
+completion algorithm.
 
-See also \cite{knuth_bendix}.
+Let $M$ be a monoid with finite presentation $\pres X R$.
+We start with no rules in our rewriting system, $\mathscr{R} = \varnothing$, and
+we begin to add relations from $R$.  However, in order to ensure our system is
+\textit{terminating}, we must reorder each relation to ensure we do not create
+any loops.  For this purpose, we define a total ordering on $X^*$ and reorder
+each relation so that a rule $(u, v)$ has the property that $u < v$.  Criteria
+for this ordering are discussed in \cite[p.~420]{cgt}, but it will suffice to
+use the \textit{shortlex ordering}: $u < v$ if and only if $u$ is shorter than
+$v$ or they have equal length and $u$ is less lexicographically.  Hence the
+first few words over the alphabet $\{a, b\}$ are
+$$\varepsilon < a < b < aa < ab < ba < bb < aaa < aab < aba < \dots$$
+Note that this requires a well-understood total order on the alphabet $X$
+itself.  This ordering justifies the use of the words ``reducible'' and
+``irreducible''---words are being replaced with lesser words according to an
+ordering.
+
+Once each relation from $R$ is added---possibly reordered---to $\mathscr{R}$, we
+will have a terminating rewriting system such that
+$X^* / \leftrightarrow^* = \pres X R$, as required.  It only remains to add
+rules to $\mathscr{R}$ to make it confluent, without altering the relation
+$\leftrightarrow^*$.  This is where we use the Knuth-Bendix completion process.
+
+First described by Knuth and Bendix in \cite{knuth_bendix}, the completion
+process adds rules to $\mathscr{R}$ based on finding and resolving
+\textit{critical pairs}.  A critical pair is a pair of rules $(u_1, v_1)$ and
+$(u_2, v_2)$ such that $u_1$ and $u_2$ overlap and therefore a word could be
+rewritten as either of two different irreducible words.  If this turns out to be
+the case, then a rule needs to be added to $\mathscr{R}$ to relate these two
+previously irreducible words, so that one will reduce to the other.  This is all
+that is required to make $\mathscr{R}$ confluent, as explained formally in the
+following Theorem, and illustrated afterwards by an example.
+
+\begin{theorem}
+  \label{thm:knuth-bendix}
+  A terminating rewriting system $\mathscr{R}$ is confluent if and only if, for
+  each pair of rules $(u_1, v_1), (u_2, v_2) \in \mathscr{R}$, the following
+  hold.
+  \begin{enumerate}
+  \item If $u_1 = rs$ and $u_2 = st$ with $r,s,t \in X^*$ and $s \neq
+    \varepsilon$, then there exists $w \in X^*$ such that $v_1t \to^* w$ and
+    $rv_2 \to^* w$.
+  \item If $u_1 = ru_2t$ for some $r,t \in X^*$ and $u_2 \neq \varepsilon$, then
+    there exists $w \in X^*$ such that $v_1 \to^* w$ and $rv_2t \to^* w$.
+  \end{enumerate}
+  \cite[Lemma~12.17]{cgt}
+\end{theorem}
+
+Let us consider an example which shows critical pairs, using the alphabet
+$X=\{a,b,c\}$.  An example of a critical pair in category 1 would be two rules
+$(ab, c)$ and $(bb, a)$.  Here the word $abb$ could be rewritten by either rule:
+$abb = (ab)b \to (c)b$, but $abb = a(bb) \to a(a)$.  If the words $cb$ and $aa$
+can be rewritten to the same word using other rules, then confluence is not
+violated; otherwise, we must add a new rule to make sure $cb$ and $aa$ can be
+rewritten to the same thing.  The Knuth-Bendix process adds the rule $(cb, aa)$,
+since $aa < cb$ in our shortlex order, and now Theorem \ref{thm:knuth-bendix} is
+satisfied.
+
+For an example of a critical pair in category 2, consider the same alphabet
+$X=\{a,b,c\}$ and rules $(abc, c)$ and $(b, a)$.  The word $abc$ can now be
+written by either rule, to $c$ or $aac$.  Again, if there are other rules
+allowing both words to be rewritten to the same word, then no rules need to be
+added; if however there are no such rules, we must add $(aac, c)$ to ensure
+the theorem is satisfied, and confluence can be guaranteed.
+
+The Knuth-Bendix completion process consists of searching for these critical
+pairs and adding rules where necessary.
 
 \subsection{Froidure-Pin}
 
