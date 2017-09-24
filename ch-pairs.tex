@@ -748,7 +748,16 @@ added; if however there are no such rules, we must add $(aac, c)$ to ensure
 the theorem is satisfied, and confluence can be guaranteed.
 
 The Knuth-Bendix completion process consists of searching for these critical
-pairs and adding rules where necessary.
+pairs and adding rules where necessary.  It should be noted that, like the
+Todd-Coxeter procedure, there is no guarantee that the algorithm will complete
+in a finite time.  More rules may be added continually, which themselves need to
+be checked for critical pairs, without a complete set ever being found.  It may
+also be that a confluent terminating rewriting system will be found, but after a
+very long time, and it is never known whether the process will finish until it
+does.  However, this process has one clear advantage over Todd-Coxeter, which is
+that it may complete even when the monoid $\pres X R$ is infinite, so long as
+the set of rules in the rewriting system is finite.  This is a strong argument
+in favour of trying the Knuth-Bendix process along with other methods.
 
 \clearpage
 
