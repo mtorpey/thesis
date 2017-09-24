@@ -607,9 +607,9 @@ A pair $(u,v) \in \mathscr{R}$ is called a \textit{rule}, and can be viewed as
 an operation which transforms an occurrence of $u$ in a word into an occurrence
 of $v$.
 For this section, we will assume that $\mathscr{R}$ is finite.
-A rewriting system $\mathscr{R}$ extends to two relations
-$\to_\mathscr{R}$ and $\to_\mathscr{R}^*$, which describe how words are
-rewritten, and which are defined as follows.
+A rewriting system $\mathscr{R}$ extends to relations
+$\to_\mathscr{R}$, $\to_\mathscr{R}^*$, and $\leftrightarrow_\mathscr{R}^*$
+which describe how words are rewritten, and which are defined as follows.
 
 Let $u, v \in X^*$ and let $\mathscr{R}$ be a rewriting system.
 We write $u \to_\mathscr{R} v$ if there exist $(s, t) \in \mathscr{R}$ and
@@ -619,8 +619,11 @@ into $v$.  The relation $\to_\mathscr{R}^*$ is simply the reflexive transitive
 closure of $\to_\mathscr{R}$; that is, $u \to_\mathscr{R}^* v$ if and only if
 $$u = u_0 \to_\mathscr{R} u_1 \to_\mathscr{R} \dots \to_\mathscr{R} u_n = v,$$
 for some $u_1, \dots, u_{n-1} \in X^*$.
+Finally, $\leftrightarrow_\mathscr{R}^*$ is the symmmetric closure of
+$\to_\mathscr{R}^*$, an equivalence relation whose classes we may write as
+$[w]_\mathscr{R}$.
 Where there is no chance of ambiguity, we omit the subscript in these
-operations, just writing $\to$ and $\to^*$.
+operations, just writing $\to$, $\to^*$ and $\leftrightarrow^*$.
 
 This definition of a rewriting system does not guarantee that a word can be
 rewritten in a useful way.  For example, a rewriting system could contain pairs
