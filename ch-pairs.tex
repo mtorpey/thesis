@@ -612,8 +612,8 @@ $\to_\mathscr{R}$, $\to_\mathscr{R}^*$, and $\leftrightarrow_\mathscr{R}^*$
 which describe how words are rewritten, and which are defined as follows.
 
 Let $u, v \in X^*$ and let $\mathscr{R}$ be a rewriting system.
-We write $u \to_\mathscr{R} v$ if there exist $(s, t) \in \mathscr{R}$ and
-$u_1, u_2, v_1, v_2 \in X^*$ such that $u=u_1su_2$ and $v=v_1tv_2$.
+We write $u \to_\mathscr{R} v$ if there exist $(w_1, w_2) \in \mathscr{R}$ and
+$s, t \in X^*$ such that $u=sw_1t$ and $v=sw_2t$.
 That is, $u \to_\mathscr{R} v$ if a rule transforms a part of $u$ to turn it
 into $v$.  The relation $\to_\mathscr{R}^*$ is simply the reflexive transitive
 closure of $\to_\mathscr{R}$; that is, $u \to_\mathscr{R}^* v$ if and only if
@@ -626,7 +626,7 @@ Where there is no chance of ambiguity, we omit the subscript in these
 operations, just writing $\to$, $\to^*$ and $\leftrightarrow^*$.
 
 This definition of a rewriting system does not guarantee that a word can be
-rewritten in a useful way.  For example, a rewriting system could contain pairs
+rewritten in a useful way.  For example, a rewriting system could contain rules
 $(u,v)$ and $(v,u)$ which would allow an endless loop of rewriting, or it could
 be possible to rewrite one word in two different ways.  In order to use a
 rewriting system to solve the word problem for a semigroup, we require a
@@ -650,7 +650,7 @@ before it reaches an irreducible state, so the task of finding an irreducible
 form of a word is guaranteed to be achievable in finite time.  But note that we
 can still only talk about \textit{an} irreducible word, not \textit{the}
 irreducible word.  We could still have a word $u \in X^*$ and irreducible words
-$v, w \in X^*$ such that $u \to^* v$ and $u \to^* w$ but $v \neq w$.  To avoid
+$v, w \in X^*$ such that $u \to v$ and $u \to w$ but $v \neq w$.  To avoid
 this, we must ensure that the system is \textit{confluent}, as follows.
 
 \begin{definition}
@@ -671,15 +671,15 @@ irreducible word will be found in a finite number of steps.
 
 We can now see an application of rewriting systems to the word problem in a
 finitely presented monoid.  Indeed, given an alphabet $X$ and a rewriting system
-$\mathscr{R}$, the quotient $X^* / \leftrightarrow^*$ is described by the monoid
-presentation $\pres{X}{\mathscr{R}}$.  Hence given a monoid $M$ with a
+$\mathscr{R}$, the quotient monoid $X^* / \leftrightarrow^*$ is described by the
+monoid presentation $\pres{X}{\mathscr{R}}$.  Hence, given a monoid $M$ with a
 presentation $\pres X R$, if there is a confluent terminating rewriting system
 $\mathscr{R}$ such that the word equality relation $=_M$ is the same as the
 relation $\leftrightarrow_\mathscr{R}^*$, then the word problem can be solved
 simply by rewriting two words using $\mathscr{R}$ until their irreducible
 representatives are found, and then comparing them.  The only difficulty is in
 finding a rewriting system which is confluent and terminating---but we can find
-one, by starting with the relations $R$, and then using the Knuth-Bendix
+one, by starting with the set of relations $R$, and then using the Knuth-Bendix
 completion algorithm.
 
 Let $M$ be a monoid with finite presentation $\pres X R$.
@@ -695,8 +695,7 @@ first few words over the alphabet $\{a, b\}$ are
 $$\varepsilon < a < b < aa < ab < ba < bb < aaa < aab < aba < \dots$$
 Note that this requires a well-understood total order on the alphabet $X$
 itself.  This ordering justifies the use of the words ``reducible'' and
-``irreducible''---words are being replaced with lesser words according to an
-ordering.
+``irreducible''---words are always replaced with lesser words.
 
 Once each relation from $R$ is added---possibly reordered---to $\mathscr{R}$, we
 will have a terminating rewriting system such that
@@ -710,7 +709,7 @@ process adds rules to $\mathscr{R}$ based on finding and resolving
 $(u_2, v_2)$ such that $u_1$ and $u_2$ overlap and therefore a word could be
 rewritten as either of two different irreducible words.  If this turns out to be
 the case, then a rule needs to be added to $\mathscr{R}$ to relate these two
-previously irreducible words, so that one will reduce to the other.  This is all
+words, so that one will reduce to the other.  This is all
 that is required to make $\mathscr{R}$ confluent, as explained formally in the
 following Theorem, and illustrated afterwards by an example.
 
@@ -729,10 +728,10 @@ following Theorem, and illustrated afterwards by an example.
   \cite[Lemma~12.17]{cgt}
 \end{theorem}
 
-Let us consider an example which shows critical pairs, using the alphabet
+Let us consider an example of the two rules in the theorem, using the alphabet
 $X=\{a,b,c\}$.  An example of a critical pair in category 1 would be two rules
 $(ab, c)$ and $(bb, a)$.  Here the word $abb$ could be rewritten by either rule:
-$abb = (ab)b \to (c)b$, but $abb = a(bb) \to a(a)$.  If the words $cb$ and $aa$
+$abb = (ab)b \to (c)b$, but also $abb = a(bb) \to a(a)$.  If the words $cb$ and $aa$
 can be rewritten to the same word using other rules, then confluence is not
 violated; otherwise, we must add a new rule to make sure $cb$ and $aa$ can be
 rewritten to the same thing.  The Knuth-Bendix process adds the rule $(cb, aa)$,
@@ -740,7 +739,7 @@ since $aa < cb$ in our shortlex order, and now Theorem \ref{thm:knuth-bendix} is
 satisfied.
 
 For an example of a critical pair in category 2, consider the same alphabet
-$X=\{a,b,c\}$ and rules $(abc, c)$ and $(b, a)$.  The word $abc$ can now be
+$X=\{a,b,c\}$ with rules $(abc, c)$ and $(b, a)$.  The word $abc$ can now be
 written by either rule, to $c$ or $aac$.  Again, if there are other rules
 allowing both words to be rewritten to the same word, then no rules need to be
 added; if however there are no such rules, we must add $(aac, c)$ to ensure
