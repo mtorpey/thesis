@@ -647,12 +647,32 @@ before it reaches an irreducible state, so the task of finding an irreducible
 form of a word is guaranteed to be achievable in finite time.  But note that we
 can still only talk about \textit{an} irreducible word, not \textit{the}
 irreducible word.  We could still have a word $u \in X^*$ and irreducible words
-$v, w \in X^*$ such that $u \to^* v$ and $u \to^* w$ but $v \neq w$.
+$v, w \in X^*$ such that $u \to^* v$ and $u \to^* w$ but $v \neq w$.  To avoid
+this, we must ensure that the system is \textit{confluent}, as follows.
 
 \begin{definition}
-  A rewriting system is \textbf{confluent} if % TODO
+  A rewriting system is \textbf{confluent} if, for any words $u,v_1,v_2 \in X^*$
+  such that $u \to^* v_1$ and $u \to^* v_2$, there exists a word $w \in X^*$
+  such that $v_1 \to^* w$ and $v_2 \to^* w$.
 \end{definition}
 
+The intuition behind this definition is that, as the name suggests, different
+paths ``flow together''.  The result is that, in a confluent terminating
+rewriting system, rules can be applied to a word in any order, and a canonical
+irreducible word will be found in a finite number of steps.  If $\mathscr{R}$ is
+a confluent terminating rewriting system, then let us write $(w)f_\mathscr{R}$
+or $(w)f$ for the unique irreducible word which $w$ can be written to.  Let
+$[w]_\mathscr{R}$ or $[w]$ be the set of all words $u \in X^*$ such that
+$u \to^* (w)f$.
+
+We can now see an application of rewriting systems to the word problem in a
+finitely presented monoid.  Given a monoid $M$ with a presentation $\pres X R$,
+if there is a confluent terminating rewriting system $\mathscr{R}$ such that
+$[w]$ is the set of words equal to $w$ in the monoid (for each $w \in X^*$) then
+two elements represented by the words $u$ and $v$ are equal if and only if
+$(u)f = (v)f$.  The only difficulty is in finding such a rewriting system---but
+we can find one, by starting with the relations $R$, and then using the
+Knuth-Bendix completion algorithm.
 
 See also \cite{knuth_bendix}.
 
