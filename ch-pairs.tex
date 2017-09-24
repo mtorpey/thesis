@@ -605,7 +605,9 @@ Let $X$ be an alphabet.  A \textit{rewriting system} $\mathscr{R}$ on $X^*$ is a
 set of ordered pairs $(u,v)$ where $u, v \in X^*$.
 A pair $(u,v) \in \mathscr{R}$ is called a \textit{rule}, and can be viewed as
 an operation which transforms an occurrence of $u$ in a word into an occurrence
-of $v$.  A rewriting system $\mathscr{R}$ extends to two relations
+of $v$.
+For this section, we will assume that $\mathscr{R}$ is finite.
+A rewriting system $\mathscr{R}$ extends to two relations
 $\to_\mathscr{R}$ and $\to_\mathscr{R}^*$, which describe how words are
 rewritten, and which are defined as follows.
 
@@ -619,6 +621,38 @@ $$u = u_0 \to_\mathscr{R} u_1 \to_\mathscr{R} \dots \to_\mathscr{R} u_n = v,$$
 for some $u_1, \dots, u_{n-1} \in X^*$.
 Where there is no chance of ambiguity, we omit the subscript in these
 operations, just writing $\to$ and $\to^*$.
+
+This definition of a rewriting system does not guarantee that a word can be
+rewritten in a useful way.  For example, a rewriting system could contain pairs
+$(u,v)$ and $(v,u)$ which would allow an endless loop of rewriting, or it could
+be possible to rewrite one word in two different ways.  In order to use a
+rewriting system to solve the word problem for a semigroup, we require a
+rewriting system with certain properties.  We will describe these properties,
+and then explain how to produce a rewriting system which satisfies them.
+
+\begin{definition}
+  A string $u \in X^*$ is $\mathscr{R}$-\textbf{irreducible} if there is no
+  string $v \in X^*$ such that $u \to v$; that is, $u$ cannot be rewritten by
+  any rule in $\mathscr{R}$.  \cite[Def~12.13]{cgt}
+\end{definition}
+
+\begin{definition}
+  A rewriting system is \textbf{terminating} if there is no infinite chain of
+  words $u_1, u_2, \dots \in X^*$ such that $u_i \to u_{i+1}$ for all $i > 0$.
+\end{definition}
+
+If a rewriting system is terminating, this is good news computationally.  It
+means that any word can be transformed by rules only a finite number of times
+before it reaches an irreducible state, so the task of finding an irreducible
+form of a word is guaranteed to be achievable in finite time.  But note that we
+can still only talk about \textit{an} irreducible word, not \textit{the}
+irreducible word.  We could still have a word $u \in X^*$ and irreducible words
+$v, w \in X^*$ such that $u \to^* v$ and $u \to^* w$ but $v \neq w$.
+
+\begin{definition}
+  A rewriting system is \textbf{confluent} if % TODO
+\end{definition}
+
 
 See also \cite{knuth_bendix}.
 
