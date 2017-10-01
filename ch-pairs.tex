@@ -607,27 +607,27 @@ we shall again consider monoid presentations instead of semigroup presentations,
 since it is easy to change between the two by appending or removing an identity
 (the empty string $\varepsilon$).
 
-Let $X$ be an alphabet.  A \textit{rewriting system} $\mathscr{R}$ on $X^*$ is a
+Let $X$ be an alphabet.  A \textit{rewriting system} $\rws$ on $X^*$ is a
 set of ordered pairs $(u,v)$ where $u, v \in X^*$.
-A pair $(u,v) \in \mathscr{R}$ is called a \textit{rule}, and can be viewed as
+A pair $(u,v) \in \rws$ is called a \textit{rule}, and can be viewed as
 an operation which transforms an occurrence of $u$ in a word into an occurrence
 of $v$.
-For this section, we will assume that $\mathscr{R}$ is finite.
-A rewriting system $\mathscr{R}$ extends to relations
-$\to_\mathscr{R}$, $\to_\mathscr{R}^*$, and $\leftrightarrow_\mathscr{R}^*$
+For this section, we will assume that $\rws$ is finite.
+A rewriting system $\rws$ extends to relations
+$\to_\rws$, $\to_\rws^*$, and $\leftrightarrow_\rws^*$
 which describe how words are rewritten, and which are defined as follows.
 
-Let $u, v \in X^*$ and let $\mathscr{R}$ be a rewriting system.
-We write $u \to_\mathscr{R} v$ if there exist $(w_1, w_2) \in \mathscr{R}$ and
+Let $u, v \in X^*$ and let $\rws$ be a rewriting system.
+We write $u \to_\rws v$ if there exist $(w_1, w_2) \in \rws$ and
 $s, t \in X^*$ such that $u=sw_1t$ and $v=sw_2t$.
-That is, $u \to_\mathscr{R} v$ if a rule transforms a part of $u$ to turn it
-into $v$.  The relation $\to_\mathscr{R}^*$ is simply the reflexive transitive
-closure of $\to_\mathscr{R}$; that is, $u \to_\mathscr{R}^* v$ if and only if
-$$u = u_0 \to_\mathscr{R} u_1 \to_\mathscr{R} \dots \to_\mathscr{R} u_n = v,$$
+That is, $u \to_\rws v$ if a rule transforms a part of $u$ to turn it
+into $v$.  The relation $\to_\rws^*$ is simply the reflexive transitive
+closure of $\to_\rws$; that is, $u \to_\rws^* v$ if and only if
+$$u = u_0 \to_\rws u_1 \to_\rws \dots \to_\rws u_n = v,$$
 for some $u_1, \dots, u_{n-1} \in X^*$.
-Finally, $\leftrightarrow_\mathscr{R}^*$ is the symmmetric closure of
-$\to_\mathscr{R}^*$, an equivalence relation whose classes we may write as
-$[w]_\mathscr{R}$.
+Finally, $\leftrightarrow_\rws^*$ is the symmmetric closure of
+$\to_\rws^*$, an equivalence relation whose classes we may write as
+$[w]_\rws$.
 Where there is no chance of ambiguity, we omit the subscript in these
 operations, just writing $\to$, $\to^*$ and $\leftrightarrow^*$.
 
@@ -640,9 +640,9 @@ rewriting system with certain properties.  We will describe these properties,
 and then explain how to produce a rewriting system which satisfies them.
 
 \begin{definition}
-  A string $u \in X^*$ is $\mathscr{R}$-\textbf{irreducible} if there is no
+  A string $u \in X^*$ is $\rws$-\textbf{irreducible} if there is no
   string $v \in X^*$ such that $u \to v$; that is, $u$ cannot be rewritten by
-  any rule in $\mathscr{R}$.  \cite[Def~12.13]{cgt}
+  any rule in $\rws$.  \cite[Def~12.13]{cgt}
 \end{definition}
 
 \begin{definition}
@@ -669,27 +669,27 @@ The intuition behind this definition is that, as the name suggests, different
 paths ``flow together''.  The result is that, in a confluent terminating
 rewriting system, rules can be applied to a word in any order, and a canonical
 irreducible word will be found in a finite number of steps.
-% If $\mathscr{R}$ is
-% a confluent terminating rewriting system, then let us write $(w)f_\mathscr{R}$
+% If $\rws$ is
+% a confluent terminating rewriting system, then let us write $(w)f_\rws$
 % or $(w)f$ for the unique irreducible word which $w$ can be written to.  Let
-% $[w]_\mathscr{R}$ or $[w]$ be the set of all words $u \in X^*$ such that
+% $[w]_\rws$ or $[w]$ be the set of all words $u \in X^*$ such that
 % $u \to^* (w)f$.
 
 We can now see an application of rewriting systems to the word problem in a
 finitely presented monoid.  Indeed, given an alphabet $X$ and a rewriting system
-$\mathscr{R}$, the quotient monoid $X^* / \leftrightarrow^*$ is described by the
-monoid presentation $\pres{X}{\mathscr{R}}$.  Hence, given a monoid $M$ with a
+$\rws$, the quotient monoid $X^* / \leftrightarrow^*$ is described by the
+monoid presentation $\pres{X}{\rws}$.  Hence, given a monoid $M$ with a
 presentation $\pres X R$, if there is a confluent terminating rewriting system
-$\mathscr{R}$ such that the word equality relation $=_M$ is the same as the
-relation $\leftrightarrow_\mathscr{R}^*$, then the word problem can be solved
-simply by rewriting two words using $\mathscr{R}$ until their irreducible
+$\rws$ such that the word equality relation $=_M$ is the same as the
+relation $\leftrightarrow_\rws^*$, then the word problem can be solved
+simply by rewriting two words using $\rws$ until their irreducible
 representatives are found, and then comparing them.  The only difficulty is in
 finding a rewriting system which is confluent and terminating---but we can find
 one, by starting with the set of relations $R$, and then using the Knuth-Bendix
 completion algorithm.
 
 Let $M$ be a monoid with finite presentation $\pres X R$.
-We start with no rules in our rewriting system, $\mathscr{R} = \varnothing$, and
+We start with no rules in our rewriting system, $\rws = \varnothing$, and
 we begin to add relations from $R$.  However, in order to ensure our system is
 \textit{terminating}, we must reorder each relation to ensure we do not create
 any loops.  For this purpose, we define a total ordering on $X^*$ and reorder
@@ -703,26 +703,26 @@ Note that this requires a well-understood total order on the alphabet $X$
 itself.  This ordering justifies the use of the words ``reducible'' and
 ``irreducible''---words are always replaced with lesser words.
 
-Once each relation from $R$ is added---possibly reordered---to $\mathscr{R}$, we
+Once each relation from $R$ is added---possibly reordered---to $\rws$, we
 will have a terminating rewriting system such that
 $X^* / \leftrightarrow^* = \pres X R$, as required.  It only remains to add
-rules to $\mathscr{R}$ to make it confluent, without altering the relation
+rules to $\rws$ to make it confluent, without altering the relation
 $\leftrightarrow^*$.  This is where we use the Knuth-Bendix completion process.
 
 First described by Knuth and Bendix in \cite{knuth_bendix}, the completion
-process adds rules to $\mathscr{R}$ based on finding and resolving
+process adds rules to $\rws$ based on finding and resolving
 \textit{critical pairs}.  A critical pair is a pair of rules $(u_1, v_1)$ and
 $(u_2, v_2)$ such that $u_1$ and $u_2$ overlap and therefore a word could be
 rewritten as either of two different irreducible words.  If this turns out to be
-the case, then a rule needs to be added to $\mathscr{R}$ to relate these two
+the case, then a rule needs to be added to $\rws$ to relate these two
 words, so that one will reduce to the other.  This is all
-that is required to make $\mathscr{R}$ confluent, as explained formally in the
+that is required to make $\rws$ confluent, as explained formally in the
 following Theorem, and illustrated afterwards by an example.
 
 \begin{theorem}
   \label{thm:knuth-bendix}
-  A terminating rewriting system $\mathscr{R}$ is confluent if and only if, for
-  each pair of rules $(u_1, v_1), (u_2, v_2) \in \mathscr{R}$, the following
+  A terminating rewriting system $\rws$ is confluent if and only if, for
+  each pair of rules $(u_1, v_1), (u_2, v_2) \in \rws$, the following
   hold.
   \begin{enumerate}
   \item If $u_1 = rs$ and $u_2 = st$ with $r,s,t \in X^*$ and $s \neq
