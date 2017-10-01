@@ -392,9 +392,11 @@ We initialise the table to look like Table \ref{tab:tc1}.
 { 1 & & \\ }
 
 The list $\mathbf{N}$ of undeleted rows contains only a single entry, $1$.  We
-begin by tracing each relation on the row $1$, starting with $ba=ab$.  This
+begin by tracing each relation on the row $1$, starting with $ba=ab$.
+The left-hand side of this
 relation makes us call \textsc{Add} on the cell $(1, b)$, creating a new row,
-$2$, which is added to $\mathbf{N}$.  Similarly, we must call \textsc{Add} on
+$2$, which is added to $\mathbf{N}$.
+For the right-hand side, we must call \textsc{Add} on
 the cell $(1, a)$, creating a row $3$.  At the end of the \textsc{Trace}, we
 must set $(1, ba)\bar\tau$ equal to $(1, ab)\bar\tau$, so we set both
 $(2, a)\tau$ and $(3, b)\tau$ to $4$ (as in Table \ref{tab:tc2}).
