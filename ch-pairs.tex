@@ -614,22 +614,22 @@ an operation which transforms an occurrence of $u$ in a word into an occurrence
 of $v$.
 For this section, we will assume that $\rws$ is finite.
 A rewriting system $\rws$ extends to relations
-$\to_\rws$, $\to_\rws^*$, and $\leftrightarrow_\rws^*$
+$\to_\rws$, $\tostar_\rws$, and $\lrstar_\rws$
 which describe how words are rewritten, and which are defined as follows.
 
 Let $u, v \in X^*$ and let $\rws$ be a rewriting system.
 We write $u \to_\rws v$ if there exist $(w_1, w_2) \in \rws$ and
 $s, t \in X^*$ such that $u=sw_1t$ and $v=sw_2t$.
 That is, $u \to_\rws v$ if a rule rewrites a contiguous subword of $u$ to turn
-$u$ into $v$.  The relation $\to_\rws^*$ is simply the reflexive transitive
-closure of $\to_\rws$; that is, $u \to_\rws^* v$ if and only if $u = v$ or
+$u$ into $v$.  The relation $\tostar_\rws$ is simply the reflexive transitive
+closure of $\to_\rws$; that is, $u \tostar_\rws v$ if and only if $u = v$ or
 $$u = u_0 \to_\rws u_1 \to_\rws \dots \to_\rws u_n = v,$$
 for some $u_0, \dots, u_n \in X^*$.
-Finally, $\leftrightarrow_\rws^*$ is the symmetric closure of
-$\to_\rws^*$.  It is easy to see that $\leftrightarrow_\rws^*$ is an equivalence
+Finally, $\lrstar_\rws$ is the symmetric closure of
+$\tostar_\rws$.  It is easy to see that $\lrstar_\rws$ is an equivalence
 relation whose classes we may write as $[w]_\rws$.
 Where there is no chance of ambiguity, we omit the subscript in these
-operations, just writing $\to$, $\to^*$ and $\leftrightarrow^*$.
+operations, just writing $\to$, $\tostar$ and $\lrstar$.
 
 This definition of a rewriting system does not guarantee that a word can be
 rewritten in a useful way.  For example, a rewriting system could contain rules
@@ -661,8 +661,8 @@ this, we must ensure that the system is \textit{confluent}, as follows.
 
 \begin{definition}
   A rewriting system is \textbf{confluent} if, for any words $u,v_1,v_2 \in X^*$
-  such that $u \to^* v_1$ and $u \to^* v_2$, there exists a word $w \in X^*$
-  such that $v_1 \to^* w$ and $v_2 \to^* w$.
+  such that $u \tostar v_1$ and $u \tostar v_2$, there exists a word $w \in X^*$
+  such that $v_1 \tostar w$ and $v_2 \tostar w$.
 \end{definition}
 
 The intuition behind this definition is that, as the name suggests, different
@@ -673,15 +673,15 @@ irreducible word will be found in a finite number of steps.
 % a confluent terminating rewriting system, then let us write $(w)f_\rws$
 % or $(w)f$ for the unique irreducible word which $w$ can be written to.  Let
 % $[w]_\rws$ or $[w]$ be the set of all words $u \in X^*$ such that
-% $u \to^* (w)f$.
+% $u \tostar (w)f$.
 
 We can now see an application of rewriting systems to the word problem in a
 finitely presented monoid.  Indeed, given an alphabet $X$ and a rewriting system
-$\rws$, the quotient monoid $X^* / \leftrightarrow^*$ is described by the
+$\rws$, the quotient monoid $X^* / \lrstar$ is described by the
 monoid presentation $\pres{X}{\rws}$.  Hence, given a monoid $M$ with a
 presentation $\pres X R$, if there is a confluent terminating rewriting system
 $\rws$ such that the word equality relation $=_M$ is the same as the
-relation $\leftrightarrow_\rws^*$, then the word problem can be solved
+relation $\lrstar_\rws$, then the word problem can be solved
 simply by rewriting two words using $\rws$ until their irreducible
 representatives are found, and then comparing them.  The only difficulty is in
 finding a rewriting system which is confluent and terminating---but we can find
@@ -705,9 +705,9 @@ itself.  This ordering justifies the use of the words ``reducible'' and
 
 Once each relation from $R$ is added---possibly reordered---to $\rws$, we
 will have a terminating rewriting system such that
-$X^* / \leftrightarrow^* = \pres X R$, as required.  It only remains to add
+$X^* / \lrstar = \pres X R$, as required.  It only remains to add
 rules to $\rws$ to make it confluent, without altering the relation
-$\leftrightarrow^*$.  This is where we use the Knuth-Bendix completion process.
+$\lrstar$.  This is where we use the Knuth-Bendix completion process.
 
 First described by Knuth and Bendix in \cite{knuth_bendix}, the completion
 process adds rules to $\rws$ based on finding and resolving
@@ -726,10 +726,10 @@ following Theorem, and illustrated afterwards by an example.
   hold.
   \begin{enumerate}
   \item If $u_1 = rs$ and $u_2 = st$ with $r,s,t \in X^*$ and $s \neq
-    \varepsilon$, then there exists $w \in X^*$ such that $v_1t \to^* w$ and
-    $rv_2 \to^* w$.
+    \varepsilon$, then there exists $w \in X^*$ such that $v_1t \tostar w$ and
+    $rv_2 \tostar w$.
   \item If $u_1 = ru_2t$ for some $r,t \in X^*$ and $u_2 \neq \varepsilon$, then
-    there exists $w \in X^*$ such that $v_1 \to^* w$ and $rv_2t \to^* w$.
+    there exists $w \in X^*$ such that $v_1 \tostar w$ and $rv_2t \tostar w$.
   \end{enumerate}
   \cite[Lemma~12.17]{cgt}
 \end{theorem}
