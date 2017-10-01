@@ -679,6 +679,30 @@ irreducible word will be found in a finite number of steps.
 % $[w]_\rws$ or $[w]$ be the set of all words $u \in X^*$ such that
 % $u \tostar (w)f$.
 
+Another definition will help us to determine whether a rewriting system is
+confluent: \textit{local confluence}.  This is a weaker condition than
+confluence, but the two are strongly linked to confluence by Lemma
+\ref{lem:newman}.
+
+
+\begin{definition}
+  A rewriting system is \textbf{locally confluent} if, for any words
+  $u,v_1,v_2 \in X^*$ such that $u \to v_1$ and $u \to v_2$, there exists a word
+  $w \in X^*$ such that $v_1 \tostar w$ and $v_2 \tostar w$.
+\end{definition}
+
+\begin{lemma}[Newman's diamond lemma] % TODO: reference
+  \label{lem:newman}
+  A terminating rewriting system is confluent if and only if it is locally
+  confluent.
+\end{lemma}
+
+Lemma \ref{lem:newman} gives us an idea of how to check computationally whether
+a system is confluent: rather than checking every possible transitive rewriting
+of a word (its neighbours under $\tostar$), it suffices to check a word's
+immediate children (its neighbours under $\to$).  This lemma will help us later,
+with Theorem \ref{thm:knuth-bendix} and the Knuth-Bendix procedure.
+
 We can now see an application of rewriting systems to the word problem in a
 finitely presented monoid.  Indeed, given an alphabet $X$ and a rewriting system
 $\rws$, the quotient monoid $X^* / \lrstar_\rws$ is described by the
