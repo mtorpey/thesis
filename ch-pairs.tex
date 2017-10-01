@@ -158,8 +158,6 @@ Note that for finitely presented semigroups, these questions may be
 undecidable.  In the case that a question is decidable, our approach should
 return an answer in finite time.
 
-Decidability?
-
 \section{Finding a presentation}
 \label{sec:find-pres}
 
@@ -877,6 +875,19 @@ the set of rules in the rewriting system is finite.  This is a strong argument
 in favour of trying the Knuth-Bendix process along with other methods.  However,
 the Knuth-Bendix process cannot be used for left or right congruences, an area
 where Todd-Coxeter has a clear advantage.
+
+We give an example of a rewriting system which solves the word problem for an
+infinite monoid:
+
+\begin{example}
+  The \textit{bicyclic monoid} $B = \pres{b,c}{bc=\varepsilon}$ trivially admits
+  a rewriting system $\{(bc, \varepsilon)\}$.  Using this, any element can be
+  rewritten in a finite number of steps to an irreducible word of the form
+  $c^ib^j$.  There is only one rule in the rewriting system.  Since it reduces
+  words by the \textit{short-lex} ordering, the system is terminating; and since
+  there are no critical pairs, the system is confluent by Theorem
+  \ref{thm:knuth-bendix}.
+\end{example}
 
 Pseudo-code (Sims p.77)
 
