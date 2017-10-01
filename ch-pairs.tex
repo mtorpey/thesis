@@ -44,7 +44,7 @@ algorithms used, its advantages and disadvantages, and when it can be applied.
 Finally we will explain how the different algorithms are executed together, and
 consider their implementation in \cite{libsemigroups}.
 
-\section{Why Parallelisation?}
+\section{Reasons for parallelisation}
 
 Parallel processing has seen major advances in the last ten years, with
 multi-core processors becoming the norm in many types of computers, and
@@ -100,15 +100,15 @@ it multiplicatively neutral.
 
 Decidability?
 
-\section{Questions}
+\section{Program outputs}
 
-Each method we are about to explain can provide a variety of information, but it
-is important to consider which questions we aim to answer.  Our system should be
-able to return the following information about a given congruence when
-requested:
+Each method we are about to explain can provide a variety of different pieces of
+information, but it is important to consider which questions we aim to answer.
+Our system should be able to return the following information about a given
+congruence when requested:
 
 \begin{itemize}
-\item Presence of a given pair $(x,y)$
+\item Presence of a given pair $(x,y)$ in the congruence
 \item Number of congruence classes
 \item The elements in each non-trivial congruence class
 \item Class number of a given element
