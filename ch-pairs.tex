@@ -620,14 +620,14 @@ which describe how words are rewritten, and which are defined as follows.
 Let $u, v \in X^*$ and let $\rws$ be a rewriting system.
 We write $u \to_\rws v$ if there exist $(w_1, w_2) \in \rws$ and
 $s, t \in X^*$ such that $u=sw_1t$ and $v=sw_2t$.
-That is, $u \to_\rws v$ if a rule transforms a part of $u$ to turn it
-into $v$.  The relation $\to_\rws^*$ is simply the reflexive transitive
-closure of $\to_\rws$; that is, $u \to_\rws^* v$ if and only if
+That is, $u \to_\rws v$ if a rule rewrites a contiguous subword of $u$ to turn
+$u$ into $v$.  The relation $\to_\rws^*$ is simply the reflexive transitive
+closure of $\to_\rws$; that is, $u \to_\rws^* v$ if and only if $u = v$ or
 $$u = u_0 \to_\rws u_1 \to_\rws \dots \to_\rws u_n = v,$$
-for some $u_1, \dots, u_{n-1} \in X^*$.
-Finally, $\leftrightarrow_\rws^*$ is the symmmetric closure of
-$\to_\rws^*$, an equivalence relation whose classes we may write as
-$[w]_\rws$.
+for some $u_0, \dots, u_n \in X^*$.
+Finally, $\leftrightarrow_\rws^*$ is the symmetric closure of
+$\to_\rws^*$.  It is easy to see that $\leftrightarrow_\rws^*$ is an equivalence
+relation whose classes we may write as $[w]_\rws$.
 Where there is no chance of ambiguity, we omit the subscript in these
 operations, just writing $\to$, $\to^*$ and $\leftrightarrow^*$.
 
