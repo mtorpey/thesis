@@ -33,15 +33,29 @@
 % Macros
 \input{macros}
 
-% Style information
-\theoremstyle{definition}
+% Object numbering
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 
+\usepackage{aliascnt}
+\newcounter{common}[chapter]
+\makeatletter
+\let\c@algorithm\relax
+\let\c@figure\relax
+\let\c@table\relax
+\let\c@theorem\relax
+\makeatother
+\newaliascnt{algorithm}{common}
+\newaliascnt{figure}{common}
+\newaliascnt{table}{common}
+\newaliascnt{theorem}{common}
 \renewcommand{\thealgorithm}{\thechapter.\arabic{algorithm}}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\thetheorem}{\thechapter.\arabic{theorem}}
 
 % TODO: Actual title
 \title{My PhD Thesis}
