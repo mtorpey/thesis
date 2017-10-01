@@ -98,7 +98,47 @@ equivalent to finitely presented semigroups, since a semigroup presentation can
 be attained by simply adding a generator for the identity and relations to make
 it multiplicatively neutral.
 
-Decidability?
+\section{Program inputs}
+
+Our algorithm determines the properties of a single left, right, or two-sided
+congruence $\rho$ defined by generating pairs, over a semigroup $S$.  The
+elements of $S$ will already be known if $S$ is a concrete semigroup; if on the
+other hand $S$ is a finitely presented semigroup, then the elements will not be
+known in advance.  In either case, a finite presentation $\pres X R$ can be
+given---a technique for efficiently finding a presentation for a concrete
+semigroup is given in Section \ref{sec:find-pres}.
+The exact parameters supplied to the algorithm are therefore as follows:
+\begin{itemize}
+\item The number of generators $|X|$ of the semigroup;
+\item The relations $R$ which define the presentation of $S$;
+\item Word representatives $\mathbf{G}$ of the generating pairs which define the
+  congruence $\rho$;
+\item A sidedness from the set $\{\textsc{left}, \textsc{right},
+  \textsc{twosided}\}$ which determines whether $\rho$ is defined as a left,
+  right, or two-sided congruence.
+\end{itemize}
+The following is also supplied if and only if $S$ is concrete:
+\begin{itemize}
+\item A list of elements of $S$;
+\item The elements of $S$ corresponding to the presentation's
+  generators $X$.
+\end{itemize}
+
+The information in the lists above is the only information which the methods
+described will be allowed to use.  Particular emphasis should be placed on the
+distinction between $R$ and $\mathbf{G}$: the presentation $\pres X R$ defines
+the semigroup $S$, while $\mathbf{G}$ defines the congruence $\rho$.  Formally,
+the generating pairs $\mathbf{R}$ of $\rho$ will be pairs from $S \times S$, but
+since $S$ could be any finitely presented semigroup and we might not know normal
+forms for its elements, the actual information we have at the start is not
+$\mathbf{R} \subseteq S \times S$, but $\mathbf{G} \subseteq X^+ \times X^+$, a
+set of pairs of words which represent the generating pairs of $\rho$.
+Hence, if $\rho$ is a two-sided congruence, the quotient $S / \rho$
+will be isomorphic to $\pres X {R, \mathbf{G}}$.
+
+For the remainder of this chapter, the word ``congruence'' will be used to refer
+to left, right, and two-sided congruences equally, without having the default
+meaning of ``two-sided congruence''.
 
 \section{Program outputs}
 
@@ -118,7 +158,10 @@ Note that for finitely presented semigroups, these questions may be
 undecidable.  In the case that a question is decidable, our approach should
 return an answer in finite time.
 
+Decidability?
+
 \section{Finding a presentation}
+\label{sec:find-pres}
 
 Where do we get the presentation from in the first place?
 
