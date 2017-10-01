@@ -632,10 +632,14 @@ Where there is no chance of ambiguity, we omit the subscript in these
 operations, just writing $\to$, $\tostar$ and $\lrstar$.
 
 This definition of a rewriting system does not guarantee that a word can be
-rewritten in a useful way.  For example, a rewriting system could contain rules
-$(u,v)$ and $(v,u)$ which would allow an endless loop of rewriting, or it could
-be possible to rewrite one word in two different ways.  In order to use a
-rewriting system to solve the word problem for a semigroup, we require a
+rewritten in a useful way.  A rewriting system could allow an endless loop of
+rewriting; for example, a system over the alphabet $\{a,b\}$ could contain rules
+$(aa,b)$ and $(b,aa)$ which would allow the rewrite sequence
+$$aa \to b \to aa \to b \to aa \to b \to aa \to \ldots$$
+to go on forever.  Alternatively, a it could be possible to rewrite one word in
+two different ways; for example, a system over the alphabet $\{a,b,c\}$ could
+contain rules $(aa,b)$ and $(aa,c)$.
+In order to solve the word problem for a semigroup, we require a
 rewriting system with certain properties.  We will describe these properties,
 and then explain how to produce a rewriting system which satisfies them.
 
