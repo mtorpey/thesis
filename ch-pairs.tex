@@ -178,7 +178,7 @@ Mathematically, we can view this table as a triple $(n, \mathbf{N}, \tau)$
 consisting of:
 \begin{itemize}
 \item an integer $n \in \mathbb{N}$ representing the number of rows in the table;
-\item a set $\mathbf{N} \subseteq \{1, \dots, n\}$ containing the indices of the
+\item a set $\mathbf{N} \subseteq \{1, \ldots, n\}$ containing the indices of the
   \textit{undeleted} rows; and
 \item a function $\tau: \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$, where
   $(i, x)\tau$ is equal to the entry in row $i$ and the column corresponding to
@@ -197,14 +197,14 @@ $\tau: \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$
 to a function 
 $\bar{\tau}: \mathbf{N} \times X^* \to \mathbf{N} \cup \{0\}$
 which is described as follows.
-If $w \in X^*$ and $w=w_1 \dots w_n$, where $w_1, \dots, w_n \in X$,
+If $w \in X^*$ and $w=w_1 \ldots w_n$, where $w_1, \ldots, w_n \in X$,
 then we can define $\bar\tau$ recursively by
 $$
 (i, w)\bar\tau = \left\{
 \begin{matrix*}[l]
   i & \textnormal{if~} w=\varepsilon,\\
   0 & \textnormal{if~} (i, w_1)\tau=0,\\
-  ((i, w_1)\tau, w_2 \dots w_n)\bar\tau & \textnormal{otherwise}.
+  ((i, w_1)\tau, w_2 \ldots w_n)\bar\tau & \textnormal{otherwise}.
 \end{matrix*} \right.
 $$
 
@@ -275,17 +275,17 @@ $(e, v)\bar\tau = (e, w)\bar\tau$.
 \label{alg:trace}
 \begin{algorithmic}[1]
 \Procedure{Trace}{$e, v = w$}
-\State Write $v = v_1 \dots v_m$ \Comment $(v_i \in X \text{~for~} 1 \leq i \leq m)$
-\State Write $w = w_1 \dots w_n$ \Comment $(w_i \in X \text{~for~} 1 \leq i \leq n)$
+\State Write $v = v_1 \ldots v_m$ \Comment $(v_i \in X \text{~for~} 1 \leq i \leq m)$
+\State Write $w = w_1 \ldots w_n$ \Comment $(w_i \in X \text{~for~} 1 \leq i \leq n)$
 \State $s \gets e$
-\For{$i \in \{1, \dots, m-1\}$}
+\For{$i \in \{1, \ldots, m-1\}$}
   \If{$(s, v_i)\tau = \varepsilon$}
     \State \Call{Add}{$s, v_i$}
   \EndIf
   \State $s \gets (s, v_i)\tau$
 \EndFor
 \State $t \gets e$
-\For{$i \in \{1, \dots, n-1\}$}
+\For{$i \in \{1, \ldots, n-1\}$}
   \If{$(t, w_i)\tau = \varepsilon$}
     \State \Call{Add}{$t, w_i$}
   \EndIf
@@ -623,8 +623,8 @@ $s, t \in X^*$ such that $u=sw_1t$ and $v=sw_2t$.
 That is, $u \to_\rws v$ if a rule rewrites a contiguous subword of $u$ to turn
 $u$ into $v$.  The relation $\tostar_\rws$ is simply the reflexive transitive
 closure of $\to_\rws$; that is, $u \tostar_\rws v$ if and only if $u = v$ or
-$$u = u_0 \to_\rws u_1 \to_\rws \dots \to_\rws u_n = v,$$
-for some $u_0, \dots, u_n \in X^*$.
+$$u = u_0 \to_\rws u_1 \to_\rws \ldots \to_\rws u_n = v,$$
+for some $u_0, \ldots, u_n \in X^*$.
 Finally, $\lrstar_\rws$ is the symmetric closure of
 $\tostar_\rws$.  It is easy to see that $\lrstar_\rws$ is an equivalence
 relation whose classes we may write as $[w]_\rws$.
@@ -651,7 +651,7 @@ and then explain how to produce a rewriting system which satisfies them.
 
 \begin{definition}
   A rewriting system is \textbf{terminating} if there is no infinite chain of
-  words $u_1, u_2, \dots \in X^*$ such that $u_i \to u_{i+1}$ for all $i > 0$.
+  words $u_1, u_2, \ldots \in X^*$ such that $u_i \to u_{i+1}$ for all $i > 0$.
 \end{definition}
 
 If a rewriting system is terminating, this is good news computationally.  It
@@ -702,7 +702,7 @@ for this ordering are discussed in \cite[p.~420]{cgt}, but it will suffice to
 use the \textit{shortlex ordering}: $u < v$ if and only if $u$ is shorter than
 $v$ or they have equal length and $u$ is less lexicographically.  Hence the
 first few words over the alphabet $\{a, b\}$ are
-$$\varepsilon < a < b < aa < ab < ba < bb < aaa < aab < aba < \dots$$
+$$\varepsilon < a < b < aa < ab < ba < bb < aaa < aab < aba < \ldots$$
 Note that this requires a well-understood total order on the alphabet $X$
 itself.  This ordering justifies the use of the words ``reducible'' and
 ``irreducible''---words are always replaced with lesser words.
