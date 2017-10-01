@@ -660,8 +660,8 @@ before it reaches an irreducible state, so the task of finding an irreducible
 form of a word is guaranteed to be achievable in finite time.  But note that we
 can still only talk about \textit{an} irreducible word, not \textit{the}
 irreducible word.  We could still have a word $u \in X^*$ and irreducible words
-$v, w \in X^*$ such that $u \to v$ and $u \to w$ but $v \neq w$.  To avoid
-this, we must ensure that the system is \textit{confluent}, as follows.
+$v, w \in X^*$ such that $u \tostar v$ and $u \tostar w$ but $v \neq w$.
+To avoid this, we must ensure that the system is \textit{confluent}, as follows.
 
 \begin{definition}
   A rewriting system is \textbf{confluent} if, for any words $u,v_1,v_2 \in X^*$
@@ -681,7 +681,7 @@ irreducible word will be found in a finite number of steps.
 
 We can now see an application of rewriting systems to the word problem in a
 finitely presented monoid.  Indeed, given an alphabet $X$ and a rewriting system
-$\rws$, the quotient monoid $X^* / \lrstar$ is described by the
+$\rws$, the quotient monoid $X^* / \lrstar_\rws$ is described by the
 monoid presentation $\pres{X}{\rws}$.  Hence, given a monoid $M$ with a
 presentation $\pres X R$, if there is a confluent terminating rewriting system
 $\rws$ such that the word equality relation $=_M$ is the same as the
@@ -700,7 +700,7 @@ any loops.  For this purpose, we define a total ordering on $X^*$ and reorder
 each relation so that a rule $(u, v)$ has the property that $u < v$.  Criteria
 for this ordering are discussed in \cite[p.~420]{cgt}, but it will suffice to
 use the \textit{shortlex ordering}: $u < v$ if and only if $u$ is shorter than
-$v$ or they have equal length and $u$ is less lexicographically.  Hence the
+$v$ or they have equal length and $u$ is less than $v$ lexicographically.  Hence the
 first few words over the alphabet $\{a, b\}$ are
 $$\varepsilon < a < b < aa < ab < ba < bb < aaa < aab < aba < \ldots$$
 Note that this requires a well-understood total order on the alphabet $X$
@@ -709,63 +709,95 @@ itself.  This ordering justifies the use of the words ``reducible'' and
 
 Once each relation from $R$ is added---possibly reordered---to $\rws$, we
 will have a terminating rewriting system such that
-$X^* / \lrstar = \pres X R$, as required.  It only remains to add
+$X^* / \lrstar_\rws\ = \pres X R$, as required.  It only remains to add
 rules to $\rws$ to make it confluent, without altering the relation
 $\lrstar$.  This is where we use the Knuth-Bendix completion process.
 
 First described by Knuth and Bendix in \cite{knuth_bendix}, the completion
 process adds rules to $\rws$ based on finding and resolving
-\textit{critical pairs}.  A critical pair is a pair of rules $(u_1, v_1)$ and
-$(u_2, v_2)$ such that $u_1$ and $u_2$ overlap and therefore a word could be
-rewritten as either of two different irreducible words.  If this turns out to be
-the case, then a rule needs to be added to $\rws$ to relate these two
-words, so that one will reduce to the other.  This is all
-that is required to make $\rws$ confluent, as explained formally in the
-following Theorem, and illustrated afterwards by an example.
+\textit{critical pairs}.  Roughly speaking, a critical pair is a pair of rules $(u_1, v_1)$ and
+$(u_2, v_2)$ from $\rws$ such that $u_1$ and $u_2$ overlap and therefore a word could be
+rewritten as either of two different irreducible words.  The formal definition
+is as follows.
 
-\begin{theorem}
-  \label{thm:knuth-bendix}
-  A terminating rewriting system $\rws$ is confluent if and only if, for
-  each pair of rules $(u_1, v_1), (u_2, v_2) \in \rws$, the following
-  hold.
-  \begin{enumerate}
-  \item If $u_1 = rs$ and $u_2 = st$ with $r,s,t \in X^*$ and $s \neq
-    \varepsilon$, then there exists $w \in X^*$ such that $v_1t \tostar w$ and
-    $rv_2 \tostar w$.
+\begin{definition}
+  \label{def:critical-pair}
+  Let $\rws$ be a terminating rewriting system over an alphabet $X^*$.  A
+  \textbf{critical pair} is a pair of distinct words
+  $(w_1, w_2) \in X^* \times X^*$ such that $w_1$ and $w_2$ can be produced from
+  the same word by two different rules.
+  Critical pairs arise in two different ways.
+  Let $(u_1, v_1)$ and $(u_2, v_2)$ be rules in $\rws$.
+  \begin{enumerate}[(i)]
+  \item If $u_1 = rs$ and $u_2 = st$ with $r,s,t \in X^*$ and
+    $s \neq \varepsilon$, then $rst \to v_1t$ and $rst \to rv_2$, so
+    $(v_1t, rv_2)$ is a critical pair.
   \item If $u_1 = ru_2t$ for some $r,t \in X^*$ and $u_2 \neq \varepsilon$, then
-    there exists $w \in X^*$ such that $v_1 \tostar w$ and $rv_2t \tostar w$.
+    $u_1 \to v_1$ and $u_1 \to rv_2t$, so $(v_1, rv_2t)$ is a critical
+    pair.
   \end{enumerate}
-  \cite[Lemma~12.17]{cgt}
+\end{definition}
+
+The importance of critical pairs is shown in the following theorem, which is key
+to the Knuth-Bendix completion process.
+
+\begin{theorem}[Lemma 12.17 in \cite{cgt}]
+  \label{thm:knuth-bendix}
+  A terminating rewriting system $\rws$ over $X$ is confluent if and only if,
+  for each critical pair $(u, v)$, there exists some $w \in X^*$ such that
+  $u \tostar w$ and $v \tostar w$.
 \end{theorem}
 
-Let us consider an example of the two rules in the theorem, using the alphabet
-$X=\{a,b,c\}$.  An example of a critical pair in category 1 would be two rules
-$(ab, c)$ and $(bb, a)$.  Here the word $abb$ could be rewritten by either rule:
-$abb = (ab)b \to (c)b$, but also $abb = a(bb) \to a(a)$.  If the words $cb$ and $aa$
-can be rewritten to the same word using other rules, then confluence is not
-violated; otherwise, we must add a new rule to make sure $cb$ and $aa$ can be
-rewritten to the same thing.  The Knuth-Bendix process adds the rule $(cb, aa)$,
-since $aa < cb$ in our shortlex order, and now Theorem \ref{thm:knuth-bendix} is
-satisfied.
+Now we have all the concepts required to describe the Knuth-Bendix completion
+process.  The process searches through rules in $\rws$ looking for critical
+pairs; when a critical pair $(u, v)$ is found which does not satisfy the
+condition stated in Theorem \ref{thm:knuth-bendix}, $(u, v)$ or $(v, u)$ is
+added to $\rws$ in order to ensure confluence.  The choice of pair depends on
+whether $u < v$, since all pairs in $\rws$ must reduce words with respect to the
+chosen ordering on $X^*$ to make sure the system is terminating.
 
-For an example of a critical pair in category 2, consider the same alphabet
-$X=\{a,b,c\}$ with rules $(abc, c)$ and $(b, a)$.  The word $abc$ can now be
-written by either rule, to $c$ or $aac$.  Again, if there are other rules
-allowing both words to be rewritten to the same word, then no rules need to be
-added; if however there are no such rules, we must add $(aac, c)$ to ensure
-the theorem is satisfied, and confluence can be guaranteed.
+Let us consider an example of each of the two types of critical pair in
+Definition \ref{def:critical-pair}.
+
+\begin{example}
+  Let $X=\{a,b,c\}$, and let $\rws$ be a rewriting system on $X$, containing
+  two rules $(ab, c)$ and $(bb, a)$.  Here the word $abb$ could be
+  rewritten by either rule: $abb = (ab)b \to cb$, but also
+  $abb = a(bb) \to aa$.  Hence $(cb, aa)$ is a critical pair of type (i).
+
+  If there exists some $w \in X^*$ such that $cb \tostar w$ and $aa \tostar w$,
+  then confluence is not violated; otherwise, we must add a new rule to $\rws$
+  to make sure confluence holds.  The Knuth-Bendix process adds the rule
+  $(cb, aa)$, since $aa < cb$ in our shortlex order.  Now Theorem
+  \ref{thm:knuth-bendix} is satisfied.
+\end{example}
+
+\begin{example}
+  Let $X=\{a,b,c\}$ and let $\rws$ be a rewriting system on $X$ with rules
+  $(abc, c)$ and $(b, a)$.  The word $abc$ can now be written by either rule,
+  $abc \to c$ or $abc \to aac$.  Hence $(c, aac)$ is a critical pair of type
+  (ii).
+
+  Again, if there are other rules allowing both words to be rewritten to a word
+  $w \in X^*$, then no rules need to be added; if however there are no such
+  rules, we must add $(aac, c)$ to ensure the theorem is satisfied, and
+  confluence can be guaranteed.
+\end{example}
 
 The Knuth-Bendix completion process consists of searching for these critical
 pairs and adding rules where necessary.  It should be noted that, like the
 Todd-Coxeter procedure, there is no guarantee that the algorithm will complete
-in a finite time.  More rules may be added continually, which themselves need to
+in a finite time unless the presentation $\pres X R$ is known to be finite.
+More rules may be added continually, which themselves need to
 be checked for critical pairs, without a complete set ever being found.  It may
 also be that a confluent terminating rewriting system will be found, but after a
 very long time, and it is never known whether the process will finish until it
 does.  However, this process has one clear advantage over Todd-Coxeter, which is
 that it may complete even when the monoid $\pres X R$ is infinite, so long as
 the set of rules in the rewriting system is finite.  This is a strong argument
-in favour of trying the Knuth-Bendix process along with other methods.
+in favour of trying the Knuth-Bendix process along with other methods.  However,
+the Knuth-Bendix process cannot be used for left or right congruences, an area
+where Todd-Coxeter has a clear advantage.
 
 Pseudo-code (Sims p.77)
 
