@@ -641,9 +641,21 @@ work as possible.
 \label{sec:kb}
 
 Another approach for solving the word problem in a finitely presented semigroup
-is using rewriting systems.  Given a semigroup $S$ with presentation
-$\pres X R$, we may be able to find a rewriting system which converts any word
-in $X^+$ to a canonical word representing the same semigroup element.  In order
+is using rewriting systems.  Hence, given a semigroup $S$ with presentation
+$\pres X R$ and a congruence $\rho$ over $S$ with generating pairs $\mathbf{G}$,
+we may be able to find a rewriting system which converts any word $w \in X^+$ to
+a canonical word representing the same element of $\pres X {R, \mathbf{G}}$;
+that is, a word representing a semigroup element in the same $\rho$-class as
+the semigroup element of $S$ represented by $w$.
+
+For ease of notation and understanding, this section will describe an algorithm
+for the word problem on a finitely presented semigroup.  We understand that this
+is the same as the problem of whether a given pair of words represent semigroup
+elements related to each other by a two-sided congruence $\rho$.  The ideas do
+not extend easily to left and right congruences, which will therefore not have
+this method as an option.
+
+In order
 to describe the process, we must first explain some background theory.  A full
 description of these ideas can be found in \cite[Section 12.2]{cgt}.  Note that
 we shall again consider monoid presentations instead of semigroup presentations,
@@ -867,8 +879,6 @@ the Knuth-Bendix process cannot be used for left or right congruences, an area
 where Todd-Coxeter has a clear advantage.
 
 Pseudo-code (Sims p.77)
-
-Simplifying rules (perhaps too implementational?)
 
 Use with Froidure-Pin
 
