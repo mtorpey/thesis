@@ -734,8 +734,7 @@ irreducible word will be found in a finite number of steps.
 
 Another definition will help us to determine whether a rewriting system is
 confluent: \textit{local confluence}.  This is a weaker condition than
-confluence, but the two are strongly linked to confluence by Lemma
-\ref{lem:newman}.
+confluence, but the two are strongly linked by Lemma \ref{lem:newman}.
 
 
 \begin{definition}
@@ -871,7 +870,8 @@ also be that a confluent terminating rewriting system will be found, but after a
 very long time, and it is never known whether the process will finish until it
 does.  However, this process has one clear advantage over Todd-Coxeter, which is
 that it may complete even when the monoid $\pres X R$ is infinite, so long as
-the set of rules in the rewriting system is finite.  This is a strong argument
+the set of rules in the rewriting system is finite
+(see Example \ref{ex:bicyclic}).  This is a strong argument
 in favour of trying the Knuth-Bendix process along with other methods.  However,
 the Knuth-Bendix process cannot be used for left or right congruences, an area
 where Todd-Coxeter has a clear advantage.
@@ -880,6 +880,7 @@ We give an example of a rewriting system which solves the word problem for an
 infinite monoid:
 
 \begin{example}
+  \label{ex:bicyclic}
   The \textit{bicyclic monoid} $B = \pres{b,c}{bc=\varepsilon}$ trivially admits
   a rewriting system $\{(bc, \varepsilon)\}$.  Using this, any element can be
   rewritten in a finite number of steps to an irreducible word of the form
