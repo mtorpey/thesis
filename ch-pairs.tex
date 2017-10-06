@@ -143,7 +143,7 @@ The exact parameters supplied to the algorithm are therefore as follows:
 \begin{itemize}
 \item A set of generators $X$;
 \item A finite set of relations $R \subseteq X^* \times X^*$;
-\item A finite set of generating pairs $P \subseteq X^* \times X^*$;
+\item A finite set of generating pairs $W \subseteq X^* \times X^*$;
 \item A sidedness from the set $\{\textsc{left}, \textsc{right},
   \textsc{twosided}\}$.
 \end{itemize}
@@ -159,7 +159,21 @@ generating pairs $\mathbf{P}$ % TODO: not P really!
 over the semigroup $\pres X R$.  The precise meaning of ``data structure'' in
 this context is defined in Section \ref{sec:program-outputs}.
 
-Here's how the pairs and so on fit together: % TODO
+Here's how the pairs and so on fit together:
+
+$$
+\begin{tikzcd}
+X \arrow[dr, hook] \arrow[d, hook] & \\
+X^+ \arrow[r, hook] & \frac{X}{R^\sharp} \cong S \arrow[r, two heads] & \frac{S}{\mathbf{P}^\sharp}
+\end{tikzcd}
+$$
+
+$$
+\begin{tikzcd}
+W \arrow[r, hook, two heads, "\phi"] \arrow[d, hook] & \mathbf{P} \arrow[d, hook] \\
+X^+ \times X^+ \arrow[r, hook] & S \times S
+\end{tikzcd}
+$$
 
 \section{Program outputs}
 \label{sec:program-outputs}
