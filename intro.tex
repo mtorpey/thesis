@@ -8,6 +8,7 @@ Things to define/explain:
 \end{itemize}
 
 \begin{definition}
+  \label{def:semigroup}
   A \textbf{semigroup} is a set $S$ together with
   a binary operation $*: S \times S \to S$ such that
   $$(x * y) * z = x * (y * z),$$
@@ -15,6 +16,7 @@ Things to define/explain:
 \end{definition}
 
 \begin{definition}
+  \label{def:congruence}
   Let $S$ be a semigroup, and let $\rho$ be an equivalence relation on $S$.  The
   relation $\rho$ is:
   \begin{itemize}
@@ -45,6 +47,7 @@ Congruences have a property which allows new semigroups to be made from old
 ones.  Consider the following definition of a quotient semigroup.
 
 \begin{definition}
+  \label{def:quotient}
   Let $S$ be a semigroup, and let $\rho$ be a congruence on $S$.  The
   \textbf{quotient semigroup} $S / \rho$ is the semigroup whose elements are the
   congruence classes of $\rho$, and whose operation $*$ is defined by
@@ -64,6 +67,7 @@ However, note that such a condition does not generally hold for left and right
 congruences, so a quotient can only be taken by a two-sided congruence.
 
 \begin{definition}
+  \label{def:natural-homomorphism}
   Let $S$ be a semigroup, and let $\rho$ be a congruence on $S$.  The
   \textbf{natural homomorphism} $\pi_\rho$ or $\pi$ is the map from $S$ to
   $S / \rho$ which takes an element to its $\rho$-class:
@@ -76,6 +80,7 @@ determine the homomorphic images of a semigroup, and therefore describe an
 important part of a semigroup's structure.  Consider the following theorem.
 
 \begin{theorem}
+  \label{thm:first-isomorphism}
   Let $S$ and $T$ be semigroups, and let $\phi$ be a homomorphism from $S$ to
   $T$.  Then the kernel of $\phi$ is a congruence on $S$, and the image of
   $\phi$ is isomorphic to the quotient semigroup $S / \ker{\phi}$.
@@ -91,6 +96,7 @@ These ideas fit closely with the concept of semigroup \textit{presentations},
 which we can describe after the concept of \textit{free semigroups}.
 
 \begin{definition}
+  \label{def:free}
   Let $X$ be a set.  The \textbf{free monoid} over $X$ is denoted by $X^*$, and
   consists of all finite sequences of elements in $X$, with the operation of
   concatenation.  The \textbf{free semigroup} $X^+$ is the subsemigroup of $X^*$
@@ -105,6 +111,7 @@ We now describe a concept key to Chapter \ref{chap:pairs} as well as to
 semigroup presentations, that of \textit{generating pairs}.
 
 \begin{definition}
+  \label{def:gen-pairs}
   Let $S$ be a semigroup and let $R$ be a subset of $S \times S$.
   \begin{itemize}
   \item
@@ -121,6 +128,7 @@ semigroup presentations, that of \textit{generating pairs}.
 \end{definition}
 
 \begin{definition}
+  \label{def:presentation}
   Let $X$ be a set, and $R$ be a subset of $X^+ \times X^+$.  The
   \textbf{semigroup presentation} $\pres X R$ is a description of the quotient
   semigroup $X^+ / R^\sharp$.
