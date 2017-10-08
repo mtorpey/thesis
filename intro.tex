@@ -14,6 +14,7 @@ Things to define/explain:
   $$(x * y) * z = x * (y * z),$$
   for all $x, y, z \in S$.
 \end{definition}
+The operation symbol $*$ is often omitted where there is no risk of ambiguity.
 
 \begin{definition}
   \label{def:congruence}
@@ -55,23 +56,26 @@ ones.  Consider the following definition of a quotient semigroup.
   for $a, b \in S$.
 \end{definition}
 
-In order for quotient semigroups to be well-defined, the product of the two
-classes must be regardless of which representatives are chosen for the classes
-$[a]_\rho$ and $[b]_\rho$.  Hence consider arbitrary elements $a' \in [a]_\rho$
-and $b' in [b]_\rho$.  We must have
+In order for quotient semigroups to be well-defined, the product $[ab]_\rho$ of
+the two classes $[a]_\rho$ and $[b]_\rho$ must not depend on which specific
+elements $a$ and $b$ are chosen to represent the two classes.  Hence consider
+arbitrary elements $a' \in [a]_\rho$ and $b' \in [b]_\rho$.  We must have
 $[a]_\rho * [b]_\rho = [a']_\rho * [b']_\rho$, so we must have
-$[ab]_\rho = [a'b']_\rho$.  Since $a \rho a'$ and $b \rho b'$, we have
-$ab \rho a'b'$ by Proposition \ref{prop:cong-def}, and so
+$[ab]_\rho = [a'b']_\rho$.  Since $a ~\rho~ a'$ and $b ~\rho~ b'$, we have
+$ab ~\rho~ a'b'$ by Proposition \ref{prop:cong-def}, and so
 $[ab]_\rho = [a'b']_\rho$ as required.  So a quotient semigroup is well-defined.
 However, note that such a condition does not generally hold for left and right
-congruences, so a quotient can only be taken by a two-sided congruence.
+congruences, which do not generally satisfy the condition stated in Proposition
+\ref{prop:cong-def}.  Hence a quotient semigroup as described in Definition
+\ref{def:quotient} can only be taken using a two-sided congruence.
 
 \begin{definition}
   \label{def:natural-homomorphism}
   Let $S$ be a semigroup, and let $\rho$ be a congruence on $S$.  The
-  \textbf{natural homomorphism} $\pi_\rho$ or $\pi$ is the map from $S$ to
-  $S / \rho$ which takes an element to its $\rho$-class:
+  \textbf{natural homomorphism} $\pi_\rho: S \to S / \rho$ is the map which
+  takes an element of $S$ to its $\rho$-class:
   $$\pi_\rho: x \mapsto [x]_\rho.$$
+  It is denoted simply by $\pi$ where there is no risk of ambiguity.
 \end{definition}
 
 Congruences have long been an important area of study in semigroup theory.
