@@ -17,6 +17,14 @@ Things to define/explain:
 The operation symbol $*$ is often omitted where there is no risk of ambiguity.
 
 \begin{definition}
+  \label{def:monoid}
+  A \textbf{monoid} is a semigroup $M$ containing a distinguished element $e$
+  such that
+  $$ex = xe = x$$
+  for all $x \in M$.  The element $e$ is called the \textit{identity} of $M$.
+\end{definition}
+
+\begin{definition}
   \label{def:congruence}
   Let $S$ be a semigroup, and let $\rho$ be an equivalence relation on $S$.  The
   relation $\rho$ is:
@@ -43,6 +51,47 @@ right, it is understood to be a two-sided congruence.
     required.
   \end{proof}
 \end{proposition}
+
+\begin{definition}
+  \label{def:homomorphism}
+  Let $S$ and $T$ be semigroups.  A semigroup \textbf{homomorphism} is a
+  function $\phi: S \to T$ such that
+  $$(x)\phi \cdot (y)\phi = (xy)\phi,$$
+  for all $x, y \in S$.
+\end{definition}
+
+\begin{definition}
+  \label{def:monomorphism}
+  A semigroup \textbf{monomorphism} is a semigroup homomorphism which is
+  injective (one-to-one).  It is indicated on diagrams by a hooked arrow:
+  $$S \hookrightarrow T$$
+\end{definition}
+
+\begin{definition}
+  \label{def:epimorphism}
+  A semigroup \textbf{epimorphism} is a semigroup homomorphism which is
+  surjective (onto).  It is indicated on diagrams by a double-headed arrow:
+  $$S \twoheadrightarrow T$$
+\end{definition}
+
+Monoid homomorphisms, monomorphisms and epimorphisms are defined analogously,
+replacing the word ``semigroup'' with ``monoid''.  If not specified, it is
+assumed that ``homomorphism'' refers to a semigroup homomorphism.
+
+\begin{definition}
+  The \textbf{kernel} $\ker\phi$ of a homomorphism $\phi:S \to T$ is the
+  equivalence relation on $S$ defined by the rule that $(a,b) \in \ker\phi$ if
+  and only if
+  $$(a)\phi = (b)\phi,$$
+  for $a, b \in S$.
+\end{definition}
+
+\begin{definition}
+  The \textbf{image} $\im\phi$ of a homomorphism $\phi:S \to T$ is the set of
+  elements $t \in T$ such that
+  $$(s)\phi = t$$
+  for some $s \in S$.
+\end{definition}
 
 Congruences have a property which allows new semigroups to be made from old
 ones.  Consider the following definition of a quotient semigroup.
