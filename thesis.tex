@@ -1,25 +1,41 @@
 \documentclass[a4paper]{report}
 
 % Packages
-\usepackage[iso,UKenglish]{isodate}
-\usepackage[nodisplayskipstretch]{setspace}
-\usepackage{amsmath, amsfonts, amsthm, amssymb, mathrsfs, cancel}
-\usepackage{xcolor}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
-\usepackage{float}
+\usepackage{aliascnt}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{cancel}
+\usepackage{dot2texi}
+\usepackage{draftwatermark}
 \usepackage{enumerate}
-\usepackage{longtable, array, mathtools}
-\usepackage{tikz-cd}
-\usepackage{xfrac}
-\usepackage{svg}
-\usepackage{tikz, pstricks, dot2texi}
-\usetikzlibrary{arrows,shapes}
-\usepackage{url}
-\usepackage{lipsum}
+\usepackage{float}
 \usepackage[colorlinks]{hyperref}
+\usepackage[iso, UKenglish]{isodate}
+\usepackage{lipsum}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{pstricks}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage{svg}
+\usepackage{tikz-cd}
+\usepackage{tikz}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{xfrac}
+
+% Other library imports
+\usetikzlibrary{arrows,shapes}
+
+% Hyperlink references (invisible)
 \hypersetup{linkcolor=black, urlcolor=black, citecolor=black}
 
+% Fix double spacing in arrays
 \setlength{\jot}{-1ex}
 \renewcommand*\arraystretch{.7}
 
@@ -27,7 +43,6 @@
 \immediate\write18{git rev-parse --short HEAD > hash.info}
 \immediate\write18{git diff --shortstat > changes.info}
 \immediate\write18{git diff --staged --shortstat >> changes.info}
-\usepackage{draftwatermark}
 \SetWatermarkText{Commit \input{hash.info} \quad \input{changes.info}}
 \SetWatermarkColor[gray]{0.75}
 \SetWatermarkFontSize{0.5cm}
@@ -46,7 +61,6 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 
-\usepackage{aliascnt}
 \newcounter{common}[chapter]
 \makeatletter
 \let\c@algorithm\relax
@@ -85,7 +99,7 @@
 \include{ch-lattice}
 \include{ch-converting}
 
-\part{Findings}
+\part{Results}
 \label{part:findings}
 \include{ch-nrcongs}
 \include{ch-princfact}
