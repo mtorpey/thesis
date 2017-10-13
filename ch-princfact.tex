@@ -4,7 +4,7 @@
 \section{$\mathcal{T}_n$}
 The \textit{full transformation monoid} $\mathcal{T}_n$ is the semigroup consisting of all
 transformations on the set $\{1 \dots n\}$, for some $n \in \mathbb{N}$.  Its
-Green's relation structure is well-understood: for two mappings $\alpha, \beta
+Green's structure is well-understood: for two mappings $\alpha, \beta
 \in \mathcal{T}_n$,
 
 \begin{itemize}
@@ -110,7 +110,8 @@ $$s * t = \left\{
 
 The principal factor of a $\DD$-class must always be a 0-simple
 semigroup, and so we can use \textit{linked triples} to classify its
-congruences.\cite[3.5]{howie}
+congruences \cite[3.5]{howie}.
+% TODO: this applies to REGULAR ones only.  Irregular ones have a zero semigroup
 
 Let $D_k^* = \mathcal{M}^0[G;I,\Lambda;P]$ as above.
 The rows and columns of the matrix $P$ correspond respectively to the $\LL$-classes and
@@ -264,8 +265,8 @@ The congruences of $D_k^*$ are as follows.
 Note that some alternative definitions of $D_k^*$ include a zero element only
 when ``necessary'', i.e.~only when there exist two elements in $D_k$ which multiply together to
 give an element not in $D_k$.  If this definition is preferred (as in the
-Semigroups package\cite{semigroups} of the GAP computational algebra
-system\cite{gap}) there will be no zero element in $D_1^*$ or $D_n^*$, so the
+Semigroups package \cite{semigroups} of the GAP computational algebra
+system \cite{gap}) there will be no zero element in $D_1^*$ or $D_n^*$, so the
 additional universal congruence in the preceding summary should be removed in
 those two cases, and the number of congruences adjusted down by $1$.
 

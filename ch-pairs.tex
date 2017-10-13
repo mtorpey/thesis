@@ -257,7 +257,7 @@ Complexity
 \subsection{Todd-Coxeter}
 \label{sec:tc}
 
-The Todd-Coxeter algorithm, was originally described in 1936 in
+The Todd-Coxeter algorithm was originally described in 1936 in
 \cite{todd_coxeter_1936}.  It was an algorithm to enumerate the cosets of a
 finitely generated subgroup of a finitely presented group.  Arriving before the
 advent of electronic computers, the algorithm was originally intended to be
@@ -279,7 +279,7 @@ is based closely on an implementation by G\"otz Pfeiffer, found in
 \cite[\texttt{lib/tcsemi.gi}]{gap}, and based on \cite{walker_thesis}.
 
 We will now describe the Todd-Coxeter method as used in the context of this
-chapter.  Though this does not represent significant new work, it is an
+chapter.  Though the method itself does not represent new work, it is an
 important part of the overall parallel approach, and in order to understand its
 uses and limitations, it is described here in full.
 
@@ -717,6 +717,7 @@ work as possible.
 Another approach for solving the word problem in a finitely presented semigroup
 is using rewriting systems.  Hence, given a semigroup $S$ with presentation
 $\pres X R$ and a congruence $\rho$ over $S$ with generating pairs $\mathbf{G}$,
+% TODO: use $W$ instead, and make this bit clearer
 we may be able to find a rewriting system which converts any word $w \in X^+$ to
 a canonical word representing the same element of $\pres X {R, \mathbf{G}}$;
 that is, a word representing a semigroup element in the same $\rho$-class as
@@ -907,6 +908,8 @@ condition stated in Theorem \ref{thm:knuth-bendix}, $(u, v)$ or $(v, u)$ is
 added to $\rws$ in order to ensure confluence.  The choice of pair depends on
 whether $u < v$, since all pairs in $\rws$ must reduce words with respect to the
 chosen ordering on $X^*$ to make sure the system is terminating.
+% TODO: the whole u<v v<u thing should be mentioned explicitly earlier, not as
+% an afterthought.
 
 Let us consider an example of each of the two types of critical pair in
 Definition \ref{def:critical-pair}.

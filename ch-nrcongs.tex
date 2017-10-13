@@ -6,6 +6,7 @@ Introduction
 How many congruences does a semigroup have? %TODO: proper introduction
 
 \section{Congruence-full semigroups}
+% TODO: this section needs a full rethink of infinite semigroups
 
 We start by giving the definition of a \textit{congruence-full} semigroup, by
 analogy with a \textit{congruence-free} semigroup \cite[3.7]{howie}.
@@ -16,9 +17,10 @@ analogy with a \textit{congruence-free} semigroup \cite[3.7]{howie}.
 \end{definition}
 
 Since the number of equivalences on a set is given by the sequence of Bell
-numbers $(B_n)_{n \in \mathbb{N}}$, we can say that a congruence is
+numbers $(B_n)_{n \in \mathbb{N}}$, we can say that a semigroup is
 congruence-full if and only if it has precisely $B_n$ congruences, where $n$ is
 the size of the semigroup.
+% TODO: semigroup might be infinite!  No such thing as n.
 
 Finite congruence-free semigroups are classified in \cite[3.7]{howie}.
 In this section we explore finite congruence-full semigroups, culminating in a
@@ -30,6 +32,7 @@ semigroups.
   \label{lem:m-is-h-trivial}
   A congruence-full semigroup of size greater than $2$ has $\HH$-trivial
   minimal ideal.
+  % TODO: infinite?  Does it have to have a minimal ideal?
   \begin{proof}
     Let $S$ be a congruence-full semigroup with more than $2$ elements, and let
     $M$ be its minimal ideal.  Since $M$ is simple, every $\HH$-class of $M$ is
@@ -139,8 +142,9 @@ finite congruence-full semigroups.
 
 \begin{theorem}
   \label{thm:congruence-full}
-  A finite semigroup of size greater than $2$ is congruence-full if and only if
-  it is a zero semigroup, a left zero semigroup, or a right zero semigroup.
+  A finite semigroup is congruence-full if and only if it is a zero semigroup, a
+  left zero semigroup, a right zero semigroup, or has size less than or equal to
+  $2$.
   \begin{proof}
     Let $S$ be a finite congruence-full semigroup of size greater than $2$.  If
     $S$ is not simple, then by Lemma \ref{lem:simple-or-zero-semigroup} it is a
@@ -161,6 +165,8 @@ finite congruence-full semigroups.
     have $ax = a = ay$ and $xa = x \sim y = ya$, so $ax \sim ay$ and
     $xa \sim ya$.  Hence $\sim$ is a congruence, so $S$ is congruence-full.
     A similar argument proves the statement for right zero semigroups.
+
+    % Mention size 2
   \end{proof}
 \end{theorem}
 
