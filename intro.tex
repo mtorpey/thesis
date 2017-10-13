@@ -11,7 +11,7 @@ Things to define/explain:
   \label{def:semigroup}
   A \textbf{semigroup} is a set $S$ together with
   a binary operation $*: S \times S \to S$ such that
-  $$(x * y) * z = x * (y * z),$$
+  $$(x * y) * z = x * (y * z)$$
   for all $x, y, z \in S$.
 \end{definition}
 The operation symbol $*$ is often omitted where there is no risk of ambiguity.
@@ -38,7 +38,7 @@ The operation symbol $*$ is often omitted where there is no risk of ambiguity.
   \end{itemize}
 \end{definition}
 
-If we talk about a \textit{congruence} without specifying that it is left or
+When we talk about a \textit{congruence} without specifying that it is left or
 right, it is understood to be a two-sided congruence.
 
 \begin{proposition}
@@ -77,6 +77,7 @@ right, it is understood to be a two-sided congruence.
 Monoid homomorphisms, monomorphisms and epimorphisms are defined analogously,
 replacing the word ``semigroup'' with ``monoid''.  If not specified, it is
 assumed that ``homomorphism'' refers to a semigroup homomorphism.
+% TODO: monoid homos map id to id
 
 \begin{definition}
   The \textbf{kernel} $\ker\phi$ of a homomorphism $\phi:S \to T$ is the
@@ -93,7 +94,7 @@ assumed that ``homomorphism'' refers to a semigroup homomorphism.
   for some $s \in S$.
 \end{definition}
 
-Congruences have a property which allows new semigroups to be made from old
+Congruences have a property that allows new semigroups to be made from old
 ones.  Consider the following definition of a quotient semigroup.
 
 \begin{definition}
@@ -104,6 +105,8 @@ ones.  Consider the following definition of a quotient semigroup.
   $$[a]_\rho * [b]_\rho = [ab]_\rho,$$
   for $a, b \in S$.
 \end{definition}
+
+% TODO: is [a] notation well understood?
 
 In order for quotient semigroups to be well-defined, the product $[ab]_\rho$ of
 the two classes $[a]_\rho$ and $[b]_\rho$ must not depend on which specific
@@ -144,6 +147,7 @@ important part of a semigroup's structure.  Consider the following theorem.
   \end{tikzcd}
   $$
 \end{theorem}
+% TODO: define phi-bar, and maybe explain how these diagrams work?
 
 These ideas fit closely with the concept of semigroup \textit{presentations},
 which we can describe after the concept of \textit{free semigroups}.
