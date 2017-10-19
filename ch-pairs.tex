@@ -145,8 +145,8 @@ The exact parameters supplied to the algorithm are therefore as follows:
 \item A set of generators $X$;
 \item A finite set of relations $R \subseteq X^* \times X^*$;
 \item A finite set of generating pairs $W \subseteq X^* \times X^*$;
-\item A sidedness from the set $\{\textsc{left}, \textsc{right},
-  \textsc{twosided}\}$.
+\item A record of whether we are computing a left, right, or two-sided
+  congruence.
 \end{itemize}
 The following are also supplied if and only if $S$ is concrete:
 \begin{itemize}
@@ -159,51 +159,52 @@ We shall now make clear the meanings of these different parameters, by giving a
 complete description of the system, starting with the commutative diagram in
 Figure \ref{fig:pairs-cd-1}.
 
+Here $X$ is our alphabet, a subset of the free semigroup $X^+$.  We have a set
+of relations $R \subseteq X^+ \times X^+$, which generates the congruence
+$R^\sharp$ on $X^+$.  This congruence gives a quotient semigroup
+$X^+ / R^\sharp$; this is isomorphic to the semigroup $S$,
+which is described by the presentation $\pres X R$.  The
+congruence also gives us its natural homomorphism $\pi: X^+ \to S$ (see
+Definition \ref{def:natural-homomorphism}).  We also have a set of generating pairs
+$\mathbf{P} \subseteq S \times S$, which defines a congruence
+$\mathbf{P}^\sharp$.  The aim of the algorithm described in this chapter is to
+obtain a data structure for $\mathbf{P}^\sharp$, where the precise meaning of
+``data structure'' is defined in Section \ref{sec:program-outputs}.  If we are
+calculating a two-sided congruence, then it gives rise to the
+quotient semigroup $S / \mathbf{P}^\sharp$.
+
 \begin{figure}[h]
   \centering
   $\begin{tikzcd}
     X \arrow[dr] \arrow[d, hook] & \\
-    X^+ \arrow[r, two heads, "\phi"] & \frac{X^+}{R^\sharp} \cong S \arrow[r, two heads] & \frac{S}{\mathbf{P}^\sharp}
+    X^+ \arrow[r, two heads, "\pi"] & \frac{X^+}{R^\sharp} \cong S \arrow[r, two heads] & \frac{S}{\mathbf{P}^\sharp}
   \end{tikzcd}$
   \caption{The relationships between different input objects}
   \label{fig:pairs-cd-1}
 \end{figure}
 
-Here $X$ is our alphabet, a subset of the free semigroup $X^+$.  We have a set
-of relations $R \subseteq X^+ \times X^+$, which generates the congruence
-$R^\sharp$ on $X^+$.  This congruence gives a quotient semigroup
-$X^+ / R^\sharp$; this is the semigroup called $S$, or $\pres X R$.  The
-congruence also gives us its natural homomorphism $\phi: X^+ \to S$ (see
-Definition TODO).  We also have a set of generating pairs
-$\mathbf{P} \subseteq S \times S$, which defines a congruence
-$\mathbf{P}^\sharp$.  The aim of the algorithm described in this chapter is to
-obtain a data structure for $\mathbf{P}^\sharp$, where the precise meaning of
-``data structure'' is defined in Section \ref{sec:program-outputs}.  If the
-sidedness chosen is \textsc{twosided}, then this congruence gives rise to the
-quotient semigroup $S / \mathbf{P}^\sharp$.
-
-It should be noted that although $\mathbf{P}$ is a subset of $S \times S$, it is
-possible that the word problem of $S$ will not be known in advance.  Hence the
-best that can be done computationally is to give a set $W$ of word
-representatives of the pairs in $\mathbf{P}$.  More formally, let
-$\Phi: X^+ \times X^+ \to S \times S$ be defined by
-$\Phi: (w_1, w_2) \mapsto (w_1\phi, w_2\phi)$, where $\phi$ is the natural
-homomorphism mentioned above.  The input $W \subseteq X^+ \times X^+$ is chosen
-such that $|W|=|\mathbf{P}|$ and $W \Phi = \mathbf{P}$.
+The generating pairs $\mathbf{P}$ are not given by the user.  Since the elements
+of $S$ might be unknown (for example if $S$ was specified by a finite
+presentation), it would be impractical for the user to specify them precisely.
+Instead, the user specifies a set $W$ consisting of pairs of words from
+$X^+ \times X^+$, which can be evaluated to pairs of elements in $S \times S$,
+giving the set of generating pairs $\mathbf{P}$.
+More formally, let
+$\Pi: X^+ \times X^+ \to S \times S$ be defined by
+$\Pi: (w_1, w_2) \mapsto (w_1\pi, w_2\pi)$, where $\pi$ is the natural
+homomorphism from $X^+$ to $S$ mentioned above.  The generating pairs
+$\mathbf{P}$ of the congruence are given by $\mathbf{P} = W \Pi$.
 This relationship is summarised in Figure \ref{fig:pairs-cd-2}.
 
 \begin{figure}[h]
   \centering
   $\begin{tikzcd}
-    W \arrow[r, hook, two heads, "\Phi|_W"] \arrow[d, hook] & \mathbf{P} \arrow[d, hook] \\
-    X^+ \times X^+ \arrow[r, two heads, "\Phi"] & S \times S
+    W \arrow[r, hook, two heads, "\Pi|_W"] \arrow[d, hook] & \mathbf{P} \arrow[d, hook] \\
+    X^+ \times X^+ \arrow[r, two heads, "\Pi"] & S \times S
   \end{tikzcd}$
   \caption{The generating pairs of the congruence}
   \label{fig:pairs-cd-2}
 \end{figure}
-
-In this way, $W$ is used as an input to the algorithm, and it represents the
-unknown set of generating pairs $\mathbf{P}$.
 
 \section{Program outputs}
 \label{sec:program-outputs}
