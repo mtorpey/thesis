@@ -124,6 +124,7 @@ be attained by simply adding a generator for the identity and relations to make
 it multiplicatively neutral.
 
 \section{Program inputs}
+\label{sec:program-inputs}
 
 Our algorithm determines the properties of a single left, right, or two-sided
 congruence defined by generating pairs, over a semigroup $S$.
@@ -221,9 +222,49 @@ congruence when requested:
 \item Class number of a given element
 \end{itemize}
 
-Note that for finitely presented semigroups, these questions may be
-undecidable.  In the case that a question is decidable, our approach should
-return an answer in finite time.
+\clearpage
+
+\section{Decidability}
+\label{sec:decidability}
+
+\begin{definition}
+  \label{def:decidable}
+  A problem is \textbf{decidable} if there exists an algorithm which is
+  guaranteed to return a correct answer to the problem in a finite amount of
+  time.
+\end{definition}
+
+Decidability is always something that should be considered when designing an
+algorithm that may act on infinite objects.  In the context of this chapter, if
+the semigroup $S$ is specified as a concrete semigroup, then all of the
+questions defined in Section \ref{sec:program-outputs} have a definite answer
+which can be calculated.  However, if $S$ is specified using a presentation,
+then certain problems asked about it may be undecidable.
+
+Firstly, we might consider the presence of a given pair $(x,y)$ in a given
+congruence.  This is equivalent to solving the word problem for the quotient
+semigroup of the congruence, and has long been known to be undecidable in
+general.  Indeed, consider the following example from Gennadi\'{i} Makanin.
+
+\begin{example}[Makanin, 1966]
+  The presentation
+  $$\pres{a,b,c}{c^2b^2 = b^2c^2,\ bc^3b^2 = cb^3c^2,\ ac^2b^2 = b^2a,\ abc^3b^2 = cb^2a,\ b^2c^2b^4c^2 = b^2c^2b^4c^2a}$$
+  defines a semigroup which has undecidable word problem.  \cite{makanin_1966}
+\end{example}
+% TODO: read this properly, and maybe give a proof.
+
+Since the general semigroup word problem is undecidable, the algorithm in this
+chapter cannot hope to guarantee to return an answer.  Similarly, the number of
+classes of a given congruence and the elements of each non-trivial class may not
+be computable, since there may be infinitely many.
+
+The only guarantee that can be given by the algorithm is that an answer will be
+returned if $S$ happens to be finite.  In the concrete case, semigroups are
+always finite and so an answer is guaranteed; but in the case of a finitely
+presented semigroup, it is unknown in advance whether a semigroup is finite or
+not.  Hence, the user of this algorithm might not know whether a particular run
+is guaranteed to terminate, since a run that is about to finish is
+indistinguishable from one that will run forever.
 
 \section{Finding a presentation}
 \label{sec:find-pres}
@@ -717,10 +758,10 @@ work as possible.
 
 Another approach for solving the word problem in a finitely presented semigroup
 is using rewriting systems.  Hence, given a semigroup $S$ with presentation
-$\pres X R$ and a congruence $\rho$ over $S$ with generating pairs $\mathbf{G}$,
-% TODO: use $W$ instead, and make this bit clearer
+$\pres X R$ and a congruence $\rho$ over $S$ with generating pairs given by $W$
+(see Section \ref{sec:program-inputs})
 we may be able to find a rewriting system which converts any word $w \in X^+$ to
-a canonical word representing the same element of $\pres X {R, \mathbf{G}}$;
+a canonical word representing the same element of $\pres X {R,\ W}$;
 that is, a word representing a semigroup element in the same $\rho$-class as
 the semigroup element of $S$ represented by $w$.
 
@@ -941,7 +982,46 @@ Definition \ref{def:critical-pair}.
 \end{example}
 
 The Knuth-Bendix completion process consists of searching for these critical
-pairs and adding rules where necessary.  It should be noted that, like the
+pairs and adding rules where necessary.  For a more detailed description of
+precisely how these tasks are done, see \cite[\S 2.6]{sims}.
+
+A large part of the computational work involved in the Knuth-Bendix process
+consists of rewriting words using rules from $\rws$.  If the rewriting system is
+confluent and terminating, then the rules can be applied in any order and an
+irreducible word will eventually be reached.  However, the order in which the
+rules are applied can have a great effect on the overall runtime of the
+algorithm.  In Algorithm \ref{alg:rewrite} we present one possible strategy
+known as \textit{rewriting from the left}.  This is the strategy used in
+\texttt{libsemigroups} \cite{libsemigroups} and is adapted from the
+\textsc{Rewrite\_From\_Left} procedure described in \cite[\S 2.4]{sims}.  It
+takes two arguments---a word $u$ and a confluent terminating rewriting system
+$\rws$---and returns the irreducible word produced from $u$ by applying rules in
+$\rws$.
+
+\begin{algorithm}
+\caption{The \textsc{Rewrite} algorithm}
+\label{alg:rewrite}
+\begin{algorithmic}[1]
+\Procedure{Rewrite}{$u, \rws$}
+\State $v := \varepsilon$
+\While{$u \neq \varepsilon$}
+  \State Let $u_1$ be the first character of $u$
+  \State $v \gets v u_1$
+  \State Remove the first character of $u$
+  \For{$(p,q) \in \rws$}
+    \If{$v = rp$ for some $r \in X^*$}
+      \State $u \gets qu$
+      \State $v \gets r$
+      \State \Break
+    \EndIf
+  \EndFor
+\EndWhile
+\State \Return $v$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+It should be noted that, like the
 Todd-Coxeter procedure, there is no guarantee that the algorithm will complete
 in a finite time unless the presentation $\pres X R$ is known to be finite.
 More rules may be added continually, which themselves need to
@@ -969,10 +1049,6 @@ infinite monoid:
   there are no critical pairs, the system is confluent by Theorem
   \ref{thm:knuth-bendix}.
 \end{example}
-
-Pseudo-code (Sims p.77)
-
-Use with Froidure-Pin
 
 \clearpage
 
