@@ -1086,7 +1086,7 @@ provide some examples of such tests.
 Firstly, it will be helpful to examine a few examples of problems which can be
 solved by the different algorithms, and to compare the types of problems in
 which each algorithm is most effective.  These examples were implemented in the
-benchmarking section of \texttt{libsemigroups}, and their performance tested
+benchmarking section of \texttt{libsemigroups}, and their performance was tested
 with various algorithms.
 
 \begin{example}
@@ -1099,7 +1099,7 @@ with various algorithms.
 
   On average, simple Todd-Coxeter returns an answer in 724 milliseconds, while
   pre-filled Todd-Coxeter requires an average 3057 milliseconds, more than 4
-  times the length of time.  This difference can be explained by the structure
+  times as long.  This difference can be explained by the structure
   of the table at completion: a single row representing the one congruence
   class.  In the pre-fill case, a coset table must be constructed with 65536
   rows, only to have all but one row deleted.  In the simple Todd-Coxeter case,
@@ -1157,8 +1157,8 @@ non-trivial congruence class, which is simply equal to $\{ab^2a, a^2bab\}$, and
 all other classes are singletons.  Since the total number of congruence classes
 is infinite, Todd-Coxeter cannot complete.  The \texttt{kbfp} method can
 certainly rewrite any pair of words to identify whether a pair lies in $\rho$;
-but only \texttt{kbp} has a way of looking up which elements lie in non-trivial
-congruence classes, and returning an answer to the question: \textit{what are
+but only \texttt{kbp} has a way of looking up which elements are not in
+singletons, and thus returning an answer to the question: \textit{what are
   the non-trivial congruence classes of $\rho$?}
 \end{example}
 
@@ -1171,6 +1171,13 @@ able to execute all at once and return in whichever run-time is quickest.
 A large number of example congruences were generated randomly and run using each
 different algorithm, along with the default implementation in GAP \cite{gap}, to
 analyse performance.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-all}
+  \caption{Performance of the algorithms on 5000 transformation semigroups}
+  \label{fig:bench-trans-all}
+\end{figure}
 
 Figure \ref{fig:bench-trans-all} shows the results of a set of 5000 tests on
 transformation semigroups.  In each test, $3$ transformations of degree $6$ were
@@ -1185,28 +1192,10 @@ were compared to one another.  The algorithms used were:
 \item Todd-Coxeter (\texttt{tc}),
 \item Todd-Coxeter with prefilled table (\texttt{tc\_prefill}),
 \item Knuth-Bendix with Froidure-Pin (\texttt{kbfp}),
-\item Pair orbit enumeration (\texttt{p}),
+\item pair orbit enumeration (\texttt{p}),
 \item the parallel method described in this chapter (\texttt{default}),
 \item and the method implemented in the library of GAP (\texttt{GAP}).
 \end{itemize}
-As can be seen in Figure \ref{fig:bench-trans-all}, the prefilled Todd-Coxeter
-method is the most likely to complete fastest, with regular Todd-Coxeter winning
-in a sizable minority of cases.  This backs up the anecdotal observations group
-theorists have made \cite{havascomparing} that Todd-Coxeter tends to perform
-faster than Knuth-Bendix.  We may also observe that pair orbit enumeration
-sometimes completes almost instantly, which makes some sense when we consider
-how little work the algorithm does when there are very few non-reflexive pairs
-in the congruence.  The Knuth-Bendix procedure lags behind badly on these
-examples, taking even longer than the built-in methods in GAP.  These results
-are a justification for the decision to run only the Todd-Coxeter algorithms in
-the case of a finite, concrete semigroup.
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-all}
-  \caption{Performance of the algorithms on 5000 transformation semigroups}
-  \label{fig:bench-trans-all}
-\end{figure}
 
 \begin{figure}[h]
   \centering
@@ -1215,6 +1204,18 @@ the case of a finite, concrete semigroup.
     transformation semigroups}
   \label{fig:bench-trans-gap}
 \end{figure}
+
+As can be seen in Figure \ref{fig:bench-trans-all}, the prefilled Todd-Coxeter
+method is the most likely to complete fastest, with regular Todd-Coxeter winning
+in a sizeable minority of cases.  This backs up the anecdotal observations group
+theorists have made \cite{havascomparing} that Todd-Coxeter tends to perform
+faster than Knuth-Bendix.  We may also observe that pair orbit enumeration
+sometimes completes almost instantly, which makes some sense when we consider
+how little work the algorithm does when there are very few non-reflexive pairs
+in the congruence.  The Knuth-Bendix procedure lags behind badly on these
+examples, taking even longer than the built-in methods in GAP.  These results
+are a justification for the decision to run only the Todd-Coxeter algorithms in
+the case of a finite, concrete semigroup.
 
 Figure \ref{fig:bench-trans-gap} shows data from the same tests, plotted not by
 the size of the semigroup, but simply in order of the ratio between GAP's
