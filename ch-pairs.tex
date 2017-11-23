@@ -1175,9 +1175,23 @@ analyse performance.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-all}
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-times}
   \caption{Performance of the algorithms on 5000 transformation semigroups}
-  \label{fig:bench-trans-all}
+  \label{fig:bench-trans-1p-times}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-2p-times}
+  \caption{Performance of the algorithms on 5000 transformation semigroups}
+  \label{fig:bench-trans-2p-times}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-3p-times}
+  \caption{Performance of the algorithms on 5000 transformation semigroups}
+  \label{fig:bench-trans-3p-times}
 \end{figure}
 
 Figure \ref{fig:bench-trans-1p-times} shows the results of a set of 5000 tests
@@ -1219,6 +1233,30 @@ enumerate more pairs when the generating set is larger.  However, with more
 generating pairs \texttt{tc} tends to perform relatively better, since there are
 likely to be fewer congruence classes and therefore fewer rows in the coset
 table.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-tccomp}
+  \caption{Comparison between the two Todd-Coxeter methods, for transformation
+    semigroups}
+  \label{fig:bench-trans-1p-tccomp}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-2p-tccomp}
+  \caption{Comparison between the two Todd-Coxeter methods, for transformation
+    semigroups}
+  \label{fig:bench-trans-2p-tccomp}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-3p-tccomp}
+  \caption{Comparison between the two Todd-Coxeter methods, for transformation
+    semigroups}
+  \label{fig:bench-trans-3p-tccomp}
+\end{figure}
 
 This tendency is illustrated further in Figures \ref{fig:bench-trans-1p-tccomp},
 \ref{fig:bench-trans-2p-tccomp} and \ref{fig:bench-trans-3p-tccomp}, which
@@ -1287,20 +1325,50 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-all}
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-times}
   \caption{Performance of the algorithms on $1000$ finitely presented semigroups}
-  \label{fig:bench-fp-all}
+  \label{fig:bench-fp-1p-times}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-gap}
-  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
-    finitely presented semigroups}
-  \label{fig:bench-fp-gap}
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-2p-times}
+  \caption{Performance of the algorithms on $1000$ finitely presented semigroups}
+  \label{fig:bench-fp-2p-times}
 \end{figure}
 
-As can be seen in Figures \ref{fig:bench-fp-all} and \ref{fig:bench-fp-gap}, the
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-times}
+  \caption{Performance of the algorithms on $1000$ finitely presented semigroups}
+  \label{fig:bench-fp-3p-times}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-gap}
+  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
+    finitely presented semigroups}
+  \label{fig:bench-fp-1p-gap}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-2p-gap}
+  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
+    finitely presented semigroups}
+  \label{fig:bench-fp-2p-gap}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-gap}
+  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
+    finitely presented semigroups}
+  \label{fig:bench-fp-3p-gap}
+\end{figure}
+
+As can be seen in Figures \ref{fig:bench-fp-1p-gap} to \ref{fig:bench-fp-3p-gap}, the
 performance of the GAP library over finitely presented semigroups is far worse
 than it was for concrete semigroups, taking as much as $400,000$ times as long
 as \texttt{libsemigroups} to complete.  Due to the excessive times GAP took to
