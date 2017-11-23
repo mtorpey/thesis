@@ -1090,6 +1090,7 @@ benchmarking section of \texttt{libsemigroups}, and their performance was tested
 with various algorithms.
 
 \begin{example}
+  \label{ex:good-tc}
   Consider $\PBR_2$, the full PBR monoid of degree $2$.  It has $65536$ elements
   and is therefore large enough to require significant processing time when
   considering its congruences.   We take a set of pairs which we know will
@@ -1108,6 +1109,7 @@ with various algorithms.
 \end{example}
 
 \begin{example}
+  \label{ex:good-tc-prefill}
   The virtue of pre-filled Todd-Coxeter is shown by a different congruence on
   $\PBR_2$.  A much smaller set of generating pairs gives rise to a congruence
   $\rho$ with 19009 congruence classes, in contrast to the universal congruence
@@ -1121,7 +1123,7 @@ with various algorithms.
 \end{example}
 
 The two examples above show the difference in speed between two algorithms.  We
-now consider two examples where certain algorithms will never terminate, but
+now consider an example where certain algorithms will never terminate, but
 others complete quickly.  This is an even greater justification for the parallel
 use of a variety of algorithms.
 
@@ -1135,34 +1137,33 @@ use of a variety of algorithms.
   classes.  A test asks whether $(ab^{20}, a^2b^{20})$ is a pair in $\rho$.  The
   Todd-Coxeter methods would never complete, since they require a separate row
   for each congruence class and therefore an infinite amount of memory.
-  However, the two Knuth-Bendix methods \texttt{kbfp} and \texttt{kbp} can
-  answer the question very quickly, since they are not restricted to finite
-  objects.
+  However, the Knuth-Bendix method is able to answer the question very quickly,
+  since it is not restricted to finite objects.
 \end{example}
 
-A specific utility of Knuth-Bendix with pair orbit enumeration (\texttt{kbp}) is
-the ability to return a congruence's \textit{non-trivial congruence classes},
-which in some cases cannot be determined by any of the other algorithms.
-Consider the following example.
+% A specific utility of Knuth-Bendix with pair orbit enumeration (\texttt{kbp}) is
+% the ability to return a congruence's \textit{non-trivial congruence classes},
+% which in some cases cannot be determined by any of the other algorithms.
+% Consider the following example.
 
-\begin{example}
-  \label{ex:good-kbp}
-TODO: find a simpler example.
+% \begin{example}
+%   \label{ex:good-kbp}
+%   TODO: find a simpler example.
 
-Let $S$ be the semigroup defined by the presentation
-$$\pres{a,b,c}{b^7=b,\ c^5=c,\ bc^2ba=bc^2b,\ bc^2bc=bc^2b,\ b^2cbca=b^2cbc,\ b^2cbcb=b^2cbc}.$$
-Certainly this semigroup is infinite.  Next let $\rho$ be the right congruence
-defined by the pair $(ab^2a, a^2bab)$.  It turns out that $\rho$ has only one
-non-trivial congruence class, which is simply equal to $\{ab^2a, a^2bab\}$, and
-all other classes are singletons.  Since the total number of congruence classes
-is infinite, Todd-Coxeter cannot complete.  The \texttt{kbfp} method can
-certainly rewrite any pair of words to identify whether a pair lies in $\rho$;
-but only \texttt{kbp} has a way of looking up which elements are not in
-singletons, and thus returning an answer to the question: \textit{what are
-  the non-trivial congruence classes of $\rho$?}
-\end{example}
+%   Let $S$ be the semigroup defined by the presentation
+%   $$\pres{a,b,c}{b^7=b,\ c^5=c,\ bc^2ba=bc^2b,\ bc^2bc=bc^2b,\ b^2cbca=b^2cbc,\ b^2cbcb=b^2cbc}.$$
+%   Certainly this semigroup is infinite.  Next let $\rho$ be the right congruence
+%   defined by the pair $(ab^2a, a^2bab)$.  It turns out that $\rho$ has only one
+%   non-trivial congruence class, which is simply equal to $\{ab^2a, a^2bab\}$,
+%   and all other classes are singletons.  Since the total number of congruence
+%   classes is infinite, Todd-Coxeter cannot complete.  The \texttt{kbfp} method
+%   can certainly rewrite any pair of words to identify whether a pair lies in
+%   $\rho$; but only \texttt{kbp} has a way of looking up which elements are not
+%   in singletons, and thus returning an answer to the question: \textit{what are
+%     the non-trivial congruence classes of $\rho$?}
+% \end{example}
 
-Taken together, these four examples give a justification for the use of four
+Taken together, these examples give a justification for the use of several
 different algorithms to solve one question.  Since it may be unknown in advance
 which algorithms may perform well or which may return at all, it is useful to be
 able to execute all at once and return in whichever run-time is quickest.
@@ -1179,33 +1180,27 @@ analyse performance.
   \label{fig:bench-trans-all}
 \end{figure}
 
-Figure \ref{fig:bench-trans-all} shows the results of a set of 5000 tests on
-transformation semigroups.  In each test, $3$ transformations of degree $6$ were
-chosen at random, and used to generate a semigroup $S$ (any semigroup of size
-over $10000$ was rejected).  The elements of $S$ were computed, and a single
-pair of elements was chosen at random to generate a congruence $\rho$.  Three
-more pairs were chosen at random, and each of the different algorithms described
-in this chapter was used to determine whether each pair was contained in $\rho$.
+Figure \ref{fig:bench-trans-1p-times} shows the results of a set of 5000 tests
+on transformation semigroups.  In each test, $3$ transformations of degree $6$
+were chosen at random, and used to generate a semigroup $S$ (any semigroup of
+size over $10000$ was rejected).  The elements of $S$ were computed, and a pair
+of elements was chosen at random to generate a congruence $\rho$.  Three more
+pairs were chosen at random, and each of the different algorithms described in
+this chapter was used to determine whether each pair was contained in $\rho$.
+Similar tests were also conducted using $2$ and $3$ generating pairs for $\rho$,
+as shown in \ref{fig:bench-trans-2p-times} and \ref{fig:bench-trans-3p-times}.
 The time taken to return an answer was recorded in each case, and these figures
 were compared to one another.  The algorithms used were:
 \begin{itemize}
 \item Todd-Coxeter (\texttt{tc}),
 \item Todd-Coxeter with prefilled table (\texttt{tc\_prefill}),
-\item Knuth-Bendix with Froidure-Pin (\texttt{kbfp}),
+\item Knuth-Bendix (\texttt{kb}),
 \item pair orbit enumeration (\texttt{p}),
 \item the parallel method described in this chapter (\texttt{default}),
 \item and the method implemented in the library of GAP (\texttt{GAP}).
 \end{itemize}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-gap}
-  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
-    transformation semigroups}
-  \label{fig:bench-trans-gap}
-\end{figure}
-
-As can be seen in Figure \ref{fig:bench-trans-all}, the prefilled Todd-Coxeter
+As can be seen in Figure \ref{fig:bench-trans-1p-times}, the prefilled Todd-Coxeter
 method is the most likely to complete fastest, with regular Todd-Coxeter winning
 in a sizeable minority of cases.  This backs up the anecdotal observations group
 theorists have made \cite{havascomparing} that Todd-Coxeter tends to perform
@@ -1217,14 +1212,66 @@ examples, taking even longer than the built-in methods in GAP.  These results
 are a justification for the decision to run only the Todd-Coxeter algorithms in
 the case of a finite, concrete semigroup.
 
-Figure \ref{fig:bench-trans-gap} shows data from the same tests, plotted not by
+Figures \ref{fig:bench-trans-2p-times} and \ref{fig:bench-trans-3p-times} show
+that with a higher number of generating pairs, the pair orbit enumeration
+algorithm suffers badly---this can be understood, since it generally has to
+enumerate more pairs when the generating set is larger.  However, with more
+generating pairs \texttt{tc} tends to perform relatively better, since there are
+likely to be fewer congruence classes and therefore fewer rows in the coset
+table.
+
+This tendency is illustrated further in Figures \ref{fig:bench-trans-1p-tccomp},
+\ref{fig:bench-trans-2p-tccomp} and \ref{fig:bench-trans-3p-tccomp}, which
+compare the standard Todd-Coxeter algorithm with the prefilled version, arranged
+according to whether the congruence in question has many or few classes relative
+to its size.  The $x$ axis in these figures is
+$$(\text{Number of congruence classes} - 1) / (\text{Size of} $S$ - 1),$$
+a scale from $0$ to $1$, where $0$ represents a universal congruence and $1$
+represents a trivial congruence.  Since the size of $S$ is a major factor in how
+long any algorithm takes to run, only the ratio of \texttt{tc} to
+\texttt{tc\_prefill} is shown: a black line is drawn on the graphs to indicate
+the length of time taken by \texttt{tc\_prefill}, and a data point is then
+plotted for each test, showing how many times as long \texttt{tc} took to
+complete.  As can be seen, \texttt{tc} often wins when there are relatively few
+large classes, and \texttt{tc_prefill} is much more likely to win when there are
+many small classes.  This reinforces the idea given in Examples \ref{ex:good-tc}
+and \ref{ex:good-tc-prefill}, that the winning algorithm may depend on number of
+classes, and it is therefore not clear in advance which algorithm may be better.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-gap}
+  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
+    transformation semigroups}
+  \label{fig:bench-trans-1p-gap}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-2p-gap}
+  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
+    transformation semigroups}
+  \label{fig:bench-trans-2p-gap}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-3p-gap}
+  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
+    transformation semigroups}
+  \label{fig:bench-trans-3p-gap}
+\end{figure}
+
+Figures \ref{fig:bench-trans-1p-gap}, \ref{fig:bench-trans-2p-gap} and
+\ref{fig:bench-trans-3p-gap} show data from the same tests, plotted not by
 the size of the semigroup, but simply in order of the ratio between GAP's
 runtime and that of the default method in \texttt{libsemigroups}.  As can be
 seen, the \texttt{libsemigroups} methods run much faster than the GAP methods in
-almost all cases, with the GAP methods taking as much as $2800$ times
-as long.  Out of $5000$ tests, GAP performed better in only $12$ cases, and
-these were all tests in which both methods completed in less than $0.3$
-milliseconds.
+almost all cases, with the GAP methods taking as much as $2800$ times as long
+for one generating pair.  Out of $5000$ tests, GAP performed better in only $12$
+cases, and these were all tests in which both methods completed in less than
+$0.3$ milliseconds.  On tests with two and three generating pairs, GAP was
+slower every time.
 
 Further tests were carried out in a similar way, but using finitely presented
 semigroups instead of concrete semigroups.  The main difference between these
@@ -1233,6 +1280,10 @@ semigroup $S$ which was generated, a finite presentation $\pres X R$ was found
 for $S$, and that presentation was used in tests instead of the concrete
 semigroup $S$ itself.  This is intended to test which algorithms are effective
 when the elements of the semigroup are not known in advance.
+
+In order to produce a further comparison, the tests for finitely presented
+semigroups were also run with the \textit{kbmag} package for GAP \cite{kbmag}.
+The results are shown on the graphs with the name \texttt{kbmag}.
 
 \begin{figure}[h]
   \centering
@@ -1255,13 +1306,13 @@ than it was for concrete semigroups, taking as much as $400,000$ times as long
 as \texttt{libsemigroups} to complete.  Due to the excessive times GAP took to
 complete some tests, the size of semigroups was restricted to $1000$, and only
 $1000$ tests were carried out.  In these tests, unlike for concrete semigroups,
-Knuth-Bendix with Froidure-Pin tended to outperform GAP and \texttt{kbp}, but in
+Knuth-Bendix tended to outperform GAP, but in
 general Todd-Coxeter methods were still faster.  It should be noted, however,
 that these were all congruences that were guaranteed in advance to have a finite
 number of classes.  An arbitrary congruence on a finitely presented semigroup
 may have an infinite number of classes, and there are many examples in which
-Knuth-Bendix methods can return an answer but Todd-Coxeter cannot (see Examples
-\ref{ex:good-kbfp} and \ref{ex:good-kbp}).
+Knuth-Bendix can return an answer but Todd-Coxeter cannot (see Example
+\ref{ex:good-kbfp}).
 
 \clearpage
 
@@ -1273,4 +1324,5 @@ For example:
 \item Multiplying concrete elements directly in some places instead of using
   the presentation (beyond prefilling TC);
 \item In the GAP library, anything interesting they might do;
+\item Adding Knuth-Bendix support for left and right congruences.
 \end{itemize}
