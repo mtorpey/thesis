@@ -1176,21 +1176,24 @@ analyse performance.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-times}
-  \caption{Performance of the algorithms on 5000 transformation semigroups}
+  \caption{Performance of the algorithms on 5000 transformation semigroups, with
+    one generating pair}
   \label{fig:bench-trans-1p-times}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-2p-times}
-  \caption{Performance of the algorithms on 5000 transformation semigroups}
+  \caption{Performance of the algorithms on 5000 transformation semigroups, with
+    two generating pairs}
   \label{fig:bench-trans-2p-times}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-3p-times}
-  \caption{Performance of the algorithms on 5000 transformation semigroups}
+  \caption{Performance of the algorithms on 5000 transformation semigroups, with
+    three generating pairs}
   \label{fig:bench-trans-3p-times}
 \end{figure}
 
@@ -1238,7 +1241,7 @@ table.
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-tccomp}
   \caption{Comparison between the two Todd-Coxeter methods, for transformation
-    semigroups}
+    semigroups with one generating pair}
   \label{fig:bench-trans-1p-tccomp}
 \end{figure}
 
@@ -1246,7 +1249,7 @@ table.
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-2p-tccomp}
   \caption{Comparison between the two Todd-Coxeter methods, for transformation
-    semigroups}
+    semigroups with two generating pairs}
   \label{fig:bench-trans-2p-tccomp}
 \end{figure}
 
@@ -1254,7 +1257,7 @@ table.
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-3p-tccomp}
   \caption{Comparison between the two Todd-Coxeter methods, for transformation
-    semigroups}
+    semigroups with three generating pairs}
   \label{fig:bench-trans-3p-tccomp}
 \end{figure}
 
@@ -1263,7 +1266,7 @@ This tendency is illustrated further in Figures \ref{fig:bench-trans-1p-tccomp},
 compare the standard Todd-Coxeter algorithm with the prefilled version, arranged
 according to whether the congruence in question has many or few classes relative
 to its size.  The $x$ axis in these figures is
-$$(\text{Number of congruence classes} - 1) / (\text{Size of} S - 1),$$
+$$(\text{Number of congruence classes} - 1) / (\text{Size of~} S - 1),$$
 a scale from $0$ to $1$, where $0$ represents a universal congruence and $1$
 represents a trivial congruence.  Since the size of $S$ is a major factor in how
 long any algorithm takes to run, only the ratio of \texttt{tc} to
@@ -1280,7 +1283,7 @@ classes, and it is therefore not clear in advance which algorithm may be better.
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-gap}
   \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
-    transformation semigroups}
+    transformation semigroups with one generating pair}
   \label{fig:bench-trans-1p-gap}
 \end{figure}
 
@@ -1288,7 +1291,7 @@ classes, and it is therefore not clear in advance which algorithm may be better.
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-2p-gap}
   \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
-    transformation semigroups}
+    transformation semigroups with two generating pairs}
   \label{fig:bench-trans-2p-gap}
 \end{figure}
 
@@ -1296,7 +1299,7 @@ classes, and it is therefore not clear in advance which algorithm may be better.
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-3p-gap}
   \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
-    transformation semigroups}
+    transformation semigroups with three generating pairs}
   \label{fig:bench-trans-3p-gap}
 \end{figure}
 
@@ -1326,21 +1329,24 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-times}
-  \caption{Performance of the algorithms on $1000$ finitely presented semigroups}
+  \caption{Performance of the algorithms on $1000$ finitely presented semigroups
+    with one generating pair}
   \label{fig:bench-fp-1p-times}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-2p-times}
-  \caption{Performance of the algorithms on $1000$ finitely presented semigroups}
+  \caption{Performance of the algorithms on $1000$ finitely presented semigroups
+    with two generating pairs}
   \label{fig:bench-fp-2p-times}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-times}
-  \caption{Performance of the algorithms on $1000$ finitely presented semigroups}
+  \caption{Performance of the algorithms on $1000$ finitely presented semigroups
+    with three generating pairs}
   \label{fig:bench-fp-3p-times}
 \end{figure}
 
@@ -1348,7 +1354,7 @@ The results are shown on the graphs with the name \texttt{kbmag}.
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-gap}
   \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
-    finitely presented semigroups}
+    finitely presented semigroups and one generating pair}
   \label{fig:bench-fp-1p-gap}
 \end{figure}
 
@@ -1356,7 +1362,7 @@ The results are shown on the graphs with the name \texttt{kbmag}.
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-2p-gap}
   \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
-    finitely presented semigroups}
+    finitely presented semigroups and two generating pairs}
   \label{fig:bench-fp-2p-gap}
 \end{figure}
 
@@ -1364,7 +1370,7 @@ The results are shown on the graphs with the name \texttt{kbmag}.
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-gap}
   \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
-    finitely presented semigroups}
+    finitely presented semigroups and three generating pairs}
   \label{fig:bench-fp-3p-gap}
 \end{figure}
 
@@ -1381,6 +1387,11 @@ number of classes.  An arbitrary congruence on a finitely presented semigroup
 may have an infinite number of classes, and there are many examples in which
 Knuth-Bendix can return an answer but Todd-Coxeter cannot (see Example
 \ref{ex:good-kbfp}).
+
+\textit{kbmag} generally performed worse in tests than Todd-Coxeter, but was
+comparable to our implementation of Knuth-Bendix (TODO: our KB will probably
+improve a lot soon).  It generally took around $10$ times as long as the
+complete parallel method (\texttt{default} on the graphs).
 
 \clearpage
 
