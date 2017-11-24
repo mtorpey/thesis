@@ -1400,11 +1400,11 @@ one could perhaps be shared with the other.
 The main objective of Knuth-Bendix is the addition of new rewriting rules to a
 rewriting system $\rws$ to satisfy the condition of confluence: if a critical
 pair is found, and a new rule $u \to v$ is added to $\rws$, then this gives us a
-pair of words $(u,v)$ which represents a pair of elements in the congruence we
+pair of words $(u,v)$ which represents a pair of congruent elements in the congruence we
 are studying.  If a Todd-Coxeter procedure is running in parallel, it would be
 possible to send the pair of words $(u,v)$ to the Todd-Coxeter thread, which
 at its next convenience would run \textsc{Coinc(Trace($1, u$), Trace($1, v$))}
-to identify those two rows in the table.
+to identify the two corresponding rows in the table.
 
 Conversely, Todd-Coxeter may find information which could be used by
 Knuth-Bendix.  Firstly, it is trivial to record, for each row $i$ of the table,
@@ -1412,7 +1412,7 @@ the word $w_i$ which was first used to describe it: row $1$ is identified with
 the empty word ($w_1 := \varepsilon$), and if a row is created using
 \textsc{Add($i, x$)} then it is assigned the word $w_ix$.  For each row $i$, we
 now have \textsc{Trace}$(1, w_i) = i$; that is, each row has a word which can
-act as a representative for the congruence class it represents.
+act as a representative for its congruence class.
 
 If, in a normal run of Todd-Coxeter, it is found that two rows $i$ and $j$
 represent the same class and must be combined, then this immediately gives a
@@ -1451,7 +1451,7 @@ be effective.
 \subsection{Left and right congruences with Knuth-Bendix}
 \label{sec:kb-l-r}
 The parallel method in this chapter, and the implementation in
-\texttt{libsemigroups}, includes support for left congruences and right
+\texttt{libsemigroups}, include support for left congruences and right
 congruences, as well as the more important two-sided congruences.  Currently,
 Todd-Coxeter and pair enumeration are the only methods which support left and
 right congruences, while Knuth-Bendix is only applied in the two-sided case.
