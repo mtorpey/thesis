@@ -1454,9 +1454,33 @@ The parallel approach described in this chapter is quite open-ended, and could
 be extended or improved in several ways.  Given more time to spend on the
 project, these are areas which could bear investigation.
 
-\subsection{Prefilling Todd-Coxeter with a left Cayley graph}
+\subsection{Pre-filling Todd-Coxeter with a left Cayley graph}
 \label{sec:prefill-left}
+The pre-filled Todd-Coxeter algorithm, as described in Section
+\ref{sec:tc-prefill}, works by starting the procedure with a right Cayley graph
+for $S$.  In \texttt{libsemigroups} and in the Semigroups package for GAP, a
+right Cayley graph for a semigroup is found using the Froidure-Pin method, which
+also returns the corresponding left Cayley graph.  Hence, we may also wish to
+find a way to use the left Cayley graph in the pre-filling process.
 
+As mentioned in Section \ref{sec:tc-l-r}, it is possible to use Todd-Coxeter
+with a reversed multiplication, essentially studying a semigroup anti-isomorphic
+to $S$.  It would be possible to apply the same principle, reverse the
+multiplication of elements in $S$, and thus use the left Cayley graph instead of
+the right Cayley graph in pre-filling.  This could be run as an additional
+thread in the parallel procedure.
+
+In many cases, using the left Cayley graph might be very similar in terms of
+performance to using the right.  However, some semigroups have left and right
+Cayley graphs which are very different.  Consider, for example, the right zero
+semigroup $\RZ_n$, which has $n$ generators, $n$ elements, and the
+multiplication $xy=y$ for any $x,y \in \RZ_n$.  Its right Cayley graph is the
+complete digraph, where any element can be mapped to any other element using the
+appropriate generator.  Its left Cayley graph is totally disconnected, with each
+vertex $v$ in a single trivial connected component with $n$ edges taking $v$ to
+$v$.  With such different left and right Cayley graphs, it seems likely that one
+piece of information would be much more helpful than the other in calculating
+congruences on the semigroup.
 
 \subsection{Interaction between Knuth-Bendix and Todd-Coxeter}
 \label{sec:linking-kb-tc}
