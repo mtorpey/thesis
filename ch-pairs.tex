@@ -1606,9 +1606,15 @@ congruences, as well as the more important two-sided congruences.  Currently,
 Todd-Coxeter and pair enumeration are the only methods which support left and
 right congruences, while Knuth-Bendix is only applied in the two-sided case.
 However, there does exist a variation of the Knuth-Bendix procedure which could
-compute left and right congruences.  This is done by...
+compute left and right congruences in some limited cases, namely when the
+semigroup in question is the free monoid $X^*$ for some set $X$.  The procedure
+involves appending an extra generator $\#$ and adding it as a prefix to all the
+words in the set of generating pairs $W$.  It is described in more detail in
+\cite[\S 2.8]{sims}.
 
-TODO: reference?
+Since this is limited to left and right congruences over free monoids, it is
+limited in its possible use for the algorithm described in this chapter.
+However, it might cause a performance improvement in those limited cases.
 
 % TODO: In the GAP library, anything interesting they might do
 
