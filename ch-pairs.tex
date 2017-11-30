@@ -1168,8 +1168,15 @@ Semigroups/congs it works/works best on
 Complexity
 
 \section{Running in parallel}
+\label{sec:running-in-parallel}
 
-How do we tie together all the different algorithms?
+Now that we have described the various individual algorithms for computing with
+congruences, we can describe the overall parallel method which ties all these
+algorithms together.
+
+The basic principle is not complicated: run all the described algorithms
+simultaneously, and whenever one of the algorithms finds an answer, kill all the
+other algorithms and return the answer that was given.
 
 \section{Implementation}
 
