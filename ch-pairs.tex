@@ -222,8 +222,6 @@ congruence when requested:
 \item Class number of a given element
 \end{itemize}
 
-\clearpage
-
 \section{Decidability}
 \label{sec:decidability}
 
@@ -823,7 +821,7 @@ create new rows; the rest of the procedure will simply be about tracing
 relations from $W$ and combining rows together.
 
 \begin{algorithm}
-\caption{The prefilled \textsc{Todd-Coxeter} algorithm}
+\caption{The pre-filled \textsc{Todd-Coxeter} algorithm}
 \label{alg:tc-prefill}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeterPrefill}{$\pres X R, W, S$}
@@ -854,8 +852,6 @@ from its position in the list and added to a list of ``free rows'' which can be
 reused later.  The ``rows in use'' list is best implemented as a doubly-linked
 list, so that single entries can be added and removed with as little processor
 work as possible.
-
-\clearpage
 
 \subsection{Rewriting systems}
 \label{sec:kb}
@@ -1154,19 +1150,6 @@ infinite monoid:
   \ref{thm:knuth-bendix}.
 \end{example}
 
-\clearpage
-
-\subsection{Froidure-Pin}
-\label{sec:fp}
-
-Background
-
-The KBFP algorithm
-
-Semigroups/congs it works/works best on
-
-Complexity
-
 \section{Running in parallel}
 \label{sec:running-in-parallel}
 
@@ -1190,7 +1173,7 @@ it is not worth including.
   \renewcommand{\arraystretch}{1.3}
   \begin{tabular}{| c | r | c | c | c | c |}
     \hline
-    Type & Side & TC & TC (prefill) & P & KB \\
+    Type & Side & TC & TC (pre-fill) & P & KB \\
     \hline
     \multirow{2}{*}{Concrete} & Two-sided & \cmark & \cmark & $\sim$ & $\sim$ \\
     \cline{2-6}
@@ -1274,11 +1257,7 @@ very long time (or even for an infinite length of time) if run to completion.
 % \end{algorithmic}
 % \end{algorithm}
 
-\section{Implementation}
-
-Practical considerations in libsemigroups
-
-\clearpage
+% TODO: \section{Implementation} ?
 
 \section{Benchmarking}
 \label{sec:benchmarking}
@@ -1417,14 +1396,14 @@ The time taken to return an answer was recorded in each case, and these figures
 were compared to one another.  The algorithms used were:
 \begin{itemize}
 \item Todd-Coxeter (\texttt{tc}),
-\item Todd-Coxeter with prefilled table (\texttt{tc\_prefill}),
+\item Todd-Coxeter with pre-filled table (\texttt{tc\_prefill}),
 \item Knuth-Bendix (\texttt{kb}),
 \item pair orbit enumeration (\texttt{p}),
 \item the parallel method described in this chapter (\texttt{default}),
 \item and the method implemented in the library of GAP (\texttt{GAP}).
 \end{itemize}
 
-As can be seen in Figure \ref{fig:bench-trans-1p-times}, the prefilled Todd-Coxeter
+As can be seen in Figure \ref{fig:bench-trans-1p-times}, the pre-filled Todd-Coxeter
 method is the most likely to complete fastest, with regular Todd-Coxeter winning
 in a sizeable minority of cases.  This backs up the anecdotal observations group
 theorists have made \cite{havascomparing} that Todd-Coxeter tends to perform
@@ -1470,7 +1449,7 @@ table.
 
 This tendency is illustrated further in Figures \ref{fig:bench-trans-1p-tccomp},
 \ref{fig:bench-trans-2p-tccomp} and \ref{fig:bench-trans-3p-tccomp}, which
-compare the standard Todd-Coxeter algorithm with the prefilled version, arranged
+compare the standard Todd-Coxeter algorithm with the pre-filled version, arranged
 according to whether the congruence in question has many or few classes relative
 to its size.  The $x$ axis in these figures is
 $$(\text{Number of congruence classes} - 1) / (\text{Size of~} S - 1),$$
@@ -1600,8 +1579,6 @@ comparable to our implementation of Knuth-Bendix (TODO: our KB will probably
 improve a lot soon).  It generally took around $10$ times as long as the
 complete parallel method (\texttt{default} on the graphs).
 
-\clearpage
-
 \section{Future work}
 
 The parallel approach described in this chapter is quite open-ended, and could
@@ -1690,7 +1667,7 @@ two, and see whether a row already exists which represents that element.  In
 this way, we can avoid the unnecessary creation of new rows which would only be
 deleted by \textsc{Coinc} later.
 
-The prefilling of Todd-Coxeter tables is one use of the concrete elements that
+The pre-filling of Todd-Coxeter tables is one use of the concrete elements that
 we have already described and implemented, but they may be many more which would
 be effective.
 
@@ -1713,14 +1690,3 @@ limited in its possible use for the algorithm described in this chapter.
 However, it might cause a performance improvement in those limited cases.
 
 % TODO: In the GAP library, anything interesting they might do
-
-% TODO: "prefill" or "pre-fill"?
-
-\clearpage
-
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-bynrclasses}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-2p-bynrclasses}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-3p-bynrclasses}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-bynrclasses}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-2p-bynrclasses}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-bynrclasses}
