@@ -267,17 +267,17 @@ indistinguishable from one that will run forever.
 \section{Finding a presentation}
 \label{sec:find-pres}
 
-A concrete semigroup $S$ will not be specified by a presentation, but a finite
-presentation is still required for the Todd-Coxeter and
-Knuth-Bendix/Froidure-Pin algorithms to be used, and so a presentation
-$\pres X R$ must be calculated.  For the purposes of the algorithm described in
-this chapter, it is not important how this presentation is obtained, only that
-it is correct and that elements from $S$ can be factorised with respect to $X$.
+A concrete semigroup $S$ is not specified by a presentation, but by a set of
+generators whose multiplication is well understood independent of $S$.  However,
+a finite presentation is still required for the Todd-Coxeter and Knuth-Bendix
+algorithms to be used, and so a presentation $\pres X R$ must be calculated for
+a concrete semigroup.  For the purposes of the algorithm described in this
+chapter, it is not important how this presentation is obtained, only that it is
+correct and that elements from $S$ can be factorised with respect to $X$.
 
 The \texttt{libsemigroups} implementation of this chapter's algorithm uses the
-Froidure-Pin algorithm, a method which takes a concrete semigroup such as a
-semigroup of transformations or partial permutations, and returns several useful
-pieces of information about it:
+Froidure-Pin algorithm, a method which takes a concrete semigroup $S$ and a set
+of generators $X$, and returns several useful pieces of information about it:
 \begin{itemize}
 \item a left Cayley graph for $S$ with respect to $X$;
 \item a right Cayley graph for $S$ with respect to $X$;
@@ -303,9 +303,9 @@ For more information about the Froidure-Pin algorithm and its implementation in
 \subsection{Pair orbit enumeration}
 \label{sec:p}
 
-This is the most simple of the algorithms discussed in this section, and
-generally does not perform as well as the others.  However, it has certain
-advantages such as its small overhead and quick setup, and on certain (somewhat
+This is the simplest of the algorithms discussed in this section, and
+generally does not perform as well as the others in practice.  However, it has certain
+advantages such as its small overhead and quick setup, and therefore on certain (somewhat
 trivial) examples performs better than the others.  Furthermore, it is
 applicable to any problem discussed in this chapter, whether $S$ is a concrete
 or finitely presented semigroup, and whether $\rho$ is a left, right or
@@ -317,7 +317,7 @@ set of generators $X$ for $S$, and a set of generating pairs $\mathbf{R}$ for
 the congruence we are trying to compute.  It will also be important to remember
 whether we are calculating a left, right, or two-sided congruence, a piece of
 information encoded in Algorithm \ref{alg:p} as $\sigma \in \{L,R,T\}$.  We
-start by starting a list of pairs $\mathbf{R}'$ which we initialise to be equal
+start with a list of pairs $\mathbf{R}'$ which we initialise to be equal
 to the set of generating pairs $\mathbf{R}$; this list $\mathbf{R}'$ will hold
 all the pairs that have been found so far, except those we infer from
 reflexivity, symmetry and transitivity.  We also have a \textit{union-find}
@@ -328,7 +328,7 @@ well-established method for describing equivalence relations---see
 
 We now begin iterating through the pairs in $\mathbf{R}'$, and as we do so we
 will add further pairs to $\mathbf{R}'$ which will also need to be iterated on,
-until we reach the end of the list.  For each pair $(a,b)$ we firstly need to
+until we reach the end of the list.  For each pair $(a,b)$ we first need to
 merge $a$ and $b$ in the union-find table $\tau$---if either $a$ or $b$ does not
 already have a position in $\tau$, then it will need to be added first.  Now,
 for each generator $x$, we can find the two pairs $(xa,xb)$ and $(ax,ab)$.
@@ -372,11 +372,11 @@ is only in the congruence if $a=b$.
 
 It would be possible, instead of increasing the length of $\tau$ when a new
 element is found, to make $\tau$'s original length equal to the size of $S$ at
-creation.  However, this approach is not used here, since adding the elements as
+creation.  However, this approach is not used here, since adding the elements only as
 they are found opens up the possibility of applying this method to infinite
 semigroups.  Our implementation in \texttt{libsemigroups} \cite{libsemigroups}
 includes such a possibility, by taking a semigroup presentation $\pres X R$ and
-using Knuth-Bendix (see Section \ref{sec:kb}) as a way of comparing its
+using Knuth-Bendix (see Section \ref{sec:kb}) as a way of comparing the semigroup's
 elements.  The pair orbit enumeration procedure, as described above, can then be
 used, and will complete in finite time if and only if the number of elements in
 non-trivial congruence classes is finite.  This was implemented to answer
@@ -388,7 +388,7 @@ The algorithm is therefore quick to complete for congruences with few
 non-reflexive pairs---that is, congruences with many classes.  Conversely, it is
 exceedingly slow for congruences with many pairs and few classes.
 
-Some improvements can be made on the basic algorithm shown above.  For example,
+Some improvements can be made to the basic algorithm shown above.  For example,
 the \texttt{libsemigroups} implementation makes use of the symmetry of pairs: a
 pair $(a,b)$ is not added to $\mathbf{R}'$ if the pair $(b,a)$ has previously
 been added.  Tweaks like this can make the algorithm slightly faster, though
@@ -844,7 +844,7 @@ defined by $W$ over the semigroup defined by $\pres X R$.  If we are considering
 a two-sided congruence, we can simply apply the Todd-Coxeter method described
 above to the semigroup presentation $\pres{X}{R,W}$, and the result will be the
 classes of $\rho$.  However, if we are considering a left or right congruence we
-should alter the method slightly.
+must alter the method slightly.
 
 Let $\pres X R$ and $W$ be as described in Section \ref{sec:program-inputs}, and
 assume that $\rho$ is the \textit{right} congruence they specify.  Since
@@ -875,12 +875,17 @@ $$(1, as)\bar\tau
 = (1, bs)\bar\tau,$$
 which is enough to show that $(as, bs) \in \rho$ as required.
 
+In summary, when computing a right congruence with Todd-Coxeter, each relation
+$u=v$ from $R$ must be applied to every single row $e \in \mathbf{N}$
+(\textsc{Trace($e, u=v$)}), while the relations from $W$ only need to be applied
+to the identity row (\textsc{Trace($1, u=v$)}).
+
 If, instead of a right congruence, we are considering a left congruence, we may
 apply the same method but reversing all multiplications.  That is to say, the
 row given by $(1, w_1 w_2 \ldots w_k)\bar\tau$ does not correspond to the word
 $w_1 w_2 \ldots w_k$ but to the word $w_k w_{k-1} \ldots w_1$.  The words in
 every relation in $R$ and $W$ should be reversed, and then we should study the
-right congruence defined by the resulting relations.  The Todd-Coxeter method
+\textit{right} congruence defined by the resulting relations.  The Todd-Coxeter method
 then works in exactly the same way as described above, but it should be
 remembered on completion that the resulting table describes the semigroup and
 congruence with left multiplication instead of right multiplication.
@@ -899,8 +904,8 @@ then we can easily find a list of all the elements of $S$, and we can easily
 multiply them together.  In particular, we can find a \textit{right Cayley
   graph} for $S$ with respect to its generators $X$: this graph tells us, for
 each element $s \in S$ and each generator $x \in X$, the value of $s \cdot x$.
-This graph can be converted into a Todd-Coxeter table.  There are $|S| + 1$
-rows, where row $1$ represents the identity as usual, and rows $2$ to $|S| + 1$
+This graph can be converted into a Todd-Coxeter table.  We start with $|S| + 1$
+rows, where row $1$ represents the empty word as usual, and rows $2$ to $|S| + 1$
 represent the elements of $S$.  For each element $s \in S$ and each generator
 $x \in X$, let $i$ be the row corresponding to $s$ and $j$ be the row
 corresponding to $s \cdot x$.  We set $(i, x)\tau := j$.  In this way, we encode
@@ -915,9 +920,9 @@ relations $R$ and running Todd-Coxeter to completion: we have a table which
 describes the elements of $S$, or the congruence classes of the trivial
 congruence $\Delta_S$.  Since we wish to calculate the classes of $\rho$, we now
 have to consider the pairs $W$, and find out which $\Delta_S$-classes should be
-combined.  Since there are no ``gaps'' in the table (i.e.~we never have
+combined to make $\rho$-classes.  Since there are no ``gaps'' in the table (i.e.~we never have
 $(i,x)\tau=0$), we will never be forced to use the \textsc{Add} operation and
-create new rows; the rest of the procedure will simply be about tracing
+create new rows; the procedure from now on will simply be about tracing
 relations from $W$ and combining rows together.
 
 \begin{algorithm}
@@ -1262,10 +1267,10 @@ simultaneously, and whenever one of the algorithms finds an answer, kill all the
 other algorithms and return the answer that was given.  However, the precise
 details depend on whether we are considering a concrete or finitely presented
 semigroup, as well as whether we are considering a left, right or two-sided
-semigroup.  Table \ref{tab:running-in-parallel} shows which algorithms are run
+congruence.  Table \ref{tab:running-in-parallel} shows which algorithms are run
 in which cases.  A tick (\cmark) denotes that the algorithm is used, a cross
 (\xmark) denotes that it cannot be used, and a tilde ($\sim$) denotes that the
-algorithm could be applied, but is so rarely the fastest option that in practice
+algorithm could be applied in principle, but is so rarely the fastest option that in practice
 it is not worth including.
 
 \begin{table}[h]
@@ -1281,7 +1286,7 @@ it is not worth including.
     \hline
     \multirow{2}{*}{FP} & Two-sided & \cmark & \xmark & \cmark & \cmark \\
     \cline{2-6}
-         & Left/right & \cmark & \xmark & \cmark & \cmark \\
+         & Left/right & \cmark & \xmark & \cmark & \xmark \\
     \hline
   \end{tabular}
   \renewcommand{\arraystretch}{0.7}
@@ -1325,7 +1330,7 @@ have a periodic check to see whether a desired pair is present, and return
 immediately if it is.  This check could be done by each individual algorithm
 every few hundred operations, or on a timer every few milliseconds.  In this
 way, operations can quickly return desired results, even if it would take them a
-very long time (or even for an infinite length of time) if run to completion.
+very long time (or even an infinite length of time) to run to completion.
 
 % \begin{algorithm}
 % \caption{Determining whether $x$ and $y$ represent the same class of the
@@ -1773,7 +1778,7 @@ be effective.
 
 \subsection{Left and right congruences with Knuth-Bendix}
 \label{sec:kb-l-r}
-The parallel method in this chapter, and the implementation in
+The parallel method in this chapter, and its implementation in
 \texttt{libsemigroups}, include support for left congruences and right
 congruences, as well as the more important two-sided congruences.  Currently,
 Todd-Coxeter and pair enumeration are the only methods which support left and
@@ -1787,6 +1792,6 @@ words in the set of generating pairs $W$.  It is described in more detail in
 
 Since this is limited to left and right congruences over free monoids, it is
 limited in its possible use for the algorithm described in this chapter.
-However, it might cause a performance improvement in those limited cases.
+However, it might cause a performance improvement in those few cases.
 
 % TODO: In the GAP library, anything interesting they might do
