@@ -273,11 +273,30 @@ Knuth-Bendix/Froidure-Pin algorithms to be used, and so a presentation
 $\pres X R$ must be calculated.  For the purposes of the algorithm described in
 this chapter, it is not important how this presentation is obtained, only that
 it is correct and that elements from $S$ can be factorised with respect to $X$.
-However, in order to implement the ideas of this chapter, it may be useful to
-see a description of the method used in \texttt{libsemigroups}
-\cite{libsemigroups}.
 
-Description goes here. % TODO
+The \texttt{libsemigroups} implementation of this chapter's algorithm uses the
+Froidure-Pin algorithm, a method which takes a concrete semigroup such as a
+semigroup of transformations or partial permutations, and returns several useful
+pieces of information about it:
+\begin{itemize}
+\item a left Cayley graph for $S$ with respect to $X$;
+\item a right Cayley graph for $S$ with respect to $X$;
+\item a confluent terminating rewriting system $R$ describing the elements of
+  $S$ as words in $X^+$;
+\item and for each element $s \in S$, a word $w \in X^+$ representing one
+  possible factorisation of $s$.
+\end{itemize}
+The right Cayley graph can be used by the Todd-Coxeter procedure to pre-fill its
+table (see Section \ref{sec:tc-prefill}).  But more importantly, the rewriting
+system $R$ is a set of pairs which can be used as the relations in a finite
+presentation $\pres X R$ for the semigroup $S$.  The fact that $R$ is confluent
+and terminating may also be useful when it is used as part of a rewriting system
+in the Knuth-Bendix process later (see Section \ref{sec:kb}).
+
+For more information about the Froidure-Pin algorithm and its implementation in
+\texttt{libsemigroups}, see \cite{froidure-pin}.
+
+% TODO: actually describe it?
 
 \section{The methods}
 
