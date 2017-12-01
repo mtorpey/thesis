@@ -284,15 +284,96 @@ Description goes here. % TODO
 \subsection{Pair orbit enumeration}
 \label{sec:p}
 
-Background
+This is the most simple of the algorithms discussed in this section, and
+generally does not perform as well as the others.  However, it has certain
+advantages such as its small overhead and quick setup, and on certain (somewhat
+trivial) examples performs better than the others.  Furthermore, it is
+applicable to any problem discussed in this chapter, whether $S$ is a concrete
+or finitely presented semigroup, and whether $\rho$ is a left, right or
+two-sided congruence.
 
-The P algorithm
+We will now give a brief description of pair orbit enumeration---a pseudo-code
+description is shown in Algorithm \ref{alg:p}.  We start with a semigroup $S$, a
+set of generators $X$ for $S$, and a set of generating pairs $\mathbf{R}$ for
+the congruence we are trying to compute.  It will also be important to remember
+whether we are calculating a left, right, or two-sided congruence, a piece of
+information encoded in Algorithm \ref{alg:p} as $\sigma \in \{L,R,T\}$.  We
+start by starting a list of pairs $\mathbf{R}'$ which we initialise to be equal
+to the set of generating pairs $\mathbf{R}$; this list $\mathbf{R}'$ will hold
+all the pairs that have been found so far, except those we infer from
+reflexivity, symmetry and transitivity.  We also have a \textit{union-find}
+table $\tau$, which will begin as an array of size $0$.  This table will be used
+to keep track of which elements are in which class.  Union-find is a
+well-established method for describing equivalence relations---see
+\cite{union-find} for a more detailed description.
 
-Using Knuth-Bendix: KBP
+We now begin iterating through the pairs in $\mathbf{R}'$, and as we do so we
+will add further pairs to $\mathbf{R}'$ which will also need to be iterated on,
+until we reach the end of the list.  For each pair $(a,b)$ we firstly need to
+merge $a$ and $b$ in the union-find table $\tau$---if either $a$ or $b$ does not
+already have a position in $\tau$, then it will need to be added first.  Now,
+for each generator $x$, we can find the two pairs $(xa,xb)$ and $(ax,ab)$.
+Depending on whether we are calculating a left, right, or two-sided congruence,
+we add one or both of these pairs to $\mathbf{R}'$ to be processed in its own
+turn.
 
-Semigroups/congs it works/works best on
+\begin{algorithm}
+\caption{The pair orbit enumeration algorithm}
+\label{alg:p}
+\begin{algorithmic}[1]
+\Require $S$ a semigroup,
+         $\mathbf{R} \subseteq S \times S$,
+         $\sigma \in \{L, R, T\}$
+\Procedure{P}{$S, \mathbf{R}, \sigma$}
+\State Let $X$ be a generating set for $S$
+\State $\mathbf{R}' := \mathbf{R}$
+%\Comment{$\mathbf{R}'$ is the list of pairs found so far}
+\State $\tau :=$ an empty \textsc{Union-Find} table
+\For{$(a,b) \in \mathbf{R}'$}
+  \State \Call{Union}{$\tau, a, b$}
+  \For{$x \in X$}
+    \If{$\sigma \in \{L, T\}$}
+      \State $\mathbf{R}' \gets \mathbf{R}' \cup \{(xa, xb)\}$
+    \EndIf
+    \If{$\sigma \in \{R, T\}$}
+      \State $\mathbf{R}' \gets \mathbf{R}' \cup \{(ax, bx)\}$
+    \EndIf
+  \EndFor
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
-Complexity
+Once this procedure is finished, we have a complete table $\tau$ which describes
+the congruence's non-trivial classes.  To check whether a pair $(a,b)$ lies in
+the congruence, we now just need to look up $a$ and $b$ in the table using
+\textsc{Find}, and if they lie in the same class we return true.  If either
+element has not been added to $\tau$, then it lies in a singleton, and $(a,b)$
+is only in the congruence if $a=b$.
+
+It would be possible, instead of increasing the length of $\tau$ when a new
+element is found, to make $\tau$'s original length equal to the size of $S$ at
+creation.  However, this approach is not used here, since adding the elements as
+they are found opens up the possibility of applying this method to infinite
+semigroups.  Our implementation in \texttt{libsemigroups} \cite{libsemigroups}
+includes such a possibility, by taking a semigroup presentation $\pres X R$ and
+using Knuth-Bendix (see Section \ref{sec:kb}) as a way of comparing its
+elements.  The pair orbit enumeration procedure, as described above, can then be
+used, and will complete in finite time if and only if the number of elements in
+non-trivial congruence classes is finite.  This was implemented to answer
+questions other than checking a pair's inclusion in the congruence, and will
+therefore not be discussed in any more detail in this chapter.
+
+This algorithm's run-time is a product of the number of pairs in the congruence.
+The algorithm is therefore quick to complete for congruences with few
+non-reflexive pairs---that is, congruences with many classes.  Conversely, it is
+exceedingly slow for congruences with many pairs and few classes.
+
+Some improvements can be made on the basic algorithm shown above.  For example,
+the \texttt{libsemigroups} implementation makes use of the symmetry of pairs: a
+pair $(a,b)$ is not added to $\mathbf{R}'$ if the pair $(b,a)$ has previously
+been added.  Tweaks like this can make the algorithm slightly faster, though
+they do not address the high complexity of the method.
 
 \subsection{Todd-Coxeter}
 \label{sec:tc}
