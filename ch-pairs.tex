@@ -112,16 +112,49 @@ time.
 The type of element in a semigroup affects which methods will be most effective,
 or even which methods will be applicable.  For this purpose, we divide
 semigroups into two categories: finitely presented semigroups, and
-\textit{concrete} semigroups.  By \textit{concrete}, we mean a finite semigroup
-whose elements can be multiplied and compared quickly, without reference to the
-semigroup as a whole; these could be semigroups of transformations, partial
-permutations, bipartitions, matrices, or other finite objects.  Their elements
-will be known in advance.  Finitely presented semigroups are a different case,
-in that their elements are not known in advance, and indeed it may not be known
-whether or not a given semigroup is finite.  Finitely presented monoids are treated as
-equivalent to finitely presented semigroups, since a semigroup presentation can
-be attained by simply adding a generator for the identity and relations to make
-it multiplicatively neutral.
+\textit{concrete} semigroups.
+
+\begin{definition}
+  \label{def:concrete}
+  A semigroup $S$ is \textbf{concrete} if it is finite, and lies in a category
+  with decidable word problem; that is, for a generating set $X$ for $S$, and
+  any two words $w_1$ and $w_2$ in $X^+$, it can always be decided in a finite
+  time whether $w_1$ and $w_2$ represent the same element of $S$.
+\end{definition}
+
+Concrete semigroups can have many different forms.  Perhaps the most trivial and
+obvious example of a concrete semigroup would be a semigroup specified by a
+Cayley table: the generating set $X$ contains all the elements of $S$, and two
+words $w_1$ and $w_2$ represent the same element if and only if they produce the
+same number when processed through the Cayley table.  Semigroups specified by
+Cayley tables are therefore concrete; but in practice they are used very little,
+since they require a great deal of space to store---order $O(|S|^2)$.
+
+A more common representation is a transformation semigroup, or a semigroup of
+partial permutations.  These contain elements which can be multiplied and
+compared without reference to the semigroup as a whole: for example, if
+$x = \transV 13342$ and $y = \transV 24422$ then we can calculate
+$xy = \transV 24424$ without knowing anything about $S$, the semigroup that
+contains $x$ and $y$.  So long as all elements in these semigroups have finite
+degree, any multiplication or comparison is guaranteed to complete in a finite
+time, and so the word problem on such a semigroup $S$ is decidable, and $S$ is
+concrete.
+
+Finitely presented semigroups are a different case, in that their elements
+cannot be compared without reference to the semigroup as a whole.  If $S$ is a
+semigroup described by a finite presentation $\pres X R$, and $w_1$ and $w_2$
+are words in $X^+$, then it may be undecidable whether $w_1$ and $w_2$ represent
+the same element of $S$.  There are many examples of presentations for which
+this word problem is undecidable (see Example \ref{ex:makanin}), and so
+semigroups specified by finite presentations are not concrete.  Besides, many
+finite presentations describe infinite semigroups, and the finiteness of $S$ is
+also not known in advance.
+
+Decidability is discussed further in Section \ref{sec:decidability}.
+
+Finitely presented monoids are treated as equivalent to finitely presented
+semigroups, since a semigroup presentation can be attained by simply adding a
+generator for the identity and relations to make it multiplicatively neutral.
 
 \section{Program inputs}
 \label{sec:program-inputs}
@@ -245,6 +278,7 @@ semigroup of the congruence, and has long been known to be undecidable in
 general.  Indeed, consider the following example from Gennadi\'{i} Makanin.
 
 \begin{example}[Makanin, 1966]
+  \label{ex:makanin}
   The presentation
   $$\pres{a,b,c}{c^2b^2 = b^2c^2,\ bc^3b^2 = cb^3c^2,\ ac^2b^2 = b^2a,\ abc^3b^2 = cb^2a,\ b^2c^2b^4c^2 = b^2c^2b^4c^2a}$$
   defines a semigroup which has undecidable word problem.  \cite{makanin_1966}
