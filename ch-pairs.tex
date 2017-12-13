@@ -315,13 +315,27 @@ indistinguishable from one that will run forever.
 \section{Finding a presentation}
 \label{sec:find-pres}
 
-A concrete semigroup $S$ is not specified by a presentation, but by a set of
-generators whose multiplication is well understood independent of $S$.  However,
-a finite presentation is still required for the Todd-Coxeter and Knuth-Bendix
-algorithms to be used, and so a presentation $\pres X R$ must be calculated for
-a concrete semigroup.  For the purposes of the algorithm described in this
-chapter, it is not important how this presentation is obtained, only that it is
-correct and that elements from $S$ can be factorised with respect to $X$.
+Recall from Section \ref{sec:program-inputs} that a concrete semigroup $S$ is
+not specified by a presentation, but by a set of generators whose multiplication
+is well understood and decidable.  In order to use the Todd-Coxeter and
+Knuth-Bendix algorithms a finite presentation is required, and so a presentation
+$\pres X R$ must be calculated for $S$.  For the purposes of the algorithm
+described in this chapter, it is not important how this presentation is
+obtained.  However, for the sake of completeness, we will briefly discuss how a
+presentation could be computed.
+
+Since a concrete semigroup $S$ is always finite, there is one trivial way of
+producing a presentation $\pres X R$ directly from the Cayley table of $S$: let
+$X$ be the set of all elements in $S$, and let $R$ contain one relation for each
+pair $(x,y) \in X \times X$: if $s$ is the element of $S$ which is equal to
+$x \cdot y$, then simply add the relation $xy = s$, thus encoding all
+information about the structure of $S$ into $\pres X R$.
+
+This approach is simple to describe, but of course results in a large, unwieldy
+presentation which will be difficult to use in computations: it will have $|S|$
+generators and $|S|^2$ relations, which is likely to be far more than necessary,
+and will therefore slow down the Todd-Coxeter and Knuth-Bendix algorithms
+badly.  We therefore might consider an alternative.
 
 The \texttt{libsemigroups} implementation of this chapter's algorithm uses the
 Froidure-Pin algorithm, a method which takes a concrete semigroup $S$ and a set
