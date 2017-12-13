@@ -276,7 +276,8 @@ then certain problems asked about it may be undecidable.
 Firstly, we might consider the presence of a given pair $(x,y)$ in a given
 congruence.  This is equivalent to solving the word problem for the quotient
 semigroup of the congruence, and has long been known to be undecidable in
-general.  Indeed, consider the following example from Gennadi\'{i} Makanin.
+general.  Indeed, consider the following example from Gennadi\'{i} Makanin with
+only three generators.
 
 \begin{example}[Makanin, 1966]
   \label{ex:makanin}
@@ -285,6 +286,18 @@ general.  Indeed, consider the following example from Gennadi\'{i} Makanin.
   defines a semigroup which has undecidable word problem.  \cite{makanin_1966}
 \end{example}
 % TODO: read this properly, and maybe give a proof.
+
+Furthermore, consider the following example from G.S.~Cijtin, perhaps the
+simplest undecidable presentation, with 5 generators but only 33 occurrences of
+those generators in its relations.
+
+\begin{example}[Cijtin, 1957]
+  \label{ex:cijtin}
+  The presentation
+  $$\pres{a,b,c,d,e}{ac=ca,\ ad=da,\ bc=cb,\ bd=db,\ ce=eca,\ de=edb,\ c^2e=c^2ae}$$
+  defines a semigroup which has undecidable word problem.  \cite{cijtin_1957, collins_1986}
+\end{example}
+% TODO: read these properly, and maybe give proofs.
 
 Since the general semigroup word problem is undecidable, the algorithm in this
 chapter cannot hope to guarantee to return an answer.  Similarly, the number of
