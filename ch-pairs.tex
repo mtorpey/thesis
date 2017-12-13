@@ -365,14 +365,6 @@ For more information about the Froidure-Pin algorithm and its implementation in
 \subsection{Pair orbit enumeration}
 \label{sec:p}
 
-This is the simplest of the algorithms discussed in this section, and
-generally does not perform as well as the others in practice.  However, it has certain
-advantages such as its small overhead and quick setup, and therefore on certain (somewhat
-trivial) examples performs better than the others.  Furthermore, it is
-applicable to any problem discussed in this chapter, whether $S$ is a concrete
-or finitely presented semigroup, and whether $\rho$ is a left, right or
-two-sided congruence.
-
 We will now give a brief description of pair orbit enumeration---a pseudo-code
 description is shown in Algorithm \ref{alg:p}.  We start with a semigroup $S$, a
 set of generators $X$ for $S$, and a set of generating pairs $\mathbf{R}$ for
@@ -444,6 +436,15 @@ used, and will complete in finite time if and only if the number of elements in
 non-trivial congruence classes is finite.  This was implemented to answer
 questions other than checking a pair's inclusion in the congruence, and will
 therefore not be discussed in any more detail in this chapter.
+
+This is the simplest of the algorithms discussed in this section, and generally
+does not perform as well as the others in practice.  However, it has certain
+advantages such as its small overhead and quick setup, and therefore on certain
+examples performs better than the others.  Furthermore, it is applicable to any
+problem discussed in this chapter, whether $S$ is a concrete or finitely
+presented semigroup, and whether $\rho$ is a left, right or two-sided
+congruence.  Uniquely among the methods described in this chapter, it does not
+even require a presentation in order to be run.
 
 This algorithm's run-time is a product of the number of pairs in the congruence.
 The algorithm is therefore quick to complete for congruences with few
