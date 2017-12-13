@@ -209,3 +209,30 @@ semigroup presentations, that of \textit{generating pairs}.
   The \textbf{left Cayley graph} of $S$ with respect to $X$ is defined
   analogously, replacing $s \cdot x$ with $x \cdot s$.
 \end{definition}
+
+Since this thesis will deal with many computational issues, it will be wise to
+make precise some computational terms.  We start with a definition of
+``algorithm'', a term which is generally well understood, but whose precise
+definition is debatable.  In this thesis, we opt for a definition in line with
+the Church--Turing thesis, which has been favoured by a variety of authors since
+it was established \cite{gurevich_2000} \cite{minsky_1967}.
+
+The Church--Turing thesis evolved from work by G\"{o}del, Church and Turing in
+the 1930s, in which they established three different models of computation:
+\textit{general recursive functions} \cite{godel}, \textit{$\lambda$-calculus}
+\cite{church}, and \textit{Turing machines} \cite{turing}.  These three models
+were soon shown to be equivalent, with any method computable on one being
+computable on both the others.  This led to the Church--Turing thesis: the
+opinion that the informal notion of an algorithm is accurately characterised by
+each of these three models, and therefore that they should be used as a
+definition of ``algorithm''.  This gives rise to our chosen definition.
+
+\begin{definition}
+  \label{def:algorithm}
+  An \textbf{algorithm} is a computational method which can be simulated by a
+  Turing machine.
+\end{definition}
+
+This definition encompasses every computation which can be run on today's
+electronic computers, and is therefore certainly applicable to any practical
+implementation of the algorithms described in this thesis.
