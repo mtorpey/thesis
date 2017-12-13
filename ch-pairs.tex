@@ -169,7 +169,7 @@ If $S$ is a concrete semigroup (as described in Section
 \ref{sec:applicable-types-of-semigroup}) then it will almost certainly be
 specified by a generating set; in this case, it is quick to use these generators
 to calculate a list of elements in $S$, along with left and right Cayley graphs
-for $S$, using the Froidure-Pin algorithm (see Section \ref{sec:fp}).  If on the
+for $S$, using the Froidure-Pin algorithm (see Section \ref{sec:find-pres}).  If on the
 other hand $S$ is a finitely presented semigroup, then the elements will not be
 known in advance.  In either case, a finite presentation $\pres X R$ can be
 given---a technique for efficiently finding a presentation for a concrete
@@ -185,7 +185,8 @@ The exact parameters supplied to the algorithm are therefore as follows:
 The following are also supplied if and only if $S$ is concrete:
 \begin{itemize}
 \item A list of elements of $S$;
-\item Left and right Cayley graphs for $S$;
+\item Left and right Cayley graphs for $S$ (see Definition
+  \ref{def:cayley-graph});
 \item A factorisation function $f : S \to X^*$.
 \end{itemize}
 
