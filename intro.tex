@@ -194,3 +194,18 @@ semigroup presentations, that of \textit{generating pairs}.
   $X$ and a set of pairs $R \subseteq X^+ \times X^+$.  It is taken as a
   description of a semigroup: the semigroup it defines is $X^+ / R^\sharp$.
 \end{definition}
+
+\begin{definition}
+  \label{def:cayley-graph}
+  Let $S$ be a semigroup, with a generating set $X$.  The \textbf{right Cayley
+    graph} of $S$ with respect to $X$ is the digraph-with-edge-labels $\Gamma$,
+  which is described as follows:
+  \begin{itemize}
+  \item The vertices of $\Gamma$ are the elements of $S$;
+  \item For each pair $(s, x) \in S \times X$ there exists an edge from $s$ to
+    $s \cdot x$ labelled by $x$:
+    $$s \overset{x}{\longrightarrow} s \cdot x$$
+  \end{itemize}
+  The \textbf{left Cayley graph} of $S$ with respect to $X$ is defined
+  analogously, replacing $s \cdot x$ with $x \cdot s$.
+\end{definition}
