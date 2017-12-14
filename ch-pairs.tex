@@ -1019,14 +1019,16 @@ the free semigroup $X^+$.
 
 The original problem we want to solve, as described in Section
 \ref{sec:program-inputs}, is to find the classes of the congruence $\rho$
-defined by $W$ over the semigroup defined by $\pres X R$.  If we are considering
+defined by a set of pairs $W \subset X^+ \times X^+$ over the semigroup defined
+by $\pres X R$.  If we are considering
 a two-sided congruence, we can simply apply the Todd-Coxeter method described
 above to the semigroup presentation $\pres{X}{R,W}$, and the result will be the
 classes of $\rho$.  However, if we are considering a left or right congruence we
-must alter the method slightly.
+must alter the method slightly.  We shall now describe how to modify
+Todd-Coxeter to compute the right congruence $\rho$.
 
 Let $\pres X R$ and $W$ be as described in Section \ref{sec:program-inputs}, and
-assume that $\rho$ is the \textit{right} congruence they specify.  Since
+assume that $\rho$ is the right congruence they specify.  Since
 $\pres X R$ specifies the semigroup over which $\rho$ is defined, we must trace
 all the relations $R$ on every row in the table, as usual.  This ensures that,
 for a relation $(a,b) \in R$, we have $(i, a)\bar\tau = (i, b)\bar\tau$ for
