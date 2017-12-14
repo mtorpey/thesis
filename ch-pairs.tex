@@ -1077,15 +1077,19 @@ In the ordinary Todd-Coxeter procedure as described above, we begin with just a
 single row representing the empty word, and we add rows to represent the
 different congruence classes as we go along, merging rows together if they are
 found to describe the same congruence class.  However, in the case that we are
-calculating a congruence over a concrete semigroup $S$, we have certain
+calculating a congruence over a concrete semigroup---or indeed, over a finitely
+presented semigroup on which Todd-Coxeter has already been run---we have certain
 information which we can use to help us with our calculation.
 
-If we have a concrete semigroup $S$, perhaps a semigroup of transformations,
-then we can easily find a list of all the elements of $S$, and we can easily
-multiply them together.  In particular, we can find a \textit{right Cayley
-  graph} for $S$ with respect to its generators $X$: this graph tells us, for
+If we have such a semigroup $S$, then we can find a right Cayley graph $\Gamma$
+for $S$ with respect to its generators $X$: if $S$ is concrete, then we can find
+this graph using the Froidure-Pin algorithm (see Section \ref{sec:find-pres});
+or if Todd-Coxeter has been run on $S$, then the resulting table contains all
+the information required for a right Cayley graph.  Either way, this graph tells us, for
 each element $s \in S$ and each generator $x \in X$, the value of $s \cdot x$.
-This graph can be converted into a Todd-Coxeter table.  We start with $|S| + 1$
+The graph can then be converted easily into a Todd-Coxeter table, as follows.
+
+We start with $|S| + 1$
 rows, where row $1$ represents the empty word as usual, and rows $2$ to $|S| + 1$
 represent the elements of $S$.  For each element $s \in S$ and each generator
 $x \in X$, let $i$ be the row corresponding to $s$ and $j$ be the row
