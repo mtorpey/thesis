@@ -1025,9 +1025,11 @@ defined by a set of pairs $W \subset X^+ \times X^+$ over the semigroup defined
 by $\pres X R$.  If we are considering
 a two-sided congruence, we can simply apply the Todd-Coxeter method described
 above to the semigroup presentation $\pres{X}{R,W}$, and the result will be the
-classes of $\rho$.  However, if we are considering a left or right congruence we
+classes of $\rho$ (see Algorithm \ref{alg:tc-twosided} for a full description).
+However, if we are considering a left or right congruence we
 must alter the method slightly.  We shall now describe how to modify
-Todd-Coxeter to compute the right congruence $\rho$.
+Todd-Coxeter to compute the right congruence $\rho$ (see Algorithm
+\ref{alg:tc-right} for pseudo-code).
 
 Let $\pres X R$ and $W$ be as described in Section \ref{sec:program-inputs}, and
 assume that $\rho$ is the right congruence they specify.  Since
@@ -1071,7 +1073,8 @@ every relation in $R$ and $W$ should be reversed, and then we should study the
 right congruence defined by the resulting relations.  The Todd-Coxeter method
 then works in exactly the same way as described above, but it should be
 remembered on completion that the resulting table describes the semigroup and
-congruence with left multiplication instead of right multiplication.
+congruence with left multiplication instead of right multiplication.  See
+Algorithm \ref{alg:tc-left} for a pseudo-code description.
 
 \begin{algorithm}
 \caption{The Todd-Coxeter algorithm for two-sided congruences}
@@ -1123,7 +1126,7 @@ congruence with left multiplication instead of right multiplication.
 
 \begin{algorithm}
 \caption{The Todd-Coxeter algorithm for left congruences}
-\label{alg:tc-right}
+\label{alg:tc-left}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeterLeft}{$\pres X R, W$}
 \State $R' := \varnothing$
