@@ -555,7 +555,10 @@ presented semigroup, and whether $\rho$ is a left, right or two-sided
 congruence.  Uniquely among the methods described in this chapter, it does not
 even require a presentation in order to be run.
 
-This algorithm's run-time is a product of the number of pairs in the congruence.
+This algorithm's run-time is a product of the number of pairs in the congruence:
+its space and time complexity are order $O(r)$, where $r$ is the number of
+non-reflexive pairs in $\rho$.  In the best cases where $r$ is small, this can
+perform quite well, but in the worst case this complexity is $O(|S|^2)$.
 The algorithm is therefore quick to complete for congruences with few
 non-reflexive pairs---that is, congruences with many classes.  Conversely, it is
 exceedingly slow for congruences with many pairs and few classes.
