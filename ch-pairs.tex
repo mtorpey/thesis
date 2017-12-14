@@ -785,12 +785,13 @@ $(i, x)\tau$ represents the element denoted by $i$ right-multiplied by the
 generator $x$.
 
 \begin{algorithm}
-\caption{The \textsc{Todd-Coxeter} algorithm for semigroups}
+\caption{The Todd-Coxeter algorithm for semigroups}
 \label{alg:tc}
 \begin{algorithmic}[1]
-\Procedure{Todd-Coxeter}{$\pres X R$}
+\Procedure{ToddCoxeter}{$\pres X R$}
 \State $n := 1$
 \State $\mathbf{N} := \{1\}$
+\State $\tau : \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$
 \For{$x \in X$}
   \State $(1, x)\tau := 0$
 \EndFor
@@ -799,6 +800,7 @@ generator $x$.
     \State \Call{Trace}{$e, u=v$}
   \EndFor
 \EndFor
+\State \Return $\tau$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
