@@ -1073,6 +1073,76 @@ then works in exactly the same way as described above, but it should be
 remembered on completion that the resulting table describes the semigroup and
 congruence with left multiplication instead of right multiplication.
 
+\begin{algorithm}
+\caption{The Todd-Coxeter algorithm for two-sided congruences}
+\label{alg:tc-twosided}
+\begin{algorithmic}[1]
+\Procedure{ToddCoxeterTwoSided}{$\pres X R, W$}
+\State $n := 1$
+\State $\mathbf{N} := \{1\}$
+\State $\tau : \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$
+\For{$x \in X$}
+  \State $(1, x)\tau := 0$
+\EndFor
+\For{$e \in \mathbf{N}$}
+  \For{$(u,v) \in W$}
+    \State \Call{Trace}{$e, u=v$}
+  \EndFor
+  \For{$(u,v) \in R$}
+    \State \Call{Trace}{$e, u=v$}
+  \EndFor
+\EndFor
+\State \Return $\tau$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{The Todd-Coxeter algorithm for right congruences}
+\label{alg:tc-right}
+\begin{algorithmic}[1]
+\Procedure{ToddCoxeterRight}{$\pres X R, W$}
+\State $n := 1$
+\State $\mathbf{N} := \{1\}$
+\State $\tau : \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$
+\For{$x \in X$}
+  \State $(1, x)\tau := 0$
+\EndFor
+\For{$(u,v) \in W$}
+  \State \Call{Trace}{$1, u=v$}
+\EndFor
+\For{$e \in \mathbf{N}$}
+  \For{$(u,v) \in R$}
+    \State \Call{Trace}{$e, u=v$}
+  \EndFor
+\EndFor
+\State \Return $\tau$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{The Todd-Coxeter algorithm for left congruences}
+\label{alg:tc-right}
+\begin{algorithmic}[1]
+\Procedure{ToddCoxeterLeft}{$\pres X R, W$}
+\State $R' := \varnothing$
+\State $W' := \varnothing$
+\For{$(u,v) \in R$}
+  \State Let $u = u_1 u_2 \ldots u_m$ \Comment{where each $u_i$ is in $X$}
+  \State Let $v = v_1 v_2 \ldots v_n$ \Comment{where each $v_j$ is in $X$}
+  \State $R' \gets R' \cup \{(u_m \ldots u_1, v_n \ldots v_1)\}$
+\EndFor
+\For{$(u,v) \in W$}
+  \State Let $u = u_1 u_2 \ldots u_m$ \Comment{where each $u_i$ is in $X$}
+  \State Let $v = v_1 v_2 \ldots v_n$ \Comment{where each $v_j$ is in $X$}
+  \State $W' \gets W' \cup \{(u_m \ldots u_1, v_n \ldots v_1)\}$
+\EndFor
+\State \Return \Call{ToddCoxeterRight}{$\pres{X}{R'}, W'$}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
 \subsubsection{Pre-filling the table}
 \label{sec:tc-prefill}
 In the ordinary Todd-Coxeter procedure as described above, we begin with just a
