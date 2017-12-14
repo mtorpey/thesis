@@ -1068,7 +1068,7 @@ apply the same method but reversing all multiplications.  That is to say, the
 row given by $(1, w_1 w_2 \ldots w_k)\bar\tau$ does not correspond to the word
 $w_1 w_2 \ldots w_k$ but to the word $w_k w_{k-1} \ldots w_1$.  The words in
 every relation in $R$ and $W$ should be reversed, and then we should study the
-\textit{right} congruence defined by the resulting relations.  The Todd-Coxeter method
+right congruence defined by the resulting relations.  The Todd-Coxeter method
 then works in exactly the same way as described above, but it should be
 remembered on completion that the resulting table describes the semigroup and
 congruence with left multiplication instead of right multiplication.
@@ -1113,13 +1113,14 @@ create new rows; the procedure from now on will simply be about tracing
 relations from $W$ and combining rows together.
 
 \begin{algorithm}
-\caption{The pre-filled \textsc{Todd-Coxeter} algorithm}
+\caption{The pre-filled Todd-Coxeter algorithm}
 \label{alg:tc-prefill}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeterPrefill}{$\pres X R, W, S$}
 \Require{$S = \{s_1, s_2, \ldots, s_k\}$ is a semigroup with its elements known in a defined order}
 \State $n := |S| + 1$
 \State $\mathbf{N} := \{1 \ldots n\}$
+\State $\tau : \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$
 \For{$x \in X$}
   \State $(1, x)\tau :=$ (position of $x$ in $S$)
   \For{$i \in \{2 \ldots n\}$}
@@ -1131,6 +1132,7 @@ relations from $W$ and combining rows together.
     \State \Call{Trace}{$e, u=v$}
   \EndFor
 \EndFor
+\State \Return $\tau$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
