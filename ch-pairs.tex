@@ -1773,36 +1773,38 @@ analyse performance.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-times}
-  \caption{Performance of the algorithms on 5000 transformation semigroups, with
+  \caption{Performance of the algorithms on 250 transformation semigroups, with
     one generating pair}
   \label{fig:bench-trans-1p-times}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-2p-times}
-  \caption{Performance of the algorithms on 5000 transformation semigroups, with
-    two generating pairs}
-  \label{fig:bench-trans-2p-times}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-3p-times}
-  \caption{Performance of the algorithms on 5000 transformation semigroups, with
+  \caption{Performance of the algorithms on 250 transformation semigroups, with
     three generating pairs}
   \label{fig:bench-trans-3p-times}
 \end{figure}
 
-Figure \ref{fig:bench-trans-1p-times} shows the results of a set of 5000 tests
-on transformation semigroups.  In each test, $3$ transformations of degree $6$
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-vp-times}
+  \caption{Performance of the algorithms on 250 transformation semigroups, with
+    a variable number of generating pairs}
+  \label{fig:bench-trans-vp-times}
+\end{figure}
+
+Figure \ref{fig:bench-trans-1p-times} shows the results of a set of $250$ tests
+on transformation semigroups.  In each test, $4$ transformations of degree $7$
 were chosen at random, and used to generate a semigroup $S$ (any semigroup of
-size over $10000$ was rejected).  The elements of $S$ were computed, and a pair
+size over $25000$ was rejected).  The elements of $S$ were computed, and a pair
 of elements was chosen at random to generate a congruence $\rho$.  Three more
 pairs were chosen at random, and each of the different algorithms described in
 this chapter was used to determine whether each pair was contained in $\rho$.
-Similar tests were also conducted using $2$ and $3$ generating pairs for $\rho$,
-as shown in \ref{fig:bench-trans-2p-times} and \ref{fig:bench-trans-3p-times}.
+
+For greater variety, similar tests were also conducted using $3$ generating
+pairs for $\rho$, and using a mixture of $1$ to $10$ generating pairs,
+as shown in \ref{fig:bench-trans-3p-times} and \ref{fig:bench-trans-vp-times}.
 The time taken to return an answer was recorded in each case, and these figures
 were compared to one another.  The algorithms used were:
 \begin{itemize}
@@ -1826,7 +1828,7 @@ examples, taking even longer than the built-in methods in GAP.  These results
 are a justification for the decision to run only the Todd-Coxeter algorithms in
 the case of a finite, concrete semigroup.
 
-Figures \ref{fig:bench-trans-2p-times} and \ref{fig:bench-trans-3p-times} show
+Figures \ref{fig:bench-trans-3p-times} and \ref{fig:bench-trans-vp-times} show
 that with a higher number of generating pairs, the pair orbit enumeration
 algorithm suffers badly---this can be understood, since it generally has to
 enumerate more pairs when the generating set is larger.  However, with more
@@ -1836,30 +1838,24 @@ table.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-tccomp}
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-1p-tccomp}
   \caption{Comparison between the two Todd-Coxeter methods, for transformation
     semigroups with one generating pair}
-  \label{fig:bench-trans-1p-tccomp}
+  \label{fig:bench-trans-tc-1p-tccomp}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-2p-tccomp}
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-vp-tccomp}
   \caption{Comparison between the two Todd-Coxeter methods, for transformation
-    semigroups with two generating pairs}
-  \label{fig:bench-trans-2p-tccomp}
+    semigroups with a variable number of generating pairs}
+  \label{fig:bench-trans-tc-vp-tccomp}
 \end{figure}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-3p-tccomp}
-  \caption{Comparison between the two Todd-Coxeter methods, for transformation
-    semigroups with three generating pairs}
-  \label{fig:bench-trans-3p-tccomp}
-\end{figure}
-
-This tendency is illustrated further in Figures \ref{fig:bench-trans-1p-tccomp},
-\ref{fig:bench-trans-2p-tccomp} and \ref{fig:bench-trans-3p-tccomp}, which
+This tendency is illustrated further in Figures
+\ref{fig:bench-trans-tc-1p-tccomp}, \ref{fig:bench-trans-tc-3p-tccomp} and
+\ref{fig:bench-trans-tc-vp-tccomp}, which show larger tests, each using $5$
+generators of degree $8$, and of size up to $100,000$.  In these figures we
 compare the standard Todd-Coxeter algorithm with the pre-filled version, arranged
 according to whether the congruence in question has many or few classes relative
 to its size.  The $x$ axis in these figures is
@@ -1878,6 +1874,23 @@ classes, and it is therefore not clear in advance which algorithm may be better.
 
 \begin{figure}[h]
   \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-vp-right-bynrclasses}
+  \caption{Comparison between the two Todd-Coxeter methods, for right
+    congruences over transformation semigroups with a variable number of
+    generating pairs}
+  \label{fig:bench-trans-tc-vp-right-bynrclasses}
+\end{figure}
+
+This distinction between the performance of \texttt{tc} and \texttt{tc\_prefill}
+is echoed in an example for right congruences, as shown in Figure
+\ref{fig:bench-trans-tc-vp-right-bynrclasses}.  Interestingly, it appears that
+for right congruences \texttt{tc\_prefill} is even more likely to be effective,
+perhaps because in \textsc{ToddCoxeterRight} so little time is spent applying
+relations from $W$, so the work is almost finished by the time the table has
+been pre-filled.
+
+\begin{figure}[h]
+  \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-gap}
   \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
     transformation semigroups with one generating pair}
@@ -1886,30 +1899,20 @@ classes, and it is therefore not clear in advance which algorithm may be better.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-2p-gap}
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-vp-gap}
   \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
-    transformation semigroups with two generating pairs}
-  \label{fig:bench-trans-2p-gap}
+    transformation semigroups with a variable number of generating pairs}
+  \label{fig:bench-trans-vp-gap}
 \end{figure}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-3p-gap}
-  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
-    transformation semigroups with three generating pairs}
-  \label{fig:bench-trans-3p-gap}
-\end{figure}
-
-Figures \ref{fig:bench-trans-1p-gap}, \ref{fig:bench-trans-2p-gap} and
-\ref{fig:bench-trans-3p-gap} show data from the same tests, plotted not by
+Figures \ref{fig:bench-trans-1p-gap} and \ref{fig:bench-trans-vp-gap} show data
+from the same tests, plotted not by
 the size of the semigroup, but simply in order of the ratio between GAP's
 runtime and that of the default method in \texttt{libsemigroups}.  As can be
 seen, the \texttt{libsemigroups} methods run much faster than the GAP methods in
-almost all cases, with the GAP methods taking as much as $2800$ times as long
-for one generating pair.  Out of $5000$ tests, GAP performed better in only $12$
-cases, and these were all tests in which both methods completed in less than
-$0.3$ milliseconds.  On tests with two and three generating pairs, GAP was
-slower every time.
+almost all cases, with the GAP methods taking as much as $7000$ times as long
+for one generating pair.  Out of the $500$ tests shown in total in these two
+figures, GAP never performed better than \texttt{libsemigroups}.
 
 Further tests were carried out in a similar way, but using finitely presented
 semigroups instead of concrete semigroups.  The main difference between these
@@ -1918,7 +1921,6 @@ semigroup $S$ which was generated, a finite presentation $\pres X R$ was found
 for $S$, and that presentation was used in tests instead of the concrete
 semigroup $S$ itself.  This is intended to test which algorithms are effective
 when the elements of the semigroup are not known in advance.
-
 In order to produce a further comparison, the tests for finitely presented
 semigroups were also run with the \textit{kbmag} package for GAP \cite{kbmag}.
 The results are shown on the graphs with the name \texttt{kbmag}.
@@ -1926,25 +1928,25 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-times}
-  \caption{Performance of the algorithms on $1000$ finitely presented semigroups
+  \caption{Performance of the algorithms on $250$ finitely presented semigroups
     with one generating pair}
   \label{fig:bench-fp-1p-times}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-2p-times}
-  \caption{Performance of the algorithms on $1000$ finitely presented semigroups
-    with two generating pairs}
-  \label{fig:bench-fp-2p-times}
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-times}
+  \caption{Performance of the algorithms on $250$ finitely presented semigroups
+    with three generating pairs}
+  \label{fig:bench-fp-3p-times}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-times}
-  \caption{Performance of the algorithms on $1000$ finitely presented semigroups
-    with three generating pairs}
-  \label{fig:bench-fp-3p-times}
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-times}
+  \caption{Performance of the algorithms on $250$ finitely presented semigroups
+    with a variable number of generating pairs}
+  \label{fig:bench-fp-vp-times}
 \end{figure}
 
 \begin{figure}[h]
@@ -1957,26 +1959,26 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-2p-gap}
-  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
-    finitely presented semigroups and two generating pairs}
-  \label{fig:bench-fp-2p-gap}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-gap}
   \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
     finitely presented semigroups and three generating pairs}
   \label{fig:bench-fp-3p-gap}
 \end{figure}
 
-As can be seen in Figures \ref{fig:bench-fp-1p-gap} to \ref{fig:bench-fp-3p-gap}, the
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-gap}
+  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
+    finitely presented semigroups and a variable number of generating pairs}
+  \label{fig:bench-fp-vp-gap}
+\end{figure}
+
+As can be seen in Figures \ref{fig:bench-fp-1p-gap} to \ref{fig:bench-fp-vp-gap}, the
 performance of the GAP library over finitely presented semigroups is far worse
-than it was for concrete semigroups, taking as much as $400,000$ times as long
+than it was for concrete semigroups, taking as much as $300,000$ times as long
 as \texttt{libsemigroups} to complete.  Due to the excessive times GAP took to
-complete some tests, the size of semigroups was restricted to $1000$, and only
-$1000$ tests were carried out.  In these tests, unlike for concrete semigroups,
+complete some tests, the size of semigroups was restricted to $1000$.  In these
+tests, unlike for concrete semigroups,
 Knuth-Bendix tended to outperform GAP, but in
 general Todd-Coxeter methods were still faster.  It should be noted, however,
 that these were all congruences that were guaranteed in advance to have a finite
@@ -2103,26 +2105,3 @@ However, it might cause a performance improvement in those few cases.
 % TODO: In the GAP library, anything interesting they might do
 
 \clearpage
-
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-gap}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-bynrclasses}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-2p-bynrclasses}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-bynrclasses}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-bynrclasses}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-gap}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-times}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-1p-tccomp}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-1p-times}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-2p-tccomp}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-2p-times}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-3p-tccomp}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-3p-times}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-vp-bynrclasses}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-vp-gap}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-vp-tccomp}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-vp-times}
-
-\clearpage
-
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-right-gap}
-\includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-right-times}
