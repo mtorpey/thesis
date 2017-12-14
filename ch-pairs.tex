@@ -430,12 +430,12 @@ shown in Algorithm \ref{alg:uf-find}.
 \caption{Finding the class number of an element}
 \label{alg:uf-find}
   \begin{algorithmic}
-    \Procedure{Find}{$n$}
-      \If{$\tau_n = n$}
-        \State \Return $n$
-      \Else
-        \State \Return \Call{Find}{$\tau_n$}
-      \EndIf
+    \Procedure{Find}{$x$}
+      \State $n := $ position of $x$ in $\Lambda$
+      \Repeat
+      \State $n \gets \tau_n$
+      \Until{$n = \tau_n$}
+      \State \Return $n$
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}
@@ -452,10 +452,8 @@ higher one to point to the lower.  Its pseudo-code is shown in Algorithm
 \label{alg:uf-union}
   \begin{algorithmic}
     \Procedure{Union}{$x,y$}
-      \State $m := $ position of $x$ in $\Lambda$
-      \State $n := $ position of $y$ in $\Lambda$
-      \State $m \gets $ \Call{Find}{$m$}
-      \State $n \gets $ \Call{Find}{$n$}
+      \State $m \gets $ \Call{Find}{$x$}
+      \State $n \gets $ \Call{Find}{$y$}
       \If{$m<n$}
         \State $\tau_n \gets m$
       \ElsIf{$n<m$}
@@ -522,6 +520,7 @@ turn.
     \EndIf
   \EndFor
 \EndFor
+\State \Return $(\Lambda, \tau)$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
