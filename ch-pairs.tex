@@ -1465,6 +1465,28 @@ chosen ordering on $X^*$ to make sure the system is terminating.
 % TODO: the whole u<v v<u thing should be mentioned explicitly earlier, not as
 % an afterthought.
 
+Though, as mentioned in Section \ref{sec:decidability}, the word problem for a
+semigroup presentation is undecidable in general, we do have a result about the
+Knuth-Bendix process which ensures completion in some cases.
+
+\begin{theorem}
+  Let $S$ be a semigroup with a finite presentation $\pres X R$, and let $\rws$
+  be the rewriting system produced from $R$ by applying a shortlex ordering to
+  all pairs, as described above.
+
+  If $S$ is finite, then the Knuth-Bendix process applied to $\rws$ will
+  eventually halt with a finite, confluent and terminating set of rules.
+
+  \begin{proof}
+    Let $u,v \in X^*$.  We know that $u \lrstar_\rws v$ if and only if $u$ and
+    $v$ describe the same element of $S$.  In particular, if $S$ is finite, then
+    the $\lrstar_\rws$ relation will have finitely many classes---one for each
+    element of $S$.  Using \cite[Corollary 12.21]{cgt}, we have that
+    Knuth-Bendix will halt with a finite, confluent and terminating set of
+    rules, as required.
+  \end{proof}
+\end{theorem}
+
 Let us consider an example of each of the two types of critical pair in
 Definition \ref{def:critical-pair}.
 
