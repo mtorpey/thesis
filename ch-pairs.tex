@@ -1328,6 +1328,39 @@ relations from $W$ and combining rows together.
 \end{algorithmic}
 \end{algorithm}
 
+\begin{theorem}
+  Let $\pres X R$ and $W$ be as in Section \ref{sec:program-inputs} and $S$ be a
+  concrete semigroup presented by $\pres X R$.
+  \textsc{ToddCoxeterPrefill}($\pres X R, W, S$) has output identical to
+  \textsc{ToddCoxeterTwoSided}($\pres X R, W$), up to relabelling of the rows.
+  \begin{proof}
+    The only difference between \textsc{Prefill} and \textsc{TwoSided} is that
+    \textsc{Prefill} initialises the Todd-Coxeter table with a right Cayley
+    graph for $S$, while \textsc{TwoSided} computes one from scratch using $R$.
+
+    % When, in line 11 of \textsc{TwoSided} (Algorithm \ref{alg:tc-twosided}), we
+    % call \textsc{Trace} for a row $e$ and a relation $u=v$ from $R$, we are
+    % simply forcing the equation $su = sv$ to hold, where $s$ is the element of
+    % $S$ represented by row $e$.  But since $\pres X R$ is just a presentation
+    % for $S$, there is no extra information it can give us which is not given by
+    % $S$ itself.
+
+    In lines 10 and 11 of \textsc{TwoSided} (Algorithm \ref{alg:tc-twosided}),
+    we are doing the equivalent of the original \textsc{ToddCoxeter} algorithm,
+    which produces a right Cayley graph for $S$.  Instead, in lines 5 to 8 of
+    \textsc{Prefill} (Algorithm \ref{alg:tc-prefill}) we input a right Cayley
+    graph for $S$ directly, without consulting $R$.  These two operations
+    produce the same result---a Todd-Coxeter table filled with a right Cayley
+    graph for $S$---so it does not matter which method we use to do so.
+
+    The only other part of the algorithm is to process the pairs in $W$,
+    something which both algorithms do identically.  It might be noticed that in
+    \textsc{TwoSided} this is done before the pairs in $R$.  Again, since the
+    operation is equivalent to processing the presentation $\pres{X}{R,W}$, it
+    does not matter in which order relations are processed.
+  \end{proof}
+\end{theorem}
+
 \subsubsection{Implementation}
 
 Rows will be added to the table, and deleted from it.  A list must be kept of
