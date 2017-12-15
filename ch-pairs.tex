@@ -1071,55 +1071,6 @@ by $\pres X R$.  If we are considering
 a two-sided congruence, we can simply apply the Todd-Coxeter method described
 above to the semigroup presentation $\pres{X}{R,W}$, and the result will be the
 classes of $\rho$ (see Algorithm \ref{alg:tc-twosided} for a full description).
-However, if we are considering a left or right congruence we
-must alter the method slightly.  We shall now describe how to modify
-Todd-Coxeter to compute the right congruence $\rho$ (see Algorithm
-\ref{alg:tc-right} for pseudo-code).
-
-Let $\pres X R$ and $W$ be as described in Section \ref{sec:program-inputs}, and
-assume that $\rho$ is the right congruence they specify.  Since
-$\pres X R$ specifies the semigroup over which $\rho$ is defined, we must trace
-all the relations $R$ on every row in the table, as usual.  This ensures that,
-for a relation $(a,b) \in R$, we have $(i, a)\bar\tau = (i, b)\bar\tau$ for
-every $i \in \mathbf{N}$, which is equivalent to the left congruence rule that
-for any pair $(a,b) \in R$ we have $(sa, sb) \in \rho$ for every $s \in S$.
-However, such a condition is not required for a right congruence, and so we do
-not need to enforce the pairs from $W$ so strictly.
-
-For a pair $(a,b) \in W$ we must certainly have $(a,b) \in \rho$.  Hence we run
-\textsc{Trace($1, a=b$)} to ensure that $(1,a)\bar\tau = (1,b)\bar\tau$ and
-therefore the row corresponding to $a$ is the same as the row corresponding to
-$b$.  However, we do not need to run \textsc{Trace($e, a=b$)} for any numbers
-$e$ higher than $1$, since this would be enforcing the \textit{left} congruence
-criterion, which does not apply to the \textit{right} congruence $\rho$.
-
-The right congruence criterion, that for any pair $(a,b) \in W$ we have
-$(as, bs) \in \rho$ for all $s \in S$, is automatically enforced without
-additional work, in the following way.  The words $as$ and $bs$ should be in the
-same congruence class of $\rho$ if and only if
-$(1, as)\bar\tau = (1, bs)\bar\tau$; but we already know that
-$(1, a)\bar\tau = (1, b)\bar\tau$, and so we have
-$$(1, as)\bar\tau
-= ((1, a)\bar\tau, s)\bar\tau
-= ((1, b)\bar\tau, s)
-= (1, bs)\bar\tau,$$
-which is enough to show that $(as, bs) \in \rho$ as required.
-
-In summary, when computing a right congruence with Todd-Coxeter, each relation
-$u=v$ from $R$ must be applied to every single row $e \in \mathbf{N}$
-(\textsc{Trace($e, u=v$)}), while the relations from $W$ only need to be applied
-to the identity row (\textsc{Trace($1, u=v$)}).
-
-If, instead of a right congruence, we are considering a left congruence, we may
-apply the same method but reversing all multiplications.  That is to say, the
-row given by $(1, w_1 w_2 \ldots w_k)\bar\tau$ does not correspond to the word
-$w_1 w_2 \ldots w_k$ but to the word $w_k w_{k-1} \ldots w_1$.  The words in
-every relation in $R$ and $W$ should be reversed, and then we should study the
-right congruence defined by the resulting relations.  The Todd-Coxeter method
-then works in exactly the same way as described above, but it should be
-remembered on completion that the resulting table describes the semigroup and
-congruence with left multiplication instead of right multiplication.  See
-Algorithm \ref{alg:tc-left} for a pseudo-code description.
 
 \begin{algorithm}
 \caption{The Todd-Coxeter algorithm for two-sided congruences}
@@ -1145,6 +1096,23 @@ Algorithm \ref{alg:tc-left} for a pseudo-code description.
 \end{algorithmic}
 \end{algorithm}
 
+However, if we are considering a left or right congruence we
+must alter the method slightly.  We shall now describe how to modify
+Todd-Coxeter to compute the right congruence $\rho$ (see Algorithm
+\ref{alg:tc-right} for pseudo-code).
+
+Let $\pres X R$ and $W$ be as described in Section \ref{sec:program-inputs}, and
+assume that $\rho$ is the right congruence they specify.  Since
+$\pres X R$ specifies the semigroup over which $\rho$ is defined, we must trace
+all the relations $R$ on every row in the table, as usual.  This ensures that,
+for a relation $(a,b) \in R$, we have $(i, a)\bar\tau = (i, b)\bar\tau$ for
+every $i \in \mathbf{N}$, which is equivalent to the left congruence rule that
+for any pair $(a,b) \in R$ we have $(sa, sb) \in \rho$ for every $s \in S$.
+However, such a condition is not required for a right congruence, and so we do
+not need to enforce the pairs from $W$ so strictly.  In fact, we only need to
+trace the pairs from $W$ from row $1$, and not any other row, as shown in line 8
+of Algorithm \ref{alg:tc-right}.
+
 \begin{algorithm}
 \caption{The Todd-Coxeter algorithm for right congruences}
 \label{alg:tc-right}
@@ -1169,27 +1137,132 @@ Algorithm \ref{alg:tc-left} for a pseudo-code description.
 \end{algorithmic}
 \end{algorithm}
 
+To see that this algorithm is correct, consider the following theorem.
+
+\begin{theorem}
+  Let $\pres X R$ and $W$ be as in Section \ref{sec:program-inputs} and $\rho$
+  be the right congruence they specify.
+  \textsc{ToddCoxeterRight}($\pres X R, W$) returns a table which describes the
+  classes of $\rho$ (after the identity row $1$ is removed).
+  \begin{proof}
+    We may safely assume that the basic Todd-Coxeter algorithm is correct
+    \cite{todd_coxeter_1936, beetham_campbell_1976} and therefore that
+    \textsc{ToddCoxeterTwoSided($\pres X R, W$)} gives the correct answer for a
+    two-sided congruence, since it is equivalent to running Todd-Coxeter on the
+    presentation $\pres{X}{R,W}$.  We must now consider how
+    \textsc{ToddCoxeterRight} differs from \textsc{ToddCoxeterTwoSided}, and
+    prove that the resulting table does indeed define the right congruence
+    $\rho$.
+
+    \textsc{ToddCoxeterTwoSided} treats pairs from $R$ and pairs from $W$ in
+    essentially the same way: each pair $(a,b)$ is traced starting at
+    \textit{every} active row $e \in \mathbf{N}$, using
+    \textsc{Trace}($e, a=b$).  \textsc{ToddCoxeterRight} follows this method for
+    pairs in $R$, but traces pairs in $W$ only from row $1$.
+
+    For a pair $(a,b) \in W$ we must certainly have $(a,b) \in \rho$.  Hence we
+    run \textsc{Trace($1, a=b$)} to ensure that $(1,a)\bar\tau = (1,b)\bar\tau$
+    and therefore the row corresponding to $a$ is the same as the row
+    corresponding to $b$.  However, we must not run \textsc{Trace($e, a=b$)} for
+    any numbers $e$ higher than $1$, since this would be enforcing the
+    \textit{left} congruence criterion, which does not apply to the
+    \textit{right} congruence $\rho$.
+
+    The right congruence criterion, that for any pair $(a,b) \in W$ we have
+    $(as, bs) \in \rho$ for all $s \in S$, is automatically enforced without
+    additional work, in the following way.  The words $as$ and $bs$ should be in
+    the same congruence class of $\rho$ if and only if
+    $(1, as)\bar\tau = (1, bs)\bar\tau$; but we already know that
+    $(1, a)\bar\tau = (1, b)\bar\tau$, and so we have
+    $$(1, as)\bar\tau
+    = ((1, a)\bar\tau, s)\bar\tau
+    = ((1, b)\bar\tau, s)
+    = (1, bs)\bar\tau,$$
+    which is enough to show that $(as, bs) \in \rho$ as required.
+  \end{proof}
+\end{theorem}
+
+In summary, when computing a right congruence with Todd-Coxeter, each relation
+$u=v$ from $R$ must be applied to every single row $e \in \mathbf{N}$
+(\textsc{Trace($e, u=v$)}), while the relations from $W$ only need to be applied
+to the identity row (\textsc{Trace($1, u=v$)}).
+
+If, instead of a right congruence, we are considering a left congruence, we may
+apply the same method but reversing all multiplications.  That is to say, the
+row given by $(1, w_1 w_2 \ldots w_k)\bar\tau$ does not correspond to the word
+$w_1 w_2 \ldots w_k$ but to the word $w_k w_{k-1} \ldots w_1$.  The words in
+every relation in $R$ and $W$ should be reversed, and then we should study the
+right congruence defined by the resulting relations.  The Todd-Coxeter method
+then works in exactly the same way as described above, but it should be
+remembered on completion that the resulting table describes the semigroup and
+congruence with left multiplication instead of right multiplication.  See
+Algorithm \ref{alg:tc-left} for a pseudo-code description.
+
 \begin{algorithm}
 \caption{The Todd-Coxeter algorithm for left congruences}
 \label{alg:tc-left}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeterLeft}{$\pres X R, W$}
-\State $R' := \varnothing$
-\State $W' := \varnothing$
+\State $\bar R := \varnothing$
+\State $\bar W := \varnothing$
 \For{$(u,v) \in R$}
   \State Let $u = u_1 u_2 \ldots u_m$ \Comment{where each $u_i$ is in $X$}
   \State Let $v = v_1 v_2 \ldots v_n$ \Comment{where each $v_j$ is in $X$}
-  \State $R' \gets R' \cup \{(u_m \ldots u_1, v_n \ldots v_1)\}$
+  \State $\bar R \gets \bar R \cup \{(u_m \ldots u_1, v_n \ldots v_1)\}$
 \EndFor
 \For{$(u,v) \in W$}
   \State Let $u = u_1 u_2 \ldots u_m$ \Comment{where each $u_i$ is in $X$}
   \State Let $v = v_1 v_2 \ldots v_n$ \Comment{where each $v_j$ is in $X$}
-  \State $W' \gets W' \cup \{(u_m \ldots u_1, v_n \ldots v_1)\}$
+  \State $\bar W \gets \bar W \cup \{(u_m \ldots u_1, v_n \ldots v_1)\}$
 \EndFor
-\State \Return \Call{ToddCoxeterRight}{$\pres{X}{R'}, W'$}
+\State \Return \Call{ToddCoxeterRight}{$\pres{X}{\bar R}, \bar W$}
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+
+\begin{theorem}
+  Let $\pres X R$ and $W$ be as in Section \ref{sec:program-inputs} and $\rho$
+  be the left congruence they specify.
+  \textsc{ToddCoxeterLeft}($\pres X R, W$) returns a table which describes the
+  classes of $\rho$ (after the identity row $1$ is removed, and with respect to
+  left multiplication).
+  \begin{proof}
+    For a word $w \in X^*$, let $\bar w$ be the reverse of that word, i.e.~if
+    $w = w_1 w_2 \ldots w_n$ where $w_i \in X$ for all $i \in \{1 \ldots n\}$,
+    then let $\bar w = w_n w_{n-1} \ldots w_1$.  Let $\bar R$ and $\bar W$ be
+    produced from $R$ and $W$ as shown in Algorithm \ref{alg:tc-left}, by
+    reversing all the words in all the pairs in each of the two sets.
+
+    Note that for two words $u, v \in X^*$, $\overline{uv} = \bar v \bar u$, and
+    that $\bar{\bar u} = u$.
+
+    Let $S$ be the semigroup specified by the presentation $\pres X R$, and let
+    $\bar S$ be the semigroup specified by the presentation $\pres{X}{\bar R}$.
+    If $u$ and $v$ are two words in $X^+$, then $u =_R v$ if and only if
+    $\bar u =_{\bar R} \bar v$.  This gives rise to a natural anti-isomorphism
+    $\bar \cdot$ from $S$ to $\bar S$: if $w \in X^+$ represents some $s \in S$,
+    then $\bar s$ is the element of $\bar S$ represented by $\bar w$.  This
+    anti-isomorphism is the basis for \textsc{ToddCoxeterLeft}.
+
+    Since $\rho$ is a left congruence, we have the rule that $(sa, sb) \in \rho$
+    for every element $s \in S$ and every pair $(a,b) \in \rho$.  We define
+    $$\bar\rho = \{(\bar a, \bar b) ~|~ (a,b) \in \rho,$$
+    a relation on $\bar S$.  The reflexivity, symmetry and transitivity of
+    $\bar\rho$ follow from $\rho$.  But note that
+    $(\overline{sa}, \overline{sb}) = (\bar a \bar s, \bar b \bar s) \in
+    \bar\rho$
+    for every $(\bar a, \bar b) \in \bar\rho$, and so $\bar\rho$ is a right
+    congruence.  In fact, it is the right congruence generated by $\bar W$.
+
+    Now when we call \textsc{ToddCoxeterRight}($\pres{X}{\bar R}, \bar W$) we
+    know we are producing a table which represents $\bar\rho$.  We know that $S$
+    is anti-isomorphic to $\bar S$, and that $(a,b) \in \rho$ if and only
+    $(\bar a, \bar b) \in \bar\rho$, so the table can be used directly to
+    describe $\rho$ itself.  We only need to take care to remember that all the
+    multiplications shown by $\tau$ are actually left-multiplications.
+  \end{proof}
+\end{theorem}
+
 
 \subsubsection{Pre-filling the table}
 \label{sec:tc-prefill}
