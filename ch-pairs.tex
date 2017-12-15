@@ -149,7 +149,6 @@ this word problem is undecidable (see Example \ref{ex:makanin}), and so
 semigroups specified by finite presentations are not concrete.  Besides, many
 finite presentations describe infinite semigroups, and the finiteness of $S$ is
 also not known in advance.
-
 Decidability is discussed further in Section \ref{sec:decidability}.
 
 Finitely presented monoids are treated as equivalent to finitely presented
@@ -566,7 +565,7 @@ state the following theorem.
     The remainder of the proof considers the union-find method.  As described
     above, since union-find stores pairs as a partition, it automatically takes
     care of reflexivity, symmetry, and transitivity.  That is, if a set of pairs
-    $Q$ is fed into the union-find table using \texttt{Union} on every pair in
+    $Q$ is fed into the union-find table using \textsc{Union} on every pair in
     $Q$, then the resulting table describes $Q^e$, the least equivalence
     relation containing $Q$.  Hence, if $\sigma = L$, the table produced by
     $\textsc{P}$ will describe the relation $(R^l)^e$; if $\sigma = R$, it will
