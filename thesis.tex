@@ -83,6 +83,12 @@
 \renewcommand{\thetable}{\thechapter.\arabic{table}}
 \renewcommand{\thetheorem}{\thechapter.\arabic{theorem}}
 
+% Sequential page numbering
+\let\oldsetcounter=\setcounter
+\renewcommand\setcounter[2]{%
+    \def\arg{#1}\def\pg{page}%
+    \ifx\arg\pg\else\oldsetcounter{#1}{#2}\fi}
+
 % TODO: Actual title
 \title{My PhD Thesis}
 \author{Michael Torpey}
@@ -91,11 +97,13 @@
 
 \maketitle
 
-\tableofcontents
-
 \doublespacing
 
 \include{abstract}
+
+\singlespacing
+\tableofcontents
+\doublespacing
 
 \include{intro}
 
