@@ -32,32 +32,20 @@ The operation symbol $*$ is often omitted where there is no risk of ambiguity.
 \end{definition}
 
 \begin{definition}
-  \label{def:congruence}
-  Let $S$ be a semigroup, and let $\rho$ be an equivalence relation on $S$.  The
-  relation $\rho$ is:
+  \label{def:cayley-graph}
+  Let $S$ be a semigroup, with a generating set $X$.  The \textbf{right Cayley
+    graph} of $S$ with respect to $X$ is the digraph-with-edge-labels $\Gamma$,
+  which is described as follows:
   \begin{itemize}
-  \item a \textbf{left congruence} if $(x, y) \in \rho$ implies that
-    $(ax, ay) \in \rho$ for all $a \in S$;
-  \item a \textbf{right congruence} if $(x, y) \in \rho$ implies that
-    $(xa, ya) \in \rho$ for all $a \in S$;
-  \item a \textbf{two-sided congruence} if it is both a left congruence and a
-    right congruence.
+  \item The vertices of $\Gamma$ are the elements of $S$;
+  \item For each pair $(s, x) \in S \times X$ there exists an edge from $s$ to
+    $s \cdot x$ labelled by $x$:
+    $$s \overset{x}{\longrightarrow} s \cdot x$$
   \end{itemize}
+  The \textbf{left Cayley graph} of $S$ with respect to $X$ is defined
+  analogously, replacing $s \cdot x$ with $x \cdot s$.
 \end{definition}
 
-When we talk about a \textit{congruence} without specifying that it is left or
-right, it is understood to be a two-sided congruence.
-
-\begin{proposition}
-  \label{prop:cong-def}
-  Let $\rho$ be a congruence on a semigroup $S$.  If $(x, y), (s, t) \in \rho$,
-  then $(xs, yt) \in \rho$.
-  \begin{proof}
-    Since $\rho$ is a left congruence, $xs ~\rho~ xt$, and since it is a right
-    congruence, $xt ~\rho~ yt$.  Hence, by transitivity, $xs ~\rho~ yt$, as
-    required.
-  \end{proof}
-\end{proposition}
 
 \begin{definition}
   \label{def:homomorphism}
@@ -100,6 +88,34 @@ assumed that ``homomorphism'' refers to a semigroup homomorphism.
   $$(s)\phi = t$$
   for some $s \in S$.
 \end{definition}
+
+\begin{definition}
+  \label{def:congruence}
+  Let $S$ be a semigroup, and let $\rho$ be an equivalence relation on $S$.  The
+  relation $\rho$ is:
+  \begin{itemize}
+  \item a \textbf{left congruence} if $(x, y) \in \rho$ implies that
+    $(ax, ay) \in \rho$ for all $a \in S$;
+  \item a \textbf{right congruence} if $(x, y) \in \rho$ implies that
+    $(xa, ya) \in \rho$ for all $a \in S$;
+  \item a \textbf{two-sided congruence} if it is both a left congruence and a
+    right congruence.
+  \end{itemize}
+\end{definition}
+
+When we talk about a \textit{congruence} without specifying that it is left or
+right, it is understood to be a two-sided congruence.
+
+\begin{proposition}
+  \label{prop:cong-def}
+  Let $\rho$ be a congruence on a semigroup $S$.  If $(x, y), (s, t) \in \rho$,
+  then $(xs, yt) \in \rho$.
+  \begin{proof}
+    Since $\rho$ is a left congruence, $xs ~\rho~ xt$, and since it is a right
+    congruence, $xt ~\rho~ yt$.  Hence, by transitivity, $xs ~\rho~ yt$, as
+    required.
+  \end{proof}
+\end{proposition}
 
 Congruences have a property that allows new semigroups to be made from old
 ones.  Consider the following definition of a quotient semigroup.
@@ -198,20 +214,6 @@ semigroup presentations, that of \textit{generating pairs}.
   description of a semigroup: the semigroup it defines is $X^+ / R^\sharp$.
 \end{definition}
 
-\begin{definition}
-  \label{def:cayley-graph}
-  Let $S$ be a semigroup, with a generating set $X$.  The \textbf{right Cayley
-    graph} of $S$ with respect to $X$ is the digraph-with-edge-labels $\Gamma$,
-  which is described as follows:
-  \begin{itemize}
-  \item The vertices of $\Gamma$ are the elements of $S$;
-  \item For each pair $(s, x) \in S \times X$ there exists an edge from $s$ to
-    $s \cdot x$ labelled by $x$:
-    $$s \overset{x}{\longrightarrow} s \cdot x$$
-  \end{itemize}
-  The \textbf{left Cayley graph} of $S$ with respect to $X$ is defined
-  analogously, replacing $s \cdot x$ with $x \cdot s$.
-\end{definition}
 
 Since this thesis will deal with many computational issues, it will be wise to
 make precise some computational terms.  We start with a definition of
