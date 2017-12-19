@@ -127,7 +127,8 @@ Concrete semigroups can have many different forms.  Perhaps the most trivial and
 obvious example of a concrete semigroup would be a semigroup specified by a
 Cayley table: the generating set $X$ contains all the elements of $S$, and two
 words $w_1$ and $w_2$ represent the same element if and only if they produce the
-same number when processed through the Cayley table.  Semigroups specified by
+same number when their product is determined through the Cayley table (see
+Definition \ref{def:cayley-table}).  Semigroups specified by
 Cayley tables are therefore concrete; but in practice they are used very little,
 since they require a great deal of space to store---order $O(|S|^2)$.
 
@@ -137,7 +138,7 @@ compared without reference to the semigroup as a whole: for example, if
 $x = \transV 13342$ and $y = \transV 24422$ then we can calculate
 $xy = \transV 24424$ without knowing anything about $S$, the semigroup that
 contains $x$ and $y$.  So long as all elements in these semigroups have finite
-degree, any multiplication or comparison is guaranteed to complete in a finite
+degree, any multiplication or comparison is guaranteed to complete in finite
 time, and so the word problem on such a semigroup $S$ is decidable, and $S$ is
 concrete.
 
@@ -145,16 +146,25 @@ Finitely presented semigroups are a different case, in that their elements
 cannot be compared without reference to the semigroup as a whole.  If $S$ is a
 semigroup described by a finite presentation $\pres X R$, and $w_1$ and $w_2$
 are words in $X^+$, then it may be undecidable whether $w_1$ and $w_2$ represent
-the same element of $S$.  There are many examples of presentations for which
-this word problem is undecidable (see Example \ref{ex:makanin}), and so
-semigroups specified by finite presentations are not concrete.  Besides, many
-finite presentations describe infinite semigroups, and the finiteness of $S$ is
-also not known in advance.
-Decidability is discussed further in Section \ref{sec:decidability}.
+the same element of $S$.
+
+There are many examples of presentations for which the word problem is
+undecidable (see Examples \ref{ex:makanin} and \ref{ex:cijtin}), Many
+presentations do have decidable word problem (see Example
+\ref{ex:presentation-example}), but since many do not, and there is no algorithm
+to decide whether a given presentation does, we must conclude that semigroups
+specified by finite presentations are not concrete.  Besides, finite
+presentations, even if their word problem is decidable, can describe infinite
+semigroups, and the finiteness of $S$ is also not known in advance---nor, in
+general, is it decidable.  For a fuller explanation of presentations and
+decidability issues, see Sections \ref{sec:intro-congs} and
+\ref{sec:decidability}.
 
 Finitely presented monoids are treated as equivalent to finitely presented
-semigroups, since a semigroup presentation can be attained by simply adding a
-generator for the identity and relations to make it multiplicatively neutral.
+semigroups, since a monoid presentation $\pres X R$ can be easily converted into
+an equivalent semigroup presentation: an extra generator $\varepsilon$ should be
+added to $X$, and relations $(\varepsilon,x)$ and $(x,\varepsilon)$ added to $R$
+for each generator $x \in X$.
 
 \section{Program inputs}
 \label{sec:program-inputs}
