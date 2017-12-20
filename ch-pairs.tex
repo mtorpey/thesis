@@ -349,9 +349,21 @@ concrete semigroup: by using its Cayley table directly.
   table.  We can produce a presentation $\pres X R$ as follows.  Let $X$ be the
   set of all elements in $S$, and let $R$ contain one relation for each pair
   $(x,y) \in X \times X$: if $s$ is the element of $S$ which is equal to
-  $x \cdot y$, then simply add the relation $xy = s$.
+  $x \cdot y$, then simply add the relation $xy = s$.  The resulting
+  presentation $\pres X R$ defines the semigroup $S$.
 
-  The resulting presentation $\pres X R$ defines the semigroup $S$.
+  \begin{proof}
+    Consider the homomorphism $\nu: X^+ \to S$ which maps a word
+    $x_1x_2\ldots x_n$ to the semigroup element $x_1\cdot x_2\cdots x_n$ found
+    by multiplying the generators.  To prove that $\pres X R$ defines $S$ we
+    must show that for any two words $u, v \in X^+$, $(u, v) \in R^\sharp$ if
+    and only if $(u)\nu = (v)\nu$.
+
+    Let $u,v \in X^+$ such that $(u, v) \in R^\sharp$.  There must be a 
+    % TODOSOON
+
+    $(u)\nu = (v)\nu$.
+  \end{proof}
 \end{method}
 
 Consider the following example.
