@@ -444,9 +444,12 @@ adapted from the simplified version of the algorithm shown in
   \end{algorithmic}
 \end{algorithm}
 
-The \texttt{libsemigroups} implementation of this chapter's algorithm uses the
-Froidure-Pin algorithm, a method which takes a concrete semigroup $S$ and a set
-of generators $X$, and returns several useful pieces of information about it:
+We can improve further on this method.  The \texttt{libsemigroups}
+implementation of this chapter's algorithm uses the Froidure-Pin algorithm
+\cite{froidure-pin}, a method which is essentially a more advanced variation of
+Algorithm \ref{alg:inbetween-presentation}.  Froidure-Pin takes a concrete
+semigroup $S$ and a set of generators $X$, and returns several useful pieces of
+information about it:
 \begin{itemize}
 \item a left Cayley graph for $S$ with respect to $X$;
 \item a right Cayley graph for $S$ with respect to $X$;
@@ -462,10 +465,9 @@ presentation $\pres X R$ for the semigroup $S$.  The fact that $R$ is confluent
 and terminating may also be useful when it is used as part of a rewriting system
 in the Knuth-Bendix process later (see Section \ref{sec:kb}).
 
-For more information about the Froidure-Pin algorithm and its implementation in
+A full description of the Froidure-Pin algorithm is outside the scope of this
+thesis, but for more information about the algorithm and its implementation in
 \texttt{libsemigroups}, see \cite{froidure-pin} and \cite{froidure-pin-jonusas}.
-
-% TODO: actually describe it?
 
 \section{The methods}
 
