@@ -432,10 +432,10 @@ adapted from the simplified version of the algorithm shown in
         \For{$x \in X$}
           \If{$(wx)\nu \in L_S$}
           \State Choose $w' \in L_{X^*}$ such that $(w')\nu = (wx)\nu$
-            \State $R \gets R \cup \{(wx, w')\}$
+            \State Add $(wx, w')$ to $R$
           \Else
-            \State $L_S \gets L_S \cup \{(wx)\nu\}$
-            \State $L_{X^*} \gets L_{X^*} \cup \{wx\}$
+            \State Add $(wx)\nu$ to $L_S$
+            \State Add $wx$ to $L_{X^*}$
           \EndIf
         \EndFor
       \EndFor
