@@ -333,7 +333,7 @@ indistinguishable from one that will run forever.
 
 Recall from Section \ref{sec:program-inputs} that a concrete semigroup $S$ is
 not specified by a presentation, but by a set of generators whose multiplication
-is well understood and decidable.  In order to use the Todd-Coxeter and
+and comparison are decidable.  In order to use the Todd-Coxeter and
 Knuth-Bendix algorithms a finite presentation is required, and so a presentation
 $\pres X R$ must be calculated for $S$.  For the purposes of the algorithm
 described in this chapter, it is not important how this presentation is
@@ -359,10 +359,35 @@ concrete semigroup: by using its Cayley table directly.
     must show that for any two words $u, v \in X^+$, $(u, v) \in R^\sharp$ if
     and only if $(u)\nu = (v)\nu$.
 
-    Let $u,v \in X^+$ such that $(u, v) \in R^\sharp$.  There must be a 
-    % TODOSOON
+    Let $u,v \in X^+$ such that $(u, v) \in R^\sharp$.  As in Theorem
+    \ref{thm:r-sharp}, there must be a chain of words
+    $$u = w_1 \to w_2 \to \ldots \to w_k = v$$
+    such that $w_i = xay$ and $w_{i+1} = xby$ for some words $x,y \in X^*$ and
+    $a,b \in X^+$ where either $(a,b)$ or $(b,a)$ is in $R$, for each
+    $i \in \{1, \ldots, k-1\}$.  In each of these steps, $(a,b)$ or $(b,a)$
+    being in $R$ implies that $(a)\nu = (b)\nu$, because of the way in which $R$
+    was created.  Since $\nu$ is a homomorphism, this tells us that
+    $(xay)\nu = (xby)\nu$, and therefore that $(u)\nu = (v)\nu$, proving the
+    one-way implication.
 
-    $(u)\nu = (v)\nu$.
+    Conversely, let $u,v \in X^+$ such that $(u)\nu = (v)\nu$.  Let
+    $u = u_1u_2\ldots u_k$ and $v = v_1v_2\ldots v_l$, with each $u_i$ and $v_j$
+    being from $X$.  Since $R$ has a relation whose left entry is $xy$ for each
+    pair $(x,y) \in X \times X$, there exists a relation whose left entry is
+    $u_1u_2$ and whose right entry, which we will call $u_{12}$, has length $1$,
+    consisting of the single letter $(u_1u_2)\nu$.  We have
+    $(u_1u_2, u_{12}) \in R$, and so
+    $(u, u') = (u_1u_2\ldots u_k, u_{12}\ldots u_k) \in R^\sharp$, relating the
+    word $u$ with length $k$ to a word $u'$ with length $k-1$, such that
+    $(u)\nu = (u')\nu$.  By repeating this process, we can eventually reduce $u$
+    to a word $u'''\cdots''' = u^{(k-1)}=u_{12 \ldots k}$ with length $1$, such that
+    $(u,u^{(k-1)}) \in R^\sharp$ and $(u)\nu = (u^{(k-1)})\nu$.  We can perform
+    a similar process on $v$ to produce a word $v^{(l-1)}$ also with length $1$.
+    Since $(u^{(k-1)})\nu = (v^{(l-1)})\nu$ and both $u^{(k-1)}$ and $v^{(l-1)}$
+    have length $1$, we must conclude that $u^{(k-1)} = v^{(l-1)}$, and so we
+    find that
+    $$u ~R^\sharp~ u^{(k-1)} = v^{(l-1)} ~R^\sharp~ v,$$
+    so $(u,v) \in R^\sharp$ as required.
   \end{proof}
 \end{method}
 
