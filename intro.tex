@@ -430,3 +430,57 @@ very beginning; and relating $x$ to $y$ is precisely the same as relating $y$ to
 $x$.  In other words, if we perform \textsc{Union} on all the pairs of
 $\mathbf{R}$ one by one, we produce $\Lambda$ and $\tau$ which describe the
 equivalence $\mathbf{R}^e$.
+
+The simple description we have given so far is sufficient to implement a working
+version of the algorithm, but has complexity that can be easily reduced.  The
+height of a tree created by repeated applications of \textsc{Union} can be as
+great as the size of the set $X$, which means that the worst case time
+complexity of both \textsc{Find} and \textsc{Union} is $O(|X|)$.  But consider
+the following improvements to both find and union, which limit the height of
+trees and thus lower complexity.
+
+The \textsc{Find} operation descends all the way from a node to the root of its
+tree, but does not do anything with the final value that is found.  Hence, if
+\textsc{Find} is later called on the same element, all the work is likely to be
+repeated.  One possible improvement is to change the element's $\tau$-entry to
+be equal to the result of \textsc{Find}, before returning.  This way, a future
+call to \textsc{Find} will reach the root of the tree in a single step.
+Furthermore, it is possible to change every node in the tree along the way,
+essentially flattening the entire path each time \textsc{Find} is called.  This
+improvement is known as \textit{path compression} \cite{hopcroft_1973}.
+Alternatives have been proposed which do less up-front work, for example
+\textit{path splitting} which points each node to its grandparent, or even
+\textit{path halving} which points alternate nodes to their grandparents
+\cite{leeuwen_1977}.  These all improve complexity in a way which we will
+describe shortly.
+
+The \textsc{Union} operation combines two trees by making one root the parent of
+the other.  In the method described above, we choose the root with lower index
+to be the new parent, but we might choose the parent differently.  The
+\textit{union by size} method keeps track of the size of each tree, and makes
+the smaller tree point to the larger \cite{galil_1991}; the \textit{union by
+  rank} method instead keeps track of the depth of each tree (the length of the
+longest path from the root) and makes the shallower tree point to the deeper
+\cite{tarjan_1984}.  Either of these methods curbs the height of trees in the
+table, preventing any tree from growing to a height greater than
+$\lceil\log_2 |X|\rceil$ \cite[Lemma 1.1.2]{galil_1991}.
+
+These improvements are enough to give us the following statement about
+complexity.
+
+\begin{theorem}[Theorem 1.1.1 in \cite{galil_1991}]
+  \label{thm:ackermann}
+  Choose any \textsc{Find} method from path compression, path splitting or path
+  halving.  Choose either union by size or union by rank as a \textsc{Union}
+  method.  A sequence of $n-1$ calls to \textsc{Union} and $m$ calls to
+  \textsc{Find} completes in $O(n + m\alpha(m+n, n))$ time, where $\alpha$ is
+  a functional inverse of Ackermann's function.
+\end{theorem}
+
+Ackermann's function is a function which grows extremely quickly, and the
+functional inverse used in Theorem \ref{thm:ackermann} (defined explicitly in
+\ref{tarjan_1984}) therefore grows extremely slowly.  In fact, we have
+$\alpha(m,n) \leq 3$ for any $n < 2^{16}$, so in practice it can be treated as
+constant and the complexity stated in Theorem \ref{thm:ackermann} is close to
+$O(n + m)$, meaning that over several calls, \textsc{Union} and \textsc{Find}
+have close to constant time complexity.
