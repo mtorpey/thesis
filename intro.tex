@@ -431,6 +431,66 @@ $x$.  In other words, if we perform \textsc{Union} on all the pairs of
 $\mathbf{R}$ one by one, we produce $\Lambda$ and $\tau$ which describe the
 equivalence $\mathbf{R}^e$.
 
+Other descriptions of union-find do not always include \textsc{AddElement}.  The
+union-find algorithm is generally used to calculate equivalences on finite sets,
+but it is possible to use it with infinite sets as well.  The method described
+here allows for $X$ to be an infinite set, and stores information only about
+elements that are not in singletons, by calling \textsc{AddElement} on each
+element only when it is found to be in the same class as another element.  If
+there are infinitely many elements in non-singleton classes, or if there are
+infinitely many pairs in $\mathbf{R}$, then of course $\mathbf{R}^e$ cannot be
+computed with this method.
+
+\begin{example}
+  Let $X = \{a,b,c,d,e,f,g,h\}$ and let $R$ be the set of pairs
+  $$\{(f,b), (d,c), (e,b), (b,d)\}.$$
+  We can calculate the classes of $\mathbf{R}^e$ by applying \textsc{Union} to
+  each pair in $\mathbf{R}$ in turn, calling \textsc{AddElement} on any
+  appropriate elements to add them to $\Lambda$ first.
+
+  First we call \textsc{AddElement}$(f)$ and \textsc{AddElement}$(b)$, then
+  \textsc{Union}$(f,b)$.  After these operations we have $\Lambda = (f,b)$ and
+  $\tau = (1,1)$, representing just one non-singleton class containing both
+  elements.  Next we call \textsc{AddElement} on $d$ and $c$, and then
+  \textsc{Union}$(d,c)$, after which we have $\Lambda = (f,b,d,c)$ and
+  $\tau = (1,1,3,3)$, shown in tree form as follows.
+  $$
+  \begin{forest}
+    uf [$f$ [$b$]]
+  \end{forest}
+  \begin{forest}
+    uf [$d$ [$c$]]
+  \end{forest}
+  $$
+  Next we \textsc{AddElement}$(e)$ and call \textsc{Union}$(e,b)$.
+  \textsc{Union} follows $b$ to its parent $f$ in the tree, and sets
+  $\tau_x \gets 1$, resulting in $\Lambda = (f,b,d,c,e)$ and
+  $\tau = (1,1,3,3,1)$.  This is represented in tree form as follows.
+  $$
+  \begin{forest}
+    uf [$f$ [$b$][$e$]]
+  \end{forest}
+  \begin{forest}
+    uf [$d$ [$c$]]
+  \end{forest}
+  $$
+  Finally we process the last pair by calling \textsc{Union}$(b,d)$.  This finds
+  the root of $b$, which is $f$, and the root of $d$, which is $d$ itself, and
+  unites the two roots.  $f$ has a lower position in $\Lambda$ than $d$ does, so
+  $\tau_d$ is set equal to $f$.  At this final stage we have
+  $\Lambda = \{f,b,d,c,e\}$ as before, and $\tau = (1,1,1,3,1)$, representing
+  the following tree structure.
+  $$
+  \begin{forest}
+    uf [$f$ [$b$][$e$] [$d$ [$c$]]]
+  \end{forest}
+  $$
+  This represents a single tree, and therefore a single equivalence class
+  consisting of all the elements $\{b,c,d,e,f\}$.  However, note that $a$, $g$
+  and $h$ have not been added to $\Lambda$, so they are in singleton classes of
+  $\mathbf{R}^e$.
+\end{example}
+
 The simple description we have given so far is sufficient to implement a working
 version of the algorithm, but has complexity that can be easily reduced.  The
 height of a tree created by repeated applications of \textsc{Union} can be as
@@ -479,12 +539,8 @@ complexity.
 
 Ackermann's function is a function which grows extremely quickly, and the
 functional inverse used in Theorem \ref{thm:ackermann} (defined explicitly in
-\ref{tarjan_1984}) therefore grows extremely slowly.  In fact, we have
+\cite{tarjan_1984}) therefore grows extremely slowly.  In fact, we have
 $\alpha(m,n) \leq 3$ for any $n < 2^{16}$, so in practice it can be treated as
 constant and the complexity stated in Theorem \ref{thm:ackermann} is close to
 $O(n + m)$, meaning that over several calls, \textsc{Union} and \textsc{Find}
 have close to constant time complexity.
-
-\begin{forest}
-  [$A$[B][C][D[E][F]]]
-\end{forest}
