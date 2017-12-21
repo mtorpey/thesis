@@ -530,12 +530,12 @@ Now we can describe the overall structure of the pair orbit enumeration method.
 We begin iterating through the pairs in $\mathbf{R}'$, and as we do so we
 will add further pairs to $\mathbf{R}'$ which will also need to be iterated on,
 until we reach the end of the list.  For each pair $(a,b)$ we first need to
-merge $a$ and $b$ in the union-find table $\tau$---if either $a$ or $b$ does not
-already have a position in $\tau$, then it will need to be added first.  Now,
+merge $a$ and $b$ in the union-find table---if either $a$ or $b$ is not
+already in $\Lambda$, then it will need to be added first.  Now,
 for each generator $x$, we can find the two pairs $(xa,xb)$ and $(ax,ab)$.
 Depending on whether we are calculating a left, right, or two-sided congruence,
 we add one or both of these pairs to $\mathbf{R}'$ to be processed in its own
-turn.
+turn.  Pseudo-code for this method is shown in Algorithm \ref{alg:p}.
 
 \begin{algorithm}
 \caption{The pair orbit enumeration algorithm}
@@ -549,7 +549,7 @@ turn.
 \State $\mathbf{R}' := \mathbf{R}$
 %\Comment{$\mathbf{R}'$ is the list of pairs found so far}
 \State $\Lambda := ()$ \Comment{an empty list of elements from $S$}
-\State $\tau := ()$ \Comment{an empty \textsc{Union-Find} table}
+\State $\tau := ()$ \Comment{an empty table for union-find}
 \For{$(a,b) \in \mathbf{R}'$}
   \If{$a \notin \Lambda$}
     \State \Call{AddElement}{$a$}
@@ -567,7 +567,7 @@ turn.
     \EndIf
   \EndFor
 \EndFor
-\State \Return $(\Lambda, \tau)$
+\State \Return $(\tau, \Lambda)$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
