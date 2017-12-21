@@ -297,3 +297,136 @@ definition of ``algorithm''.  This gives rise to our chosen definition.
 This definition encompasses every computation which can be run on today's
 electronic computers, and is therefore certainly applicable to any practical
 implementation of the algorithms described in this thesis.
+
+\section{Union-find}
+\label{sec:union-find}
+This thesis deals with congruences, and a congruence is a particular type of
+equivalence.  It will therefore be useful for us to discuss methods of computing
+with equivalences, in order to help us describe other algorithms later,
+particularly the pair orbit enumeration algorithm in Section \ref{sec:p}.  We
+begin by recalling a few definitions, and stating a problem we wish to solve.
+
+Let $X$ be a set.  Recall that an \textbf{equivalence} on $X$ is a relation (a
+subset of $X \times X$) which is reflexive, symmetric, and transitive---that is,
+a partition of $X$ into disjoint subsets.  Also recall from Definition
+\ref{def:re} the relation $\mathbf{R}^e$, the least equivalence containing a
+given relation $\mathbf{R}$.  It may be that, given a set of pairs $\mathbf{R}$,
+we wish to compute the equivalence $\mathbf{R}^e$.  This is where the union-find
+method can be useful.
+
+A \textbf{union-find} table, also known as a disjoint-set data structure, is a
+data structure that stores and modifies an equivalence relation by viewing it as
+a partition and keeping track of which elements lie in which class by keeping
+the elements in a set of trees, with one tree for each set.  This approach was
+first described in 1964 in \cite{galler_1964}, and has since been improved upon
+in various ways to improve its time complexity.  A few of these ways will be
+described after the main description of the algorithm, but see \cite{galil_1991}
+for a detailed survey of different improvements and their possible advantages
+and drawbacks.
+
+Assume we wish to compute $\mathbf{R}^e$ for a relation $\mathbf{R}$ on a set
+$X$.  A union-find table, for us, is a pair $(\tau, \Lambda)$ consisting of a
+table $\tau$ of integers and a list $\Lambda$ of elements from $X$, which will
+both begin as arrays of size $0$.  The list $\Lambda$ will contain all elements
+not in singletons, and the table $\tau$ will be used to keep track of which
+elements of $\Lambda$ are in which class.  We will denote by $\tau_n$ the $n$th
+entry of $\tau$, and we will denote by $\tau_x$ the entry in $\tau$ in the same
+position as $x$ in $\Lambda$.  We will then update $\Lambda$ and $\tau$ using
+three operations \textsc{AddElement}, \textsc{Union} and \textsc{Find} in the
+following way.
+
+At the beginning of the algorithm, every $\mathbf{R}^e$-class is assumed to be a
+singleton, so $\Lambda$ and $\tau$ are both empty.  As the algorithm progresses,
+at various times we will find that two elements (say $x$ and $y$) are
+$\mathbf{R}^e$-related, and we will wish to record this.  If either of $x$ or
+$y$ is not already in $\Lambda$, we call \textsc{AddElement} to start tracking
+it in the union-find system; \textsc{AddElement} simply adds the element to the
+end of $\Lambda$ and adds a new entry to the end of $\tau$ with value equal to
+the new length of $\Lambda$---a value not yet used in the table.  See Algorithm
+\ref{alg:uf-addelement} for pseudo-code.  Then we call \textsc{Union($x,y$)} to
+combine the two classes as described below.
+
+\begin{algorithm}
+\caption{Adding an element to the union-find table}
+\label{alg:uf-addelement}
+  \begin{algorithmic}
+    \Require{$x \notin \Lambda$}
+    \Procedure{AddElement}{$x$}
+      \State{Append $x$ to the end of $\Lambda$}
+      \State{Append $|\Lambda|$ to the end of $\tau$}
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+A simple way of tracking classes would be for each entry in $\tau$ to contain
+the equivalence class number of the appropriate element: distinct elements $x$
+and $y$ are in the same equivalence class if and only if $x,y \in \Lambda$ and
+$\tau_x = \tau_y$.  By this method, \textsc{Union($x,y$)} would go through the
+whole of $\tau$, finding every entry which equals $\tau_y$, and updating it to
+point to $\tau_x$, thus making the two classes equal.  However, this operation
+has high time complexity---in the worst case, $O(|X|)$---and would cause any
+implementation of this algorithm to take a long time to complete.  Instead, the
+union-find algorithm treats $\tau_x$ as a pointer to a parent element, as
+follows.
+
+Rather than treating $\tau$ as a simple table in which elements are
+$\mathbf{R}^e$-related if and only if they have the same number in their $\tau$
+entry, we treat an entry in the table as a pointer to another entry in the
+table.  Only if an entry in the table points to itself do we treat it as the
+actual number of the equivalence class.  Hence we have a function,
+\textsc{Find}, which takes an integer between $1$ and $|\Lambda|$ (referring to
+the position of an element $x \in \Lambda$) and returns the number of its
+equivalence class, as shown in Algorithm \ref{alg:uf-find}.
+
+\begin{algorithm}
+\caption{Finding the class number of an element}
+\label{alg:uf-find}
+  \begin{algorithmic}
+    \Procedure{Find}{$x$}
+      \State $n := $ position of $x$ in $\Lambda$
+      \Repeat
+        \State $n \gets \tau_n$
+      \Until{$n = \tau_n$}
+      \State \Return $n$
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+Now we may view the operation of finding an element's class as traversing a tree
+from its leaf up to its root, and we can view the entire connected tree as the
+class itself.  In order to combine two classes, therefore, we have the function
+\textsc{Union}, which simply finds the roots of the two trees and changes the
+higher one to point to the lower.  Its pseudo-code is shown in Algorithm
+\ref{alg:uf-union}.
+
+\begin{algorithm}
+\caption{Uniting two classes}
+\label{alg:uf-union}
+  \begin{algorithmic}
+    \Procedure{Union}{$x,y$}
+      \State $m \gets $ \Call{Find}{$x$}
+      \State $n \gets $ \Call{Find}{$y$}
+      \If{$m<n$}
+        \State $\tau_n \gets m$
+      \ElsIf{$n<m$}
+        \State $\tau_m \gets n$
+      \EndIf
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+These three functions allow us to use two simple arrays to describe any
+equivalence relation on a semigroup.  Whenever a pair $(x,y)$ is found in
+$\rho$, we call \textsc{AddElement($x$)} and \textsc{AddElement($y$)} if
+necessary, and then call \textsc{Union($x,y$)}.
+
+Note that this union-find method has automatically removed the problem of
+transitivity, as well as those of reflexivity and symmetry: if we relate the
+element $x$ to $y$, and then $y$ to $z$, we have combined all three elements
+into a single class, and so we will see that
+$\textsc{Find}(x) = \textsc{Find}(y)$, so we have added the pair $(x,z)$ with no
+additional effort; similarly every element $x$ is related to itself from the
+very beginning; and relating $x$ to $y$ is precisely the same as relating $y$ to
+$x$.  In other words, if we perform \textsc{Union} on all the pairs of
+$\mathbf{R}$ one by one, we produce $\Lambda$ and $\tau$ which describe the
+equivalence $\mathbf{R}^e$.
