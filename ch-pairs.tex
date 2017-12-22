@@ -308,7 +308,7 @@ concrete semigroup: by using its Cayley table directly.
     and only if $(u)\nu = (v)\nu$.
 
     Let $u,v \in X^+$ such that $(u, v) \in R^\sharp$.  As in Theorem
-    \ref{thm:r-sharp}, there must be a chain of words
+    \ref{thm:rsharp}, there must be a chain of words
     $$u = w_1 \to w_2 \to \ldots \to w_k = v$$
     such that $w_i = xay$ and $w_{i+1} = xby$ for some words $x,y \in X^*$ and
     $a,b \in X^+$ where either $(a,b)$ or $(b,a)$ is in $R$, for each
@@ -543,7 +543,7 @@ state the following theorem.
     Recall from Definition \ref{def:rc} the relations $\mathbf{R}^c$,
     $\mathbf{R}^l$ and $\mathbf{R}^r$, and recall that they are respectively the
     smallest compatible, left-compatible, and right-compatible relations which
-    contain $\mathbf{R}$ (see Theorem \ref{thm:rc}).
+    contain $\mathbf{R}$ (see Lemma \ref{lem:rc}).
 
     Let us start by considering the case when $\sigma = L$, that is the case
     where we are computing the left congruence.  For each pair
@@ -566,7 +566,7 @@ state the following theorem.
     relation containing $Q$.  Hence, if $\sigma = L$, the table produced by
     $\textsc{P}$ will describe the relation $(R^l)^e$; if $\sigma = R$, it will
     describe $(R^r)^e$; and if $\sigma = T$, it will describe $(R^c)^e$.  As we
-    know from Theorem \ref{thm:rce}, these relations are respectively the least
+    know from Theorem \ref{thm:rsharp}, these relations are respectively the least
     left, right, and two-sided congruence containing $\mathbf{R}$, so the output
     of \textsc{P} describes $\rho$ accurately, and \textsc{Find} may be used as
     described to compare elements.
@@ -1976,7 +1976,7 @@ table.
 \end{figure}
 
 This tendency is illustrated further in Figures
-\ref{fig:bench-trans-tc-1p-tccomp}, \ref{fig:bench-trans-tc-3p-tccomp} and
+\ref{fig:bench-trans-tc-1p-tccomp} and
 \ref{fig:bench-trans-tc-vp-tccomp}, which show larger tests, each using $5$
 generators of degree $8$, and of size up to $100,000$.  In these figures we
 compare the standard Todd-Coxeter algorithm with the pre-filled version, arranged
