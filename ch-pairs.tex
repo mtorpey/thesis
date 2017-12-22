@@ -152,14 +152,23 @@ the same element of $S$.
 There are many examples of presentations for which the word problem is
 undecidable (see Examples \ref{ex:makanin} and \ref{ex:cijtin}), Many
 presentations do have decidable word problem (see Example
-\ref{ex:presentation-example}), but since many do not, and there is no algorithm
+\ref{ex:presentation-decidable}), but since many do not, and there is no algorithm
 to decide whether a given presentation does, we must conclude that semigroups
 specified by finite presentations are not concrete.  Besides, finite
 presentations, even if their word problem is decidable, can describe infinite
 semigroups, and the finiteness of $S$ is also not known in advance---nor, in
-general, is it decidable.  For a fuller explanation of presentations and
-decidability issues, see Sections \ref{sec:intro-presentations} and
-\ref{sec:decidability}.
+general, is it decidable.
+
+The only guarantee that can be given by the algorithm is that an answer will be
+returned if $S$ happens to be finite.  In the concrete case, semigroups are
+always finite and so an answer is guaranteed; but in the case of a finitely
+presented semigroup, it is unknown in advance whether a semigroup is finite or
+not.  Hence, the user of this algorithm might not know whether a particular run
+is guaranteed to terminate, since a run that is about to finish is
+indistinguishable from one that will run forever.  For a fuller explanation of
+presentations and decidability issues, see Sections
+\ref{sec:intro-presentations} and \ref{sec:computation-decidability}.
+
 
 Finitely presented monoids are treated as equivalent to finitely presented
 semigroups, since a monoid presentation $\pres X R$ can be easily converted into
@@ -266,68 +275,6 @@ congruence when requested:
 \item The elements in each non-trivial congruence class
 \item Class number of a given element
 \end{itemize}
-
-\section{Decidability}
-\label{sec:decidability}
-
-\begin{definition}
-  \label{def:decidable}
-  A problem is \textbf{decidable} if there exists an algorithm which is
-  guaranteed to return a correct answer to the problem in a finite amount of
-  time.
-\end{definition}
-
-Decidability is always something that should be considered when designing an
-algorithm that may act on infinite objects.  In the context of this chapter, if
-the semigroup $S$ is specified as a concrete semigroup, then all of the
-questions defined in Section \ref{sec:program-outputs} have a definite answer
-which can be calculated.  However, if $S$ is specified using a presentation,
-then certain problems asked about it may be undecidable.
-
-Firstly, we might consider the presence of a given pair $(x,y)$ in a given
-congruence.  This is equivalent to solving the word problem for the quotient
-semigroup of the congruence, and has long been known to be undecidable in
-general.  Indeed, consider the following example from Gennadi\'{i} Makanin with
-only three generators.
-
-\begin{example}[Makanin, 1966]
-  \label{ex:makanin}
-  The presentation
-  \begin{align*}
-    \langle a,b,c ~|~ & c^2b^2 = b^2c^2,\ bc^3b^2 = cb^3c^2,\ ac^2b^2 = b^2a,\\
-                      & abc^3b^2 = cb^2a,\ b^2c^2b^4c^2 = b^2c^2b^4c^2a \rangle
-  \end{align*}
-  defines a semigroup which has undecidable word problem.  \cite{makanin_1966}
-\end{example}
-% TODO: read this properly, and maybe give a proof.
-
-Furthermore, consider the following example from G.S.~Cijtin, perhaps the
-simplest undecidable presentation, with 5 generators but only 33 occurrences of
-those generators in its relations.
-
-\begin{example}[Cijtin, 1957]
-  \label{ex:cijtin}
-  The presentation
-  \begin{align*}
-    \langle a,b,c,d,e ~|~ & ac=ca,\ ad=da,\ bc=cb,\ bd=db,\\
-                          & ce=eca,\ de=edb,\ c^2e=c^2ae \rangle
-  \end{align*}
-  defines a semigroup which has undecidable word problem.  \cite{cijtin_1957, collins_1986}
-\end{example}
-% TODO: read these properly, and maybe give proofs.
-
-Since the general semigroup word problem is undecidable, the algorithm in this
-chapter cannot hope to guarantee to return an answer.  Similarly, the number of
-classes of a given congruence and the elements of each non-trivial class may not
-be computable, since there may be infinitely many.
-
-The only guarantee that can be given by the algorithm is that an answer will be
-returned if $S$ happens to be finite.  In the concrete case, semigroups are
-always finite and so an answer is guaranteed; but in the case of a finitely
-presented semigroup, it is unknown in advance whether a semigroup is finite or
-not.  Hence, the user of this algorithm might not know whether a particular run
-is guaranteed to terminate, since a run that is about to finish is
-indistinguishable from one that will run forever.
 
 \section{Finding a presentation}
 \label{sec:find-pres}
@@ -1619,7 +1566,7 @@ chosen ordering on $X^*$ to make sure the system is terminating.
 % TODO: the whole u<v v<u thing should be mentioned explicitly earlier, not as
 % an afterthought.
 
-Though, as mentioned in Section \ref{sec:decidability}, the word problem for a
+Though, as mentioned in Section \ref{sec:computation-decidability}, the word problem for a
 semigroup presentation is undecidable in general, we do have a result about the
 Knuth-Bendix process which ensures completion in some cases.
 

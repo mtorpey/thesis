@@ -565,6 +565,77 @@ This definition encompasses every computation which can be run on today's
 electronic computers, and is therefore certainly applicable to any practical
 implementation of the algorithms described in this thesis.
 
+\begin{definition}
+  \label{def:decidable}
+  A problem is \textbf{decidable} if there exists an algorithm which is
+  guaranteed to return a correct answer to the problem in a finite amount of
+  time.
+\end{definition}
+
+Decidability is always something that should be considered when designing an
+algorithm that may act on infinite objects.  In this thesis, particularly in
+Chapter \ref{chap:pairs}, we encounter semigroup presentations, which have an
+interesting decidability feature.
+
+\begin{definition}
+  \label{def:word-problem}
+  Let $\pres X R$ be a semigroup presentation.  The \textbf{word problem} for
+  $\pres X R$ is the following question: given two words $u, v \in X^+$, do $u$
+  and $v$ represent the same semigroup element?
+\end{definition}
+
+For many individual semigroup presentations, the word problem is decidable.  For
+example, consider the following presentation.
+
+\begin{example}
+  \label{ex:presentation-decidable}
+  Let $S$ be given by the presentation
+  $$\pres{a,b}{ab=ba}.$$
+  The word problem for this presentation is decidable: two words represent the
+  same element of $S$ if and only if they have the same number of occurrences of
+  $a$ and the same number of occurrences of $b$.
+\end{example}
+
+In the preceding example, there is an algorithm to decide the word problem; we
+say that $S$ has decidable word problem.  However, we have not shown the word
+problem in general to be decidable, since our algorithm does not apply to every
+semigroup presentation, only to the one considered in the example.  It turns out
+that there is no single algorithm which can be applied to every presentation to
+solve its word problem.  In fact, we can make a stronger statement: there are
+some presentations for which there is not even a specific algorithm to solve
+their word problem.  Consider the
+following example from Gennadi\'{i} Makanin with only three generators.
+
+\begin{example}[Makanin, 1966]
+  \label{ex:makanin}
+  The presentation
+  \begin{align*}
+    \langle a,b,c ~|~ & c^2b^2 = b^2c^2,\ bc^3b^2 = cb^3c^2,\ ac^2b^2 = b^2a,\\
+                      & abc^3b^2 = cb^2a,\ b^2c^2b^4c^2 = b^2c^2b^4c^2a \rangle
+  \end{align*}
+  defines a semigroup which has undecidable word problem.  \cite{makanin_1966}
+\end{example}
+
+Furthermore, consider the following example from G.S.~Cijtin, perhaps the
+simplest undecidable presentation, with 5 generators but only 33 occurrences of
+those generators in its relations.
+
+\begin{example}[Cijtin, 1957]
+  \label{ex:cijtin}
+  The presentation
+  \begin{align*}
+    \langle a,b,c,d,e ~|~ & ac=ca,\ ad=da,\ bc=cb,\ bd=db,\\
+                          & ce=eca,\ de=edb,\ c^2e=c^2ae \rangle
+  \end{align*}
+  defines a semigroup which has undecidable word problem.  \cite{cijtin_1957, collins_1986}
+\end{example}
+% TODO: read these properly, and maybe give proofs.
+
+% TODOSOON: these two lines
+Might be hard to say 
+
+A more full description is here, but it's not the point of my thesis.
+
 \section{Union-find}
 \label{sec:union-find}
 This thesis deals with congruences, and a congruence is a particular type of
