@@ -592,19 +592,20 @@ example, consider the following presentation.
   Let $S$ be given by the presentation
   $$\pres{a,b}{ab=ba}.$$
   The word problem for this presentation is decidable: two words represent the
-  same element of $S$ if and only if they have the same number of occurrences of
-  $a$ and the same number of occurrences of $b$.
+  same element of $S$ if and only if they contain the same number of occurrences
+  of $a$ and the same number of occurrences of $b$.
 \end{example}
 
-In the preceding example, there is an algorithm to decide the word problem; we
+In Example \ref{ex:presentation-decidable}, there is an algorithm to answer the
+word problem; hence, we
 say that $S$ has decidable word problem.  However, we have not shown the word
 problem in general to be decidable, since our algorithm does not apply to every
 semigroup presentation, only to the one considered in the example.  It turns out
 that there is no single algorithm which can be applied to every presentation to
 solve its word problem.  In fact, we can make a stronger statement: there are
 some presentations for which there is not even a specific algorithm to solve
-their word problem.  Consider the
-following example from Gennadi\'{i} Makanin with only three generators.
+the word problem.  Consider the
+following example from Gennadi\'{i} Makanin, which has only three generators.
 
 \begin{example}[Makanin, 1966]
   \label{ex:makanin}
@@ -627,14 +628,25 @@ those generators in its relations.
     \langle a,b,c,d,e ~|~ & ac=ca,\ ad=da,\ bc=cb,\ bd=db,\\
                           & ce=eca,\ de=edb,\ c^2e=c^2ae \rangle
   \end{align*}
-  defines a semigroup which has undecidable word problem.  \cite{cijtin_1957, collins_1986}
+  defines a semigroup which has undecidable word problem.
+  \cite{cijtin_1957, collins_1986}
 \end{example}
 % TODO: read these properly, and maybe give proofs.
 
-% TODOSOON: these two lines
-Might be hard to say 
+These two examples show that even relatively simple presentations can give rise
+to semigroups with undecidable word problem.  Hence, no algorithm we give for
+solving the word problem can be guaranteed to finish in finite time.
+Furthermore, since words can be arbitrarily long, and presentations can have an
+arbitrarily large set of relations, solving the word problem can take an
+unbounded length of time.  This means that it may be impossible to tell whether
+an algorithm for the word problem will complete or not, since it is not clear in
+advance whether a given semigroup has decidable word problem.  At a given stage
+while such an algorithm is running, it may be that an answer is about to be
+returned, but it may be that it will run forever.
 
-A more full description is here, but it's not the point of my thesis.
+Decidability is not a core topic of this thesis, so it will not be discussed in
+further depth.  A deeper discussion of the computational issues can be found in,
+for example, \cite{enderton_2001}.
 
 \section{Union-find}
 \label{sec:union-find}
