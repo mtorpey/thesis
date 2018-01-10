@@ -124,8 +124,11 @@ right, it is understood to be a two-sided congruence.
   \end{proof}
 \end{proposition}
 
-Congruences have a property that allows new semigroups to be made from old
-ones.  Consider the following definition of a quotient semigroup.
+Congruences have an important property that allows new semigroups, known as
+\textit{quotient semigroups}, to be made from old ones.  We will state the
+definition of a quotient semigroup, and then show that the definition is well
+defined.
+% TODO: "well-defined" or "well defined"?
 
 \begin{definition}
   \label{def:quotient}
@@ -136,20 +139,32 @@ ones.  Consider the following definition of a quotient semigroup.
   for $a, b \in S$.
 \end{definition}
 
+\begin{proposition}
+  \label{thm:quotient-well-defined}
+  A quotient semigroup is well-defined by Definition \ref{def:quotient}.  That
+  is to say, for two $\rho$-classes $A$ and $B$, the value of $A * B$ is the
+  same regardless of which representatives are chosen from the two classes.
+  \begin{proof}
+    Let $S$ and $\rho$ be as in Definition \ref{def:quotient}, and let $A$ and
+    $B$ be classes of $\rho$, with elements $a_1,a_2 \in A$ and $b_1,b_2 \in B$.
+    The product $A*B$ is defined to be the class which contains the element
+    $a_1b_1$, but it is also defined as the class which contains the element
+    $a_2b_2$.  For this definition to be consistent, we need to prove that
+    $a_1b_1$ and $a_2b_2$ are in the same $\rho$-class.
+
+    To prove this, we observe that $(a_1,a_2) \in \rho$ and
+    $(b_1,b_2) \in \rho$.  Hence, by Proposition \ref{prop:cong-def},
+    $(a_1b_1, a_2b_2) \in \rho$, so the two representatives are in the same
+    class, as required.  Hence $A * B$ is well-defined.
+  \end{proof}
+\end{proposition}
+
 % TODO: is [a] notation well understood?
 
-In order for quotient semigroups to be well-defined, the product $[ab]_\rho$ of
-the two classes $[a]_\rho$ and $[b]_\rho$ must not depend on which specific
-elements $a$ and $b$ are chosen to represent the two classes.  Hence consider
-arbitrary elements $a' \in [a]_\rho$ and $b' \in [b]_\rho$.  We must have
-$[a]_\rho * [b]_\rho = [a']_\rho * [b']_\rho$, so we must have
-$[ab]_\rho = [a'b']_\rho$.  Since $a ~\rho~ a'$ and $b ~\rho~ b'$, we have
-$ab ~\rho~ a'b'$ by Proposition \ref{prop:cong-def}, and so
-$[ab]_\rho = [a'b']_\rho$ as required.  So a quotient semigroup is well-defined.
-However, note that such a condition does not generally hold for left and right
+Note that Definition \ref{def:quotient} does not apply to left and right
 congruences, which do not generally satisfy the condition stated in Proposition
-\ref{prop:cong-def}.  Hence a quotient semigroup as described in Definition
-\ref{def:quotient} can only be taken using a two-sided congruence.
+\ref{prop:cong-def}.  A quotient semigroup can only be taken using a two-sided
+congruence.
 
 \begin{definition}
   \label{def:natural-homomorphism}
