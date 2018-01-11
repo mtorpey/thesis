@@ -607,6 +607,23 @@ $s$, or that the element $s$ can be \textbf{factorised} to the word $w$.
   \label{fig:word-represents-element}
 \end{figure}
 
+Semigroups are not uniquely defined by presentations: two different
+presentations may define the same semigroup, and those two presentations may not
+look similar at all.  Consider the following example.
+
+\begin{example}
+  The semigroup presentation $\pres{a}{a=a^{10}}$ defines the cyclic group
+  $C_9$: there are $9$ elements which can be represented by the words
+  $\{a, a^2, a^3, a^4, a^5, a^6, a^7, a^8, a^9\}$.  However, $C_9$ is also
+  defined by the presentation
+  $\pres{c,b}{b=c^3,\ cb=bc,\ c^2b^2c^2=c}$, and an equivalence between the two
+  presentations can be defined by identifying $a$ with $c$.  This second
+  presentation, though it is more complicated to describe, allows us to use
+  shorter words to describe many elements: the elements of $C_9$ are represented
+  by the set of words
+  $\{c, c^2, b, bc, bc^2, b^2, b^2c, b^2c^2\}$.
+\end{example}
+
 \section{Computation \& decidability}
 \label{sec:computation-decidability}
 
