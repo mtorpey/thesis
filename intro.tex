@@ -520,7 +520,17 @@ alternative formulation of ``free'' given in \cite[\S 1.6]{howie}:
   \item for every semigroup $S$ and every map $\phi: X \to S$ there exists a
     unique homomorphism $\psi: X^+ \to S$ such that $\phi = \alpha\psi$.
   \end{enumerate}
-  % TODO: commutative diagram
+  \begin{figure}[h]
+    \centering
+    $
+    \begin{tikzcd}
+      X \ar[d, "\phi"'] \ar[r, "\alpha"]
+      & X^+ \ar[ld, dashed, "\exists ! \psi"] \\ S
+    \end{tikzcd}
+    $
+    \caption{Commutative diagram illustrating Proposition \ref{prop:free}}
+    \label{fig:free}
+  \end{figure}
   \begin{proof}
     We can choose $\alpha$ to be the obvious embedding which takes a letter $x$
     in $X$ to the corresponding word $x$ of length $1$ in $X^+$.  Then, for any
