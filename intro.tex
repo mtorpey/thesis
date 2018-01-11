@@ -508,6 +508,44 @@ When we consider free semigroups and monoids, the set $X$ is usually referred to
 as an \textit{alphabet}, its elements as \textit{letters}, and sequences of
 letters as \textit{words}.
 
+The justification for the use of the name ``free'' comes from category theory.
+We can see that the free semigroup $X^+$ has the following property, an
+alternative formulation of ``free'' given in \cite[\S 1.6]{howie}:
+
+\begin{proposition}
+  \label{prop:free}
+  Let $X$ be a set.  The following hold:
+  \begin{enumerate}
+  \item there is a map $\alpha: X \to X^+$;
+  \item for every semigroup $S$ and every map $\phi: X \to S$ there exists a
+    unique homomorphism $\psi: X^+ \to S$ such that $\phi = \alpha\psi$.
+  \end{enumerate}
+  % TODO: commutative diagram
+  \begin{proof}
+    We can choose $\alpha$ to be the obvious embedding which takes a letter $x$
+    in $X$ to the corresponding word $x$ of length $1$ in $X^+$.  Then, for any
+    $S$ and $\phi: X \to S$ we can define $\psi: X^+ \to S$ by
+    $$(x_1 x_2 \ldots x_n)\psi = (x_1)\phi (x_2)\phi \ldots (x_n)\phi,$$
+    for $x_1, x_2, \ldots, x_n \in X$.  This clearly satisfies
+    $\phi = \alpha\psi$, and it is certainly a homomorphism, since
+    \begin{align*}
+      (x_1 \ldots x_n)\psi \cdot (y_1 \ldots y_m)\psi
+      & = (x_1)\phi\ldots(x_n)\phi \cdot (y_1)\phi\ldots(y_m)\phi \\
+      & = (x_1 \ldots x_ny_1 \ldots y_m)\psi
+    \end{align*}
+    for $x_1, \ldots, x_n, y_1, \ldots, y_m \in X$.  For uniqueness, let $\psi'$
+    be any homomorphism $X^+ \to S$ such that $\phi = \alpha\psi'$.  By this
+    condition, we have
+    $$(x_1)\phi = (x_1)\alpha\psi' = (x_1)\psi',$$
+    for any $x_1 \in X$.  And since $\psi'$ is a homomorphism, this gives us
+    $$(x_1x_2\ldots x_n)\psi'
+    = (x_1)\psi'(x_2)\psi'\ldots(x_n)\psi'
+    = (x_1)\phi (x_2)\phi \ldots(x_n)\phi,$$
+    for $x_1, x_2, \ldots, x_n \in X$.
+    This shows that $\psi' = \psi$, and so $\psi$ is unique.
+  \end{proof}
+\end{proposition}
+
 We can now define semigroup presentations, a useful method of describing a
 semigroup which will be encountered many times in this thesis, particularly in
 Chapter \ref{chap:pairs}.  We will give the definition, and then discuss how the
