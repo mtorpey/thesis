@@ -563,15 +563,18 @@ definition is used to describe a semigroup.
 
 \begin{definition}
   \label{def:presentation}
-  A \textbf{semigroup presentation} is a pair $\pres X R$ consisting of a set
-  $X$ and a set of pairs $R \subseteq X^+ \times X^+$.  It is taken as a
-  description of a semigroup: the semigroup it defines is $X^+ / R^\sharp$.
+  A \textbf{semigroup presentation} is a pair $\mathfrak{P} = \pres X R$
+  consisting of a set $X$ and a set of pairs $R \subseteq X^+ \times X^+$.  The
+  semigroup \textbf{defined by} the presentation $\mathfrak{P}$ is
+  $X^+ / R^\sharp$, i.e.~the quotient of the free semigroup $X^+$ by the least
+  congruence containing all the pairs in $R$.
 \end{definition}
 
 \begin{definition}
   \label{def:finite-presentation}
-  A semigroup presentation $\pres X R$ is \textbf{finite} if $X$ and $R$ both
-  have finite size, and each word in each relation in $R$ has finite length.
+  A semigroup presentation $\pres X R$ is \textbf{finite} if $X$ and $R$ are
+  finite.  A semigroup is \textbf{finitely presented} if it is defined by a
+  finite presentation.
 \end{definition}
 
 The exact wording used to talk about a semigroup $S$ defined by a presentation
