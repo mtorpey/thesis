@@ -648,16 +648,53 @@ definition of ``algorithm''.  This gives rise to our chosen definition.
   Turing machine.
 \end{definition}
 
+A Turing machine is a conceptual machine based on a finite state automaton which
+interacts with an infinite tape.  There are several different formulations of a
+Turing machine, all of which are equivalent in terms of the set of computational
+methods which they can run.  For completeness, we present one such formulation.
+
+\begin{definition}
+  \label{def:turing-machine}
+  A \textbf{Turing machine} is a tuple $(Q, \Sigma, q_0, \delta, H)$ where
+  \begin{itemize}
+  \item $Q$ is a set, called the set of \textit{states};
+  \item $\Sigma$ is a set, called the \textit{alphabet};
+  \item $q_0 \in Q$ is a state known as the \textit{initial state};
+  \item $\delta: Q \times \Sigma \to
+    Q \times \Sigma \times \{\mathtt{L}, \mathtt{R}\}$
+    is a function known as the \textit{transition function}, which uses the
+    current state and a character from the tape to process a step in the
+    computation;
+  \item $H \subseteq Q$ is a set states known as \textit{halting states}.
+  \end{itemize}
+  This machine is paired with a conceptual infinite \textit{tape}---an infinite
+  sequence of characters from $\Sigma$, which continues infinitely in both
+  directions.  This tape is provided as an input to the algorithm.  The machine
+  starts in state $q_0$ with its read/write head pointed to a given position on
+  the tape.  On each step of computation, it starts in a state $q$, reads a
+  symbol $\sigma$ from the read/write head's position on the tape, and uses
+  $(q, \sigma)\delta$ to produce a triple $(q', \sigma', d)$ from
+  $Q \times \Sigma \times \{L,R\}$: it then changes state from $q$ to $q'$,
+  replaces the character $\sigma$ on the tape with $\sigma'$, and moves the
+  read/write head one character left or right according to $d$.  This process is
+  repeated until the machine enters a state in $H$, at which time it halts,
+  having completed its operation.  The program's output is the resulting tape.
+\end{definition}
+
 This definition encompasses every computation which can be run on today's
 electronic computers, and is therefore certainly applicable to any practical
 implementation of the algorithms described in this thesis.
 
 \begin{definition}
   \label{def:decidable}
-  A problem is \textbf{decidable} if there exists an algorithm which is
-  guaranteed to return a correct answer to the problem in a finite amount of
-  time.
+  A class of problems is \textbf{decidable} if there exists a single algorithm
+  which is guaranteed to return a correct answer to any instance of one of those
+  problems in a finite amount of time.
 \end{definition}
+
+Note that although an algorithm may be guaranteed to complete in finite time,
+the length of time might be unbounded; that is, an actual run of the algorithm,
+though guraranteed to complete, might take an arbitrarily long time.
 
 Decidability is always something that should be considered when designing an
 algorithm that may act on infinite objects.  In this thesis, particularly in
