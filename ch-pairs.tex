@@ -294,47 +294,44 @@ concrete semigroup: by using its Cayley table directly.
 \begin{method}
   \label{meth:trivial-presentation}
   Let $S$ be a concrete semigroup, and assume we have access to its Cayley
-  table.  We can produce a presentation $\pres X R$ as follows.  Let $X$ be the
-  set of all elements in $S$, and let $R$ contain one relation for each pair
-  $(x,y) \in X \times X$: if $s$ is the element of $S$ which is equal to
-  $x \cdot y$, then simply add the relation $xy = s$.  The resulting
-  presentation $\pres X R$ defines the semigroup $S$.
+  table.  We can produce a presentation as follows.  Let $\bar S$ be a set with
+  the same cardinality as $S$, containing an element $\bar{x}$ for each element
+  $x \in S$, and let $R \subseteq \bar{S} \times \bar{S}$ be defined by
+  $\{(\bar{x}\bar{y}, \overline{xy}) : (x,y) \in S \times S\}.$ The resulting
+  presentation $\pres{\bar{S}}{R}$ defines the semigroup $S$.
 
   \begin{proof}
-    Consider the homomorphism $\nu: X^+ \to S$ which maps a word
-    $x_1x_2\ldots x_n$ to the semigroup element $x_1\cdot x_2\cdots x_n$ found
-    by multiplying the generators.  To prove that $\pres X R$ defines $S$ we
-    must show that for any two words $u, v \in X^+$, $(u, v) \in R^\sharp$ if
-    and only if $(u)\nu = (v)\nu$.
+    Consider the natural homomorphism $\pi: \bar{S}^+ \to S$ which maps a word
+    $\bar{x_1}\bar{x_2}\ldots \bar{x_n}$ to the semigroup element
+    $x_1 x_2\ldots x_n$.  To prove that $\pres{\bar{S}}{R}$ defines $S$ we must
+    show that for any two words $u, v \in \bar{S}^+$, $(u, v) \in R^\sharp$ if
+    and only if $(u)\pi = (v)\pi$.
 
-    Let $u,v \in X^+$ such that $(u, v) \in R^\sharp$.  As in Theorem
+    Let $u,v \in \bar{S}^+$ such that $(u, v) \in R^\sharp$.  As in Theorem
     \ref{thm:rsharp}, there must be a chain of words
     $$u = w_1 \to w_2 \to \ldots \to w_k = v$$
-    such that $w_i = xay$ and $w_{i+1} = xby$ for some words $x,y \in X^*$ and
-    $a,b \in X^+$ where either $(a,b)$ or $(b,a)$ is in $R$, for each
+    such that $w_i = xay$ and $w_{i+1} = xby$ for some words $x,y \in \bar{S}^*$ and
+    $a,b \in \bar{S}^+$ where either $(a,b)$ or $(b,a)$ is in $R$, for each
     $i \in \{1, \ldots, k-1\}$.  In each of these steps, $(a,b)$ or $(b,a)$
-    being in $R$ implies that $(a)\nu = (b)\nu$, because of the way in which $R$
-    was created.  Since $\nu$ is a homomorphism, this tells us that
-    $(xay)\nu = (xby)\nu$, and therefore that $(u)\nu = (v)\nu$, proving the
-    one-way implication.
+    being in $R$ implies that $(a)\pi = (b)\pi$, because of the way in which $R$
+    was created.  Since $\pi$ is a homomorphism, this tells us that
+    $(xay)\pi = (xby)\pi$, and therefore that $(u)\pi = (v)\pi$, proving this
+    implication.
 
-    Conversely, let $u,v \in X^+$ such that $(u)\nu = (v)\nu$.  Let
-    $u = u_1u_2\ldots u_k$ and $v = v_1v_2\ldots v_l$, with each $u_i$ and $v_j$
-    being from $X$.  Since $R$ has a relation whose left entry is $xy$ for each
-    pair $(x,y) \in X \times X$, there exists a relation whose left entry is
-    $u_1u_2$ and whose right entry, which we will call $u_{12}$, has length $1$,
-    consisting of the single letter $(u_1u_2)\nu$.  We have
-    $(u_1u_2, u_{12}) \in R$, and so
-    $(u, u') = (u_1u_2\ldots u_k, u_{12}\ldots u_k) \in R^\sharp$, relating the
-    word $u$ with length $k$ to a word $u'$ with length $k-1$, such that
-    $(u)\nu = (u')\nu$.  By repeating this process, we can eventually reduce $u$
-    to a word $u'''\cdots''' = u^{(k-1)}=u_{12 \ldots k}$ with length $1$, such that
-    $(u,u^{(k-1)}) \in R^\sharp$ and $(u)\nu = (u^{(k-1)})\nu$.  We can perform
-    a similar process on $v$ to produce a word $v^{(l-1)}$ also with length $1$.
-    Since $(u^{(k-1)})\nu = (v^{(l-1)})\nu$ and both $u^{(k-1)}$ and $v^{(l-1)}$
-    have length $1$, we must conclude that $u^{(k-1)} = v^{(l-1)}$, and so we
+    For the converse, let $u,v \in \bar{S}^+$ such that $(u)\pi = (v)\pi$.  Let
+    $u = \bar{u_1}\bar{u_2}\ldots \bar{u_k}$ and $v = \bar{v_1}\bar{v_2}\ldots \bar{v_l}$, with each $\bar{u_i}$ and $\bar{v_j}$
+    being from $\bar{S}$.  Since $R$ has a relation $(\bar{x}\bar{y}, \overline{xy})$ for each
+    pair $(\bar{x},\bar{y}) \in \bar{S} \times \bar{S}$, there exists a relation
+    $(\bar{u_1}\bar{u_2}, \overline{u_1u_2}) \in R$, and so by repetition we have
+    $(u, u') = (\bar{u_1}\bar{u_2}\ldots \bar{u_k}, \overline{u_1u_2\ldots u_k}) \in R^\sharp$, relating the
+    word $u$ with length $k$ to a word $u'$ with length $1$, such that
+    $(u)\pi = (u')\pi$.  We can perform
+    a similar process on $v$ to produce a word $v'$ also with length $1$, with
+    $(v)\pi = (v')\pi$.
+    Since $(u')\pi = (u)\pi = (v)\pi = (v')\pi$ and both $u'$ and $v'$
+    have length $1$, we must conclude that $u' = v'$, and so we
     find that
-    $$u ~R^\sharp~ u^{(k-1)} = v^{(l-1)} ~R^\sharp~ v,$$
+    $$u ~R^\sharp~ u' = v' ~R^\sharp~ v,$$
     so $(u,v) \in R^\sharp$ as required.
   \end{proof}
 \end{method}
