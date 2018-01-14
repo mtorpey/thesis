@@ -413,7 +413,7 @@ adapted from the simplified version of the algorithm shown in
       \For{$w \in L_{X^*}$}
         \For{$x \in X$}
           \If{$(wx)\nu \in L_S$}
-          \State Choose $w' \in L_{X^*}$ such that $(w')\nu = (wx)\nu$
+          \State Let $w'$ be the unique element in $L_{X^*}$ such that $(w')\nu = (wx)\nu$
             \State Add $(wx, w')$ to $R$
           \Else
             \State Add $(wx)\nu$ to $L_S$
@@ -449,7 +449,7 @@ in the Knuth-Bendix process later (see Section \ref{sec:kb}).
 
 A full description of the Froidure-Pin algorithm is outside the scope of this
 thesis, but for more information about the algorithm and its implementation in
-\texttt{libsemigroups}, see \cite{froidure-pin} and \cite{froidure-pin-jonusas}.
+\texttt{libsemigroups}, see \cite{froidure-pin-jonusas} and \cite{froidure-pin}.
 
 \section{The methods}
 
