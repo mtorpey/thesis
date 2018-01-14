@@ -688,6 +688,12 @@ This definition encompasses every computation which can be run on today's
 electronic computers, and is therefore certainly applicable to any practical
 implementation of the algorithms described in this thesis.
 
+Now that we have a definition of an algorithm, we can define decidability.
+Decidability is not a core topic of this thesis, but it will be worth going into
+at least some detail, particularly around ideas related to semigroup
+presentations.  A deeper discussion of decidability can be found in, for
+example, \cite{enderton_2001}.
+
 \begin{definition}
   \label{def:decidable}
   A class of problems is \textbf{decidable} if there exists a single algorithm
@@ -772,10 +778,6 @@ word problem.  At a given stage while such an algorithm is running, it may be
 that an answer is about to be returned, but it may instead be that it will run
 forever, and it may be impossible to tell the difference between those two
 possibilities.
-
-Decidability is not a core topic of this thesis, so it will not be discussed in
-further depth.  A deeper discussion of the computational issues can be found in,
-for example, \cite{enderton_2001}.
 
 \section{Union-find}
 \label{sec:union-find}
