@@ -940,6 +940,7 @@ infinitely many pairs in $\mathbf{R}$, then of course $\mathbf{R}^e$ cannot be
 computed with this method.
 
 \begin{example}
+  \label{ex:uf}
   Let $X = \{a,b,c,d,e,f,g,h\}$ and let $R$ be the set of pairs
   $$\{(f,b), (d,c), (e,b), (b,d)\}.$$
   We can calculate the classes of $\mathbf{R}^e$ by applying \textsc{Union} to
@@ -951,38 +952,48 @@ computed with this method.
   $\tau = (1,1)$, representing just one non-singleton class containing both
   elements.  Next we call \textsc{AddElement} on $d$ and $c$, and then
   \textsc{Union}$(d,c)$, after which we have $\Lambda = (f,b,d,c)$ and
-  $\tau = (1,1,3,3)$, shown in tree form as follows.
-  $$
-  \begin{forest}
-    uf [$f$ [$b$]]
-  \end{forest}
-  \begin{forest}
-    uf [$d$ [$c$]]
-  \end{forest}
-  $$
+  $\tau = (1,1,3,3)$, shown in tree form in the first diagram of Figure
+  \ref{fig:uf}.
+
   Next we \textsc{AddElement}$(e)$ and call \textsc{Union}$(e,b)$.
   \textsc{Union} follows $b$ to its parent $f$ in the tree, and sets
   $\tau_x \gets 1$, resulting in $\Lambda = (f,b,d,c,e)$ and
-  $\tau = (1,1,3,3,1)$.  This is represented in tree form as follows.
-  $$
-  \begin{forest}
-    uf [$f$ [$b$][$e$]]
-  \end{forest}
-  \begin{forest}
-    uf [$d$ [$c$]]
-  \end{forest}
-  $$
+  $\tau = (1,1,3,3,1)$.  This is represented in tree form in the second diagram
+  of Figure \ref{fig:uf}.
+
   Finally we process the last pair by calling \textsc{Union}$(b,d)$.  This finds
   the root of $b$, which is $f$, and the root of $d$, which is $d$ itself, and
   unites the two roots.  $f$ has a lower position in $\Lambda$ than $d$ does, so
   $\tau_d$ is set equal to $f$.  At this final stage we have
   $\Lambda = \{f,b,d,c,e\}$ as before, and $\tau = (1,1,1,3,1)$, representing
-  the following tree structure.
-  $$
-  \begin{forest}
-    uf [$f$ [$b$][$e$] [$d$ [$c$]]]
-  \end{forest}
-  $$
+  the tree structure shown in the third diagram of Figure \ref{fig:uf}.
+
+  \begin{figure}[h]\centering
+    $$
+    \framebox[1.1\width][r]{
+      \begin{forest}
+        uf [$f$ [$b$]]
+      \end{forest}
+      \begin{forest}
+        uf [$d$ [$c$]]
+      \end{forest}
+    } \quad \framebox[1.1\width][r]{
+      \begin{forest}
+        uf [$f$ [$b$][$e$]]
+      \end{forest}
+      \begin{forest}
+        uf [$d$ [$c$]]
+      \end{forest}
+    } \quad \framebox[1.1\width][r]{
+      \begin{forest}
+        uf [$f$ [$b$][$e$] [$d$ [$c$]]]
+      \end{forest}
+    }
+    $$
+    \caption{Tree diagrams of union-find tables in Example \ref{ex:uf}}
+    \label{fig:uf}
+  \end{figure}
+
   This represents a single tree, and therefore a single equivalence class
   consisting of all the elements $\{b,c,d,e,f\}$.  However, note that $a$, $g$
   and $h$ have not been added to $\Lambda$, so they are in singleton classes of
@@ -1051,4 +1062,3 @@ have close to constant time complexity.
 \item Digraph, digraph-with-edge-labels
 \item Right regular representation
 \end{itemize}
-
