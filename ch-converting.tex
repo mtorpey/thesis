@@ -2,27 +2,28 @@
 \label{chap:converting}
 
 A congruence is a binary relation, and therefore is formally described as a set
-of pairs---a subset of $S \times S$..  In a computational setting, it would be
-possible to store a congruence by simply storing every one of these pairs, so
-long as $S$ was finite.  However, this could well use a lot of storage---even
-the trivial congruence would use $O(|S|)$ space, and in general a congruence
-could use $O(|S|^2)$ space.
+of pairs---a subset of $S \times S$.  In a computational setting, it is worth
+thinking about how a congruence could be stored.
 
-A congruence is a binary relation, and therefore is formally described as a set
-of pairs.  In a computational setting, it is rarely practical to keep track of
-every pair in a congruence; a congruence on a semigroup of size $n$ contains
-$n^2$ pairs in the worst case, and on an infinite semigroup contains an infinite
-number of pairs.  A congruence can be described in more concise ways: for
-example, taking advantage of it being an equivalence relation and recording only
-its equivalence classes; or in the case of a Rees congruence, storing a
-generating set for the ideal which defines it.  A variety of different ways to
-describe a congruence are explained in Chapter \ref{chap:converting}, along with
-ways to convert from one to another.  However, a congruence is still just a set
-of pairs, and by reducing the number of pairs we store, we can often describe a
-congruence very concisely using them.
+One approach to storing a congruence $\rho$ on a semigroup $S$ is simply to
+store every one of the pairs in $\rho$.  In principle, it is possible to store
+$\rho$ in this way if and only if $S$ is finite.  However, this could well use a
+lot of storage---even the trivial congruence would use $O(|S|)$ space, and in
+general a congruence could even use $O(|S|^2)$ space.
 
-In Chapter \ref{chap:pairs} we looked at how a semigroup congruence can be
-represented by a set of generating pairs.  In fact,
+% TODO: reference to "most congs don't need many generating pairs" section
+In Chapter \ref{chap:pairs} we looked in detail at how a congruence can be
+represented by a set of generating pairs.  As we found there, a congruence can
+be described by a subset $\mathbf{R} \subseteq \rho$, which in many cases can be
+very small.  This is one very generic way of representing congruences, in two
+senses: firstly that it can be used for any finite semigroup; and secondly that
+it can be used for left and right congruences.
+
+However, there are other ways to view congruences in certain circumstances,
+either based on a special property of the semigroup in question, or based on
+properties of some individual congruences.  In this chapter, we will describe
+some important ways of representing congruences, and then consider ways of
+converting one to another.
 
 \section{Ways of representing a congruence}
 \subsection{Generating pairs}
