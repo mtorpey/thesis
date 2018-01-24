@@ -54,7 +54,44 @@ a congruence $\rho$ to a set of generating pairs, it is desirable to find as
 small a set of pairs as possible.  When converting between generating pairs and
 other representations, these will be the goals.
 
-\subsection{Completely (0-)simple: linked triples}
+\subsection{Completely (0-)simple semigroups: linked triples}
+
+There is a special way of describing a congruence on a completely simple or
+completely 0-simple semigroup: using a linked triple.  We will start by
+explaining the terms completely simple and completely 0-simple, then define a
+semigroup's linked triples and explain how they are related to its congruences.
+
+\begin{definition}
+  \label{def:zerosimple}
+  A semigroup $S$ is:
+  \begin{itemize}
+  \item \textbf{simple} if its only ideal is $S$;
+  \item \textbf{0-simple} if it has a zero, and its only ideals are $S$ and
+    $\{0\}$.
+  \end{itemize}
+  \cite[p.51]{howie}
+\end{definition}
+
+\begin{definition}
+  \label{def:completelyzerosimple}
+  A semigroup is:
+  \begin{itemize}
+  \item \textbf{completely simple} if it is simple and contains a primitive
+    idempotent;
+  \item \textbf{completely 0-simple} if it is 0-simple and contains a primitive
+    idempotent.
+  \end{itemize}
+  An idempotent $p \in S$ is \textbf{primitive} if it is non-zero and
+  $ip \neq i$ for every non-zero idempotent $i \in S$.
+\end{definition}
+
+Observe that a finite semigroup is completely 0-simple if and only if it is
+0-simple.  This paper mainly considers only finite semigroups, so we will
+usually refer to \emph{finite 0-simple semigroups}, knowing that these must be
+completely 0-simple.  To start with, we define a structure which can be used to
+describe any finite 0-simple semigroup up to isomorphism:
+
+
 \subsection{Inverse semigroups: kernel-trace pairs}
 \subsection{Rees congruences}
 A \textbf{Rees congruence} is a congruence on a semigroup $S$ with a distinguished
