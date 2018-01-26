@@ -81,15 +81,53 @@ semigroup's linked triples and explain how they are related to its congruences.
   \item \textbf{completely 0-simple} if it is 0-simple and contains a primitive
     idempotent.
   \end{itemize}
-  An idempotent $p \in S$ is \textbf{primitive} if it is non-zero and
-  $ip \neq i$ for every non-zero idempotent $i \in S$.
+  An idempotent $p \in S$ is \textbf{primitive} if it is non-zero and there is
+  no other non-zero idempotent $i \in S$ such that $ip = pi = i$.
+  %TODO: rephrase in terms of partial ordering of idempotents?
 \end{definition}
 
-Observe that a finite semigroup is completely 0-simple if and only if it is
-0-simple.  This paper mainly considers only finite semigroups, so we will
-usually refer to \emph{finite 0-simple semigroups}, knowing that these must be
-completely 0-simple.  To start with, we define a structure which can be used to
-describe any finite 0-simple semigroup up to isomorphism:
+Definitions \ref{def:zerosimple} and \ref{def:completelyzerosimple} are
+equivalent for finite semigroups---that is to say, a finite semigroup is
+completely simple if and only if it is simple, and it is completely 0-simple if
+and only if it is 0-simple.  Some of the conversions described in this chapter
+will be applicable only to finite semigroups, and in those circumstances we will
+refer to \textit{finite simple} or \textit{finite 0-simple} semigroups, knowing
+that these are completely simple or completely 0-simple, respectively.
+
+To start with, we define a structure which can be used to describe any finite
+0-simple semigroup up to isomorphism.
+
+\begin{definition}
+\label{def:rzms}
+  A \textbf{Rees 0-matrix semigroup} $\mathcal{M}^0[T;I,\Lambda;P]$ is the
+  set
+  $$(I \times T \times \Lambda) \cup \{0\}$$
+  with multiplication given by
+  $$(i,a,\lambda) \cdot (j,b,\mu) = \left\{
+    \begin{array}{l l}
+      (i,ap_{\lambda j}b, \mu) & \text{if~} p_{\lambda j} \neq 0, \\
+      0 & \text{otherwise,}
+    \end{array}
+  \right.$$
+  where
+  \begin{itemize}
+  \item $T$ is a semigroup,
+  \item $I$ and $\Lambda$ are index sets,
+  \item $P$ is a $|\Lambda| \times |I|$ matrix with entries $(p_{\lambda
+      i})_{\lambda \in \Lambda, i \in I}$
+    taken from $T^0$,
+  \item $0x=x0=0$ for all $x$ in the semigroup.
+  \end{itemize}
+  \cite[\S 3.2]{howie}
+  % TODO: RMS and RZMS, or just RMS?
+\end{definition}
+
+The following theorem shows how we can use Rees matrix semigroups to classify
+completely simple and completely 0-simple semigroups.
+
+\begin{theorem}[Rees]
+  
+\end{theorem}
 
 
 \subsection{Inverse semigroups: kernel-trace pairs}
