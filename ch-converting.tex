@@ -69,8 +69,13 @@ semigroup's linked triples and explain how they are related to its congruences.
   \item \textbf{0-simple} if it has a zero, and its only ideals are $S$ and
     $\{0\}$.
   \end{itemize}
-  \cite[p.51]{howie}
 \end{definition}
+
+Simple and 0-simple semigroups are closely related.  Note that if $S$ is a
+simple semigroup, then $S^0$, the semigroup created by appending a zero element
+to $S$, is 0-simple.
+
+Next, we consider a slightly stronger condition.
 
 \begin{definition}
   \label{def:completelyzerosimple}
@@ -93,9 +98,14 @@ and only if it is 0-simple.  Some of the conversions described in this chapter
 will be applicable only to finite semigroups, and in those circumstances we will
 refer to \textit{finite simple} or \textit{finite 0-simple} semigroups, knowing
 that these are completely simple or completely 0-simple, respectively.
+Note that a finite semigroup is simple if and only if it is $\JJ$-trivial.
+%TODO: only finite?
 
-To start with, we define a structure which can be used to describe any finite
-0-simple semigroup up to isomorphism.
+Completely simple and completely 0-simple semigroups have a strong and useful
+isomorphism property, which allows us to say a great deal about their structure
+and, in particular, their congruences.  We will consider first the more
+complicated case, that of completely 0-simple semigroups, and then we will go on
+to explain the easier case, completely simple semigroups.
 
 \begin{definition}
 \label{def:rzms}
@@ -122,12 +132,19 @@ To start with, we define a structure which can be used to describe any finite
   % TODO: RMS and RZMS, or just RMS?
 \end{definition}
 
-The following theorem shows how we can use Rees matrix semigroups to classify
-completely simple and completely 0-simple semigroups.
+The following theorem shows how we can use Rees 0-matrix semigroups to classify
+completely 0-simple semigroups.
 
 \begin{theorem}[Rees]
-  
+  \label{thm:rees}
+  Every completely 0-simple semigroup is isomorphic to a Rees 0-matrix semigroup
+  $\mathcal{M}^0[G;I,\Lambda;P]$, where $G$ is a group and $P$ is regular.
+  Conversely, every such Rees 0-matrix semigroup is completely 0-simple.
+  \begin{proof}
+    Theorem 3.2.3 in \cite[p.72-75]{howie}.
+  \end{proof}
 \end{theorem}
+
 
 
 \subsection{Inverse semigroups: kernel-trace pairs}
