@@ -57,6 +57,51 @@ other representations, these will be the goals.
 \subsection{Groups: normal subgroups}
 \label{sec:normal-subgroups}
 
+In group theory, it is unusual to hear discussion of congruences.  This is
+because a group's congruences are closely related to another structure, its
+normal subgroups, and any questions we could ask about a group's congruences are
+easily described using normal subgroups instead.  Recall that a subgroup $N$ of
+a group $G$ is \textit{normal} if and only if $g^{-1}ng \in N$ for all $g \in G$
+and $n \in N$; recall also that a \textit{coset} of $N$ is the set $Ng$ or $gN$
+for some $g \in G$, and that $Ng=gN$ if $N$ is normal.  The following theorem
+shows how the normal subgroups and congruences of a congruence are in bijective
+correspondence.
+
+\begin{theorem}
+  \label{thm:normal-subgroups}
+  Let $G$ be a group.  If $\rho$ is a congruence on $G$, then the $\rho$-class
+  containing the identity is a normal subgroup of $G$.
+
+  Conversely, if $N$ is a normal subgroup of $G$, then its cosets are the
+  classes of a congruence on $G$.
+
+  \begin{proof}
+    First, let $\rho$ be a congruence on $G$, and let $I$ be the $\rho$-class
+    containing the identity $1$.  First we show that $I$ is a subgroup: if
+    $a,b \in I$ then $a \cdot b ~\rho~ 1 \cdot 1 = 1$, so $ab \in I$.
+    Furthermore, we have $(a,1) \in \rho$, so
+    $(aa^{-1}, 1a^{-1}) = (1, a^{-1}) \in \rho$, and so $a^{-1} \in I$, and so
+    $I$ is a subgroup.  To show $I$ is normal, let $g \in G$ and $i \in I$.
+    Observe that $g^{-1}ig ~\rho~ g^{-1}1g = g^{-1}g = 1$, so $g^{-1}ig \in I$,
+    as required.
+
+    To show the converse, let $N$ be a normal subgroup of $G$, and let $\nu$ be
+    the equivalence on $G$ whose classes are the cosets of $N$.  If
+    $(x,y), (s,t) \in \nu$, then $Nx=Ny$ and $sN=tN$.  Hence
+    $Nxs=Nys=ysN=ytN=Nyt$, so we have $(xs,yt) \in \nu$, meaning that $\nu$ is
+    a congruence as required.
+  \end{proof}
+\end{theorem}
+
+This theorem means that any information which can be taken from a congruence can
+instead be taken from a normal subgroup, and so congruences on a group need
+never be studied directly.  We even have the fortunate property that the
+containment of normal subgroups follows the containment of the corresponding
+congruences.  The other structures discussed in this section represent
+congruences on other categories of semigroup in a similar way.
+
+
+
 \subsection{Completely (0-)simple semigroups: linked triples}
 \label{sec:linked-triples}
 
