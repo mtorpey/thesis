@@ -54,7 +54,11 @@ a congruence $\rho$ to a set of generating pairs, it is desirable to find as
 small a set of pairs as possible.  When converting between generating pairs and
 other representations, these will be the goals.
 
+\subsection{Groups: normal subgroups}
+\label{sec:normal-subgroups}
+
 \subsection{Completely (0-)simple semigroups: linked triples}
+\label{sec:linked-triples}
 
 There is a special way of describing a congruence on a completely simple or
 completely 0-simple semigroup: using a linked triple.  We will start by
@@ -108,9 +112,8 @@ complicated case, that of completely 0-simple semigroups, and then we will go on
 to explain the easier case, completely simple semigroups.
 
 \begin{definition}
-\label{def:rzms}
-  A \textbf{Rees 0-matrix semigroup} $\mathcal{M}^0[T;I,\Lambda;P]$ is the
-  set
+  \label{def:rzms}
+  A \textbf{Rees 0-matrix semigroup} $\mathcal{M}^0[T;I,\Lambda;P]$ is the set
   $$(I \times T \times \Lambda) \cup \{0\}$$
   with multiplication given by
   $$(i,a,\lambda) \cdot (j,b,\mu) = \left\{
@@ -129,7 +132,6 @@ to explain the easier case, completely simple semigroups.
   \item $0x=x0=0$ for all $x$ in the semigroup.
   \end{itemize}
   \cite[\S 3.2]{howie}
-  % TODO: RMS and RZMS, or just RMS?
 \end{definition}
 
 We will require a certain property of the matrix $P$, which we should define
@@ -148,6 +150,74 @@ completely 0-simple semigroups.
     Theorem 3.2.3 in \cite[p.72-75]{howie}.
   \end{proof}
 \end{theorem}
+
+Now we can describe any finite 0-simple semigroup as its isomorphic Rees
+0-matrix semigroup.  Hence we can restrict our further investigations just to
+this type of semigroup.  From now on, when we see a Rees 0-matrix semigroup over
+$G$, we will assume that $G$ is a group.  Hence ``a finite 0-simple Rees
+0-matrix semigroup $\mathcal{M}^0[G;I,\Lambda;P]$'' refers to a finite 0-simple
+Rees 0-matrix semigroup over a group, with a regular matrix $P$.
+
+Next we consider the congruences of a finite 0-simple semigroup.
+
+\begin{definition}
+  \label{def:linked-triple}
+  Let $S$ be a completely 0-simple Rees 0-matrix semigroup
+  $\mathcal{M}^0[G;I,\Lambda;P]$.  A \textbf{linked triple} on $S$ is a
+  triple $$(N,\mathcal{S},\mathcal{T})$$ consisting of a normal subgroup
+  $N \trianglelefteq G$, an equivalence relation $\mathcal{S}$ on $I$ and an
+  equivalence relation $\mathcal{T}$ on $\Lambda$, such that the following are
+  satisfied:
+  \begin{enumerate}
+  \item $\mathcal{S} \subseteq \varepsilon_I$, where $\varepsilon_I =
+    \left\{(i,j) \in I \times I\, \middle|\, \forall \lambda \in \Lambda:
+      p_{\lambda i}=0 \iff p_{\lambda j}=0 \right\}$,
+  \item $\mathcal{T} \subseteq \varepsilon_\Lambda$, where $\varepsilon_\Lambda
+    = \left\{(\lambda,\mu) \in \Lambda \times \Lambda\, \middle|\, \forall i \in
+      I: p_{\lambda i}=0 \iff p_{\mu i}=0 \right\}$,
+  \item For all $i,j \in I$ and $\lambda, \mu \in \Lambda$ such that
+    $p_{\lambda i}, p_{\lambda j}, p_{\mu i}, p_{\mu j} \neq 0$ and either
+    $(i,j) \in \mathcal{S}$ or $(\lambda,\mu) \in \mathcal{T}$, we have that
+    $q_{\lambda \mu i j} \in N$, where
+    $$q_{\lambda \mu i j} = p_{\lambda i} p_{\mu i}^{-1} p_{\mu j} p_{\lambda
+      j}^{-1}.$$
+  \end{enumerate}
+  \cite[p.86]{howie}
+\end{definition}
+
+We can associate the linked triples of a finite 0-simple semigroup with its
+non-universal congruences.
+
+\begin{theorem}
+  \label{thm:linked-triple}
+  Let $S$ be a finite 0-simple Rees 0-matrix semigroup.  There exists a
+  bijection $\Gamma$ from the non-universal congruences on $S$ to the linked
+  triples on $S$.
+\end{theorem}
+
+This theorem shows us an alternative way to look at congruences on completely
+0-simple semigroups, just as normal subgroups show us an alternative way to look
+at congruences on groups.  However, in order to use this at all in a
+computational setting, we must have a concrete function $\Gamma$ which we can
+use to convert a congruence to a linked triple and back again, rather than just
+the knowledge that such a function exists.  We define the function $\Gamma$ as
+follows.
+
+% TODO: \Gamma
+
+While in this paper we are concentrating on finite 0-simple semigroups, it
+should be noted that a very similar representation exists for finite
+\emph{simple} semigroups (Rees matrix semigroups), and the functions described
+operate in almost exactly the same way, except for the removal of complications
+related to the zero element.  In this system, the universal congruence can also
+be represented by a linked triple, namely $(G, I \times I, \Lambda \times
+\Lambda)$. \cite[p.90-91]{howie}
+
+Since the theory is so similar, we will not explain the finite simple case
+in any more detail, and instead we will restrict our arguments to semigroups
+\emph{with} zero, apart from a brief excursion to Rees matrix semigroups in
+Theorem \ref{thm:withoutzero}.  However, a future implementation of this theory
+in GAP could be useful, and would be a logical extension of this project.
 
 
 
