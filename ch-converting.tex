@@ -251,22 +251,19 @@ in any more detail, and instead we will restrict our arguments to semigroups
 Theorem \ref{thm:withoutzero}.  However, a future implementation of this theory
 in GAP could be useful, and would be a logical extension of this project.
 
-
-
 \subsection{Inverse semigroups: kernel-trace pairs}
+
 \subsection{Rees congruences}
-A \textbf{Rees congruence} is a congruence on a semigroup $S$ with a distinguished
-congruence class $I$ which is a two-sided ideal of $S$, and in which every other
-congruence class is a singleton.  We may write this congruence as $\rho_I$, and
-we may write its quotient $S/\rho_I$ as $S/I$.
+A \textbf{Rees congruence} is a congruence on a semigroup $S$ with a
+distinguished congruence class $I$ which is a two-sided ideal of $S$, and in
+which every other congruence class is a singleton.  We may write this congruence
+as $\rho_I$, and we may write its quotient $S/\rho_I$ as $S/I$.  Hence, a pair
+$(x,y)$ lies in $\rho_I$ if and only if $x=y$ or $x$ and $y$ both lie in $I$.
 
 Some or all of a semigroup's congruences may be Rees: in particular, since $S$
 is an ideal of $S$, the universal congruence $S \times S$ is a Rees congruence.
-
-Another type of congruence is one given by a set of generating pairs: if $R
-\subset S \times S$, then we let $R^\sharp$ be the least congruence on $S$
-containing all the pairs in $R$.  We describe $R$ as a set of \textbf{generating
-  pairs} for $R^\sharp$, and any congruence on $S$ can be described in this way.
+If $S$ has a zero $0$, then $\{0\}$ is an ideal and so the trivial congruence
+$\Delta_S$ is a Rees congruence equal to $\rho_{\{0\}}$.
 
 \subsection{Regular semigroups: something like kernel-trace?}
 
