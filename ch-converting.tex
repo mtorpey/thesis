@@ -476,6 +476,20 @@ first place is probably to avoid this work.  Hence, we want to find the
 kernel-trace pair directly from the generating pairs $\mathbf{R}$, enumerating
 as few pairs in $\mathbf{R}^\sharp$ as possible.
 
+\begin{algorithm}
+\caption{The kernel-trace pair of a congruence by generating pairs}
+\label{alg:pairs-to-kertr}
+\begin{algorithmic}[1]
+\Require $S$ an inverse semigroup with idempotents $E$
+\Require $\mathbf{R} \subseteq S \times S$
+\Procedure{KerTraceFromGenPairs}{$\mathbf{R}$}
+\State $K := E$
+\State $\tau := \Delta_E$
+\State \Return $(K, \tau)$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
 \section{Generating pairs from kernel and trace}
 \label{sec:kertr-to-pairs}
 
