@@ -297,6 +297,7 @@ Theorem \ref{thm:withoutzero}.  However, a future implementation of this theory
 in GAP could be useful, and would be a logical extension of this project.
 
 \subsection{Inverse semigroups: kernel-trace pairs}
+\label{sec:kertr}
 
 An inverse semigroup also has a structure which can be used in place of its
 congruences: its \textit{kernel-trace pairs} (sometimes confusingly known as
@@ -456,6 +457,24 @@ for $\rho_I$.
 
 \section{Kernel and trace from generating pairs}
 \label{sec:pairs-to-kertr}
+
+Given a set of generating pairs $\mathbf{R}$ over a semigroup $S$, we may wish
+to consider the congruence $\rho = \mathbf{R}^\sharp$ and ask questions such as
+whether a pair lies in the congruence, or the number of congruence classes.
+This is certainly possible by various methods, for example the variety of
+algorithms mentioned in Chapter \ref{chap:pairs}---however, if $S$ is an inverse
+semigroup then any calculation we wish to carry out will be much faster if we
+know the congruence's kernel-trace pair, as described in Section
+\ref{sec:kertr}.  We therefore wish for a fast way of determining the kernel and
+trace of $\rho$.
+
+One way of calculating the kernel and trace would be simply to enumerate all the
+elements in all the classes of $\rho$, and to search for the idempotents to
+compute the kernel and trace.  However, enumerating all the classes is very
+time-consuming, and the main reason to calculate the kernel-trace pair in the
+first place is probably to avoid this work.  Hence, we want to find the
+kernel-trace pair directly from the generating pairs $\mathbf{R}$, enumerating
+as few pairs in $\mathbf{R}^\sharp$ as possible.
 
 \section{Generating pairs from kernel and trace}
 \label{sec:kertr-to-pairs}
