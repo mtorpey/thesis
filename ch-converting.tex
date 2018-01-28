@@ -298,106 +298,101 @@ in GAP could be useful, and would be a logical extension of this project.
 
 \subsection{Inverse semigroups: kernel-trace pairs}
 
-\begin{definition}
-  \label{def:trace}
-  The \textbf{trace} of $\rho$ is the restriction of $\rho$ to the idempotents
-  of $S$.  That is,
-  $$\tr \rho = \rho \cap (E \times E).$$
-  \cite[p.155]{howie}
-\end{definition}
+An inverse semigroup also has a structure which can be used in place of its
+congruences: its \textit{kernel-trace pairs} (sometimes confusingly known as
+``congruence pairs'').  Though these are not as useful computationally as linked
+triples for completely simple and completely 0-simple semigroups, they can
+certainly be used effectively to carry out calculations faster than by using
+generating pairs in large cases.  A part of my previous thesis \cite[Chapter
+5]{mtorpey_msc} focused on a computational use of kernel-trace pairs to solve
+problems about congruences.
 
-\begin{lemma}
-  \label{lem:trace}
-  The trace of $\rho$ is a congruence on E.
-\end{lemma}
-
-\begin{lemma}
-  \label{lem:tracenormal}
-  The trace of $\rho$ is \textbf{normal} in $S$, which is to say that
-  $$(a^{-1}ea,a^{-1}fa) \in \tr \rho$$
-  for every pair $(e,f) \in \tr \rho$ and every element $a \in S$.
-\end{lemma}
-
-A congruence's trace goes some way towards describing the congruence
-completely.  The only other thing which is needed is its \textit{kernel},
-defined as follows:
+The basic theory about kernel-trace pairs is presented here, for reference.  In
+all these definitions, $S$ is an inverse semigroup, $E$ is the set of
+idempotents in $S$, and and $\rho$ is a congruence on $S$.  Recall that $E$ is a
+subsemigroup of $S$.
 
 \begin{definition}
   \label{def:kernel}
-  The \textbf{kernel} of $\rho$ is the union of all the $\rho$-classes of $S$ which
-  contain idempotents.  That is,
-  $$\Ker \rho = \bigcup_{e \in E} \rho_e.$$
+  The \textbf{kernel} of $\rho$ is $\bigcup_{e \in E} [e]_\rho$, the union of
+  all the $\rho$-classes of $S$ which contain idempotents.  It is denoted by
+  $\Ker\rho$.\cite[p.155]{howie}
+\end{definition}
+
+\begin{definition}
+  \label{def:trace}
+  The \textbf{trace} of $\rho$ is $\rho \cap (E \times E)$, the restriction of
+  $\rho$ to the idempotents of $S$.  It is denoted by $\tr\rho$.
   \cite[p.155]{howie}
 \end{definition}
 
-Like the trace, the kernel has certain characteristics which can be identified
-from its definition, such as the following lemma which uses the new definition
-of a \textit{normal subsemigroup}.
+We will shortly see that a congruence on $S$ is completely defined by its kernel
+and trace.  First we will approach kernel-trace pairs from an abstract route
+which will help us to classify the congruences on $S$ completely.  We start with
+two different definitions of the word ``normal'', one for subsemigroups and one
+for congruences.
 
 \begin{definition}
-  A subsemigroup $N$ of a semigroup $S$ is called \textbf{normal} if it is
+  \label{def:kernel-normal}
+  A subsemigroup $K$ of $S$ is called \textbf{normal} if it is
   \textit{full} (contains all the idempotents of $S$) and
-  \textit{self-conjugate} ($a^{-1}xa \in N$ for all $x \in N, a \in S$).
+  \textit{self-conjugate} ($a^{-1}xa \in K$ for all $x \in K, a \in S$).
   \cite[p.155]{howie}
 \end{definition}
 
-\begin{lemma}
-  \label{lem:kernelnormal}
-  The kernel of $\rho$ is a normal subsemigroup of $S$.
-  \cite[p.155]{howie}
-\end{lemma}
+\begin{definition}
+  \label{def:trace-normal}
+  A congruence $\tau$ on $E$ is \textbf{normal} in $S$ if
+  $$(a^{-1}ea,a^{-1}fa) \in \tr \rho$$
+  for every pair $(e,f) \in \tau$ and every element $a \in S$.
+\end{definition}
 
-We will soon see that the pair $(\Ker \rho, \tr \rho)$ is all that is needed to
-completely describe the congruence $\rho$ -- all of $\rho$'s pairs and classes can
-be determined from these two components.  It would also be desirable for us to
-say that all such pairs $(N, \tau)$ (consisting of a normal subsemigroup and a
-normal congruence) describe congruences on $S$.  This is nearly true, in that
-every congruence on $S$ can be described by some pair of this description.
-However, the kernel and trace of $\rho$ have two more properties which must be
-observed -- properties without which $(N,\tau)$ cannot describe a congruence.
-
-\begin{lemma}
-  \label{lem:congruencepair}
-  Let $\rho$ be a congruence on an inverse semigroup $S$.  For all $a \in S$ and
-  $e \in E$,
-  \begin{enumerate}
-  \item If $ae \in \Ker \rho$ and $(e,a^{-1}a) \in \tr \rho$, then $a \in \Ker
-    \rho$.
-  \item If $a \in \Ker \rho$, then $(aa^{-1},a^{-1}a) \in \tr \rho$.
-  \end{enumerate}
-\end{lemma}
-
-These last two properties now give us all we need to give a useful
-characterisation of congruences on inverse semigroups: an abstract description
-of a pair which forms the kernel and trace of a congruence.
+Now we can define a \textit{kernel-trace pair}, an abstract structure which
+relates very closely to a congruence.
 
 \begin{definition}
-  \label{def:congruencepair}
-  For an inverse semigroup $S$ with idempotent semigroup $E$, a
-  \textbf{congruence pair} is a pair $(N,\tau)$ consisting of a normal
-  subsemigroup $N$ of $S$ and a normal congruence $\tau$ on $S$, such that
+  \label{def:kernel-trace-pair}
+  A \textbf{kernel-trace pair} on $S$ is a pair $(K,\tau)$ consisting of a
+  normal subsemigroup $K$ of $S$ and a normal congruence $\tau$ on $E$, such
+  that
   \begin{enumerate}
-  \item If $ae \in N$ and $(e,a^{-1}a) \in \tau$, then $a \in N$
-  \item If $a \in N$, then $(aa^{-1},a^{-1}a) \in \tau$
+  \item If $ae \in K$ and $(e,a^{-1}a) \in \tau$, then $a \in K$
+  \item If $a \in K$, then $(aa^{-1},a^{-1}a) \in \tau$
   \end{enumerate}
   for all elements $a \in S$ and $e \in E$.
   \cite[p.156]{howie}
 \end{definition}
 
-Now we can state the result which bijectively identifies congruence pairs with
-congruences, and allows for the computational representation we present in the
-next section.
+Now we state the result which identifies an abstract kernel-trace pair with the
+kernel and trace of a congruence, and allows us to calculate information about
+$\rho$ by using $\Ker \rho$ and $\tr \rho$ directly.
 
 \begin{theorem}
-  \label{thm:congruencepairs}
-  Let $\rho$ be a congruence on an inverse semigroup $S$ with idempotent
-  semigroup $E$.  $(\Ker\rho, \tr\rho)$ is a congruence pair, and conversely,
-  every congruence pair $(N,\tau)$ defines a congruence
-  $$\rho_{(N,\tau)} = \{(x,y) \in S \times S ~|~ (x^{-1}x, y^{-1}y) \in \tau,
-  xy^{-1} \in N\}$$
-  whose kernel is equal to $N$ and whose trace is equal to $\tau$.  Finally,
-  $\rho_{(\Ker\rho,\tr\rho)} = \rho$.
+  \label{thm:kernel-trace-pair}
+  % Let $\rho$ be a congruence on an inverse semigroup $S$ with idempotent
+  % semigroup $E$.  $(\Ker\rho, \tr\rho)$ is a kernel-trace pair.
+
+  % Conversely, every kernel-trace pair $(K,\tau)$ on $S$ defines a congruence
+  % $$\rho_{(K,\tau)} = \{(x,y) \in S \times S ~|~ (x^{-1}x, y^{-1}y) \in \tau,
+  % xy^{-1} \in K\}$$
+  % whose kernel is equal to $K$ and whose trace is equal to $\tau$.  Finally,
+  % $\rho_{(\Ker\rho,\tr\rho)} = \rho$.
+  Let $S$ be an inverse semigroup.  There exists a bijection $\Psi$ from the
+  congruences on $S$ to the kernel-trace pairs on $S$, defined by
+  $$\Psi: \rho \mapsto (\Ker\rho, \tr\rho),$$
+  whose inverse satisfies
+  $$\Psi^{-1} : (K,\tau) \mapsto
+  \{(x,y) \in S \times S ~|~ xy^{-1} \in K, (x^{-1}x, y^{-1}y) \in \tau\}.$$
 \end{theorem}
+
+This theorem tells us everything we need to know about kernel-trace pairs and
+their relationship to congruences on an inverse semigroup.  Once we have the
+kernel-trace pair of a congruence, we can solve any problem we wish to using the
+kernel and trace alone, and computational problems are much faster than using
+generating pairs directly \cite[\S 6.1.3]{mtorpey_msc}.  However, we may find
+that if a congruence is specified initially using generating pairs, it may be
+costly to find its kernel-trace pair in the first place; Section
+\ref{sec:pairs-to-kertr} presents a clear improvement in this field.
 
 \subsection{Rees congruences}
 A \textbf{Rees congruence} is a congruence on a semigroup $S$ with a
