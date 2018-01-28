@@ -489,13 +489,24 @@ as few pairs in $\mathbf{R}^\sharp$ as possible.
 \State $X \gets X \cup \{ab^{-1} : (a,b) \in \mathbf{R}\}$
 \State $\mathbf{R} \gets \{(a^{-1}a, b^{-1}b) : (a,b) \in \mathbf{R}\}$
 \Repeat
-\State Hello
-\Until{nothing has changed}
+\State $\delta \gets \False$ \Comment{Nothing has changed yet}
+\State \Call{ComputeKernel}{ }
+\State \Call{EnforceConditions}{ }
+\State \Call{EnumerateTrace}{ }
+\Until{$\delta = \False$} \Comment{Exit loop if nothing changed}
 
 \State \Return $(K, \tau)$
 \EndProcedure
+
+\Procedure{ComputeKernel}{$K, X$}
+
+\EndProcedure
 \end{algorithmic}
 \end{algorithm}
+
+kernelgenstoapply = $X$
+pairstoapply = $\mathbf{R}$
+traceBlocks/traceUF = $\tau$
 
 \section{Generating pairs from kernel and trace}
 \label{sec:kertr-to-pairs}
