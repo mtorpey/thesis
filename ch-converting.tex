@@ -476,6 +476,11 @@ first place is probably to avoid this work.  Hence, we want to find the
 kernel-trace pair directly from the generating pairs $\mathbf{R}$, enumerating
 as few pairs in $\mathbf{R}^\sharp$ as possible.
 
+A new way of finding the kernel and trace directly from the generating pairs is
+presented in Algorithm \ref{alg:pairs-to-kertr}.
+
+TODO: explain Algorithm \ref{alg:pairs-to-kertr} and justify it.
+
 \begin{algorithm}
 \caption{The kernel-trace pair of a congruence by generating pairs}
 \label{alg:pairs-to-kertr}
@@ -485,28 +490,72 @@ as few pairs in $\mathbf{R}^\sharp$ as possible.
 \Procedure{KerTraceFromGenPairs}{$\mathbf{R}$}
 \State $K := E$
 \State $\tau := \Delta_E$
-\State Let $X$ be a generating set for $E$
-\State $X \gets X \cup \{ab^{-1} : (a,b) \in \mathbf{R}\}$
-\State $\mathbf{R} \gets \{(a^{-1}a, b^{-1}b) : (a,b) \in \mathbf{R}\}$
+\State Let $S'$ be a generating set for $S$
+\State Let $E'$ be a generating set for $E$
+\State $X \gets E' \cup \{ab^{-1} : (a,b) \in \mathbf{R}\}$
+\State $\mathbf{T} \gets \{(a^{-1}a, b^{-1}b) : (a,b) \in \mathbf{R}\}$
+\State $\tau \gets (\tau \cup T)^e$
 \Repeat
 \State $\delta \gets \False$ \Comment{Nothing has changed yet}
-\State \Call{ComputeKernel}{ }
+\State \Call{EnumerateKernel}{ }
 \State \Call{EnforceConditions}{ }
 \State \Call{EnumerateTrace}{ }
 \Until{$\delta = \False$} \Comment{Exit loop if nothing changed}
-
 \State \Return $(K, \tau)$
 \EndProcedure
 
-\Procedure{ComputeKernel}{$K, X$}
+\Procedure{EnumerateKernel}{ }
+\If{$X \setminus K \neq \varnothing$}
+  \State $K \gets \llangle K, X \rrangle$
+  \State $\delta \gets \True$
+\EndIf
+\State $X \gets \varnothing$
+\EndProcedure
 
+\Procedure{EnforceConditions}{ }
+\For{$a \in S$}
+  \If{$a \in K$}
+    \If{$(aa^{-1}, a^{-1}a) \notin \tau$}
+      \State $\mathbf{T} \gets \mathbf{T} \cup \{(aa^{-1}, a^{-1}a)\}$
+      \State $\delta \gets \True$
+    \EndIf
+  \Else
+    \For{$e \in [a^{-1}a]_\tau$}
+      \If{$ae \in K$}
+        \State $X \gets X \cup \{a\}$
+        \State $\delta \gets \True$
+      \EndIf
+    \EndFor
+  \EndIf
+\EndFor
+\EndProcedure
+
+\Procedure{EnumerateTrace}{ }
+\While{$\mathbf{T} \neq \varnothing$}
+  \State Pick any $(x,y) \in \mathbf{T}$
+  \For{$e \in E'$}
+    \If{$(xe, ye) \notin \tau$}
+      \State $\delta \gets \True$
+      \State $T \gets T \cup \{(xe, ye)\}$
+      \State $\tau \gets (\tau \cup \{(xe, ye)\})^e$
+      \For{$a \in S'$}
+        % TODO: should this be a^-1 xe a?
+        \If{$(a^{-1}xa, a^{-1}ya) \notin \tau$}
+          \State $T \gets T \cup \{(a^{-1}xa, a^{-1}ya)\}$
+          \State $\tau \gets (\tau \cup \{(a^{-1}xa, a^{-1}ya)\})^e$
+        \EndIf
+      \EndFor
+    \EndIf
+  \EndFor
+  \State $\mathbf{T} \gets \mathbf{T} \setminus \{(x,y)\}$
+\EndWhile
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
-kernelgenstoapply = $X$
-pairstoapply = $\mathbf{R}$
-traceBlocks/traceUF = $\tau$
+% kernelgenstoapply = $X$
+% pairstoapply = $\mathbf{T}$
+% traceBlocks/traceUF = $\tau$
 
 \section{Generating pairs from kernel and trace}
 \label{sec:kertr-to-pairs}
