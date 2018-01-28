@@ -485,6 +485,13 @@ as few pairs in $\mathbf{R}^\sharp$ as possible.
 \Procedure{KerTraceFromGenPairs}{$\mathbf{R}$}
 \State $K := E$
 \State $\tau := \Delta_E$
+\State Let $X$ be a generating set for $E$
+\State $X \gets X \cup \{ab^{-1} : (a,b) \in \mathbf{R}\}$
+\State $\mathbf{R} \gets \{(a^{-1}a, b^{-1}b) : (a,b) \in \mathbf{R}\}$
+\Repeat
+\State Hello
+\Until{nothing has changed}
+
 \State \Return $(K, \tau)$
 \EndProcedure
 \end{algorithmic}
