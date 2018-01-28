@@ -316,7 +316,7 @@ subsemigroup of $S$.
   \label{def:kernel}
   The \textbf{kernel} of $\rho$ is $\bigcup_{e \in E} [e]_\rho$, the union of
   all the $\rho$-classes of $S$ which contain idempotents.  It is denoted by
-  $\Ker\rho$.\cite[p.155]{howie}
+  $\ker\rho$.\cite[p.155]{howie}
 \end{definition}
 
 \begin{definition}
@@ -365,21 +365,21 @@ relates very closely to a congruence.
 
 Now we state the result which identifies an abstract kernel-trace pair with the
 kernel and trace of a congruence, and allows us to calculate information about
-$\rho$ by using $\Ker \rho$ and $\tr \rho$ directly.
+$\rho$ by using $\ker \rho$ and $\tr \rho$ directly.
 
 \begin{theorem}
   \label{thm:kernel-trace-pair}
   % Let $\rho$ be a congruence on an inverse semigroup $S$ with idempotent
-  % semigroup $E$.  $(\Ker\rho, \tr\rho)$ is a kernel-trace pair.
+  % semigroup $E$.  $(\ker\rho, \tr\rho)$ is a kernel-trace pair.
 
   % Conversely, every kernel-trace pair $(K,\tau)$ on $S$ defines a congruence
   % $$\rho_{(K,\tau)} = \{(x,y) \in S \times S ~|~ (x^{-1}x, y^{-1}y) \in \tau,
   % xy^{-1} \in K\}$$
   % whose kernel is equal to $K$ and whose trace is equal to $\tau$.  Finally,
-  % $\rho_{(\Ker\rho,\tr\rho)} = \rho$.
+  % $\rho_{(\ker\rho,\tr\rho)} = \rho$.
   Let $S$ be an inverse semigroup.  There exists a bijection $\Psi$ from the
   congruences on $S$ to the kernel-trace pairs on $S$, defined by
-  $$\Psi: \rho \mapsto (\Ker\rho, \tr\rho),$$
+  $$\Psi: \rho \mapsto (\ker\rho, \tr\rho),$$
   whose inverse satisfies
   $$\Psi^{-1} : (K,\tau) \mapsto
   \{(x,y) \in S \times S ~|~ xy^{-1} \in K, (x^{-1}x, y^{-1}y) \in \tau\}.$$
