@@ -107,8 +107,9 @@ congruences on other categories of semigroup in a similar way.
 
 There is a special way of describing a congruence on a completely simple or
 completely 0-simple semigroup: using a linked triple.  We will start by
-explaining the terms completely simple and completely 0-simple, then define a
-semigroup's linked triples and explain how they are related to its congruences.
+explaining the terms \textit{completely simple} and \textit{completely
+  0-simple}, then we will define a semigroup's linked triples and explain how
+they are related to its congruences.
 
 \begin{definition}
   \label{def:zerosimple}
@@ -123,7 +124,6 @@ semigroup's linked triples and explain how they are related to its congruences.
 Simple and 0-simple semigroups are closely related.  Note that if $S$ is a
 simple semigroup, then $S^0$, the semigroup created by appending a zero element
 to $S$, is 0-simple.
-
 Next, we consider a slightly stronger condition.
 
 \begin{definition}
@@ -180,7 +180,7 @@ to explain the easier case, completely simple semigroups.
 \end{definition}
 
 We will require a certain property of the matrix $P$, which we should define
-first.  We will call a matrix $P$ \textbf{regular} if it contains at least one
+first.  We will call a matrix \textbf{regular} if it contains at least one
 non-zero entry in each row and each column.
 
 The following theorem shows how we can use Rees 0-matrix semigroups to classify
@@ -192,16 +192,17 @@ completely 0-simple semigroups.
   $\mathcal{M}^0[G;I,\Lambda;P]$, where $G$ is a group and $P$ is regular.
   Conversely, every such Rees 0-matrix semigroup is completely 0-simple.
   \begin{proof}
-    Theorem 3.2.3 in \cite[p.72-75]{howie}.
+    Theorem 3.2.3 in \cite{howie}.
   \end{proof}
 \end{theorem}
 
-Now we can describe any finite 0-simple semigroup as its isomorphic Rees
-0-matrix semigroup.  Hence we can restrict our further investigations just to
+Now we can replace any finite 0-simple semigroup with its isomorphic Rees
+0-matrix semigroup when we wish to perform any isomorphism-invariant
+calculations---hence we can restrict our further investigations just to
 this type of semigroup.  From now on, when we see a Rees 0-matrix semigroup over
 $G$, we will assume that $G$ is a group.  Hence ``a finite 0-simple Rees
 0-matrix semigroup $\mathcal{M}^0[G;I,\Lambda;P]$'' refers to a finite 0-simple
-Rees 0-matrix semigroup over a group, with a regular matrix $P$.
+Rees 0-matrix semigroup over a group $G$, with a regular matrix $P$.
 
 Next we consider the congruences of a finite 0-simple semigroup.
 
@@ -227,17 +228,20 @@ Next we consider the congruences of a finite 0-simple semigroup.
     $$q_{\lambda \mu i j} = p_{\lambda i} p_{\mu i}^{-1} p_{\mu j} p_{\lambda
       j}^{-1}.$$
   \end{enumerate}
-  \cite[p.86]{howie}
+  \cite[\S 3.5]{howie}
 \end{definition}
 
 We can associate the linked triples of a finite 0-simple semigroup with its
-non-universal congruences.
+non-universal congruences, as follows.
 
 \begin{theorem}
   \label{thm:linked-triple}
   Let $S$ be a completely 0-simple Rees 0-matrix semigroup.  There exists a
   bijection $\Gamma$ from the non-universal congruences on $S$ to the linked
   triples on $S$.
+  \begin{proof}
+    Theorem 3.5.8 in \cite{howie}
+  \end{proof}
 \end{theorem}
 
 This theorem shows us an alternative way to look at congruences on completely
@@ -246,55 +250,45 @@ at congruences on groups.  However, in order to use this at all in a
 computational setting, we must have a concrete function $\Gamma$ which we can
 use to convert a congruence to a linked triple and back again, rather than just
 the knowledge that such a function exists.  We define the function $\Gamma$ as
-follows.
+in \cite[\S 3.5]{howie}, as follows.
 
 \begin{definition}
   Let $S$ be a completely 0-simple Rees 0-matrix semigroup
   $\mathcal{M}^0[G;I,\Lambda;P]$, and let $\rho$ be a non-universal congruence
   on $S$.
+  The \textbf{linked triple function} of $S$ is the function
+  $$\Gamma: \rho \mapsto (N_\rho, \mathcal{S}_\rho, \mathcal{T}_\rho),$$
+  which maps any non-universal congruence onto a triple whose entries are
+  defined as follows.
 
-  We define a relation $\mathcal{S}_\rho \subseteq I \times I$ by the rule that
+  We define the relation $\mathcal{S}_\rho \subseteq I \times I$ by the rule that
   $(i,j) \in \mathcal{S}_\rho$ if and only if $(i,j) \in \varepsilon_I$ and
   $$(i, p_{\lambda i}^{-1}, \lambda) ~\rho~ (j, p_{\lambda j}^{-1}, \lambda)$$
   for all $\lambda \in \Lambda$ such that $p_{\lambda i} \neq 0$ (and hence
-  $p_{\lambda j} \neq 0$).
-
-  Similarly, we define a relation
+  $p_{\lambda j} \neq 0$).  Similarly, we define the relation
   $\mathcal{T}_\rho \subseteq \Lambda \times \Lambda$ by the rule that
   $(\lambda,\mu) \in \mathcal{T}_\rho$ if and only if
   $(\lambda,\mu) \in \varepsilon_\Lambda$ and
   $$(i, p_{\lambda i}^{-1}, \lambda) ~\rho~ (i, p_{\mu i}^{-1}, \mu)$$
   for all $i \in I$ such that $p_{\lambda i} \neq 0$ (and hence
-  $p_{\mu i} \neq 0$).
-
-  Finally, we define a normal subgroup $N_\rho \trianglelefteq G$ as follows.
-  First, let $1_\Lambda \in \Lambda$ be the top row of the matrix $P$.  Since
-  $P$ is regular, row $1_\Lambda$ must contain a non-zero entry.  Let
-  $1_I \in I$ be the first column such that $p_{1_\Lambda 1_I} \neq 0$.
-
-  Now let
+  $p_{\mu i} \neq 0$).  Finally, we define the normal subgroup
+  $N_\rho \trianglelefteq G$ as follows.  First, let $1_\Lambda \in \Lambda$ be
+  the top row of the matrix $P$.  Since $P$ is regular, row $1_\Lambda$ must
+  contain a non-zero entry.  Let $1_I \in I$ be the first column such that
+  $p_{1_\Lambda 1_I} \neq 0$.  Now let
   $$N_\rho = \{a \in G ~|~ (1_I,a,1_\Lambda) ~\rho~ (1_I, 1_G, 1_\Lambda),$$
   where $1_G$ is the identity in the group $G$.
-
-  The \textbf{linked triple function} of $S$ is the function
-  $$\Gamma: \rho \mapsto (N_\rho, \mathcal{S}_\rho, \mathcal{T}_\rho),$$
-  which maps any non-universal congruence onto a triple with the entries defined
-  above.
 \end{definition}
 
-While in this paper we are concentrating on finite 0-simple semigroups, it
-should be noted that a very similar representation exists for finite
-\emph{simple} semigroups (Rees matrix semigroups), and the functions described
-operate in almost exactly the same way, except for the removal of complications
-related to the zero element.  In this system, the universal congruence can also
-be represented by a linked triple, namely $(G, I \times I, \Lambda \times
-\Lambda)$. \cite[p.90-91]{howie}
-
-Since the theory is so similar, we will not explain the finite simple case
-in any more detail, and instead we will restrict our arguments to semigroups
-\emph{with} zero, apart from a brief excursion to Rees matrix semigroups in
-Theorem \ref{thm:withoutzero}.  However, a future implementation of this theory
-in GAP could be useful, and would be a logical extension of this project.
+Our discussion so far has focused on 0-simple semigroups, but very similar
+structures exist for completely \textit{simple} semigroups.  They are isomorphic
+to \textit{Rees matrix semigroups}, and linked triples can be defined on them in
+almost exactly the same way, except for the removal of complications related to
+the zero element.  A Rees matrix semigroup follows Definition \ref{def:rzms} but
+with the removal of the zero element, and linked triples follow Definition
+\ref{def:linked-triple}, where the restrictions related to placements of $0$ in
+$P$ are irrelevant.  It should also be noted that even the universal congruence
+has a linked triple in this case: $(G, I \times I, \Lambda \times \Lambda)$.
 
 \subsection{Inverse semigroups: kernel-trace pairs}
 \label{sec:kertr}
