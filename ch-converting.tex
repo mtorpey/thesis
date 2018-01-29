@@ -407,8 +407,6 @@ is an ideal of $S$, the universal congruence $S \times S$ is a Rees congruence.
 If $S$ has a zero $0$, then $\{0\}$ is an ideal and so the trivial congruence
 $\Delta_S$ is a Rees congruence equal to $\rho_{\{0\}}$.
 
-\subsection{Regular semigroups: something like kernel-trace?}
-
 % TODO: put all these in one section
 \section{A trivial example: linked triples and normal subgroups}
 
@@ -454,6 +452,76 @@ for $\rho_I$.
     and $(a,b) \in \rho$ as required.
   \end{proof}
 \end{theorem}
+
+\section{Linked triple from generating pairs}
+\label{sec:pairs-to-linked-triple}
+
+We have seen that calculating information about a congruence using its linked
+triple is much faster than using a set of generating pairs \cite[\S
+6.1]{mtorpey_pre_msc}.  However, it may well be that a congruence on a finite
+simple or finite 0-simple semigroup is specified by generating pairs, and we do
+not know its linked triple \textit{a priori}.  In this case, we will need to
+calculate the congruence's linked triple before we can use it to calculate any
+other information.  We could do this by enumerating all the elements of all the
+classes of the congruence, and then simply looking up the relevant information
+to find the linked triple.  However, this is very expensive, and once the
+classes are enumerated there is likely no need for the linked triple, since all
+information about the congruence has been calculated.
+
+In a previous thesis \cite[\S 3.2]{mtorpey_msc}, I presented an algorithm to
+calculate a congruence's linked triple directly from a set of generating pairs,
+calculating as few extra pairs as possible.  This algorithm performs quickly,
+representing a big improvement on using the generating pairs to solve problems
+directly \cite[\S 6.1.2]{mtorpey_msc}.  It is presented here as Algorithm
+\ref{alg:pairs-to-linked-triple} for reference.
+
+\begin{algorithm}
+\caption{The linked triple of a congruence by generating pairs}
+\label{alg:pairs-to-linked-triple}
+\begin{algorithmic}[1]
+    \Require $\mathcal{M}^0[G;I,\Lambda;P]$ is a finite 0-simple Rees 0-matrix semigroup
+    \Procedure{LinkedTripleFromPairs}{$\mathbf{R}$}
+      \State $\mathcal{S} := \Delta_I$
+      \State $\mathcal{T} := \Delta_\Lambda$
+      \State $X := \varnothing$
+      \For{$(x,y) \in \mathbf{R}$}
+        \LComment{Check for the universal congruence}
+        \If{$x=y$}
+          \State Skip this pair
+        \ElsIf{$x=0 \Or y=0$}
+          \State \Return Universal Congruence (no linked triple)
+        \EndIf
+        \State Let $x=(i,a,\lambda)$
+        \State Let $y=(j,b,\mu)$
+        \If{$(i,j) \notin \varepsilon_I \Or
+          (\lambda,\mu) \notin \varepsilon_\Lambda$}
+          \State \Return Universal Congruence (no linked triple)
+        \EndIf
+
+%        \State
+        \LComment{Combine row and column classes}
+        \State Combine $[i]_\mathcal{S}$ with $[j]_\mathcal{S}$
+        \State Combine $[\lambda]_\mathcal{T}$ with $[\mu]_\mathcal{T}$
+
+%        \State
+        \LComment{Add generators for normal subgroup}
+        \State Choose $\nu \in \Lambda$ such that $p_{\nu i} \neq 0$
+        \State Choose $k \in I$ such that $p_{\lambda k} \neq 0$
+        \State $X \gets X \cup \{(p_{\nu i}ap_{\lambda k})(p_{\nu j}bp_{\mu k})^{-1}\}$
+
+%        \State
+        \For{$\xi \in \Lambda \setminus \{\nu\}$ such that $p_{\xi i} \neq 0$}
+          \State $X \gets X \cup \{q_{\nu \xi i j}\}$
+        \EndFor
+        \For{$x \in I \setminus \{k\}$ such that $p_{\lambda x} \neq 0$}
+          \State $X \gets X \cup \{q_{\lambda \mu k x}\}$
+        \EndFor
+      \EndFor
+      \State $N := \llangle X \rrangle$
+      \State \Return $(N,\mathcal{S},\mathcal{T})$
+    \EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 \section{Kernel and trace from generating pairs}
 \label{sec:pairs-to-kertr}
