@@ -295,30 +295,29 @@ has a linked triple in this case: $(G, I \times I, \Lambda \times \Lambda)$.
 
 An inverse semigroup also has a structure which can be used in place of its
 congruences: its \textit{kernel-trace pairs} (sometimes confusingly known as
-``congruence pairs'').  Though these are not as useful computationally as linked
-triples for completely simple and completely 0-simple semigroups, they can
-certainly be used effectively to carry out calculations faster than by using
-generating pairs in large cases.  A part of my previous thesis \cite[Chapter
+``congruence pairs'').  A part of my previous thesis \cite[Chapter
 5]{mtorpey_msc} focused on a computational use of kernel-trace pairs to solve
-problems about congruences.
+problems about congruences.  Though they are not as powerful computationally as
+linked triples are for completely simple and completely 0-simple semigroups,
+they can certainly be used effectively to carry out calculations.
 
 The basic theory about kernel-trace pairs is presented here, for reference.  In
 all these definitions, $S$ is an inverse semigroup, $E$ is the set of
 idempotents in $S$, and and $\rho$ is a congruence on $S$.  Recall that $E$ is a
-subsemigroup of $S$.
+subsemigroup of $S$.  This is standard background theory, which is adapted from
+\cite[\S 5.3]{howie}.
 
 \begin{definition}
   \label{def:kernel}
   The \textbf{kernel} of $\rho$ is $\bigcup_{e \in E} [e]_\rho$, the union of
   all the $\rho$-classes of $S$ which contain idempotents.  It is denoted by
-  $\ker\rho$.\cite[p.155]{howie}
+  $\ker\rho$.
 \end{definition}
 
 \begin{definition}
   \label{def:trace}
   The \textbf{trace} of $\rho$ is $\rho \cap (E \times E)$, the restriction of
   $\rho$ to the idempotents of $S$.  It is denoted by $\tr\rho$.
-  \cite[p.155]{howie}
 \end{definition}
 
 We will shortly see that a congruence on $S$ is completely defined by its kernel
@@ -332,7 +331,6 @@ for congruences.
   A subsemigroup $K$ of $S$ is called \textbf{normal} if it is
   \textit{full} (contains all the idempotents of $S$) and
   \textit{self-conjugate} ($a^{-1}xa \in K$ for all $x \in K, a \in S$).
-  \cite[p.155]{howie}
 \end{definition}
 
 \begin{definition}
@@ -355,7 +353,6 @@ relates very closely to a congruence.
   \item If $a \in K$, then $(aa^{-1},a^{-1}a) \in \tau$
   \end{enumerate}
   for all elements $a \in S$ and $e \in E$.
-  \cite[p.156]{howie}
 \end{definition}
 
 Now we state the result which identifies an abstract kernel-trace pair with the
@@ -378,6 +375,9 @@ $\rho$ by using $\ker \rho$ and $\tr \rho$ directly.
   whose inverse satisfies
   $$\Psi^{-1} : (K,\tau) \mapsto
   \{(x,y) \in S \times S ~|~ xy^{-1} \in K, (x^{-1}x, y^{-1}y) \in \tau\}.$$
+  \begin{proof}
+    Theorem 5.3.3 in \cite{howie}.
+  \end{proof}
 \end{theorem}
 
 This theorem tells us everything we need to know about kernel-trace pairs and
