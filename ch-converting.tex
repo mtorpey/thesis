@@ -2,8 +2,8 @@
 \label{chap:converting}
 
 A congruence is a binary relation, and therefore is formally described as a set
-of pairs---a subset of $S \times S$.  In a computational setting, it is worth
-thinking about how a congruence could be stored.
+of pairs---a subset of $S \times S$.  In both computational and mathematical
+settings, it is worth thinking about how a congruence could be stored.
 
 One approach to storing a congruence $\rho$ on a semigroup $S$ is simply to
 store every one of its pairs.  In principle, it is possible to store
@@ -19,9 +19,11 @@ very small.  This is one very generic way of representing congruences, in two
 senses: firstly that it can be used for any finite semigroup; and secondly that
 it can be used for left and right congruences.
 
-However, there are other ways to view congruences in certain circumstances,
-either based on a special property of the semigroup in question, or based on
-properties of some individual congruences.  In this chapter, we will describe
+However, there are other ways to view congruences in certain circumstances: some
+semigroups have properties such as being an inverse semigroup or being a group,
+which allow additional things to be said about their congruences; and some
+specific congruences have special properties, such as being Rees, which allows
+them to be represented in a certain way.  In this chapter, we will describe
 some important ways of representing congruences, and then consider ways of
 converting one to another.
 
@@ -50,10 +52,13 @@ this chapter.  It is of course possible to calculate the set of all pairs in
 $\mathbf{R}^\sharp$ and convert that to the other representation; however, in
 order to find other representations with as little work as possible, it is
 desirable to use the pairs in $\mathbf{R}$ directly, calculating as few extra
-pairs as possible.  Conversely, if we wish to convert another representation for
-a congruence $\rho$ to a set of generating pairs, it is desirable to find as
-small a set of pairs as possible.  When converting between generating pairs and
-other representations, these will be the goals.
+pairs as possible---see, for example, Sections \ref{sec:pairs-to-linked-triple}
+and \ref{sec:pairs-to-kertr}.  Conversely, if we wish to convert another
+representation for a congruence $\rho$ to a set of generating pairs, it is
+desirable to find as small a set of pairs as possible---see, for example,
+Sections \ref{sec:linked-triple-to-pairs} and \ref{sec:kertr-to-pairs}.  When
+converting between generating pairs and other representations, these will be the
+goals.
 
 \subsection{Groups: normal subgroups}
 \label{sec:normal-subgroups}
@@ -65,8 +70,8 @@ easily described using normal subgroups instead.  Recall that a subgroup $N$ of
 a group $G$ is \textit{normal} if and only if $g^{-1}ng \in N$ for all $g \in G$
 and $n \in N$; recall also that a \textit{coset} of $N$ is the set $Ng$ or $gN$
 for some $g \in G$, and that $Ng=gN$ if $N$ is normal.  The following theorem
-shows how the normal subgroups and congruences of a congruence are in bijective
-correspondence.
+shows how a group's normal subgroups are in bijective correspondence with its
+congruences.
 
 \begin{theorem}
   \label{thm:normal-subgroups}
@@ -125,7 +130,14 @@ they are related to its congruences.
 Simple and 0-simple semigroups are closely related.  Note that if $S$ is a
 simple semigroup, then $S^0$, the semigroup created by appending a zero element
 to $S$, is 0-simple.
-Next, we consider a slightly stronger condition.
+Next, we consider a slightly stronger condition, after a preliminary definition
+relating to idempotents.
+
+\begin{definition}
+  \label{def:primitive}
+  An idempotent $p \in S$ is \textbf{primitive} if it is non-zero and there is
+  no other non-zero idempotent $i \in S$ such that $ip = pi = i$.
+\end{definition}
 
 \begin{definition}
   \label{def:completelyzerosimple}
@@ -136,8 +148,6 @@ Next, we consider a slightly stronger condition.
   \item \textbf{completely 0-simple} if it is 0-simple and contains a primitive
     idempotent.
   \end{itemize}
-  An idempotent $p \in S$ is \textbf{primitive} if it is non-zero and there is
-  no other non-zero idempotent $i \in S$ such that $ip = pi = i$.
   %TODO: rephrase in terms of partial ordering of idempotents?
 \end{definition}
 
@@ -157,7 +167,7 @@ and, in particular, their congruences.  We will consider first the more
 complicated case, that of completely 0-simple semigroups, and then we will make
 some mention of the easier case, completely simple semigroups.
 
-\begin{definition}
+\begin{definition}[\S 3.2 in \cite{howie}]
   \label{def:rzms}
   A \textbf{Rees 0-matrix semigroup} $\mathcal{M}^0[T;I,\Lambda;P]$ is the set
   $$(I \times T \times \Lambda) \cup \{0\}$$
@@ -175,9 +185,8 @@ some mention of the easier case, completely simple semigroups.
   \item $P$ is a $|\Lambda| \times |I|$ matrix with entries $(p_{\lambda
       i})_{\lambda \in \Lambda, i \in I}$
     taken from $T^0$,
-  \item $0x=x0=0$ for all $x$ in the semigroup.
+  \item $0x=x0=0$ for all $x \in \mathcal{M}^0[T;I,\Lambda;P]$.
   \end{itemize}
-  \cite[\S 3.2]{howie}
 \end{definition}
 
 We will require a certain property of the matrix $P$, which we should define
