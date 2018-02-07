@@ -164,8 +164,9 @@ Note that a finite semigroup is simple if and only if it is $\JJ$-trivial.
 Completely simple and completely 0-simple semigroups have a strong and useful
 isomorphism property, which allows us to say a great deal about their structure
 and, in particular, their congruences.  We will consider first the more
-complicated case, that of completely 0-simple semigroups, and then we will make
-some mention of the easier case, completely simple semigroups.
+complicated case, that of completely 0-simple semigroups, and then at the end of
+this section we will explain how this theory can be adapted for the much less
+complicated case, that of completely simple semigroups.
 
 \begin{definition}[\S 3.2 in \cite{howie}]
   \label{def:rzms}
@@ -206,13 +207,15 @@ completely 0-simple semigroups.
   \end{proof}
 \end{theorem}
 
-Now we can replace any finite 0-simple semigroup with its isomorphic Rees
+Now we can replace any completely 0-simple semigroup with its isomorphic Rees
 0-matrix semigroup when we wish to perform any isomorphism-invariant
-calculations---hence we can restrict our further investigations just to
-this type of semigroup.  From now on, when we see a Rees 0-matrix semigroup over
-$G$, we will assume that $G$ is a group.  Hence ``a completely 0-simple Rees
-0-matrix semigroup $\mathcal{M}^0[G;I,\Lambda;P]$'' refers to a completely 0-simple
-Rees 0-matrix semigroup over a group $G$, with a regular matrix $P$.
+calculations---hence we can restrict our further investigations just to this
+type of semigroup.  From now on, when we see a Rees 0-matrix semigroup over $G$,
+we will assume that $G$ is a group.  Hence ``a completely 0-simple Rees 0-matrix
+semigroup $\mathcal{M}^0[G;I,\Lambda;P]$'' refers to a completely 0-simple Rees
+0-matrix semigroup over a group $G$, with a regular matrix $P$.  Note that if
+$\mathcal{M}^0[G;I,\Lambda;P]$ is finite, then $G$, $I$, $\Lambda$ and $P$ are
+all finite.
 
 Next we consider the congruences of a finite 0-simple semigroup.
 
@@ -247,7 +250,7 @@ non-universal congruences, as follows.
 \begin{theorem}
   \label{thm:linked-triple}
   Let $S$ be a completely 0-simple Rees 0-matrix semigroup.  There exists a
-  bijection $\Gamma$ from the non-universal congruences on $S$ to the linked
+  bijection $\Gamma$ between the non-universal congruences on $S$ and the linked
   triples on $S$.
   \begin{proof}
     Theorem 3.5.8 in \cite{howie}
@@ -259,8 +262,9 @@ This theorem shows us an alternative way to look at congruences on completely
 at congruences on groups.  However, in order to use this at all in a
 computational setting, we must have a concrete function $\Gamma$ which we can
 use to convert a congruence to a linked triple and back again, rather than just
-the knowledge that such a function exists.  We define the function $\Gamma$ as
-in \cite[\S 3.5]{howie}, as follows.
+the knowledge that such a function exists---indeed, describing such a function
+is the purpose of this section.  We define the function $\Gamma$ as in \cite[\S
+3.5]{howie}, as follows.
 
 \begin{definition}
   Let $S$ be a completely 0-simple Rees 0-matrix semigroup
@@ -282,11 +286,11 @@ in \cite[\S 3.5]{howie}, as follows.
   $$(i, p_{\lambda i}^{-1}, \lambda) ~\rho~ (i, p_{\mu i}^{-1}, \mu)$$
   for all $i \in I$ such that $p_{\lambda i} \neq 0$ (and hence
   $p_{\mu i} \neq 0$).  Finally, we define the normal subgroup
-  $N_\rho \trianglelefteq G$ as follows.  First, let $1_\Lambda \in \Lambda$ be
-  the top row of the matrix $P$.  Since $P$ is regular, row $1_\Lambda$ must
-  contain a non-zero entry.  Let $1_I \in I$ be the first column such that
-  $p_{1_\Lambda 1_I} \neq 0$.  Now let
-  $$N_\rho = \{a \in G ~|~ (1_I,a,1_\Lambda) ~\rho~ (1_I, 1_G, 1_\Lambda),$$
+  $N_\rho \trianglelefteq G$ as follows.  First, fix some $\xi \in \Lambda$, a
+  row of the matrix $P$.  Since $P$ is regular, row $\xi$ must contain a
+  non-zero entry---fix some $k \in I$ such that $p_{\xi k} \neq 0$.  Now we can
+  define
+  $$N_\rho = \{a \in G ~|~ (k, a, \xi) ~\rho~ (k, 1_G, \xi)\},$$
   where $1_G$ is the identity in the group $G$.
 \end{definition}
 
