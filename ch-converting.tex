@@ -338,10 +338,9 @@ not only the non-universal congruences, but all congruences on $S$.
 An inverse semigroup also has a structure which can be used in place of its
 congruences: its \textit{kernel-trace pairs} (sometimes confusingly known as
 ``congruence pairs'').  In \cite[Chapter 5]{mtorpey_msc} the author focused on a
-computational use of kernel-trace pairs to solve 
-problems about congruences.  Though they are not as powerful computationally as
-linked triples, they can certainly be used effectively to carry out
-calculations.
+computational use of kernel-trace pairs to solve problems about congruences.
+They can certainly be used effectively to carry out calculations, in a similar
+way to linked triples.
 
 The basic theory about kernel-trace pairs is presented here, for reference.  In
 all these definitions, $S$ is an inverse semigroup, $E$ is the set of
@@ -425,11 +424,12 @@ $\rho$ by using $\ker \rho$ and $\tr \rho$ directly.
 This theorem tells us everything we need to know about kernel-trace pairs and
 their relationship to congruences on an inverse semigroup.  Once we have the
 kernel-trace pair of a congruence, we can solve any problem we wish to using the
-kernel and trace alone, and computational problems are much faster than using
+kernel and trace alone, and computational problems such as determining whether a
+given pair $(x,y)$ lies in the congruence are much faster than using
 generating pairs directly \cite[\S 6.1.3]{mtorpey_msc}.  However, we may find
 that if a congruence is specified initially using generating pairs, it may be
 costly to find its kernel-trace pair in the first place; Section
-\ref{sec:pairs-to-kertr} presents a fast method for finding a kernel-trace pair.
+\ref{sec:pairs-to-kertr} presents a relatively fast method for finding a kernel-trace pair.
 
 \subsection{Rees congruences}
 A \textbf{Rees congruence} is a congruence on a semigroup $S$ with a
@@ -440,9 +440,15 @@ $(x,y)$ lies in $\rho_I$ if and only if $x=y$ or $x$ and $y$ both lie in $I$.
 
 Some or all of a semigroup's congruences may be Rees: in particular, since $S$
 is an ideal of $S$, the universal congruence $S \times S$ is a Rees congruence
-which could be written as $\rho_S$.
-If $S$ has a zero $0$, then $\{0\}$ is an ideal and so the trivial congruence
-$\Delta_S$ is a Rees congruence which could be written as $\rho_{\{0\}}$.
+which could be written as $\rho_S$.  If $S$ has a zero $0$, then $\{0\}$ is an
+ideal and so the trivial congruence $\Delta_S$ is a Rees congruence which could
+be written as $\rho_{\{0\}}$.
+
+As an example, the monoid of all order-preserving transformations $\OO_n$ has
+only Rees congruences, apart from the trivial congruence $\Delta_{\OO_n}$, which
+is not Rees, since $\OO_n$ does not contain a zero \cite{lavers_1999}.
+Some examples of semigroups whose congruences are all Rees can be found in
+\cite[\S 5]{garcia_1991}.
 
 \section{Converting between representations}
 \label{sec:converting}
