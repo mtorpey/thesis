@@ -511,10 +511,11 @@ deal with.
 \subsection{Generating pairs of a Rees congruence}
 \label{sec:rees-to-pairs}
 A natural question, given an ideal $I$, is how to find a set of generating pairs
-for the Rees congruence $\rho_I$.
+for the Rees congruence $\rho_I$.  In this section we will limit our discussion
+to finite semigroups.
 
 \begin{theorem}
-  Let $S$ be a semigroup, and let $I$ be an ideal of $S$.  If $X$ is an ideal
+  Let $S$ be a finite semigroup, and let $I$ be an ideal of $S$.  If $X$ is an ideal
   generating set for $I$ (see Definition \ref{def:ideal-generating-set}) and $M$
   is the minimal ideal of $S$ (which may or may not be equal to $I$), then
   $$X \times M$$ is a set of generating pairs for the Rees congruence $\rho_I$.
@@ -554,9 +555,9 @@ for the Rees congruence $\rho_I$.
 \subsection{Linked triple from generating pairs}
 \label{sec:pairs-to-linked-triple}
 
-We have seen that calculating information about a congruence using its linked
-triple is much faster than using a set of generating pairs \cite[\S
-6.1]{mtorpey_pre_msc}.  However, it may well be that a congruence on a finite
+In \cite[\S 6.1]{mtorpey_pre_msc} it is observed that calculating information
+about a congruence using its linked triple is much faster than using a set of
+generating pairs.  However, it may well be that a congruence on a finite
 simple or finite 0-simple semigroup is specified by generating pairs, and we do
 not know its linked triple \textit{a priori}.  In this case, we will need to
 calculate the congruence's linked triple before we can use it to calculate any
@@ -566,11 +567,11 @@ to find the linked triple.  However, this is very expensive, and once the
 classes are enumerated there is likely no need for the linked triple, since all
 information about the congruence has been calculated.
 
-In a previous thesis \cite[\S 3.2]{mtorpey_msc}, I presented an algorithm to
+In \cite[\S 3.2]{mtorpey_msc}, the author presents an algorithm to
 calculate a congruence's linked triple directly from a set of generating pairs,
 calculating as few extra pairs as possible.  This algorithm performs quickly,
-representing a big improvement on using the generating pairs to solve problems
-directly \cite[\S 6.1.2]{mtorpey_msc}.  It is presented here as Algorithm
+representing a big improvement on using a more naive algorithm to find the
+linked triple \cite[\S 6.1.2]{mtorpey_msc}.  It is presented here as Algorithm
 \ref{alg:pairs-to-linked-triple}.
 
 \begin{algorithm}
