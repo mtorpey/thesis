@@ -487,13 +487,26 @@ which they are described.
 \label{sec:normal-subgroup-to-linked-triple}
 Any group is a completely simple semigroup.  In fact, since any group $G$ is
 $\HH$-trivial, it is isomorphic to the Rees matrix semigroup
-$\mathcal{M}[G; I, \Lambda; P]$ where $|I|=|\Lambda|=1$ and $P$ is the
-$1 \times 1$ matrix $(1_G)$.  It is easy to see, using the definition of
-$\Gamma$ in Theorem \ref{thm:linked-triple}, that any normal subgroup
-$N \trianglelefteq G$ corresponds to the linked triple
-$(N, \Delta_I, \Delta_\Lambda)$.  Hence a conversion between linked triples and
-normal subgroups is trivial, simply a case of borrowing $N$ and using
-it with the only two possible equivalences on the rows and columns.
+$\mathcal{M}[G; I, \Lambda; P]$ where $|I|=|\Lambda|={1}$ and $P$ is the
+$1 \times 1$ matrix $(1_G)$.  Let $\phi: G \to \mathcal{M}[G; I, \Lambda; P]$ be
+the isomorphism defined by $(g)\phi = (1, g, 1)$.
+
+As described in Theorem \ref{thm:normal-subgroups}, a congruence $\rho$ on a
+group $G$ is associated with a normal subgroup $N \trianglelefteq G$, according
+to the rule that $x ~\rho~ y$ if and only if $xy^{-1} \in N$.  Similarly, as
+described in \ref{}, a congruence $\rho'$ on $\mathcal{M}[G; I, \Lambda; P]$ is
+associated with a linked triple $(N', \mathcal{S}, \mathcal{T})$, according to
+the rule that $(i, a, \lambda) ~\rho~ (j, b, \mu)$ if and only if
+$i ~\mathcal{S}~ j$, $\lambda ~\mathcal{T}~ \mu$, and $ab^{-1} \in N'$.
+
+Let $\rho'$ be the congruence on $\mathcal{M}[G; I, \Lambda; P]$ such that
+$(x)\phi ~\rho~ (y)\phi$ (i.e.~$(1,x,1) ~\rho'~ (1,y,1)$) if and only if
+$x ~\rho~ y$.  The condition defining $\rho$, that $xy^{-1} \in N$, is
+equivalent to the condition defined by the linked triple
+$(N, \Delta_I, \Delta_\Lambda)$, since $I$ and $\Lambda$ are both trivial.
+Hence any normal subgroup $N$ corresponds to the linked triple
+$(N, \Delta_I, \Delta_\Lambda)$, making linked triples on groups very easy to
+deal with.
 
 \subsection{Generating pairs of a Rees congruence}
 \label{sec:rees-to-pairs}
