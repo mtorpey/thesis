@@ -567,12 +567,15 @@ to find the linked triple.  However, this is very expensive, and once the
 classes are enumerated there is likely no need for the linked triple, since all
 information about the congruence has been calculated.
 
-In \cite[\S 3.2]{mtorpey_msc}, the author presents an algorithm to
-calculate a congruence's linked triple directly from a set of generating pairs,
-calculating as few extra pairs as possible.  This algorithm performs quickly,
-representing a big improvement on using a more naive algorithm to find the
-linked triple \cite[\S 6.1.2]{mtorpey_msc}.  It is presented here as Algorithm
-\ref{alg:pairs-to-linked-triple}.
+In \cite[\S 3.2]{mtorpey_msc}, the author presents an algorithm to calculate a
+congruence's linked triple directly from a set of generating pairs, calculating
+as few extra pairs as possible.  This algorithm performs quickly, representing a
+big improvement on using a more naive algorithm to find the linked triple
+\cite[\S 6.1.2]{mtorpey_msc}.  It is presented here as Algorithm
+\ref{alg:pairs-to-linked-triple}, and is justified by \cite[Theorem
+3.11]{mtorpey_msc}.  In reading the algorithm, it will be helpful to refer to
+Definition \ref{def:linked-triple} for the relations $\varepsilon_I$ and
+$\varepsilon_\Lambda$ and elements of the form $q_{\lambda \mu i j}$.
 
 \begin{algorithm}
 \caption{The linked triple of a congruence by generating pairs}
@@ -632,8 +635,8 @@ This is certainly possible by various methods, for example the variety of
 algorithms mentioned in Chapter \ref{chap:pairs}---however, if $S$ is an inverse
 semigroup then any calculation we wish to carry out will be much faster if we
 know the congruence's kernel-trace pair, as described in Section
-\ref{sec:kertr}.  We therefore wish for a fast way of determining the kernel and
-trace of $\rho$.
+\ref{sec:kertr}.  We therefore wish for an algorithm that determines the kernel
+and trace of $\rho$.
 
 One way of calculating the kernel and trace would be simply to enumerate all the
 elements in all the classes of $\rho$, and to search for the idempotents to
