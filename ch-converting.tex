@@ -263,10 +263,10 @@ at congruences on groups.  However, in order to use this at all in a
 computational setting, we must have a concrete function $\Gamma$ which we can
 use to convert a congruence to a linked triple and back again, rather than just
 the knowledge that such a function exists---indeed, describing such a function
-is the purpose of this section.  We define the function $\Gamma$ as in \cite[\S
-3.5]{howie}, as follows.
+is the purpose of this section.  We define the function $\Gamma$ as follows.
 
-\begin{definition}
+\begin{definition}[\S 3.5 in \cite{howie}]
+  \label{def:linked-triple-function}
   Let $S$ be a completely 0-simple Rees 0-matrix semigroup
   $\mathcal{M}^0[G;I,\Lambda;P]$, and let $\rho$ be a non-universal congruence
   on $S$.
@@ -292,6 +292,14 @@ is the purpose of this section.  We define the function $\Gamma$ as in \cite[\S
   define
   $$N_\rho = \{a \in G ~|~ (k, a, \xi) ~\rho~ (k, 1_G, \xi)\},$$
   where $1_G$ is the identity in the group $G$.
+  The inverse of $\Gamma$ then satisfies
+  $$\Gamma^{-1}: (N, \mathcal{S}, \mathcal{T}) \mapsto
+  \Big\{
+  \big((i, a, \lambda), (j, b, \mu)\big) ~\Big|~
+  ab^{-1} \in N,
+  (i,j) \in \mathcal{S},
+  (\lambda,\mu) \in \mathcal{T}
+  \Big\}.$$
 \end{definition}
 
 Note that the definition of $N_\rho$ does not depend on the choice of $\xi$ and
@@ -494,10 +502,11 @@ the isomorphism defined by $(g)\phi = (1, g, 1)$.
 As described in Theorem \ref{thm:normal-subgroups}, a congruence $\rho$ on a
 group $G$ is associated with a normal subgroup $N \trianglelefteq G$, according
 to the rule that $x ~\rho~ y$ if and only if $xy^{-1} \in N$.  Similarly, as
-described in \ref{}, a congruence $\rho'$ on $\mathcal{M}[G; I, \Lambda; P]$ is
-associated with a linked triple $(N', \mathcal{S}, \mathcal{T})$, according to
-the rule that $(i, a, \lambda) ~\rho~ (j, b, \mu)$ if and only if
-$i ~\mathcal{S}~ j$, $\lambda ~\mathcal{T}~ \mu$, and $ab^{-1} \in N'$.
+described in Definition \ref{def:linked-triple-function}, a congruence $\rho'$
+on $\mathcal{M}[G; I, \Lambda; P]$ is associated with a linked triple
+$(N', \mathcal{S}, \mathcal{T})$, according to the rule that
+$(i, a, \lambda) ~\rho~ (j, b, \mu)$ if and only if $i ~\mathcal{S}~ j$,
+$\lambda ~\mathcal{T}~ \mu$, and $ab^{-1} \in N'$.
 
 Let $\rho'$ be the congruence on $\mathcal{M}[G; I, \Lambda; P]$ such that
 $(x)\phi ~\rho~ (y)\phi$ (i.e.~$(1,x,1) ~\rho'~ (1,y,1)$) if and only if
