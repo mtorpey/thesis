@@ -479,7 +479,7 @@ which they are described.
     \cline{2-7}
     & Normal subgroup (groups) &  & \cellcolor{gray} & \ref{sec:normal-subgroup-to-linked-triple} &  & \\
     \cline{2-7}
-    & Linked triple ((0-)simple) &  & \ref{sec:normal-subgroup-to-linked-triple} & \cellcolor{gray} & &\\
+    & Linked triple ((0-)simple) & \ref{sec:linked-triple-to-pairs} & \ref{sec:normal-subgroup-to-linked-triple} & \cellcolor{gray} & &\\
     \cline{2-7}
     & Kernel-trace (inverse) &  &  &  & \cellcolor{gray} &\\
     \cline{2-7}
@@ -633,6 +633,30 @@ $\varepsilon_\Lambda$ and elements of the form $q_{\lambda \mu i j}$.
     \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+
+\subsection{Generating pairs from a linked triple}
+\label{sec:linked-triple-to-pairs}
+
+Let $S$ be a completely simple or completely 0-simple semigroup, and let $\rho$
+be a congruence on $S$.  In Section \ref{sec:pairs-to-linked-triple} we
+presented an algorithm to find the linked triple of $\rho$, given only a set of
+generating pairs for $\rho$.  In this section, we will present the converse: an
+method to find a set of generating pairs for $\rho$ given only its linked triple
+$(N, \mathcal{S}, \mathcal{T})$.
+
+Firstly we require a lemma describing the inclusion of congruences in each
+other, and how it mirrors an inclusion of linked triples.
+
+\begin{lemma}[Lemma 3.9 in \cite{mtorpey_msc}]
+  \label{lem:linked-triple-subsets}
+  Let $\rho$ and $\sigma$ be congruences on $S$ with linked triples
+  $(N_\rho, \mathcal{S}_\rho, \mathcal{T}_\rho)$ and
+  $(N_\sigma, \mathcal{S}_\sigma, \mathcal{T}_\sigma)$ respectively.
+  We have $\rho \subseteq \sigma$ if and only if
+  $N_\rho \leq N_\sigma$,
+  $\mathcal{S}_\rho \subseteq \mathcal{S}_\sigma$, and
+  $\mathcal{T}_\rho \subseteq \mathcal{T}_\sigma$.
+\end{lemma}
 
 \subsection{Kernel and trace from generating pairs}
 \label{sec:pairs-to-kertr}
