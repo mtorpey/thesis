@@ -661,6 +661,52 @@ other, and how it mirrors an inclusion of linked triples.
 This lemma is the basis of Algorithm \ref{alg:pairs-to-linked-triple} which
 converts a set of generating pairs to a linked triple.
 
+\begin{algorithm}
+\caption{Generating pairs of a linked triple}
+\label{alg:linked-triple-to-pairs}
+\begin{algorithmic}[1]
+  \Procedure{GeneratingPairsFromLinkedTriple}{$(N, \mathcal{S}, \mathcal{T})$}
+    \State $X_N := $ generating set for $N$
+    \State $X_\mathcal{S} := \varnothing$
+    \For{each non-singleton class $\{i_1, i_2, \ldots, i_n\}$ of $\mathcal{S}$}
+      \For{$l \in \{2, \ldots, n\}$}
+        \State \textsc{Push} $(i_1, i_l)$ onto $X_\mathcal{S}$
+      \EndFor
+    \EndFor
+    \State $X_\mathcal{T} := \varnothing$
+    \For{each non-singleton class $\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$ of $\mathcal{T}$}
+      \For{$l \in \{2, \ldots, n\}$}
+        \State \textsc{Push} $(\lambda_1, \lambda_l)$ onto $X_\mathcal{T}$
+      \EndFor
+    \EndFor
+    \State $\mathbf{R} := \varnothing$
+    %\State $m := \max (|X_N|, |X_\mathcal{S}|, |X_\mathcal{T}|)$
+    \State $a := 1_G$
+    \State $(i,j) := (1,1)$
+    \State $(\lambda,\mu) := (1,1)$
+    \While{$X_N \neq \varnothing$ \Or $X_\mathcal{S} \neq \varnothing$ \Or $X_\mathcal{T} \neq \varnothing$}
+      \If{$X_N \neq \varnothing$}
+        \State $a \gets$ \Call{Pop}{$X_N$}
+      \EndIf
+      \If{$X_\mathcal{S} \neq \varnothing$}
+        \State $(i,j) \gets$ \Call{Pop}{$X_\mathcal{S}$}
+      \EndIf
+      \If{$X_\mathcal{T} \neq \varnothing$}
+        \State $(\lambda, \mu) \gets$ \Call{Pop}{$X_\mathcal{T}$}
+      \EndIf
+      \State Fix some $\xi \in \Lambda$ such that $p_{\xi i} \neq 0$
+      \State Fix some $k \in I$ such that $p_{\lambda k} \neq 0$
+      \State $\mathbf{R} \gets \mathbf{R} \cup \left\{\big(
+        (i, p_{\xi i}^{-1}ap_{\lambda k}^{-1}, \lambda),
+        (j, p_{\xi j}^{-1}ap_{\mu k}^{-1}, \mu)
+        \big)\right\}$
+    \EndWhile
+    \State \Return $\mathbf{R}$
+  \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+
 \subsection{Kernel and trace from generating pairs}
 \label{sec:pairs-to-kertr}
 
