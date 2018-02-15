@@ -580,11 +580,54 @@ In \cite[\S 3.2]{mtorpey_msc}, the author presents an algorithm to calculate a
 congruence's linked triple directly from a set of generating pairs, calculating
 as few extra pairs as possible.  This algorithm performs quickly, representing a
 big improvement on using a more naive algorithm to find the linked triple
-\cite[\S 6.1.2]{mtorpey_msc}.  It is presented here as Algorithm
-\ref{alg:pairs-to-linked-triple}, and is justified by \cite[Theorem
-3.11]{mtorpey_msc}.  In reading the algorithm, it will be helpful to refer to
-Definition \ref{def:linked-triple} for the relations $\varepsilon_I$ and
-$\varepsilon_\Lambda$ and elements of the form $q_{\lambda \mu i j}$.
+\cite[\S 6.1.2]{mtorpey_msc}.  The algorithm is justified by the following
+definition and theorem from \cite{mtorpey_msc}.
+
+\begin{definition}[Definition 3.10 in \cite{mtorpey_msc}]
+  \label{def:ri}
+  For a finite 0-simple Rees 0-matrix semigroup
+  $\mathcal{M}^0[G;I,\Lambda;P]$, we define the relations
+  $\mathbf{R}_I$ and $\mathbf{R}_\Lambda$ by
+  $$\mathbf{R}_I = \big\{(i,j) \in I \times I ~\big|~
+  (i,a,\lambda) ~\mathbf{R}~ (j,b,\mu) ~\text{for some}~
+  a,b \in G,~\lambda,\mu \in \Lambda\big\},$$
+  $$\mathbf{R}_\Lambda = \big\{(\lambda,\mu) \in \Lambda \times \Lambda ~\big|~
+  (i,a,\lambda) ~\mathbf{R}~ (j,b,\mu) ~\text{for some}~
+  a,b \in G,~i,j \in I\big\}.$$
+\end{definition}
+
+\begin{theorem}[Theorem 3.11 in \cite{mtorpey_msc}]
+  \label{thm:pairs-to-linked-triple}
+  Let $\mathcal{M}^0[G;I,\Lambda;P]$ be a finite 0-simple semigroup, with a
+  relation $\mathbf{R}$ that generates a non-universal congruence
+  $\mathbf{R}^\sharp$.  Let $\mathcal{S}_\mathbf{R} = (\mathbf{R}_I)^e$, let
+  $\mathcal{T}_\mathbf{R} = (\mathbf{R}_\Lambda)^e$, and let $N_\mathbf{R}$ be the smallest normal
+  subgroup of $G$ containing the set $X$, where
+  $$\begin{array}{r l}
+  X = & \Big\{(p_{\xi i} a p_{\lambda x}) (p_{\xi j} b p_{\mu x})^{-1}
+        ~\Big|~ i,j,x \in I,\ \lambda, \mu, \xi \in \Lambda,\ a,b \in G \\
+      & \text{~such that~} (i,a,\lambda) ~\mathbf{R}~ (j,b,\mu) \text{~and~}
+        p_{\xi i}, p_{\lambda x} \neq 0\Big\} \\
+  \cup & \Big\{q_{\lambda \mu i j} ~\Big|~
+  (i,j) \in \mathbf{R}_I,~
+  \lambda,\mu \in \Lambda ~\textnormal{such that}~
+  p_{\lambda i}, p_{\mu i} \neq 0\Big\} \\
+  \cup & \Big\{q_{\lambda \mu i j} ~\Big|~
+  (\lambda,\mu) \in \mathbf{R}_\Lambda,~
+  i,j \in I ~\textnormal{such that}~
+  p_{\lambda i}, p_{\lambda j} \neq 0\Big\}. \\
+  \end{array}$$
+  Then $(N_\mathbf{R}, \mathcal{S}_\mathbf{R}, \mathcal{T}_\mathbf{R})$
+  is the linked triple corresponding to $\mathbf{R}^\sharp$.
+\end{theorem}
+
+This theorem is enough to justify the algorithm for converting a set of
+generating pairs to a linked triple.  We present the algorithm here as Algorithm
+\ref{alg:pairs-to-linked-triple}.  In reading the algorithm, it will be helpful
+to refer to Definition \ref{def:linked-triple} for the relations $\varepsilon_I$
+and $\varepsilon_\Lambda$ and elements of the form $q_{\lambda \mu i j}$.
+For a fuller description of the algorithm and how it is justified by Theorem
+\ref{thm:pairs-to-linked-triple}, see \cite[\S 3.2]{mtorpey_msc}.
 
 \begin{algorithm}
 \caption{The linked triple of a congruence by generating pairs}
@@ -640,7 +683,7 @@ $\varepsilon_\Lambda$ and elements of the form $q_{\lambda \mu i j}$.
 Let $S$ be a completely simple or completely 0-simple semigroup, and let $\rho$
 be a congruence on $S$.  In Section \ref{sec:pairs-to-linked-triple} we
 presented an algorithm to find the linked triple of $\rho$, given only a set of
-generating pairs for $\rho$.  In this section, we will present the converse: an
+generating pairs for $\rho$.  In this section, we will present the reverse: an
 method to find a set of generating pairs for $\rho$ given only its linked triple
 $(N, \mathcal{S}, \mathcal{T})$.
 
@@ -658,8 +701,13 @@ other, and how it mirrors an inclusion of linked triples.
   $\mathcal{T}_\rho \subseteq \mathcal{T}_\sigma$.
 \end{lemma}
 
-This lemma is the basis of Algorithm \ref{alg:pairs-to-linked-triple} which
-converts a set of generating pairs to a linked triple.
+Now we can state the main theorem which will inform this algorithm.  It also
+relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
+
+\begin{theorem}
+  \label{thm:linked-triple-to-pairs}
+  
+\end{theorem}
 
 \begin{algorithm}
 \caption{Generating pairs of a linked triple}
