@@ -706,7 +706,73 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
 
 \begin{theorem}
   \label{thm:linked-triple-to-pairs}
-  
+  Let $S = \mathcal{M}^0[G;I,\Lambda;P]$ be a finite 0-simple semigroup, and let
+  $\rho$ be a congruence with linked triple
+  $(N_\rho, \sS_\rho, \tT_\rho)$.
+  Let $X_N \subseteq N$, $X_{\sS} \subseteq \sS$ and $X_\tT \subseteq \tT$ be
+  subsets with the following properties:
+  \begin{itemize}
+  \item $N_\rho$ is the normal closure of $X_N$ in $G$,
+  \item $\sS_\rho = (X_\sS)^e$,
+  \item $\tT_\rho = (X_\tT)^e$.
+  \end{itemize}
+  If $\R$ is a subset of $\rho$ such that
+  \begin{enumerate}
+  \item for each pair $(i, j) \in X_\sS$ there exist $\lambda, \mu \in \Lambda$
+    and $a, b \in G$ such that $(i, a, \lambda) ~\R~ (j, b, \mu)$;
+  \item for each pair $(\lambda, \mu) \in X_\tT$ there exist $i, j \in I$ and
+    $a, b \in G$ such that $(i, a, \lambda) ~\R~ (j, b, \mu)$;
+  \item for each element $n \in X_N$ there exist $i,j,x \in I$ and $\lambda,
+    \mu, \xi \in \Lambda$ such that $p_{\xi i}$ and $p_{\lambda x}$ are both
+    non-zero and
+    $$(i, p_{\xi i}^{-1} n p_{\lambda x}^{-1}, \lambda) ~\R~
+    (j, p_{\xi j}^{-1} p_{\mu x}^{-1}, \mu);$$
+  \end{enumerate}
+  then $\R^\sharp = \rho$.
+
+  \begin{proof}
+    Assume $\R$ is as stated.  Since $\rho$ is a congruence and
+    $\R \subseteq \rho$, we know that $\R^\sharp \subseteq \rho$.  Hence we only
+    need to show that $\rho \subseteq \R^\sharp$.
+
+    Let $(N_\R, \sS_\R, \tT_\R)$ denote the linked triple associated with
+    $\R^\sharp$.  We will show that $N_\rho \subseteq N_\R$,
+    $\sS_\rho \subseteq \sS_\R$, and $\tT_\rho \subseteq \tT_\R$, and therefore
+    that $\rho \subseteq \R$ by Lemma \ref{lem:linked-triple-subsets}.
+
+    Recall the relations $\R_I$ and $\R_\Lambda$ from Definition \ref{def:ri}.
+    By condition 1 above we can see that $X_\sS \subseteq \R_I$ and hence
+    $(X_\sS)^e \subseteq (\R_I)^e$.  Meanwhile by Theorem
+    \ref{thm:pairs-to-linked-triple} we have $(\R_I)^e = \mathcal{S}_\R$.  In
+    total this gives us
+    $\sS_\rho = (X_\sS)^e \subseteq (\R_I)^e = \mathcal{S}_\R$, so
+    $\sS_\rho \subseteq \sS_\R$.  Similarly by condition 2 we have
+    $\tT_\rho \subseteq \tT_\R$.
+
+    Now we turn our attention to $N_\rho$, and its generating set $X_N$---we
+    wish to show that $N_\rho \subseteq N_\R$.  Let $n \in X_N$.  By condition
+    3, there exist $i, j, x \in I$ and $\lambda, \mu, \xi \in \Lambda$ such that
+    $p_{\xi i}$ and $p_{\lambda x}$ are both non-zero and
+    $(i, a, \lambda) ~\R~ (j, b, \mu)$, where
+    $$a = p_{\xi i}^{-1} n p_{\lambda x}^{-1} \qquad \text{and} \qquad
+    b = p_{\xi j}^{-1} p_{\mu x}^{-1}.$$
+    Note that $p_{\xi j}$ and $p_{\mu x}$
+    must also be non-zero since $(i, j) \in \varepsilon_I$ and
+    $(\lambda, \mu) \in \varepsilon_\Lambda$.  To see that $n \in N_\R$, observe
+    that $p_{\xi i} a p_{\lambda x} = n$ and $p_{\xi j} b p_{\mu x} = 1_G$.
+    Hence $n$ satisfies the condition that
+    $$n = (p_{\xi i} a p_{\lambda x}) (p_{\xi j} b p_{\mu x})^{-1}$$
+    for some $i,j,x \in I$, some $\lambda, \mu, \xi \in \Lambda$, and some
+    $a,b \in G$ such that $(i,a,\lambda) ~\mathbf{R}~ (j,b,\mu)$ and $p_{\xi i}$
+    and $p_{\lambda x}$ are non-zero; this is precisely the requirement in
+    Theorem \ref{thm:pairs-to-linked-triple} which means that $n \in N_\R$.
+    Hence $X_N \subseteq N_\R$.  And since $N_\rho$ is the normal closure of
+    $X_N$, and $N_\R$ is a normal subgroup, we have $N_\rho \subseteq N_\R$.
+
+    Since $N_\rho \subseteq N_\R$, $\sS_\rho \subseteq \sS_\R$ and
+    $\tT_\rho \subseteq \tT_\R$, Lemma \ref{lem:linked-triple-subsets} gives us
+    $\rho \subseteq \R^\sharp$, as required.
+  \end{proof}
 \end{theorem}
 
 \begin{algorithm}
