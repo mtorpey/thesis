@@ -775,6 +775,42 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
   \end{proof}
 \end{theorem}
 
+Theorem \ref{thm:linked-triple-to-pairs} is enough to justify the
+\textsc{GeneratingPairsFromLinkedTriple} algorithm, which is presented in this
+thesis as Algorithm \ref{alg:linked-triple-to-pairs}.  Given a linked triple, we
+only need to choose applicable subsets $X_N$, $X_\sS$ and $X_\tT$ and we have a
+good idea of what pairs are necessary to generate a congruence.  In the
+algorithm, we assume that a generating set $X_N$ is known for $N$---this is
+certainly likely to be the case in a computational setting, for example in GAP
+\cite{gap} where groups almost always have a known generating set.  We should
+note that this set should act as a set of normal subgroup generators, meaning
+that it might be even smaller than a standard set of group generators.  For
+$X_\sS$ we choose a minimal spanning tree for each class of $\sS$, by linking
+each column in the class to a distinguished class representative called $i_1$.
+Hence each class requires a number of pairs in $X_S$ equal to one less than the
+size of the class; and so $|X_\sS| = |I| - k_\sS$, where $k_\sS$ is the number
+of classes in $\sS$.  Similarly $|X_\tT| = |\Lambda| - k_\tT$, where $k_\tT$ is
+the number of classes in $\tT$.
+
+Once our three generating sets have been calculated, we collate them into the
+set of pairs $\R$ as efficiently as possible: each pair we add to $\R$ can
+satisfy the conditions in Theorem \ref{thm:linked-triple-to-pairs} for one pair
+$(i,j) \in X_\sS$, one pair $(\lambda, \mu) \in X_\tT$, and one element
+$n \in X_N$: the pair we add is
+$$\big((i, p_{\xi i}^{-1}ap_{\lambda k}^{-1}, \lambda),
+(j, p_{\xi j}^{-1}ap_{\mu k}^{-1}, \mu)\big),$$
+which can be seen by inspection to satisfy conditions 1, 2 and 3 for the three
+generators in question.  These pairs are added until all three $X$ sets are
+exhausted, and so the total number of pairs returned by the algorithm is equal
+to
+$$\max(|X_N|, |I| - k_\sS, |\Lambda| - k_\tT).$$
+If the $X$ sets have different sizes, then any element can be reused from one of
+the sets when it runs out---in Algorithm \ref{alg:linked-triple-to-pairs} the
+last one popped is used repeatedly.  If any of the $X$ sets are empty at the
+start, an arbitrary entry can be used instead: for $n$ we can use the identity
+$1_G$ which must always be in $N$; for $(i,j)$ or $(\lambda,\mu)$ we can use a
+reflexive pair, from $\Delta_I$ or $\Delta_\Lambda$ respectively.
+
 \begin{algorithm}
 \caption{Generating pairs of a linked triple}
 \label{alg:linked-triple-to-pairs}
