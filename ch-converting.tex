@@ -41,9 +41,9 @@ they can be converted to one another are summarised in Table
     \cline{2-7}
     & Normal subgroup (groups) (\ref{sec:normal-subgroups}) &  & \cellcolor{gray} & \ref{sec:normal-subgroup-to-linked-triple} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions}\\
     \cline{2-7}
-    & Linked triple ((0-)simple) (\ref{sec:linked-triples}) & \ref{sec:linked-triple-to-pairs} & \ref{sec:normal-subgroup-to-linked-triple} & \cellcolor{gray} & & \ref{sec:trivial-conversions} \\
+    & Linked triple ((0-)simple) (\ref{sec:linked-triples}) & \ref{sec:linked-triple-to-pairs} & \ref{sec:normal-subgroup-to-linked-triple} & \cellcolor{gray} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions} \\
     \cline{2-7}
-    & Kernel-trace (inverse) (\ref{sec:kertr}) &  & \ref{sec:trivial-conversions} &  & \cellcolor{gray} &\\
+    & Kernel-trace (inverse) (\ref{sec:kertr}) &  & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions} & \cellcolor{gray} &\\
     \cline{2-7}
     & Rees congruence (\ref{sec:converting-rees}) & \ref{sec:rees-to-pairs} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions} &  & \cellcolor{gray}\\
     \cline{2-7}
@@ -1114,6 +1114,33 @@ semigroup $\mathcal{M}[G;I,\Lambda;P]$ has only one Rees congruence: the
 universal congruence, which has linked triple $(G, \nabla_I, \nabla_\Lambda)$.
 % TODO: use nabla elsewhere instead of I x I or whatever
 
+We may wish to convert between linked triples and kernel-trace pairs, in the
+case of an inverse semigroup which is completely simple or completely 0-simple.
+An inverse semigroup has exactly one idempotent in each $\LL$-class and each
+$\RR$-class, and a simple semigroup is $\DD$-trivial with an idempotent in every
+$\HH$-class.  Hence a completely simple inverse semigroup is $\HH$-trivial, and
+since it contains an idempotent it must be a group.  Hence from above, and from
+Section \ref{sec:normal-subgroup-to-linked-triple}, any congruence on a
+completely simple inverse semigroup has a linked triple of the form
+$(N, \Delta_I, \Delta_\Lambda)$ which corresponds to the kernel-trace pair
+$(N, \Delta_{\{1_G\}})$.
+% must have precisely one $\HH$-class in each $\LL$-class and each $\RR$-class,
+% and so it is $\HH$-trivial.
+
+A completely 0-simple inverse semigroup is somewhat different, but also
+uncomplicated.  Let $S$ be such a semigroup, with idempotent set $E$.  Since
+each $\LL$-class and each $\RR$-class has precisely one idempotent, the
+relations $\varepsilon_I$ and $\varepsilon_\Lambda$ are both trivial, so the
+non-universal congruences on $S$ correspond to triples of the form
+$(N, \Delta_I, \Delta_\Lambda)$ for any normal subgroup $N \trianglelefteq G$.
+Now, the triviality of $\Delta_I$ and $\Delta_\Lambda$ implies that no two
+elements can be related by a congruence $\rho$ unless they lie inside the same
+$\HH$-class.  Hence no two idempotents are related, so $\tr \rho = \Delta_E$.
+The kernel consists of all elements in $S$ related to an idempotent.
+Idempotents have the form $(i, 1_G, \lambda)$ where $p_{\lambda i} \neq 0$, so
+the kernel is given by
+$$\ker \rho = \{(i, n, \lambda) \in S ~|~ p_{\lambda i} \neq 0, n \in N\} \cup \{0\}.$$
+TODO: explain how the $p_{\xi i}$ thing disappears because it's inverse.
 
 
 \section{Things to add to this chapter}
