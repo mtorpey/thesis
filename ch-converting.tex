@@ -928,6 +928,7 @@ explained more explicitly below.
   \If{$a \in K$}
     \If{$(aa^{-1}, a^{-1}a) \notin \tau$}
       \State $\mathbf{T} \gets \mathbf{T} \cup \{(aa^{-1}, a^{-1}a)\}$
+      \State $\tau \gets \tau \cup \{(aa^{-1}, a^{-1}a)\}$
       \State $\delta \gets \True$
     \EndIf
   \Else
@@ -947,12 +948,12 @@ explained more explicitly below.
   \For{$e \in E'$}
     \If{$(xe, ye) \notin \tau$}
       \State $\delta \gets \True$
-      \State $T \gets T \cup \{(xe, ye)\}$
+      \State $\mathbf{T} \gets \mathbf{T} \cup \{(xe, ye)\}$
       \State $\tau \gets (\tau \cup \{(xe, ye)\})^e$
       \For{$a \in S'$}
         % TODO: should this be a^-1 xe a?
         \If{$(a^{-1}xa, a^{-1}ya) \notin \tau$}
-          \State $T \gets T \cup \{(a^{-1}xa, a^{-1}ya)\}$
+          \State $\mathbf{T} \gets \mathbf{T} \cup \{(a^{-1}xa, a^{-1}ya)\}$
           \State $\tau \gets (\tau \cup \{(a^{-1}xa, a^{-1}ya)\})^e$
         \EndIf
       \EndFor
@@ -972,11 +973,12 @@ The kernel $K$ starts out containing just the idempotents $E$, and the trace
 $\tau$ starts out as the trivial congruence on $E$.  Every kernel and trace must
 contain at least these elements---in fact, $(K, \tau)$ currently corresponds to
 the trivial congruence $\Delta_S$.  We assume that we have generating sets $S'$
-for $S$ and $E'$ for $E$.  In the worst case, we can use $S$ and $E$ theselves,
-but the algorithm certainly works faster with a smaller generating set.
+for $S$ and $E'$ for $E$.  In the worst case, we can use $S$ and $E$ themselves,
+but the algorithm is likely to run faster with a smaller generating set.
 Certainly in computational settings such as the Semigroups package for GAP
 \cite{semigroups} semigroups such as $S$ and $E$ have a generating set stored,
-and a smaller generating set can be created by eliminating unnecessary elements.
+and a smaller generating set can sometimes be created by eliminating unnecessary
+elements.
 
 Once these setup steps have been done, we add information from the known pairs
 of $\rho$---that is, from the pairs in $\mathbf{R}$.  Theorem
