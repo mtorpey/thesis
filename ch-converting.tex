@@ -296,14 +296,16 @@ is the purpose of this section.  We define the function $\Gamma$ as follows.
   define
   $$N_\rho = \{a \in G ~|~ (k, a, \xi) ~\rho~ (k, 1_G, \xi)\},$$
   where $1_G$ is the identity in the group $G$.
-  The inverse of $\Gamma$ then satisfies
-  $$\Gamma^{-1}: (N, \mathcal{S}, \mathcal{T}) \mapsto
-  \Big\{
+  The inverse of $\Gamma$ is then such that
+  $(N, \mathcal{S}, \mathcal{T})\Gamma^{-1}$ is equal to
+  $$\Big\{
   \big((i, a, \lambda), (j, b, \mu)\big) ~\Big|~
-  ab^{-1} \in N, %TODO: WRONG WRONG WRONG, need xi and x and stuff
+  (p_{\xi i} a p_{\lambda x}) (p_{\xi j} b p_{\mu x})^{-1} \in N, 
   (i,j) \in \mathcal{S},
   (\lambda,\mu) \in \mathcal{T}
-  \Big\}.$$
+  \Big\},$$
+  where $\xi \in \Lambda$ and $x \in I$ can be any elements such that
+  $p_{\xi i}$ and $p_{\lambda x}$ are both non-zero.
 \end{definition}
 
 Note that the definition of $N_\rho$ does not depend on the choice of $\xi$ and
@@ -510,7 +512,10 @@ described in Definition \ref{def:linked-triple-function}, a congruence $\rho'$
 on $\mathcal{M}[G; I, \Lambda; P]$ is associated with a linked triple
 $(N', \mathcal{S}, \mathcal{T})$, according to the rule that
 $(i, a, \lambda) ~\rho~ (j, b, \mu)$ if and only if $i ~\mathcal{S}~ j$,
-$\lambda ~\mathcal{T}~ \mu$, and $ab^{-1} \in N'$. % TODO: WRONG WRONG WRONG
+$\lambda ~\mathcal{T}~ \mu$, and
+$(p_{1 i} a p_{\lambda 1}) (p_{1 j} b p_{\mu 1})^{-1} \in N'$.
+Since $|I|=|\Lambda|={1}$ and $P=(1_G)$, this last condition simplifies to
+$ab^{-1} \in N'$.
 
 Let $\rho'$ be the congruence on $\mathcal{M}[G; I, \Lambda; P]$ such that
 $(x)\phi ~\rho~ (y)\phi$ (i.e.~$(1,x,1) ~\rho'~ (1,y,1)$) if and only if
