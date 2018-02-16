@@ -477,13 +477,13 @@ which they are described.
     \cline{2-7}
     & Generating pairs & \cellcolor{gray} &  & \ref{sec:pairs-to-linked-triple} & \ref{sec:pairs-to-kertr} & \\
     \cline{2-7}
-    & Normal subgroup (groups) &  & \cellcolor{gray} & \ref{sec:normal-subgroup-to-linked-triple} &  & \\
+    & Normal subgroup (groups) &  & \cellcolor{gray} & \ref{sec:normal-subgroup-to-linked-triple} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions}\\
     \cline{2-7}
-    & Linked triple ((0-)simple) & \ref{sec:linked-triple-to-pairs} & \ref{sec:normal-subgroup-to-linked-triple} & \cellcolor{gray} & &\\
+    & Linked triple ((0-)simple) & \ref{sec:linked-triple-to-pairs} & \ref{sec:normal-subgroup-to-linked-triple} & \cellcolor{gray} & & \ref{sec:trivial-conversions} \\
     \cline{2-7}
-    & Kernel-trace (inverse) &  &  &  & \cellcolor{gray} &\\
+    & Kernel-trace (inverse) &  & \ref{sec:trivial-conversions} &  & \cellcolor{gray} &\\
     \cline{2-7}
-    & Rees congruence & \ref{sec:rees-to-pairs} &  &  &  & \cellcolor{gray}\\
+    & Rees congruence & \ref{sec:rees-to-pairs} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions} &  & \cellcolor{gray}\\
     \cline{2-7}
   \end{tabular}
   \renewcommand{\arraystretch}{0.7}
@@ -958,6 +958,36 @@ TODO: explain Algorithm \ref{alg:pairs-to-kertr} and justify it.
 % kernelgenstoapply = $X$
 % pairstoapply = $\mathbf{T}$
 % traceBlocks/traceUF = $\tau$
+
+\subsection{Trivial conversions}
+\label{sec:trivial-conversions}
+Some of the conversions between different representations are particularly
+trivial in nature, requiring almost no computational resources to calculate.
+However, it is worth mentioning them here for completeness.
+
+All groups are inverse semigroups.  Hence, if we have a congruence on a group,
+it can be represented by a normal subgroup or by a kernel-trace pair.  Let
+$\rho$ be such a congruence, on a group $G$: the classes of $\rho$ are the
+cosets of some normal subgroup $N$.  The kernel of $\rho$ is defined as the set
+of elements which are $\rho$-related to an idempotent.  Since there is only one
+idempotent---the identity $1_G$---the kernel is all the elements in $N$.  The
+trace of $\rho$ is defined as the restriction of $\rho$ to the idempotent; so
+$\tr\rho$ is just the trivial equivalence on the single element $1_G$.  Hence a
+congruence with normal subgroup $N$ has kernel-trace pair
+$(N, \Delta_{\{1_G\}})$.
+
+A group $G$ has precisely one Rees congruence: the universal congruence
+$\rho_G$.  Its normal subgroup is the entire group $G$.
+
+A completely 0-simple semigroup $\mathcal{M}^0[G;I,\Lambda;P]$ has two Rees
+congruences: the universal congruence and the trivial congruence.  The universal
+congruence has no linked triple, while the trivial congruence corresponds to the
+linked triple $(\{1_G\}, \Delta_I, \Delta_\Lambda)$.  A completely simple
+semigroup $\mathcal{M}[G;I,\Lambda;P]$ has only one Rees congruence: the
+universal congruence, which has linked triple $(G, \nabla_I, \nabla_\Lambda)$.
+% TODO: use nabla elsewhere instead of I x I or whatever
+
+
 
 \section{Things to add to this chapter}
 \begin{enumerate}
