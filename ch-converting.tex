@@ -1012,12 +1012,70 @@ of $\rho$---that is, from the pairs in $\mathbf{R}$.  Theorem
 only if $ab^{-1} \in K$ and $(a^{-1}a, b^{-1}b) \in \tau$.  Now instead of using
 $K$ and $\tau$ to determine whether a pair is in $\rho$, we are using a pair in
 $\rho$ to impose conditions on $K$ and $\tau$.  We have two sets, $X$ and
-$\mathbf{T}$, which act as queues for elements that need to go into $K$ and
-$\tau$ respectively.  We put $ab^{-1}$ into...
+$\mathbf{T}$, which act as queues for elements that need to be processed in $K$
+and $\tau$ respectively.  For each $(a,b) \in \mathbf{R}$ we put $ab^{-1}$ into
+$X$ and $(a^{-1}a, b^{-1}b)$ into $\mathbf{T}$; elements in $X$ will be added
+to $K$ next time we call \textsc{EnumerateKernel}, and we add $\mathbf{T}$ to
+$\tau$ straight away.
 
-Now $(K,\tau)$ is a kernel-trace pair, and it corresponds to a congruence
-$(K,\tau)\Psi^{-1}$ which contains every pair in $\mathbf{R}$.  Hence
-$\mathbf{R}^\sharp \subseteq (K,\tau)\Psi^{-1}$.
+Once this has been done, the rule that $(a,b)$ lies in $\rho$ if and only if
+$ab^{-1} \in K$ and $(a^{-1}a, b^{-1}b) \in \tau$ is satisfied for all pairs
+$(a,b) \in \mathbf{R}$.  All that is left to do is to add any elements to $K$
+and pairs to $\tau$ required to make $(K, \tau)$ a kernel-trace pair.  The rest
+of the algorithm focuses on this task.
+
+Recall from Definitions \ref{def:kernel-normal}, \ref{def:trace-normal} and
+\ref{def:kernel-trace-pair} the conditions for a kernel-trace pair.  We require
+$(K, \tau)$ to satisfy these conditions, and we must make any additions
+necessary until they are all fulfilled.  For this purpose we have three
+sub-methods---\textsc{EnumerateKernel}, \textsc{EnumerateTrace}, and
+\textsc{EnforceConditions}---which test the conditions for a kernel-trace pair
+and add any elements necessary.  Any of these methods might add to $K$ or
+$\tau$, which might in turn imply that another method has more information to
+find.  Hence, the three methods are run repeatedly until an entire run is
+completed in which no new information is found.  If no new information is found,
+$(K, \tau)$ is guaranteed to be a kernel-trace pair, and we can return.  The
+three methods could be run in any order without the correctness of the algorithm
+being affected, but the order shown in Algorithm \ref{alg:pairs-to-kertr} seems
+to have the best time performance, based on informal experiments.  All three
+methods are considered to have access to any of the variables in the overall
+algorithm.
+
+The first method, \textsc{EnumerateKernel}, adds all the elements from $X$ to
+$K$, and takes the normal closure of $K$, ensuring that it is self-conjugate
+(see Definition \ref{def:kernel-normal}).  Since $K$ starts containing $E$, this
+is enough to guarantee that $K$ is a normal subsemigroup.
+
+The \textsc{EnumerateTrace} method ensures that $\tau$ is a normal congruence
+(see Definition \ref{def:trace-normal}).  It considers all the pairs that have
+been added to $\tau$ since the last call to \textsc{EnumerateTrace}---these are
+precisely the pairs in $\mathbf{T}$---and makes sure that any pairs implied by
+them are added to $\tau$ and $\mathbf{T}$.  For each $(x,y) \in \mathbf{T}$, the
+left and right multiples of $(x,y)$ must be in $\tau$ (as required by the
+definition of a congruence).  In fact, only the right-multiples $(xe, ye)$ need
+to be added, since idempotents commute in an inverse semigroup.  If any of these
+pairs are new, they are added to $\mathbf{T}$ so that further multiples can be
+found; this is why we only need to multiply by the generators from $E'$, rather
+than all elements in $E$.  The congruence $\tau$ is also made normal by adding
+the pairs $(a^{-1}xa, a^{-1}ya)$.  Thus, at the end of the method, $\tau$ is
+guaranteed to be a normal congruence.
+
+The last method, \textsc{EnforceConditions}, deals with conditions 1 and 2 from
+Definition \ref{def:kernel-trace-pair}.  It adds any necessary elements to $X$
+and any necessary pairs to $\mathbf{T}$ and $\tau$, and when finished,
+$(K,\tau)$ is guaranteed to satisfy conditions 1 and 2, at least on a run in
+which the other two methods make no changes.
+
+If all three methods complete without any new information being found, they will
+have acted as a test ensuring that $(K, \tau)$ is a valid kernel-trace pair.
+This means that $(K, \tau)$ corresponds to a congruence $(K,\tau)\Psi^{-1}$, and
+we know that this congruence contains every pair in $\mathbf{R}$.  Hence
+$\mathbf{R}^\sharp \subseteq (K,\tau)\Psi^{-1}$.  Since we did not add any
+elements to $K$ or $\tau$ except those implied by $\mathbf{R}$ or those required
+by the definition of a kernel-trace pair, we can also be sure that
+$(K, \tau)\Psi^{-1} \subseteq \mathbf{R}^\sharp$, by Lemma
+\ref{lem:kertr-subsets}.  Hence $(K, \tau)$ is the kernel-trace pair
+corresponding to the congruence $\mathbf{R}^\sharp$.
 
 \subsection{Trivial conversions}
 \label{sec:trivial-conversions}
