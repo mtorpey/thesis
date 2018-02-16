@@ -879,9 +879,14 @@ kernel-trace pair directly from the generating pairs $\mathbf{R}$, enumerating
 as few pairs in $\mathbf{R}^\sharp$ as possible.
 
 A new way of finding the kernel and trace directly from the generating pairs is
-presented in Algorithm \ref{alg:pairs-to-kertr}.
-
-TODO: explain Algorithm \ref{alg:pairs-to-kertr} and justify it.
+presented in pseudo-code in Algorithm \ref{alg:pairs-to-kertr}, which will
+require some explanation.  It is based on a simple idea: firstly, populate $K$
+and $\tau$ with those elements that are implied directly by the pairs in
+$\mathbf{R}$; then, add further elements to $K$ and $\tau$ to satisfy the
+conditions of a kernel-trace pair.  This means we return the least kernel-trace
+pair $(K, \tau)$ that implies the pairs in $\mathbf{R}$---that is, we return
+the kernel-trace pair that corresponds to $\mathbf{R}^\sharp$.  This idea is
+explained more explicitly below.
 
 \begin{algorithm}
 \caption{The kernel-trace pair of a congruence by generating pairs}
@@ -896,7 +901,7 @@ TODO: explain Algorithm \ref{alg:pairs-to-kertr} and justify it.
 \State Let $E'$ be a generating set for $E$
 \State $X \gets E' \cup \{ab^{-1} : (a,b) \in \mathbf{R}\}$
 \State $\mathbf{T} \gets \{(a^{-1}a, b^{-1}b) : (a,b) \in \mathbf{R}\}$
-\State $\tau \gets (\tau \cup T)^e$
+\State $\tau \gets (\tau \cup \mathbf{T})^e$
 \Repeat
 \State $\delta \gets \False$ \Comment{Nothing has changed yet}
 \State \Call{EnumerateKernel}{ }
@@ -958,6 +963,29 @@ TODO: explain Algorithm \ref{alg:pairs-to-kertr} and justify it.
 % kernelgenstoapply = $X$
 % pairstoapply = $\mathbf{T}$
 % traceBlocks/traceUF = $\tau$
+
+The kernel $K$ starts out containing just the idempotents $E$, and the trace
+$\tau$ starts out as the trivial congruence on $E$.  Every kernel and trace must
+contain at least these elements---in fact, $(K, \tau)$ currently corresponds to
+the trivial congruence $\Delta_S$.  We assume that we have generating sets $S'$
+for $S$ and $E'$ for $E$.  In the worst case, we can use $S$ and $E$ theselves,
+but the algorithm certainly works faster with a smaller generating set.
+Certainly in computational settings such as the Semigroups package for GAP
+\cite{semigroups} semigroups such as $S$ and $E$ have a generating set stored,
+and a smaller generating set can be created by eliminating unnecessary elements.
+
+Once these setup steps have been done, we add information from the known pairs
+of $\rho$---that is, from the pairs in $\mathbf{R}$.  Theorem
+\ref{thm:kernel-trace-pair} tells us that a pair $(a,b)$ lies in $\rho$ if and
+only if $ab^{-1} \in K$ and $(a^{-1}a, b^{-1}b) \in \tau$.  Now instead of using
+$K$ and $\tau$ to determine whether a pair is in $\rho$, we are using a pair in
+$\rho$ to impose conditions on $K$ and $\tau$.  We have two sets, $X$ and
+$\mathbf{T}$, which act as queues for elements that need to go into $K$ and
+$\tau$ respectively.  We put $ab^{-1}$ into...
+
+Now $(K,\tau)$ is a kernel-trace pair, and it corresponds to a congruence
+$(K,\tau)\Psi^{-1}$ which contains every pair in $\mathbf{R}$.  Hence
+$\mathbf{R}^\sharp \subseteq (K,\tau)\Psi^{-1}$.
 
 \subsection{Trivial conversions}
 \label{sec:trivial-conversions}
