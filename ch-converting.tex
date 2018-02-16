@@ -969,6 +969,32 @@ explained more explicitly below.
 % pairstoapply = $\mathbf{T}$
 % traceBlocks/traceUF = $\tau$
 
+To understand why the algorithm is correct, we make use of the following lemma,
+akin to Lemma \ref{lem:linked-triple-subsets} for linked triples.
+
+\begin{lemma}
+  \label{lem:kertr-subsets}
+  Let $\rho$ and $\sigma$ be congruences on $S$ with kernel-trace pairs
+  $(K_\rho, \tau_\rho)$ and $(K_\sigma, \tau_\sigma)$ respectively.  We have
+  $\rho \subseteq \sigma$ if and only if $K_\rho \leq K_\sigma$ and
+  $\tau_\rho \subseteq \tau_\sigma$.
+  \begin{proof}
+    Assume $K_\rho \leq K_\sigma$ and $\tau_\rho \subseteq \tau_\sigma$, and let
+    $(x,y) \in \rho$.  By Theorem \ref{thm:kernel-trace-pair}, we have
+    $xy^{-1} \in K_\rho$ and $(x^{-1}x, y^{-1}y) \in \tau_\rho$.  Hence
+    $xy^{-1} \in K_\sigma$ and $(x^{-1}x, y^{-1}y) \in \tau_\sigma$, which
+    together imply $(x,y) \in \sigma$.  Hence $\rho \subseteq \sigma$.
+
+    Conversely, assume $\rho \subseteq \sigma$.  If $k \in K_\rho$ then
+    $k=xy^{-1}$ for some $(x,y) \in \rho$; this means $(x,y) \in \sigma$, so
+    $k=xy^{-1} \in K_\sigma$.  Similarly, if $(e,f) \in \tau_\rho$ then
+    $(e,f) = (x^{-1}x, y^{-1}y)$ for some $(x,y) \in \rho$; this means
+    $(x,y) \in \sigma$, so $(e,f) = (x^{-1}x, y^{-1}y) \in \tau_\sigma$.  Hence
+    $K_\rho \leq K_\sigma$ and $\tau_\rho \subseteq \tau_\sigma$, as
+    required.
+  \end{proof}
+\end{lemma}
+
 The kernel $K$ starts out containing just the idempotents $E$, and the trace
 $\tau$ starts out as the trivial congruence on $E$.  Every kernel and trace must
 contain at least these elements---in fact, $(K, \tau)$ currently corresponds to
