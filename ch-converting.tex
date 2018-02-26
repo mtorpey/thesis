@@ -727,22 +727,21 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
 \begin{theorem}
   \label{thm:linked-triple-to-pairs}
   Let $S = \mathcal{M}^0[G;I,\Lambda;P]$ be a finite 0-simple semigroup, and let
-  $\rho$ be a congruence with linked triple
-  $(N_\rho, \sS_\rho, \tT_\rho)$.
-  Let $X_N \subseteq N$, $X_{\sS} \subseteq \sS$ and $X_\tT \subseteq \tT$ be
-  subsets with the following properties:
+  $\rho$ be a congruence with linked triple $(N_\rho, \sS_\rho, \tT_\rho)$.  Let
+  $N_\rho' \subseteq N_\rho$, $\sS_\rho' \subseteq \sS_\rho$ and
+  $\tT_\rho' \subseteq \tT_\rho$ be subsets with the following properties:
   \begin{itemize}
-  \item $N_\rho$ is the normal closure of $X_N$ in $G$,
-  \item $\sS_\rho = (X_\sS)^e$,
-  \item $\tT_\rho = (X_\tT)^e$.
+  \item $N_\rho$ is the normal closure of $N_\rho'$ in $G$,
+  \item $\sS_\rho = (\sS_\rho')^e$,
+  \item $\tT_\rho = (\tT_\rho')^e$.
   \end{itemize}
   If $\R$ is a subset of $\rho$ such that
   \begin{enumerate}
-  \item for each pair $(i, j) \in X_\sS$ there exist $\lambda, \mu \in \Lambda$
+  \item for each pair $(i, j) \in \sS_\rho'$ there exist $\lambda, \mu \in \Lambda$
     and $a, b \in G$ such that $(i, a, \lambda) ~\R~ (j, b, \mu)$;
-  \item for each pair $(\lambda, \mu) \in X_\tT$ there exist $i, j \in I$ and
+  \item for each pair $(\lambda, \mu) \in \tT_\rho'$ there exist $i, j \in I$ and
     $a, b \in G$ such that $(i, a, \lambda) ~\R~ (j, b, \mu)$;
-  \item for each element $n \in X_N$ there exist $i,j,x \in I$ and $\lambda,
+  \item for each element $n \in N_\rho'$ there exist $i,j,x \in I$ and $\lambda,
     \mu, \xi \in \Lambda$ such that $p_{\xi i}$ and $p_{\lambda x}$ are both
     non-zero and
     $$(i, p_{\xi i}^{-1} n p_{\lambda x}^{-1}, \lambda) ~\R~
@@ -761,16 +760,16 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
     that $\rho \subseteq \R$ by Lemma \ref{lem:linked-triple-subsets}.
 
     Recall the relations $\R_I$ and $\R_\Lambda$ from Definition \ref{def:ri}.
-    By condition 1 above we can see that $X_\sS \subseteq \R_I$ and hence
-    $(X_\sS)^e \subseteq (\R_I)^e$.  Meanwhile by Theorem
+    By condition 1 above we can see that $\sS_\rho' \subseteq \R_I$ and hence
+    $(\sS_\rho')^e \subseteq (\R_I)^e$.  Meanwhile by Theorem
     \ref{thm:pairs-to-linked-triple} we have $(\R_I)^e = \mathcal{S}_{\Rs}$.  In
     total this gives us
-    $\sS_\rho = (X_\sS)^e \subseteq (\R_I)^e = \mathcal{S}_{\Rs}$, so
+    $\sS_\rho = (\sS_\rho')^e \subseteq (\R_I)^e = \mathcal{S}_{\Rs}$, so
     $\sS_\rho \subseteq \sS_{\Rs}$.  Similarly by condition 2 we have
     $\tT_\rho \subseteq \tT_{\Rs}$.
 
-    Now we turn our attention to $N_\rho$, and its generating set $X_N$---we
-    wish to show that $N_\rho \subseteq N_{\Rs}$.  Let $n \in X_N$.  By condition
+    Now we turn our attention to $N_\rho$, and its generating set $N_\rho'$---we
+    wish to show that $N_\rho \subseteq N_{\Rs}$.  Let $n \in N_\rho'$.  By condition
     3, there exist $i, j, x \in I$ and $\lambda, \mu, \xi \in \Lambda$ such that
     $p_{\xi i}$ and $p_{\lambda x}$ are both non-zero and
     $(i, a, \lambda) ~\R~ (j, b, \mu)$, where
@@ -786,8 +785,8 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
     $a,b \in G$ such that $(i,a,\lambda) ~\R~ (j,b,\mu)$ and $p_{\xi i}$
     and $p_{\lambda x}$ are non-zero; this is precisely the requirement in
     Theorem \ref{thm:pairs-to-linked-triple} which means that $n \in N_{\Rs}$.
-    Hence $X_N \subseteq N_{\Rs}$.  And since $N_\rho$ is the normal closure of
-    $X_N$, and $N_{\Rs}$ is a normal subgroup, we have $N_\rho \subseteq N_{\Rs}$.
+    Hence $N_\rho' \subseteq N_{\Rs}$.  And since $N_\rho$ is the normal closure of
+    $N_\rho'$, and $N_{\Rs}$ is a normal subgroup, we have $N_\rho \subseteq N_{\Rs}$.
 
     Since $N_\rho \subseteq N_{\Rs}$, $\sS_\rho \subseteq \sS_{\Rs}$ and
     $\tT_\rho \subseteq \tT_{\Rs}$, Lemma \ref{lem:linked-triple-subsets} gives us
@@ -798,32 +797,32 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
 Theorem \ref{thm:linked-triple-to-pairs} is enough to justify the
 \textsc{GeneratingPairsFromLinkedTriple} algorithm, which is presented in this
 thesis as Algorithm \ref{alg:linked-triple-to-pairs}.  Given a linked triple, we
-only need to choose applicable subsets $X_N$, $X_\sS$ and $X_\tT$ and we have a
+only need to choose applicable subsets $N_\rho'$, $\sS_\rho'$ and $\tT_\rho'$ and we have a
 good idea of what pairs are necessary to generate a congruence.  In the
-algorithm, we assume that a generating set $X_N$ is known for $N$---this is
+algorithm, we assume that a generating set $N_\rho'$ is known for $N$---this is
 certainly likely to be the case in a computational setting, for example in GAP
 \cite{gap} where groups almost always have a known generating set.  We should
 note that this set should act as a set of normal subgroup generators, meaning
 that it might be even smaller than a standard set of group generators.  For
-$X_\sS$ we choose a minimal spanning tree for each class of $\sS$, by linking
+$\sS_\rho'$ we choose a minimal spanning tree for each class of $\sS$, by linking
 each column in the class to a distinguished class representative called $i_1$.
 Hence each class requires a number of pairs in $X_S$ equal to one less than the
-size of the class; and so $|X_\sS| = |I| - k_\sS$, where $k_\sS$ is the number
-of classes in $\sS$.  Similarly $|X_\tT| = |\Lambda| - k_\tT$, where $k_\tT$ is
+size of the class; and so $|\sS_\rho'| = |I| - k_\sS$, where $k_\sS$ is the number
+of classes in $\sS$.  Similarly $|\tT_\rho'| = |\Lambda| - k_\tT$, where $k_\tT$ is
 the number of classes in $\tT$.
 
 Once our three generating sets have been calculated, we collate them into the
 set of pairs $\R$ as efficiently as possible: each pair we add to $\R$ can
 satisfy the conditions in Theorem \ref{thm:linked-triple-to-pairs} for one pair
-$(i,j) \in X_\sS$, one pair $(\lambda, \mu) \in X_\tT$, and one element
-$n \in X_N$: the pair we add is
+$(i,j) \in \sS_\rho'$, one pair $(\lambda, \mu) \in \tT_\rho'$, and one element
+$n \in N_\rho'$: the pair we add is
 $$\big((i, p_{\xi i}^{-1}ap_{\lambda k}^{-1}, \lambda),
 (j, p_{\xi j}^{-1}ap_{\mu k}^{-1}, \mu)\big),$$
 which can be seen by inspection to satisfy conditions 1, 2 and 3 for the three
 generators in question.  These pairs are added until all three $X$ sets are
 exhausted, and so the total number of pairs returned by the algorithm is equal
 to
-$$\max(|X_N|, |I| - k_\sS, |\Lambda| - k_\tT).$$
+$$\max(|N_\rho'|, |I| - k_\sS, |\Lambda| - k_\tT).$$
 If the $X$ sets have different sizes, then any element can be reused from one of
 the sets when it runs out---in Algorithm \ref{alg:linked-triple-to-pairs} the
 last one popped is used repeatedly.  If any of the $X$ sets are empty at the
@@ -836,33 +835,33 @@ reflexive pair, from $\Delta_I$ or $\Delta_\Lambda$ respectively.
 \label{alg:linked-triple-to-pairs}
 \begin{algorithmic}[1]
   \Procedure{GeneratingPairsFromLinkedTriple}{$(N, \mathcal{S}, \mathcal{T})$}
-    \State $X_N := $ generating set for $N$
-    \State $X_\mathcal{S} := \varnothing$
+    \State $N_\rho' := $ generating set for $N$
+    \State $\sS_\rho' := \varnothing$
     \For{each non-singleton class $\{i_1, i_2, \ldots, i_n\}$ of $\mathcal{S}$}
       \For{$l \in \{2, \ldots, n\}$}
-        \State \textsc{Push} $(i_1, i_l)$ onto $X_\mathcal{S}$
+        \State \textsc{Push} $(i_1, i_l)$ onto $\sS_\rho'$
       \EndFor
     \EndFor
-    \State $X_\mathcal{T} := \varnothing$
+    \State $\tT_\rho' := \varnothing$
     \For{each non-singleton class $\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$ of $\mathcal{T}$}
       \For{$l \in \{2, \ldots, n\}$}
-        \State \textsc{Push} $(\lambda_1, \lambda_l)$ onto $X_\mathcal{T}$
+        \State \textsc{Push} $(\lambda_1, \lambda_l)$ onto $\tT_\rho'$
       \EndFor
     \EndFor
     \State $\R := \varnothing$
-    %\State $m := \max (|X_N|, |X_\mathcal{S}|, |X_\mathcal{T}|)$
+    %\State $m := \max (|N_\rho'|, |\sS_\rho'|, |\tT_\rho'|)$
     \State $a := 1_G$
     \State $(i,j) := (1,1)$
     \State $(\lambda,\mu) := (1,1)$
-    \While{$X_N \neq \varnothing$ \Or $X_\mathcal{S} \neq \varnothing$ \Or $X_\mathcal{T} \neq \varnothing$}
-      \If{$X_N \neq \varnothing$}
-        \State $a \gets$ \Call{Pop}{$X_N$}
+    \While{$N_\rho' \neq \varnothing$ \Or $\sS_\rho' \neq \varnothing$ \Or $\tT_\rho' \neq \varnothing$}
+      \If{$N_\rho' \neq \varnothing$}
+        \State $a \gets$ \Call{Pop}{$N_\rho'$}
       \EndIf
-      \If{$X_\mathcal{S} \neq \varnothing$}
-        \State $(i,j) \gets$ \Call{Pop}{$X_\mathcal{S}$}
+      \If{$\sS_\rho' \neq \varnothing$}
+        \State $(i,j) \gets$ \Call{Pop}{$\sS_\rho'$}
       \EndIf
-      \If{$X_\mathcal{T} \neq \varnothing$}
-        \State $(\lambda, \mu) \gets$ \Call{Pop}{$X_\mathcal{T}$}
+      \If{$\tT_\rho' \neq \varnothing$}
+        \State $(\lambda, \mu) \gets$ \Call{Pop}{$\tT_\rho'$}
       \EndIf
       \State Fix some $\xi \in \Lambda$ such that $p_{\xi i} \neq 0$
       \State Fix some $k \in I$ such that $p_{\lambda k} \neq 0$
@@ -876,6 +875,7 @@ reflexive pair, from $\Delta_I$ or $\Delta_\Lambda$ respectively.
 \end{algorithmic}
 \end{algorithm}
 
+%DONE N_\rho'
 
 \subsection{Kernel and trace from generating pairs}
 \label{sec:pairs-to-kertr}
