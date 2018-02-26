@@ -620,8 +620,8 @@ definition and theorem from \cite{mtorpey_msc}.
   Let $S = \mathcal{M}^0[G;I,\Lambda;P]$ be a finite 0-simple semigroup, with a
   relation $\R \subset S \times S$ that generates a non-universal
   congruence $\R^\sharp$.  Let
-  $\mathcal{S}_{\R^\sharp} = (\R|_I)^e$, let
-  $\mathcal{T}_{\R^\sharp} = (\R|_\Lambda)^e$, and let $N_{\R^\sharp}$ be
+  $\mathcal{S}_{\Rs} = (\R|_I)^e$, let
+  $\mathcal{T}_{\Rs} = (\R|_\Lambda)^e$, and let $N_{\Rs}$ be
   the least normal subgroup of $G$ containing the set
   \begin{align*}
     \Big\{(p_{\xi i} a p_{\lambda x}) (p_{\xi j} b p_{\mu x})^{-1} ~\Big|~
@@ -637,7 +637,7 @@ definition and theorem from \cite{mtorpey_msc}.
            i,j \in I ~\textnormal{such that}~
            p_{\lambda i}, p_{\lambda j} \neq 0\Big\}. \\
   \end{align*}
-  Then $(N_{\R^\sharp}, \mathcal{S}_{\R^\sharp}, \mathcal{T}_{\R^\sharp})$
+  Then $(N_{\Rs}, \mathcal{S}_{\Rs}, \mathcal{T}_{\Rs})$
   is the linked triple corresponding to $\R^\sharp$.
 \end{theorem}
 
@@ -755,22 +755,22 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
     $\R \subseteq \rho$, we know that $\R^\sharp \subseteq \rho$.  Hence we only
     need to show that $\rho \subseteq \R^\sharp$.
 
-    Let $(N_\R, \sS_\R, \tT_\R)$ denote the linked triple associated with
-    $\R^\sharp$.  We will show that $N_\rho \subseteq N_\R$,
-    $\sS_\rho \subseteq \sS_\R$, and $\tT_\rho \subseteq \tT_\R$, and therefore
+    Let $(N_{\Rs}, \sS_{\Rs}, \tT_{\Rs})$ denote the linked triple associated with
+    $\R^\sharp$.  We will show that $N_\rho \subseteq N_{\Rs}$,
+    $\sS_\rho \subseteq \sS_{\Rs}$, and $\tT_\rho \subseteq \tT_{\Rs}$, and therefore
     that $\rho \subseteq \R$ by Lemma \ref{lem:linked-triple-subsets}.
 
     Recall the relations $\R_I$ and $\R_\Lambda$ from Definition \ref{def:ri}.
     By condition 1 above we can see that $X_\sS \subseteq \R_I$ and hence
     $(X_\sS)^e \subseteq (\R_I)^e$.  Meanwhile by Theorem
-    \ref{thm:pairs-to-linked-triple} we have $(\R_I)^e = \mathcal{S}_\R$.  In
+    \ref{thm:pairs-to-linked-triple} we have $(\R_I)^e = \mathcal{S}_{\Rs}$.  In
     total this gives us
-    $\sS_\rho = (X_\sS)^e \subseteq (\R_I)^e = \mathcal{S}_\R$, so
-    $\sS_\rho \subseteq \sS_\R$.  Similarly by condition 2 we have
-    $\tT_\rho \subseteq \tT_\R$.
+    $\sS_\rho = (X_\sS)^e \subseteq (\R_I)^e = \mathcal{S}_{\Rs}$, so
+    $\sS_\rho \subseteq \sS_{\Rs}$.  Similarly by condition 2 we have
+    $\tT_\rho \subseteq \tT_{\Rs}$.
 
     Now we turn our attention to $N_\rho$, and its generating set $X_N$---we
-    wish to show that $N_\rho \subseteq N_\R$.  Let $n \in X_N$.  By condition
+    wish to show that $N_\rho \subseteq N_{\Rs}$.  Let $n \in X_N$.  By condition
     3, there exist $i, j, x \in I$ and $\lambda, \mu, \xi \in \Lambda$ such that
     $p_{\xi i}$ and $p_{\lambda x}$ are both non-zero and
     $(i, a, \lambda) ~\R~ (j, b, \mu)$, where
@@ -778,19 +778,19 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
     b = p_{\xi j}^{-1} p_{\mu x}^{-1}.$$
     Note that $p_{\xi j}$ and $p_{\mu x}$
     must also be non-zero since $(i, j) \in \varepsilon_I$ and
-    $(\lambda, \mu) \in \varepsilon_\Lambda$.  To see that $n \in N_\R$, observe
+    $(\lambda, \mu) \in \varepsilon_\Lambda$.  To see that $n \in N_{\Rs}$, observe
     that $p_{\xi i} a p_{\lambda x} = n$ and $p_{\xi j} b p_{\mu x} = 1_G$.
     Hence $n$ satisfies the condition that
     $$n = (p_{\xi i} a p_{\lambda x}) (p_{\xi j} b p_{\mu x})^{-1}$$
     for some $i,j,x \in I$, some $\lambda, \mu, \xi \in \Lambda$, and some
     $a,b \in G$ such that $(i,a,\lambda) ~\R~ (j,b,\mu)$ and $p_{\xi i}$
     and $p_{\lambda x}$ are non-zero; this is precisely the requirement in
-    Theorem \ref{thm:pairs-to-linked-triple} which means that $n \in N_\R$.
-    Hence $X_N \subseteq N_\R$.  And since $N_\rho$ is the normal closure of
-    $X_N$, and $N_\R$ is a normal subgroup, we have $N_\rho \subseteq N_\R$.
+    Theorem \ref{thm:pairs-to-linked-triple} which means that $n \in N_{\Rs}$.
+    Hence $X_N \subseteq N_{\Rs}$.  And since $N_\rho$ is the normal closure of
+    $X_N$, and $N_{\Rs}$ is a normal subgroup, we have $N_\rho \subseteq N_{\Rs}$.
 
-    Since $N_\rho \subseteq N_\R$, $\sS_\rho \subseteq \sS_\R$ and
-    $\tT_\rho \subseteq \tT_\R$, Lemma \ref{lem:linked-triple-subsets} gives us
+    Since $N_\rho \subseteq N_{\Rs}$, $\sS_\rho \subseteq \sS_{\Rs}$ and
+    $\tT_\rho \subseteq \tT_{\Rs}$, Lemma \ref{lem:linked-triple-subsets} gives us
     $\rho \subseteq \R^\sharp$, as required.
   \end{proof}
 \end{theorem}
