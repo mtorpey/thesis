@@ -796,36 +796,37 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
 
 Theorem \ref{thm:linked-triple-to-pairs} is enough to justify the
 \textsc{GeneratingPairsFromLinkedTriple} algorithm, which is presented in this
-thesis as Algorithm \ref{alg:linked-triple-to-pairs}.  Given a linked triple, we
-only need to choose applicable subsets $N_\rho'$, $\sS_\rho'$ and $\tT_\rho'$ and we have a
+thesis as Algorithm \ref{alg:linked-triple-to-pairs}.  Given a linked triple
+$(N, \sS, \tT)$, we only need to choose applicable subsets $N' \subseteq N$,
+$\sS' \subseteq \sS$ and $\tT' \subseteq \tT$ and we have a
 good idea of what pairs are necessary to generate a congruence.  In the
-algorithm, we assume that a generating set $N_\rho'$ is known for $N$---this is
+algorithm, we assume that a generating set $N'$ is known for $N$---this is
 certainly likely to be the case in a computational setting, for example in GAP
 \cite{gap} where groups almost always have a known generating set.  We should
 note that this set should act as a set of normal subgroup generators, meaning
 that it might be even smaller than a standard set of group generators.  For
-$\sS_\rho'$ we choose a minimal spanning tree for each class of $\sS$, by linking
+$\sS'$ we choose a minimal spanning tree for each class of $\sS$, by linking
 each column in the class to a distinguished class representative called $i_1$.
-Hence each class requires a number of pairs in $X_S$ equal to one less than the
-size of the class; and so $|\sS_\rho'| = |I| - k_\sS$, where $k_\sS$ is the number
-of classes in $\sS$.  Similarly $|\tT_\rho'| = |\Lambda| - k_\tT$, where $k_\tT$ is
+Hence each class requires a number of pairs in $\sS'$ equal to one less than the
+size of the class; and so $|\sS'| = |I| - k_\sS$, where $k_\sS$ is the number
+of classes in $\sS$.  Similarly $|\tT'| = |\Lambda| - k_\tT$, where $k_\tT$ is
 the number of classes in $\tT$.
 
 Once our three generating sets have been calculated, we collate them into the
 set of pairs $\R$ as efficiently as possible: each pair we add to $\R$ can
 satisfy the conditions in Theorem \ref{thm:linked-triple-to-pairs} for one pair
-$(i,j) \in \sS_\rho'$, one pair $(\lambda, \mu) \in \tT_\rho'$, and one element
-$n \in N_\rho'$: the pair we add is
+$(i,j) \in \sS'$, one pair $(\lambda, \mu) \in \tT'$, and one element
+$n \in N'$: the pair we add is
 $$\big((i, p_{\xi i}^{-1}ap_{\lambda k}^{-1}, \lambda),
 (j, p_{\xi j}^{-1}ap_{\mu k}^{-1}, \mu)\big),$$
 which can be seen by inspection to satisfy conditions 1, 2 and 3 for the three
-generators in question.  These pairs are added until all three $X$ sets are
+generators in question.  These pairs are added until all three sets are
 exhausted, and so the total number of pairs returned by the algorithm is equal
 to
-$$\max(|N_\rho'|, |I| - k_\sS, |\Lambda| - k_\tT).$$
-If the $X$ sets have different sizes, then any element can be reused from one of
+$$\max(|N'|, |I| - k_\sS, |\Lambda| - k_\tT).$$
+If the sets have different sizes, then any element can be reused from one of
 the sets when it runs out---in Algorithm \ref{alg:linked-triple-to-pairs} the
-last one popped is used repeatedly.  If any of the $X$ sets are empty at the
+last one popped is used repeatedly.  If any of the sets is empty at the
 start, an arbitrary entry can be used instead: for $n$ we can use the identity
 $1_G$ which must always be in $N$; for $(i,j)$ or $(\lambda,\mu)$ we can use a
 reflexive pair, from $\Delta_I$ or $\Delta_\Lambda$ respectively.
@@ -835,33 +836,33 @@ reflexive pair, from $\Delta_I$ or $\Delta_\Lambda$ respectively.
 \label{alg:linked-triple-to-pairs}
 \begin{algorithmic}[1]
   \Procedure{GeneratingPairsFromLinkedTriple}{$(N, \mathcal{S}, \mathcal{T})$}
-    \State $N_\rho' := $ generating set for $N$
-    \State $\sS_\rho' := \varnothing$
+    \State $N' := $ generating set for $N$
+    \State $\sS' := \varnothing$
     \For{each non-singleton class $\{i_1, i_2, \ldots, i_n\}$ of $\mathcal{S}$}
       \For{$l \in \{2, \ldots, n\}$}
-        \State \textsc{Push} $(i_1, i_l)$ onto $\sS_\rho'$
+        \State \textsc{Push} $(i_1, i_l)$ onto $\sS'$
       \EndFor
     \EndFor
-    \State $\tT_\rho' := \varnothing$
+    \State $\tT' := \varnothing$
     \For{each non-singleton class $\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$ of $\mathcal{T}$}
       \For{$l \in \{2, \ldots, n\}$}
-        \State \textsc{Push} $(\lambda_1, \lambda_l)$ onto $\tT_\rho'$
+        \State \textsc{Push} $(\lambda_1, \lambda_l)$ onto $\tT'$
       \EndFor
     \EndFor
     \State $\R := \varnothing$
-    %\State $m := \max (|N_\rho'|, |\sS_\rho'|, |\tT_\rho'|)$
+    %\State $m := \max (|N'|, |\sS'|, |\tT'|)$
     \State $a := 1_G$
     \State $(i,j) := (1,1)$
     \State $(\lambda,\mu) := (1,1)$
-    \While{$N_\rho' \neq \varnothing$ \Or $\sS_\rho' \neq \varnothing$ \Or $\tT_\rho' \neq \varnothing$}
-      \If{$N_\rho' \neq \varnothing$}
-        \State $a \gets$ \Call{Pop}{$N_\rho'$}
+    \While{$N' \neq \varnothing$ \Or $\sS' \neq \varnothing$ \Or $\tT' \neq \varnothing$}
+      \If{$N' \neq \varnothing$}
+        \State $a \gets$ \Call{Pop}{$N'$}
       \EndIf
-      \If{$\sS_\rho' \neq \varnothing$}
-        \State $(i,j) \gets$ \Call{Pop}{$\sS_\rho'$}
+      \If{$\sS' \neq \varnothing$}
+        \State $(i,j) \gets$ \Call{Pop}{$\sS'$}
       \EndIf
-      \If{$\tT_\rho' \neq \varnothing$}
-        \State $(\lambda, \mu) \gets$ \Call{Pop}{$\tT_\rho'$}
+      \If{$\tT' \neq \varnothing$}
+        \State $(\lambda, \mu) \gets$ \Call{Pop}{$\tT'$}
       \EndIf
       \State Fix some $\xi \in \Lambda$ such that $p_{\xi i} \neq 0$
       \State Fix some $k \in I$ such that $p_{\lambda k} \neq 0$
@@ -874,8 +875,6 @@ reflexive pair, from $\Delta_I$ or $\Delta_\Lambda$ respectively.
   \EndProcedure
 \end{algorithmic}
 \end{algorithm}
-
-%DONE N_\rho'
 
 \subsection{Kernel and trace from generating pairs}
 \label{sec:pairs-to-kertr}
