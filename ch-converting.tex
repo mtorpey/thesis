@@ -440,6 +440,7 @@ costly to find its kernel-trace pair in the first place; Section
 \ref{sec:pairs-to-kertr} presents a relatively fast method for finding a kernel-trace pair.
 
 \subsection{Rees congruences}
+\label{sec:rees-cong}
 A \textbf{Rees congruence} is a congruence on a semigroup $S$ with a
 distinguished congruence class $I$ which is a two-sided ideal of $S$, and in
 which every other congruence class is a singleton.  We may write this congruence
@@ -986,6 +987,29 @@ $\tau$ respectively.  We put $ab^{-1}$ into...
 Now $(K,\tau)$ is a kernel-trace pair, and it corresponds to a congruence
 $(K,\tau)\Psi^{-1}$ which contains every pair in $\mathbf{R}$.  Hence
 $\mathbf{R}^\sharp \subseteq (K,\tau)\Psi^{-1}$.
+
+\subsection{Kernel-trace pair of a Rees congruence}
+\label{sec:rees-to-kertr}
+Let $S$ be an inverse semigroup with idempotents $E$.  Each congruence on $S$ is
+defined by its kernel and trace (see Section \ref{sec:kertr}), and some
+congruences on $S$ may be Rees (see Section \ref{sec:rees-cong}).  We may wish
+to find the kernel and trace of a Rees congruence given the ideal that defines
+it.  Conversely, we may wish to determine whether a given kernel-trace pair on
+$S$ describes a Rees congruence, and if so, what ideal it is associated with.
+
+Let $I$ be an ideal in $S$, and let $\rho_I$ be $(I \times I) \cup \Delta_S$,
+the Rees congruence corresponding to $I$.  To find the kernel and trace of
+$\rho_I$ we must consider the positions of the idempotents in $S$, and how they
+interact with $I$.
+
+Since $I$ is an ideal, it must be a union of $\JJ$-classes, and since $S$ is
+inverse, it has an idempotent in every $\JJ$-class; hence, there is at least one
+idempotent in $I$.  The kernel of $\rho_I$ is defined as the set of all elements
+which are related to an idempotent---that is, all elements in $I$ and all
+idempotents outside $I$.  Hence $\ker \rho_I = E \cup I$.  The trace of $\rho_I$
+is defined as the restriction of $\rho_I$ to the idempotents.  Two distinct
+idempotents are $\rho_I$-related if and only if they both lie in $I$; hence
+$\tr \rho_I = ((E \cap I) \times (E \cap I)) \cup \Delta_E$.
 
 \subsection{Trivial conversions}
 \label{sec:trivial-conversions}
