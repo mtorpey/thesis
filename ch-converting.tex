@@ -1115,6 +1115,31 @@ is defined as the restriction of $\rho_I$ to the idempotents.  Two distinct
 idempotents are $\rho_I$-related if and only if they both lie in $I$; hence
 $\tr \rho_I = ((E \cap I) \times (E \cap I)) \cup \Delta_E$.
 
+Now we turn our attention to the other direction.  Let $\rho$ be a congruence
+defined by a kernel-trace pair $(K, \tau)$.  How can we determine directly from
+$K$ and $\tau$ whether $\rho$ is a Rees congruence?  Certainly $E \cap I$ is an
+ideal in $E$, so if $\rho$ is a Rees congruence on $S$, then $\tr \rho$ has to
+be a Rees congruence on $E$, and its ideal (which we will write as
+$I_E$) must be equal to $E \cap I$.  If $\tr \rho$ has been identified
+as being Rees with ideal $I_E$, then we can consider $\ker \rho$ next.
+For $\rho$ to be Rees, we need $\ker \rho$ to have the form $E \cup I$, that is
+the set of idempotents together with an ideal of $S$.  Since an ideal is a union
+of principal ideals (a union of $\JJ$-classes closed downwards) the kernel will
+have to be a union of principal ideals together with all the idempotents:
+$$\ker \rho = S^1 I_E S^1 \cup E.$$
+
+\begin{theorem}
+  \label{thm:kertr-to-rees}
+  Let $S$ be an inverse semigroup with set of idempotents $E$.  If $(K, \tau)$
+  is a kernel-trace pair on $S$, then the congruence it defines is a Rees
+  congruence if and only if
+  $\tau$ is a Rees congruence on $E$ with ideal $I_\tau \subseteq E$, and
+  $K = S^1 I_\tau S^1 \cup E$.
+  \begin{proof}
+
+  \end{proof}
+\end{theorem}
+
 \subsection{Trivial conversions}
 \label{sec:trivial-conversions}
 Some of the conversions between different representations are particularly
