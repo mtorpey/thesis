@@ -1132,10 +1132,36 @@ $$\ker \rho = S^1 I_E S^1 \cup E.$$
   \label{thm:kertr-to-rees}
   Let $S$ be an inverse semigroup with set of idempotents $E$.  If $(K, \tau)$
   is a kernel-trace pair on $S$, then the congruence it defines is a Rees
-  congruence if and only if
-  $\tau$ is a Rees congruence on $E$ with ideal $I_\tau \subseteq E$, and
-  $K = S^1 I_\tau S^1 \cup E$.
+  congruence if and only if the following hold:
+  \begin{enumerate}[(1)]
+  \item $\tau$ is a Rees congruence on $E$, with ideal denoted by $I_\tau$;
+  \item $K = S^1 I_\tau S^1 \cup E$.
+  \end{enumerate}
   \begin{proof}
+    Let $\rho$ be the congruence defined by $(K, \tau)$.  We will first show
+    that (1) and (2) imply that $\rho$ is Rees, and then we will show that
+    $\rho$ being Rees implies (1) and (2).
+
+    First, assume that (1) and (2) hold.  Let $I = S^1 I_\tau S^1$, so that
+    $K = I \cup E$.  This $I$ is closed under left and right multiplication, so
+    it is certainly an ideal of $S$.  We will show that $\rho$ is equal to the
+    Rees congruence $\rho_I$, by showing $\rho_I \subseteq \rho$ and
+    $\rho \subseteq \rho_I$.
+
+    For the first, let $(x,y) \in \rho_I$.  If $x=y$ then $(x,y) \in \rho$ by
+    reflexivity.  Otherwise $x$ and $y$ are both in $I$, so $x = aeb$ and
+    $y=cfd$ for some $e,f \in I_\tau$ and $a,b,c,d \in S^1$.  Since $I$ is an
+    ideal and $x \in I$, we have $xy^{-1} \in I$ and therefore $xy^{-1} \in K$.
+    Meanwhile we have $x^{-1}x = (aeb)^{-1}(aeb) = b^{-1}ea^{-1}aeb$: since
+    $a^{-1}a$ and $e$ are both idempotents, $ea^{-1}ae$ is an idempotent, and
+    since $e \in I_\tau$ we also have $ea^{-1}ae \in I_\tau$; finally, since
+    $I_\tau$ is normal (see Definition \ref{def:trace-normal}) we have
+    $b^{-1}(ea^{-1}ae)b \in I_\tau$, and so $x^{-1}x \in I_\tau$.  Similarly
+    $y^{-1}y \in I_\tau$, so $(x^{-1}x, y^{-1}y) \in \tau$.  Since
+    $xy^{-1} \in K$ and $(x^{-1}x, y^{-1}y) \in \tau$, we have $(x,y) \in \rho$
+    by Theorem \ref{thm:kernel-trace-pair}.
+
+    For the second, let $(x,y) \in \rho$.
 
   \end{proof}
 \end{theorem}
