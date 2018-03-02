@@ -605,7 +605,7 @@ definition and theorem from \cite{mtorpey_msc}.
 \begin{definition}[Definition 3.10 in \cite{mtorpey_msc}]
   \label{def:ri}
   Let $S = \mathcal{M}^0[G;I,\Lambda;P]$ be a finite 0-simple Rees 0-matrix
-  semigroup, and let $\R \subset S \times S$ be a relation on it.  We
+  semigroup, and let $\R \subseteq S \times S$ be a relation on it.  We
   define the relations $\R|_I$ and $\R|_\Lambda$ by
   $$\R|_I = \big\{(i,j) \in I \times I ~\big|~
   (i,a,\lambda) ~\R~ (j,b,\mu)\big\},$$
@@ -618,7 +618,7 @@ definition and theorem from \cite{mtorpey_msc}.
 \begin{theorem}[Theorem 3.11 in \cite{mtorpey_msc}]
   \label{thm:pairs-to-linked-triple}
   Let $S = \mathcal{M}^0[G;I,\Lambda;P]$ be a finite 0-simple semigroup, with a
-  relation $\R \subset S \times S$ that generates a non-universal
+  relation $\R \subseteq S \times S$ that generates a non-universal
   congruence $\R^\sharp$.  Let
   $\mathcal{S}_{\Rs} = (\R|_I)^e$, let
   $\mathcal{T}_{\Rs} = (\R|_\Lambda)^e$, and let $N_{\Rs}$ be
@@ -659,7 +659,6 @@ For a fuller description of the algorithm and how it is justified by Theorem
       \State $\mathcal{T} := \Delta_\Lambda$
       \State $X := \varnothing$
       \For{$(x,y) \in \R$}
-        \LComment{Check for the universal congruence}
         \If{$x=y$}
           \State \Continue
         \ElsIf{$x=0 \Or y=0$}
@@ -674,8 +673,8 @@ For a fuller description of the algorithm and how it is justified by Theorem
 
 %        \State
         \LComment{Combine row and column classes}
-        \State Combine $[i]_\mathcal{S}$ with $[j]_\mathcal{S}$
-        \State Combine $[\lambda]_\mathcal{T}$ with $[\mu]_\mathcal{T}$
+        \State $\sS \gets (\sS \cup (i,j))^e$
+        \State $\tT \gets (\tT \cup (\lambda, \mu))^e$
 
 %        \State
         \LComment{Add generators for normal subgroup}
@@ -710,7 +709,7 @@ $(N, \mathcal{S}, \mathcal{T})$.
 Firstly we require a lemma describing the inclusion of congruences in each
 other, and how it mirrors an inclusion of linked triples.
 
-\begin{lemma}[Lemma 3.9 in \cite{mtorpey_msc}]
+\begin{lemma}[Lemma 3.5.5 in \cite{howie}, Lemma 3.9 in \cite{mtorpey_msc}]
   \label{lem:linked-triple-subsets}
   Let $\rho$ and $\sigma$ be congruences on $S$ with linked triples
   $(N_\rho, \mathcal{S}_\rho, \mathcal{T}_\rho)$ and
@@ -729,7 +728,7 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
   Let $S = \mathcal{M}^0[G;I,\Lambda;P]$ be a finite 0-simple semigroup, and let
   $\rho$ be a congruence with linked triple $(N_\rho, \sS_\rho, \tT_\rho)$.  Let
   $N_\rho' \subseteq N_\rho$, $\sS_\rho' \subseteq \sS_\rho$ and
-  $\tT_\rho' \subseteq \tT_\rho$ be subsets with the following properties:
+  $\tT_\rho' \subseteq \tT_\rho$ be any subsets with the following properties:
   \begin{itemize}
   \item $N_\rho$ is the normal closure of $N_\rho'$ in $G$,
   \item $\sS_\rho = (\sS_\rho')^e$,
