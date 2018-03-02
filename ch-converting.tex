@@ -327,7 +327,7 @@ is the purpose of this section.  We define the function $\Gamma$ as follows.
   $(N, \mathcal{S}, \mathcal{T})\Gamma^{-1}$ is equal to
   $$\Big\{
   \big((i, a, \lambda), (j, b, \mu)\big) ~\Big|~
-  (p_{\xi i} a p_{\lambda x}) (p_{\xi j} b p_{\mu x})^{-1} \in N, 
+  (p_{\xi i} a p_{\lambda x}) (p_{\xi j} b p_{\mu x})^{-1} \in N,
   (i,j) \in \mathcal{S},
   (\lambda,\mu) \in \mathcal{T}
   \Big\},$$
@@ -1090,6 +1090,80 @@ by the definition of a kernel-trace pair, we can also be sure that
 $(K, \tau)\Psi^{-1} \subseteq \R^\sharp$, by Lemma
 \ref{lem:kertr-subsets}.  Hence $(K, \tau)$ is the kernel-trace pair
 corresponding to the congruence $\R^\sharp$.
+
+\subsection{Kernel-trace pair of a Rees congruence}
+\label{sec:rees-to-kertr}
+Let $S$ be an inverse semigroup with idempotents $E$.  Each congruence on $S$ is
+defined by its kernel and trace (see Section \ref{sec:kertr}), and some
+congruences on $S$ may be Rees (see Section \ref{sec:converting-rees}).  We may wish
+to find the kernel and trace of a Rees congruence given the ideal that defines
+it.  Conversely, we may wish to determine whether a given kernel-trace pair on
+$S$ describes a Rees congruence, and if so, what ideal it is associated with.
+
+Let $I$ be an ideal in $S$, and let $\rho_I$ be $(I \times I) \cup \Delta_S$,
+the Rees congruence corresponding to $I$.  To find the kernel and trace of
+$\rho_I$ we must consider the positions of the idempotents in $S$, and how they
+interact with $I$.
+
+Since $I$ is an ideal, it must be a union of $\JJ$-classes, and since $S$ is
+inverse, it has an idempotent in every $\JJ$-class; hence, there is at least one
+idempotent in $I$.  The kernel of $\rho_I$ is defined as the set of all elements
+which are related to an idempotent---that is, all elements in $I$ and all
+idempotents outside $I$.  Hence $\ker \rho_I = E \cup I$.  The trace of $\rho_I$
+is defined as the restriction of $\rho_I$ to the idempotents.  Two distinct
+idempotents are $\rho_I$-related if and only if they both lie in $I$; hence
+$\tr \rho_I = ((E \cap I) \times (E \cap I)) \cup \Delta_E$.
+
+Now we turn our attention to the other direction.  Let $\rho$ be a congruence
+defined by a kernel-trace pair $(K, \tau)$.  How can we determine directly from
+$K$ and $\tau$ whether $\rho$ is a Rees congruence?  Certainly $E \cap I$ is an
+ideal in $E$, so if $\rho$ is a Rees congruence on $S$, then $\tr \rho$ has to
+be a Rees congruence on $E$, and its ideal (which we will write as
+$I_E$) must be equal to $E \cap I$.  If $\tr \rho$ has been identified
+as being Rees with ideal $I_E$, then we can consider $\ker \rho$ next.
+For $\rho$ to be Rees, we need $\ker \rho$ to have the form $E \cup I$, that is
+the set of idempotents together with an ideal of $S$.  Since an ideal is a union
+of principal ideals (a union of $\JJ$-classes closed downwards) the kernel will
+have to be a union of principal ideals together with all the idempotents:
+$$\ker \rho = S^1 I_E S^1 \cup E.$$
+
+\begin{theorem}
+  \label{thm:kertr-to-rees}
+  Let $S$ be an inverse semigroup with set of idempotents $E$.  If $(K, \tau)$
+  is a kernel-trace pair on $S$, then the congruence it defines is a Rees
+  congruence if and only if the following hold:
+  \begin{enumerate}[(1)]
+  \item $\tau$ is a Rees congruence on $E$, with ideal denoted by $I_\tau$;
+  \item $K = S^1 I_\tau S^1 \cup E$.
+  \end{enumerate}
+  \begin{proof}
+    Let $\rho$ be the congruence defined by $(K, \tau)$.  We will first show
+    that (1) and (2) imply that $\rho$ is Rees, and then we will show that
+    $\rho$ being Rees implies (1) and (2).
+
+    First, assume that (1) and (2) hold.  Let $I = S^1 I_\tau S^1$, so that
+    $K = I \cup E$.  This $I$ is closed under left and right multiplication, so
+    it is certainly an ideal of $S$.  We will show that $\rho$ is equal to the
+    Rees congruence $\rho_I$, by showing $\rho_I \subseteq \rho$ and
+    $\rho \subseteq \rho_I$.
+
+    For the first, let $(x,y) \in \rho_I$.  If $x=y$ then $(x,y) \in \rho$ by
+    reflexivity.  Otherwise $x$ and $y$ are both in $I$, so $x = aeb$ and
+    $y=cfd$ for some $e,f \in I_\tau$ and $a,b,c,d \in S^1$.  Since $I$ is an
+    ideal and $x \in I$, we have $xy^{-1} \in I$ and therefore $xy^{-1} \in K$.
+    Meanwhile we have $x^{-1}x = (aeb)^{-1}(aeb) = b^{-1}ea^{-1}aeb$: since
+    $a^{-1}a$ and $e$ are both idempotents, $ea^{-1}ae$ is an idempotent, and
+    since $e \in I_\tau$ we also have $ea^{-1}ae \in I_\tau$; finally, since
+    $I_\tau$ is normal (see Definition \ref{def:trace-normal}) we have
+    $b^{-1}(ea^{-1}ae)b \in I_\tau$, and so $x^{-1}x \in I_\tau$.  Similarly
+    $y^{-1}y \in I_\tau$, so $(x^{-1}x, y^{-1}y) \in \tau$.  Since
+    $xy^{-1} \in K$ and $(x^{-1}x, y^{-1}y) \in \tau$, we have $(x,y) \in \rho$
+    by Theorem \ref{thm:kernel-trace-pair}.
+
+    For the second, let $(x,y) \in \rho$.
+
+  \end{proof}
+\end{theorem}
 
 \subsection{Trivial conversions}
 \label{sec:trivial-conversions}
