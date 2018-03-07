@@ -642,10 +642,13 @@ definition and theorem from \cite{mtorpey_msc}.
 \end{theorem}
 
 This theorem is enough to justify the algorithm for converting a set of
-generating pairs to a linked triple.  We present the algorithm here as Algorithm
+generating pairs to a linked triple---we present this algorithm here as Algorithm
 \ref{alg:pairs-to-linked-triple}.  In reading the algorithm, it will be helpful
 to refer to Definition \ref{def:linked-triple} for the relations $\varepsilon_I$
 and $\varepsilon_\Lambda$ and elements of the form $q_{\lambda \mu i j}$.
+The notation $\llangle N, x \rrangle$ describes the least normal subgroup of $G$
+containing $N \cup \{x\}$ (see Definition \ref{def:normal-closure}); in
+particular, this is equal to $N$ if $x \in N$.
 For a fuller description of the algorithm and how it is justified by Theorem
 \ref{thm:pairs-to-linked-triple}, see \cite[\S 3.2]{mtorpey_msc}.
 
@@ -655,9 +658,9 @@ For a fuller description of the algorithm and how it is justified by Theorem
 \begin{algorithmic}[1]
     \Require $\mathcal{M}^0[G;I,\Lambda;P]$ is a finite 0-simple Rees 0-matrix semigroup
     \Procedure{LinkedTripleFromPairs}{$\R$}
+      \State $N := \{1_G\}$
       \State $\mathcal{S} := \Delta_I$
       \State $\mathcal{T} := \Delta_\Lambda$
-      \State $X := \varnothing$
       \For{$(x,y) \in \R$}
         \If{$x=y$}
           \State \Continue
@@ -673,24 +676,23 @@ For a fuller description of the algorithm and how it is justified by Theorem
 
 %        \State
         \LComment{Combine row and column classes}
-        \State $\sS \gets (\sS \cup (i,j))^e$
-        \State $\tT \gets (\tT \cup (\lambda, \mu))^e$
+        \State $\sS \gets \left(\sS \cup (i,j)\right)^e$
+        \State $\tT \gets \left(\tT \cup (\lambda, \mu)\right)^e$
 
 %        \State
         \LComment{Add generators for normal subgroup}
         \State Choose $\nu \in \Lambda$ such that $p_{\nu i} \neq 0$
         \State Choose $k \in I$ such that $p_{\lambda k} \neq 0$
-        \State $X \gets X \cup \{(p_{\nu i}ap_{\lambda k})(p_{\nu j}bp_{\mu k})^{-1}\}$
+        \State $N \gets \llangle N, (p_{\nu i}ap_{\lambda k})(p_{\nu j}bp_{\mu k})^{-1} \rrangle$
 
 %        \State
         \For{$\xi \in \Lambda \setminus \{\nu\}$ such that $p_{\xi i} \neq 0$}
-          \State $X \gets X \cup \{q_{\nu \xi i j}\}$
+          \State $N \gets \llangle N, q_{\nu \xi i j} \rrangle$
         \EndFor
         \For{$x \in I \setminus \{k\}$ such that $p_{\lambda x} \neq 0$}
-          \State $X \gets X \cup \{q_{\lambda \mu k x}\}$
+          \State $N \gets \llangle N, q_{\lambda \mu k x} \rrangle$
         \EndFor
       \EndFor
-      \State $N := \llangle X \rrangle$
       \State \Return $(N,\mathcal{S},\mathcal{T})$
     \EndProcedure
 \end{algorithmic}
