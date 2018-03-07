@@ -834,6 +834,20 @@ start, an arbitrary entry can be used instead: for $n$ we can use the identity
 $1_G$ which must always be in $N$; for $(i,j)$ or $(\lambda,\mu)$ we can use a
 reflexive pair, from $\Delta_I$ or $\Delta_\Lambda$ respectively.
 
+It is natural to ask whether a set of generating pairs obtained from
+\textsc{GeneratingPairsFromLinkedTriple} is minimal---that is, to ask whether
+any smaller set of pairs could be found which generates the same congruence.
+
+\begin{theorem}
+  % More setup?
+  If $|N'| \leq |I| - k_\sS$ or $|N'| \leq |\Lambda| - k_\tT$, then
+  \textsc{GeneratingPairsFromLinkedTriple} returns a set of generating pairs
+  which is minimal.
+  \begin{proof}
+    
+  \end{proof}
+\end{theorem}
+
 \begin{algorithm}
 \caption{Generating pairs of a linked triple}
 \label{alg:linked-triple-to-pairs}
