@@ -844,9 +844,47 @@ any smaller set of pairs could be found which generates the same congruence.
   \textsc{GeneratingPairsFromLinkedTriple} returns a set of generating pairs
   which is minimal.
   \begin{proof}
+    The number of pairs returned by \textsc{GeneratingPairsFromLinkedTriple}
+    depends solely on the sizes of $N'$, $\sS'$ and $\tT'$: it is simply the
+    maximum of these three sizes.  The generating set $N'$ is assumed by the
+    algorithm to have been known in advance, and hence is not guaranteed to be
+    minimal in any way.  However, $\sS'$ and $\tT'$ are created in the
+    algorithm, each one consisting of a set of pairs in $I \times I$ or
+    $\Lambda \times \Lambda$ which makes a minimal spanning tree for each class
+    in the relation.  In other words, $\sS'$ and $\tT'$ contain the smallest
+    possible number of pairs such that $(\sS')^e = \sS$ and $(\tT')^e = \tT$.
+    Note that $|\sS'| = |I| - k_\sS$ and $|\tT'| = |\Lambda| - k_\tT$.
     
+    Let $\R$ denote the output of the algorithm, and let $\R|_I$ be as in
+    Definition \ref{def:ri}.  We can see from the definition of our algorithm
+    that $\R|_I = \sS'$, and Theorem \ref{thm:pairs-to-linked-triple} tells us
+    that $\sS_{\Rs} = (\R|_I)^e$; that is, we require that $(\sS')^e = \sS$ for
+    the algorithm for the output $\R$ to be valid.  Since we have already seen
+    that $\sS'$ has as few pairs as possible such that $(\sS')^e = \sS$, we know
+    that every pair in $\sS'$ is necessary to produce a congruence with linked
+    triple $(N, \sS, \tT)$.  So $|\sS'|$ is a lower bound for the
+    size of a set of generating pairs for the congruence.  By similar reasoning,
+    $|\tT'|$ is also a lower bound.
+
+    Assume $|N'| \leq |I| - k_\sS$ or $|N'| \leq |\Lambda| - k_\tT|$.  The
+    number of pairs returned by the algorithm will be either $|I| - k_\sS$ or
+    $|\Lambda| - k_\tT$.  Since we know that these are both lower bounds for the
+    possible size of a generating set, we can conclude that the size of $\R$
+    equals the minimum possible size, so $\R$ is minimal.
   \end{proof}
 \end{theorem}
+
+In the case that $N'$ is larger than both $|I| - k_\sS$ and $|\Lambda| - k_\tT$,
+a claim to minimality cannot be made so easily.  Again referring to Theorem
+\ref{thm:pairs-to-linked-triple}, we see that whereas $\sS_{\Rs}$ and
+$\tT_{\Rs}$ are determined entirely by the $I$ and $\Lambda$ parts of $\R$
+respectively, the normal subgroup $N_{\Rs}$ contains elements that may be
+implied by all three components of pairs in $\R$.  Indeed, it may be that some
+elements in $N'$ are in fact implied to be in $N$ by some $q_{\lambda \mu i j}$,
+and so could be removed from $N'$ without any loss.  Identifying which elements
+are required in $N'$ and which are not could be difficult computationally, but
+could be an interesting area of further research that would guarantee minimality
+in all cases.
 
 \begin{algorithm}
 \caption{Generating pairs of a linked triple}
