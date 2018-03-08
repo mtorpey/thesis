@@ -820,8 +820,8 @@ set of pairs $\R$ as efficiently as possible: each pair we add to $\R$ can
 satisfy the conditions in Theorem \ref{thm:linked-triple-to-pairs} for one pair
 $(i,j) \in \sS'$, one pair $(\lambda, \mu) \in \tT'$, and one element
 $n \in N'$: the pair we add is
-$$\big((i, p_{\xi i}^{-1}ap_{\lambda k}^{-1}, \lambda),
-(j, p_{\xi j}^{-1}ap_{\mu k}^{-1}, \mu)\big),$$
+$$\big((i, p_{\xi i}^{-1}np_{\lambda k}^{-1}, \lambda),
+(j, p_{\xi j}^{-1}p_{\mu k}^{-1}, \mu)\big),$$
 which can be seen by inspection to satisfy (1), (2) and (3) for the three
 generators in question.  These pairs are added until all three sets are
 exhausted, and so the total number of pairs returned by the algorithm is equal
@@ -853,7 +853,7 @@ any smaller set of pairs could be found which generates the same congruence.
 \label{alg:linked-triple-to-pairs}
 \begin{algorithmic}[1]
   \Procedure{GeneratingPairsFromLinkedTriple}{$(N, \mathcal{S}, \mathcal{T})$}
-    \State $N' := $ generating set for $N$
+    \State $N' := $ normal subgroup generating set for $N$
     \State $\sS' := \varnothing$
     \For{each non-singleton class $\{i_1, i_2, \ldots, i_n\}$ of $\mathcal{S}$}
       \For{$l \in \{2, \ldots, n\}$}
@@ -885,7 +885,7 @@ any smaller set of pairs could be found which generates the same congruence.
       \State Fix some $k \in I$ such that $p_{\lambda k} \neq 0$
       \State $\R \gets \R \cup \left\{\left(
         (i, p_{\xi i}^{-1}ap_{\lambda k}^{-1}, \lambda),
-        (j, p_{\xi j}^{-1}ap_{\mu k}^{-1}, \mu)
+        (j, p_{\xi j}^{-1}p_{\mu k}^{-1}, \mu)
         \right)\right\}$
     \EndWhile
     \State \Return $\R$
