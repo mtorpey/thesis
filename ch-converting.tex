@@ -892,16 +892,18 @@ in all cases.
 \begin{algorithmic}[1]
   \Procedure{GeneratingPairsFromLinkedTriple}{$(N, \mathcal{S}, \mathcal{T})$}
     \State $N' := $ normal subgroup generating set for $N$
-    \State $\sS' := \varnothing$
+    \State $\sS' := \varnothing$ 
     \For{each non-singleton class $\{i_1, i_2, \ldots, i_n\}$ of $\mathcal{S}$}
       \For{$l \in \{2, \ldots, n\}$}
         \State \textsc{Push} $(i_1, i_l)$ onto $\sS'$
+        \LComment This will make $\sS'$ a minimal spanning forest of depth $1$ for $\sS$
       \EndFor
     \EndFor
     \State $\tT' := \varnothing$
     \For{each non-singleton class $\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$ of $\mathcal{T}$}
       \For{$l \in \{2, \ldots, n\}$}
         \State \textsc{Push} $(\lambda_1, \lambda_l)$ onto $\tT'$
+        \LComment This will make $\tT'$ a minimal spanning forest of depth $1$ for $\tT$
       \EndFor
     \EndFor
     \State $\R := \varnothing$
