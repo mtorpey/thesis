@@ -1163,19 +1163,20 @@ the Rees congruence corresponding to $I$.  To find the kernel and trace of
 $\rho_I$ we must consider the positions of the idempotents in $S$, and how they
 interact with $I$.
 
-Since $I$ is an ideal, it must be a union of $\JJ$-classes, and since $S$ is
+Since $I$ is an ideal, it must be a non-empty union of $\JJ$-classes, and since $S$ is
 inverse, it has an idempotent in every $\JJ$-class; hence, there is at least one
 idempotent in $I$.  The kernel of $\rho_I$ is defined as the set of all elements
 which are related to an idempotent---that is, all elements in $I$ and all
 idempotents outside $I$.  Hence $\ker \rho_I = E \cup I$.  The trace of $\rho_I$
 is defined as the restriction of $\rho_I$ to the idempotents.  Two distinct
 idempotents are $\rho_I$-related if and only if they both lie in $I$; hence
-$\tr \rho_I = ((E \cap I) \times (E \cap I)) \cup \Delta_E$.
+$\tr \rho_I = \left((E \cap I) \times (E \cap I)\right) \cup \Delta_E$.
 
 Now we turn our attention to the other direction.  Let $\rho$ be a congruence
 defined by a kernel-trace pair $(K, \tau)$.  How can we determine directly from
-$K$ and $\tau$ whether $\rho$ is a Rees congruence?  Certainly $E \cap I$ is an
-ideal in $E$, so if $\rho$ is a Rees congruence on $S$, then $\tr \rho$ has to
+$K$ and $\tau$ whether $\rho$ is a Rees congruence?  If $\rho$ is Rees with ideal
+$I$, then $E \cap I$ is an
+ideal in $E$.  Hence, if $\rho$ is a Rees congruence on $S$, then $\tr \rho$ has to
 be a Rees congruence on $E$, and its ideal (which we will write as
 $I_E$) must be equal to $E \cap I$.  If $\tr \rho$ has been identified
 as being Rees with ideal $I_E$, then we can consider $\ker \rho$ next.
@@ -1190,7 +1191,7 @@ $$\ker \rho = S^1 I_E S^1 \cup E.$$
   Let $S$ be an inverse semigroup with set of idempotents $E$.  If $(K, \tau)$
   is a kernel-trace pair on $S$, then the congruence it defines is a Rees
   congruence if and only if the following hold:
-  \begin{enumerate}[(1)]
+  \begin{enumerate}[\rm(1)]
   \item $\tau$ is a Rees congruence on $E$, with ideal denoted by $I_\tau$;
   \item $K = S^1 I_\tau S^1 \cup E$.
   \end{enumerate}
@@ -1218,8 +1219,20 @@ $$\ker \rho = S^1 I_E S^1 \cup E.$$
     $xy^{-1} \in K$ and $(x^{-1}x, y^{-1}y) \in \tau$, we have $(x,y) \in \rho$
     by Theorem \ref{thm:kernel-trace-pair}.
 
-    For the second, let $(x,y) \in \rho$.
+    For the second, let $(x,y) \in \rho$.  By Theorem
+    \ref{thm:kernel-trace-pair} we have $xy^{-1} \in K = I \cup E$ and
+    $(x^{-1}x, y^{-1}y) \in \tau$: either $x^{-1}x=y^{-1}y$, or
+    $x^{-1}x,y^{-1}y \in I_\tau$.  If $x^{-1}x = y^{-1}y$, then $x \LL y$; we
+    also have $(xy^{-1})y = xx^{-1}x = x$, so $x \RR xy^{-1}$; now, since $x$,
+    $y$ and $xy^{-1}$ are all $\JJ$-related, we have $x,y \in I$ in the case
+    that $xy^{-1} \in I$, and $x=y$ in the case that $xy^{-1} \in E$ (why?);
+    either way, $(x,y) \in \rho_I$.  If $x^{-1}x, y^{-1}y \in I_\tau$, then
+    since $x \JJ x^{-1}x$ and $y \JJ y^{-1}y$, we have $x,y \in S^1I_\tau S^1$,
+    that is $x,y \in I$ and so $(x,y) \in \rho_I$.  So $(x,y) \in \rho$ implies
+    $\rho_I$, as required.  Hence $\rho = \rho_I$, so $\rho$ is Rees.
 
+    We now wish to show the converse, that $\rho$ being Rees implies (1) and
+    (2).  Assume $\rho$ is a Rees congruence.
   \end{proof}
 \end{theorem}
 
