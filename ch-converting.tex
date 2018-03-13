@@ -1232,7 +1232,17 @@ $$\ker \rho = S^1 I_E S^1 \cup E.$$
     $\rho_I$, as required.  Hence $\rho = \rho_I$, so $\rho$ is Rees.
 
     We now wish to show the converse, that $\rho$ being Rees implies (1) and
-    (2).  Assume $\rho$ is a Rees congruence.
+    (2).  Assume $\rho$ is a Rees congruence with ideal $I$, and let $(K,\tau)$
+    be its kernel-trace pair.  The trace $\tau$ of $\rho$ is the restriction of
+    $\rho$ to the idempotents $E$; this is easily seen to be a Rees congruence
+    on $E$ with ideal $I \cap E$.  This gives us (1), where $I_\tau = I \cap E$.
+    The kernel $K$ of $\rho$ is the set of elements $\rho$-congruent to an
+    idempotent: this gives us $K = I \cup E$, since $K$ consists of every
+    element in the ideal $I$ along with any other idempotents.  Since any ideal
+    is a union of $\JJ$-classes, and since any $\JJ$-class in an inverse
+    semigroup contains an idempotent, we know that $I$ is equal to
+    $S^1(I \cap E)S^1$, which is equal to $S^1 I_\tau S^1$.  Hence
+    $K = S^1 I_\tau S^1 \cup E$, and so we have (2).
   \end{proof}
 \end{theorem}
 
