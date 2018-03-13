@@ -1193,14 +1193,17 @@ $$\ker \rho = S^1 I_E S^1 \cup E.$$
   congruence if and only if the following hold:
   \begin{enumerate}[\rm(1)]
   \item $\tau$ is a Rees congruence on $E$, with ideal denoted by $I_\tau$;
-  \item $K = S^1 I_\tau S^1 \cup E$.
+  \item $K = S I_\tau S \cup E$.
   \end{enumerate}
   \begin{proof}
+    Recall that $SXS = S^1XS^1$ for any set $X \subseteq S$, since
+    $x(x^{-1}x)=(xx^{-1})x=x$ for any $x$ in an inverse semigroup.
+    
     Let $\rho$ be the congruence defined by $(K, \tau)$.  We will first show
     that (1) and (2) imply that $\rho$ is Rees, and then we will show that
     $\rho$ being Rees implies (1) and (2).
 
-    First, assume that (1) and (2) hold.  Let $I = S^1 I_\tau S^1$, so that
+    First, assume that (1) and (2) hold.  Let $I = S I_\tau S$, so that
     $K = I \cup E$.  This $I$ is closed under left and right multiplication, so
     it is certainly an ideal of $S$.  We will show that $\rho$ is equal to the
     Rees congruence $\rho_I$, by showing $\rho_I \subseteq \rho$ and
@@ -1208,7 +1211,7 @@ $$\ker \rho = S^1 I_E S^1 \cup E.$$
 
     For the first, let $(x,y) \in \rho_I$.  If $x=y$ then $(x,y) \in \rho$ by
     reflexivity.  Otherwise $x$ and $y$ are both in $I$, so $x = aeb$ and
-    $y=cfd$ for some $e,f \in I_\tau$ and $a,b,c,d \in S^1$.  Since $I$ is an
+    $y=cfd$ for some $e,f \in I_\tau$ and $a,b,c,d \in S$.  Since $I$ is an
     ideal and $x \in I$, we have $xy^{-1} \in I$ and therefore $xy^{-1} \in K$.
     Meanwhile we have $x^{-1}x = (aeb)^{-1}(aeb) = b^{-1}ea^{-1}aeb$: since
     $a^{-1}a$ and $e$ are both idempotents, $ea^{-1}ae$ is an idempotent, and
@@ -1227,7 +1230,7 @@ $$\ker \rho = S^1 I_E S^1 \cup E.$$
     $y$ and $xy^{-1}$ are all $\JJ$-related, we have $x,y \in I$ in the case
     that $xy^{-1} \in I$, and $x=y$ in the case that $xy^{-1} \in E$ (why?);
     either way, $(x,y) \in \rho_I$.  If $x^{-1}x, y^{-1}y \in I_\tau$, then
-    since $x \JJ x^{-1}x$ and $y \JJ y^{-1}y$, we have $x,y \in S^1I_\tau S^1$,
+    since $x \JJ x^{-1}x$ and $y \JJ y^{-1}y$, we have $x,y \in SI_\tau S$,
     that is $x,y \in I$ and so $(x,y) \in \rho_I$.  So $(x,y) \in \rho$ implies
     $\rho_I$, as required.  Hence $\rho = \rho_I$, so $\rho$ is Rees.
 
@@ -1241,8 +1244,8 @@ $$\ker \rho = S^1 I_E S^1 \cup E.$$
     element in the ideal $I$ along with any other idempotents.  Since any ideal
     is a union of $\JJ$-classes, and since any $\JJ$-class in an inverse
     semigroup contains an idempotent, we know that $I$ is equal to
-    $S^1(I \cap E)S^1$, which is equal to $S^1 I_\tau S^1$.  Hence
-    $K = S^1 I_\tau S^1 \cup E$, and so we have (2).
+    $S(I \cap E)S$, which is equal to $S I_\tau S$.  Hence
+    $K = S I_\tau S \cup E$, and so we have (2).
   \end{proof}
 \end{theorem}
 
