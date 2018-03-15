@@ -252,20 +252,16 @@ completely 0-simple semigroups.
 Now we can replace any completely 0-simple semigroup with its isomorphic Rees
 0-matrix semigroup when we wish to perform any isomorphism-invariant
 calculations---hence we can restrict our further investigations just to this
-type of semigroup.  From now on, when we see a Rees 0-matrix semigroup over $G$,
-we will assume that $G$ is a group.  Hence ``a completely 0-simple Rees 0-matrix
-semigroup $\mathcal{M}^0[G;I,\Lambda;P]$'' refers to a completely 0-simple Rees
-0-matrix semigroup over a group $G$, with a regular matrix $P$.  Note that if
-$\mathcal{M}^0[G;I,\Lambda;P]$ is finite, then $G$, $I$, $\Lambda$ and $P$ are
-all finite.
+type of semigroup.  Note that if $\mathcal{M}^0[G;I,\Lambda;P]$ is finite, then
+$G$, $I$, $\Lambda$ and $P$ are all finite.
 
 Next we consider the congruences of a finite 0-simple semigroup.
 
 \begin{definition}
   \label{def:linked-triple}
-  Let $S$ be a completely 0-simple Rees 0-matrix semigroup
-  $\mathcal{M}^0[G;I,\Lambda;P]$.  A \textbf{linked triple} on $S$ is a
-  triple $$(N,\mathcal{S},\mathcal{T})$$ consisting of a normal subgroup
+  Let $S$ be a finite Rees 0-matrix semigroup $\mathcal{M}^0[G;I,\Lambda;P]$
+  over the group $G$ with regular matrix $P$.  A \textbf{linked triple} on $S$
+  is a triple $$(N,\mathcal{S},\mathcal{T})$$ consisting of a normal subgroup
   $N \trianglelefteq G$, an equivalence relation $\mathcal{S}$ on $I$ and an
   equivalence relation $\mathcal{T}$ on $\Lambda$, such that the following are
   satisfied:
@@ -291,9 +287,9 @@ non-universal congruences, as follows.
 
 \begin{theorem}
   \label{thm:linked-triple}
-  Let $S$ be a completely 0-simple Rees 0-matrix semigroup.  There exists a
-  bijection $\Gamma$ between the non-universal congruences on $S$ and the linked
-  triples on $S$.
+  Let $S$ be a Rees 0-matrix semigroup defined with a group and a regular
+  matrix.  There exists a bijection $\Gamma$ between the non-universal
+  congruences on $S$ and the linked triples on $S$.
   \begin{proof}
     Theorem 3.5.8 in \cite{howie}
   \end{proof}
@@ -309,9 +305,9 @@ is the purpose of this section.  We define the function $\Gamma$ as follows.
 
 \begin{definition}[\S 3.5 in \cite{howie}]
   \label{def:linked-triple-function}
-  Let $S$ be a completely 0-simple Rees 0-matrix semigroup
-  $\mathcal{M}^0[G;I,\Lambda;P]$, and let $\rho$ be a non-universal congruence
-  on $S$.
+  Let $S$ be a Rees 0-matrix semigroup $\mathcal{M}^0[G;I,\Lambda;P]$ over a
+  group $G$ and a regular matrix $P$, and let $\rho$ be a non-universal
+  congruence on $S$.
   The \textbf{linked triple function} of $S$ is the function
   $$\Gamma: \rho \mapsto (N_\rho, \mathcal{S}_\rho, \mathcal{T}_\rho),$$
   which maps any non-universal congruence onto a triple whose entries are
@@ -615,9 +611,9 @@ definition and theorem from \cite{mtorpey_msc}.
 
 \begin{definition}[Definition 3.10 in \cite{mtorpey_msc}]
   \label{def:ri}
-  Let $S = \mathcal{M}^0[G;I,\Lambda;P]$ be a finite 0-simple Rees 0-matrix
-  semigroup, and let $\R \subseteq S \times S$ be a relation on it.  We
-  define the relations $\R|_I$ and $\R|_\Lambda$ by
+  Let $S = \mathcal{M}^0[G;I,\Lambda;P]$ be a finite Rees 0-matrix semigroup
+  over a group $G$ with regular matrix $P$, and let $\R \subseteq S \times S$ be
+  a relation on it.  We define the relations $\R|_I$ and $\R|_\Lambda$ by
   $$\R|_I = \big\{(i,j) \in I \times I ~\big|~
   (i,a,\lambda) ~\R~ (j,b,\mu)\big\},$$
   % ~\text{for some}~a,b \in G,~\lambda,\mu \in \Lambda\big\},$$
@@ -628,9 +624,9 @@ definition and theorem from \cite{mtorpey_msc}.
 
 \begin{theorem}[Theorem 3.11 in \cite{mtorpey_msc}]
   \label{thm:pairs-to-linked-triple}
-  Let $S = \mathcal{M}^0[G;I,\Lambda;P]$ be a finite 0-simple semigroup, with a
-  relation $\R \subseteq S \times S$ that generates a non-universal
-  congruence $\R^\sharp$.  Let
+  Let $S = \mathcal{M}^0[G;I,\Lambda;P]$ be a finite 0-simple semigroup over a
+  group $G$ with regular matrix $P$, with a relation $\R \subseteq S \times S$
+  that generates a non-universal congruence $\R^\sharp$.  Let
   $\mathcal{S}_{\Rs} = (\R|_I)^e$, let
   $\mathcal{T}_{\Rs} = (\R|_\Lambda)^e$, and let $N_{\Rs}$ be
   the least normal subgroup of $G$ containing the set
@@ -667,7 +663,8 @@ For a fuller description of the algorithm and how it is justified by Theorem
 \caption{The linked triple of a congruence by generating pairs}
 \label{alg:pairs-to-linked-triple}
 \begin{algorithmic}[1]
-    \Require $\mathcal{M}^0[G;I,\Lambda;P]$ is a finite 0-simple Rees 0-matrix semigroup
+    \Require $\mathcal{M}^0[G;I,\Lambda;P]$ a finite Rees 0-matrix semigroup
+    \Require $G$ a group, $P$ a regular matrix
     \Procedure{LinkedTripleFromPairs}{$\R$}
       \State $N := \{1_G\}$
       \State $\mathcal{S} := \Delta_I$
@@ -1270,7 +1267,8 @@ $(N, \Delta_{\{1_G\}})$.
 A group $G$ has precisely one Rees congruence: the universal congruence
 $\rho_G$.  Its normal subgroup is the entire group $G$.
 
-A completely 0-simple semigroup $\mathcal{M}^0[G;I,\Lambda;P]$ has two Rees
+A completely 0-simple semigroup $\mathcal{M}^0[G;I,\Lambda;P]$ (over a group $G$
+and regular matrix $P$) has two Rees
 congruences: the universal congruence and the trivial congruence.  The universal
 congruence has no linked triple, while the trivial congruence corresponds to the
 linked triple $(\{1_G\}, \Delta_I, \Delta_\Lambda)$.  A completely simple
