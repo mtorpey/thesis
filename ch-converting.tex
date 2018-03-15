@@ -87,7 +87,7 @@ pairs as possible---see, for example, Sections \ref{sec:pairs-to-linked-triple}
 and \ref{sec:pairs-to-kertr}.  Conversely, if we wish to convert another
 representation for a congruence $\rho$ to a set of generating pairs, it is
 desirable to find as small a set of pairs as possible---see, for example,
-Sections \ref{sec:linked-triple-to-pairs} and \ref{sec:kertr-to-pairs}.  When
+Sections \ref{sec:linked-triple-to-pairs} and \ref{sec:rees-to-pairs}.  When
 converting between generating pairs and other representations, these will be the
 goals.
 
@@ -134,10 +134,21 @@ This theorem means that any information which can be taken from a congruence can
 instead be taken from a normal subgroup, and so congruences on a group need
 never be studied directly.  We even have the fortunate property that the
 containment of normal subgroups follows the containment of the corresponding
-congruences.  The other structures discussed in this section represent
-congruences on other categories of semigroup in a similar way.
+congruences.
 
+It is possible to calculate the normal subgroups of a finite group relatively
+quickly, using a variety of well-known algorithms.  One method for finding the
+normal subgroups of a finite group is given in \cite{hulpke_1998}; this is the
+method used in the most general case by GAP \cite{gap}, though more specific
+methods are used for certain specific categories of group.  In the case of an
+infinite group, it may be impossible to find all normal subgroups---indeed, this
+problem is undecidable in general \cite[Theorem 3.17]{miller_1992}---but the
+\textsc{LowIndexSubgroups} algorithm \cite[\S 5.4]{cgt} may be used to find all
+normal subgroups up to a given index, given a small modification to exclude
+subgroups which are not normal \cite[\S 5.5]{cgt}.
 
+The other structures discussed in this section represent congruences on other
+categories of semigroup in a similar way.
 
 \subsection{Completely (0-)simple semigroups: linked triples}
 \label{sec:linked-triples}
