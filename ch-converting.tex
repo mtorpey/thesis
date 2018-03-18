@@ -946,9 +946,10 @@ We can see how the algorithm performs on the following example.
 \begin{example}
   \label{ex:linked-triple-to-pairs-3x4}
   Consider the semigroup
-  $S = \mathcal{M}^0[\Sym_4; \{1, \ldots, 3\}, \{1, \ldots, 4\};P]$ where
-  $\Sym_4$ is the symmetric group of degree $4$, and
-  $$P =
+  $S = \mathcal{M}^0[\Sym_4; \{1, 2, 3\}, \{1, 2, 3, 4\};P]$ where
+  $\Sym_4$ is the symmetric group of degree $4$, and $P$ is the $4 \times 3$
+  matrix
+  $$
   \begin{pmatrix}
     0 & 0 & (1~2)(3~4) \\
     (1~4) & () & 0 \\
@@ -961,8 +962,8 @@ We can see how the algorithm performs on the following example.
   but much more quickly using the Semigroups package \cite{semigroups}.  One
   such congruence is given by the linked triple $\left(\Alt_4, \Delta_3, (2,3)^e\right)$,
   where $\Alt_4$ is the alternating group of degree $4$, $\Delta_3$ is the
-  diagonal relation on the column set $\{1, \ldots, 3\}$, and $(2,3)^e$ is the
-  equivalence on the row set $\{1, \ldots, 4\}$ which only unites rows $2$ and
+  diagonal relation on the column set $\{1, 2, 3\}$, and $(2,3)^e$ is the
+  equivalence on the row set $\{1, 2, 3, 4\}$ which only unites rows $2$ and
   $3$.
 
   If we call
