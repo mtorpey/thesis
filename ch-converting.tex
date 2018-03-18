@@ -862,7 +862,7 @@ any smaller set of pairs could be found which generates the same congruence.
     in the relation.  In other words, $\sS'$ and $\tT'$ contain the smallest
     possible number of pairs such that $(\sS')^e = \sS$ and $(\tT')^e = \tT$.
     Note that $|\sS'| = |I| - k_\sS$ and $|\tT'| = |\Lambda| - k_\tT$.
-    
+
     Let $\R$ denote the output of the algorithm, and let $\R|_I$ be as in
     Definition \ref{def:ri}.  We can see from the definition of our algorithm
     that $\R|_I = \sS'$, and Theorem \ref{thm:pairs-to-linked-triple} tells us
@@ -900,7 +900,7 @@ in all cases.
 \begin{algorithmic}[1]
   \Procedure{GeneratingPairsFromLinkedTriple}{$(N, \mathcal{S}, \mathcal{T})$}
     \State $N' := $ normal subgroup generating set for $N$
-    \State $\sS' := \varnothing$ 
+    \State $\sS' := \varnothing$
     \For{each non-singleton class $\{i_1, i_2, \ldots, i_n\}$ of $\mathcal{S}$}
       \For{$l \in \{2, \ldots, n\}$}
         \State \textsc{Push} $(i_1, i_l)$ onto $\sS'$
@@ -1285,7 +1285,7 @@ $K$ and $\tau$ whether $\rho$ is a Rees congruence?
   \begin{proof}
     Recall that $SXS = S^1XS^1$ for any set $X \subseteq S$, since
     $x(x^{-1}x)=(xx^{-1})x=x$ for any $x$ in an inverse semigroup.
-    
+
     Let $\rho$ be the congruence defined by $(K, \tau)$.  We will first show
     that (1) and (2) imply that $\rho$ is Rees, and then we will show that
     $\rho$ being Rees implies (1) and (2).
