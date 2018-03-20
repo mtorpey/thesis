@@ -1518,5 +1518,77 @@ Generating pairs to Rees
 \label{sec:converting-regular}
 Recall that a regular semigroup is one in which every element $x$ has an inverse
 $x'$ such that $x = xx'x$.  An inverse semigroup is a regular semigroup in which
-inverses are unique.
+inverses are unique.  In Section \ref{sec:kertr} we discussed how a congruence
+on an inverse semigroup is uniquely determined by its kernel and trace, and gave
+both an abstract characterisation of a kernel-trace pair (Definition
+\ref{def:kernel-trace-pair}) and a concise description of how this pair
+describes its congruence ($\Psi^{-1}$ in Theorem \ref{thm:kernel-trace-pair}).
+It turns out that the congruences on a regular semigroup can be described in a
+similar way, which we will briefly examine here.
 
+A congruence on a regular semigroup is uniquely determined by its kernel and
+trace \cite[Corollary 2.11]{pastijn_1986}, and a kernel-trace pair can be
+characterised in the following way, analogue to Definition
+\ref{def:kernel-trace-pair}.  Recall the definition of $\mathbf{E}^\flat$
+(Definition \ref{def:e-flat}).
+
+\begin{definition}[Definition 2.12 in \cite{pastijn_1986}]
+  \label{def:regular-kernel-trace-pair}
+  A \textbf{kernel-trace pair} on a regular semigroup $S$ is a pair $(K,\tau)$
+  such that the following hold:
+  \begin{enumerate}[\rm(1)]
+  \item $K \subseteq S$ and $K = \ker \pi_K$;
+  \item $\tau$ is an equivalence on $E$ such that $\tau = \tr(\tau^\sharp)$;
+  \item
+    $K \subseteq \ker(\LL\mathrel{\tau}\LL\mathrel{\tau}\LL \cap
+    \RR\mathrel{\tau}\RR\mathrel{\tau}\RR)^\flat$;
+  \item $\tau \subseteq \tr \pi_K$;
+  \end{enumerate}
+  where
+  $\pi_K = \left\{(a,b) \in S \times S : xay \in K \Leftrightarrow xby \in K
+    \quad (x,y \in S^1)\right\}$.
+\end{definition}
+
+We even have a description of how a kernel-trace pair describes its congruence,
+analogue to Theorem \ref{thm:kernel-trace-pair}.
+
+\begin{theorem}[Theorem 2.13 in \cite{pastijn_1986}]
+  \label{thm:regular-kernel-trace-pair}
+  Let $S$ be a regular semigroup.  There exists a bijection $\Psi$ from the
+  congruences on $S$ to the kernel-trace pairs on $S$, defined by
+  $$\Psi: \rho \mapsto (\ker\rho, \tr\rho),$$
+  and its inverse satisfies
+  $$\Psi^{-1} : (K,\tau) \mapsto \pi_K \cap
+  (\LL\mathrel{\tau}\LL\mathrel{\tau}\LL \cap
+  \RR\mathrel{\tau}\RR\mathrel{\tau}\RR)^\flat.$$
+\end{theorem}
+
+This characterisation of congruences on regular semigroups falls short of its
+inverse semigroup counterpart.  Firstly, this broader definition of a
+kernel-trace pair is a lot more complicated and harder to compute with: for
+example, calculating $\pi_K$ could be computationally difficult, as could
+verifying (3) and (4) in Definition \ref{def:regular-kernel-trace-pair}.  It is
+certainly difficult to contemplate any analogue of \textsc{KerTraceFromGenPairs}
+(Algorithm \ref{alg:pairs-to-kertr}) which could find the least kernel-trace
+pair from a set of generating pairs in anything like as quick a time or as
+simple a procedure as in the inverse semigroup case.  Secondly, the result in
+Theorem \ref{thm:regular-kernel-trace-pair} is not as convenient as the inverse
+semigroup version (Theorem \ref{thm:kernel-trace-pair}): if the kernel-trace
+pair of an inverse semigroup congruence is known, checking the presence of a
+given pair $(x,y)$ is as simple as looking up one easily computed element in the
+kernel, and looking up another easily computed pair in the trace.  In the
+regular semigroup case, checking whether a pair lies in
+$\pi_K \cap (\LL\mathrel{\tau}\LL\mathrel{\tau}\LL \cap
+\RR\mathrel{\tau}\RR\mathrel{\tau}\RR)^\flat$ does not appear to be anything
+like as easy or quick.
+
+For these reasons, using the kernel-trace approach for regular semigroups is not
+nearly as attractive as using it for inverse semigroups.  However, it is
+possible that using the representation in a computational way would be feasible,
+and it is possible that in some cases it would be preferable to the na\"{i}ve
+use of generating pairs.  An algorithm to check the presence of a pair in
+$(K,\tau)\Psi^{-1}$ given a kernel-trace pair $(K,\tau)$ would be the first
+requirement; then a version of \textsc{KerTraceFromGenPairs} would be highly
+desirable, since it would allow us to use this approach even when the kernel and
+trace of a congruence are not known in advance, without enumerating the entire
+congruence first.
