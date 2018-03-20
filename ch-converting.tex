@@ -1433,13 +1433,14 @@ universal congruence, which has linked triple $(G, \nabla_I, \nabla_\Lambda)$.
 We may wish to convert between linked triples and kernel-trace pairs, in the
 case of an inverse semigroup which is completely simple or completely 0-simple.
 An inverse semigroup has exactly one idempotent in each $\LL$-class and each
-$\RR$-class, and a simple semigroup is $\DD$-trivial with an idempotent in every
-$\HH$-class.  Hence a completely simple inverse semigroup has just one $\HH$-class, and
-since it contains an idempotent it must be a group.  Hence from above, and from
-Section \ref{sec:normal-subgroup-to-linked-triple}, any congruence on a
-completely simple inverse semigroup has a linked triple of the form
-$(N, \Delta_I, \Delta_\Lambda)$ which corresponds to the kernel-trace pair
-$(N, \Delta_{\{1_G\}})$.
+$\RR$-class, while a simple semigroup has just one $\DD$-class and an idempotent
+in every $\HH$-class.  Hence a completely simple inverse semigroup has just one
+$\HH$-class, and since it contains an idempotent it must be a group.  Since it
+is a group, we can conclude that any congruence on a completely simple inverse
+semigroup has a linked triple of the form $(N, \Delta_I, \Delta_\Lambda)$ (see
+Section \ref{sec:normal-subgroup-to-linked-triple}) which corresponds to the
+kernel-trace pair $(N, \Delta_{\{1_G\}})$ (see \textit{Normal subgroups and
+  kernel-trace pairs} in this section).
 
 A completely 0-simple inverse semigroup is somewhat different, but also
 uncomplicated.  Let $S$ be such a semigroup, with idempotent set $E$.  Since
@@ -1448,13 +1449,26 @@ relations $\varepsilon_I$ and $\varepsilon_\Lambda$ are both trivial, so the
 non-universal congruences on $S$ correspond to triples of the form
 $(N, \Delta_I, \Delta_\Lambda)$ for any normal subgroup $N \trianglelefteq G$.
 Now, the triviality of $\Delta_I$ and $\Delta_\Lambda$ implies that no two
-elements can be related by a congruence $\rho$ unless they lie inside the same
-$\HH$-class.  Hence no two idempotents are related, so $\tr \rho = \Delta_E$.
-The kernel consists of all elements in $S$ related to an idempotent.
-Idempotents have the form $(i, 1_G, \lambda)$ where $p_{\lambda i} \neq 0$, so
-the kernel is given by
-$$\ker \rho = \{(i, n, \lambda) \in S ~|~ p_{\lambda i} \neq 0, n \in N\} \cup \{0\}.$$
-TODO: explain how the $p_{\xi i}$ thing disappears because it's inverse.
+elements can be related by a non-trivial congruence $\rho$ unless they lie
+inside the same $\HH$-class.  Hence no two idempotents are related, so
+$\tr \rho = \Delta_E$.  The kernel consists of all elements in $S$ related to an
+idempotent.  Idempotents are either $0$ or have the form
+$(i, p_{\lambda i}^{-1}, \lambda)$ where $p_{\lambda i} \neq 0$, so non-zero
+elements in the kernel must have the form $(i, a, \lambda)$ for
+$p_{\lambda i} \neq 0$.  For
+$(i, a, \lambda) ~\rho~ (i, p_{\lambda i}^{-1}, \lambda)$ we just need
+$(p_{\xi i} a p_{\lambda x}) (p_{\xi i} p_{\lambda i}^{-1} p_{\lambda x})^{-1}
+\in N$
+for appropriate $\xi$ and $x$ as in Definition \ref{def:linked-triple-function};
+but since each $\LL$-class and $\RR$-class contains just one idempotent, the
+only possible values are $x=i$ and $\xi=\lambda$.  So the actual condition is
+$(p_{\lambda i} a p_{\lambda i}) (p_{\lambda i} p_{\lambda i}^{-1} p_{\lambda
+  i})^{-1} \in N$,
+which is the same as $p_{\lambda i} a p_{\lambda i} p_{\lambda i}^{-1} \in N$,
+or just $p_{\lambda i} a \in N$.  Hence the kernel is given by
+$$\ker \rho =
+\{(i, p_{\lambda i}n, \lambda) \in S ~|~ p_{\lambda i} \neq 0, n \in N\}
+\cup \{0\}.$$
 
 \subsubsection{Generating pairs and normal subgroups}
 If $G$ is a group, then a congruence on $G$ can be defined either by a set of
