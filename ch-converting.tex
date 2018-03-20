@@ -1510,9 +1510,58 @@ However, there are more areas of research which could be investigated, both in
 creating new representations, and in creating new algorithms to convert from one
 to another.
 
-Kernel-trace to generating pairs
+\subsection{Generating pairs from a kernel-trace pair}
+\label{sec:kertr-to-pairs}
+Given an inverse semigroup $S$ and a congruence $\rho$ defined by a kernel-trace
+pair $(K, \tau)$, it is natural to wish for a set of generating pairs for
+$\rho$.  There is not yet an algorithm to produce a set of generating pairs
+directly from a kernel-trace pair, but this would be an interesting area of
+future research.
 
-Generating pairs to Rees
+A solution to this problem might follow the same structure as
+\textsc{GeneratingPairsFromLinkedTriple} (Algorithm
+\ref{alg:linked-triple-to-pairs}): break down the problem into a component for
+$K$ and a component for $\tau$, establishing a small set of elements which
+generate $K$ as a normal subsemigroup of $S$, and a small set of pairs which
+generate $\tau$ as a normal congruence on $E$, and somehow combining these sets
+to find a set of generating pairs.
+
+One could use the definitions of kernel and trace to produce a relatively
+straightforward algorithm.  The kernel is the set of elements which are
+$\rho$-congruent to an idempotent.  Hence, if $K'$ is a generating set for $K$,
+then adding $(k,e)$ for each $k \in K'$, where $e$ is some idempotent such that
+$k ~\rho~ e$, would ensure that the kernel contains $K$.  The trace is the
+restriction of $\rho$ to the idempotents; hence, if $\tau'$ is a spanning forest
+for $\tau$ so that $(\tau')^e = \tau$, adding all the pairs from $\tau'$ would
+ensure that the trace contains $\tau$.  This approach would result in a very
+large generating set, and could almost certainly be improved in some ways,
+particularly by exploiting (1) and (2) in Definition \ref{def:kernel-trace-pair}
+of a kernel-trace pair.
+
+\subsection{Rees congruences from generating pairs}
+\label{sec:pairs-to-rees}
+Given a semigroup $S$ and a set $\R \subseteq S \times S$, we may wish to know
+whether the generated congruence $\Rs$ is a Rees congruence.  A method exists
+for this in the Semigroups package \cite{semigroups}.  It finds the congruence
+classes of $\Rs$ and examines their sizes: if all classes are singletons, then
+$\Rs$ is Rees if and only if a zero element exists, and if so, the ideal is
+$\{0\}$; otherwise, we check that there is only one non-trivial class, and if
+there is, then we check that it is an ideal.  This method works, but of course
+involves enumerating the classes first.
+
+It would be desirable to have an algorithm which can inspect the pairs in $\R$
+and decide whether $\Rs$ is Rees, while doing as little calculation of the
+congruence as possible.  If it is somehow determined that $\Rs$ is Rees, then it
+is the Rees congruence corresponding to the ideal
+$$S\{x,y \in S : (x,y) \in \R \setminus \Delta_S\}S.$$
+However, it may be that an answer cannot be determined without a large amount of
+work being done first.  A more achievable aim would be to find some quick tests
+which could determine that $\Rs$ is or is not Rees in limited cases.  For
+example, if $S$ is the Motzkin monoid $\mathcal{M}_n$, then $\Rs$ is certainly
+Rees if any pair in $\R \setminus \Delta_S$ contains an element of rank greater
+than $1$, by Theorem \ref{thm:motzkin-congs}.  Recognising many special cases
+like this would make it possible for a computer package to avoid enumerating
+certain congruences, which is desirable.
 
 \subsection{Regular semigroups}
 \label{sec:converting-regular}
