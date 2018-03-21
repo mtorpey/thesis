@@ -162,6 +162,8 @@ they are related to its congruences.
 
 \begin{definition}
   \label{def:zerosimple}
+  \index{simple}
+  \index{0-simple}
   A semigroup $S$ is:
   \begin{itemize}
   \item \textbf{simple} if its only ideal is $S$;
@@ -178,12 +180,15 @@ relating to idempotents.
 
 \begin{definition}
   \label{def:primitive}
+  \index{primitive}
   An idempotent $p \in S$ is \textbf{primitive} if it is non-zero and there is
   no other non-zero idempotent $i \in S$ such that $ip = pi = i$.
 \end{definition}
 
 \begin{definition}
   \label{def:completelyzerosimple}
+  \index{simple!completely}
+  \index{0-simple!completely}
   A semigroup is:
   \begin{itemize}
   \item \textbf{completely simple} if it is simple and contains a primitive
@@ -213,6 +218,7 @@ complicated case, that of completely simple semigroups.
 
 \begin{definition}[\S 3.2 in \cite{howie}]
   \label{def:rzms}
+  \index{Rees 0-matrix semigroup}
   A \textbf{Rees 0-matrix semigroup} $\mathcal{M}^0[T;I,\Lambda;P]$ is the set
   $$(I \times T \times \Lambda) \cup \{0\}$$
   with multiplication given by
@@ -234,8 +240,8 @@ complicated case, that of completely simple semigroups.
 \end{definition}
 
 We will require a certain property of the matrix $P$, which we should define
-first: we call a matrix \textbf{regular} if it contains at least one
-non-zero entry in each row and each column.
+first: we call a matrix \textbf{regular} \index{regular!matrix} if it contains
+at least one non-zero entry in each row and each column.
 
 The following theorem shows how we can use Rees 0-matrix semigroups to classify
 completely 0-simple semigroups.
@@ -260,6 +266,7 @@ Next we consider the congruences of a finite 0-simple semigroup.
 
 \begin{definition}
   \label{def:linked-triple}
+  \index{linked triple}
   Let $S$ be a finite Rees 0-matrix semigroup $\mathcal{M}^0[G;I,\Lambda;P]$
   over the group $G$ with regular matrix $P$.  A \textbf{linked triple} on $S$
   is a triple $$(N,\mathcal{S},\mathcal{T})$$ consisting of a normal subgroup
@@ -306,6 +313,7 @@ is the purpose of this section.  We define the function $\Gamma$ as follows.
 
 \begin{definition}[\S 3.5 in \cite{howie}]
   \label{def:linked-triple-function}
+  \index{linked triple!function}
   Let $S$ be a Rees 0-matrix semigroup $\mathcal{M}^0[G;I,\Lambda;P]$ over a
   group $G$ and a regular matrix $P$, and let $\rho$ be a non-universal
   congruence on $S$.
@@ -399,6 +407,7 @@ adapted from \cite[\S 5.3]{howie}.
 
 \begin{definition}
   \label{def:kernel}
+  \index{kernel}
   The \textbf{kernel} of $\rho$ is $\bigcup_{e \in E} [e]_\rho$, the union of
   all the $\rho$-classes of $S$ which contain idempotents.  It is denoted by
   $\ker\rho$.
@@ -406,6 +415,7 @@ adapted from \cite[\S 5.3]{howie}.
 
 \begin{definition}
   \label{def:trace}
+  \index{trace}
   The \textbf{trace} of $\rho$ is $\rho \cap (E \times E)$, the restriction of
   $\rho$ to the idempotents of $S$.  It is denoted by $\tr\rho$.
 \end{definition}
@@ -418,6 +428,7 @@ for congruences.
 
 \begin{definition}
   \label{def:kernel-normal}
+  \index{normal!subsemigroup}
   A subsemigroup $K$ of $S$ is called \textbf{normal} if it is
   \textit{full} (contains all the idempotents of $S$) and
   \textit{self-conjugate} ($a^{-1}xa \in K$ for all $x \in K, a \in S$).
@@ -425,6 +436,7 @@ for congruences.
 
 \begin{definition}
   \label{def:trace-normal}
+  \index{normal!congruence}
   A congruence $\tau$ on $E$ is \textbf{normal} in $S$ if
   $$(a^{-1}ea,a^{-1}fa) \in \tau$$
   for every pair $(e,f) \in \tau$ and every element $a \in S$.
@@ -435,6 +447,7 @@ relates very closely to a congruence.
 
 \begin{definition}
   \label{def:kernel-trace-pair}
+  \index{kernel-trace pair!for an inverse semigroup}
   A \textbf{kernel-trace pair} on $S$ is a pair $(K,\tau)$ consisting of a
   normal subsemigroup $K$ of $S$ and a normal congruence $\tau$ on $E$, such
   that
@@ -1579,7 +1592,7 @@ certain congruences, which is desirable.
 
 \subsection{Regular semigroups}
 \label{sec:converting-regular}
-Recall that a regular semigroup is one in which every element $x$ has an inverse
+Recall that a regular semigroup \index{regular!semigroup} is one in which every element $x$ has an inverse
 $x'$ such that $x = xx'x$.  An inverse semigroup is a regular semigroup in which
 inverses are unique.  In Section \ref{sec:kertr} we discussed how a congruence
 on an inverse semigroup is uniquely determined by its kernel and trace, and gave
@@ -1597,6 +1610,7 @@ characterised in the following way, analogue to Definition
 
 \begin{definition}[Definition 2.12 in \cite{pastijn_1986}]
   \label{def:regular-kernel-trace-pair}
+  \index{kernel-trace pair!for regular semigroups}
   A \textbf{kernel-trace pair} on a regular semigroup $S$ is a pair $(K,\tau)$
   such that the following hold:
   \begin{enumerate}[\rm(1)]

@@ -118,6 +118,7 @@ the definitions of terms surrounding finite presentations.
 
 \begin{definition}
   \label{def:concrete}
+  \index{concrete}
   A semigroup $S$ is \textbf{concrete} if it is finite, and lies in a category
   with decidable word problem; that is, for a presentation $\pres X R$ for $S$, and
   any two words $w_1$ and $w_2$ in $X^+$, it can always be decided in a finite
@@ -455,6 +456,7 @@ thesis, but for more information about the algorithm and its implementation in
 
 \subsection{Pair orbit enumeration}
 \label{sec:p}
+\index{pair orbit enumeration}
 
 We will now give a brief description of pair orbit enumeration---a pseudo-code
 description is shown in Algorithm \ref{alg:p}.  We start with a semigroup $S$, a
@@ -608,6 +610,7 @@ they do not address the high complexity of the method.
 
 \subsection{Todd-Coxeter}
 \label{sec:tc}
+\index{Todd-Coxeter}
 
 The Todd-Coxeter algorithm was originally described in 1936 in
 \cite{todd_coxeter_1936}.  It was an algorithm to enumerate the cosets of a
@@ -1258,6 +1261,7 @@ Algorithm \ref{alg:tc-left} for a pseudo-code description.
 
 \subsubsection{Pre-filling the table}
 \label{sec:tc-prefill}
+\index{pre-fill}
 In the ordinary Todd-Coxeter procedure as described above, we begin with just a
 single row representing the empty word, and we add rows to represent the
 different congruence classes as we go along, merging rows together if they are
@@ -1389,8 +1393,13 @@ we shall again consider monoid presentations instead of semigroup presentations,
 since it is easy to change between the two by appending or removing an identity
 (the empty string $\varepsilon$).
 
-Let $X$ be an alphabet.  A \textit{rewriting system} $\rws$ on $X^*$ is a
-set of ordered pairs $(u,v)$ where $u, v \in X^*$.
+\begin{definition}
+  \label{def:rws}
+  \index{rewriting system}
+  Let $X$ be an alphabet.  A \textit{rewriting system} $\rws$ on $X^*$ is a set
+  of ordered pairs $(u,v)$ where $u, v \in X^*$.
+\end{definition}
+
 A pair $(u,v) \in \rws$ is called a \textit{rule}, and can be viewed as
 an operation which transforms an occurrence of $u$ in a word into an occurrence
 of $v$.
@@ -1518,6 +1527,7 @@ $X^* / \lrstar_\rws\ = \pres X R$, as required.  It only remains to add
 rules to $\rws$ to make it confluent, without altering the relation
 $\lrstar$.  This is where we use the Knuth-Bendix completion process.
 
+\index{Knuth-Bendix}
 First described by Knuth and Bendix in \cite{knuth_bendix}, the completion
 process adds rules to $\rws$ based on finding and resolving
 \textit{critical pairs}.  Roughly speaking, a critical pair is a pair of rules $(u_1, v_1)$ and
@@ -1527,6 +1537,7 @@ is as follows.
 
 \begin{definition}
   \label{def:critical-pair}
+  \index{critical pair}
   Let $\rws$ be a terminating rewriting system over an alphabet $X^*$.  A
   \textbf{critical pair} is a pair of distinct words
   $(w_1, w_2) \in X^* \times X^*$ such that $w_1$ and $w_2$ can be produced from
