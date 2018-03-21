@@ -72,6 +72,13 @@
 % Macros
 \input{macros}
 
+% Listing figures, tables and algorithms together
+\def\table{\def\figurename{Table}\figure}
+\let\endtable\endfigure
+\def\algorithm{\def\figurename{Algorithm}\figure}
+\let\endalgorithm\endfigure
+\renewcommand\listfigurename{List of figures, tables and algorithms}
+
 % Object numbering
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -118,6 +125,7 @@
 
 \singlespacing
 \tableofcontents
+\listoffigures
 \doublespacing
 
 \include{intro}
