@@ -10,6 +10,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{array}
+\usepackage[nottoc]{tocbibind}
 \usepackage{cancel}
 \usepackage{colortbl}
 \usepackage{dot2texi}
@@ -21,6 +22,7 @@
 \usepackage[iso, UKenglish]{isodate}
 \usepackage{lipsum}
 \usepackage{longtable}
+\usepackage{makeidx}
 \usepackage{mathdots}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
@@ -34,6 +36,8 @@
 \usepackage{xcolor}
 \usepackage{xfrac}
 
+% Compile the index
+\makeindex
 %\usepackage{nath}
 %\delimgrowth=1
 \delimitershortfall=-1pt
@@ -130,5 +134,11 @@
 
 \bibliography{bibliography}
 \bibliographystyle{alpha}
+
+\singlespacing
+\clearpage
+\phantomsection
+\printindex
+\doublespacing
 
 \end{document}

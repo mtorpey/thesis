@@ -12,6 +12,11 @@
 *.bbl
 *.blg
 
+*.lo?
+*.idx
+*.ilg
+*.ind
+
 *.dot
 *-dot2tex-fig*.tex
 
