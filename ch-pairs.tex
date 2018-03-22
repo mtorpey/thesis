@@ -235,7 +235,7 @@ quotient semigroup $S / \mathbf{P}^\sharp$.
     X \arrow[dr] \arrow[d, hook] & \\
     X^+ \arrow[r, two heads, "\pi"] & \frac{X^+}{R^\sharp} \cong S \arrow[r, two heads] & \frac{S}{\mathbf{P}^\sharp}
   \end{tikzcd}$
-  \caption{The relationships between different input objects}
+  \caption{How input objects relate to each other}
   \label{fig:pairs-cd-1}
 \end{figure}
 
@@ -258,7 +258,7 @@ This relationship is summarised in Figure \ref{fig:pairs-cd-2}.
     W \arrow[r, hook, two heads, "\Pi|_W"] \arrow[d, hook] & \mathbf{P} \arrow[d, hook] \\
     X^+ \times X^+ \arrow[r, two heads, "\Pi"] & S \times S
   \end{tikzcd}$
-  \caption{The generating pairs of the congruence}
+  \caption{How generating pairs are specified}
   \label{fig:pairs-cd-2}
 \end{figure}
 
@@ -404,7 +404,7 @@ adapted from the simplified version of the algorithm shown in
 \end{method}
 
 \begin{algorithm}
-\caption{Finding a presentation for a concrete semigroup using generators}
+\caption{The \textsc{PresentationFromGenerators} algorithm}
 \label{alg:inbetween-presentation}
   \begin{algorithmic}
     \Procedure{PresentationFromGenerators}{$X$}
@@ -485,13 +485,13 @@ we add one or both of these pairs to $\mathbf{R}'$ to be processed in its own
 turn.  Pseudo-code for this method is shown in Algorithm \ref{alg:p}.
 
 \begin{algorithm}
-\caption{The pair orbit enumeration algorithm}
+\caption{The \textsc{PairOrbit} algorithm}
 \label{alg:p}
 \begin{algorithmic}[1]
 \Require $S$ a semigroup,
          $\mathbf{R} \subseteq S \times S$,
          $\sigma \in \{L, R, T\}$
-\Procedure{P}{$S, \mathbf{R}, \sigma$}
+\Procedure{PairOrbit}{$S, \mathbf{R}, \sigma$}
 \State Let $X$ be a generating set for $S$
 \State $\mathbf{R}' := \mathbf{R}$
 %\Comment{$\mathbf{R}'$ is the list of pairs found so far}
@@ -535,7 +535,7 @@ state the following theorem.
 
 \begin{theorem}
   \label{thm:p}
-  Let $(\Lambda, \tau) = \textsc{P}(S, \mathbf{R}, \sigma)$.  Distinct elements
+  Let $(\Lambda, \tau) = \textsc{PairOrbit}(S, \mathbf{R}, \sigma)$.  Distinct elements
   $x$ and $y$ in $\Lambda$ lie in the same class of $\rho$ if and only if
   $\textsc{Find}(x) = \textsc{Find}(y)$.
   \begin{proof}
@@ -550,7 +550,7 @@ state the following theorem.
     pairs $(xa, xb)$ where $x$ is a generator of $S$.  That pair is then added
     to $\mathbf{R}'$, and so its left multiples are found: $(yxa, yxb)$ for
     every generator $y$ of $S$.  And in this way, $(sa, sb)$ is found for every
-    $s \in S$, so the set of pairs found by the \textsc{P} algorithm is
+    $s \in S$, so the set of pairs found by the \textsc{PairOrbit} algorithm is
     $$\{(sa, sb) ~|~ (a,b) \in \mathbf{R}, s \in S\},$$
     which is equal to the relation $\mathbf{R}^l$.
     Similarly, if $\sigma = R$, the algorithm finds all the pairs in
@@ -563,11 +563,11 @@ state the following theorem.
     $Q$ is fed into the union-find table using \textsc{Union} on every pair in
     $Q$, then the resulting table describes $Q^e$, the least equivalence
     relation containing $Q$.  Hence, if $\sigma = L$, the table produced by
-    $\textsc{P}$ will describe the relation $(R^l)^e$; if $\sigma = R$, it will
+    $\textsc{PairOrbit}$ will describe the relation $(R^l)^e$; if $\sigma = R$, it will
     describe $(R^r)^e$; and if $\sigma = T$, it will describe $(R^c)^e$.  As we
     know from Theorem \ref{thm:rsharp}, these relations are respectively the least
     left, right, and two-sided congruence containing $\mathbf{R}$, so the output
-    of \textsc{P} describes $\rho$ accurately, and \textsc{Find} may be used as
+    of \textsc{PairOrbit} describes $\rho$ accurately, and \textsc{Find} may be used as
     described to compare elements.
   \end{proof}
 \end{theorem}
@@ -704,7 +704,7 @@ specified by the arguments given to \textsc{Add}.  Pseudo-code for this
 operation is given in Algorithm \ref{alg:add}.
 
 \begin{algorithm}
-\caption{The \textsc{Add} algorithm}
+\caption{The \textsc{Add} algorithm (Todd-Coxeter)}
 \label{alg:add}
 \begin{algorithmic}[1]
 \Procedure{Add}{$i, x$}
@@ -743,7 +743,7 @@ $(e, v)\bar\tau = (e, w)\bar\tau$.
 \end{itemize}
 
 \begin{algorithm}
-\caption{The \textsc{Trace} algorithm}
+\caption{The \textsc{Trace} algorithm (Todd-Coxeter)}
 \label{alg:trace}
 \begin{algorithmic}[1]
 \Procedure{Trace}{$e, v = w$}
@@ -788,7 +788,7 @@ processed by a recursive call to \textsc{Coinc} (or should be stored in a list
 for processing after this call is finished).
 
 \begin{algorithm}
-\caption{The \textsc{Coinc} algorithm}
+\caption{The \textsc{Coinc} algorithm (Todd-Coxeter)}
 \label{alg:coinc}
 \begin{algorithmic}[1]
 \Require $r < s$
@@ -825,7 +825,7 @@ $(i, x)\tau$ represents the element denoted by $i$ right-multiplied by the
 generator $x$.
 
 \begin{algorithm}
-\caption{The Todd-Coxeter algorithm for semigroups}
+\caption{The \textsc{ToddCoxeter} algorithm (for semigroups)}
 \label{alg:tc}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeter}{$\pres X R$}
@@ -862,6 +862,7 @@ presentation
 $$\pres{a, b}{ba=ab,\ b^2=b,\ a^3=ab,\ a^2b=a^2}.$$
 We initialise the table to look like Table \ref{tab:tc1}.
 \tctableAB{tab:tc1}
+{Todd-Coxeter example: position 1}
 {Initial position}
 { 1 & & \\ }
 
@@ -875,6 +876,7 @@ the cell $(1, a)$, creating a row $3$.  At the end of the \textsc{Trace}, we
 must set $(1, ba)\bar\tau$ equal to $(1, ab)\bar\tau$, so we set both
 $(2, a)\tau$ and $(3, b)\tau$ to $4$ (as in Table \ref{tab:tc2}).
 \tctableAB{tab:tc2}
+{Todd-Coxeter example: position 2}
 {Position after \textsc{Trace}($1, ba=ab$)}
 {
   1 & 3 & 2 \\
@@ -889,6 +891,7 @@ Next, we apply \textsc{Trace}($1, b^2=b$).  Since $(1, b)\bar\tau$ is already
 set, we just set $(1, b^2)\bar\tau$ equal to it: $(2, b)\tau \gets 2$.  See
 Table \ref{tab:tc3}.
 \tctableAB{tab:tc3}
+{Todd-Coxeter example: position 3}
 {Position after \textsc{Trace}($1, b^2=b$)}
 {
   1 & 3 & 2 \\
@@ -904,6 +907,7 @@ creates a new row for $(1, a^2)\bar\tau = (3, a)\tau = 5$.  The new row's $a$
 entry is set to be the same as $(1, ab)\bar\tau$, which is $4$
 (see Table \ref{tab:tc4}).
 \tctableAB{tab:tc4}
+{Todd-Coxeter example: position 4}
 {Position after \textsc{Trace}($1, a^3=ab$)}
 {
   1 & 3 & 2 \\
@@ -922,6 +926,7 @@ $(1, a^2b)\bar\tau$ is currently blank, and is set to the current value of
 $(1, a^2)\bar\tau$, which is $5$.  Hence $(5, b)\tau \gets 5$
 (as in Table \ref{tab:tc5}).
 \tctableAB{tab:tc5}
+{Todd-Coxeter example: position 5}
 {Position after \textsc{Trace}($1, a^2b=a^2$)}
 {
   1 & 3 & 2 \\
@@ -941,6 +946,7 @@ value of $(2, ab)\bar\tau$ has not yet been set.
 We set it by applying $(4, b)\tau \gets 4$.
 See Table \ref{tab:tc6}.
 \tctableAB{tab:tc6}
+{Todd-Coxeter example: position 6}
 {Position after \textsc{Trace}($2, ba=ab$)}
 {
   1 & 3 & 2 \\
@@ -960,6 +966,7 @@ not set, and so we call \textsc{Add}($4, a$), creating a new row $6$.
 Now $(6, a)\tau$ is set to $(2, ab)\bar\tau$ which is equal to $4$.
 See Table \ref{tab:tc7}.
 \tctableAB{tab:tc7}
+{Todd-Coxeter example: position 7}
 {Position after \textsc{Trace}($2, a^3=ab$)}
 {
   1 & 3 & 2 \\
@@ -977,6 +984,7 @@ See Table \ref{tab:tc7}.
 The final relation for row $2$ is $a^2b=a^2$, setting $(6, b)\tau \gets 6$ (see
 Table \ref{tab:tc8}).
 \tctableAB{tab:tc8}
+{Todd-Coxeter example: position 8}
 {Position after all relations on row $2$}
 {
   1 & 3 & 2 \\
@@ -1000,6 +1008,7 @@ rest of the relations are applied to row $3$, and to the remaining rows in the
 table, but no changes are made to the table, so Table \ref{tab:tc9} is the final
 state.
 \tctableAB{tab:tc9}
+{Todd-Coxeter example: final position}
 {Final position}
 {
   1 & 3 & 2 \\
@@ -1040,7 +1049,8 @@ as shown in Figure \ref{fig:tc-cayley-graph}.
       5 -> 5 [label=b]
     }
   \end{dot2tex}
-  \caption{Right Cayley graph of $\pres{a, b}{ba=ab,\ b^2=b,\ a^3=ab,\ a^2b=a^2}$}
+  \caption[Todd-Coxeter example: right Cayley graph]
+  {Right Cayley graph of $\pres{a, b}{ba=ab,\ b^2=b,\ a^3=ab,\ a^2b=a^2}$}
   \label{fig:tc-cayley-graph}
 \end{figure}
 It is worth noting that the columns of the table now give a right representation
@@ -1068,7 +1078,7 @@ above to the semigroup presentation $\pres{X}{R,W}$, and the result will be the
 classes of $\rho$ (see Algorithm \ref{alg:tc-twosided} for a full description).
 
 \begin{algorithm}
-\caption{The Todd-Coxeter algorithm for two-sided congruences}
+\caption{The \textsc{ToddCoxeterTwoSided} algorithm (for congruences)}
 \label{alg:tc-twosided}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeterTwoSided}{$\pres X R, W$}
@@ -1109,7 +1119,7 @@ trace the pairs from $W$ from row $1$, and not any other row, as shown in line 8
 of Algorithm \ref{alg:tc-right}.
 
 \begin{algorithm}
-\caption{The Todd-Coxeter algorithm for right congruences}
+\caption{The \textsc{ToddCoxeterRight} algorithm (for right congruences)}
 \label{alg:tc-right}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeterRight}{$\pres X R, W$}
@@ -1194,7 +1204,7 @@ congruence with left multiplication instead of right multiplication.  See
 Algorithm \ref{alg:tc-left} for a pseudo-code description.
 
 \begin{algorithm}
-\caption{The Todd-Coxeter algorithm for left congruences}
+\caption{The \textsc{ToddCoxeterLeft} algorithm (for left congruences)}
 \label{alg:tc-left}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeterLeft}{$\pres X R, W$}
@@ -1300,7 +1310,7 @@ create new rows; the procedure from now on will simply be about tracing
 relations from $W$ and combining rows together.
 
 \begin{algorithm}
-\caption{The pre-filled Todd-Coxeter algorithm}
+\caption{The \textsc{ToddCoxeterPrefill} algorithm}
 \label{alg:tc-prefill}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeterPrefill}{$\pres X R, W, S$}
@@ -1904,7 +1914,8 @@ analyse performance.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-times}
-  \caption{Performance of the algorithms on 250 transformation semigroups, with
+  \caption[Benchmark: all algorithms, concrete, 1 pair]
+  {Performance of the algorithms on 250 transformation semigroups, with
     one generating pair}
   \label{fig:bench-trans-1p-times}
 \end{figure}
@@ -1912,7 +1923,8 @@ analyse performance.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-3p-times}
-  \caption{Performance of the algorithms on 250 transformation semigroups, with
+  \caption[Benchmark: all algorithms, concrete, 3 pairs]
+  {Performance of the algorithms on 250 transformation semigroups, with
     three generating pairs}
   \label{fig:bench-trans-3p-times}
 \end{figure}
@@ -1920,7 +1932,8 @@ analyse performance.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-vp-times}
-  \caption{Performance of the algorithms on 250 transformation semigroups, with
+  \caption[Benchmark: all algorithms, concrete, $n$ pairs]
+  {Performance of the algorithms on 250 transformation semigroups, with
     a variable number of generating pairs}
   \label{fig:bench-trans-vp-times}
 \end{figure}
@@ -1970,7 +1983,8 @@ table.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-1p-tccomp}
-  \caption{Comparison between the two Todd-Coxeter methods, for transformation
+  \caption[Benchmark: Todd-Coxeter, concrete, 1 pair]
+  {Comparison between the two Todd-Coxeter methods, for transformation
     semigroups with one generating pair}
   \label{fig:bench-trans-tc-1p-tccomp}
 \end{figure}
@@ -1978,7 +1992,8 @@ table.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-vp-tccomp}
-  \caption{Comparison between the two Todd-Coxeter methods, for transformation
+  \caption[Benchmark: Todd-Coxeter, concrete, $n$ pairs]
+  {Comparison between the two Todd-Coxeter methods, for transformation
     semigroups with a variable number of generating pairs}
   \label{fig:bench-trans-tc-vp-tccomp}
 \end{figure}
@@ -2006,7 +2021,8 @@ classes, and it is therefore not clear in advance which algorithm may be better.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-vp-right-bynrclasses}
-  \caption{Comparison between the two Todd-Coxeter methods, for right
+  \caption[Benchmark: Todd-Coxeter, concrete, right, $n$ pairs]
+  {Comparison between the two Todd-Coxeter methods, for right
     congruences over transformation semigroups with a variable number of
     generating pairs}
   \label{fig:bench-trans-tc-vp-right-bynrclasses}
@@ -2023,7 +2039,8 @@ been pre-filled.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-gap}
-  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
+  \caption[Benchmark: GAP/\texttt{libsemigroups}, concrete, 1 pair]
+  {Comparison between \texttt{libsemigroups} and the GAP library, for
     transformation semigroups with one generating pair}
   \label{fig:bench-trans-1p-gap}
 \end{figure}
@@ -2031,7 +2048,8 @@ been pre-filled.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-vp-gap}
-  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
+  \caption[Benchmark: GAP/\texttt{libsemigroups}, concrete, $n$ pairs]
+  {Comparison between \texttt{libsemigroups} and the GAP library, for
     transformation semigroups with a variable number of generating pairs}
   \label{fig:bench-trans-vp-gap}
 \end{figure}
@@ -2059,7 +2077,8 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-times}
-  \caption{Performance of the algorithms on $250$ finitely presented semigroups
+  \caption[Benchmark: all algorithms, finitely presented, 1 pair]
+  {Performance of the algorithms on $250$ finitely presented semigroups
     with one generating pair}
   \label{fig:bench-fp-1p-times}
 \end{figure}
@@ -2067,7 +2086,8 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-times}
-  \caption{Performance of the algorithms on $250$ finitely presented semigroups
+  \caption[Benchmark: all algorithms, finitely presented, 3 pairs]
+  {Performance of the algorithms on $250$ finitely presented semigroups
     with three generating pairs}
   \label{fig:bench-fp-3p-times}
 \end{figure}
@@ -2075,7 +2095,8 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-times}
-  \caption{Performance of the algorithms on $250$ finitely presented semigroups
+  \caption[Benchmark: all algorithms, finitely presented, $n$ pairs]
+  {Performance of the algorithms on $250$ finitely presented semigroups
     with a variable number of generating pairs}
   \label{fig:bench-fp-vp-times}
 \end{figure}
@@ -2083,7 +2104,8 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-gap}
-  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
+  \caption[Benchmark: GAP/\texttt{libsemigroups}, finitely presented, 1 pair]
+  {Comparison between \texttt{libsemigroups} and the GAP library, for
     finitely presented semigroups and one generating pair}
   \label{fig:bench-fp-1p-gap}
 \end{figure}
@@ -2091,7 +2113,8 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-gap}
-  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
+  \caption[Benchmark: GAP/\texttt{libsemigroups}, finitely presented, 3 pairs]
+  {Comparison between \texttt{libsemigroups} and the GAP library, for
     finitely presented semigroups and three generating pairs}
   \label{fig:bench-fp-3p-gap}
 \end{figure}
@@ -2099,7 +2122,8 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-gap}
-  \caption{Comparison between \texttt{libsemigroups} and the GAP library, for
+  \caption[Benchmark: GAP/\texttt{libsemigroups}, finitely presented, $n$ pairs]
+  {Comparison between \texttt{libsemigroups} and the GAP library, for
     finitely presented semigroups and a variable number of generating pairs}
   \label{fig:bench-fp-vp-gap}
 \end{figure}

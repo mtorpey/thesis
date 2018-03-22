@@ -73,7 +73,7 @@
 \newcommand{\pres}[2]{\left\langle\,#1 ~\middle|~ #2\,\right\rangle}
 
 % Todd-Coxeter tables with 2 generators
-\newcommand{\tctableAB}[3]{
+\newcommand{\tctableAB}[4]{
 \begin{table}[H]
   \centering
   \begin{tabular}{c | c | c |}
@@ -81,10 +81,10 @@
     \multicolumn{1}{c}{$a$} &
     \multicolumn{1}{c}{$b$} \\
     \cline{2-3}
-    #3
+    #4
     \cline{2-3}
   \end{tabular}
-  \caption{#2}
+  \caption[#2]{#3}
   \label{#1}
 \end{table}
 }

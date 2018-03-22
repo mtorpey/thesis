@@ -645,7 +645,8 @@ $s$, or that the element $s$ can be \textbf{factorised} \index{factorise} to the
     S
   \end{tikzcd}
   $
-  \caption{Each word from $X^+$ represents an element in $S$}
+  \caption[How a word represents a finitely presented semigroup element]{How a
+    word from $X^+$ represents an element in $S$}
   \label{fig:word-represents-element}
 \end{figure}
 
@@ -891,7 +892,7 @@ the new length of $\Lambda$---a value not yet used in the table.  See Algorithm
 combine the two classes as described below.
 
 \begin{algorithm}
-\caption{Adding an element to the union-find table}
+\caption{The \textsc{AddElement} algorithm (union-find)}
 \label{alg:uf-addelement}
   \begin{algorithmic}
     \Require{$x \notin \Lambda$}
@@ -923,7 +924,7 @@ the position of an element $x \in \Lambda$) and returns the number of its
 equivalence class, as shown in Algorithm \ref{alg:uf-find}.
 
 \begin{algorithm}
-\caption{Finding the class number of an element}
+\caption{The \textsc{Find} algorithm (union-find)}
 \label{alg:uf-find}
   \begin{algorithmic}
     \Procedure{Find}{$x$}
@@ -944,7 +945,7 @@ higher one to point to the lower.  Its pseudo-code is shown in Algorithm
 \ref{alg:uf-union}.
 
 \begin{algorithm}
-\caption{Uniting two classes}
+\caption{The \textsc{Union} algorithm (union-find)}
 \label{alg:uf-union}
   \begin{algorithmic}
     \Procedure{Union}{$x,y$}
@@ -1036,7 +1037,7 @@ computed with this method.
       \end{forest}
     }
     $$
-    \caption{Tree diagrams of union-find tables in Example \ref{ex:uf}}
+    \caption{Diagrams of union-find table in Example \ref{ex:uf}}
     \label{fig:uf}
   \end{figure}
 

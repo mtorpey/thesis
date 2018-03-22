@@ -49,8 +49,9 @@ they can be converted to one another are summarised in Table
     \cline{2-7}
   \end{tabular}
   \renewcommand{\arraystretch}{0.7}
-  \caption{Section references to algorithms for converting between different
-    congruence representations.  Grey references represent open problems.}
+  \caption[References to conversion algorithms]
+  {Section references to algorithms for converting between different congruence
+    representations.  Grey references represent open problems.}
   \label{tab:converting}
 \end{table}
 
@@ -674,7 +675,7 @@ For a fuller description of the algorithm and how it is justified by Theorem
 \ref{thm:pairs-to-linked-triple}, see \cite[\S 3.2]{mtorpey_msc}.
 
 \begin{algorithm}
-\caption{The linked triple of a congruence by generating pairs}
+\caption{The \textsc{LinkedTripleFromPairs} algorithm}
 \label{alg:pairs-to-linked-triple}
 \begin{algorithmic}[1]
     \Require $\mathcal{M}^0[G;I,\Lambda;P]$ a finite Rees 0-matrix semigroup
@@ -968,7 +969,7 @@ could be an interesting area of further research that would guarantee minimality
 in all cases.
 
 \begin{algorithm}
-\caption{Generating pairs of a linked triple}
+\caption{The \textsc{PairsFromLinkedTriple} algorithm}
 \label{alg:linked-triple-to-pairs}
 \begin{algorithmic}[1]
   \Procedure{PairsFromLinkedTriple}{$(N, \mathcal{S}, \mathcal{T})$}
@@ -1136,7 +1137,7 @@ the kernel-trace pair that corresponds to $\R^\sharp$.  This idea is
 explained more explicitly below.
 
 \begin{algorithm}
-\caption{The kernel-trace pair of a congruence by generating pairs}
+\caption{The \textsc{KerTraceFromPairs} algorithm}
 \label{alg:pairs-to-kertr}
 \begin{algorithmic}[1]
 \Require $S$ an inverse semigroup with idempotents $E$
