@@ -73,10 +73,18 @@
 \input{macros}
 
 % Listing figures, tables and algorithms together
-\def\table{\def\figurename{Table}\figure}
-\let\endtable\endfigure
-\def\algorithm{\def\figurename{Algorithm}\figure}
-\let\endalgorithm\endfigure
+\makeatletter
+\def\ext@algorithm{lof}
+\def\ext@table{lof}
+\AtBeginDocument{
+  \let\l@algorithm\l@figure
+  \let\c@algorithm\c@figure
+  \let\thealgorithm\thefigure
+  \let\l@table\l@figure
+  \let\c@table\c@figure
+  \let\thetable\thefigure
+}
+\makeatother
 \renewcommand\listfigurename{List of figures, tables and algorithms}
 
 % Object numbering
