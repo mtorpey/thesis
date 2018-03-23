@@ -16,6 +16,8 @@
 *.idx
 *.ilg
 *.ind
+*.nlo
+*.nls
 
 *.dot
 *-dot2tex-fig*.tex

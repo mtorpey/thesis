@@ -1,23 +1,31 @@
 \chapter{Introduction}
 \label{chap:intro}
 
+% Notation without page references
+\nomenclature[N]{$\mathbb{N}$}{Natural numbers $\{1, 2, 3, \ldots\}$\nomnorefpage}
+\nomenclature[R]{$\mathbb{R}$}{Real numbers\nomnorefpage}
+
 \section{Basic definitions}
 \label{sec:intro-basic}
 
 \begin{definition}
   \label{def:semigroup}
   \index{semigroup}
+  \nomenclature[S]{$S$}{Semigroup}
+  \nomenclature[.]{$\cdot$}{Binary operation in a semigroup}
   A \textbf{semigroup} is a non-empty set $S$ together with
-  a binary operation $*: S \times S \to S$ such that
-  $$(x * y) * z = x * (y * z)$$
+  a binary operation $\cdot: S \times S \to S$ such that
+  $$(x \cdot y) \cdot z = x \cdot (y \cdot z)$$
   for all $x, y, z \in S$.
 \end{definition}
-The operation symbol $*$ is often omitted where there is no risk of ambiguity.
+The operation symbol $\cdot$ is often omitted where there is no risk of ambiguity.
 % TODO: talk about the empty semigroup
 
 \begin{definition}
   \label{def:monoid}
   \index{monoid}
+  \nomenclature[M]{$M$}{Monoid}
+  \nomenclature[e]{$e$}{Identity of a monoid}
   A \textbf{monoid} is a semigroup $M$ containing a distinguished element $e$
   such that
   $$ex = xe = x$$
@@ -53,6 +61,7 @@ The operation symbol $*$ is often omitted where there is no risk of ambiguity.
 \begin{definition}
   \label{def:homomorphism}
   \index{homomorphism}
+  \nomenclature{$\phi$}{Homomorphism}
   Let $S$ and $T$ be semigroups.  A semigroup \textbf{homomorphism} is a
   function $\phi: S \to T$ such that
   $$(x)\phi \cdot (y)\phi = (xy)\phi,$$
@@ -62,6 +71,7 @@ The operation symbol $*$ is often omitted where there is no risk of ambiguity.
 \begin{definition}
   \label{def:monomorphism}
   \index{monomorphism}
+  \nomenclature[->]{$\hookrightarrow$}{Monomorphism}
   A semigroup \textbf{monomorphism} is a semigroup homomorphism which is
   injective (one-to-one).  It is indicated on diagrams by a hooked arrow:
   $$S \hookrightarrow T$$
@@ -70,6 +80,7 @@ The operation symbol $*$ is often omitted where there is no risk of ambiguity.
 \begin{definition}
   \label{def:epimorphism}
   \index{epimorphism}
+  \nomenclature[->]{$\twoheadrightarrow$}{Epimorphism}
   A semigroup \textbf{epimorphism} is a semigroup homomorphism which is
   surjective (onto).  It is indicated on diagrams by a double-headed arrow:
   $$S \twoheadrightarrow T$$
@@ -81,6 +92,9 @@ assumed that ``homomorphism'' refers to a semigroup homomorphism.
 % TODO: monoid homos map id to id
 
 \begin{definition}
+  \label{def:kernel}
+  \index{kernel!of a homomorphism}
+  \nomenclature[ker]{$\ker$}{Kernel of a homomorphism}
   The \textbf{kernel} $\ker\phi$ of a homomorphism $\phi:S \to T$ is the
   equivalence relation on $S$ defined by the rule that $(a,b) \in \ker\phi$ if
   and only if
@@ -89,6 +103,9 @@ assumed that ``homomorphism'' refers to a semigroup homomorphism.
 \end{definition}
 
 \begin{definition}
+  \label{def:image}
+  \index{image}
+  \nomenclature[im]{$\im$}{Image of a homomorphism}
   The \textbf{image} $\im\phi$ of a homomorphism $\phi:S \to T$ is the set of
   elements $t \in T$ such that
   $$(s)\phi = t$$
@@ -103,6 +120,7 @@ assumed that ``homomorphism'' refers to a semigroup homomorphism.
   \index{compatible}
   \index{compatible!left-}
   \index{compatible!right-}
+  \nomenclature[R]{$\R$}{Relation on a semigroup}
   Let $X$ be a semigroup, and let $\mathbf{R}$ be a relation on $S$.  The
   relation $\mathbf{R}$ is:
   \begin{itemize}
@@ -153,10 +171,11 @@ defined.
 \begin{definition}
   \label{def:quotient}
   \index{quotient semigroup}
+  \nomenclature[/]{$/$}{Quotient semigroup}
   Let $S$ be a semigroup, and let $\rho$ be a congruence on $S$.  The
   \textbf{quotient semigroup} $S / \rho$ is the semigroup whose elements are the
   congruence classes of $\rho$, and whose operation $*$ is defined by
-  $$[a]_\rho * [b]_\rho = [ab]_\rho,$$
+  $$[a]_\rho * [b]_\rho = [ab]_\rho,$$ % TODO: define [a]_\rho
   for $a, b \in S$.
 \end{definition}
 
@@ -180,8 +199,6 @@ defined.
   \end{proof}
 \end{proposition}
 
-% TODO: is [a] notation well understood?
-
 Note that Definition \ref{def:quotient} does not apply to left and right
 congruences, which do not generally satisfy the condition stated in Proposition
 \ref{prop:cong-def}.  A quotient semigroup can only be taken using a two-sided
@@ -190,6 +207,7 @@ congruence.
 \begin{definition}
   \label{def:natural-homomorphism}
   \index{natural homomorphism}
+  \nomenclature{$\pi_\rho$}{Natural homomorphism}
   Let $S$ be a semigroup, and let $\rho$ be a congruence on $S$.  The
   \textbf{natural homomorphism} $\pi_\rho: S \to S / \rho$ is the map which
   takes an element of $S$ to its $\rho$-class:
@@ -261,7 +279,7 @@ We first need to establish a few definitions.  Let $S$ be a semigroup, and let
 $\mathbf{R}$ be a relation on $S$.  We define
 $$\mathbf{R}^{-1} = \{(x,y) \in S \times S ~|~ (y,x) \in \mathbf{R}\},$$
 so that $\mathbf{R}^{-1}$ is a copy of $\mathbf{R}$ but with the entries in each
-pair swapped.
+pair swapped. \nomenclature[-1]{$^{-1}$}{Relation with pairs swapped}
 Next, let $\circ$ be the operation of concatenation, so that for two relations
 $\mathbf{R}_1$ and $\mathbf{R}_2$ on $S$,
 $$\mathbf{R}_1 \circ \mathbf{R}_2 = \left\{(x,y) \in S \times S ~\middle|~
@@ -272,6 +290,7 @@ $$\mathbf{R}^n = \underbrace{\mathbf{R} \circ \dots \circ \mathbf{R}}_{n~\text{t
 \begin{definition}
   \label{def:transitiveclosure}
   \index{transitive closure}
+  \nomenclature[\infty]{$^\infty$}{Transitive closure of a relation}
   The \textbf{transitive closure} $\mathbf{R}^\infty$ of a relation $\mathbf{R}$
   is the relation given by
   $$\mathbf{R}^\infty=\bigcup_{n \in \mathbb{N}}\mathbf{R}^n$$
@@ -284,6 +303,7 @@ equivalence relation generated by $\mathbf{R}$.
 
 \begin{definition}
   \label{def:re}
+  \nomenclature[e]{$^e$}{Least equivalence containing a relation}
   For a relation $\mathbf{R}$ on a semigroup $S$, we define $\mathbf{R}^e$ as
   the relation $\left(\mathbf{R} \cup \mathbf{R}^{-1} \cup \Delta_S\right)^\infty$.
 \end{definition}
@@ -332,12 +352,15 @@ equivalence relation generated by $\mathbf{R}$.
   For a relation $\mathbf{R}$ on a semigroup $S$, we define three relations:
   \begin{enumerate}[\rm(1)]
   \item
+    \nomenclature[c]{$^c$}{Least compatible relation containing a relation}
     $\mathbf{R}^c = \left\{(xay, xby) ~\middle|~ (a,b) \in \mathbf{R},~x,y \in
       S^1\right\}$.
   \item
+    \nomenclature[l]{$^l$}{Least left-compatible relation containing a relation}
     $\mathbf{R}^l = \left\{(xa, xb) ~\middle|~ (a,b) \in \mathbf{R},~x \in
       S^1\right\}$.
   \item
+    \nomenclature[r]{$^r$}{Least right-compatible relation containing a relation}
     $\mathbf{R}^r = \left\{(ay, by) ~\middle|~ (a,b) \in \mathbf{R},~y \in
       S^1\right\}$.
   \end{enumerate}

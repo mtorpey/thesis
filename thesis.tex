@@ -27,6 +27,7 @@
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 \usepackage{multirow}
+\usepackage[refpage, intoc]{nomencl}
 \usepackage{pifont}
 \usepackage{pstricks}
 \usepackage{svg}
@@ -36,8 +37,9 @@
 \usepackage{xcolor}
 \usepackage{xfrac}
 
-% Compile the index
+% Compile the index and notation
 \makeindex
+\makenomenclature
 
 % Automatic bracket sizing
 %\usepackage{nath}
@@ -73,6 +75,7 @@
 \input{macros}
 
 % Listing figures, tables and algorithms together
+\renewcommand\listfigurename{List of figures, tables and algorithms}
 \makeatletter
 \def\ext@algorithm{lof}
 \def\ext@table{lof}
@@ -85,7 +88,10 @@
   \let\thetable\thefigure
 }
 \makeatother
-\renewcommand\listfigurename{List of figures, tables and algorithms}
+
+% List of notation
+\renewcommand\nomname{List of notation}
+\def\pagedeclaration#1{, \nobreakspace#1}
 
 % Object numbering
 \newtheorem{theorem}{Theorem}[chapter]
@@ -154,8 +160,7 @@
 \bibliographystyle{alpha}
 
 \singlespacing
-%\listofalgorithms
-%\addcontentsline{toc}{chapter}{\listalgorithmname}
+\printnomenclature
 \clearpage
 \phantomsection
 \printindex
