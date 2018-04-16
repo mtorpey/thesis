@@ -95,13 +95,10 @@
 }
 
 % Partition diagrams
-\newcommand{\mycols}[1]{#1}
-
 \newcommand{\bipart}[4]{
-  \edef\tmp{\noexpand\newcolumntype{X}{\mycols{#1}}}\tmp
   \left(
     \hspace{-1.5mm}
-    \begin{array}{X}
+    \begin{array}{#1}
       #3 \\ \cline{#2}
       #4
     \end{array}
