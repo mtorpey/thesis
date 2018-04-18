@@ -95,7 +95,60 @@
 }
 
 % Partition diagrams
-\newcommand{\bipart}[4]{
+% \tikzset{>=latex}
+\newcommand{\bipartdiagscale}{.36}
+\newcommand{\tv}[2]{ % Transversal line
+  \draw(#1,2)--(#2,0);
+}
+\newcommand{\tc}[2]{ % Top curve
+  \draw(#1, 1.875) .. controls (#1, 1.5) and (#2, 1.5) .. (#2, 1.875);
+}
+\newcommand{\bc}[2]{ % Bottom curve
+  \draw(#1, 0.125) .. controls (#1, 0.5) and (#2, 0.5) .. (#2, 0.125);
+}
+\newcommand{\utv}[2]{ % Transversal (upper diagram)
+  \draw(#1,4)--(#2,2);
+}
+\newcommand{\utc}[2]{ % Top curve (upper diagram)
+  \draw(#1, 3.875) .. controls (#1, 3.5) and (#2, 3.5) .. (#2, 3.875);
+}
+\newcommand{\ubc}[2]{ % Bottom curve (upper diagram)
+  \draw(#1, 2.125) .. controls (#1, 2.5) and (#2, 2.5) .. (#2, 2.125);
+}
+
+\newcommand{\trans}[5]{ % Transformation
+  \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
+    \fill(1,2)circle(.125); \fill(1,0)circle(.125); \draw(1,2)--(#1,0);
+    \fill(2,2)circle(.125); \fill(3,0)circle(.125); \draw(2,2)--(#2,0);
+    \fill(3,2)circle(.125); \fill(2,0)circle(.125); \draw(3,2)--(#3,0);
+    \fill(4,2)circle(.125); \fill(5,0)circle(.125); \draw(4,2)--(#4,0);
+    \fill(5,2)circle(.125); \fill(4,0)circle(.125); \draw(5,2)--(#5,0);
+  \end{tikzpicture}
+}
+
+\newcommand{\bipartdiag}[1]{ % Single bipartition diagram
+  \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
+    \fill(1,2)circle(.125); \fill(1,0)circle(.125);
+    \fill(2,2)circle(.125); \fill(3,0)circle(.125);
+    \fill(3,2)circle(.125); \fill(2,0)circle(.125);
+    \fill(4,2)circle(.125); \fill(5,0)circle(.125);
+    \fill(5,2)circle(.125); \fill(4,0)circle(.125);
+    #1
+  \end{tikzpicture}~
+}
+
+\newcommand{\doublebipartdiag}[1]{ % Double diagram (to show multiplication)
+  \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
+    \fill(1,4)circle(.125); \fill(1,2)circle(.125); \fill(1,0)circle(.125);
+    \fill(2,4)circle(.125); \fill(2,2)circle(.125); \fill(3,0)circle(.125);
+    \fill(3,4)circle(.125); \fill(3,2)circle(.125); \fill(2,0)circle(.125);
+    \fill(4,4)circle(.125); \fill(4,2)circle(.125); \fill(5,0)circle(.125);
+    \fill(5,4)circle(.125); \fill(5,2)circle(.125); \fill(4,0)circle(.125);
+    #1
+  \end{tikzpicture}~
+}
+
+\newcommand{\bipart}[4]{ % Bracketed notation for a bipartition
   \left(
     \hspace{-1.5mm}
     \begin{array}{#1}
