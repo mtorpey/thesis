@@ -781,6 +781,40 @@ particular, for each block that contains points from both $\mathbf{n}$ and
 $\mathbf{n}'$, we will usually draw only one line crossing the diagram from top
 to bottom.
 
+Next we define some attributes of bipartitions, which will be important when we
+come to consider certain bipartition semigroups later.
+
+\begin{definition}
+  Let $\alpha$ be a bipartition.
+  \begin{itemize}
+  \item A block of $\alpha$ is a \textbf{transversal} if it contains points from
+    both $\mathbf{n}$ and $\mathbf{n}'$;
+    \index{transversal}
+  \item The \textbf{rank} of $\alpha$, denoted $\rank \alpha$, is the number of
+    transversals in $\alpha$;
+    \index{rank!of a bipartition}
+  \item The \textbf{domain} of $\alpha$, denoted $\dom \alpha$, is the set of
+    points $i \in \mathbf{n}$ such that $i$ lies in a transversal of $\alpha$;
+    % $\{i \in \mathbf{n} : i \text{~lies in a transversal of~} \alpha\}$;
+    \index{domain!of a bipartition}
+    \nomenclature[dom]{$\dom$}{Domain of a bipartition}
+  \item The \textbf{codomain} of $\alpha$, denoted $\codom \alpha$, is the set
+    of points $i \in \mathbf{n}$ such that $i'$ lies in a transversal of
+    $\alpha$;
+    % $\{i \in \mathbf{n} : i' \text{~lies in a transversal of~} \alpha\}$;
+    \index{codomain}
+    \nomenclature[codom]{$\codom$}{Codomain of a bipartition}
+  \item The \textbf{kernel} of $\alpha$, denoted $\ker \alpha$, is equal to
+    $\alpha \cap (\mathbf{n} \times \mathbf{n})$;
+    \index{kernel!of a bipartition}
+    \nomenclature[ker]{$\ker$}{Kernel of a bipartition}
+  \item The \textbf{cokernel} of $\alpha$, denoted $\coker \alpha$, is equal to
+    $\alpha \cap (\mathbf{n}' \times \mathbf{n}')$.
+    \index{cokernel}
+    \nomenclature[coker]{$\coker$}{Cokernel of a bipartition}
+  \end{itemize}
+\end{definition}
+
 We now consider the semigroup of all bipartitions of a given degree.
 
 \begin{definition}
