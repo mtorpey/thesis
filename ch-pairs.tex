@@ -406,6 +406,7 @@ adapted from the simplified version of the algorithm shown in
 \begin{algorithm}
 \caption{The \textsc{PresentationFromGenerators} algorithm}
 \label{alg:inbetween-presentation}
+\index{PresentationFromGenerators@\textsc{PresentationFromGenerators}}
   \begin{algorithmic}
     \Procedure{PresentationFromGenerators}{$X$}
       \State $R := \varnothing$
@@ -487,6 +488,7 @@ turn.  Pseudo-code for this method is shown in Algorithm \ref{alg:p}.
 \begin{algorithm}
 \caption{The \textsc{PairOrbit} algorithm}
 \label{alg:p}
+\index{PairOrbit@\textsc{PairOrbit}}
 \begin{algorithmic}[1]
 \Require $S$ a semigroup,
          $\mathbf{R} \subseteq S \times S$,
@@ -706,6 +708,7 @@ operation is given in Algorithm \ref{alg:add}.
 \begin{algorithm}
 \caption{The \textsc{Add} algorithm (Todd-Coxeter)}
 \label{alg:add}
+\index{Add@\textsc{Add}}
 \begin{algorithmic}[1]
 \Procedure{Add}{$i, x$}
 \State $n \gets n + 1$
@@ -745,6 +748,7 @@ $(e, v)\bar\tau = (e, w)\bar\tau$.
 \begin{algorithm}
 \caption{The \textsc{Trace} algorithm (Todd-Coxeter)}
 \label{alg:trace}
+\index{Trace@\textsc{Trace}}
 \begin{algorithmic}[1]
 \Procedure{Trace}{$e, v = w$}
 \State Write $v = v_1 \ldots v_m$ \Comment $(v_i \in X \text{~for~} 1 \leq i \leq m)$
@@ -790,6 +794,7 @@ for processing after this call is finished).
 \begin{algorithm}
 \caption{The \textsc{Coinc} algorithm (Todd-Coxeter)}
 \label{alg:coinc}
+\index{Coinc@\textsc{Coinc}}
 \begin{algorithmic}[1]
 \Require $r < s$
 \Procedure{Coinc}{$r, s$}
@@ -827,6 +832,7 @@ generator $x$.
 \begin{algorithm}
 \caption{The \textsc{ToddCoxeter} algorithm (for semigroups)}
 \label{alg:tc}
+\index{ToddCoxeter@\textsc{ToddCoxeter}}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeter}{$\pres X R$}
 \State $n := 1$
@@ -1080,6 +1086,7 @@ classes of $\rho$ (see Algorithm \ref{alg:tc-twosided} for a full description).
 \begin{algorithm}
 \caption{The \textsc{ToddCoxeterTwoSided} algorithm (for congruences)}
 \label{alg:tc-twosided}
+\index{ToddCoxeterTwoSided@\textsc{ToddCoxeterTwoSided}}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeterTwoSided}{$\pres X R, W$}
 \State $n := 1$
@@ -1121,6 +1128,7 @@ of Algorithm \ref{alg:tc-right}.
 \begin{algorithm}
 \caption{The \textsc{ToddCoxeterRight} algorithm (for right congruences)}
 \label{alg:tc-right}
+\index{ToddCoxeterRight@\textsc{ToddCoxeterRight}}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeterRight}{$\pres X R, W$}
 \State $n := 1$
@@ -1206,6 +1214,7 @@ Algorithm \ref{alg:tc-left} for a pseudo-code description.
 \begin{algorithm}
 \caption{The \textsc{ToddCoxeterLeft} algorithm (for left congruences)}
 \label{alg:tc-left}
+\index{ToddCoxeterLeft@\textsc{ToddCoxeterLeft}}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeterLeft}{$\pres X R, W$}
 \State $\bar R := \varnothing$
@@ -1312,6 +1321,7 @@ relations from $W$ and combining rows together.
 \begin{algorithm}
 \caption{The \textsc{ToddCoxeterPrefill} algorithm}
 \label{alg:tc-prefill}
+\index{ToddCoxeterPrefill@\textsc{ToddCoxeterPrefill}}
 \begin{algorithmic}[1]
 \Procedure{ToddCoxeterPrefill}{$\pres X R, W, S$}
 \Require{$S = \{s_1, s_2, \ldots, s_k\}$ is a semigroup with its elements known in a defined order}
@@ -1653,6 +1663,7 @@ $\rws$.
 \begin{algorithm}
 \caption{The \textsc{Rewrite} algorithm}
 \label{alg:rewrite}
+\index{Rewrite@\textsc{Rewrite}}
 \begin{algorithmic}[1]
 \Procedure{Rewrite}{$u, \rws$}
 \State $v := \varepsilon$

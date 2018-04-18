@@ -1008,6 +1008,7 @@ combine the two classes as described below.
 \begin{algorithm}
 \caption{The \textsc{AddElement} algorithm (union-find)}
 \label{alg:uf-addelement}
+\index{AddElement@\textsc{AddElement}}
   \begin{algorithmic}
     \Require{$x \notin \Lambda$}
     \Procedure{AddElement}{$x$}
@@ -1040,6 +1041,7 @@ equivalence class, as shown in Algorithm \ref{alg:uf-find}.
 \begin{algorithm}
 \caption{The \textsc{Find} algorithm (union-find)}
 \label{alg:uf-find}
+\index{Find@\textsc{Find}}
   \begin{algorithmic}
     \Procedure{Find}{$x$}
       \State $n := $ position of $x$ in $\Lambda$
@@ -1061,6 +1063,7 @@ higher one to point to the lower.  Its pseudo-code is shown in Algorithm
 \begin{algorithm}
 \caption{The \textsc{Union} algorithm (union-find)}
 \label{alg:uf-union}
+\index{Union@\textsc{Union}}
   \begin{algorithmic}
     \Procedure{Union}{$x,y$}
       \State $m \gets $ \Call{Find}{$x$}
