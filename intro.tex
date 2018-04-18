@@ -709,6 +709,76 @@ look similar at all.  Consider the following example.
 \subsection{Bipartitions}
 \label{sec:bipartitions}
 
+Another important type of element discussed in this thesis is a
+\textit{bipartition}.  These are formally defined as a class of equivalence
+relations under an interesting composition operation, but they can also be seen
+as a generalisation of partial transformations.  We begin with the formal
+definition.
+
+\begin{definition}
+  \label{def:bipartition}
+  \index{bipartition}
+  A \textbf{bipartition} is an equivalence relation on the set
+  $\mathbf{n} \cup \mathbf{n}'$, where $\mathbf{n} = \{1, \ldots, n\}$ and
+  $\mathbf{n}' = \{1', \ldots, n'\}$.
+  \nomenclature[n']{$\mathbf{n}'$}{$\{1', 2', \ldots, n'\}$ for some $n \in \mathbb{N}$}
+\end{definition}
+
+The number $n$ is called the \textit{degree} of the
+bipartition. \index{degree!of a bipartition}  Two
+bipartitions $\alpha$ and $\beta$ of the same degree can be composed in the
+following way to make another bipartition, $\alpha \beta$: let
+$\mathbf{n}'' = \{1'', \ldots, n''\}$, let $\alpha^\vee$ be obtained from
+$\alpha$ by changing every point $i \in \mathbf{n}$ to $i''$, and let
+$\beta^\wedge$ be obtained from $\beta$ be changing every point
+$i' \in \mathbf{n}'$ to $i''$.  Now let $\Pi$ be the equivalence on
+$\mathbf{n} \cup \mathbf{n}' \cup \mathbf{n}''$ given by
+$(\alpha^\vee \cup \beta^\wedge)^e$.  We define $\alpha \beta$ as the
+bipartition
+$\Pi \cap \big((\mathbf{n} \cup \mathbf{n}') \times (\mathbf{n} \cup
+\mathbf{n}')\big)$.  This composition is more easily understood visually, as
+will be seen in Example \ref{ex:bipartition}.  The operation can be seen to be
+associative, and so we can use it to form semigroups of bipartitions.
+
+A bipartition can be displayed visually by plotting the points $1$ to $n$ in
+order in a horizontal line, with the corresponding points $1'$ to $n'$
+underneath, and drawing edges between points to make a spanning skeleton of the
+equivalence relation.  The product of two bipartitions can then be found by
+concatenating the two diagrams top-to-bottom and deleting points in the middle
+line.  Consider the following example.
+
+\begin{example}
+  \label{ex:bipartition}
+  Let $\alpha$ be the bipartition of degree $5$ with blocks $\{1, 2', 3'\}$,
+  $\{2\}$, $\{3, 4, 3', 4'\}$, $\{5\}$ and $\{5'\}$.  Let $\beta$ be the
+  bipartition of degree $5$ with blocks $\{1, 2, 5, 1', 2'\}$, $\{4\}$,
+  $\{3, 4', 5'\}$ and $\{3'\}$.  The diagrams of these two figures, along with
+  their product $\alpha \beta$, are shown in Figure
+  \ref{fig:bipartition-example}.  Note that two different diagrams are shown for
+  $\alpha \beta$.
+  \begin{figure}[h]
+    \centering
+    $$\alpha = \bipartdiag{\tv11\bc12 \tc34 \tv33\tc34\bc34} \qquad
+    \beta = \bipartdiag{\tc12\tc25\tv22\bc12 \tv34\bc45}$$
+    $$\alpha \beta = \doublebipartdiag{\utv11\ubc12 \utc34 \utv33\utc34\ubc34
+      \tc12\tc25\tv22\bc12 \tv34\bc45}
+    = \bipartdiag{\tv12\bc12 \tc34\tv34\bc45}
+    = \bipartdiag{\tv11\bc12 \tc34\tv44\bc45}$$
+    \caption{Diagrams of the bipartitions in Example \ref{ex:bipartition}}
+    \label{fig:bipartition-example}
+  \end{figure}
+\end{example}
+
+Since a given equivalence may have several spanning skeletons, a bipartition may
+be represented by several different diagrams; for example, note the two
+different representations of $\alpha \beta$ in Figure
+\ref{fig:bipartition-example}.  In general, it does not matter which diagram is
+used, only that it represents the appropriate bipartition---we will usually
+choose the diagram which illustrates the bipartition most clearly.  In
+particular, for each block that contains points from both $\mathbf{n}$ and
+$\mathbf{n}'$, we will usually draw only one line crossing the diagram from top
+to bottom.
+
 \section{Computation \& decidability}
 \label{sec:computation-decidability}
 
