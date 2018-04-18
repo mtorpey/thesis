@@ -853,6 +853,23 @@ $\phi$ is a monomorphism.  Hence $\Prt_n$ contains a copy of $\PT_n$, and
 therefore copies of the full transformation monoid $\T_n$, the symmetric inverse
 monoid $\I_n$, and the symmetric group $\Sym_n$.
 
+As with any semigroup, it will be helpful to describe the Green's relations of
+the bipartition monoid.  The following proposition describes the Green's
+relations very simply in terms of domain, codomain, kernel, cokernel, and rank.
+The result is taken from \cite{todo}.
+
+\begin{proposition}
+  \label{prop:bipartition-greens}
+  Let $\alpha$ and $\beta$ be bipartitions in $\Prt_n$.  The following hold:
+  \begin{enumerate}[\rm(i)]
+  \item $\alpha \RR \beta$ if and only if $\dom \alpha = \dom \beta$ and
+    $\ker \alpha = \ker \beta$;
+  \item $\alpha \LL \beta$ if and only if $\codom \alpha = \codom \beta$ and
+    $\coker \alpha = \coker \beta$;
+  \item $\alpha \JJ \beta$ if and only if $\rank \alpha = \rank \beta$.
+  \end{enumerate}
+\end{proposition}
+
 \section{Computation \& decidability}
 \label{sec:computation-decidability}
 
