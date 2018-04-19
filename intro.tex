@@ -837,6 +837,31 @@ We illustrate these attributes by continuing our example.
   We also have $\rank \alpha = \rank \beta = 2$.
 \end{example}
 
+Since drawing a diagram for a bipartition consumes a lot of space, and since
+writing out the blocks is unwieldy and difficult to read, we have another way of
+representing a bipartition: a modified two-row notation.  In this notation, the
+blocks of the bipartition's kernel are written across the top row, separated by
+vertical lines, and the blocks of the cokernel are written across the bottom
+row, omitting prime symbols.  Transversals are written first, with the
+appropriate kernel block written above the corresponding cokernel block.
+Non-transversal blocks are written afterwards, with upper and lower blocks
+separated by horizontal lines.  A generic bipartition could thus be represented
+by
+$$\alpha = \bipart{c|c|c|c|c|c}{4-6}
+{A_1 & \ldots & A_q & C_1 & \ldots & C_r}
+{B_1 & \ldots & B_q & D_1 & \ldots & D_s},$$
+where $\alpha$ has $q$ transversals of the form $A_i \cup B_i'$ with
+$A_i \subseteq \mathbf{n}$ and $B_i' \subseteq \mathbf{n}'$, $r$ upper blocks
+labelled $C_i$, and $s$ lower blocks labelled $D_i'$.
+
+\begin{example}
+  \label{ex:bipartition-two-row}
+  The bipartitions from Example \ref{ex:bipartition} can be written in the form
+  $$\alpha = \bipart{c|c|c|c}{3-4}
+  {1 & 3,4 & 2 & 5} {1,2 & 3,4 & \mc{2}{c}{5}}, \qquad
+  \beta = \bipart{c|c|c}{3-3}{1,2,5 & 3 & 4}{1,2 & 4,5 & 3}.$$
+\end{example}
+
 We now consider the semigroup of all bipartitions of a given degree.
 
 \begin{definition}
