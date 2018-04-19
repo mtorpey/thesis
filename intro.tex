@@ -726,6 +726,13 @@ of partial transformations.  We begin with the formal definition.
   \nomenclature[n']{$\mathbf{n}'$}{$\{1', 2', \ldots, n'\}$ for some $n \in \mathbb{N}$}
 \end{definition}
 
+The equivalence classes of a bipartition are called \textbf{blocks}.  A block is
+called an \textbf{upper block} if it only contains points from $\mathbf{n}$, a
+\textbf{lower block} if it only contains points from $\mathbf{n}'$, or a
+\textbf{transversal} if it contains points from both $\mathbf{n}$ and
+$\mathbf{n}'$.
+\index{block}\index{block!upper}\index{block!lower}\index{transversal}
+
 The number $n$ is called the \textit{degree} of the
 bipartition. \index{degree!of a bipartition}  Two
 bipartitions $\alpha$ and $\beta$ of the same degree can be composed in the
@@ -787,9 +794,6 @@ come to consider certain bipartition semigroups later.
 \begin{definition}
   Let $\alpha$ be a bipartition.
   \begin{itemize}
-  \item A block of $\alpha$ is a \textbf{transversal} if it contains points from
-    both $\mathbf{n}$ and $\mathbf{n}'$;
-    \index{transversal}
   \item The \textbf{rank} of $\alpha$, denoted $\rank \alpha$, is the number of
     transversals in $\alpha$;
     \index{rank!of a bipartition}
