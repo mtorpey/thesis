@@ -180,9 +180,10 @@ $\Mot_n$ can be built using these two building blocks.
 \begin{definition}
   \label{def:lifting-congruence}
   \index{lifting congruence}
+  \nomenclature{$\xi$}{Lifting congruence}
   Let $S$ be a semigroup with a minimal ideal $M$.  A congruence $\xi$ on $M$ is
-  a \emph{lifting congruence} if any, and hence all, of the following equivalent
-  conditions are satisfied:
+  a \textbf{lifting congruence} if any, and hence all, of the following
+  equivalent conditions are satisfied:
   \begin{enumerate}[\rm(i)]
   \item $\Delta_S \cup \xi$ is a congruence on $S$;
   \item there exists a congruence $\zeta$ on $S$ such that
@@ -239,6 +240,41 @@ regular minimal ideal, we can talk about \textit{the} retraction of a
 retractable ideal without any loss of generality.  This result is the last thing
 we need to use our two building blocks to produce a new congruence: a
 \textit{lifted congruence}.
+
+\begin{definition}
+  \label{def:lifted-congruence}
+  \index{lifted congruence}
+  Let $S$ be a semigroup with a minimal ideal $M$, let $I$ be a retractable
+  ideal of $S$, and let $\xi$ be a lifting congruence on $M$.  We associate to
+  the pair $(I,\xi)$ the relation
+  $$\zeta_{I,\xi}= \Delta_S \cup \{(x,y) \in I \times I : (xf,yf) \in \xi\},$$
+  where $f:I \to M$ is the unique retraction of $I$.
+  We call $\zeta_{I,\xi}$ the \textbf{lifted congruence} of $(I,\xi)$.
+\end{definition}
+
+In order to justify the name \textit{lifted congruence}, we require the
+following proposition.
+
+\begin{proposition}\label{prop:lift}
+  The relation $\zeta_{I,\xi}$ in Definition \ref{def:lifted-congruence} is a
+  congruence on $S$.
+  \begin{proof}
+    Write $\zeta=\zeta_{I,\xi}$ for brevity, and let $f:I\to M$ be the
+    retraction.  Let $(x,y)\in\zeta$ and $s\in S$ be arbitrary.  We must show
+    that $(xs,ys),(sx,sy)\in\zeta$.  This is clear if $x=y$, so suppose
+    $x,y\in I$ and $xf\mathrel\xi yf$.  Since~$I$ is an ideal, we have
+    $xs,ys\in I$.  By Lemma \ref{lem:retract-aux}, and condition (iii) of
+    Definition \ref{def:lifting-congruence}, we have
+    $(xs)f = (xf)s \mathrel\xi (yf)s = (ys)f$, showing that $(xs,ys)\in\zeta$.
+    A dual argument shows that $(sx,sy)\in\zeta$.
+\end{proof}
+\end{proposition}
+
+This construction now gives us a usable source of congruences.  All that is
+required is to find lifting congruences and retractable ideals of a semigroup,
+and a number of new congruences can be described.  It turns out that this is an
+excellent source of congruences for $\Mot_n$, yielding every congruence on the
+semigroup, as we will see later.
 
 \section{Congruence lattice of $\Mot_n$}
 \label{sec:motzkin-congs}
