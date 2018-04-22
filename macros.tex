@@ -41,6 +41,9 @@
 \newcommand{\Mot}{\mathcal{M}}
 \newcommand{\Prt}{\mathcal{P}}
 
+% Other little shortcuts
+\newcommand{\bn}{\mathbf{n}}
+
 % Rewriting systems
 \newcommand{\rws}{\mathbf{R}}
 \newcommand{\tostar}{\stackrel{*}{\to}}
@@ -108,6 +111,9 @@
 \newcommand{\bc}[2]{ % Bottom curve
   \draw(#1, 0.125) .. controls (#1, 0.5) and (#2, 0.5) .. (#2, 0.125);
 }
+\newcommand{\bC}[2]{ % Bottom curve (bigger)
+  \draw(#1, 0.125) .. controls (#1, 0.75) and (#2, 0.75) .. (#2, 0.125);
+}
 \newcommand{\utv}[2]{ % Transversal (upper diagram)
   \draw(#1,4)--(#2,2);
 }
@@ -161,3 +167,6 @@
   \right)
 }
 \newcommand{\mc}{\multicolumn}
+\newcommand{\bipartABCD}{\bipart{c|c|c|c|c|c}{4-6}
+  {A_1 & \ldots & A_q & C_1 & \ldots & C_r}
+  {B_1 & \ldots & B_q & D_1 & \ldots & D_s}}
