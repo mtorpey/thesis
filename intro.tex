@@ -862,6 +862,20 @@ labelled $C_i$, and $s$ lower blocks labelled $D_i'$.
   \beta = \bipart{c|c|c}{3-3}{1,2,5 & 3 & 4}{1,2 & 4,5 & 3}.$$
 \end{example}
 
+We should also mention the $^\star$ operation.
+\nomenclature[*]{$^\star$}{Operation on bipartitions} To each bipartition
+$\alpha$ is assigned another bipartition $\alpha^\star$, which is found by
+swapping each point $i \in \bn$ with its opposite point $i'$.  Hence if
+$\alpha = \bipart{c|c|c|c|c|c}{4-6}
+{A_1 & \ldots & A_q & C_1 & \ldots & C_r}
+{B_1 & \ldots & B_q & D_1 & \ldots & D_s},$ then we have
+$\alpha^\star = \bipart{c|c|c|c|c|c}{4-6}
+{B_1 & \ldots & B_q & D_1 & \ldots & D_s}
+{A_1 & \ldots & A_q & C_1 & \ldots & C_r}$.
+This operation has the property that $\alpha \alpha^\star \alpha = \alpha$, and
+that $(\alpha^\star)^\star = \alpha$.  Hence it can act as a semigroup inverse
+function for bipartitions.
+
 We now consider the semigroup of all bipartitions of a given degree.
 
 \begin{definition}
@@ -880,12 +894,15 @@ $\tau$, the partition $(\tau)\phi$ has a block $\{a, (a\tau)'\}$ for each $a$ in
 the domain of $\tau$, and all other blocks singletons.  It is easy to see that
 $\phi$ is a monomorphism.  Hence $\Prt_n$ contains a copy of $\PT_n$, and
 therefore copies of the full transformation monoid $\T_n$, the symmetric inverse
-monoid $\I_n$, and the symmetric group $\Sym_n$.
+monoid $\I_n$, and the symmetric group $\Sym_n$.  Note that $\Prt_n$ is a
+regular semigroup, with an inverse of $\alpha \in \Prt_n$ given by
+$\alpha^\star$.
 
 As with any semigroup, it will be helpful to describe the Green's relations of
 the bipartition monoid.  The following proposition describes the Green's
-relations very simply in terms of domain, codomain, kernel, cokernel, and rank.
-The result is taken from \cite{fitzgerald_2011}.
+relations and the containment of $\JJ$-classes very simply in terms of domain,
+codomain, kernel, cokernel, and rank.  The result is taken from
+\cite{fitzgerald_2011}.
 
 \begin{proposition}
   \label{prop:bipartition-greens}
@@ -895,7 +912,11 @@ The result is taken from \cite{fitzgerald_2011}.
     $\ker \alpha = \ker \beta$;
   \item $\alpha \LL \beta$ if and only if $\codom \alpha = \codom \beta$ and
     $\coker \alpha = \coker \beta$;
-  \item $\alpha \JJ \beta$ if and only if $\rank \alpha = \rank \beta$.
+  \item $\alpha \JJ \beta$ if and only if $\rank \alpha = \rank \beta$;
+  \item $J_\alpha \leq J_\beta$ if and only if $\rank \alpha \leq \rank \beta$.
+  \item the ideals of $\Prt_n$ are precisely the sets
+    $I_r=\{\alpha \in \Prt_n : \rank \alpha \leq r\}$ for
+    $r \in \{0, \ldots, n\}$.
   \end{enumerate}
 \end{proposition}
 
