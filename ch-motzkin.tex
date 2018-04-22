@@ -37,6 +37,7 @@ bipartition.
 
 \begin{definition}
   \label{def:planar}
+  \index{planar bipartition}
   A bipartition is called \textbf{planar} if it can be represented in diagram
   form with all edges contained inside the rectangle formed by the vertices, and
   without any edges crossing.
@@ -61,6 +62,9 @@ bipartition.
 We can now define the Motzkin monoid.
 
 \begin{definition}
+  \label{def:motzkin}
+  \index{Motzkin monoid}
+  \nomenclature[Mn]{$\Mot_n$}{Motzkin monoid}
   The \textbf{Motzkin monoid} $\Mot_n$ is the submonoid of $\Prt_n$ consisting
   of all planar bipartitions of degree $n$ in which every block has size $1$ or
   $2$.
@@ -106,9 +110,135 @@ shown in Table \ref{tab:mn-size}.
   \label{tab:mn-size}
 \end{table}
 
+The Motzkin monoid $\Mot_n$ shares a number of features with $\Prt_n$---indeed,
+we will see later that its congruence lattice is very similar.  Like $\Prt_n$,
+$\Mot_n$ is regular One important
+similarity is in its Green's relations.  Consider the following proposition,
+akin to Proposition \ref{prop:bipartition-greens}.
+
+\begin{proposition}
+  \label{prop:mn-greens}
+  Let $\alpha$ and $\beta$ be bipartitions in $\Mot_n$.  The following hold:
+  \begin{enumerate}[\rm(i)]
+  \item $\alpha \RR \beta$ if and only if $\dom \alpha = \dom \beta$ and
+    $\ker \alpha = \ker \beta$;
+  \item $\alpha \LL \beta$ if and only if $\codom \alpha = \codom \beta$ and
+    $\coker \alpha = \coker \beta$;
+  \item $\alpha \JJ \beta$ if and only if $\rank \alpha = \rank \beta$;
+  \item $J_\alpha \leq J_\beta$ if and only if $\rank \alpha \leq \rank \beta$;
+  \item the ideals of $\Mot_n$ are precisely the sets
+    $I_r=\{\alpha \in \Mot_n : \rank \alpha \leq r\}$ for
+    $r \in \{0, \ldots, n\}$.
+  \end{enumerate}
+  \begin{proof}
+    For (i) to (iii), see \cite[Theorem 2.4]{deg_motzkin}.  For (iv) and (v),
+    see \cite[Proposition 2.6]{deg_motzkin}.
+  \end{proof}
+\end{proposition}
+
+This description of the Motzkin monoid's Green's relations, and its containment
+of $\JJ$-classes and ideals, will help us greatly later on.  However, one
+consequence of (i) and (ii) gives $\Mot_n$ a feature which $\Prt_n$ does not
+share, namely the following corollary.
+
+\begin{corollary}
+  \label{cor:mn-h-trivial}
+  The Motzkin monoid $\Mot_n$ is $\HH$-trivial.
+  \begin{proof}
+    Let $\alpha, \beta \in \Mot_n$ such that $\alpha \HH \beta$.  This tells us
+    that $\alpha \LL \beta$ and $\alpha \RR \beta$, so by Proposition
+    \ref{prop:mn-greens} parts (i) and (ii), we know that $\alpha$ and $\beta$
+    share the same domain, kernel, codomain and cokernel.  The upper blocks and
+    lower blocks of $\alpha$ and $\beta$ must certainly be the same, since they
+    are just the blocks of the kernel and cokernel that do not lie in the domain
+    or codomain.  The only choice is in the transversals: which blocks in the
+    domain connect to which blocks in the codomain.  In $\Prt_n$ there are
+    $(\rank \alpha)!$ ways of choosing this match-up; but in $\Mot_n$ there is
+    only one way possible, since we cannot allow any lines in the diagram to
+    cross over.  Hence $\alpha = \beta$.
+  \end{proof}
+\end{corollary}
+
+
 \section{Preliminaries}
 \label{sec:motzkin-prelim}
+We will start by defining some concepts which allow us to find certain
+congruences in any semigroup: \textit{retractable ideals} (Definition
+\ref{def:retractable-ideal}) and \textit{lifting congruences} (Definition
+\ref{def:lifting-congruence}).  It will turn out that all the congruences of
+$\Mot_n$ can be built using these two building blocks.
 
+\begin{definition}
+  \label{def:retractable-ideal}
+  \index{retractable ideal} \index{retraction}
+  Let $S$ be a semigroup with a minimal ideal $M$.  An ideal $I$ of $S$ is
+  \textbf{retractable} if there exists a homomorphism $f: I \to M$ such that
+  $xf = x$ for all $x \in M$; such a homomorphism is called a
+  \textbf{retraction}.
+\end{definition}
+
+\begin{definition}
+  \label{def:lifting-congruence}
+  \index{lifting congruence}
+  Let $S$ be a semigroup with a minimal ideal $M$.  A congruence $\xi$ on $M$ is
+  a \emph{lifting congruence} if any, and hence all, of the following equivalent
+  conditions are satisfied:
+  \begin{enumerate}[\rm(i)]
+  \item $\Delta_S \cup \xi$ is a congruence on $S$;
+  \item there exists a congruence $\zeta$ on $S$ such that
+    $\xi=\zeta\cap(M\times M)$;
+  \item for all $(x,y) \in \xi$ and $s \in S$, $(xs,ys),(sx,sy) \in \xi$.
+  \end{enumerate}
+\end{definition}
+
+In order to use these building blocks to produce new congruences, we first need
+to establish some results about them.  Note that, since $\Mot_n$ is finite, it
+always has a minimal ideal.  More specifically, the minimal ideal of $\Mot_n$ is
+given by $I_0 = \{\alpha \in \Mot_n : \rank \alpha = 0\}$ (see Proposition
+\ref{prop:mn-greens}).  The following lemma will be used at various times
+throughout this chapter.
+
+\begin{lemma}
+  \label{lem:retract-aux}
+  Let $S$ be a semigroup with a regular minimal ideal $M$, and let $I$ be an
+  ideal of $S$. If $f: I\rightarrow M$ is a retraction, then $(sxt)f=s(xf)t$ for
+  all $x\in I$ and $s,t\in S^1$.
+  \begin{proof}
+    We will prove the lemma by showing that $(sx)f=s(xf)$ for any $s\in S ^ 1$
+    and $x\in I$.  The equality $(xt)f=(xf)t$ is dual, and then
+    $(sxt)f=s(xt)f=s(xf)t$.  Let $e\in M$ be any right identity for $xf$; such
+    an~$e$ exists because $M$ is regular. Then, since $f$ is a retraction and
+    $e,xe\in M$, we have $xf=(xf)e=(xf)(ef)=(xe)f=xe$.  Next, let $e_1\in M$ be
+    a left identity for $(sx)f$.  Then
+    $(sx)fe=e_1(sx)fe=(e_1f)(sx)f(ef)=(e_1sxe)f
+     =(e_1s)f(xf)(ef)=(e_1s)f(xf)=(e_1sx)f=(e_1f)(sx)f=e_1(sx)f=(sx)f$.
+    So $e$ is a right identity for $(sx)f$ as well, and hence $(sx)f=sxe=s(xf)$,
+    as required.
+  \end{proof}
+\end{lemma}
+
+This gives rise to an important result which we can use later when we combine
+retractable ideals with lifting congruences.  Note first that, since $\Mot_n$ is
+a regular semigroup, its minimal ideal is also regular.
+
+\begin{corollary}
+  \label{cor:retract-unique}
+  Let $S$ be a semigroup with a regular minimal ideal $M$.  If $I$ is a
+  retractable ideal of $S$, then there exists a unique retraction from $I$ to
+  $M$.
+  \begin{proof}
+    Suppose $f,g:I\to M$ are retractions, and let $x\in I$.  Let $e\in M$ be a
+    left identity for $xf$.  Using Lemma \ref{lem:retract-aux}, we see that
+    $xf = e (xf) = (ex)f = ex = (ex)g = e (xg)$.  A dual argument shows that
+    $xg=(xf) e'$ for some $e'$.  But then $xf = e (xg) = e (xf) e' = (xf)e'=xg$.
+  \end{proof}
+\end{corollary}
+
+The effect of Corollary \ref{cor:retract-unique} is that, for a semigroup with a
+regular minimal ideal, we can talk about \textit{the} retraction of a
+retractable ideal without any loss of generality.  This result is the last thing
+we need to use our two building blocks to produce a new congruence: a
+\textit{lifted congruence}.
 
 \section{Congruence lattice of $\Mot_n$}
 \label{sec:motzkin-congs}
