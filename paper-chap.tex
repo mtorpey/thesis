@@ -412,7 +412,7 @@ proposition will be used frequently throughout the paper without explicit
 reference.
 
 
-\begin{prop}\label{prop:green_all_inclusive}
+\begin{proposition}\label{prop:green_all_inclusive}
 Let $\mathcal{K}_n$ be any of the monoids $\P_n,\PB_n,\B_n,\PP_n,\Mot_n,\I_n,\mathcal J_n,\O_n$.  If $\alpha,\beta\in\mathcal K_n$, then
   \begin{itemize}
 \itemit{i} $\alpha\R\beta\iff\dom(\alpha)=\dom(\beta)$ and $\ker(\alpha)=\ker(\beta)$,
@@ -421,7 +421,7 @@ Let $\mathcal{K}_n$ be any of the monoids $\P_n,\PB_n,\B_n,\PP_n,\Mot_n,\I_n,\ma
 \itemit{iv} $J_\alpha\leq J_\beta\iff\rank(\alpha)\leq\rank(\beta)$.
 \epfres
 \end{itemize}
-\end{prop}
+\end{proposition}
 
 
 
@@ -551,18 +551,18 @@ All of the congruences discussed in subsequent sections will be instances of the
 %
 For completeness, we recall the definition of a Rees congruence:
 
-\begin{defn}\label{defn:Rees}
+\begin{definition}\label{defn:Rees}
 A non-empty subset $I$ of a semigroup $S$ is an \emph{ideal} if $ax,xa\in I$ for all $x\in I$ and $a\in S$.  To an ideal $I$, we associate the \emph{Rees congruence} $R_I=\De_S\cup(I\times I)$.
-\end{defn}
+\end{definition}
 
 %As noted above, we will be especially interested in a particular kind of ideal.  
 Recall that a semigroup has at most one minimal ideal, and that if a minimal ideal exists, then it is a single $\gJ$-class and is the intersection of all ideals; see for example \cite[Section 3.1]{Howie}.  Since the intersection of any finite collection of ideals is non-empty, every finite semigroup has a minimal ideal.  Not every infinite semigroup has a minimal ideal, however; consider the natural numbers under addition, for example.
 
-\begin{defn}\label{defn:retractable}
+\begin{definition}\label{defn:retractable}
   Let $S$ be a semigroup with a minimal ideal $M$.  An ideal $I$ of $S$ is \textit{retractable} if there exists a
   homomorphism $f: I \to M$ such that $xf = x$ for all $x\in M$; such a
   homomorphism is called a \textit{retraction}. 
-\end{defn}
+\end{definition}
 
 Clearly, if $I,J$ are ideals of $S$ with $I\sub J$ and~$J$ retractable, then $I$ is also retractable.  Also, note that if $S$ has a zero element, then $\{0\}$ is the minimal ideal and all ideals are trivially retractable.
 
@@ -580,7 +580,7 @@ The next sequence of results concern semigroups with regular minimal ideals.  Fi
 Let $S$ be a semigroup with a regular minimal ideal $M$, and let $I$ be an ideal of $S$. If $f: I\rightarrow M$ is a retraction, then $(sxt)f=s(xf)t$ for all $x\in I$ and $s,t\in S^1$.
 \end{lemma}
 
-\pf
+\begin{proof}
 We will prove the lemma by showing that $(sx)f=s(xf)$ for any $s\in S ^ 1$ and
 $x\in I$.  The equality $(xt)f=(xf)t$ is dual, and then $(sxt)f=s(xt)f=s(xf)t$.
 Let $e\in M$ be any right identity for $xf$; such an~$e$ exists because $M$
@@ -592,66 +592,66 @@ $
 $.
 So $e$ is a right identity for $(sx)f$ as well, and hence $(sx)f=sxe=s(xf)$, as
 required.
-\epf
+\end{proof}
 
-\begin{cor}\label{cor:retract_unique}
+\begin{corollary}\label{cor:retract_unique}
 Let $S$ be a semigroup with a regular minimal ideal $M$.  If $I$ is a retractable ideal of $S$, then there exists a unique retraction from $I$ to $M$.
-\end{cor}
+\end{corollary}
 
-\pf
+\begin{proof}
 Suppose $f,g:I\to M$ are retractions, and let $x\in I$.  Let $e\in M$ be a
 left identity for $xf$.  Using Lemma \ref{lemma-RetractAux}, we see that
 $xf = e (xf) = (ex)f = ex = (ex)g = e (xg)$.  A dual argument shows that
 $xg=(xf) e'$ for some $e'$.  But then $xf = e (xg) = e (xf)  e' = (xf)e'=xg$.
-\epf
+\end{proof}
 
 Although we will make no subsequent use of the next result, we believe it is of independent interest, and so include it for completeness.
 
 
-\begin{prop}
+\begin{proposition}
 Let $S$ be a semigroup with a regular minimal ideal $M$.  Then the union of any non-empty family of retractable ideals of $S$ is a retractable ideal.  Consequently,~$S$ contains a unique maximal retractable ideal.
-\end{prop}
+\end{proposition}
 
-\pf The second claim clearly follows from the first.  Suppose $\set{I_k}{k\in K}$ is a non-empty collection of retractable ideals of $S$, and put $I=\bigcup_{k\in K}I_k$; clearly $I$ is an ideal of $S$.  For each $k\in K$, let $f_k:I_k\to M$ be the unique retraction.  For any non-empty subset $L\sub K$, define $I_L=\bigcap_{l\in L}I_l$.  Since $M$ is contained in each~$I_l$, it follows that $I_L$ is non-empty, and so an ideal of $M$.  Furthermore, for any $l\in L$, the restriction of $f_l$ to~$I_L$ is a retraction; thus, by Corollary \ref{cor:retract_unique}, all such restrictions are equal.  It follows that there is a well-defined map $f:I\to M$ defined, for $x\in I$, by $xf=xf_k$ if $x\in I_k$.  Clearly $f$ acts identically on $M$, so to complete the proof, it remains to show that $(xy)f=(xf)(yf)$ for all $x,y\in I$.  With this in mind, suppose $x,y\in I$, and let $k,l\in K$ be such that $x\in I_k$ and $y\in I_l$.  Then, using Lemma~\ref{lemma-RetractAux} and the facts that $xy\in I_l$ and $(xy)f_l\in M$, we have $(xf)(yf) = (xf_k)(yf_l) = (x(yf_l))f_k = ((xy)f_l)f_k = (xy)f_l = (xy)f$, as required.
-\epf
+\begin{proof} The second claim clearly follows from the first.  Suppose $\set{I_k}{k\in K}$ is a non-empty collection of retractable ideals of $S$, and put $I=\bigcup_{k\in K}I_k$; clearly $I$ is an ideal of $S$.  For each $k\in K$, let $f_k:I_k\to M$ be the unique retraction.  For any non-empty subset $L\sub K$, define $I_L=\bigcap_{l\in L}I_l$.  Since $M$ is contained in each~$I_l$, it follows that $I_L$ is non-empty, and so an ideal of $M$.  Furthermore, for any $l\in L$, the restriction of $f_l$ to~$I_L$ is a retraction; thus, by Corollary \ref{cor:retract_unique}, all such restrictions are equal.  It follows that there is a well-defined map $f:I\to M$ defined, for $x\in I$, by $xf=xf_k$ if $x\in I_k$.  Clearly $f$ acts identically on $M$, so to complete the proof, it remains to show that $(xy)f=(xf)(yf)$ for all $x,y\in I$.  With this in mind, suppose $x,y\in I$, and let $k,l\in K$ be such that $x\in I_k$ and $y\in I_l$.  Then, using Lemma~\ref{lemma-RetractAux} and the facts that $xy\in I_l$ and $(xy)f_l\in M$, we have $(xf)(yf) = (xf_k)(yf_l) = (x(yf_l))f_k = ((xy)f_l)f_k = (xy)f_l = (xy)f$, as required.
+\end{proof}
 
 Our first construction combines the idea of a retractable ideal with the following.
 
 \newpage
 
-\begin{defn}\label{defn:lift}
+\begin{definition}\label{defn:lift}
 Let $S$ be a semigroup with a minimal ideal $M$.  A congruence $\xi$ on $M$ is a \emph{lifting congruence} if any, and hence all, of the following equivalent conditions are satisfied:
 \begin{itemize}
 \item[(i)] $\De_S\cup\xi$ is a congruence on $S$, or
 \item[(ii)] there exists a congruence $\zeta$ on $S$ such that $\xi=\zeta\cap(M\times M)$, or
 \item[(iii)] for all $(x,y)\in\xi$ and $s\in S$, $(xs,ys),(sx,sy)\in\xi$.
 \end{itemize}
-\end{defn}
+\end{definition}
 
-\begin{defn}\label{defn:lift2}
+\begin{definition}\label{defn:lift2}
 Let $S$ be a semigroup with a minimal ideal $M$.  To any retractable ideal $I$ of $S$ (Definition~\ref{defn:retractable}), and to any lifting congruence $\xi$ on $M$ (Definition~\ref{defn:lift}), we
 associate the relation
 \[
   \zeta_{I,\xi}=\De_S\cup\set{(x,y)\in I\times I}{(xf,yf) \in \xi},
 \]
 where $f:I\to M$ is the unique retraction.
-\end{defn}
+\end{definition}
 
 %\begin{rem}\label{rem:I<J}
 Clearly the trivial and universal congruences, $\De_M$ and $\nabla_M$ on $M$, are lifting congruences: in particular, when $I=M$ is the minimal ideal itself, we have $\zeta_{M,\De_M} = \De_S$ and $\zeta_{M,\nabla_M}=R_M$.  Note also that if $\xi$ is a lifting congruence, and if $I_1,I_2$ are retractable ideals with $I_1\sub I_2$, then $\zeta_{I_1,\xi}\sub\zeta_{I_2,\xi}$.
 %\end{rem}
 
-\begin{prop}\label{prop:lift}
+\begin{proposition}\label{prop:lift}
 Let $S$ be a semigroup with a regular minimal ideal $M$.  If $I$ is a retractable ideal of $S$, and $\xi$ a lifting congruence on $M$, then the relation $\zeta_{I,\xi}$ is a congruence on $S$.
-\end{prop}
+\end{proposition}
 
-\pf Write $\zeta=\zeta_{I,\xi}$ for brevity, and let $f:I\to M$ be the retraction.  Let $(x,y)\in\zeta$ and $s\in S$ be
+\begin{proof} Write $\zeta=\zeta_{I,\xi}$ for brevity, and let $f:I\to M$ be the retraction.  Let $(x,y)\in\zeta$ and $s\in S$ be
 arbitrary.  We must show that $(xs,ys),(sx,sy)\in\zeta$.  This is clear if
 $x=y$, so suppose $x,y\in I$ and $xf\mathrel\xi yf$.  Since~$I$ is an
 ideal, we have $xs,ys\in I$.  By Lemma \ref{lemma-RetractAux}, and condition (iii) of Definition~\ref{defn:lift}, we have $(xs)f = (xf)s \mathrel\xi
 (yf)s = (ys)f$, showing that $(xs,ys)\in\zeta$.  A dual argument shows that
 $(sx,sy)\in\zeta$. 
-\epf
+\end{proof}
 
 %\begin{rem}
 In general, the minimal ideal may have many congruences, only few of which are lifting congruences. 
@@ -669,12 +669,12 @@ In what follows, we will be mostly concerned with certain lifting congruences
 that exist in \emph{every} finite semigroup, beyond the obvious $\De_M$ and
 $\nabla_M$.  These lifting congruences are present in many infinite semigroups as well; the key concept is \emph{stability}.
 
-\begin{defn}\label{defn:stableJ}
+\begin{definition}\label{defn:stableJ}
 A $\gJ$-class $J$ of a semigroup $S$ is \emph{stable} if, for all $x\in J$ and $a\in S$,
 \[
 xa\gJ x \implies xa\R x \qquad\text{and}\qquad ax\gJ x \implies ax\L x.
 \]
-\end{defn}
+\end{definition}
 
 It is well known that every $\gJ$-class of a finite semigroup is stable; see for example \cite[Theorem A.2.4]{RSbook}.  We require two preliminary results concerning stability; Lemmas \ref{lem:stableJD} and \ref{lem:Mcr} are probably well known, but we include simple proofs for convenience.  The proof of the next result utilises the partial order on $\gJ$-classes discussed in Section \ref{sect:prelim_Green}.
 
@@ -682,9 +682,9 @@ It is well known that every $\gJ$-class of a finite semigroup is stable; see for
 If $J$ is a stable $\gJ$-class of a semigroup $S$, then $J$ is a $\D$-class.
 \end{lemma}
 
-\pf
+\begin{proof}
 Let $x,y\in J$.  We must show that $x\D y$.  Since $x\gJ y$, we have $y=axb$ for some $a,b\in S^1$.  Then $J_y = J_{axb} \leq J_{ax} \leq J_x = J_y$, so that, in fact, all of these $\gJ$-classes are equal (to $J$).  In particular, $ax\gJ x$ and $(ax)b\gJ ax$.  Since $x,ax\in J$, it follows from stability that $ax\L x$, and $ax \R (ax)b=y$.  Thus, $x\L ax\R y$, which gives $x\D y$.
-\epf
+\end{proof}
 
 As noted above, if a semigroup has a minimal ideal, then this ideal is a single $\gJ$-class.  Recall that a semigroup is \emph{completely regular} if it is a union of groups; in particular, any completely regular semigroup is regular.  Recall that a \emph{rectangular band} is a semigroup consisting of idempotents, all of which are $\D$-related.
 
@@ -692,9 +692,9 @@ As noted above, if a semigroup has a minimal ideal, then this ideal is a single 
 Let $S$ be a semigroup with a stable minimal ideal $M$.  Then $M$ is completely regular.  In particular, if $M$ is $\H$-trivial, then $M$ is a rectangular band.
 \end{lemma}
 
-\pf 
+\begin{proof} 
 Let $x\in M$.  Since $M$ is an ideal, $x^2\in M$.  Since~$M$ is a single $\gJ$-class, it follows that $x^2\gJ x$.  Stability then gives $x^2\R x$ and $x^2\L x$, so that $x^2\H x$.  Green's Theorem (see \cite[Theorem 2.2.5]{Howie}) then says that the $\H$-class of $x$ is a group.  This completes the proof of the first claim.  The second follows from the first, together with the fact that $M$ is a $\D$-class, which itself follows from Lemma \ref{lem:stableJD}.
-\epf
+\end{proof}
 
 As a consequence of Lemma \ref{lem:Mcr}, all the results above concerning semigroups with a \emph{regular} minimal ideal apply to any semigroup with a \emph{stable} minimal ideal; as noted above, this includes all finite semigroups.
 %
@@ -704,12 +704,12 @@ If $\K$ is any of Green's relations on a semigroup $S$ with a minimal ideal $M$,
 Let $S$ be a semigroup with a stable minimal ideal $M$.  Then $\L^M$, $\R^M$ and $\H^M$ are all lifting congruences on $M$.
 \end{lemma}
 
-\pf By duality, and since ${\H^M}={\L^M}\cap{\R^M}$, it suffices to prove the
+\begin{proof} By duality, and since ${\H^M}={\L^M}\cap{\R^M}$, it suffices to prove the
 result for $\L^M$.  Let $(x,y)\in{\L^M}$ and $s\in S$.  Since $M$ is an ideal,
 $xs,ys,sx,sy\in M$.  Since $\L$ is a right congruence, it follows that
 $(xs,ys)\in{\L}$, and hence $(xs,ys)\in{\L^M}$.  Since $M$ is a single
 $\gJ$-class, $x\gJ sx$, and stability gives $x\L sx$; similarly, $y\L sy$.  It
-follows that $sx\L x\L y\L sy$, and so $(sx,sy)\in{\L^M}$. \epf
+follows that $sx\L x\L y\L sy$, and so $(sx,sy)\in{\L^M}$. \end{proof}
 
 %\begin{rem}
 Lemma \ref{lem:lift} does not hold for arbitrary semigroups.  For example, the \emph{bicyclic semigroup}, given by the presentation $\la a,b:ba=1\ra$, is $\gJ$-universal and so equal to its own minimal ideal.  It is regular but not stable, and neither $\L$ nor $\R$ is a (lifting) congruence.
@@ -719,7 +719,7 @@ As a result of Proposition \ref{prop:lift} and Lemma \ref{lem:lift}, we obtain
 the following family of congruences associated to an arbitrary retractable
 ideal in a semigroup with a stable minimal ideal.
 
-\begin{defn}
+\begin{definition}
 \label{defn:lrmI}
 Let $S$ be a semigroup with a stable minimal ideal $M$.  Given a retractable ideal $I$ of $S$ (Definition \ref{defn:retractable}), define the congruences
 \begin{align*}
@@ -730,7 +730,7 @@ Let $S$ be a semigroup with a stable minimal ideal $M$.  Given a retractable ide
   &\eta_I=\zeta_{I,\De_M}&=\Delta_S\cup\set{ (x,y)\in I\times I}{ xf= yf},
 \end{align*}
 where $f:I\to M$ is the unique retraction, and where the relations $\zeta_{I,\xi}$ are as in Definition~\ref{defn:lift2}.
-\end{defn}
+\end{definition}
 
 %\begin{rem}
 It is clear that $\eta_I\sub\mu_I=\lam_I\cap\rho_I$, with $\eta_I=\mu_I$ if and only if $M$ is $\H$-trivial, and that all four relations from Definition~\ref{defn:lrmI} are contained in $R_I=\zeta_{I,\nabla_M}$.  
@@ -740,7 +740,7 @@ It is also clear that if $I_1,I_2$ are retractable ideals with $I_1\sub I_2$, th
 
 The remaining families of congruences involve the interaction between an ideal and a stable, regular $\gJ$-class directly above it.  Each will make use of the following auxiliary relation:
 
-\begin{defn}
+\begin{definition}
 \label{Rel-nu}
 %For a normal subgroup $N$ of a maximal subgroup of a semigroup~$S$, define the relation
 %\[
@@ -751,7 +751,7 @@ Suppose $J$ is a stable, regular $\gJ$-class of a semigroup $S$.  For a normal s
 \[
 \nu_N = S^1(N\times N)S^1\cap(J\times J) = \set{ (sxt,syt)\in J\times J}{ x,y\in N,\ s,t\in S^1}.
 \]
-\end{defn}
+\end{definition}
 
 %\begin{rem}
 An alternative, perhaps more intuitive, way of viewing the relation $\nu_N$ is
@@ -779,7 +779,7 @@ If $J$ is a stable, regular $\gJ$-class of a semigroup $S$, then it is a $\D$-cl
 Let $G_1,G_2$ be maximal subgroups contained in the same stable, regular $\gJ$-class $J$ of a semigroup $S$.  If $N_1$ is a normal subgroup of $G_1$, then there exists a normal subgroup $N_2$ of $G_2$ such that $\nu_{N_1}=\nu_{N_2}$.
 \end{lemma}
 
-\pf
+\begin{proof}
 By Lemma \ref{lem:stableJD}, $J$ is a $\D$-class.
 By the proof of \cite[Proposition 2.3.6]{Howie}, there exist $a,b\in S$ such that the map ${\phi:G_1\to G_2:x\mt axb}$ is an isomorphism, with inverse $x\mt bxa$.  
 Put $N_2=N_1\phi=aN_1b$; normality of $N_2$ follows from that of $N_1$.  We also have
@@ -787,11 +787,11 @@ Put $N_2=N_1\phi=aN_1b$; normality of $N_2$ follows from that of $N_1$.  We also
 S^1(N_2\times N_2)S^1 = S^1(aN_1b\times aN_1b)S^1 = S^1(a(N_1\times N_1)b)S^1 \sub S^1(N_1\times N_1)S^1,
 \]
 which gives $\nu_{N_2} = S^1(N_2\times N_2)S^1 \cap (J\times J) \sub S^1(N_1\times N_1)S^1 \cap (J\times J) = \nu_{N_1}$.  Similarly, $\nu_{N_1}\sub\nu_{N_2}$.
-\epf
+\end{proof}
 
 In addition to the relations $\nu_N$, defined above, we need one more key concept in order to describe the remaining families of congruences.
 
-\begin{defn}
+\begin{definition}
 \label{defn:RC}
   An \emph{IN-pair} on a semigroup $S$ is a pair $\C=(I,N)$, where
   $I$ is an ideal of~$S$, and $N$ is a normal subgroup of a maximal subgroup of
@@ -804,12 +804,12 @@ In addition to the relations $\nu_N$, defined above, we need one more key concep
   where $\nu_N$ is given in Definition~\ref{Rel-nu}. 
 %
 Clearly, when $|N|=1$, $\nu_N=\De_J\sub\De_S$, and so $R_{I,N}=R_I$ is the Rees congruence associated to $I$ (Definition \ref{defn:Rees}); thus, we say an IN-pair $\C=(I,N)$ is \emph{proper} if $|N|\geq2$.
-\end{defn}
+\end{definition}
 
 
 Our final family of congruences involve a special kind of IN-pair.
 
-\begin{defn}
+\begin{definition}
 \label{defn:lrmC0}
 Let $S$ be a semigroup with a minimal ideal.
   We say that an IN-pair $\C=(I,N)$ on $S$ is
@@ -820,11 +820,11 @@ Let $S$ be a semigroup with a minimal ideal.
 \zeta_{I,N,\xi} = \zeta_{I,\xi}\cup\nu_N = \De_S\cup\nu_N\cup\set{(x,y)\in I\times I}{(xf,yf) \in \xi},
 \]
 where $f:I\to M$ is the unique retraction, and where $\zeta_{I, \xi}$ and $\nu_N$ are given in Definitions~\ref{defn:lift2} and \ref{Rel-nu}, respectively.
-\end{defn}
+\end{definition}
 
 By Lemma \ref{lem:lift}, every retractable IN-pair on a semigroup with a stable minimal ideal yields a natural family of $\zeta_{I,N,\xi}$ relations:
 
-\begin{defn}
+\begin{definition}
 \label{defn:lrmC}
 Let $S$ be a semigroup with a stable minimal ideal.  To every retractable IN-pair $\C=(I,N)$ on $S$ (Definition \ref{defn:lrmC0}), we associate four relations:
 \begin{align*}
@@ -836,7 +836,7 @@ Let $S$ be a semigroup with a stable minimal ideal.  To every retractable IN-pai
 \eta_\C=\eta_{I,N}=\zeta_{I,N,\De_M}=\eta_I\cup\nu_N&=\Delta_S\cup\nu_N\cup\set{ (x,y)\in I\times I}{ xf= yf},
 \end{align*}
 where $f:I\to M$ is the unique retraction.
-\end{defn}
+\end{definition}
 
 Again, if $|N|=1$, then the relations from Definitions \ref{defn:lrmC0} and
 \ref{defn:lrmC} reduce to those from Definitions \ref{defn:lift2} and \ref{defn:lrmI}, respectively.  In what
@@ -878,13 +878,13 @@ If $S$ has a stable minimal ideal $M$ (which is regular, by Lemma \ref{lem:Mcr})
 Stability of $J$ was a crucial ingredient in the proof of Lemma \ref{lem:nu}.  Indeed, consider the full transformation semigroup $\T_X$ on an infinite set $X$.  Let $X=Y\cup Z$, where $Y\cap Z=\emptyset$ and~${|X|=|Y|=|Z|}$.  Let~$J=\set{f\in\T_X}{\rank(f)=|X|}$, and let $N=\S_X$ be the symmetric group on $X$.  So $J$ is a non-stable, regular $\gJ$-class of $\T_X$, and $N$ is a maximal subgroup of $\T_X$ contained in $J$.  We define transformations~$u,v,p,q,s\in\T_X$ as follows.  First, let $u=q=\id_X$ be the identity map on $X$.  Next, let $v$ be any transformation that maps $Y$ bijectively onto $Z$, and $Z$ bijectively onto $Y$.  Fix some element $w\in Y$, and let $p=s$ be the transformation that maps $Y$ identically, and maps all of $Z$ onto $w$.  Then $u,v\in N$ and $(x,y)=(puq,pvq)\in\nu_N$.  However, $xs=p\in J$ but $ys$ is the constant map with image $\{w\}$, so that~$ys\not\in J$, whence $(xs,ys)$ belongs neither to $\nu_N$ nor to $I\times I$, where $I$ is the ideal $\T_X\sm J$.  Consequently, the relation~$R_I\cup\nu_N$ is not a congruence on $\T_X$.
 \end{rem}
 
-\begin{prop}
+\begin{proposition}
 \label{prop-AreCongs}
 Let $S$ be a semigroup with a stable minimal ideal.  If $\C$ is an IN-pair on $S$, then $R_\C$ is a congruence on $S$.  Furthermore, if $\C=(I,N)$ is retractable, and $\xi$ is a lifting congruence on the minimal ideal of $S$, then $\zeta_{I,N,\xi}$ is also a congruence on $S$.  In particular, $\lambda_\C$, $\rho_\C$, $\mu_\C$ and $\eta_\C$ are all congruences if $\C$ is retractable.
-\end{prop}
+\end{proposition}
 
-\pf
-From Lemma \ref{lem:nu} and the fact that $R_I$ is a congruence, it follows immediately that $R_\C=R_I\cup\nu_N$ is a congruence.  Now suppose $\C$ is retractable, and that $\xi$ is a lifting congruence on the minimal ideal.  Let $(x,y)\in\zeta_{I,N,\xi}=\zeta_{I,\xi}\cup\nu_N$ and $s\in S$.  We must show that $(sx,sy),(xs,ys)\in\zeta_{I,N,\xi}$.  This follows from Proposition \ref{prop:lift} if $(x,y)\in\zeta_{I,\xi}$, or from Lemma \ref{lem:nu} if $(x,y)\in\nu_N$, using the fact that~$\eta_\C\sub\zeta_{I,N,\xi}$.  \epf
+\begin{proof}
+From Lemma \ref{lem:nu} and the fact that $R_I$ is a congruence, it follows immediately that $R_\C=R_I\cup\nu_N$ is a congruence.  Now suppose $\C$ is retractable, and that $\xi$ is a lifting congruence on the minimal ideal.  Let $(x,y)\in\zeta_{I,N,\xi}=\zeta_{I,\xi}\cup\nu_N$ and $s\in S$.  We must show that $(sx,sy),(xs,ys)\in\zeta_{I,N,\xi}$.  This follows from Proposition \ref{prop:lift} if $(x,y)\in\zeta_{I,\xi}$, or from Lemma \ref{lem:nu} if $(x,y)\in\nu_N$, using the fact that~$\eta_\C\sub\zeta_{I,N,\xi}$.  \end{proof}
 
 
 
@@ -894,21 +894,21 @@ If $N_1,\ldots,N_k$ are normal subgroups of maximal subgroups of $S$ contained i
 
 We now elucidate the relationships between the congruences defined in this section within the lattice~$\Cong(S)$.
 
-\begin{prop}
+\begin{proposition}
 \label{prop-CR2}
 Let $S$ be a semigroup with a stable minimal ideal.  Suppose $\C_1=(I_1,N_1)$ and ${\C_2=(I_2, N_2)}$ are IN-pairs on~$S$, and that $J_1$ and $J_2$ are the $\gJ$-classes of $N_1$
   and $N_2$, respectively. If $I_1\cup J_1\subseteq I_2$, or $I_1=I_2$ and
   $N_1\subseteq N_2$, then $R_{\C_1}\subseteq R_{\C_2}$.
-\end{prop}
+\end{proposition}
 
-\pf  If $I_1\cup J_1\subseteq I_2$, then $R_{\C_1}=R_{I_1}\cup \nu_{N_1} \sub R_{I_2}\cup(J_1\times J_1)\sub R_{I_2}\cup(I_2\times I_2)=R_{I_2}\sub R_{\C_2}$.  
+\begin{proof}  If $I_1\cup J_1\subseteq I_2$, then $R_{\C_1}=R_{I_1}\cup \nu_{N_1} \sub R_{I_2}\cup(J_1\times J_1)\sub R_{I_2}\cup(I_2\times I_2)=R_{I_2}\sub R_{\C_2}$.  
 %
 If $I_1=I_2$ and $N_1\subseteq N_2$, then $R_{\C_1}=R_{I_1}\cup\nu_{N_1}\sub R_{I_1}\cup\nu_{N_2}=R_{\C_2}$.
-\epf
+\end{proof}
 
 
 
-\begin{prop}
+\begin{proposition}
 \label{prop-CR3}
 Let $S$ be a semigroup with a stable minimal ideal.  Suppose $\C_1=(I_1,N_1)$ and ${\C_2=(I_2, N_2)}$ are retractable IN-pairs on $S$, and that $J_1$ and $J_2$ are the $\gJ$-classes of $N_1$ and $N_2$, respectively. If $I_1\cup J_1\subseteq I_2$, or $I_1=I_2$ and $N_1\subseteq N_2$, then
 \begin{itemize}
@@ -924,9 +924,9 @@ $\eta_{\C_1}\subseteq \eta_{\C_2}$,
 \itemit{vi} $R_{\C_1}\cap\mu_{\C_2}=\mu_{\C_1}$ and $R_{\C_1}\vee\mu_{\C_2}=R_{\C_2}$.
 \end{multicols}
 \end{itemize}
-\end{prop}
+\end{proposition}
 
-\pf
+\begin{proof}
 Let $f:I_2\to M$ be the unique retraction.  Since $I_1\sub
   I_2$, the retraction of $I_1$ is the restriction of $f$ to~$I_1$.
   Part (i) follows from the definition of the congruences in a manner
@@ -954,7 +954,7 @@ $(xf,z)\in \lambda_1$ and $(z,y)\in \rho_2$, implying $(x,y)\in\lambda_1\vee\rho
 The proof of (iv) is similar to that of (ii), so we omit it.  For (v), it suffices to prove that $\rho_1\vee\mu_2=\rho_2$.  The forwards inclusion is again straightforward.  For the converse, let $(x,y)\in\rho_2$.  Since $\De_S\cup\nu_{N_2}\sub\mu_2\sub\rho_1\vee\mu_2$, it suffices to assume that $x,y\in I_2$ and $xf\R yf$.  If $I_1=I_2$, then it follows that $(x,y)\in\rho_1\sub\rho_1\vee\mu_2$, so suppose instead that $I_1\cup J_1\sub I_2$.  Then, again using $M\sub I_1\sub I_2$, we have $(x,xf)\in\mu_2$, $(xf,yf)\in\rho_1$ and $(yf,y)\in\mu_2$, so that $(x,y)\in\rho_1\vee\mu_2$.
 
 The proof of (vi) is similar to (but easier than) the proofs of (ii) and (v), so we omit it.
-\epf
+\end{proof}
 
 \begin{rem}\label{rem:nonprincipal}
 Consider the case that $I_1=I_2$ and $N_1\sub N_2$, in the notation of Proposition \ref{prop-CR3}.  From the proof of part (v), it follows that $\lam_{\C_2}$ and $\rho_{\C_2}$ decompose as \emph{unions}, not just joins:
@@ -967,7 +967,7 @@ It is also easy to see (under the above assumption on $I_1,I_2,N_1,N_2$) that $R
 Specialising Proposition \ref{prop-CR3} to the case where $\C_1=\C_2$ we obtain
 the following.
 
-\begin{prop}
+\begin{proposition}
 \label{prop-CR4}
 Let $S$ be a semigroup with a stable minimal ideal $M$, and let $\C$ be a retractable IN-pair on~$S$.  Then 
 \begin{itemize}
@@ -975,9 +975,9 @@ Let $S$ be a semigroup with a stable minimal ideal $M$, and let $\C$ be a retrac
 \itemit{ii} $\eta_\C=\mu_\C$ if and only if $M$ is $\H$-trivial,
 \itemit{iii} if $M$ has at least two $\R$-classes and at least two $\L$-classes, then the congruences $\lambda_{\C}$ and $\rho_{\C}$ are incomparable in $\Cong(S)$.
 \end{itemize}
-\end{prop}
+\end{proposition}
 
-\pf Part (i) is a direct consequence of Proposition \ref{prop-CR3}.  Parts (ii) and (iii) follow from the fact that the restrictions of $\lambda_\C,\rho_\C,\mu_\C$ to $M$ are equal to the restrictions of $\L,\R,\H$ to~$M$, respectively. \epf
+\begin{proof} Part (i) is a direct consequence of Proposition \ref{prop-CR3}.  Parts (ii) and (iii) follow from the fact that the restrictions of $\lambda_\C,\rho_\C,\mu_\C$ to $M$ are equal to the restrictions of $\L,\R,\H$ to~$M$, respectively. \end{proof}
 
 Proposition \ref{prop-CR4} can be interpreted as saying that the congruences
 $R_{\C}$, $\lambda_{\C}$, $\rho_{\C}$, and $\mu_{\C}$ corresponding to a
@@ -991,10 +991,10 @@ built; see Figures \ref{fig-CongPn}, \ref{fig-CongPPn}, \ref{fig:Hasse_Bn} and
 each other inside $\Cong(S)$; it follows from Propositions~\ref{prop-CR2}--\ref{prop-CR4}.
 
 
-\begin{prop}
+\begin{proposition}
 \label{prop-CR4a}
 Let $S$ be a semigroup with a stable minimal ideal $M$.  Suppose $\C_1=(I_1,N_1)$ and $\C_2=(I_2, N_2)$ are retractable IN-pairs on $S$, that $J_1$ and $J_2$ are the $\gJ$-classes of $N_1$ and $N_2$, respectively, and that either $I_1\cup J_1\subseteq I_2$, or $I_1=I_2$ and $N_1\subseteq N_2$. If $M$ has at least two $\R$-classes and at least two $\L$-classes, then the eight $R,\lam,\rho,\mu$ congruences arising from $\C_1$ and $\C_2$ (see Definitions \ref{defn:RC} and \ref{defn:lrmC}) form a sublattice of $\Cong(S)$ whose Hasse diagram is depicted in Figure \ref{fig-CR} (right). \epfres
-\end{prop}
+\end{proposition}
 
 \begin{figure}[ht]
 \begin{center}
@@ -1061,7 +1061,7 @@ Let $S$ be a semigroup with a stable minimal ideal $M$.  Suppose $\C_1=(I_1,N_1)
 Finally, we record the following result, concerning the very least elements of
 the lattice; its proof is trivial, and omitted.
 
-\begin{prop}
+\begin{proposition}
 \label{prop-CR5}
 Let $S$ be a semigroup with a stable minimal ideal $M$.  Then the congruences from Definition \ref{defn:lrmI} associated to $M$ are
 \[
@@ -1072,7 +1072,7 @@ Let $S$ be a semigroup with a stable minimal ideal $M$.  Then the congruences fr
 \]
   In particular, if $M$ is $\H$-trivial, then $\mu_M=\eta_M=\Delta_S$. 
   \epfres
-\end{prop}
+\end{proposition}
 
 \begin{rem}
 Let $S$ be a semigroup with a stable minimal ideal $M$, and suppose $I$ is a retractable ideal of~$S$.  By Definitions \ref{defn:Rees} and \ref{defn:lrmI}, the congruences $R_I$, $\lambda_I$, $\rho_I$, $\mu_I$ and $\eta_I$ can be associated to $I$.  As noted above, if $S\setminus I$ has a stable, regular, minimal $\gJ$-class, then these congruences coincide with the corresponding congruences from Definitions~\ref{defn:RC} and~\ref{defn:lrmC}, for any trivial group~$N$ contained in any of these~$\gJ$-classes.  But this condition on $\gJ$-classes might fail to hold: namely, if $I=S$, or if all the minimal $\gJ$-classes in~$S\sm I$ are non-stable or non-regular.  For such a semigroup~$S$, one could prove results along the lines of Proposition~\ref{prop-CR4a} to describe the relationships between different collections of congruences.  However, this does not arise in any of the applications we consider, as all of our diagram monoids are regular and finite (so stable) and their maximum retractable ideals are always proper if $n$ is not trivially small, so we omit these details. 
@@ -1214,10 +1214,10 @@ In particular, they form a chain, by Proposition~\ref{prop-CR2}.
 However,~$\P_n$ also has some $\lambda,\rho,\mu$ congruences, arising from a retraction that we now describe.
 
 
-\begin{defn}
+\begin{definition}
 \label{defn:hat}
 For $\alpha\in\P_n$, let $\widehat{\alpha}$ be the unique partition of rank $0$ with the same kernel and cokernel as~$\alpha$.~
-\end{defn}
+\end{definition}
 
 
 \begin{lemma}
@@ -1225,8 +1225,8 @@ For $\alpha\in\P_n$, let $\widehat{\alpha}$ be the unique partition of rank $0$ 
 The map $f: I_1\rightarrow I_0:\alpha\mt\alphah$ is a retraction.
 \end{lemma}
 
-\pf
-Clearly $f$ acts identically on $I_0$.  It remains to prove that $\alphah\betah=\widehat{\alpha\beta}$ for all ${\alpha,\beta\in I_1=J_0\cup J_1}$.  This is clearly the case if ${\alpha,\beta\in J_0}$, so suppose without loss of generality that $\alpha\in J_1$ and $\beta\in I_1$.  We may write $\alpha=\partIV{A_0}{A_1}\cdots{A_r}{B_0}{B_1}\cdots{B_s}$ and $\beta=\partIV{C_0}{C_1}\cdots{C_t}{D_0}{D_1}\cdots{D_u}$ or $\partIII{C_0}{C_1}\cdots{C_t}{D_0}{D_1}\cdots{D_u}$.  Then $\alphah=\partIII{A_0}{A_1}\cdots{A_r}{B_0}{B_1}\cdots{B_s}$ and $\betah = \partIII{C_0}{C_1}\cdots{C_t}{D_0}{D_1}\cdots{D_u}$, while $\alpha\beta$ is equal to either $\partIV{A_0}{A_1}\cdots{A_r}{D_0}{D_1}\cdots{D_u}$ or $\partIII{A_0}{A_1}\cdots{A_r}{D_0}{D_1}\cdots{D_u}$.  The identity $\alphah\betah=\widehat{\alpha\beta}$ quickly follows. \epf
+\begin{proof}
+Clearly $f$ acts identically on $I_0$.  It remains to prove that $\alphah\betah=\widehat{\alpha\beta}$ for all ${\alpha,\beta\in I_1=J_0\cup J_1}$.  This is clearly the case if ${\alpha,\beta\in J_0}$, so suppose without loss of generality that $\alpha\in J_1$ and $\beta\in I_1$.  We may write $\alpha=\partIV{A_0}{A_1}\cdots{A_r}{B_0}{B_1}\cdots{B_s}$ and $\beta=\partIV{C_0}{C_1}\cdots{C_t}{D_0}{D_1}\cdots{D_u}$ or $\partIII{C_0}{C_1}\cdots{C_t}{D_0}{D_1}\cdots{D_u}$.  Then $\alphah=\partIII{A_0}{A_1}\cdots{A_r}{B_0}{B_1}\cdots{B_s}$ and $\betah = \partIII{C_0}{C_1}\cdots{C_t}{D_0}{D_1}\cdots{D_u}$, while $\alpha\beta$ is equal to either $\partIV{A_0}{A_1}\cdots{A_r}{D_0}{D_1}\cdots{D_u}$ or $\partIII{A_0}{A_1}\cdots{A_r}{D_0}{D_1}\cdots{D_u}$.  The identity $\alphah\betah=\widehat{\alpha\beta}$ quickly follows. \end{proof}
 
 %\begin{rem}\label{rem:retractable_ideals_Pn}
 The ideal $I_1$ is in fact the \emph{largest} retractable ideal of $\P_n$.  It is not hard to prove this directly, but it also follows from Theorem \ref{thm-CongPn}.  Indeed, if any larger ideal was retractable, then such an ideal would lead to additional $\lam,\rho,\mu$ congruences, as in Definition \ref{defn:lrmI}.
@@ -1239,11 +1239,11 @@ The ideal $I_1$ is in fact the \emph{largest} retractable ideal of $\P_n$.  It i
 %Although the next result is not essential for our main purposes, we record it for completeness.  Here and elsewhere, we use the well-known fact that any rectangular band satisfies the identity $x=xyx$; see for example \cite[Section~4.4]{Howie}.
 %
 %
-%\begin{prop}\label{prop:retractable_ideals_Pn}
+%\begin{proposition}\label{prop:retractable_ideals_Pn}
 %An ideal $I_q$ of $\P_n$ is retractable if and only if $q\leq1$.
-%\end{prop}
+%\end{proposition}
 %
-%\pf One direction follows from Lemma \ref{HatRetract}.  Conversely, suppose $g:I_q\to I_0$ is a retraction for some $q\geq2$.  Now define the partitions $\alpha = \partpermII1212$, $\beta = \emptypartperm$ and $\ga = \partIII{1,2}3\cdots n{1,2}3\cdots n$, noting that $\alpha,\beta,\ga\in I_2\sub I_q$.  From $\beta=\alpha\beta\alpha$ and $\beta\in I_0$, we obtain $\beta=\beta g=(\alpha\beta\alpha)g=(\alpha g)(\beta g)(\alpha g)=\alpha g$.  But also $\ga=\alpha\ga\alpha$ with $\ga\in I_0$, and we deduce $\ga=\alpha g$ in similar fashion, contradicting the fact that $\beta\not=\ga$. \epf
+%\begin{proof} One direction follows from Lemma \ref{HatRetract}.  Conversely, suppose $g:I_q\to I_0$ is a retraction for some $q\geq2$.  Now define the partitions $\alpha = \partpermII1212$, $\beta = \emptypartperm$ and $\ga = \partIII{1,2}3\cdots n{1,2}3\cdots n$, noting that $\alpha,\beta,\ga\in I_2\sub I_q$.  From $\beta=\alpha\beta\alpha$ and $\beta\in I_0$, we obtain $\beta=\beta g=(\alpha\beta\alpha)g=(\alpha g)(\beta g)(\alpha g)=\alpha g$.  But also $\ga=\alpha\ga\alpha$ with $\ga\in I_0$, and we deduce $\ga=\alpha g$ in similar fashion, contradicting the fact that $\beta\not=\ga$. \end{proof}
 
 
 
@@ -1258,7 +1258,7 @@ $\C_1=(I_1,\{\overline{\id}_2\})$ and
 $\C_{\S_2}=(I_1,\overline{\S}_2)$ are all retractable.
 \end{lemma}
 
-\pf
+\begin{proof}
 By Lemma \ref{HatRetract}, the stated ideals are all retractable, so it remains to prove that for every $\alpha\in I_0$, we have
 $|\alpha \overline{\S}_2|=1=|\overline{\S}_2\alpha|$. 
 In fact, it suffices to prove the first equality, the second being dual.
@@ -1268,7 +1268,7 @@ Suppose $\alpha=\partIII{A_1}{A_2}\cdots{A_r}{B_1}{B_2}\cdots{B_s}$.
 If $(1,2)\in\coker(\alpha)$, then
 $\alpha\beta=\partIII{A_1}{A_2}\cdots{A_r}{1,2}{3}\cdots{n}=\alpha\gamma$; otherwise,
 $\alpha\beta=\partIII{A_1}{A_2}\cdots{A_r}{1}{2}\cdots{n}=\alpha\gamma$.
-\epf
+\end{proof}
 
 To each of these three pairs, we can associate the $\lambda,\rho,\mu$ congruences given in Definition \ref{defn:lrmC} (but note that the $\eta$ and $\mu$ congruences are equal in each case, since $I_0=J_0$ is $\H$-trivial).  
 %
@@ -1291,13 +1291,13 @@ Let $n\geq2$, and let $\P_n$ be the partition monoid of degree $n$.
 \end{thm}
 
 
-\pf
+\begin{proof}
 That all the listed relations are congruences follows from Proposition \ref{prop-AreCongs}, and that they form the lattice depicted in Figure \ref{fig-CongPn} follows from Propositions \ref{prop-CR2}--\ref{prop-CR5}.
 What therefore remains to be proved is that they exhaust all the congruences of $\P_n$.
 Since every congruence is a join of principal congruences, this can be accomplished by showing that our list contains all the principal congruences. 
 The principal congruences are shaded blue in Figure \ref{fig-CongPn}, and below we will for each of them describe all generating pairs. 
 The proof is then completed by observing that this covers all possible pairs, as summarised in Table \ref{PnCongGens}.
-\epf
+\end{proof}
 
 
 
@@ -1446,10 +1446,10 @@ Throughout, we will refer to the congruences forming the ``prism shaped'' part o
 
 Before we move on, it will be convenient to give an alternative description of the relations $\nu_N$ on~$\P_n$ from Definition \ref{Rel-nu}.  To do so, we first make the following definition.
 
-\begin{defn}\label{defn:phi}
+\begin{definition}\label{defn:phi}
 Let $\alpha,\beta\in J_q$ with $\alpha\H\beta$ and $q\geq1$, and suppose the kernel-classes of $\alpha$, and hence also of~$\beta$, are $A_1,\ldots,A_q,C_1,\ldots,C_r$, where $\dom(\alpha)=\dom(\beta)=A_1\cup\cdots\cup A_q$ and $\min(A_1)<\cdots<\min(A_q)$.  Then
 $\alpha\beta^* = \partI{A_1}{A_q}{C_1}{C_r}{A_{1\si}}{A_{q\si}}{C_1}{C_r}$ for some permutation $\si\in\S_q$, and we define $\phi(\alpha,\beta)=\si$.  
-\end{defn}
+\end{definition}
 
 We now establish the connection between the relations $\nu_N$ and the permutations $\phi(\alpha,\beta)$ from Definitions~\ref{Rel-nu} and \ref{defn:phi}.  In what follows, we will generally use the next result without explicit reference.
 
@@ -1460,7 +1460,7 @@ If $q\geq1$, and if $N$ is a normal subgroup of $\S_q$, then
 \]
 \end{lemma}
 
-\pf Let $\Om=\set{ (\alpha,\beta)\in J_q\times J_q}{\alpha\H \beta,\
+\begin{proof} Let $\Om=\set{ (\alpha,\beta)\in J_q\times J_q}{\alpha\H \beta,\
 \phi(\alpha,\beta)\in N}$ be the set in the statement of the lemma.  First
 suppose $(\alpha,\beta)\in\Om$, and write $\alpha=\partI{A_1}{A_q}{C_1}{C_r}{B_1}{B_q}{D_1}{D_s}$ where $\min(A_1)<\cdots<\min(A_q)$.  Since $\alpha\H\beta$, we have $\beta=\partI{A_1}{A_q}{C_1}{C_r}{B_{1\si}}{B_{q\si}}{D_1}{D_s}$ for some $\si\in\S_q$, and it is clear that $\si=\phi(\alpha,\beta)^{-1}\in N$.  But then $(\alpha,\beta)=(\ga\overline{\id}_q\de,\ga\overline{\si}\de)$, where $\ga=\partI{A_1}{A_q}{C_1}{C_r}{1}{q}{q+1}{n}$ and $\de=\partI{1}{q}{q+1}{n}{B_1}{B_q}{D_1}{D_s}$, giving $(\alpha,\beta)\in\nu_N$.
 
@@ -1478,7 +1478,7 @@ Since $\ker(\idb_q)=\coker(\idb_q)$ is trivial, these paths involve only edges f
 \beta=\partI{E_1}{E_q}{C_1}{C_r}{B_{1\om\tau}}{B_{q\om\tau}}{D_1}{D_s} \COMMA
 \alpha\beta^*=\partI{E_1}{E_q}{C_1}{C_r}{E_{1\om\tau^{-1}\om^{-1}}}{E_{q\om\tau^{-1}\om^{-1}}}{C_1}{C_r},
 \]
-so that $\phi(\alpha,\beta)=\om\tau^{-1}\om^{-1}\in N$. \epf
+so that $\phi(\alpha,\beta)=\om\tau^{-1}\om^{-1}\in N$. \end{proof}
 
  
 
@@ -1524,7 +1524,7 @@ Let $\xi\in\Cong(\P_n)$.
 \end{lemma}
 
 
-\pf To prove (i), suppose $\Rb_1\sub\xi$.  Let $\alpha\in\P_n$ with $\rank(\alpha)\leq1$.  
+\begin{proof} To prove (i), suppose $\Rb_1\sub\xi$.  Let $\alpha\in\P_n$ with $\rank(\alpha)\leq1$.  
 Consulting the above membership criterion for $\mu_1$, it suffices to show that
 $(\alpha,\alphah)\in\xi$.  This is clearly the case if $\rank(\alpha)=0$, so suppose $\rank(\alpha)=1$.  Write $\alpha=\partIV{A_0}{A_1}\cdots{A_r}{B_0}{B_1}\cdots{B_s}$, so that $\alphah=\partIII{A_0}{A_1}\cdots{A_r}{B_0}{B_1}\cdots{B_s}$, and define $\ga=\partIV{A_0}{A_1}\cdots{A_r}{1}{2}\cdots{n}$ and $\de=\partIV{1}{2}\cdots{n}{B_0}{B_1}\cdots{B_s}$.
 Also define elements $\si,\tau\in\I_n\sub\P_n$ by $\si=\partpermI11$ and $\tau=\emptypartperm$, noting that $(\si,\tau)\in\Rb_1\sub\xi$.  It then follows that $\alpha=\ga\si\de \mathrel\xi \ga\tau\de = \alphah$, completing the proof of the first assertion.  To prove the second assertion, since certainly $\Rb_1\sub\Rb_1^\sharp$, it follows from the first assertion that $\mu_1\sub\Rb_1^\sharp$.  But it is also clear that $\Rb_1\sub\mu_1$, so since $\mu_1$ is a congruence, it follows that $\Rb_1^\sharp\sub\mu_1$.
@@ -1533,14 +1533,14 @@ Also define elements $\si,\tau\in\I_n\sub\P_n$ by $\si=\partpermI11$ and $\tau=\
 To prove (ii), suppose $\Rb_{\S_2}\sub\xi$. Note that $\mu_{\S_2}=\mu_1\cup(\nu_{\S_2}\sm\De)$.
  Since $\Rb_1\sub\Rb_{\S_2}\sub\xi$, part (i) gives $\mu_1\sub\xi$.  
 Now let $(\alpha,\beta)\in\nu_{\S_2}\sm\De$.  Since $\rank(\alpha)=\rank(\beta)=2$ and $\alpha\H\beta$, we may write $\alpha=\partV{A_1}{A_2}{C_1}{C_r}{B_1}{B_2}{D_1}{D_s}$ and $\beta=\partV{A_1}{A_2}{C_1}{C_r}{B_2}{B_1}{D_1}{D_s}$.  Define $\ga=\partV{A_1}{A_2}{C_1}{C_r}{1}{2}{3}{n}$ and $\de=\partV{1}{2}{3}{n}{B_1}{B_2}{D_1}{D_s}$.
-Also put $\si=\partpermII1212$ and $\tau=\partpermII1221$, noting that $(\si,\tau)\in\Rb_{\S_2}\sub\xi$.  It then follows that $\alpha=\ga\si\de \mathrel\xi \ga\tau\de = \beta$.  The second assertion of~(ii) is proved in a similar way to the second assertion of (i).  \epf
+Also put $\si=\partpermII1212$ and $\tau=\partpermII1221$, noting that $(\si,\tau)\in\Rb_{\S_2}\sub\xi$.  It then follows that $\alpha=\ga\si\de \mathrel\xi \ga\tau\de = \beta$.  The second assertion of~(ii) is proved in a similar way to the second assertion of (i).  \end{proof}
 
 We can now describe the generating pairs for the congruences $\lambda_0$, $\rho_0$, $\mu_1$ and $\mu_{\S_2}$.  As can be seen from Figure \ref{fig-CongPn}, these are the only non-trivial lower congruences on $\P_n$ that are not joins of proper sub-congruences.
 %These are the non-trivial join-irreducible lower congruences; see Figure \ref{fig-CongPn}.
 
 
 
-\begin{prop}\label{prop:small_congruences}
+\begin{proposition}\label{prop:small_congruences}
 The relations $\rho_0,\lam_0,\mu_1,\mu_{\S_2}$ are all principal congruences on $\P_n$.  Moreover, if $\alpha,\beta\in\P_n$, then
 \begin{itemize}\begin{multicols}{2}
 \itemit{i} $\rho_0=\cg{\alpha}{\beta}\iff (\alpha,\beta)\in\rho_0\sm\De$,
@@ -1548,9 +1548,9 @@ The relations $\rho_0,\lam_0,\mu_1,\mu_{\S_2}$ are all principal congruences on 
 \itemit{iii} $\mu_1=\cg{\alpha}{\beta}\iff (\alpha,\beta)\in\mu_1\sm\De$, 
 \itemit{iv} $\mu_{\S_2}=\cg{\alpha}{\beta}\iff (\alpha,\beta)\in\mu_{\S_2}\sm\mu_1$.
 \end{multicols}\end{itemize}
-\end{prop}
+\end{proposition}
 
-\pf The ``only if'' parts are clear for each statement.
+\begin{proof} The ``only if'' parts are clear for each statement.
 %
 Before we prove (i), we note that (ii) will then follow by duality.  Indeed, given (i),
 \[
@@ -1581,12 +1581,12 @@ Renaming $\alpha,\beta$ if necessary, we may assume that $\rank(\alpha)=1$, and 
 \end{multicols}\end{itemize}
 Choose some $i\in A_0$ and $j\in B_0$, and put $\si=\partpermI ii$ and $\tau=\partpermI jj$.  In all cases, we have $\si\alpha\tau=\partpermI ij$ and $\si\beta\tau = \emptypartperm$.  In particular, $(\si\alpha\tau,\si\beta\tau)\in\Rb_1\sm\Deb$, so Theorem \ref{thm:In} (and Remark \ref{rem:InOnPrinc}) gives $\Rb_1=\cgI{\si\alpha\tau}{\si\beta\tau}\sub\cg{\si\alpha\tau}{\si\beta\tau}\sub\cg\alpha\beta$.  Lemma~\ref{lem:mn}(i) then gives $\mu_1\sub\cg\alpha\beta$, and the reverse containment is clear.
 
-To prove (iv), let $(\alpha,\beta)\in\mu_{\S_2}\sm\mu_1=\nu_{\S_2}\sm\Delta$, and write $\alpha=\partV{A_1}{A_2}{C_1}{C_r}{B_1}{B_2}{D_1}{D_s}$ and $\beta=\partV{A_1}{A_2}{C_1}{C_r}{B_2}{B_1}{D_1}{D_s}$.  Choose any $a_i\in A_i$ and $b_i\in B_i$ ($i=1,2$), and put $\si=\partpermII{a_1}{a_2}{a_1}{a_2}$ and $\tau=\partpermII{b_1}{b_2}{b_1}{b_2}$.  Then $\si\alpha\tau=\partpermII{a_1}{a_2}{b_1}{b_2}$ and $\si\beta\tau=\partpermII{a_1}{a_2}{b_2}{b_1}$.  In particular, $(\si\alpha\tau,\si\beta\tau)\in\Rb_{\S_2}\sm\Rb_1$, so Theorem \ref{thm:In} (and Remark \ref{rem:InOnPrinc}) gives $\Rb_{\S_2}=\cgI{\si\alpha\tau}{\si\beta\tau}\sub\cg\alpha\beta$.  Lemma~\ref{lem:mn}(ii) then gives $\mu_{\S_2}\sub\cg\alpha\beta$, and again this is enough.  \epf
+To prove (iv), let $(\alpha,\beta)\in\mu_{\S_2}\sm\mu_1=\nu_{\S_2}\sm\Delta$, and write $\alpha=\partV{A_1}{A_2}{C_1}{C_r}{B_1}{B_2}{D_1}{D_s}$ and $\beta=\partV{A_1}{A_2}{C_1}{C_r}{B_2}{B_1}{D_1}{D_s}$.  Choose any $a_i\in A_i$ and $b_i\in B_i$ ($i=1,2$), and put $\si=\partpermII{a_1}{a_2}{a_1}{a_2}$ and $\tau=\partpermII{b_1}{b_2}{b_1}{b_2}$.  Then $\si\alpha\tau=\partpermII{a_1}{a_2}{b_1}{b_2}$ and $\si\beta\tau=\partpermII{a_1}{a_2}{b_2}{b_1}$.  In particular, $(\si\alpha\tau,\si\beta\tau)\in\Rb_{\S_2}\sm\Rb_1$, so Theorem \ref{thm:In} (and Remark \ref{rem:InOnPrinc}) gives $\Rb_{\S_2}=\cgI{\si\alpha\tau}{\si\beta\tau}\sub\cg\alpha\beta$.  Lemma~\ref{lem:mn}(ii) then gives $\mu_{\S_2}\sub\cg\alpha\beta$, and again this is enough.  \end{proof}
 
 Next we move onto the remaining four lower principal congruences.
 
 
-\begin{prop}\label{prop:joins2}
+\begin{proposition}\label{prop:joins2}
 The congruences $R_0$, $\rho_1$, $\lam_1$ and $R_1$ are all principal.  Moreover, if $\alpha,\beta\in\P_n$, then
 \begin{itemize}\begin{multicols}2
 \itemit{i} $R_0=\cg\alpha\beta\iff(\alpha,\beta)\in R_0 \sm(\rho_0\cup\lam_0)$,
@@ -1594,9 +1594,9 @@ The congruences $R_0$, $\rho_1$, $\lam_1$ and $R_1$ are all principal.  Moreover
 \itemit{iii} $\lam_1=\cg\alpha\beta\iff(\alpha,\beta)\in\lam_1\sm(\mu_1\cup\lam_0)$, 
 \itemit{iv} $R_1=\cg\alpha\beta\iff(\alpha,\beta)\in R_1\sm ( R_0 \cup \lam_1 \cup \rho_1 )$.
 \end{multicols}\end{itemize}
-\end{prop}
+\end{proposition}
 
-\pf Again, the ``only if'' parts are obvious.  Beginning with (i), suppose $(\alpha,\beta)\in R_0\sm(\rho_0\cup\lam_0)$, and write $\alpha=\partII{A_1}\cdots{A_r}{B_1}\cdots{B_s}$ and $\beta=\partII{C_1}\cdots{C_t}{D_1}\cdots{D_u}$,
+\begin{proof} Again, the ``only if'' parts are obvious.  Beginning with (i), suppose $(\alpha,\beta)\in R_0\sm(\rho_0\cup\lam_0)$, and write $\alpha=\partII{A_1}\cdots{A_r}{B_1}\cdots{B_s}$ and $\beta=\partII{C_1}\cdots{C_t}{D_1}\cdots{D_u}$,
 %
 noting that $\ker(\alpha)\not=\ker(\beta)$ and $\coker(\alpha)\not=\coker(\beta)$.  By Proposition \ref{prop-CR4}(i), $R_0=\rho_0\vee\lam_0$, so it is enough to prove that $\cg\alpha\beta$ contains both $\rho_0$ and $\lam_0$.  
 %
@@ -1659,7 +1659,7 @@ In either case, we see that $\cg{\alpha}{\ga\beta}=\cg{\ga\alpha}{\ga\beta}\sub\
 
 Now suppose (f) holds.  Reversing the roles of $\alpha$ and $\beta$, if necessary, we may choose some $i\in A_0\sm C_0$.  Write $\bn\sm\{i\}=\{i_1,\ldots,i_{n-1}\}$, and let $\ga=\partpermI ii$.
 Then $\ga\alpha=\partIV i{i_1}\cdots{i_{n-1}}{B_0}{B_1}\cdots{B_s}$ and $\ga\beta=\partIII i{i_1}\cdots{i_{n-1}}{D_0}{D_1}\cdots{D_u}$.
-In particular, $\rho_1=\cg{\ga\alpha}{\ga\beta}\sub\cg\alpha\beta$, again using part (ii).  \epf
+In particular, $\rho_1=\cg{\ga\alpha}{\ga\beta}\sub\cg\alpha\beta$, again using part (ii).  \end{proof}
 
 
 \begin{rem}
@@ -1700,9 +1700,9 @@ For every $\alpha\in\P_n$, there exists $\beta\in\I_n$ with $\rank(\beta)=\rank(
 \end{lemma}
 
 
-\pf
+\begin{proof}
 If $\alpha=\partI{A_1}{A_q}{C_1}{C_r}{B_1}{B_q}{D_1}{D_s}$, pick $a_i\in A_i$, $b_i\in B_i$ ($i=1,\ldots,q$), and define $\beta=\partpermIII{b_1}\cdots{b_q}{a_1}\cdots{a_q}$. Verification of the stated properties is immediate.
-\epf
+\end{proof}
 
 \newpage
 
@@ -1715,7 +1715,7 @@ Let $\alpha,\beta\in J_q$ with $q\geq1$.
 \end{itemize}
 \end{lemma}
 
-\pf  By duality, it suffices to prove (i), so suppose $(\alpha,\beta)\not\in{\R}$, and write $\alpha=\partI{A_1}{A_q}{C_1}{C_r}{B_1}{B_q}{D_1}{D_s}$ and $\beta=\partI{E_1}{E_q}{G_1}{G_t}{F_1}{F_q}{H_1}{H_u}$.
+\begin{proof}  By duality, it suffices to prove (i), so suppose $(\alpha,\beta)\not\in{\R}$, and write $\alpha=\partI{A_1}{A_q}{C_1}{C_r}{B_1}{B_q}{D_1}{D_s}$ and $\beta=\partI{E_1}{E_q}{G_1}{G_t}{F_1}{F_q}{H_1}{H_u}$.
 Since $(\alpha,\beta)\not\in{\R}$, either $\dom(\alpha)\neq\dom(\beta)$ or $\ker(\alpha)\neq\ker(\beta)$. 
 
 \bigskip\noindent {\bf Case 1.}  Suppose first that $\dom(\alpha)\neq\dom(\beta)$.  Without loss of generality, we may assume that $A_1\sm\dom(\beta)$ is nonempty.  
@@ -1740,7 +1740,7 @@ a_1 \:&\: \cdots \:&\: a_{q-1} \:&\: i \:&\: a_q,j \:&\: x_3 \:&\: \cdots \:&\: 
 \hspace{-1.5 truemm} \Big)
 $.
 Then $\rank(\ga\alpha)=q$ and $\rank(\ga\beta)<q$; the latter is the case because $\{i\}$ is a singleton block of $\ga\beta$, and $\dom(\ga\beta)\sub\dom(\ga)=\{a_1,\ldots,a_{q-1},i\}$. 
-\epf
+\end{proof}
 
 The next result concerns the permutations $\phi(\alpha,\beta)$ from Definition \ref{defn:phi}, and the symmetric inverse monoid~$\I_n\sub\P_n$.
 
@@ -1756,12 +1756,12 @@ For any $(\alpha,\beta)\in {\H}\cap (J_q\times J_q)$ with $q\geq 1$, there exist
 \end{multicols}\end{itemize}
 \end{lemma}
 
-\pf
+\begin{proof}
 Write
 $\alpha=\partI{A_1}{A_q}{C_1}{C_r}{B_{1\si}}{B_{q\si}}{D_1}{D_s}$
 and
 $\beta=\partI{A_1}{A_q}{C_1}{C_r}{B_{1\tau}}{B_{q\tau}}{D_1}{D_s}$, where $\min(A_1)<\cdots<\min(A_q)$, $\min(B_1)<\cdots<\min(B_q)$ and $\sigma,\tau\in\S_k$.  For each $1\leq i\leq q$, put $a_i=\min(A_i)$ and $b_i=\min(B_i)$.  Then $\ga_1=\partpermIII{a_1}\cdots{a_q}{a_1}\cdots{a_q}$, $\de_1=\partpermIII{b_1}\cdots{b_q}{b_1}\cdots{b_q}$, $\ga_2=\partI{A_1}{A_q}{C_1}{C_r}{A_1}{A_q}{C_1}{C_r}$ and $\de_2=\partI{B_1}{B_q}{D_1}{D_s}{B_1}{B_q}{D_1}{D_s}$
-have the desired properties. \epf
+have the desired properties. \end{proof}
 
 
 Recall that for any congruence $\xi$ on $\P_n$, we write $\xib=\xi\cap (\I_n\times\I_n)$ for the induced congruence on $\I_n$.
@@ -1774,23 +1774,23 @@ Let $\xi$ be any of the congruences from the chain \eqref{eqaa1} other than $R_{
 
 \end{lemma}
 
-\pf
+\begin{proof}
 Since $\xib\sub\xi$, the inclusion $\xib^\sharp\sub\xi$ is clear, so only the converse needs to be proved. 
 
 \bigskip\noindent {\bf Case 1.} Suppose first that $\xi=R_q$ for some $q\geq 2$.  We begin by showing that $R_0\subseteq \xib^\sharp$.  To do so, let $\alpha=\partpermII1212$, $\beta=\emptypartperm$ and $\si=\partIII{12}{3}\cdots{n}{12}{3}\cdots{n}$.  Now $(\alpha,\beta)\in\Rb_2\sub\xib$, so it follows that $(\si,\beta)=(\alpha\si\alpha,\beta\si\beta)\in\xib^\sharp$.  But $(\si,\beta)\in R_0\sm(\rho_0\cup\lam_0)$, so Proposition \ref{prop:joins2}(i) gives $R_0=\cg\si\beta\sub\xib^\sharp$.  To complete the proof that $\xi=R_q\sub\xib^\sharp$, it suffices to show that every partition of rank at most $q$ is $\xib^\sharp$-related to a partition of rank~$0$.  So let $\ga\in\P_n$ with $\rank(\ga)=p\leq q$.  By Lemma \ref{lemma-aa1}, there exists $\de\in\I_n$ with $\rank(\de)=p$ such that $\ga=\ga\de\ga$.  But then with $\beta=\emptypartperm$ as above, we have $(\de,\beta)\in\Rb_q\sub\xib$, so that $(\ga,\ga\beta\ga)=(\ga\de\ga,\ga\beta\ga)\in\xib^\sharp$.  Since $\rank(\ga\beta\ga)=0$, the proof is complete in this case.
 
 \bigskip\noindent {\bf Case 2.}  Now suppose $\xi=R_N$ for some non-trivial normal subgroup $N$ of $\S_q$, where $q\geq3$.  Now, $R_{q-1}=\Rb_{q-1}^\sharp\sub\xib^\sharp$ by Case 1, so it remains to show that $R_N\sm R_{q-1}\sub\xib^\sharp$.  
-Let $(\alpha,\beta)\in R_N\sm R_{q-1}=\nu_N\sm \Delta$ be arbitrary.  So $\rank(\alpha)=\rank(\beta)=q$, $\alpha\H\beta$ and $\phi(\alpha,\beta)\in N$.  Let $\alpha_1,\beta_1,\ga_1,\de_1\in J_q(\I_n)$ and $\ga_2,\de_2\in J_q$ be as in Lemma \ref{lemma-aa1a}.  Then $(\alpha_1,\beta_1)\in \overline{R}_N=\xib$, and it follows that $(\alpha,\beta)=(\ga_2\alpha_1\de_2,\ga_2\beta_1\de_2)\in\xib^\sharp$. \epf
+Let $(\alpha,\beta)\in R_N\sm R_{q-1}=\nu_N\sm \Delta$ be arbitrary.  So $\rank(\alpha)=\rank(\beta)=q$, $\alpha\H\beta$ and $\phi(\alpha,\beta)\in N$.  Let $\alpha_1,\beta_1,\ga_1,\de_1\in J_q(\I_n)$ and $\ga_2,\de_2\in J_q$ be as in Lemma \ref{lemma-aa1a}.  Then $(\alpha_1,\beta_1)\in \overline{R}_N=\xib$, and it follows that $(\alpha,\beta)=(\ga_2\alpha_1\de_2,\ga_2\beta_1\de_2)\in\xib^\sharp$. \end{proof}
 
 The next result is the final step required to complete the proof of Theorem \ref{thm-CongPn}.
 
 %
-\begin{prop}
+\begin{proposition}
 \label{prop-aa3}
 Consider the chain \eqref{eqaa1} of congruences on $\P_n$, and let $\xi$ be any of these congruences other than $R_{\S_2}$. Then $\xi$ is a principal congruence on $\P_n$.  Moreover, if $\alpha,\beta\in\P_n$, then $\xi=\cg\alpha\beta$ if and only if $(\alpha,\beta)\in\xi\sm\xi^-$, where $\xi^-$ denotes the congruence immediately preceding $\xi$ in the chain \eqref{eqaa1}.  
-\end{prop}
+\end{proposition}
 
-\pf The ``only if'' part being clear, suppose $(\alpha,\beta)\in\xi\sm\xi^-$.  We must show that $\xi\sub\cg\alpha\beta$.  In fact, by Lemma \ref{lemma-aa2}, it is enough to show that $\xib\sub\cg\alpha\beta$.
+\begin{proof} The ``only if'' part being clear, suppose $(\alpha,\beta)\in\xi\sm\xi^-$.  We must show that $\xi\sub\cg\alpha\beta$.  In fact, by Lemma \ref{lemma-aa2}, it is enough to show that $\xib\sub\cg\alpha\beta$.
 
 \bigskip\noindent {\bf Case 1.}  Suppose first that $\xi=R_q$ for some $q\geq2$, so that $\xi^-=R_{\S_q}$.  Renaming if necessary, we may assume that $\rank(\alpha)=q$.  We also have either $\rank(\beta)<q$ or else $\rank(\beta)=q$ but $(\alpha,\beta)\not\in{\H}$, since the condition ``$\phi(\alpha,\beta)\in N$'' is trivially satisfied when $N=\S_q$ (cf.~Definition \ref{Rel-nu} and Lemma \ref{lem:nu_phi}).  
 
@@ -1800,23 +1800,23 @@ But $\alpha\de\alpha\in\I_n$ and $\rank(\alpha\de\alpha)\leq\rank(\de)<q$, so $(
 
 \bigskip\noindent {\bf Subcase 1.2.}  Suppose $\rank(\beta)=q$ and $(\alpha,\beta)\not\in{\H}$.  Without loss of generality, we may assume that $(\alpha,\beta)\not\in{\R}$.  By Lemma \ref{lemma-aa1b}(i), and renaming $\alpha,\beta$ if necessary, there exists $\ga\in\P_n$ with $\rank(\ga\alpha)<q=\rank(\ga\beta)$.  But then by Subcase 1.1, $\Rb_q=\cg{\ga\alpha}{\ga\beta}\sub\cg\alpha\beta$.
 
-\bigskip\noindent {\bf Case 2.}  Suppose $\xi=R_N$ for some non-trivial normal subgroup $N$ of $\S_q$, where $q\geq3$.  Let $H$ be the largest normal subgroup of $\S_q$ properly contained in $N$, and note that $\xi^-=R_H$.  (For the case where $N$ is the smallest non-trivial normal subgroup of $\S_q$, recall that $R_{\{\id_q\}}=R_{q-1}$.)  Because $(\alpha,\beta)\in R_N\sm R_H$, we have $\rank(\alpha)=\rank(\beta)=q$, $\alpha\H\beta$ and $\phi(\alpha,\beta)\in N\sm H$.  Let $\alpha_1,\beta_1,\ga_1,\de_1$ be as in Lemma \ref{lemma-aa1a}.  Then, from the conclusions of that lemma, it follows that $(\alpha_1,\beta_1)\in(\overline{R}_N\sm\overline{R}_H)\cap\cg\alpha\beta$.  It follows from Theorem~\ref{thm:In} (and Remark \ref{rem:InOnPrinc}) that $\Rb_N=\cgI{\alpha_1}{\beta_1}\sub\cg\alpha\beta$, completing the proof. \epf
+\bigskip\noindent {\bf Case 2.}  Suppose $\xi=R_N$ for some non-trivial normal subgroup $N$ of $\S_q$, where $q\geq3$.  Let $H$ be the largest normal subgroup of $\S_q$ properly contained in $N$, and note that $\xi^-=R_H$.  (For the case where $N$ is the smallest non-trivial normal subgroup of $\S_q$, recall that $R_{\{\id_q\}}=R_{q-1}$.)  Because $(\alpha,\beta)\in R_N\sm R_H$, we have $\rank(\alpha)=\rank(\beta)=q$, $\alpha\H\beta$ and $\phi(\alpha,\beta)\in N\sm H$.  Let $\alpha_1,\beta_1,\ga_1,\de_1$ be as in Lemma \ref{lemma-aa1a}.  Then, from the conclusions of that lemma, it follows that $(\alpha_1,\beta_1)\in(\overline{R}_N\sm\overline{R}_H)\cap\cg\alpha\beta$.  It follows from Theorem~\ref{thm:In} (and Remark \ref{rem:InOnPrinc}) that $\Rb_N=\cgI{\alpha_1}{\beta_1}\sub\cg\alpha\beta$, completing the proof. \end{proof}
 
 
 
 Now that the proof of Theorem \ref{thm-CongPn} is complete, we conclude this section by noting that it is easy to derive a description of the lattice $\Cong^*(\P_n)$ of $\ast$-congruences on $\P_n$.  Indeed, to do this, we just need to check which of the congruences of $\P_n$ are also compatible with the unary operation $\alpha\mapsto\alpha^\ast$.  It turns out that most of them do, with the exception of the ``left/right'' congruences $\lambda_0,\lambda_1,\lambda_{\S_2},\rho_1,\rho_2,\rho_{\S_2}$.
 
 
-\begin{cor}\label{cor:main_Pn}
+\begin{corollary}\label{cor:main_Pn}
 For $n\geq 2$, $\Cong^\ast(\P_n)=\Cong(\P_n)\setminus\{\lambda_0,\lambda_1,\lambda_{\S_2},\rho_1,\rho_2,\rho_{\S_2}\}$.  Theorem \ref{thm-CongPn} describes the congruence lattice $\Cong(\P_n)$.  The Hasse diagram of $\Cong^*(\P_n)$ is shown in Figure \ref{fig-CongPn}.
-\end{cor}
+\end{corollary}
 
-\pf
+\begin{proof}
 By Remark \ref{rem:green_sumbonoids}(i), $\alpha\gJ\alpha^\ast$ for any $\alpha\in\P_n$, and hence the Rees congruences $R_q$ are $\ast$-compatible.
 Furthermore, from Definition \ref{Rel-nu}, it easily follows that $\alpha\mapsto\alpha^\ast$ preserves the relation $\nu_N$ (for any normal subgroup $N$ of~$ \S_q$), whence the congruences $R_N$ are also $\ast$-compatible.
 Next, note that the retraction $f$ from Definition~\ref{defn:hat} agrees with the involution, in the sense that $\alpha^\ast f=(\alpha f)^\ast$; therefore the relations $\mu_0,\mu_1,\mu_{\S_2}$ are $\ast$-compatible.
 Finally, by  Remark \ref{rem:green_sumbonoids}(i), we have that $\alpha\mapsto\alpha^\ast$ maps $\R$-classes of $\P_n$ to $\L$-classes, and vice versa, and hence the congruences $\lambda_0,\lambda_1,\lambda_{\S_2},\rho_1,\rho_2,\rho_{\S_2}$ are not $\ast$-compatible.
-\epf
+\end{proof}
 
 
 
@@ -1943,19 +1943,19 @@ Let $\alpha=\bipartABCD\in\PP_n$, with $\min(A_1)<\cdots<\min(A_q)$.  Then
 Consequently, the canonical graph $\Ga_\alpha$ may be drawn in planar fashion (within the rectangle determined by the vertices).
 \end{lemma}
 
-\pf Clearly the last assertion follows from items (i)--(v).  Since $\alpha\in\PP_n$, it is represented by some planar graph, say $\Ga$.
+\begin{proof} Clearly the last assertion follows from items (i)--(v).  Since $\alpha\in\PP_n$, it is represented by some planar graph, say $\Ga$.
 %
 The proofs of (i)--(v) are similar; each is proved by identifying paths in
 $\Ga$ that would cross if the desired conclusion did not hold.  We just prove
-(i), and leave the rest to the reader.  Suppose $1\leq i<q$, and write $a=\min(A_i)$, $b=\max(B_i)$, $c=\min(A_{i+1})$ and $d=\min(B_{i+1})$.  In $\Ga$, there is a path~$\pi_{ab}$ from $a$ to $b'$, and a path $\pi_{cd}$ from $c$ to $d'$.  By assumption, $a<c$.  If $d<b$, then the paths $\pi_{ab}$ and $\pi_{cd}$ would have to intersect.  Thus, $b<d$: i.e., $B_i<B_{i+1}$, giving the second claim in (i).  Since this clearly implies $\min(B_1)<\cdots<\min(B_q)$, the rest of the first claim follows upon applying the above argument to $\alpha^*=\partI{B_1}{B_q}{D_1}{D_s}{A_1}{A_q}{C_1}{C_r}$. \epf
+(i), and leave the rest to the reader.  Suppose $1\leq i<q$, and write $a=\min(A_i)$, $b=\max(B_i)$, $c=\min(A_{i+1})$ and $d=\min(B_{i+1})$.  In $\Ga$, there is a path~$\pi_{ab}$ from $a$ to $b'$, and a path $\pi_{cd}$ from $c$ to $d'$.  By assumption, $a<c$.  If $d<b$, then the paths $\pi_{ab}$ and $\pi_{cd}$ would have to intersect.  Thus, $b<d$: i.e., $B_i<B_{i+1}$, giving the second claim in (i).  Since this clearly implies $\min(B_1)<\cdots<\min(B_q)$, the rest of the first claim follows upon applying the above argument to $\alpha^*=\partI{B_1}{B_q}{D_1}{D_s}{A_1}{A_q}{C_1}{C_r}$. \end{proof}
 
 For any $\alpha\in\PP_n$, the canonical graph of $\alphah$ is obtained from that of $\alpha$ by deleting the transverse edges, so the final assertion of Lemma \ref{lem:nested_or_separated} immediately gives the following.
 
 
-\begin{cor}
+\begin{corollary}
 \label{cor:retract_planar}
 The map $\alpha\mt\alphah$ from Definition \ref{defn:hat} maps $\PP_n$ into $\PP_n$. \epfres
-\end{cor}
+\end{corollary}
 
 So, as in the case of $\P_n$, the map $I_1\to I_0:\alpha\mt\alphah$ is a retraction (and, as with $\P_n$, no larger ideal of $\PP_n$ is retractable).
 This time, however, due to the fact that the maximal subgroup corresponding to $J_2$ is trivial, rather than $\S_2$, we only have two retractable IN-pairs: namely,
@@ -1976,13 +1976,13 @@ Let $n\geq2$, and let $\PP_n$ (resp., $\Mot_n$) be the planar partition monoid (
 \end{itemize}
 \end{thm}
 
-\pf
+\begin{proof}
 As in the proof of Theorem \ref{thm-CongPn}, the
 listed relations are congruences by Proposition \ref{prop-AreCongs}, and they form the lattice depicted in Figure \ref{fig-CongPn} by Propositions \ref{prop-CR2}--\ref{prop-CR5}.
 The proof that there are no further congruences is obtained by describing all the principal congruences, and verifying that they are precisely those listed (see Table \ref{PPnCongGens}); 
 this is the content of the remainder of this section. 
 The assertions concerning the $\ast$-congruences are immediate consequences, exactly as in the proof of Corollary \ref{cor:main_Pn}.
-\epf
+\end{proof}
 
 
 
@@ -2121,16 +2121,16 @@ Let $\xi\in\Cong(\PP_n)$.
 If $\Rb_1\sub\xi$, then $\mu_1\sub\xi$.  Thus, $\mu_1=\Rb_1^\sharp$.
 \end{lemma}
 
-\pf 
+\begin{proof} 
 To make the proof of Lemma \ref{lem:mn}(i) work here, we observe that, given
 ${\alpha=\partIV{A_0}{A_1}\cdots{A_r}{B_0}{B_1}\cdots{B_s}\in\PP_n}$,
 the partitions
 $\ga=\partIV{A_0}{A_1}\cdots{A_r}{1}{2}\cdots{n}$ and $\de=\partIV{1}{2}\cdots{n}{B_0}{B_1}\cdots{B_s}$ also belong to $\PP_n$ (as easily follows from Lemma~\ref{lem:nested_or_separated}),
 as do
 $\si=\partpermI11$ and $\tau=[\emptyset]$ trivially.
-\epf
+\end{proof}
 
-\begin{prop}[cf.~Proposition \ref{prop:small_congruences}]
+\begin{proposition}[cf.~Proposition \ref{prop:small_congruences}]
 \label{prop:small_congruences:PPn}
 The relations $\rho_0,\lam_0,\mu_1$ are all principal congruences on $\PP_n$.  Moreover, if $\alpha,\beta\in\PP_n$, then
 \[
@@ -2139,16 +2139,16 @@ The relations $\rho_0,\lam_0,\mu_1$ are all principal congruences on $\PP_n$.  M
 \textup{(ii)}\ \lam_0=\cg{\alpha}{\beta}\iff (\alpha,\beta)\in\lam_0\sm\De,\ \ 
 \textup{(iii)}\ \mu_1=\cg{\alpha}{\beta}\iff (\alpha,\beta)\in\mu_1\sm\De.
 \]
-\end{prop}
+\end{proposition}
 
-\pf 
+\begin{proof} 
 Here we need to deal with the fact that the partition $\tau=\partV ij{k_1}{k_{n-2}}{m}{C}{B_2}{B_r}$ constructed during the proof of part~(i) 
 of Proposition \ref{prop:small_congruences}
-may fail to be planar.  However, since $\si$ is itself planar, we can ensure that $\tau$ is planar by assuming that $i<j$, and that $m$ is the minimal element of $\bn$ such that the $\coker(\si)$-class of $m$ is nontrivial (this also ensures that $m=\min(B_1)$, where $B_1$ is the $\coker(\si)$-class of $m$).  \epf
+may fail to be planar.  However, since $\si$ is itself planar, we can ensure that $\tau$ is planar by assuming that $i<j$, and that $m$ is the minimal element of $\bn$ such that the $\coker(\si)$-class of $m$ is nontrivial (this also ensures that $m=\min(B_1)$, where $B_1$ is the $\coker(\si)$-class of $m$).  \end{proof}
 
 
 %
-\begin{prop}[cf.~Proposition \ref{prop:joins2}]
+\begin{proposition}[cf.~Proposition \ref{prop:joins2}]
 \label{prop:joins2:PPn}
 The congruences $R_0$, $\rho_1$, $\lam_1$ and $R_1$ are all principal.  Moreover, if $\alpha,\beta\in\PP_n$, then
 \begin{itemize}\begin{multicols}{2}
@@ -2158,10 +2158,10 @@ The congruences $R_0$, $\rho_1$, $\lam_1$ and $R_1$ are all principal.  Moreover
 \itemit{iv} $R_1=\cg\alpha\beta\iff (\alpha,\beta)\in R_1\sm ( R_0 \cup \lam_1 \cup \rho_1 )$.
 \end{multicols}
 \end{itemize}
-\end{prop}
+\end{proposition}
 
-\pf 
-The partition $\de=\partVI{k}{i,j}{j_1}{j_{n-3}}{k}{i,j}{j_1}{j_{n-3}}$ constructed in the second subcase of case (a) in the proof of Proposition \ref{prop:joins2}(ii) is nonplanar if and only if $i<k<j$ or $j<k<i$.  However, since $(j,k)$ was an arbitrary pair from $\coker(\alpha)\sm\coker(\beta)$, we could just reverse the roles of $j$ and $k$, and so define $\de=\partVI{j}{i,k}{j_1}{j_{n-3}}{j}{i,k}{j_1}{j_{n-3}}$ if either of the above inequalities hold.   \epf
+\begin{proof} 
+The partition $\de=\partVI{k}{i,j}{j_1}{j_{n-3}}{k}{i,j}{j_1}{j_{n-3}}$ constructed in the second subcase of case (a) in the proof of Proposition \ref{prop:joins2}(ii) is nonplanar if and only if $i<k<j$ or $j<k<i$.  However, since $(j,k)$ was an arbitrary pair from $\coker(\alpha)\sm\coker(\beta)$, we could just reverse the roles of $j$ and $k$, and so define $\de=\partVI{j}{i,k}{j_1}{j_{n-3}}{j}{i,k}{j_1}{j_{n-3}}$ if either of the above inequalities hold.   \end{proof}
 
 
 \begin{lemma}[cf.~Lemma \ref{lemma-aa1}]
@@ -2169,9 +2169,9 @@ The partition $\de=\partVI{k}{i,j}{j_1}{j_{n-3}}{k}{i,j}{j_1}{j_{n-3}}$ construc
 For every $\alpha\in\PP_n$, there exists $\beta\in\O_n$ with $\rank(\beta)=\rank(\alpha)$, $\alpha=\alpha\beta\alpha$ and $\beta=\beta\alpha\beta$.
 \end{lemma}
 
-\pf
+\begin{proof}
 The planarity of $\beta\in\I_n$, as constructed in the proof of Lemma \ref{lemma-aa1}, follows from Lemma \ref{lem:nested_or_separated}(i).
-\epf
+\end{proof}
 
 %\newpage
 
@@ -2184,7 +2184,7 @@ Let $\alpha,\beta\in J_q$ with $q\geq1$.
 \end{itemize}
 \end{lemma}
 
-\pf 
+\begin{proof} 
  The partition
 $\ga =
 \Big( 
@@ -2212,7 +2212,7 @@ a_1 \:&\: \cdots \:&\: a_{q-1} \:&\: j \:&\: a_q,i \:&\: x_3 \:&\: \cdots \:&\: 
 }
 \hspace{-1.5 truemm} \Big)
 $.
-\epf
+\end{proof}
 
 
 
@@ -2223,10 +2223,10 @@ If $2\leq q\leq n$, then $R_q=\overline{R}_q^\sharp$.
 \end{lemma}
 
 
-\begin{prop}[cf.~Proposition \ref{prop-aa3}]
+\begin{proposition}[cf.~Proposition \ref{prop-aa3}]
 \label{prop-aa3:PPn}
 Let $2\leq q\leq n$.  Then $R_q$ is a principal congruence on~$\PP_n$.  Moreover, if $\alpha,\beta\in\PP_n$, then $R_q=\cg\alpha\beta\iff(\alpha,\beta)\in R_q\sm R_{q-1}$. \epfres
-\end{prop}
+\end{proposition}
 
 
 
@@ -2274,11 +2274,11 @@ $\lambda_1$, $\rho_1$ and $\mu_1=\Delta$.
 However, for $n$ even, we have a new non-trivial retraction!
 
 
-\begin{defn}
+\begin{definition}
 \label{defn:retr_Bn}
 For a Brauer element $\alpha$ of rank $2$ with transversals $\{i,j'\}$ and $\{k,l'\}$, let $\alphah$ 
 be the Brauer element of rank $0$ obtained by replacing these transversals by the non-transversals $\{i,k\}$ and $\{j',l'\}$.  For $\alpha\in\B_n$ with $\rank(\alpha)=0$, let $\alphah=\alpha$.  
-\end{defn}
+\end{definition}
 
 We will make no use of the mapping from Definition \ref{defn:hat} in this section, so there should be no confusion arising from our re-use of the $\alphah$ notation.  An example calculation is given in Figure \ref{fig:beh}. 
 
@@ -2326,12 +2326,12 @@ We will make no use of the mapping from Definition \ref{defn:hat} in this sectio
 For $n$ even, the map $f: I_2\rightarrow I_0:\alpha\mt\alphah$ is a retraction.
 \end{lemma}
 
-\pf
+\begin{proof}
 We know that $\alpha f=\alpha$ for $\alpha\in I_0$, so we just need to show that $\widehat{\alpha\beta}=\alphah\betah$ for all $\alpha,\beta\in I_2$.
 If $\alpha,\beta\in I_0$ the assertion is obvious, so assume without loss of generality that $\alpha\in J_2$,
 and write $\alpha = \partV{a}{b}{A_1}{A_{m-1}}{x}{y}{B_1}{B_{m-1}}$.  We may also write $\beta=\partV{c}{d}{C_1}{C_{m-1}}{u}{v}{D_1}{D_{m-1}}$ or $\partIII{c,d}{C_1}\cdots{C_{m-1}}{u,v}{D_1}\cdots{D_{m-1}}$.  In either case, we clearly have $\alphah\betah=\partIII{a,b}{A_1}\cdots{A_{m-1}}{u,v}{D_1}\cdots{D_{m-1}}$.  It is also clear that
 $\alpha\beta = \partV{a}{b}{A_1}{A_{m-1}}{u}{v}{D_1}{D_{m-1}}$
-or $\partV{a}{b}{A_1}{A_{m-1}}{v}{u}{D_1}{D_{m-1}}$ or~$\partIII{a,b}{A_1}\cdots{A_{m-1}}{u,v}{D_1}\cdots{D_{m-1}}$, from which $\widehat{\alpha\beta}=\alphah\betah$ follows. \epf
+or $\partV{a}{b}{A_1}{A_{m-1}}{v}{u}{D_1}{D_{m-1}}$ or~$\partIII{a,b}{A_1}\cdots{A_{m-1}}{u,v}{D_1}\cdots{D_{m-1}}$, from which $\widehat{\alpha\beta}=\alphah\betah$ follows. \end{proof}
 
 As with $\P_n$, one may show that no ideals larger than $I_1$ ($n$ odd) or $I_2$ ($n$ even) are retractable.
 %
@@ -2348,7 +2348,7 @@ $\C_K=(I_2,\overline{K})$
 is a retractable IN-pair, where $K$ denotes the Klein 4-group.
 \end{lemma}
 
-\pf
+\begin{proof}
 Having already verified that $f$ is a retraction, we only need to check that
 $|\alpha\overline{\S}_2|=|\overline{\S}_2\alpha|=|\alpha \overline{K}|=|\overline{K}\alpha|=1$ for any
 $\alpha=\partIII{A_1}{A_2}\cdots{A_{m}}{B_1}{B_2}\cdots{B_{m}}\in I_0$.
@@ -2377,7 +2377,7 @@ Notice that the paths $\pi_{12}$ and $\pi_{34}$ are also present in the product 
 Consider the case in which $\gamma=(1,2)(3,4)$. Then concatenating the edge $2'\to1''$ with the path $\pi_{12}$ and the edge $2''\to1'$ yields a path from $2'$ to $1'$ in $\Pi(\alpha,\overline{\gamma})$.
 It follows that $\{1,2\}$ and $\{3,4\}$ are lower blocks of~$\alpha\overline{\gamma}$, and hence $\alpha\overline{\gamma}=\alpha\;\!\overline{\id}_4$.
 %
-The cases in which $\gamma=(1,3)(2,4)$ or $(1,4)(2,3)$ are analogous. \epf
+The cases in which $\gamma=(1,3)(2,4)$ or $(1,4)(2,3)$ are analogous. \end{proof}
 
 We denote the congruences arising from these pairs
 $\lambda_0$, $\rho_0$, $\mu_0$, $\lambda_{\S_2}$, $\rho_{\S_2}$, $\mu_{\S_2}$,
@@ -2397,7 +2397,7 @@ $\lambda_2$, $\rho_2$, $\mu_2$, $\lambda_K$, $\rho_K$, $\mu_K$, respectively, as
 \end{itemize}
 \end{thm}
 
-\pf
+\begin{proof}
 The overall structure of the proof is the same as that of Theorem \ref{thm-CongPn}.
 That all the listed relations are congruences follows from Proposition \ref{prop-AreCongs}, and
 that they form sublattices of $\Cong(\B_n)$ as shown in Figure \ref{fig:Hasse_Bn}
@@ -2406,7 +2406,7 @@ It remains to be proved that there are no other congruences, which can be done b
 The principal congruences are shaded blue in Figure \ref{fig:Hasse_Bn}, 
 and we prove that they are principal in the remainder of the section, characterising their minimal generating sets.
 Again, the proof is completed by observing that this covers all possible pairs; see Table \ref{BnCongGens}.
-\epf
+\end{proof}
 
 \begin{figure}[ht]
 \begin{center}
@@ -2569,15 +2569,15 @@ We now embark on the task of describing the generating pairs for the principal c
 We begin with the lower congruences, where the arguments, of necessity, will depend on the parity of $n$. First we offer a unified treatment of the congruences $\lambda_z$, $\rho_z$, $R_z$.  A \emph{2-partition} of a set is a partition of the set in which each block has size 2.
 
 
-\begin{prop}\label{prop:rl_Bn}
+\begin{proposition}\label{prop:rl_Bn}
 The relations $\rho_z$ and $\lam_z$ are principal congruences on $\B_n$.  Moreover, if $\alpha,\beta\in\B_n$, then
 \begin{itemize}\begin{multicols}{2}
 \itemit{i} $\rho_z=\cg\alpha\beta\iff (\alpha,\beta)\in\rho_z\sm\De$, 
 \itemit{ii} $\lam_z=\cg\alpha\beta\iff (\alpha,\beta)\in\lam_z\sm\De$.
 \end{multicols}\end{itemize}
-\end{prop}
+\end{proposition}
 
-\pf 
+\begin{proof} 
 By duality, it suffices to prove (i).  
 Note that $\cg\alpha\beta\not=\rho_z$ if $(\alpha,\beta)\not\in\rho_z$ or if $(\alpha,\beta)\in\De$.  Conversely, fix some $(\alpha,\beta)\in\rho_z\sm\De$ and, for simplicity, write ${\mathrel\xi}=\cg\alpha\beta$.  For an integer $i$, write $H_i=\{2i-1,2i\}$.  For $\si\in J_z$  we write~$\si'$ for the unique element of~$\B_n$ with $\ker(\si')=\ker(\si)$ and $H_1,H_2,\ldots,H_{\lfloor n/2\rfloor}$ all being $\coker(\si')$-classes, noting that this forces $\codom(\si')=\{n\}$ in the case that $n$ is odd.  We claim that $\si\mathrel\xi\si'$ for all $\si\in J_z$.  
 %
@@ -2699,26 +2699,26 @@ One may then check that $\tau_2 \mathrel\xi \si_1=\tau_2\ga_1 \mathrel\xi \si_1\
 $
 \partII{H_1}\cdots{H_m}{B_1}\cdots{B_m} \mathrel\zeta \partII{H_1}\cdots{H_m}{H_1}\cdots{H_m}
 $,
-and it follows that $\tau_1\mathrel\xi\tau_2$, as required.~\epf
+and it follows that $\tau_1\mathrel\xi\tau_2$, as required.~\end{proof}
 
 
 
 Now that we have described the generating pairs for $\rho_z$ and $\lam_z$, we may easily do the same for their join~$R_z$.
 
 
-\begin{prop}\label{prop:R01_Bn}
+\begin{proposition}\label{prop:R01_Bn}
 The congruence $R_z$ is principal.  Moreover, if $\alpha,\beta\in\B_n$, then
 \[
 R_z=\cg\alpha\beta\iff(\alpha,\beta)\in R_z\sm(\rho_z\cup\lam_z).
 \]
-\end{prop}
+\end{proposition}
 
-\pf
+\begin{proof}
 For simplicity, we omit the subscript $z$ throughout.
 The ``only if'' part is immediate from $R=\rho\vee\lambda$.
 For the ``if'' part, let  $(\alpha,\beta)\in R\sm(\rho\cup\lam)$, noting that clearly $\cg\alpha\beta\sub R$.  
 %
-Then $\ker(\alpha)=\ker(\alpha\beta)$ and $\coker(\alpha)\not=\coker(\beta)=\coker(\alpha\beta)$, since $\rank(\alpha)=\rank(\beta)=z$ and $(\alpha,\beta)\not\in \lam$.  So $(\alpha,\alpha\beta)\in\rho\sm\De$.  It follows from Proposition~\ref{prop:rl_Bn}(i) that $\rho=\cg{\alpha}{\alpha\beta}=\cg{\alpha\alpha}{\alpha\beta}\sub\cg\alpha\beta$.  A symmetrical argument shows that $\lam\sub\cg\alpha\beta$.  It follows that $R=\rho\vee\lam\sub\cg\alpha\beta$. \epf
+Then $\ker(\alpha)=\ker(\alpha\beta)$ and $\coker(\alpha)\not=\coker(\beta)=\coker(\alpha\beta)$, since $\rank(\alpha)=\rank(\beta)=z$ and $(\alpha,\beta)\not\in \lam$.  So $(\alpha,\alpha\beta)\in\rho\sm\De$.  It follows from Proposition~\ref{prop:rl_Bn}(i) that $\rho=\cg{\alpha}{\alpha\beta}=\cg{\alpha\alpha}{\alpha\beta}\sub\cg\alpha\beta$.  A symmetrical argument shows that $\lam\sub\cg\alpha\beta$.  It follows that $R=\rho\vee\lam\sub\cg\alpha\beta$. \end{proof}
 
 
 The remaining considerations of the lower congruences apply only to the case when $n$ is even.  Next we consider the three non-trivial $\mu$ congruences coming from the pairs $\C_{\S_2}$, $\C_2$ and $\C_K$.
@@ -2726,17 +2726,17 @@ The remaining considerations of the lower congruences apply only to the case whe
 
 \newpage
 
-\begin{prop}\label{prop:nek}
+\begin{proposition}\label{prop:nek}
 Let $n=2m\geq4$ be even.  The relations $\mu_{\S_2},\mu_2,\mu_K$ are all principal congruences on $\B_n$.  Moreover, if $\alpha,\beta\in\B_n$, then
 \begin{itemize}\begin{multicols}{2}
 \itemit{i} $\mu_{\S_2}=\cg\alpha\beta\iff (\alpha,\beta)\in\mu_{\S_2}\sm\De$,
 \itemit{ii} $\mu_2=\cg\alpha\beta\iff (\alpha,\beta)\in\mu_2\sm\mu_{\S_2}$, 
 \itemit{iii} $\mu_K=\cg\alpha\beta\iff (\alpha,\beta)\in\mu_K\sm\mu_2$.
 \end{multicols}\end{itemize}
-\end{prop}
+\end{proposition}
 
 
-\pf 
+\begin{proof} 
 The only non-obvious part is the direct inclusion ($\subseteq$) in the ``if'' statement in each part.
 %
 We begin with (i).
@@ -2865,13 +2865,13 @@ d_1 \:&\: d_2 \:&\: d_3 \:&\: d_4 \:&\: D_1 \:&\: \cdots \:&\: D_{m-2}
 \rule[0mm]{0mm}{2.7mm}
 \end{array} 
 }
-\hspace{-1.5 truemm} \Big)$.  Then $(\ga,\de)=(\si_2\alpha\si_3,\si_2\beta\si_3)\in\xi$, as required.~\epf
+\hspace{-1.5 truemm} \Big)$.  Then $(\ga,\de)=(\si_2\alpha\si_3,\si_2\beta\si_3)\in\xi$, as required.~\end{proof}
 
 The remaining principal lower congruences are the $\lam,\rho,R$ congruences arising from the pair $\C_2$.
 
 \newpage
 
-\begin{prop}\label{prop:joins2_Bn}
+\begin{proposition}\label{prop:joins2_Bn}
 Let $n=2m\geq4$ be even.  The congruences 
 $\rho_2$, $\lambda_2$ and $R_2$ are all principal.  Moreover, if $\alpha,\beta\in\B_n$, then
 \begin{itemize}\begin{multicols}{2}
@@ -2881,9 +2881,9 @@ $\rho_2$, $\lambda_2$ and $R_2$ are all principal.  Moreover, if $\alpha,\beta\i
 (\lambda_2\cup\rho_2\cup R_{\S_2})$.
 \end{multicols}
 \end{itemize}
-\end{prop}
+\end{proposition}
 
-\pf Again, it suffices prove to the direct inclusion ($\subseteq$) in the ``if'' statement in each case.
+\begin{proof} Again, it suffices prove to the direct inclusion ($\subseteq$) in the ``if'' statement in each case.
 For (i), fix some $(\alpha,\beta)\in \rho_2\sm(\mu_2\cup\rho_{\S_2})$, and write $\xi=\cg\alpha\beta$.  
 Recalling the definitions of $\rho_2$, $\mu_2$ and $\rho_{\S_2}$, we may assume (renaming $\alpha,\beta$ if necessary) that $\rank(\alpha)=2$, $\rank(\beta)\leq2$, $\ker(\alphah)=\ker(\betah)$ and $\coker(\alphah)\not=\coker(\betah)$.
 Since $\rho_2=\mu_2\vee\rho_0$ by Proposition \ref{prop-CR3}(v), it is sufficient to show that $\xi$ contains both $\mu_2$ and $\rho_0$.  In fact, it is enough to show that $\mu_2\sub\xi$;
@@ -2939,7 +2939,7 @@ a \:&\: b \:&\: c,d \:&\: C_1 \:&\: \cdots \:&\: C_{m-2}
 \rule[0mm]{0mm}{2.7mm}
 \end{array} 
 }
-\hspace{-1.5 truemm} \Big)$. \epf
+\hspace{-1.5 truemm} \Big)$. \end{proof}
 
 
 
@@ -2962,13 +2962,13 @@ We begin with a series of results giving sufficient conditions for a congruence 
 Suppose $\xi\in\Cong(\B_n)$ and that $(\id_n,\alpha)\in\xi$ for some $\alpha\in J_z$.  Then $\xi=R_n$.
 \end{lemma}
 
-\pf 
+\begin{proof} 
 We first show that $R_z\sub\xi$.  
 Choose any $\beta\in J_z$ with $\ker(\beta)\not=\ker(\alpha)$ and $\coker(\beta)\not=\coker(\alpha)$.  
 Then $\beta=\id_n\;\!\beta\;\!\id_n\mathrel\xi\alpha\beta\alpha=\alpha$,
 and clearly $(\alpha,\beta)\in R_z\sm(\rho_z\cup\lam_z)$, so Proposition \ref{prop:R01_Bn} gives $R_z=\cg\alpha\beta\sub\xi$.  
 Now 
-the proof will be complete if we can show that every Brauer element is $\xi$-related to a Brauer element of rank $z$.  So let $\ga\in\B_n$.  Then $\ga=\ga\;\!\id_n\mathrel\xi\ga\alpha$, and since $\rank(\ga\alpha)\leq\rank(\alpha)=z$, we are done. \epf
+the proof will be complete if we can show that every Brauer element is $\xi$-related to a Brauer element of rank $z$.  So let $\ga\in\B_n$.  Then $\ga=\ga\;\!\id_n\mathrel\xi\ga\alpha$, and since $\rank(\ga\alpha)\leq\rank(\alpha)=z$, we are done. \end{proof}
 
 Recall that group of units of $\B_n$ is the symmetric group $\S_n=\set{\alpha\in\B_n}{\rank(\alpha)=n}$, and recall  that, for any $\alpha\in\S_n$, $\alpha^*$ is the (group theoretic) inverse of $\alpha$ in $\S_n$.
 
@@ -2977,8 +2977,8 @@ Recall that group of units of $\B_n$ is the symmetric group $\S_n=\set{\alpha\in
 Suppose $\xi\in\Cong(\B_n)$ and that $(\id_n,\alpha)\in\xi$ for some $\alpha\in\B_n$ with $\rank(\alpha)<n$.  Then $\xi=R_n$.
 \end{lemma}
 
-\pf We prove the lemma by induction on $\rank(\alpha)$.  If $\rank(\alpha)=z$, then
-we are done, by Lemma~\ref{lem:1z_Bn}, so suppose $\rank(\alpha)\geq z+2$.  Inductively, it is enough to show that $(\id_n,\beta)\in\xi$ for some $\beta\in\B_n$ with ${\rank(\beta)<\rank(\alpha)}$.  Since $2\leq\rank(\alpha)\leq n-2$, we may choose some $i,j\in\dom(\alpha)$ with $i\not=j$, and some $(k,l)\in\coker(\alpha)$ with $k\not=l$.  Choose any $\si\in\S_n$ with $k\si=i$ and $l\si=j$.  Then $\id_n = \id_n\;\!\si\;\!\id_n\;\!\si^* \mathrel\xi \alpha\si\alpha\si^*$, and $\rank(\alpha\si\alpha\si^*)\leq\rank(\alpha)-2$, as required. \epf
+\begin{proof} We prove the lemma by induction on $\rank(\alpha)$.  If $\rank(\alpha)=z$, then
+we are done, by Lemma~\ref{lem:1z_Bn}, so suppose $\rank(\alpha)\geq z+2$.  Inductively, it is enough to show that $(\id_n,\beta)\in\xi$ for some $\beta\in\B_n$ with ${\rank(\beta)<\rank(\alpha)}$.  Since $2\leq\rank(\alpha)\leq n-2$, we may choose some $i,j\in\dom(\alpha)$ with $i\not=j$, and some $(k,l)\in\coker(\alpha)$ with $k\not=l$.  Choose any $\si\in\S_n$ with $k\si=i$ and $l\si=j$.  Then $\id_n = \id_n\;\!\si\;\!\id_n\;\!\si^* \mathrel\xi \alpha\si\alpha\si^*$, and $\rank(\alpha\si\alpha\si^*)\leq\rank(\alpha)-2$, as required. \end{proof}
 
 For $q\in\{z,z+2,\dots,n\}$, let $\ve_q=\overline\id_q=\partI1q{q+1,q+2}{n-1,n}1q{q+1,q+2}{n-1,n}$
 denote the identity of the maximal subgroup~$\overline{\S}_q$.  
@@ -2990,13 +2990,13 @@ Note that the subsemigroup $\ve_q\B_n\ve_q$ of $\B_n$ is isomorphic to $\B_q$; i
 Suppose $\xi\in\Cong(\B_n)$ and that there exists $(\alpha,\beta)\in\xi$ with $q=\rank(\alpha)\geq3$ and $\rank(\beta)<q$.  Then $R_q\sub\xi$.
 \end{lemma}
 
-\pf 
+\begin{proof} 
 We first claim that $R_z\sub\xi$.  Write $\alpha=\partI{a_1}{a_q}{A_1}{A_r}{b_1}{b_q}{B_1}{B_r}$, and put
 $$\ga=\partI1q{q+1,q+2}{n-1,n}{a_1}{a_q}{A_1}{A_r} \qquad\text{and}\qquad \de=\partI{b_1}{b_q}{B_1}{B_r}1q{q+1,q+2}{n-1,n}.$$
 %
 Then $\ve_q=\ga\alpha\de\mathrel\xi\ga\beta\de$.  But $\ga\beta\de\in\ve_q\B_n\ve_q$ and ${\rank(\ga\beta\de)\leq\rank(\beta)<q}$.  By Lemma~\ref{lem:1q_Bn}, and the fact that $\ve_q\B_n\ve_q$ is isomorphic to $\B_q$, it follows that all elements of $\ve_q\B_n\ve_q$ are $\cg{\ve_q}{\ga\beta\de}$-related and, hence, $\xi$-related.  In particular, if we let $\tau_1,\tau_2\in\ve_q\B_n\ve_q$ be such that $\rank(\tau_1)=\rank(\tau_2)=z$, $\ker(\tau_1)\not=\ker(\tau_2)$ and $\coker(\tau_1)\not=\coker(\tau_2)$, then $(\tau_1,\tau_2)\in\xi$.  But $(\tau_1,\tau_2)\in R_z\sm(\rho_z\cup\lam_z)$, so it follows from Proposition \ref{prop:R01_Bn} that $R_z=\cg{\tau_1}{\tau_2}\sub\xi$.
 
-Now that we know all Brauer elements of rank $z$ are $\xi$-related, the proof of the lemma will be complete if we can show any Brauer element of rank at most $q$ is $\xi$-related to a Brauer element of rank~$z$.  With this in mind, let $\si\in\B_n$ with $p=\rank(\si)\leq q$, and write $\si=\partI{c_1}{c_p}{C_1}{C_s}{d_1}{d_p}{D_1}{D_s}$.  Define ${\tau_3=\partI{c_1}{c_p}{C_1}{C_s}{1}{p}{p+1,p+2}{n-1,n}}$ and $\tau_4=\partI{1}{p}{p+1,p+2}{n-1,n}{d_1}{d_p}{D_1}{D_s}$.  Since $\ve_p,\ve_z\in\ve_q\B_n\ve_q$, we have $\ve_p \mathrel\xi \ve_z$, by the previous paragraph.  It follows that $\si = \tau_3\ve_p\tau_4 \mathrel\xi \tau_3\ve_z\tau_4$, with $\rank(\tau_3\ve_z\tau_4)=z$.  As noted above, this completes the proof. \epf
+Now that we know all Brauer elements of rank $z$ are $\xi$-related, the proof of the lemma will be complete if we can show any Brauer element of rank at most $q$ is $\xi$-related to a Brauer element of rank~$z$.  With this in mind, let $\si\in\B_n$ with $p=\rank(\si)\leq q$, and write $\si=\partI{c_1}{c_p}{C_1}{C_s}{d_1}{d_p}{D_1}{D_s}$.  Define ${\tau_3=\partI{c_1}{c_p}{C_1}{C_s}{1}{p}{p+1,p+2}{n-1,n}}$ and $\tau_4=\partI{1}{p}{p+1,p+2}{n-1,n}{d_1}{d_p}{D_1}{D_s}$.  Since $\ve_p,\ve_z\in\ve_q\B_n\ve_q$, we have $\ve_p \mathrel\xi \ve_z$, by the previous paragraph.  It follows that $\si = \tau_3\ve_p\tau_4 \mathrel\xi \tau_3\ve_z\tau_4$, with $\rank(\tau_3\ve_z\tau_4)=z$.  As noted above, this completes the proof. \end{proof}
 
 The previous result shows that a congruence identifying a Brauer element of rank $q\geq3$ with a Brauer element of lower rank must contain the Rees congruence $R_q$.
 %
@@ -3012,7 +3012,7 @@ One of the key steps in the proof of Lemma \ref{lem:notH_Bn} is true also for $q
   $\rank(\ga)=q$ and $\rank(\de)<q$.
 \end{lemma}
 
-\pf Since $(\alpha,\beta)\not\in{\H}$, it follows that $(\alpha,\beta)\not\in{\R}$ or $(\alpha,\beta)\not\in{\L}$.  By symmetry, we may assume that $(\alpha,\beta)\not\in{\R}$, so $\ker(\alpha)\not=\ker(\beta)$.  Write $\alpha=\partI{a_1}{a_q}{A_1}{A_r}{b_1}{b_q}{B_1}{B_r}$ and $\beta=\partI{c_1}{c_q}{C_1}{C_r}{d_1}{d_q}{D_1}{D_r}$.
+\begin{proof} Since $(\alpha,\beta)\not\in{\H}$, it follows that $(\alpha,\beta)\not\in{\R}$ or $(\alpha,\beta)\not\in{\L}$.  By symmetry, we may assume that $(\alpha,\beta)\not\in{\R}$, so $\ker(\alpha)\not=\ker(\beta)$.  Write $\alpha=\partI{a_1}{a_q}{A_1}{A_r}{b_1}{b_q}{B_1}{B_r}$ and $\beta=\partI{c_1}{c_q}{C_1}{C_r}{d_1}{d_q}{D_1}{D_r}$.
 
 \bigskip\noindent {\bf Case 1.}  Suppose first that $\dom(\alpha)=\dom(\beta)$.  Renaming if necessary, we may assume that $A_1$ is not a block of $\beta$.  Write $A_1=\{i,j\}$.  Since $i,j\in\bn\sm\dom(\alpha)=\bn\sm\dom(\beta)$, we may assume that $C_1=\{i,k\}$ and $C_2=\{j,l\}$ for some $k,l$.  Define $\si=\Big( 
 { \scriptsize \renewcommand*{\arraystretch}{1}
@@ -3024,7 +3024,7 @@ i \:&\: j \:&\: a_3 \:&\: \cdots \:&\: a_q \:&\: a_1,k \:&\: a_2,l \:&\: C_3 \:&
 }
 \hspace{-1.5 truemm} \Big)$.  Then $\rank(\si\alpha)=q-2$ and $\rank(\si\beta)=q$, so we put $\ga=\si\beta$ and $\de=\si\alpha$.  
 
-\bigskip\noindent {\bf Case 2.}  Now suppose $\dom(\alpha)\not=\dom(\beta)$.  Without loss of generality, we may assume that $a_q\not\in\dom(\beta)$.  Denote the $\ker(\beta)$-class of $a_q$ by $\{a_q,x\}$, and let $\si\in\B_n$ be an arbitrary Brauer element of rank $q$ such that $\codom(\si)$ contains $a_q$, $x$, and $q-2$ additional elements of $\{a_1,\ldots,a_{q-1}\}$.  Then $\rank(\si\alpha)=q$ and $\rank(\si\beta)\leq q-2$, so we put $\ga=\si\alpha$ and $\de=\si\beta$.    \epf
+\bigskip\noindent {\bf Case 2.}  Now suppose $\dom(\alpha)\not=\dom(\beta)$.  Without loss of generality, we may assume that $a_q\not\in\dom(\beta)$.  Denote the $\ker(\beta)$-class of $a_q$ by $\{a_q,x\}$, and let $\si\in\B_n$ be an arbitrary Brauer element of rank $q$ such that $\codom(\si)$ contains $a_q$, $x$, and $q-2$ additional elements of $\{a_1,\ldots,a_{q-1}\}$.  Then $\rank(\si\alpha)=q$ and $\rank(\si\beta)\leq q-2$, so we put $\ga=\si\alpha$ and $\de=\si\beta$.    \end{proof}
 
 
 %
@@ -3032,7 +3032,7 @@ i \:&\: j \:&\: a_3 \:&\: \cdots \:&\: a_q \:&\: a_1,k \:&\: a_2,l \:&\: C_3 \:&
 Suppose $\xi\in\Cong(\B_n)$ and that $(\alpha,\beta)\in (\xi\setminus{\H})\cap (J_q\times J_q)$ with $q\geq3$.  Then $R_q\sub\xi$.
 \end{lemma}
 
-\pf By Lemma \ref{lem:notH_prelim_Bn}, there exists $(\ga,\de)\in\xi$ with $\rank(\ga)=q$ and $\rank(\de)<q$.  It then follows from Lemma \ref{lem:qp_Bn} that $R_q\sub\xi$. \epf
+\begin{proof} By Lemma \ref{lem:notH_prelim_Bn}, there exists $(\ga,\de)\in\xi$ with $\rank(\ga)=q$ and $\rank(\de)<q$.  It then follows from Lemma \ref{lem:qp_Bn} that $R_q\sub\xi$. \end{proof}
 
 
 For $1\leq q\leq n$, and for a permutation $\pi\in\S_q$, we will write $\normal{\pi}$ for the normal closure of $\pi$ in $\S_q$.  The next result concerns the permutations $\phi(\alpha,\beta)$ from Definition \ref{defn:phi}.
@@ -3043,7 +3043,7 @@ Let $3\leq q\leq n$ with $q\equiv n\pmod 2$, and let $N$ be one of $\A_q$ or
   $\S_q$.  Suppose $\xi\in\Cong(\B_n)$, and that $(\alpha,\beta)\in \xi\cap{\H}\cap (J_q\times J_q)$ is such that $N=\normal{\phi(\alpha,\beta)}$.  Then $R_{q-2}\sub\xi$.
 \end{lemma}
 
-\pf Write $\alpha=\partI{a_1}{a_q}{A_1}{A_r}{b_1}{b_q}{B_1}{B_r}$ and $\beta=\partI{a_1}{a_q}{A_1}{A_r}{b_{1\si}}{b_{q\si}}{B_1}{B_r}$, where $a_1<\cdots<a_q$, noting that $\phi(\alpha,\beta)=\si^{-1}$, so $N=\normal\si$.  Put $\ga_1=\partI1q{q+1,q+2}{n-1,n}{a_1}{a_q}{A_1}{A_r}$ and $\ga_2=\partI{b_1}{b_q}{B_1}{B_r}1q{q+1,q+2}{n-1,n}$, noting that $\ve_q=\ga_1\alpha\ga_2\mathrel\xi\ga_1\beta\ga_2=\sib$.  
+\begin{proof} Write $\alpha=\partI{a_1}{a_q}{A_1}{A_r}{b_1}{b_q}{B_1}{B_r}$ and $\beta=\partI{a_1}{a_q}{A_1}{A_r}{b_{1\si}}{b_{q\si}}{B_1}{B_r}$, where $a_1<\cdots<a_q$, noting that $\phi(\alpha,\beta)=\si^{-1}$, so $N=\normal\si$.  Put $\ga_1=\partI1q{q+1,q+2}{n-1,n}{a_1}{a_q}{A_1}{A_r}$ and $\ga_2=\partI{b_1}{b_q}{B_1}{B_r}1q{q+1,q+2}{n-1,n}$, noting that $\ve_q=\ga_1\alpha\ga_2\mathrel\xi\ga_1\beta\ga_2=\sib$.  
 %
 Define
 \[
@@ -3068,18 +3068,18 @@ Define
 \hspace{-1.5 truemm} \Big).
 \]
 We claim that $(\de_1,\de_2)\in\xi$.  In order to do this, let $\pi\in\A_q$ be the $3$-cycle mapping $1\mt2\mt3\mt1$ and fixing each of $4,\ldots,q$.  Since $\A_q\sub N=\normal\si$, we have $\pi=(\tau_1^{-1}\si\tau_1)\cdots(\tau_k^{-1}\si\tau_k)$ for some $k\geq1$ and some $\tau_1,\ldots,\tau_k\in\S_q$.  It follows that
-$\pib = (\taub_1^*\ \sib\ \taub_1)\cdots(\taub_k^*\ \sib\ \taub_k) \mathrel\xi (\taub_1^*\ \ve_q\ \taub_1)\cdots(\taub_k^*\ \ve_q\ \taub_k) = \ve_q$, and we also have $\pib^*=\pib\ \pib \mathrel\xi \ve_q\ve_q=\ve_q$.  But then $\de_1 = \ve_q\de_1\ve_q \mathrel\xi \pib^*\de_1\pib = \de_2$, completing the proof of the claim.  Note that $\rank(\de_1)=\rank(\de_2)=q-2\geq1$, and that $(\de_1,\de_2)\not\in{\R}$ and $(\de_1,\de_2)\not\in{\L}$.  It follows from Proposition \ref{prop:R01_Bn} (if~$q=3$) or Proposition \ref{prop:joins2_Bn}(iii) (if $q=4$) or Lemma \ref{lem:notH_Bn} (if $q\geq5$) that $R_{q-2}\sub\cg{\de_1}{\de_2}\sub\xi$.  \epf
+$\pib = (\taub_1^*\ \sib\ \taub_1)\cdots(\taub_k^*\ \sib\ \taub_k) \mathrel\xi (\taub_1^*\ \ve_q\ \taub_1)\cdots(\taub_k^*\ \ve_q\ \taub_k) = \ve_q$, and we also have $\pib^*=\pib\ \pib \mathrel\xi \ve_q\ve_q=\ve_q$.  But then $\de_1 = \ve_q\de_1\ve_q \mathrel\xi \pib^*\de_1\pib = \de_2$, completing the proof of the claim.  Note that $\rank(\de_1)=\rank(\de_2)=q-2\geq1$, and that $(\de_1,\de_2)\not\in{\R}$ and $(\de_1,\de_2)\not\in{\L}$.  It follows from Proposition \ref{prop:R01_Bn} (if~$q=3$) or Proposition \ref{prop:joins2_Bn}(iii) (if $q=4$) or Lemma \ref{lem:notH_Bn} (if $q\geq5$) that $R_{q-2}\sub\cg{\de_1}{\de_2}\sub\xi$.  \end{proof}
 
 The next result completes the proof of Theorem \ref{CongBn}. 
 
 %
-\begin{prop}\label{prop:chain_Bn}
+\begin{proposition}\label{prop:chain_Bn}
 Consider the chains \eqref{eq:Bn_chain} of congruences on $\B_n$.
 %
 Apart from the first congruence on the second list, all of the listed congruences are principal.  Moreover, if $\xi$ is any of the listed congruences other than the first of either list, and if $\alpha,\beta\in\B_n$, then $\xi=\cg\alpha\beta\iff(\alpha,\beta)\in\xi\sm\xi^-$, where $\xi^-$ denotes the previous congruence in the same list.
-\end{prop}
+\end{proposition}
 
-\pf Let $\xi$ be any of the listed congruences other than the first of either
+\begin{proof} Let $\xi$ be any of the listed congruences other than the first of either
 list.  If $(\alpha,\beta)\not\in\xi$ or if $(\alpha,\beta)\in\xi^-$, then clearly
 $\cg\alpha\beta\not=\xi$.  Conversely, suppose $(\alpha,\beta)\in\xi\sm\xi^-$, and write $\zeta=\cg\alpha\beta$.  The proof will be complete if we can show that $\xi\sub\zeta$.  
 
@@ -3091,7 +3091,7 @@ $(\alpha,\beta)\in\xi\sm\xi^-=\nu_N\sm\nu_H$, it follows that $\rank(\alpha)=\ra
 $\alpha\H\beta$ and $\phi(\alpha,\beta)\in N\sm H$.  Consequently, we have
 $N=\normal{\phi(\alpha,\beta)}$, so Lemma~\ref{lem:thN_Bn} gives $R_{q-2}\sub\zeta$.
 Now suppose $(\ga,\de)\in R_N\sm R_{q-2}$.  The proof will be complete if we can show that $(\ga,\de)\in\zeta$.  Write $\ga=
-\partI{a_1}{a_q}{A_1}{A_r}{b_1}{b_q}{B_1}{B_r}$ and $\de=\partI{a_1}{a_q}{A_1}{A_r}{b_{1\pi}}{b_{q\pi}}{B_1}{B_r}$, where $a_1<\cdots<a_q$, noting that $\pi=\phi(\ga,\de)^{-1}\in N$.  As in the proof of Lemma \ref{lem:thN_Bn}, we may use the fact that $\pi\in N=\normal{\phi(\alpha,\beta)}$ to show that $(\ve_q,\pib)\in\zeta$.  But then $(\ga,\de)=(\tau_1\ve_q\tau_2,\tau_1\pib\tau_2)\in\zeta$, where $\tau_1=\partI{a_1}{a_q}{A_1}{A_r}1q{q+1,q+2}{n-1,n}$ and $\tau_2=\partI1q{q+1,q+2}{n-1,n}{b_1}{b_q}{B_1}{B_r}$. \epf
+\partI{a_1}{a_q}{A_1}{A_r}{b_1}{b_q}{B_1}{B_r}$ and $\de=\partI{a_1}{a_q}{A_1}{A_r}{b_{1\pi}}{b_{q\pi}}{B_1}{B_r}$, where $a_1<\cdots<a_q$, noting that $\pi=\phi(\ga,\de)^{-1}\in N$.  As in the proof of Lemma \ref{lem:thN_Bn}, we may use the fact that $\pi\in N=\normal{\phi(\alpha,\beta)}$ to show that $(\ve_q,\pib)\in\zeta$.  But then $(\ga,\de)=(\tau_1\ve_q\tau_2,\tau_1\pib\tau_2)\in\zeta$, where $\tau_1=\partI{a_1}{a_q}{A_1}{A_r}1q{q+1,q+2}{n-1,n}$ and $\tau_2=\partI1q{q+1,q+2}{n-1,n}{b_1}{b_q}{B_1}{B_r}$. \end{proof}
 
 
 
@@ -3320,7 +3320,7 @@ The proof of Theorem \ref{thm:cong-Jn} in the odd case follows the same pattern 
 
 \newpage
 
-\begin{prop}[cf.~Proposition \ref{prop:small_congruences:PPn}]
+\begin{proposition}[cf.~Proposition \ref{prop:small_congruences:PPn}]
 \label{prop:rlJeven}
 For $n\geq4$ even, the relations $\rho_0$ and $\lambda_0$ are principal congruences on $\J_n$.  Moreover, if $\alpha,\beta\in\J_n$, then
 \begin{itemize}\begin{multicols}{2}
@@ -3328,17 +3328,17 @@ For $n\geq4$ even, the relations $\rho_0$ and $\lambda_0$ are principal congruen
 \itemit{ii} $\lambda_0=\cg\alpha\beta\iff (\alpha,\beta)\in\lambda_0\sm\Delta$.
 \epfres
 \end{multicols}\end{itemize}
-\end{prop}
+\end{proposition}
 
 
 
 Next, we introduce some notation, and discuss some concepts relating to planarity.  The following definition makes no assumption on the parity of $n$.
 
-\begin{defn}
+\begin{definition}
 For $A\sub\bn$, write $A=\{a_1<\cdots<a_k\}$ to indicate that $A=\{a_1,\ldots,a_k\}$ and $a_1<\cdots<a_k$.  For $i,j\in\bn$, denote the interval $\set{k\in\bn}{i\leq k\leq j}$ by~$[i,j]$.  
 %
 Let $A=\{a<b\}$ and $B=\{c<d\}$ be two disjoint subsets of $\bn$ of size $2$.  As in Section \ref{sect:PPnMn}, we say $A$ and $B$ are \emph{nested} if $a<c<d<b$ or $c<a<b<d$; we say $A$ and $B$ are \emph{separated} if $a<b<c<d$ or $c<d<a<b$.  As in Section \ref{sect:Bn}, we say a partition of a set is a 2-partition if each block has size $2$.  We say a 2-partition of an interval $I\sub\bn$ is \emph{planar} if any pair of blocks is either nested or separated.  
-\end{defn}
+\end{definition}
 
 
 It is clear that a planar 2-partition exists on an interval $I\sub\bn$ if and only if $|I|$ is even, in which case the number of distinct planar 2-partitions is given by a suitable Catalan number \cite[Sequence A000108]{OEIS}.  
@@ -3390,7 +3390,7 @@ We begin with the lower congruences, $\rho_1$, $\lam_1$ and $R_1$.  The first ma
 Let $n\geq3$ be odd, and let $(\alpha,\beta)\in\rho_1\sm\Delta$.  For any $\si\in\J_n$ with $\rank(\si)=1$, there exists some $\pi\in\J_n$ with $(\si,\pi)\in\cg\alpha\beta$ and $\codom(\pi)=\{n\}$.
 \end{lemma}
 
-\pf Write ${\mathrel\xi}=\cg\alpha\beta$ and $\si=\partIV
+\begin{proof} Write ${\mathrel\xi}=\cg\alpha\beta$ and $\si=\partIV
 a{A_1}\cdots{A_m}b{B_1}\cdots{B_m}$, noting that $a,b$ are both odd.  If $b=n$, then there is nothing to prove,
 so suppose $b\not=n$.  Without loss of generality, we may assume that $n\in B_1$, and we may write $B_1=\{w,n\}$.  By planarity, we have $b<w<n$, and $w$ is even.  
 %
@@ -3475,7 +3475,7 @@ Depending on the case we are in, we then define $\dom(\tau)$ to be
 \end{multicols}
 \end{itemize}
 respectively.
-In cases (a) and (d), we specify that $\{d,v\}$ is a $\ker(\tau)$-class.  In all other cases, we specify that $\{d,x\}$ is a $\ker(\tau)$-class.  In all cases, all other non-trivial $\ker(\tau)$-classes may be chosen arbitrarily.  The reader may draw diagrams such as those in Figure~\ref{fig:bzn} to verify that $\tau$ has the desired properties. \epf
+In cases (a) and (d), we specify that $\{d,v\}$ is a $\ker(\tau)$-class.  In all other cases, we specify that $\{d,x\}$ is a $\ker(\tau)$-class.  In all cases, all other non-trivial $\ker(\tau)$-classes may be chosen arbitrarily.  The reader may draw diagrams such as those in Figure~\ref{fig:bzn} to verify that $\tau$ has the desired properties. \end{proof}
 
 
 
@@ -3556,7 +3556,7 @@ n \:&\: H_1 \:&\: \cdots \:&\: H_{m-2} \:&\: n-4,n-1 \:&\: n-3,n-2
 \]
 \end{lemma}
 
-\pf Write ${\mathrel\xi}=\cg\alpha\beta$.  First, define $\si=\Big( 
+\begin{proof} Write ${\mathrel\xi}=\cg\alpha\beta$.  First, define $\si=\Big( 
 { \scriptsize \renewcommand*{\arraystretch}{1}
 \begin{array} {\c|\c|\c|\c|\cend}
 n \:&\: H_1 \:&\: \cdots \:&\: H_{m-1} \:&\: H_m  \\ \cline{2-5}
@@ -3589,7 +3589,7 @@ n-4 \:&\: n-1 \:&\: n \:&\: H_1 \:&\: \cdots \:&\: H_{m-2} \:&\: n-3,n-2
 \end{array} 
 }
 \hspace{-1.5 truemm} \Big)$.  
-Then $\ga \mathrel\xi \si = \ga\tau_1 \mathrel\xi \si\tau_1 = \si\tau_2 \mathrel\xi \ga\tau_2 = \de$. \epf
+Then $\ga \mathrel\xi \si = \ga\tau_1 \mathrel\xi \si\tau_1 = \si\tau_2 \mathrel\xi \ga\tau_2 = \de$. \end{proof}
 
 %
 \begin{lemma}\label{lem:Jtech2}
@@ -3597,32 +3597,32 @@ Let $n\geq3$ be odd, and let $(\alpha,\beta)\in\rho_1\sm\Delta$.  Let $\tau_1,\t
 Then $(\tau_1,\tau_2)\in\cg\alpha\beta$.
 \end{lemma}
 
-\pf If $n=3$, then the assumptions force $\tau_1=\tau_2$, so we assume $n\geq5$ for the rest of the proof.  Let~$\ga,\de$ be as in Lemma \ref{lem:Jtech1}.  Write $S$ for the submonoid of $\J_n$ consisting of all Jones elements containing the block $\{n,n'\}$.  Note that $S$ is isomorphic to $\J_{n-1}$, and that $\ga,\de,\tau_1,\tau_2\in S$.  For $\si\in S$, write $\si^\vee$ for the element of $\J_{n-1}$ obtained from $\si$ by removing the block $\{n,n'\}$.  Write $\mathrel\xi$ for the $\rho_0$-congruence on $\J_{n-1}$.  By Proposition~\ref{prop:rlJeven}, ${\mathrel\xi}=\cg{\ga^\vee}{\de^\vee}$.  So $(\tau_1^\vee,\tau_2^\vee)\in\cg{\ga^\vee}{\de^\vee}$, and it follows that $(\tau_1,\tau_2)\in\cg\ga\de\sub\cg\alpha\beta$, as required. \epf
+\begin{proof} If $n=3$, then the assumptions force $\tau_1=\tau_2$, so we assume $n\geq5$ for the rest of the proof.  Let~$\ga,\de$ be as in Lemma \ref{lem:Jtech1}.  Write $S$ for the submonoid of $\J_n$ consisting of all Jones elements containing the block $\{n,n'\}$.  Note that $S$ is isomorphic to $\J_{n-1}$, and that $\ga,\de,\tau_1,\tau_2\in S$.  For $\si\in S$, write $\si^\vee$ for the element of $\J_{n-1}$ obtained from $\si$ by removing the block $\{n,n'\}$.  Write $\mathrel\xi$ for the $\rho_0$-congruence on $\J_{n-1}$.  By Proposition~\ref{prop:rlJeven}, ${\mathrel\xi}=\cg{\ga^\vee}{\de^\vee}$.  So $(\tau_1^\vee,\tau_2^\vee)\in\cg{\ga^\vee}{\de^\vee}$, and it follows that $(\tau_1,\tau_2)\in\cg\ga\de\sub\cg\alpha\beta$, as required. \end{proof}
 
 
 
 %
-\begin{prop}\label{prop:rlJodd}
+\begin{proposition}\label{prop:rlJodd}
 Let $n\geq3$ be odd.  The relations $\rho_1$ and $\lambda_1$ are principal congruences on $\J_n$.  Moreover, if $\alpha,\beta\in\J_n$, then
 \begin{itemize}\begin{multicols}{2}
 \itemit{i} $\rho_1=\cg\alpha\beta\iff (\alpha,\beta)\in\rho_1\sm\Delta$,
 \itemit{ii} $\lambda_1=\cg\alpha\beta\iff (\alpha,\beta)\in\lambda_1\sm\Delta$.
 \end{multicols}\end{itemize}
-\end{prop}
+\end{proposition}
 
-\pf As usual, it suffices to prove the converse implication in (i), so fix some $(\alpha,\beta)\in\rho_1\sm\Delta$, and
+\begin{proof} As usual, it suffices to prove the converse implication in (i), so fix some $(\alpha,\beta)\in\rho_1\sm\Delta$, and
 write ${\mathrel\xi}=\cg\alpha\beta$.  
 Let $(\si_1,\si_2)\in\rho_1\sm\Delta$ be arbitrary.  
 By Lemma \ref{lem:bzn}, $\si_1\mathrel\xi\pi_1$ and $\si_2\mathrel\xi\pi_2$, for some $\pi_1,\pi_2\in\J_n$ with $\codom(\pi_1)=\codom(\pi_2)=\{n\}$, and we note that $\ker(\pi_1)=\ker(\si_1)=\ker(\si_2)=\ker(\pi_2)$, since ${\mathrel\xi}\sub\rho_1$.  
-Let $\ga$ be as in Lemma \ref{lem:Jtech1}, and put $\tau_1=\ga\pi_1$ and $\tau_2=\ga\pi_2$.  Then $\tau_1,\tau_2$ satisfy the conditions of Lemma \ref{lem:Jtech2}, so it follows by that lemma that $\tau_1\mathrel\xi\tau_2$.  But then $\si_1\mathrel\xi\pi_1=\pi_1\ga\pi_1=\pi_1\tau_1\mathrel\xi\pi_1\tau_2=\pi_1\ga\pi_2=\pi_2\mathrel\xi\si_2$; note that $\pi_1\ga\pi_2=\pi_2$ follows from the fact that $\ker(\pi_1)=\ker(\pi_2)$. \epf
+Let $\ga$ be as in Lemma \ref{lem:Jtech1}, and put $\tau_1=\ga\pi_1$ and $\tau_2=\ga\pi_2$.  Then $\tau_1,\tau_2$ satisfy the conditions of Lemma \ref{lem:Jtech2}, so it follows by that lemma that $\tau_1\mathrel\xi\tau_2$.  But then $\si_1\mathrel\xi\pi_1=\pi_1\ga\pi_1=\pi_1\tau_1\mathrel\xi\pi_1\tau_2=\pi_1\ga\pi_2=\pi_2\mathrel\xi\si_2$; note that $\pi_1\ga\pi_2=\pi_2$ follows from the fact that $\ker(\pi_1)=\ker(\pi_2)$. \end{proof}
 
 
 The proof of the next result is virtually identical to that of Proposition \ref{prop:R01_Bn}.
 
 
-\begin{prop}\label{prop:R01_Jn}
+\begin{proposition}\label{prop:R01_Jn}
 Let $n\geq3$ be odd.  Then $R_1$ is a principal congruence on $\J_n$.  Moreover, if $\alpha,\beta\in\J_n$, then $R_1=\cg\alpha\beta\iff(\alpha,\beta)\in R_1\sm(\rho_1\cup\lambda_1)$.  \epfres
-\end{prop}
+\end{proposition}
 
 
 
@@ -3645,7 +3645,7 @@ We begin with a simple result that will be of use on several occasions; its stat
 Let $n\geq3$ be arbitrary.  Let $\alpha,\beta\in\J_n$ with $p=\rank(\alpha)<q=\rank(\beta)$.  Suppose ${\xi\in\Cong(\J_n)}$ is such that $R_p\sub\xi$ and $(\alpha,\beta)\in\xi$.  Then $R_q\sub\xi$.
 \end{lemma}
 
-\pf Since $R_p\sub\xi$, it suffices to show that any Jones element $\ga\in\J_n$ of rank at most $q$ is $\xi$-related to an element of rank at most $p$.  Since $\rank(\ga)\leq\rank(\beta)$, it follows from Proposition \ref{prop:green_all_inclusive}(iv) that $\ga=\de_1\beta\de_2$ for some $\de_1,\de_2\in\J_n$.  But then $\ga=\de_1\beta\de_2 \mathrel\xi \de_1\alpha\de_2$, and we are done, since $\rank(\de_1\alpha\de_2)\leq\rank(\alpha)=p$. \epf
+\begin{proof} Since $R_p\sub\xi$, it suffices to show that any Jones element $\ga\in\J_n$ of rank at most $q$ is $\xi$-related to an element of rank at most $p$.  Since $\rank(\ga)\leq\rank(\beta)$, it follows from Proposition \ref{prop:green_all_inclusive}(iv) that $\ga=\de_1\beta\de_2$ for some $\de_1,\de_2\in\J_n$.  But then $\ga=\de_1\beta\de_2 \mathrel\xi \de_1\alpha\de_2$, and we are done, since $\rank(\de_1\alpha\de_2)\leq\rank(\alpha)=p$. \end{proof}
 
 
 %
@@ -3654,7 +3654,7 @@ Let $n\geq3$ be arbitrary.  Let $\alpha,\beta\in\J_n$ with $p=\rank(\alpha)<q=\r
 Let $n\geq3$ be odd.  Suppose $\xi\in\Cong(\J_n)$ and that $(\id_n,\alpha)\in\xi$ for some $\alpha\in J_1$.  Then $\xi=R_n$.
 \end{lemma}
 
-\pf By Lemma \ref{lem:pq_Jn}, it suffices to show that $R_1\sub\xi$.  Let $A$ be a nontrivial $\coker(\alpha)$-class, and let $\beta\in J_1$ be such that $A$ is not a $\coker(\beta)$-class.  Then $(\beta,\beta\alpha)=(\beta\;\!\id_n,\beta\alpha)\in\xi$.  But $\rank(\beta\alpha)=\rank(\beta)=1$, $\ker(\beta\alpha)=\ker(\beta)$, yet $\coker(\beta\alpha)\not=\coker(\beta)$, since $A$ is a $\coker(\beta\alpha)$-class but not a $\coker(\beta)$-class.  In particular, $(\beta,\beta\alpha)\in\rho_1\sm\Delta$, so Proposition \ref{prop:rlJodd} gives $\rho_1=\cg{\beta}{\beta\alpha}\sub\xi$.  Similarly, $\lambda_1\sub\xi$, and it follows from Proposition \ref{prop-CR4} that $R_1=\rho_1\vee\lam_1\sub\xi$, as required. \epf
+\begin{proof} By Lemma \ref{lem:pq_Jn}, it suffices to show that $R_1\sub\xi$.  Let $A$ be a nontrivial $\coker(\alpha)$-class, and let $\beta\in J_1$ be such that $A$ is not a $\coker(\beta)$-class.  Then $(\beta,\beta\alpha)=(\beta\;\!\id_n,\beta\alpha)\in\xi$.  But $\rank(\beta\alpha)=\rank(\beta)=1$, $\ker(\beta\alpha)=\ker(\beta)$, yet $\coker(\beta\alpha)\not=\coker(\beta)$, since $A$ is a $\coker(\beta\alpha)$-class but not a $\coker(\beta)$-class.  In particular, $(\beta,\beta\alpha)\in\rho_1\sm\Delta$, so Proposition \ref{prop:rlJodd} gives $\rho_1=\cg{\beta}{\beta\alpha}\sub\xi$.  Similarly, $\lambda_1\sub\xi$, and it follows from Proposition \ref{prop-CR4} that $R_1=\rho_1\vee\lam_1\sub\xi$, as required. \end{proof}
 
 In what follows,
 we will make extensive use of the idempotents $\ve_q=\partI1q{q+1,q+2}{n-1,n}1q{q+1,q+2}{n-1,n}$, for $q=1,3,\ldots,n$, already used in Section \ref{sect:Bn}.  We note that $\ve_q\in\J_n$, and that $\ve_q\J_n\ve_q$ is a monoid with identity~$\ve_q$, isomorphic to $\J_q$.
@@ -3664,7 +3664,7 @@ we will make extensive use of the idempotents $\ve_q=\partI1q{q+1,q+2}{n-1,n}1q{
 Let $n\geq3$ be odd.  Suppose $\xi\in\Cong(\J_n)$ and $(\alpha,\beta)\in\xi\cap (J_q\times J_1)$ with $q\geq3$.  Then $R_q\sub\xi$.
 \end{lemma}
 
-\pf Again, by Lemma \ref{lem:pq_Jn}, it suffices to show that $R_1\sub\xi$.  Write $\alpha=\partI{a_1}{a_q}{A_1}{A_r}{b_1}{b_q}{B_1}{B_r}$, with $a_1<\cdots<a_q$, and define
+\begin{proof} Again, by Lemma \ref{lem:pq_Jn}, it suffices to show that $R_1\sub\xi$.  Write $\alpha=\partI{a_1}{a_q}{A_1}{A_r}{b_1}{b_q}{B_1}{B_r}$, with $a_1<\cdots<a_q$, and define
 \[
 \ga_1=\partI1q{q+1,q+2}{n-1,n}{a_1}{a_q}{A_1}{A_r}
 \qquad\text{and}\qquad
@@ -3676,7 +3676,7 @@ Then $\ve_q=\ga_1\alpha\ga_2\mathrel\xi\ga_1\beta\ga_2=\ga$.  But $\ga\in\ve_q\J
 %
 For $\si\in\ve_q\J_n\ve_q$, let $\si^\vee\in\J_q$ be the Jones element of degree $q$ obtained from $\si$ by removing the blocks ${\{q+1,q+2\},\ldots,\{n-1,n\}}$ and $\{(q+1)',(q+2)'\},\ldots,\{(n-1)',n'\}$.  
 %
-In $\J_q$, note that $(\ve_q^\vee,\ga^\vee)=(\id_q,\ga^\vee)$, with ${\rank(\ga^\vee)=1}$, so by Lemma \ref{lem:1z_Jn}, this pair generates the universal congruence on $\J_q$.  Since $(\ve_q,\ga)\in\xi$, it follows that all elements of $\ve_q\J_n\ve_q$ are $\xi$-related.  In particular, choosing any pair of elements $\de_3,\de_4\in\ve_q\J_n\ve_q$ such that $\rank(\de_3)=\rank(\de_4)=1$, $\ker(\de_3)\not=\ker(\de_4)$ and $\coker(\de_3)\not=\coker(\de_4)$, Proposition \ref{prop:R01_Jn} gives $R_1=\cg{\de_3}{\de_4}\sub\xi$.  \epf
+In $\J_q$, note that $(\ve_q^\vee,\ga^\vee)=(\id_q,\ga^\vee)$, with ${\rank(\ga^\vee)=1}$, so by Lemma \ref{lem:1z_Jn}, this pair generates the universal congruence on $\J_q$.  Since $(\ve_q,\ga)\in\xi$, it follows that all elements of $\ve_q\J_n\ve_q$ are $\xi$-related.  In particular, choosing any pair of elements $\de_3,\de_4\in\ve_q\J_n\ve_q$ such that $\rank(\de_3)=\rank(\de_4)=1$, $\ker(\de_3)\not=\ker(\de_4)$ and $\coker(\de_3)\not=\coker(\de_4)$, Proposition \ref{prop:R01_Jn} gives $R_1=\cg{\de_3}{\de_4}\sub\xi$.  \end{proof}
 
 
 
@@ -3693,7 +3693,7 @@ We do not assume $n$ is odd for the statement or proof of the next result.
 Let $n\geq3$ be arbitrary.  Suppose $\alpha\in \Proj(\J_n)$ and $3\leq \rank(\alpha)\leq n-2$.  Then there exists $\beta\in \Proj(\J_n)$ with  $\rank(\alpha\beta)<\rank(\alpha)=\rank(\beta)$.
 \end{lemma}
 
-\pf Write $\alpha=\partI{a_1}{a_q}{A_1}{A_r}{a_1}{a_q}{A_1}{A_r}$, where $a_1<\cdots<a_q$.  There are three possibilities:
+\begin{proof} Write $\alpha=\partI{a_1}{a_q}{A_1}{A_r}{a_1}{a_q}{A_1}{A_r}$, where $a_1<\cdots<a_q$.  There are three possibilities:
 \begin{itemize}
 \begin{multicols}{3}
 \item[(a)] $a_1=1$ and $a_2=2$,
@@ -3725,7 +3725,7 @@ In case (a), we put $\beta=\Big(
 \rule[0mm]{0mm}{2.7mm}
 \end{array} 
 }
-\hspace{-1.5 truemm} \Big)$. \epf
+\hspace{-1.5 truemm} \Big)$. \end{proof}
 
 
 
@@ -3751,7 +3751,7 @@ Consider a projection $\alpha=\partI{a_1}{a_q}{A_1}{A_r}{a_1}{a_q}{A_1}{A_r}\in 
 Let $n\geq3$ be odd.  Suppose $\xi\in\Cong(\J_n)$ and that $(\id_n,\alpha)\in\xi$ for some $\alpha\in\J_n$ with $\rank(\alpha)<n$.  Then $\xi=R_n$.
 \end{lemma}
 
-\pf We proceed by induction on $n$.  The result is true for $n=3$ by Lemma
+\begin{proof} We proceed by induction on $n$.  The result is true for $n=3$ by Lemma
     \ref{lem:1z_Jn}, so suppose $n\geq5$.  Write $q=\rank(\alpha)$.  If
     $q=1$, then we are also done by Lemma \ref{lem:1z_Jn}, so suppose
     $q\geq3$.  First note that $\id_n \mathrel\xi \alpha = \alpha\alpha^*\alpha \mathrel\xi \alpha\alpha^*\;\!\id_n = \alpha\alpha^*$,
@@ -3760,7 +3760,7 @@ so that $\id_n$ is $\xi$-related to a projection of rank $q$.  As such, from thi
 By Lemma \ref{lem:proj1_Jn}, we may fix a projection $\beta\in \Proj(\J_n)$ with $\rank(\beta)=q$ and $\rank(\alpha\beta)<q$.  Write $\beta=\partI{a_1}{a_q}{A_1}{A_r}{a_1}{a_q}{A_1}{A_r}$, where $a_1<\cdots<a_r$.  As noted above, $\beta\J_n\beta$ is a subsemigroup of $\J_n$ isomorphic to~$\J_q$, and has $\beta$ as its identity element.  For $\si\in\beta\J_n\beta$, we write $\si^\vee$ for the element of~$\J_q$ obtained from~$\si$ by removing the blocks $A_i,A_i'$ ($1\leq i\leq r$), and renaming the elements of the remaining blocks via the bijection $\dom(\beta)\to\bq:a_i\mt i$.  So $\beta\J_n\beta\to\J_q:\si\mt\si^\vee$ is an isomorphism.
 
 Now, $\beta=\beta\beta=\beta\;\!\id_n\;\!\beta \mathrel\xi \beta\alpha\beta$, and we note that $\beta,\beta\alpha\beta\in\beta\J_n\beta$ and $\rank(\beta\alpha\beta)\leq\rank(\alpha\beta)<q=\rank(\beta)$.  It follows that $\beta^\vee=\id_q$ and $(\beta\alpha\beta)^\vee\in\J_q$ with ${\rank((\beta\alpha\beta)^\vee)<q}$.  
-By induction, it follows that the pair $(\beta^\vee,(\beta\alpha\beta)^\vee)$ generates the universal congruence on $\J_q$.  Since $(\beta,\beta\alpha\beta)\in\xi$, as noted above, it follows that all elements of $\beta\J_n\beta$ are $\xi$-related.  In particular, $(\beta,\beta\ve_1\beta)\in\xi$.  Since $\rank(\beta)=q\geq3$ and $\rank(\beta\ve_1\beta)=1$, Lemma \ref{lem:qz_Jn} gives $R_q\sub\xi$.  Together with the fact that $(\id_n,\alpha)\in\xi$ and $\rank(\alpha)=q$, Lemma \ref{lem:pq_Jn} then gives $R_n\sub\xi$, whence $\xi=R_n$. \epf
+By induction, it follows that the pair $(\beta^\vee,(\beta\alpha\beta)^\vee)$ generates the universal congruence on $\J_q$.  Since $(\beta,\beta\alpha\beta)\in\xi$, as noted above, it follows that all elements of $\beta\J_n\beta$ are $\xi$-related.  In particular, $(\beta,\beta\ve_1\beta)\in\xi$.  Since $\rank(\beta)=q\geq3$ and $\rank(\beta\ve_1\beta)=1$, Lemma \ref{lem:qz_Jn} gives $R_q\sub\xi$.  Together with the fact that $(\id_n,\alpha)\in\xi$ and $\rank(\alpha)=q$, Lemma \ref{lem:pq_Jn} then gives $R_n\sub\xi$, whence $\xi=R_n$. \end{proof}
 
 
 
@@ -3784,7 +3784,7 @@ Let $n\geq3$ be arbitrary.  Suppose $\alpha,\beta\in\Proj(\J_n)$ are such that $
 \end{lemma}
 
 
-\pf The result is true for even $n$, because of Lemma~\ref{lemma-aa1b:PPn} (cf.~Lemma \ref{lemma-aa1b}), where the constructed element $\gamma$ is indeed a projection, and the isomorphism ${\PP_m\to\J_{2m}:\alpha\mt\alphat}$, keeping in mind the fact that $\rank(\alphat)=2\rank(\alpha)$ for any $\alpha\in\PP_m$.  So we assume $n$ is odd for the rest of the proof.  This also forces $\rank(\alpha)=\rank(\beta)\geq3$ to be odd. Write $\alpha=\partI{a_1}{a_q}{A_1}{A_r}{a_1}{a_q}{A_1}{A_r}$ and $\beta=\partI{b_1}{b_q}{B_1}{B_r}{b_1}{b_q}{B_1}{B_r}$, where $a_1<\cdots<a_q$ and $b_1<\cdots<b_q$.  
+\begin{proof} The result is true for even $n$, because of Lemma~\ref{lemma-aa1b:PPn} (cf.~Lemma \ref{lemma-aa1b}), where the constructed element $\gamma$ is indeed a projection, and the isomorphism ${\PP_m\to\J_{2m}:\alpha\mt\alphat}$, keeping in mind the fact that $\rank(\alphat)=2\rank(\alpha)$ for any $\alpha\in\PP_m$.  So we assume $n$ is odd for the rest of the proof.  This also forces $\rank(\alpha)=\rank(\beta)\geq3$ to be odd. Write $\alpha=\partI{a_1}{a_q}{A_1}{A_r}{a_1}{a_q}{A_1}{A_r}$ and $\beta=\partI{b_1}{b_q}{B_1}{B_r}{b_1}{b_q}{B_1}{B_r}$, where $a_1<\cdots<a_q$ and $b_1<\cdots<b_q$.  
 
 
 
@@ -3853,7 +3853,7 @@ In particular, $\{k,i\}$ and $\{w,j\}$ are $\coker(\beta)$-classes, and $\{i,w\}
 \item[(c)] $w<j<k<i$, or
 \item[(d)] $w<j<i<k$.
 \end{multicols}\end{itemize}
-Since $w<a_1<b_1$, planarity also implies that $i<a_1$, $j<b_1$ and $k<b_1$.  In cases (a) and (b), we define $\ga$ to be any projection with domain $\{w,i,b_3,\ldots,b_q\}$ and containing the block $\{j,b_1\}$.  In cases (c) and (d), we define $\ga$ to be any projection with domain $\{w,j,a_3,\ldots,a_q\}$ and containing the block $\{i,a_1\}$.  This completes the proof. \epf
+Since $w<a_1<b_1$, planarity also implies that $i<a_1$, $j<b_1$ and $k<b_1$.  In cases (a) and (b), we define $\ga$ to be any projection with domain $\{w,i,b_3,\ldots,b_q\}$ and containing the block $\{j,b_1\}$.  In cases (c) and (d), we define $\ga$ to be any projection with domain $\{w,j,a_3,\ldots,a_q\}$ and containing the block $\{i,a_1\}$.  This completes the proof. \end{proof}
 
 
 
@@ -3986,7 +3986,7 @@ Suppose $\xi\in\Cong(\J_n)$ and $(\alpha,\beta)\in (\xi\sm\Delta)\cap (J_q\times
 \end{lemma}
 
 
-\pf Since $\alpha\not=\beta$, we have either $(\alpha,\beta)\not\in{\R}$ or $(\alpha,\beta)\not\in{\L}$.  By symmetry, we may assume the latter is the case.  Note that $\alpha^*\alpha$ and $\beta^*\beta$ are distinct projections of rank $q$, since $\alpha^*\alpha\L\alpha$ and $\beta^*\beta\L\beta$.  So, by Lemma \ref{lem:proj2_Jn}, there exists $\ga\in\Proj(\J_n)$ such that, renaming $\alpha,\beta$ if necessary, $\rank(\alpha^*\alpha\ga)<q$ and $\rank(\beta^*\beta\ga)=q$.  Now, $\alpha\ga=\alpha(\alpha^*\alpha\ga)$, so it follows that $\alpha\ga\L\alpha^*\alpha\ga$.  Consequently, $\alpha\ga\gJ\alpha^*\alpha\ga$, whence ${\rank(\alpha\ga)=\rank(\alpha^*\alpha\ga)<q}$.  Similarly, $\rank(\beta\ga)=\rank(\beta^*\beta\ga)=q$.  Since $(\alpha\ga,\beta\ga)\in\xi$, Lemma \ref{lem:pq2_Jn} then gives $R_q\sub\xi$. \epf
+\begin{proof} Since $\alpha\not=\beta$, we have either $(\alpha,\beta)\not\in{\R}$ or $(\alpha,\beta)\not\in{\L}$.  By symmetry, we may assume the latter is the case.  Note that $\alpha^*\alpha$ and $\beta^*\beta$ are distinct projections of rank $q$, since $\alpha^*\alpha\L\alpha$ and $\beta^*\beta\L\beta$.  So, by Lemma \ref{lem:proj2_Jn}, there exists $\ga\in\Proj(\J_n)$ such that, renaming $\alpha,\beta$ if necessary, $\rank(\alpha^*\alpha\ga)<q$ and $\rank(\beta^*\beta\ga)=q$.  Now, $\alpha\ga=\alpha(\alpha^*\alpha\ga)$, so it follows that $\alpha\ga\L\alpha^*\alpha\ga$.  Consequently, $\alpha\ga\gJ\alpha^*\alpha\ga$, whence ${\rank(\alpha\ga)=\rank(\alpha^*\alpha\ga)<q}$.  Similarly, $\rank(\beta\ga)=\rank(\beta^*\beta\ga)=q$.  Since $(\alpha\ga,\beta\ga)\in\xi$, Lemma \ref{lem:pq2_Jn} then gives $R_q\sub\xi$. \end{proof}
 
 
 Armed with the previous results, we may now characterise the generating pairs for the Rees congruences~$R_q$, for $q\geq3$.
@@ -3994,11 +3994,11 @@ Armed with the previous results, we may now characterise the generating pairs fo
 
 
 
-\begin{prop}\label{prop:Rq_Jn}
+\begin{proposition}\label{prop:Rq_Jn}
 Let $n$ be odd, and suppose $3\leq q\leq n$ is odd.  Then $R_q$ is a principal congruence on $\J_n$.  Moreover, if $\alpha,\beta\in\J_n$, then $R_q=\cg\alpha\beta\iff(\alpha,\beta)\in R_q\sm R_{q-2}$.
-\end{prop}
+\end{proposition}
 
-\pf Let $(\alpha,\beta)\in R_q\sm R_{q-2}$.  The proof will be complete if we can show that $R_q\sub\cg\alpha\beta$.  Renaming $\alpha,\beta$ if necessary, we may assume that $\rank(\alpha)=q$.  But then $R_q\sub\cg\alpha\beta$ follows from Lemma \ref{lem:pq2_Jn} if $\rank(\beta)<q$, or from Lemma \ref{lem:qq_Jn} if $\rank(\beta)=q$. \epf
+\begin{proof} Let $(\alpha,\beta)\in R_q\sm R_{q-2}$.  The proof will be complete if we can show that $R_q\sub\cg\alpha\beta$.  Renaming $\alpha,\beta$ if necessary, we may assume that $\rank(\alpha)=q$.  But then $R_q\sub\cg\alpha\beta$ follows from Lemma \ref{lem:pq2_Jn} if $\rank(\beta)<q$, or from Lemma \ref{lem:qq_Jn} if $\rank(\beta)=q$. \end{proof}
 
 We now have all we need to conclude the proof.
 
