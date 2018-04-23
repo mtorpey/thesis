@@ -713,9 +713,19 @@ look similar at all.  Consider the following example.
 
 Another important type of element discussed in this thesis is a
 \textit{bipartition} (sometimes referred to just as a \textit{partition}).
-These are formally defined as a class of equivalence relations under an
-interesting composition operation, but they can also be seen as a generalisation
-of partial transformations.  We begin with the formal definition.
+Bipartitions are formally defined as a class of equivalence relations that form
+semigroups under an interesting composition operation; but we will often
+understand them in a graphical way, as in Figure \ref{fig:bipartition-example}.
+Bipartition semigroups are thus included in the class of \textit{diagram
+  semigroups} \cite{diagram_semigroups}.  The study of bipartition semigroups is
+born out of the study of diagram algebras, for example Temperley-Lieb algebras
+and the partition algebra \cite{partition_algebra}.  However, it is of
+independent interest in semigroup theory, being an example of a regular
+$\star$-semigroup (discussed later), and containing copies of important algebras
+such as $\Sym_n$, $\T_n$ and $\I_n$, along with other interesting features
+\cite[\S1]{deg_motzkin}.
+
+We begin with the formal definition.
 
 \begin{definition}
   \label{def:bipartition}
@@ -723,7 +733,8 @@ of partial transformations.  We begin with the formal definition.
   A \textbf{bipartition} is an equivalence relation on the set
   $\mathbf{n} \cup \mathbf{n}'$, where $\mathbf{n} = \{1, \ldots, n\}$ and
   $\mathbf{n}' = \{1', \ldots, n'\}$ for some $n \in \mathbb{N}$.
-  \nomenclature[n']{$\mathbf{n}'$}{$\{1', 2', \ldots, n'\}$ for some $n \in \mathbb{N}$}
+  \nomenclature[n']{$\mathbf{n}'$}{$\{1', 2', \ldots, n'\}$ for some
+    $n \in \mathbb{N}$}
 \end{definition}
 
 The equivalence classes of a bipartition are called \textbf{blocks}.  A block is
