@@ -722,7 +722,7 @@ of partial transformations.  We begin with the formal definition.
   \index{bipartition}
   A \textbf{bipartition} is an equivalence relation on the set
   $\mathbf{n} \cup \mathbf{n}'$, where $\mathbf{n} = \{1, \ldots, n\}$ and
-  $\mathbf{n}' = \{1', \ldots, n'\}$.
+  $\mathbf{n}' = \{1', \ldots, n'\}$ for some $n \in \mathbb{N}$.
   \nomenclature[n']{$\mathbf{n}'$}{$\{1', 2', \ldots, n'\}$ for some $n \in \mathbb{N}$}
 \end{definition}
 
@@ -760,11 +760,10 @@ line.  Consider the following example.
   \label{ex:bipartition}
   Let $\alpha$ be the bipartition of degree $5$ with blocks $\{1, 2', 3'\}$,
   $\{2\}$, $\{3, 4, 3', 4'\}$, $\{5\}$ and $\{5'\}$.  Let $\beta$ be the
-  bipartition of degree $5$ with blocks $\{1, 2, 5, 1', 2'\}$, $\{4\}$,
-  $\{3, 4', 5'\}$ and $\{3'\}$.  The diagrams of these two figures, along with
-  their product $\alpha \beta$, are shown in Figure
-  \ref{fig:bipartition-example}.  Note that two different diagrams are shown for
-  $\alpha \beta$.
+  bipartition of degree $5$ with blocks $\{1, 2, 5, 1', 2'\}$, $\{3, 4', 5'\}$,
+  $\{4\}$ and $\{3'\}$.  The diagrams of these two figures, along with their
+  product $\alpha \beta$, are shown in Figure \ref{fig:bipartition-example}.
+  Note that two different diagrams are shown for $\alpha \beta$.
   \begin{figure}[h]
     \centering
     $$\alpha = \bipartdiag{\tv11\bc12 \tc34 \tv33\tc34\bc34} \qquad
@@ -833,7 +832,8 @@ We illustrate these attributes by continuing our example.
   $$\dom \beta = \{1,2,3,5\}, \qquad
   \ker \beta = \big\{\{1,2,5\}, \{3\}, \{4\}\big\},$$
   $$\codom \beta = \{1,2,4,5\}, \qquad
-  \coker \beta = \big\{\{1,2\}, \{3\}, \{4,5\}\big\}.$$
+  \coker \beta = \big\{\{1,2\}, \{3\}, \{4,5\}\big\},$$
+  where a kernel or cokernel is identified with the set of its blocks.
   We also have $\rank \alpha = \rank \beta = 2$.
 \end{example}
 
@@ -843,7 +843,7 @@ representing a bipartition: a modified two-row notation.  In this notation, the
 blocks of the bipartition's kernel are written across the top row, separated by
 vertical lines, and the blocks of the cokernel are written across the bottom
 row, omitting prime symbols.  Transversals are written first, with the
-appropriate kernel block written above the corresponding cokernel block.
+appropriate kernel block written above its corresponding cokernel block.
 Non-transversal blocks are written afterwards, with upper and lower blocks
 separated by horizontal lines.  A generic bipartition could thus be represented
 by
@@ -889,20 +889,18 @@ We now consider the semigroup of all bipartitions of a given degree.
 The bipartition monoid has many interesting features.  First of all, a number of
 other important semigroups embed into $\Prt_n$ as subsemigroups.  For example,
 the partial transformation monoid $\PT_n$ embeds as follows: let
-$\phi : \PT_n \to \Prt_n$ be defined such that, for a partial transformation
-$\tau$, the partition $(\tau)\phi$ has a block $\{a, (a\tau)'\}$ for each $a$ in
-the domain of $\tau$, and all other blocks singletons.  It is easy to see that
-$\phi$ is a monomorphism.  Hence $\Prt_n$ contains a copy of $\PT_n$, and
-therefore copies of the full transformation monoid $\T_n$, the symmetric inverse
-monoid $\I_n$, and the symmetric group $\Sym_n$.  Note that $\Prt_n$ is a
-regular semigroup, with an inverse of $\alpha \in \Prt_n$ given by
-$\alpha^\star$.
+$\phi : \PT_n \to \Prt_n$ be the map that sends a partial transformation $\tau$
+to the bipartition $\left\{\big(a, (a\tau)'\big) : a \in \dom \tau\right\}^e$.
+It is easy to see that $\phi$ is a monomorphism.  Hence $\Prt_n$ contains a copy
+of $\PT_n$, and therefore it also contains copies of the full transformation
+monoid $\T_n$, the symmetric inverse monoid $\I_n$, and the symmetric group
+$\Sym_n$.  Note that $\Prt_n$ is a regular semigroup, with an inverse of
+$\alpha \in \Prt_n$ given by $\alpha^\star$.
 
 As with any semigroup, it will be helpful to describe the Green's relations of
 the bipartition monoid.  The following proposition describes the Green's
-relations and the containment of $\JJ$-classes very simply in terms of domain,
-codomain, kernel, cokernel, and rank.  The result is taken from
-\cite{fitzgerald_2011}.
+relations, the containment of $\JJ$-classes and the ideals of $\Prt_n$ very
+simply in terms of domain, codomain, kernel, cokernel, and rank.
 
 \begin{proposition}
   \label{prop:bipartition-greens}
@@ -918,6 +916,10 @@ codomain, kernel, cokernel, and rank.  The result is taken from
     $I_r=\{\alpha \in \Prt_n : \rank \alpha \leq r\}$ for
     $r \in \{0, \ldots, n\}$.
   \end{enumerate}
+  \begin{proof}
+    Parts (i) to (iv) are from \cite{fitzgerald_2011}, and part (v) follows
+    naturally from (iii) and (iv).
+  \end{proof}
 \end{proposition}
 
 The bipartition monoid $\Prt_n$ grows very quickly as $n$ increases: its size is
