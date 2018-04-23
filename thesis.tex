@@ -37,6 +37,10 @@
 \usepackage{xcolor}
 \usepackage{xfrac}
 
+% List of notation
+\renewcommand\nomname{List of notation}
+\def\pagedeclaration#1{\dotfill \hyperlink{page.#1}{\nobreakspace#1}}
+
 % Compile the index and notation
 \makeindex
 \makenomenclature
@@ -88,10 +92,6 @@
   \let\thetable\thefigure
 }
 \makeatother
-
-% List of notation
-\renewcommand\nomname{List of notation}
-\def\pagedeclaration#1{, \nobreakspace#1}
 
 % Object numbering
 \newtheorem{theorem}{Theorem}[chapter]
