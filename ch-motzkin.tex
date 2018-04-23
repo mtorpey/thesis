@@ -20,7 +20,7 @@ $n$, along with those lattices computed for various submonoids of $\Prt_n$,
 yielded a general classification of the congruence lattice of $\Prt_n$ for
 arbitrary $n$, along with a classification of the congruence lattices of various
 important submonoids.  This classification is explained and proven in
-\cite{ourpaper}.
+\cite{ourpaper}, the paper upon which this chapter is based.
 
 In this chapter, we will examine the structure of these congruence lattices,
 focusing in particular on the Motzkin monoid $\Mot_n$, which was the present
@@ -39,7 +39,7 @@ bipartition.
   \label{def:planar}
   \index{planar bipartition}
   A bipartition is called \textbf{planar} if it can be represented in diagram
-  form with all edges contained inside the rectangle formed by the vertices, and
+  form with all edges contained inside the rectangle formed by the vertices,
   without any edges crossing.
 \end{definition}
 
@@ -77,7 +77,7 @@ crossing lines, and therefore would resolve to a product with no crossing lines.
 It is also easy to see that if two bipartitions have no block larger than $2$,
 their product also has no block larger than $2$: any transversal can only
 contain one point in $\bn$ and one point in $\bn'$, so any transversal in the
-product can only contain two points; the upper and lower blocks of the product
+product can only contain two points.  The upper and lower blocks of the product
 are inherited from the original bipartitions, so they will not break the
 condition either.
 
@@ -112,9 +112,9 @@ shown in Table \ref{tab:mn-size}.
 
 The Motzkin monoid $\Mot_n$ shares a number of features with $\Prt_n$---indeed,
 we will see later that its congruence lattice is very similar.  Like $\Prt_n$,
-$\Mot_n$ is regular One important
-similarity is in its Green's relations.  Consider the following proposition,
-akin to Proposition \ref{prop:bipartition-greens}.
+$\Mot_n$ is regular with a possible inverse given by the $^\star$
+function. Another important similarity is in its Green's relations: consider the
+following proposition, akin to Proposition \ref{prop:bipartition-greens}.
 
 \begin{proposition}
   \label{prop:mn-greens}
@@ -155,18 +155,18 @@ share, namely the following corollary.
     domain connect to which blocks in the codomain.  In $\Prt_n$ there are
     $(\rank \alpha)!$ ways of choosing this match-up; but in $\Mot_n$ there is
     only one way possible, since we cannot allow any lines in the diagram to
-    cross over.  Hence $\alpha = \beta$.
+    cross.  Hence $\alpha = \beta$.
   \end{proof}
 \end{corollary}
 
 
 \section{Preliminaries}
 \label{sec:motzkin-prelim}
-We will start by defining some concepts which allow us to find certain
+We will now define some concepts which allow us to find certain
 congruences in any semigroup: \textit{retractable ideals} (Definition
 \ref{def:retractable-ideal}) and \textit{lifting congruences} (Definition
 \ref{def:lifting-congruence}).  It will turn out that all the congruences of
-$\Mot_n$ can be built using these two building blocks.
+$\Mot_n$ can be found using these two building blocks.
 
 \begin{definition}
   \label{def:retractable-ideal}
@@ -194,7 +194,7 @@ $\Mot_n$ can be built using these two building blocks.
 
 In order to use these building blocks to produce new congruences, we first need
 to establish some results about them.  Note that, since $\Mot_n$ is finite, it
-always has a minimal ideal.  More specifically, the minimal ideal of $\Mot_n$ is
+must have a minimal ideal.  More specifically, the minimal ideal of $\Mot_n$ is
 given by $I_0 = \{\alpha \in \Mot_n : \rank \alpha = 0\}$ (see Proposition
 \ref{prop:mn-greens}).  The following lemma will be used at various times
 throughout this chapter.
@@ -218,9 +218,9 @@ throughout this chapter.
   \end{proof}
 \end{lemma}
 
-This gives rise to an important result which we can use later when we combine
-retractable ideals with lifting congruences.  Note first that, since $\Mot_n$ is
-a regular semigroup, its minimal ideal is also regular.
+This lemma gives rise to an important corollary which we can use later when we
+combine retractable ideals with lifting congruences.  Note first that, since
+$\Mot_n$ is a regular semigroup, its minimal ideal is also regular.
 
 \begin{corollary}
   \label{cor:retract-unique}
@@ -271,10 +271,10 @@ following proposition.
 \end{proposition}
 
 This construction now gives us a usable source of congruences.  All that is
-required is to find lifting congruences and retractable ideals of a semigroup,
-and a number of new congruences can be described.  It turns out that this is an
-excellent source of congruences for $\Mot_n$, yielding every congruence on the
-semigroup, as we will see later.
+required is to find some lifting congruences and retractable ideals of a
+semigroup, and a number of new congruences can be described.  It turns out that
+this is an excellent source of congruences for $\Mot_n$, yielding every
+congruence on the semigroup, as we will see later.
 
 \section{Congruence lattice of $\Mot_n$}
 \label{sec:motzkin-congs}
