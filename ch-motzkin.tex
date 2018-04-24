@@ -24,7 +24,9 @@ important submonoids.  This classification is explained and proven in
 
 In this chapter, we will examine the structure of these congruence lattices,
 focusing in particular on the Motzkin monoid $\Mot_n$, which was the present
-author's particular focus when contributing to \cite{ourpaper}.  We will start
+author's particular focus when contributing to \cite{ourpaper}.  Much of this
+content is contained in some form in that paper, and is included in this
+thesis by the kind permission of my co-authors.  We will start
 with the definition of the Motzkin monoid, then describe some preliminary
 theory, then describe the Motzkin monoid's lattice of congruences, and
 finally give a brief description of how these ideas can be extended to $\Prt_n$
@@ -134,6 +136,7 @@ following proposition, akin to Proposition \ref{prop:bipartition-greens}.
   \begin{proof}
     For (i) to (iii), see \cite[Theorem 2.4]{deg_motzkin}.  For (iv) and (v),
     see \cite[Proposition 2.6]{deg_motzkin}.
+    % TODO: actually give the proof
   \end{proof}
 \end{proposition}
 
@@ -165,31 +168,32 @@ share, namely the following corollary.
 \label{sec:motzkin-prelim}
 We will now define some concepts which allow us to find certain
 congruences in any semigroup: \textit{retractable ideals} (Definition
-\ref{def:retractable-ideal}) and \textit{lifting congruences} (Definition
-\ref{def:lifting-congruence}).  It will turn out that all the congruences of
+\ref{def:retractable-ideal}) and \textit{liftable congruences} (Definition
+\ref{def:liftable-congruence}).  It will turn out that all the congruences of
 $\Mot_n$ can be found using these two building blocks.
 
 \begin{definition}
   \label{def:retractable-ideal}
   \index{retractable ideal} \index{retraction}
-  Let $S$ be a semigroup with a minimal ideal $M$.  An ideal $I$ of $S$ is
-  \textbf{retractable} if there exists a homomorphism $f: I \to M$ such that
-  $xf = x$ for all $x \in M$; such a homomorphism is called a
+  Let $S$ be a finite semigroup, with minimal ideal $M$.  An ideal $I$ of $S$ is
+  called \textbf{retractable} if there exists some homomorphism $\phi: I \to M$
+  such that $(m)\phi = m$ for all $m \in M$; we call $\phi$ a
   \textbf{retraction}.
 \end{definition}
 
 \begin{definition}
-  \label{def:lifting-congruence}
-  \index{lifting congruence}
-  \nomenclature{$\xi$}{Lifting congruence}
-  Let $S$ be a semigroup with a minimal ideal $M$.  A congruence $\xi$ on $M$ is
-  a \textbf{lifting congruence} if any, and hence all, of the following
-  equivalent conditions are satisfied:
+  \label{def:liftable-congruence}
+  \index{liftable congruence}
+  \nomenclature{$\xi$}{Liftable congruence}
+  Let $S$ be a finite semigroup, with minimal ideal $M$.  A congruence $\sigma$
+  on $M$ is \textbf{liftable} if any, and therefore all, of the following
+  conditions are satisfied:
   \begin{enumerate}[\rm(i)]
-  \item $\Delta_S \cup \xi$ is a congruence on $S$;
-  \item there exists a congruence $\zeta$ on $S$ such that
-    $\xi=\zeta\cap(M\times M)$;
-  \item for all $(x,y) \in \xi$ and $s \in S$, $(xs,ys),(sx,sy) \in \xi$.
+  \item $\sigma \cup \Delta_S$ is a congruence on $S$;
+  \item there exists some congruence $\bar\sigma$ on $S$ such that
+    $\sigma= \bar\sigma \cap (M \times M)$;
+  \item $(ax,bx),(xa,xb) \in \sigma$ for all pairs $(a,b) \in \sigma$ and
+    elements $x \in S$.
   \end{enumerate}
 \end{definition}
 
@@ -202,37 +206,67 @@ throughout this chapter.
 
 \begin{lemma}
   \label{lem:retract-aux}
-  Let $S$ be a semigroup with a regular minimal ideal $M$, and let $I$ be an
-  ideal of $S$. If $f: I\rightarrow M$ is a retraction, then $(sxt)f=s(xf)t$ for
-  all $x\in I$ and $s,t\in S^1$.
+  Let $S$ be a finite semigroup, with regular minimal ideal $M$, and let $I$ be
+  an ideal of $S$.  If $I$ is retractable and $\phi: I \rightarrow M$ is a
+  retraction from $I$ to $M$, then $(sxt)\phi=s \cdot (x)\phi \cdot t$ for all
+  elements $x\in I$ and $s,t\in S^1$.
   \begin{proof}
-    We will prove the lemma by showing that $(sx)f=s(xf)$ for any $s\in S ^ 1$
-    and $x\in I$.  The equality $(xt)f=(xf)t$ is dual, and then
-    $(sxt)f=s(xt)f=s(xf)t$.  Let $e\in M$ be any right identity for $xf$; such
-    an~$e$ exists because $M$ is regular. Then, since $f$ is a retraction and
-    $e,xe\in M$, we have $xf=(xf)e=(xf)(ef)=(xe)f=xe$.  Next, let $e_1\in M$ be
-    a left identity for $(sx)f$.  Then
-    $(sx)fe=e_1(sx)fe=(e_1f)(sx)f(ef)=(e_1sxe)f
-     =(e_1s)f(xf)(ef)=(e_1s)f(xf)=(e_1sx)f=(e_1f)(sx)f=e_1(sx)f=(sx)f$.
-    So $e$ is a right identity for $(sx)f$ as well, and hence $(sx)f=sxe=s(xf)$,
-    as required.
+    Firstly, let us consider left multiplication.  Since $M$ is regular, any
+    element $m \in M$ has an inverse $m' \in M$, a left identity given by $mm'$,
+    and a right identity given by $m'm$.  Let $e$ be a right
+    identity for $(x)\phi$, so that
+    $(x)\phi \cdot e = (x)\phi$.
+    Since $\phi$ is a retraction and $e, xe \in M$, we have
+    $$(x)\phi=(x)\phi \cdot e = (x)\phi \cdot (e)\phi = (xe)\phi = xe,$$
+    so $(x)\phi = xe$.  Now let $f$ be a left identity for $(sx)\phi$; we also
+    have
+    \begin{align*}
+      (sx)\phi \cdot e & = f \cdot (sx)\phi \cdot e \\
+      & = (f)\phi \cdot (sx)\phi \cdot e \\
+      & = (fsx)\phi \cdot e \\
+      & = (fs)\phi \cdot (x)\phi \cdot e \\
+      & = (fs)\phi \cdot (x)\phi \\
+      & = (fsx)\phi \\
+      & = (f)\phi \cdot (sx)\phi \\
+      & = f \cdot (sx)\phi \\
+      & = (sx)\phi,
+    \end{align*}
+    which shows that $e$ is a right identity for $(sx)\phi$ as well as for
+    $(x)\phi$.  Hence we have
+    $s \cdot (x)\phi = s \cdot xe = (sxe)\phi = (sx)\phi \cdot (e)\phi =
+    (sx)\phi \cdot e = (sx)\phi$, so $\phi$ respects left multiplication; a
+    symmetric argument gives $(xt)\phi = (x)\phi \cdot t$, so $\phi$ respects
+    right multiplication too.  Finally we can combine these to give
+    $(sxt)\phi = (sx)\phi \cdot t = s \cdot (x)\phi \cdot t$, as required.
   \end{proof}
 \end{lemma}
 
 This lemma gives rise to an important corollary which we can use later when we
-combine retractable ideals with lifting congruences.  Note first that, since
+combine retractable ideals with liftable congruences.  Note first that, since
 $\Mot_n$ is a regular semigroup, its minimal ideal is also regular.
 
 \begin{corollary}
   \label{cor:retract-unique}
-  Let $S$ be a semigroup with a regular minimal ideal $M$.  If $I$ is a
-  retractable ideal of $S$, then there exists a unique retraction from $I$ to
-  $M$.
+  Let $S$ be a finite semigroup, with regular minimal ideal $M$.  If $I$ is a
+  retractable ideal of $S$, then the retraction $\phi:I \to M$ is unique.
   \begin{proof}
-    Suppose $f,g:I\to M$ are retractions, and let $x\in I$.  Let $e\in M$ be a
-    left identity for $xf$.  Using Lemma \ref{lem:retract-aux}, we see that
-    $xf = e (xf) = (ex)f = ex = (ex)g = e (xg)$.  A dual argument shows that
-    $xg=(xf) e'$ for some $e'$.  But then $xf = e (xg) = e (xf) e' = (xf)e'=xg$.
+    Let $\phi$ and $\psi$ be retractions from $I$ to $M$.  Let $x \in I$,
+    and let $e_l$ and $e_r$ be left and right identities for $(x)\phi$.  By
+    Lemma \ref{lem:retract-aux}, we have
+    $$(x)\phi
+    = e_l \cdot (x)\phi
+    = (e_lx)\phi
+    = e_lx
+    = (e_lx)\psi
+    = e_l \cdot (x)\psi,$$
+    so $(x)\phi = e_l \cdot (x)\psi$, and a symmetric argument gives us
+    $(x)\psi = (x)\phi \cdot e_r$.  But then
+    $$(x)\phi
+    = e_l \cdot (x)\psi
+    = e_l \cdot (x)\phi \cdot e_r
+    = (x)\phi \cdot e_r
+    = (x)\psi,$$
+    so $\phi = \psi$.
   \end{proof}
 \end{corollary}
 
@@ -246,33 +280,38 @@ we need to use our two building blocks to produce a new congruence: a
   \label{def:lifted-congruence}
   \index{lifted congruence}
   Let $S$ be a semigroup with a minimal ideal $M$, let $I$ be a retractable
-  ideal of $S$, and let $\xi$ be a lifting congruence on $M$.  We associate to
-  the pair $(I,\xi)$ the relation
-  $$\zeta_{I,\xi}= \Delta_S \cup \{(x,y) \in I \times I : (xf,yf) \in \xi\},$$
-  where $f:I \to M$ is the unique retraction of $I$.
-  We call $\zeta_{I,\xi}$ the \textbf{lifted congruence} of $(I,\xi)$.
+  ideal of $S$, and let $\sigma$ be a liftable congruence on $M$.  We associate to
+  the pair $(I,\sigma)$ the relation
+  $$\zeta_{I,\sigma}
+  = \{(x,y) \in I \times I : (x\phi,y\phi) \in \sigma\} \cup \Delta_S,$$
+  where $\phi$ is the unique retraction $I \to M$.
+  We call $\zeta_{I,\sigma}$ the \textbf{lifted congruence} of $(I,\sigma)$.
 \end{definition}
 
 In order to justify the name \textit{lifted congruence}, we require the
 following proposition.
 
-\begin{proposition}\label{prop:lift}
-  The relation $\zeta_{I,\xi}$ in Definition \ref{def:lifted-congruence} is a
+\begin{proposition}
+  \label{prop:lift}
+  The relation $\zeta_{I,\sigma}$ in Definition \ref{def:lifted-congruence} is a
   congruence on $S$.
   \begin{proof}
-    Write $\zeta=\zeta_{I,\xi}$ for brevity, and let $f:I\to M$ be the
-    retraction.  Let $(x,y)\in\zeta$ and $s\in S$ be arbitrary.  We must show
-    that $(xs,ys),(sx,sy)\in\zeta$.  This is clear if $x=y$, so suppose
-    $x,y\in I$ and $xf\mathrel\xi yf$.  Since~$I$ is an ideal, we have
-    $xs,ys\in I$.  By Lemma \ref{lem:retract-aux}, and condition (iii) of
-    Definition \ref{def:lifting-congruence}, we have
-    $(xs)f = (xf)s \mathrel\xi (yf)s = (ys)f$, showing that $(xs,ys)\in\zeta$.
-    A dual argument shows that $(sx,sy)\in\zeta$.
-\end{proof}
+    For conciseness, let us refer to $\zeta_{I,\sigma}$ as $\zeta$.  Let $(x,y)$
+    be a pair in $\zeta$ and let $s \in S$.  To show $\zeta$ is a congruence, we
+    must show that $(sx,sy)$ and $(xs,ys)$ both lie in $\zeta$.  If
+    $(x,y) \in \Delta_S$, this is certainly true.  Otherwise, we have
+    $x, y \in I$ and $(x\phi, y\phi) \in \sigma$.  Since $I$ is an ideal, we
+    certainly have $xs,ys\in I$.  Now by Definition
+    \ref{def:liftable-congruence} part (iii), and by Lemma
+    \ref{lem:retract-aux}, we have
+    $(sx)\phi = s \cdot (x)\phi \mathrel\sigma s \cdot (y)\phi = (sy)\phi$, so
+    that $(sx, sy) \in \zeta$.  A symmetric argument gives us
+    $(xs,ys) \in \zeta$.
+  \end{proof}
 \end{proposition}
 
 This construction now gives us a usable source of congruences.  All that is
-required is to find some lifting congruences and retractable ideals of a
+required is to find some liftable congruences and retractable ideals of a
 semigroup, and a number of new congruences can be described.  It turns out that
 this is an excellent source of congruences for $\Mot_n$, yielding every
 congruence on the semigroup, as we will see later.
