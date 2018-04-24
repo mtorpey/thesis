@@ -145,6 +145,14 @@
   \end{tikzpicture}~
 }
 
+\newcommand{\bipartdiagII}[1]{ % Single bipartition diagram (degree 2)
+  \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
+    \fill(1,2)circle(.125); \fill(1,0)circle(.125);
+    \fill(2,2)circle(.125); \fill(2,0)circle(.125);
+    #1
+  \end{tikzpicture}~
+}
+
 \newcommand{\doublebipartdiag}[1]{ % Double diagram (to show multiplication)
   \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
     \fill(1,4)circle(.125); \fill(1,2)circle(.125); \fill(1,0)circle(.125);
