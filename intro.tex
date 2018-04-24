@@ -899,13 +899,30 @@ We now consider the semigroup of all bipartitions of a given degree.
 
 The bipartition monoid has many interesting features.  First of all, a number of
 other important semigroups embed into $\Prt_n$ as subsemigroups.  For example,
-the partial transformation monoid $\PT_n$ embeds as follows: let
-$\phi : \PT_n \to \Prt_n$ be the map that sends a partial transformation $\tau$
-to the bipartition $\left\{\big(a, (a\tau)'\big) : a \in \dom \tau\right\}^e$.
-It is easy to see that $\phi$ is a monomorphism.  Hence $\Prt_n$ contains a copy
-of $\PT_n$, and therefore it also contains copies of the full transformation
-monoid $\T_n$, the symmetric inverse monoid $\I_n$, and the symmetric group
-$\Sym_n$.  Note that, since each bipartition $\alpha \in \Prt_n$ has an inverse
+consider the following way of embedding the full transformation monoid $\T_n$,
+the symmetric inverse monoid $\I_n$, and the symmetric group $\Sym_n$.
+
+\begin{example}
+  \label{ex:ptn-to-pn}
+  Let $f : \PT_n \to \Prt_n$ be the map that sends a partial transformation
+  $\tau$ to the bipartition
+  $\left\{\big(i, (i\tau)'\big) : i \in \dom \tau\right\}^e$.  For example, the
+  partial transformation $\transV3-43-$ would be mapped to the bipartition
+  $\bipart{c|c|c|c|c}{3-5}{1,4 & 3 & \two{2}{5}}{3 & 4 & 1 & 2 & 5}$.  It would
+  be easy to mistake $f$ for a homomorphism; however, consider the following
+  minimal counter-example:
+  $$a = \transII11, \quad b = \transII--,\quad ab = \transII--,$$
+  $$(a)f = \bipart{c|c}{2-2}{1,2 &}{1 & 2},\quad
+  (b)f = \bipart{c|c}{1-2}{1 & 2}{1 & 2},$$
+  $$(a)f(b)f = \bipart{c|c}{1-2}{\mc2{c}{1,2}}{1 & 2} \neq
+  \bipart{c|c}{1-2}{1 & 2}{1 & 2} = (ab)f,$$
+  showing that $f$ does not respect composition.  Still, $f$ is useful as an
+  embedding for several submonoids of $\PT_n$.  The restricted maps $f|_{\T_n}$,
+  $f|_{\I_n}$ and $f|_{\Sym_n}$ are all monomorphisms, and thus $\Prt_n$
+  contains copies of $\T_n$, $\I_n$ and $\Sym_n$.
+\end{example}
+
+Note that, since each bipartition $\alpha \in \Prt_n$ has an inverse
 $\alpha^\star \in \Prt_n$, we have that $\Prt_n$ is a regular semigroup.
 Furthermore, it is a regular $\star$-semigroup in the sense of
 \cite{reg_star_smgp}.
