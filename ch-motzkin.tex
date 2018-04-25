@@ -470,6 +470,90 @@ two rows.  See Figure \ref{fig:hat} for an example.  Note that $\widehat\alpha =
   \end{proof}
 \end{proposition}
 
+This gives us a retractable ideal $I_1$, with a retraction
+$\alpha \mapsto \widehat\alpha$.  It is also trivial to see that $I_0$ itself is
+retractable, with retraction $\alpha \mapsto \alpha$, the identity map.  Since
+the minimal ideal $\I_0$ is regular, Corollary \ref{cor:retract-unique} shows
+that these retractions are unique.
+
+We now have four liftable congruences $\{\Delta_0, \LL_0, \RR_0, \nabla_0\}$ and
+two retractable ideals $\{I_0, I_1\}$, giving rise to $4 \times 2 = 8$ lifted
+congruences by Definition \ref{def:lifted-congruence} and Theorem
+\ref{thm:lifted-congruence}.  The congruences lifted from $\nabla_0$ are
+observed to be equal to the Rees congruences $R_0$ and $R_1$, while those lifted
+from $\Delta_0$, $\LL_0$ and $\RR_0$ are named with appropriate Greek symbols,
+as follows:
+\begin{align*}
+  \delta_0 &= \zeta_{I_0,\Delta_0}
+  = \{(\alpha,\beta) \in I_0 \times I_0 :
+    (\alpha, \beta) \in \Delta_0\} \cup \Delta_{\Mot_n} \\
+  \delta_1 &= \zeta_{I_1,\Delta_0}
+  = \{(\alpha,\beta) \in I_1 \times I_1 :
+    (\widehat\alpha, \widehat\beta) \in \Delta_0\} \cup \Delta_{\Mot_n} \\
+  \lambda_0 &=\zeta_{I_0,\LL_0}
+  = \{(\alpha,\beta) \in I_0 \times I_0 :
+    (\alpha, \beta) \in \LL_0\} \cup \Delta_{\Mot_n} \\
+  \lambda_1 &= \zeta_{I_1,\LL_0}
+  = \{(\alpha,\beta) \in I_1 \times I_1 :
+    (\widehat\alpha, \widehat\beta) \in \LL_0\} \cup \Delta_{\Mot_n} \\
+  \rho_0 &= \zeta_{I_0,\RR_0}
+  = \{(\alpha,\beta) \in I_0 \times I_0 :
+    (\alpha, \beta) \in \RR_0\} \cup \Delta_{\Mot_n} \\
+  \rho_1 &= \zeta_{I_1,\RR_0}
+  = \{(\alpha,\beta) \in I_1 \times I_1 :
+    (\widehat\alpha, \widehat\beta) \in \RR_0\} \cup \Delta_{\Mot_n} \\
+  R_0 &= \zeta_{I_0,\nabla_0}
+  = \{(\alpha,\beta) \in I_0 \times I_0 :
+    (\alpha, \beta) \in \nabla_0\} \cup \Delta_{\Mot_n} \\
+  R_1 &= \zeta_{I_1,\nabla_0}
+  = \{(\alpha,\beta) \in I_1 \times I_1 :
+    (\widehat\alpha, \widehat\beta) \in \nabla_0\} \cup \Delta_{\Mot_n}
+\end{align*}
+
+This naming convention is summarised in Table \ref{tab:mn-lifted-congruences}.
+
+\begin{table}[h]
+  \centering
+  \renewcommand\arraystretch{1.0}
+  \begin{tabular}[h]{| c | c | c |}
+    \cline{2-3}
+    \mc1{c|}{} & $I_0$ & $I_1$ \\ \hline
+    $\Delta_0$ & $\delta_0$ & $\delta_1$ \\ \hline
+    $\LL_0$ & $\lambda_0$ & $\lambda_1$ \\ \hline
+    $\RR_0$ & $\rho_0$ & $\rho_1$ \\ \hline
+    $\nabla_0$ & $R_0$ & $R_1$ \\ \hline
+  \end{tabular}
+  \caption{Lifted congruences of $\Mot_n$}
+  \label{tab:mn-lifted-congruences}
+\end{table}
+
+Interpreting these statements along with the use of Proposition
+\ref{prop:mn-greens} gives the following characterisations of the lifted
+congruences in terms of a bipartition's rank, kernel and cokernel.
+\begin{align*}
+  \delta_0 &= \Delta_{\Mot_n} \\
+  \delta_1 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+                \rank\alpha,\rank\beta \leq 1,
+                \ker\alpha = \ker\beta,
+                \coker\alpha = \coker\beta\} \\
+  \lambda_0 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+                 \rank\alpha,\rank\beta = 0,
+                 \coker\alpha = \coker\beta\} \\
+  \lambda_1 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+                 \rank\alpha,\rank\beta \leq 1,
+                 \coker\alpha = \coker\beta\} \\
+  \rho_0 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+              \rank\alpha,\rank\beta = 0,
+              \ker\alpha = \ker\beta\} \\
+  \rho_1 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+              \rank\alpha,\rank\beta \leq 1,
+              \ker\alpha = \ker\beta\} \\
+  R_0 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+           \rank\alpha,\rank\beta = 0\} \\
+  R_1 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+           \rank\alpha,\rank\beta \leq 1\}
+\end{align*}
+
 % Describe the congruences:
 % mu0, lam0, rho0, R0,
 % mu1, lam1, rho1, R1,
