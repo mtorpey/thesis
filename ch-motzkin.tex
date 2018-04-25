@@ -121,6 +121,7 @@ following proposition, akin to Proposition \ref{prop:bipartition-greens}.
 
 \begin{proposition}
   \label{prop:mn-greens}
+  \nomenclature[Ik]{$I_k$}{Ideal of the Motzkin monoid $\Mot_n$}
   Let $\alpha$ and $\beta$ be bipartitions in $\Mot_n$.  The following hold:
   \begin{enumerate}[\rm(i)]
   \item $\alpha \RR \beta$ if and only if $\dom \alpha = \dom \beta$ and
@@ -130,8 +131,8 @@ following proposition, akin to Proposition \ref{prop:bipartition-greens}.
   \item $\alpha \JJ \beta$ if and only if $\rank \alpha = \rank \beta$;
   \item $J_\alpha \leq J_\beta$ if and only if $\rank \alpha \leq \rank \beta$;
   \item the ideals of $\Mot_n$ are precisely the sets
-    $I_r=\{\alpha \in \Mot_n : \rank \alpha \leq r\}$ for
-    $r \in \{0, \ldots, n\}$.
+    $I_k=\{\alpha \in \Mot_n : \rank \alpha \leq k\}$ for
+    $k \in \{0, \ldots, n\}$.
   \end{enumerate}
   \begin{proof}
     For (i) to (iii), see \cite[Theorem 2.4]{deg_motzkin}.  For (iv) and (v),
@@ -184,10 +185,10 @@ of $\Mot_n$ can be found using these two building blocks.
 \begin{definition}
   \label{def:liftable-congruence}
   \index{liftable congruence}
-  \nomenclature{$\xi$}{Liftable congruence}
+  \nomenclature{$\sigma$}{Liftable congruence}
   Let $S$ be a finite semigroup, with minimal ideal $M$.  A congruence $\sigma$
-  on $M$ is \textbf{liftable} if any, and therefore all, of the following
-  conditions are satisfied:
+  on $M$ is \textbf{liftable congruence} of $S$ if any, and therefore all, of
+  the following equivalent conditions are satisfied:
   \begin{enumerate}[\rm(i)]
   \item $\sigma \cup \Delta_S$ is a congruence on $S$;
   \item there exists some congruence $\bar\sigma$ on $S$ such that
@@ -195,7 +196,6 @@ of $\Mot_n$ can be found using these two building blocks.
   \item $(ax,bx),(xa,xb) \in \sigma$ for all pairs $(a,b) \in \sigma$ and
     elements $x \in S$.
   \end{enumerate}
-  We may describe $\sigma$ as a liftable congruence of $S$.
 \end{definition}
 
 In order to use these building blocks to produce new congruences, we first need
@@ -281,8 +281,8 @@ we need to use our two building blocks to produce a new congruence: a
   \label{def:lifted-congruence}
   \index{lifted congruence}
   Let $S$ be a semigroup with a minimal ideal $M$, let $I$ be a retractable
-  ideal of $S$, and let $\sigma$ be a liftable congruence on $M$.  We associate to
-  the pair $(I,\sigma)$ the relation
+  ideal of $S$, and let $\sigma$ be a liftable congruence of $S$.  We associate
+  to the pair $(I,\sigma)$ the relation
   $$\zeta_{I,\sigma}
   = \{(x,y) \in I \times I : (x\phi,y\phi) \in \sigma\} \cup \Delta_S,$$
   where $\phi$ is the unique retraction $I \to M$.
@@ -334,7 +334,8 @@ congruence on the semigroup, as we will see later.
 
 % Show the lattice
 
-% Proof of exhaustion: table of generating pairs, with references to propositions
+% Proof of exhaustion: table of generating pairs, with references to
+% propositions
 
 \section{Other monoids}
 \label{sec:motzkin-other}
