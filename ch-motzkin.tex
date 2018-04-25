@@ -164,6 +164,27 @@ share, namely the following corollary.
   \end{proof}
 \end{corollary}
 
+Finally, we will state one other feature of $\Mot_n$ which distinguishes it from
+$\Prt_n$---an interesting property of its minimal ideal $I_0$.
+
+\begin{lemma}
+  \label{lem:i0-rect-band}
+  Let $\alpha$ and $\beta$ be bipartitions in $I_0$, the minimal ideal of
+  $\Mot_n$.  Then $\alpha \beta \alpha = \alpha$.
+  % The product $\alpha\beta$ has the following proprties: $\ker\alpha\beta = \ker\alpha$,
+  % $\coker\alpha\beta = \coker\beta$, and
+  % $\dom\alpha\beta = \codom\alpha\beta = \varnothing$.
+  \begin{proof}
+    Since $\alpha$ has no transversals, $\alpha\beta\alpha$ also has no
+    transversals.  The upper blocks of a product are equal to its first
+    component, the lower blocks to its last component---so $\alpha\beta\alpha$
+    has the upper and lower blocks of $\alpha$.  Hence it equals $\alpha$.
+  \end{proof}
+\end{lemma}
+
+The lemma above establishes that $I_0$ is a \textit{rectangular band}, an
+interesting class of regular semigroup---see \cite[\S4.4]{howie} for a
+discussion of these. \index{rectangular band}
 
 \section{Lifted congruences}
 \label{sec:motzkin-prelim}
@@ -320,10 +341,110 @@ congruence on the semigroup, as we will see later.
 \section{Congruence lattice of $\Mot_n$}
 \label{sec:motzkin-congs}
 
+% Rees congruences
+
+We can now apply the general theory of Section \ref{sec:motzkin-prelim} to the
+Motzkin monoid, in order to find its congruences.  First, let us mention the
+easiest congruences to describe---its Rees congruences (Definition
+\ref{def:rees-congruence}).
+
+\begin{proposition}
+  \label{prop:motzkin-rees}
+  \nomenclature[Rk]{$R_k$}{Rees congruence of the Motzkin monoid $\Mot_n$}
+  The Rees congruences of $\Mot_n$ are the relations
+  $$R_k = \{(x,y) \in \Mot_n \times \Mot_n : \rank x, \rank y \leq k\} \cup
+  \Delta_{\Mot_n},$$
+  for $k \in \{0, \ldots, n\}$.
+  \begin{proof}
+    This follows immediately from the description of the ideals of $\Mot_n$ in
+    Proposition \ref{prop:mn-greens} part (v).
+  \end{proof}
+\end{proposition}
+
+We will refer to these congruences by the name $R_k$ for the rest of this
+chapter.  We will soon see that $R_0$ and $R_1$ are in fact lifted congruences,
+but the higher Rees congruences may not be.  Next, we will describe some other
+lifted congruences, by identifying some liftable congruences and retractions in
+$\Mot_n$ to use as building blocks.
+
 % L,R,H,Delta,Univ are liftable congs: lambda, rho, mu, eta, R
+First, recall that $I_0 = \{\alpha \in \Mot_n : \rank \alpha = 0\}$ is the
+minimal ideal of $\Mot_n$.  Let us denote by $\LL_0$ and $\RR_0$ the $\LL$ and
+$\RR$ relations of $\Mot_n$ restricted to $I_0$, and let $\Delta_0$ and
+$\nabla_0$ be abbreviations for $\Delta_{I_0}$ and $\nabla_{I_0}$ respectively.
+\nomenclature{$\Delta_0$}{Trivial congruence on the ideal $I_0$}
+\nomenclature{$\nabla_0$}{Universal congruence on the ideal $I_0$}
+\nomenclature[L0]{$\LL_0$}{Green's $\LL$ relation retricted to the ideal $I_0$}
+\nomenclature[R0]{$\RR_0$}{Green's $\RR$ relation retricted to the ideal $I_0$}
+
+\begin{proposition}
+  The relations $\Delta_0$, $\LL_0$, $\RR_0$ and $\nabla_0$ are all
+  liftable congruences of $\Mot_n$.
+  \begin{proof}
+    Since $I_0$ is a semigroup, $\Delta_0$ and $\nabla_0$ are certainly
+    congruences of $I_0$; and both satisfy Definition
+    \ref{def:liftable-congruence} (i), since their unions with $\Delta_{\Mot_n}$
+    are the congruences $\Delta_{\Mot_n}$ and $R_0$ respectively.
+
+    To see that $\LL_0$ is a liftable congruence, consider Definition
+    \ref{def:liftable-congruence} (iii); let $(a,b) \in \LL_0$ and
+    $x \in \Mot_n$.  Since $I_0$ is the minimal ideal, we certainly have
+    $xa,xb,ax,bx \in I_0$.  And since $\LL$ is a right congruence on $\Mot_n$
+    (see Proposition \ref{prop:greens-as-congs}) we have $(ax,bx) \in \LL$ and
+    therefore $(ax,bx) \in \LL_0$.  By Lemma \ref{lem:i0-rect-band} we also have
+    $a(xa) = a$, so $xa \LL a$ and similarly $xb \LL b$.  This means that
+    $xa \LL a \LL b \LL xb$, so $(xa, xb) \in \LL_0$.  Hence $\LL_0$ is a
+    liftable congruence of $\Mot_n$, and by a similar argument, so is $\RR_0$.
+  \end{proof}
+\end{proposition}
 
 % ^ notation
+Now that we have some liftable congruences, we also want some retractable ideals
+in order to form lifted congruences.  The following construction establishes one
+such ideal.
+
+\begin{definition}
+  \label{def:mn-hat}
+  \nomenclature[^]{$\widehat{\phantom\alpha}$}{Bipartition of rank $0$ with this
+    kernel and cokernel}
+  If $\alpha$ is a bipartition, then $\widehat\alpha$ is the unique bipartition
+  of rank $0$ with the same kernel and cokernel as $\alpha$.
+\end{definition}
+
+The element $\widehat\alpha$ can be computed easily from $\alpha$: each
+transversal is split into an upper block (the points in $\bn$) and a lower block
+(the points in $\bn'$) and nothing else is changed.  If we have a diagram for
+$\alpha$, drawn in the standard way described after Example
+\ref{ex:bipartition}, then we simply remove any lines crossing the diagram.  If
+we are using two-row notation, we can simply draw a horizontal line between the
+two rows.  See Figure \ref{fig:hat} for an example.  Note that $\widehat\alpha =
+\alpha$ for all $\alpha \in I_0$.
+
+\begin{figure}[h]
+  \centering
+  $$\alpha = \big\{
+    \{1,3,4,1'\}, \{2,3',4'\}, \{5\}, \{2'\}, \{5'\}
+  \big\}$$
+  $$\widehat\alpha = \big\{
+    \{1,3,4\}, \{1'\}, \{2\}, \{3',4'\}, \{5\}, \{2'\}, \{5'\}
+  \big\}$$
+  $$\alpha = \bipartdiag{\tv11\tc13\tc34 \tv23\bc34} \quad
+  \widehat\alpha = \bipartdiag{\tc13\tc34 \bc34}$$
+  $$\alpha = \bipart{c|c|c|c}{3-4}{1,3,4 & 2 & \mc2c5}{1 & 3,4 & 2 & 5} \quad
+  \widehat\alpha = \bipart{c|c|c|c}{1-4}{1,3,4 & 2 & \mc2c5}{1 & 3,4 & 2 & 5}$$
+  \caption{Computing $\widehat\alpha$ from $\alpha$}
+  \label{fig:hat}
+\end{figure}
+
 % Show ^:I1->I0 is a retraction
+\begin{proposition}
+  \label{prop:hat-retraction}
+  The map $\phi: I_1 \to I_0$ defined by $\alpha \mapsto \widehat\alpha$ is a
+  retraction.  Hence, $I_1$ is a retractable ideal.
+  \begin{proof}
+    
+  \end{proof}
+\end{proposition}
 
 % Describe the congruences:
 % mu0, lam0, rho0, R0,
