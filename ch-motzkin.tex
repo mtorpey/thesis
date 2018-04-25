@@ -442,7 +442,31 @@ two rows.  See Figure \ref{fig:hat} for an example.  Note that $\widehat\alpha =
   The map $\phi: I_1 \to I_0$ defined by $\alpha \mapsto \widehat\alpha$ is a
   retraction.  Hence, $I_1$ is a retractable ideal.
   \begin{proof}
-    
+    First, we will show that $\phi$ is a homomorphism.  Let
+    $\alpha,\beta \in I_1$---we will try to prove that
+    $\widehat{\alpha\beta} = \widehat\alpha \widehat\beta$.  If both $\alpha$
+    and $\beta$ have rank $0$ then
+    $\widehat{\alpha\beta} = \alpha\beta = \widehat\alpha \widehat\beta$.  On
+    the other hand, if at least one of $\alpha$ and $\beta$ has rank $1$ (without
+    loss of generality, $\alpha$) then we may write
+    $\alpha = \bipart{c|c|c|c}{2-4}{A_0&A_1&\ldots&A_r}{B_0&B_1&\ldots&B_s}$ and
+    $\beta = \bipart{c|c|c|c}{2-4}{C_0&C_1&\ldots&C_t}{D_0&D_1&\ldots&D_u}$ or
+    $\beta = \bipart{c|c|c|c}{1-4}{C_0&C_1&\ldots&C_t}{D_0&D_1&\ldots&D_u}$.
+    This gives us
+    $\alpha\beta =
+    \bipart{c|c|c|c}{2-4}{A_0&A_1&\ldots&A_r}{D_0&D_1&\ldots&D_u}$ or
+    $\alpha\beta =
+    \bipart{c|c|c|c}{1-4}{A_0&A_1&\ldots&A_r}{D_0&D_1&\ldots&D_u}$.  Applying
+    $\phi$ gives us
+    $\widehat\alpha =
+    \bipart{c|c|c|c}{1-4}{A_0&A_1&\ldots&A_r}{B_0&B_1&\ldots&B_s}$,
+    $\widehat\beta =
+    \bipart{c|c|c|c}{1-4}{C_0&C_1&\ldots&C_t}{D_0&D_1&\ldots&D_u}$, and finally
+    $\widehat{\alpha\beta} =
+    \bipart{c|c|c|c}{1-4}{A_0&A_1&\ldots&A_r}{D_0&D_1&\ldots&D_u} =
+    \widehat\alpha \widehat\beta$, so $\phi$ is a homomorphism.  Since
+    $\widehat\alpha = \alpha$ for $\alpha \in I_0$, we can see that $\phi$ is a
+    retraction, as required.
   \end{proof}
 \end{proposition}
 
