@@ -476,6 +476,10 @@ retractable, with retraction $\alpha \mapsto \alpha$, the identity map.  Since
 the minimal ideal $\I_0$ is regular, Corollary \ref{cor:retract-unique} shows
 that these retractions are unique.
 
+% Describe the congruences:
+% mu0, lam0, rho0, R0,
+% mu1, lam1, rho1, R1,
+% R2 ... Rn
 We now have four liftable congruences $\{\Delta_0, \LL_0, \RR_0, \nabla_0\}$ and
 two retractable ideals $\{I_0, I_1\}$, giving rise to $4 \times 2 = 8$ lifted
 congruences by Definition \ref{def:lifted-congruence} and Theorem
@@ -529,35 +533,32 @@ This naming convention is summarised in Table \ref{tab:mn-lifted-congruences}.
 
 Interpreting these statements along with the use of Proposition
 \ref{prop:mn-greens} gives the following characterisations of the lifted
-congruences in terms of a bipartition's rank, kernel and cokernel.
+congruences in terms of a bipartition's rank, kernel and cokernel:
 \begin{align*}
   \delta_0 &= \Delta_{\Mot_n} \\
   \delta_1 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
                 \rank\alpha,\rank\beta \leq 1,
                 \ker\alpha = \ker\beta,
-                \coker\alpha = \coker\beta\} \\
+                \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n} \\
   \lambda_0 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
                  \rank\alpha,\rank\beta = 0,
-                 \coker\alpha = \coker\beta\} \\
+                 \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n} \\
   \lambda_1 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
                  \rank\alpha,\rank\beta \leq 1,
-                 \coker\alpha = \coker\beta\} \\
+                 \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n} \\
   \rho_0 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
               \rank\alpha,\rank\beta = 0,
-              \ker\alpha = \ker\beta\} \\
+              \ker\alpha = \ker\beta\} \cup \Delta_{\Mot_n} \\
   \rho_1 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
               \rank\alpha,\rank\beta \leq 1,
-              \ker\alpha = \ker\beta\} \\
+              \ker\alpha = \ker\beta\} \cup \Delta_{\Mot_n} \\
   R_0 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
-           \rank\alpha,\rank\beta = 0\} \\
+           \rank\alpha,\rank\beta = 0\} \cup \Delta_{\Mot_n} \\
   R_1 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
-           \rank\alpha,\rank\beta \leq 1\}
+           \rank\alpha,\rank\beta \leq 1\} \cup \Delta_{\Mot_n}
 \end{align*}
-
-% Describe the congruences:
-% mu0, lam0, rho0, R0,
-% mu1, lam1, rho1, R1,
-% R2 ... Rn
+These characterisations will help us later when we consider generating pairs for
+the congruences.
 
 % How do they fit together?
 
