@@ -25,10 +25,10 @@ important submonoids.  This classification is explained and proven in
 In this chapter, we will examine the structure of these congruence lattices,
 focusing in particular on the Motzkin monoid $\Mot_n$, which was the present
 author's particular focus when contributing to \cite{ourpaper}.  Much of this
-content is contained in some form in that paper, and is included in this
-thesis by the kind permission of my co-authors.  We will start
-with the definition of the Motzkin monoid, then describe some preliminary
-theory, then describe the Motzkin monoid's lattice of congruences, and
+content is contained in some form in that paper, and is included in this thesis
+by the kind permission of my co-authors.  We will start with the definition of
+the Motzkin monoid, then describe some preliminary theory, then describe the
+Motzkin monoid's lattice of congruences (Theorem \ref{thm:mn-congs}), and
 finally give a brief description of how these ideas can be extended to $\Prt_n$
 and its other submonoids.
 
@@ -537,28 +537,29 @@ congruences in terms of a bipartition's rank, kernel and cokernel.
 
 \begin{proposition}
   \label{prop:mn-cong-char}
-  The following hold for the lifted congruences of $\Mot_n$:
+  The lifted congruences of $\Mot_n$ can be characterised in the following way,
+  where $(\alpha, \beta) \in \Mot_n \times \Mot_n$:
   \begin{align*}
     \delta_0 &= \Delta_{\Mot_n} \\
-    \delta_1 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+    \delta_1 &= \{(\alpha,\beta) :
                   \rank\alpha,\rank\beta \leq 1,
                   \ker\alpha = \ker\beta,
                   \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n} \\
-    \lambda_0 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+    \lambda_0 &= \{(\alpha,\beta) :
                    \rank\alpha,\rank\beta = 0,
                    \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n} \\
-    \lambda_1 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+    \lambda_1 &= \{(\alpha,\beta) :
                    \rank\alpha,\rank\beta \leq 1,
                    \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n} \\
-    \rho_0 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+    \rho_0 &= \{(\alpha,\beta) :
                 \rank\alpha,\rank\beta = 0,
                 \ker\alpha = \ker\beta\} \cup \Delta_{\Mot_n} \\
-    \rho_1 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+    \rho_1 &= \{(\alpha,\beta) :
                 \rank\alpha,\rank\beta \leq 1,
                 \ker\alpha = \ker\beta\} \cup \Delta_{\Mot_n} \\
-    R_0 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+    R_0 &= \{(\alpha,\beta) :
              \rank\alpha,\rank\beta = 0\} \cup \Delta_{\Mot_n} \\
-    R_1 &= \{(\alpha,\beta) \in \Mot_n \times \Mot_n :
+    R_1 &= \{(\alpha,\beta) :
              \rank\alpha,\rank\beta \leq 1\} \cup \Delta_{\Mot_n}
   \end{align*}
 \end{proposition}
@@ -593,12 +594,12 @@ $\Delta_{\Mot_n}$ and $\nabla_{\Mot_n}$.
     $\Mot_n \times \Mot_n$ to generate each congruence in $\Gamma$; it proves
     that every congruence in $\Gamma$ is principal, and since each pair in
     $\Mot_n \times \Mot_n$ satisfies one of the conditions, it proves that there
-    are no other principal congruences.  Lemmas \ref{} to \ref{} show that the
-    joins of these principal congruences are as shown in Figure
-    \ref{fig:mn-cong-lattice}---proving (ii)---and therefore that $\Gamma$ is
-    closed under taking joins, proving that $\Mot_n$ has no other congruences.
-    This completes the proof of (i) and (iii), and inspection of Table
-    \ref{tab:mn-genpairs} establishes (iv).
+    are no other principal congruences.  Lemmas \ref{lem:mn-lattice-intra} and
+    \ref{lem:mn-lattice-inter} show that the joins of these principal
+    congruences are as shown in Figure \ref{fig:mn-cong-lattice}---proving
+    (ii)---and therefore that $\Gamma$ is closed under taking joins, proving
+    that $\Mot_n$ has no other congruences.  This completes the proof of (i) and
+    (iii), and inspection of Table \ref{tab:mn-genpairs} establishes (iv).
   \end{proof}
 \end{theorem}
 
@@ -606,7 +607,7 @@ $\Delta_{\Mot_n}$ and $\nabla_{\Mot_n}$.
 \begin{figure}[h]
   \centering
   \begin{tikzpicture}
-    [cong/.style={circle, minimum size=0.9cm, draw, fill=blue!20}]
+    [cong/.style={circle, minimum size=0.9cm, draw}]
     \node[cong] (Rn) at ( 0,13) {$R_n$};
     \node[cong] (R2) at ( 0,10) {$R_2$};
     \node[cong] (R1) at ( 0, 8) {$R_1$};
@@ -645,15 +646,24 @@ congruence it generates.  Our findings are summarised in Table
     \hline
     $(\alpha,\beta)^\sharp$ & $(\alpha,\beta) \in$ & Reference \\
     \hline
-    $\delta_0$ & $\delta_0$ & Trivial \\
-    $\delta_1$ & $\delta_1 \setminus \delta_0$ & Lemma \ref{lem:low-genpairs} (iii) \\
-    $\lambda_0$ & $\lambda_0 \setminus \delta_0$ & Lemma \ref{lem:low-genpairs} (i) \\
-    $\lambda_1$ & $\lambda_1 \setminus (\lambda_0 \cup \delta_1)$ & Lemma \ref{lem:high-genpairs} (i) \\
-    $\rho_0$ & $\rho_0 \setminus \delta_0$ & Lemma \ref{lem:low-genpairs} (ii) \\
-    $\rho_1$ & $\rho_1 \setminus (\rho_0 \cup \delta_1)$ & Lemma \ref{lem:high-genpairs} (ii) \\
-    $R_0$ & $R_0 \setminus (\lambda_0 \cup \rho_0)$ & Lemma \ref{lem:high-genpairs} (iii) \\
-    $R_1$ & $R_1 \setminus (\lambda_1 \cup \rho_1 \cup R_0)$ & Lemma \ref{lem:high-genpairs} (iv) \\
-    $R_{k \geq 2}$ & $R_k \setminus R_{k-1}$ & Lemma \ref{lem:rees-genpairs} \\
+    $\delta_0$   & $\delta_0$
+                 & Trivial                             \\
+    $\delta_1$   & $\delta_1 \setminus \delta_0$
+                 & Lemma \ref{lem:low-genpairs} (iii)  \\
+    $\lambda_0$  & $\lambda_0 \setminus \delta_0$
+                 & Lemma \ref{lem:low-genpairs} (i)    \\
+    $\lambda_1$  & $\lambda_1 \setminus (\lambda_0 \cup \delta_1)$
+                 & Lemma \ref{lem:high-genpairs} (i)   \\
+    $\rho_0$     & $\rho_0 \setminus \delta_0$
+                 & Lemma \ref{lem:low-genpairs} (ii)   \\
+    $\rho_1$     & $\rho_1 \setminus (\rho_0 \cup \delta_1)$
+                 & Lemma \ref{lem:high-genpairs} (ii)  \\
+    $R_0$        & $R_0 \setminus (\lambda_0 \cup \rho_0)$
+                 & Lemma \ref{lem:high-genpairs} (iii) \\
+    $R_1$        & $R_1 \setminus (\lambda_1 \cup \rho_1 \cup R_0)$
+                 & Lemma \ref{lem:high-genpairs} (iv)  \\
+    $R_{k \geq 2}$ & $R_k \setminus R_{k-1}$
+                 & Lemma \ref{lem:rees-genpairs}       \\
     \hline
   \end{tabular}
   \caption{Generating pairs for each congruence on $\Mot_n$}
@@ -684,7 +694,7 @@ congruence it generates.  Our findings are summarised in Table
   \item $\rho_1 = (\alpha, \beta)^\sharp$ if and only if
     $(\alpha,\beta) \in \rho_1 \setminus (\rho_0 \cup \delta_1)$;
   \item $\R_0 = (\alpha, \beta)^\sharp$ if and only if
-    $(\alpha,\beta) \in R_0 \setminus (\lambda_0 \cup \rho_0)$.
+    $(\alpha,\beta) \in R_0 \setminus (\lambda_0 \cup \rho_0)$;
   \item $\R_1 = (\alpha, \beta)^\sharp$ if and only if
     $(\alpha,\beta) \in R_1 \setminus (\lambda_1 \cup \rho_1 \cup R_0)$.
   \end{enumerate}
@@ -709,8 +719,8 @@ every possible congruence.
 
 \begin{lemma}
   \label{lem:mn-lattice-intra}
-  Let $i \in \{0, 1\}$ and $n \in \mathbb{N}$.  In $\Mot_n$, we have
-  $\lambda_i \cap \rho_i = \delta_i$ and $\lambda_i \vee \rho_i = R_i$.
+  Let $i \in \{0, 1\}$.  In $\Mot_n$, we have $\lambda_i \cap \rho_i = \delta_i$
+  and $\lambda_i \vee \rho_i = R_i$.
   \begin{proof}
 
   \end{proof}
