@@ -682,6 +682,116 @@ congruence it generates.  Our findings are summarised in Table
     $(\alpha,\beta) \in \delta_1 \setminus \Delta$.
   \end{enumerate}
   \begin{proof}
+    In each statement, the ``only if'' part is obvious.  We will prove (i) and
+    observe that (ii) follows from a symmetric argument.  Then we will prove
+    (iii) separately. % TODO: make this precise, with "duality"?
+
+    For (i), let $(\alpha, \beta) \in \lambda_0 \setminus \Delta$, and let
+    $\sigma = (\alpha, \beta)^\sharp$.  Since $\lambda_0$ is a congruence, we
+    clearly have $\sigma \subseteq \lambda_0$; hence we have only to prove that
+    $\lambda_0 \subseteq \sigma$.  First we require a special construction: if
+    $\gamma \in I_0$, let $\gamma'$ be the unique bipartition in $I_0$ with
+    trivial kernel and $\coker\gamma' = \coker\gamma$.  We claim that
+    $(\gamma, \gamma') \in \sigma$ for any such $\gamma$.  This claim is proven
+    by descending induction on $r$, the number of kernel-classes of $\gamma$: if
+    $r = n$ then $\gamma = \gamma'$ and we are done.  Otherwise we have
+    $r \leq n-1$, and we may write
+    $\gamma = \bipart{c|c|c}{1-3}{A_1&\ldots&A_r}{B_1&\ldots&B_s}$.  Since
+    $(\alpha,\beta) \in \lambda_0 \setminus \Delta$, Propisition
+    \ref{prop:mn-cong-char} gives us $\rank\alpha = \rank\beta = 0$ and
+    $\coker\alpha = \coker\beta$, but since $\alpha \neq \beta$ we must have
+    $\ker\alpha \neq \ker\beta$.  Swapping $\alpha$ and $\beta$ if necessary,
+    let us assume there exists some $(i,j) \in \ker\alpha \setminus \ker\beta$,
+    and without loss of generality, assume $i < j$.  We will write
+    $\bn \setminus \{i,j\}$ as $\{k_1, \ldots, k_{n-2}\}$.  Since $r \leq n-1$
+    there exists some kernel block of $\gamma$ with 2 elements; let $m$
+    be the lowest point in $\bn$ in a non-trivial kernel block, and without loss
+    of generality, let us assume $m$ lies in $A_1$.  We can now define the
+    bipartition $\tau = \bipart{c|c|c|c|c}{3-5}
+    {m & p & A_2 & \ldots & A_r}
+    {i & j & k_1 & \ldots & k_{n-2}}$, 
+    where $A_1 = \{m, p\}$.
+    We observe that $\tau \alpha \gamma = \gamma$ and
+    $\tau \beta \gamma = \bipart{c|c|c|c|c}{1-5}
+    {m & p & A_2 & \ldots & A_r}
+    {B_1 & B_2 & B_3 & \ldots & B_s}$.
+    Since $\sigma$ is left- and right-compatible, we have
+    $\gamma = \tau\alpha\gamma \mathrel\sigma \tau\beta\gamma$.  Hence $\gamma$
+    is $\sigma$-related to $\tau\beta\gamma$, a bipartition with rank $0$, the
+    same cokernel as $\gamma$, and $r+1$ kernel classes.  Applying the same
+    process inductively, with $\tau\beta\gamma$ in place of $\gamma$, implies a
+    chain of $\sigma$-relations which relate $\gamma$ to a bipartition with rank
+    $0$, the same cokernel as $\gamma$, and $n$ kernel classes---that is,
+    $\gamma'$.  This proves the claim that $(\gamma, \gamma') \in \sigma$.
+
+    To return to the proof that $\lambda_0 \subseteq \sigma$, let
+    $(\mu, \nu) \in \lambda_0$ be arbitrary.  If $\mu = \nu$ then certainly
+    $(\mu, \nu) \in \sigma$, so let us assume $\mu \neq \nu$.  By Proposition
+    \ref{prop:mn-cong-char} we must have $\rank\mu = \rank\nu = 0$ and
+    $\coker\mu = \coker\nu$, so we have $\mu' = \nu'$.  Hence, by the above
+    claim, we have $\mu \mathrel\sigma \mu' = \nu' \mathrel\sigma \nu$,
+    completing (i).  Observe that (ii) follows by a similar argument.
+
+    To prove (iii), let $(\alpha,\beta)\in\delta_1\setminus\Delta$ as stated,
+    and let $\sigma = (\alpha,\beta)^\sharp$.  Clearly
+    $\sigma \subseteq \delta_1$.  To prove that $\delta_1 \subseteq \sigma$ is
+    harder.  Since $(\alpha,\beta) \in \delta_1 \setminus \Delta$, $\alpha$ and
+    $\beta$ must each have rank $0$ or $1$, and have the same kernel and
+    cokernel, but be distinct.  Since there is only one bipartition of rank $0$
+    with a given kernel and cokernel, they cannot both have rank $1$.  Hence,
+    swapping $\alpha$ and $\beta$ if necessary, we may assume that
+    $\rank(\alpha)=1$, with transversal $\{i,j'\}$ and we can write
+    $\alpha=\bipart{c|c|c|c}{2-4}
+    {i & A_1 & \cdots & A_r}{j & B_1 & \cdots & B_s}$.
+    Then $\beta$ has one of the following four forms, where without loss of
+    generality, additional labelled elements are assumed to be from $A_1$:
+    \begin{enumerate}[\rm(a)]
+    \item $\beta = \bipart{c|c|c|c|c}{1-5}
+      {i & A_1 & A_2 & \cdots & A_r}{j & B_1 & B_2 & \cdots & B_s}$,
+      so that $\beta = \widehat\alpha$;
+    \item $\beta = \bipart{c|c|c|c|c}{2-5}
+      {k & i & A_2 & \cdots & A_r}{j & B_1 & B_2 & \cdots & B_s}$,
+      replacing $i$ with $k$, a different point from $\bn$;
+    \item $\beta = \bipart{c|c|c|c|c}{2-5}
+      {i & A_1 & A_2 & \cdots & A_r}{l & i & B_2 & \cdots & B_s}$,
+      replacing $j'$ with $l'$, a different point from $\bn'$;
+    \item $\beta = \bipart{c|c|c|c|c}{2-5}
+      {k & i & A_2 & \cdots & A_r}{l & j & B_2 & \cdots & B_s}$,
+      with a completely new transversal.
+    \end{enumerate}
+    Now, let us denote by $\tau_{ab}$ the bipartition $(a, b')^e$ in $\Mot_n$
+    which has just one non-trivial block $\{a,b'\}$.  We will use the
+    bipartitions $\tau_{ii}$ and $\tau_{jj}$. In all four cases above, we have
+    $\tau_{ii}\alpha\tau_{jj}= \tau_{ij}$ and
+    $\tau_{ii}\beta\tau_{jj}= \tau_\varnothing$, the bipartition consisting
+    entirely of singletons.  Since $\alpha \mathrel\sigma \beta$, we also have
+    $\tau_{ij} = \tau_{ii}\alpha\tau_{jj} \mathrel\sigma
+    \tau_{ii}\beta\tau_{jj}= \tau_\varnothing$, so
+    $\tau_{ij} \mathrel\sigma \tau_\varnothing$.
+
+    Next, let $\gamma$ be an arbitrary bipartition in $\Mot_n$ with rank $1$.
+    We can write
+    $\gamma = \bipart{c|c|c|c}{2-4}
+    {c & C_1 & \cdots & C_t}{d & D_1 & \cdots & D_u}$,
+    where $\{c,d'\}$ is the one transversal.  Let us write
+    $\bn \setminus \{i\} = \{i_1, \ldots, i_{n-1}\}$ and
+    $\bn \setminus \{j\} = \{j_1, \ldots, j_{n-1}\}$.  Then we can define two
+    new bipartitions:
+    $\overline\gamma = \bipart{c|c|c|c}{2-4}
+    {c & C_1 & \cdots & C_t}{i & i_1 & \cdots & i_{n-1}}$ and
+    $\underline\gamma = \bipart{c|c|c|c}{2-4}
+    {j & j_1 & \cdots & j_{n-1}}{d & D_1 & \cdots & D_u}$.
+    We can see that $\gamma = \overline\gamma \tau_{ij} \underline\gamma$ and
+    $\widehat\gamma = \overline\gamma \tau_\varnothing \underline\gamma$, so
+    we have $\gamma \mathrel\sigma \widehat\gamma$ for any $\gamma$ of rank
+    $1$.  The same statement is also true for $\gamma$ of rank $0$, since
+    $\gamma = \widehat\gamma$.
+
+    To prove that $\delta_1 \subseteq \sigma$, let $(\mu, \nu) \in \delta_1$ be
+    arbitrary.  Each of $\mu$ and $\nu$ must have rank $0$ or $1$, and they must
+    have the same kernel and cokernel.  Hence we have
+    $\mu \mathrel\sigma \widehat\mu = \widehat\nu \mathrel\sigma \nu$, so
+    $(\mu, \nu) \in \sigma$, completing the proof of (iii).
   \end{proof}
 \end{lemma}
 
