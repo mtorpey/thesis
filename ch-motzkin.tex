@@ -486,7 +486,7 @@ congruences by Definition \ref{def:lifted-congruence} and Theorem
 \ref{thm:lifted-congruence}.  The congruences lifted from $\nabla_0$ are
 observed to be equal to the Rees congruences $R_0$ and $R_1$, while those lifted
 from $\Delta_0$, $\LL_0$ and $\RR_0$ are named with appropriate Greek symbols,
-as follows:
+as follows.
 \begin{align*}
   \delta_0 &= \zeta_{I_0,\Delta_0}
   = \{(\alpha,\beta) \in I_0 \times I_0 :
@@ -568,12 +568,13 @@ the congruences.
 We are now ready to state the main theorem of this chapter, giving a full
 description of the congruence lattice of $\Mot_n$.  Much of the work to prove
 this has already been done, and the rest of this section will be devoted to
-completing the proof.
+completing the proof.  Note that our main theorem requires $n \geq 2$; if
+$n = 1$ then $\Mot_n$ has only $2$ elements, and its congruences are only
+$\Delta_{\Mot_n}$ and $\nabla_{\Mot_n}$.
 
 \begin{theorem}
-  \label{thm:motzkin-congs}
-  Let $\Mot_n$ be the Motzkin monoid, with $n \in \mathbb{N}$.  The following
-  hold:
+  \label{thm:mn-congs}
+  Let $\Mot_n$ be the Motzkin monoid, with $n \geq 2$.  The following hold:
   \begin{enumerate}[\rm(i)]
   \item The congruences of $\Mot_n$ are precisely
     $\{\delta_0, \delta_1, \lambda_0, \lambda_1, \rho_0, \rho_1, R_0, R_1,
@@ -585,9 +586,21 @@ completing the proof.
     from $\sigma$ not contained in any congruence below $\sigma$ in the
     congruence lattice.
   \end{enumerate}
+  \begin{proof}
+    Let $\Gamma$ be the set of relations stated in (i).  That the relations in
+    $\Gamma$ are congruences has already been established.  Table
+    \ref{tab:mn-genpairs} summarises the conditions for a single pair in
+    $\Mot_n \times \Mot_n$ to generate each congruence in $\Gamma$; it proves
+    that every congruence in $\Gamma$ is principal, and since each pair in
+    $\Mot_n \times \Mot_n$ satisfies one of the conditions, it proves that there
+    are no other principal congruences.  Lemmas \ref{} to \ref{} show that the
+    joins of these principal congruences are as shown in Figure
+    \ref{fig:mn-cong-lattice}---proving (ii)---and therefore that $\Gamma$ is
+    closed under taking joins, proving that $\Mot_n$ has no other congruences.
+    This completes the proof of (i) and (iii), and inspection of Table
+    \ref{tab:mn-genpairs} establishes (iv).
+  \end{proof}
 \end{theorem}
-
-% How do they fit together?
 
 % Show the lattice
 \begin{figure}[h]
@@ -619,6 +632,116 @@ completing the proof.
 
 % Proof of exhaustion: table of generating pairs, with references to
 % propositions
+For the rest of this section, we will state lemmas required to complete the
+proof of Theorem \ref{thm:mn-congs}.  Firstly, we will focus on generating
+pairs; we will consider a pair $(\alpha, \beta)$ and decide which principal
+congruence it generates.  Our findings are summarised in Table
+\ref{tab:mn-genpairs}.
+
+\begin{table}[h]
+  \renewcommand\arraystretch{1.0}
+  \centering
+  \begin{tabular}{| c | l | l |}
+    \hline
+    $(\alpha,\beta)^\sharp$ & $(\alpha,\beta) \in$ & Reference \\
+    \hline
+    $\delta_0$ & $\delta_0$ & Trivial \\
+    $\delta_1$ & $\delta_1 \setminus \delta_0$ & Lemma \ref{lem:low-genpairs} (iii) \\
+    $\lambda_0$ & $\lambda_0 \setminus \delta_0$ & Lemma \ref{lem:low-genpairs} (i) \\
+    $\lambda_1$ & $\lambda_1 \setminus (\lambda_0 \cup \delta_1)$ & Lemma \ref{lem:high-genpairs} (i) \\
+    $\rho_0$ & $\rho_0 \setminus \delta_0$ & Lemma \ref{lem:low-genpairs} (ii) \\
+    $\rho_1$ & $\rho_1 \setminus (\rho_0 \cup \delta_1)$ & Lemma \ref{lem:high-genpairs} (ii) \\
+    $R_0$ & $R_0 \setminus (\lambda_0 \cup \rho_0)$ & Lemma \ref{lem:high-genpairs} (iii) \\
+    $R_1$ & $R_1 \setminus (\lambda_1 \cup \rho_1 \cup R_0)$ & Lemma \ref{lem:high-genpairs} (iv) \\
+    $R_{k \geq 2}$ & $R_k \setminus R_{k-1}$ & Lemma \ref{lem:rees-genpairs} \\
+    \hline
+  \end{tabular}
+  \caption{Generating pairs for each congruence on $\Mot_n$}
+  \label{tab:mn-genpairs}
+\end{table}
+
+\begin{lemma}
+  \label{lem:low-genpairs}
+  Let $\alpha,\beta \in \Mot_n$.  The following hold:
+  \begin{enumerate}[\rm(i)]
+  \item $\lambda_0 = (\alpha, \beta)^\sharp$ if and only if
+    $(\alpha,\beta) \in \lambda_0 \setminus \Delta$;
+  \item $\rho_0 = (\alpha, \beta)^\sharp$ if and only if
+    $(\alpha,\beta) \in \rho_0 \setminus \Delta$;
+  \item $\delta_1 = (\alpha, \beta)^\sharp$ if and only if
+    $(\alpha,\beta) \in \delta_1 \setminus \Delta$.
+  \end{enumerate}
+  \begin{proof}
+  \end{proof}
+\end{lemma}
+
+\begin{lemma}
+  \label{lem:high-genpairs}
+  Let $\alpha,\beta \in \Mot_n$.  The following hold:
+  \begin{enumerate}[\rm(i)]
+  \item $\lambda_1 = (\alpha, \beta)^\sharp$ if and only if
+    $(\alpha,\beta) \in \lambda_1 \setminus (\lambda_0 \cup \delta_1)$;
+  \item $\rho_1 = (\alpha, \beta)^\sharp$ if and only if
+    $(\alpha,\beta) \in \rho_1 \setminus (\rho_0 \cup \delta_1)$;
+  \item $\R_0 = (\alpha, \beta)^\sharp$ if and only if
+    $(\alpha,\beta) \in R_0 \setminus (\lambda_0 \cup \rho_0)$.
+  \item $\R_1 = (\alpha, \beta)^\sharp$ if and only if
+    $(\alpha,\beta) \in R_1 \setminus (\lambda_1 \cup \rho_1 \cup R_0)$.
+  \end{enumerate}
+  \begin{proof}
+  \end{proof}
+\end{lemma}
+
+\begin{lemma}
+  \label{lem:rees-genpairs}
+  Let $\alpha,\beta \in \Mot_n$, and $k \in \{2, \ldots, n\}$.  We have
+  $R_k = (\alpha, \beta)^\sharp$ if and only if
+  $(\alpha, \beta) \in R_k \setminus R_{k-1}$.
+  \begin{proof}
+
+  \end{proof}
+\end{lemma}
+
+Now that we have described all the principal congruences of $\Mot_n$, we turn
+our attention to the join of two congruences.  Since any semigroup congruence is
+a join of principal congruences, this will allow us to prove that we have found
+every possible congruence.
+
+\begin{lemma}
+  \label{lem:mn-lattice-intra}
+  Let $i \in \{0, 1\}$ and $n \in \mathbb{N}$.  In $\Mot_n$, we have
+  $\lambda_i \cap \rho_i = \delta_i$ and $\lambda_i \vee \rho_i = R_i$.
+  \begin{proof}
+
+  \end{proof}
+\end{lemma}
+
+\begin{lemma}
+  \label{lem:mn-lattice-inter}
+  The following hold in $\Mot_n$:
+  \begin{enumerate}[\rm(i)]
+    \begin{multicols}{2}
+    \item $\lambda_0 \subseteq \lambda_1$, $\rho_0 \subseteq \rho_1$, and
+      $\delta_0 \subseteq \delta_1$;
+    \item $\lambda_0 \cap \rho_1 = \rho_0 \cap \lambda_1 = \delta_0$;
+    \item $\lambda_0 \vee \rho_1 = \rho_0 \vee \lambda_1 = R_1$;
+    \item $\lambda_0 \cap \delta_1 = \rho_0 \cap \delta_1 = \delta_0$;
+    \item $\lambda_0 \vee \delta_1 = \lambda_1$ and
+      $\rho_0 \vee \delta_1 = \rho_1$;
+    \item $R_0 \cap \delta_1 = \delta_0$ and $R_0 \vee \delta_1 = R_1$.
+    \end{multicols}
+  \end{enumerate}
+  \begin{proof}
+    We can see (i) and (ii) immediately from the descriptions of the congruences
+    in Proposition \ref{prop:mn-cong-char}.  The same proposition, and the fact
+    that bipartitions of rank $0$ are equal if they have the same kernel and
+    cokernel, also give us (iv) and the first part of (vi).
+  \end{proof}
+\end{lemma}
+
+These two lemmas are sufficient to construct the congruence lattice in Figure
+\ref{fig:mn-cong-lattice}, and to complete the proof of Theorem
+\ref{thm:mn-congs}.
 
 \section{Other monoids}
 \label{sec:motzkin-other}
