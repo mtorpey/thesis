@@ -1000,7 +1000,7 @@ congruence it generates.  Our findings are summarised in Table
   $R_k = (\alpha, \beta)^\sharp$ if and only if
   $(\alpha, \beta) \in R_k \setminus R_{k-1}$.
   \begin{proof}
-
+    TODO
   \end{proof}
 \end{lemma}
 
@@ -1014,7 +1014,36 @@ every possible congruence.
   Let $i \in \{0, 1\}$.  In $\Mot_n$, we have $\lambda_i \cap \rho_i = \delta_i$
   and $\lambda_i \vee \rho_i = R_i$.
   \begin{proof}
-
+    Using Proposition \ref{prop:mn-cong-char}, we have the following
+    characterisations of $\delta_i$, $\lambda_i$, $\rho_i$, and $R_i$:
+    \begin{align*}
+      \delta_i &= \{(\alpha,\beta) :
+                    \rank\alpha,\rank\beta \leq i,
+                    \ker\alpha = \ker\beta,
+                    \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n}; \\
+      \lambda_i &= \{(\alpha,\beta) :
+                     \rank\alpha,\rank\beta \leq i,
+                     \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n}; \\
+      \rho_i &= \{(\alpha,\beta) :
+                  \rank\alpha,\rank\beta \leq i,
+                  \ker\alpha = \ker\beta\} \cup \Delta_{\Mot_n}; \\
+      R_i &= \{(\alpha,\beta) :
+               \rank\alpha,\rank\beta \leq i\} \cup \Delta_{\Mot_n}.
+    \end{align*}
+    The first statement, $\lambda_i \cap \rho_i = \delta_i$, follows directly
+    from these characterisations.  For the second, observe that since
+    $\lambda_i \subseteq R_i$ and $\rho_i \subseteq R_i$, we must have
+    $\lambda_i \vee \rho_i \subseteq R_i$.  For
+    $R_i \subseteq \lambda_i \vee \rho_i$, let $(\mu,\nu) \in R_i$.  We
+    certainly have $\mu \mathrel\lambda_i \widehat\mu$ and
+    $\nu \mathrel\lambda_i \widehat\nu$.  Observe that the product
+    $\widehat\mu\widehat\nu$ has the kernel of $\widehat\mu$ and the cokernel
+    of $\widehat\nu$.  Hence
+    $\mu \mathrel\lambda_i \widehat\mu
+    \mathrel\rho_i \widehat\mu\widehat\nu
+    \mathrel\lambda_i \widehat\nu
+    \mathrel\lambda_i \nu$,
+    so $(\mu, \nu) \in \lambda_i \vee \rho_i$, as required.
   \end{proof}
 \end{lemma}
 
