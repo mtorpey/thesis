@@ -1067,7 +1067,14 @@ every possible congruence.
     that the rest follows by a similar argument.  Since
     $\lambda_0 \subseteq R_1$ and $\rho_1 \subseteq R_1$, we must have
     $\lambda_0 \vee \rho_1 \subseteq R_1$.  To prove
-    $\lambda_0 \vee \rho_1 \subseteq R_1$, let $(\mu, \nu) \in R_1$.
+    $\lambda_0 \vee \rho_1 \subseteq R_1$, let $(\mu, \nu) \in R_1$.  We
+    certainly have $\mu \mathrel\rho_1 \widehat\mu$ and
+    $\nu \mathrel\rho_1 \widehat\nu$.  Observe that the product
+    $\widehat\mu\widehat\nu$ has rank $0$, the kernel of $\widehat\mu$, and the
+    cokernel of $\widehat\nu$.  Hence
+    $\mu \mathrel\rho_1 \widehat\mu \mathrel\rho_1 \widehat\mu\widehat\nu
+    \mathrel\lambda_0 \widehat\nu \mathrel\rho_i \nu$, so
+    $(\mu, \nu) \in \lambda_0 \vee \rho_1$, as required.
   \end{proof}
 \end{lemma}
 
