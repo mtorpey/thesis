@@ -823,17 +823,17 @@ congruence it generates.  Our findings are summarised in Table
     since $\rank\beta \leq 1$ and $\coker\alpha = \coker\beta$, we may write
     $\beta$ in one of the following ways.
     \begin{enumerate}[\rm(a)]
-    \item (c) $\beta = \bipart{c|c|c|c|c}{1-5}
+    \item $\beta = \bipart{c|c|c|c|c}{1-5}
       {C_0 & C_1 & C_2 & \cdots & C_t}{j & B_1 & B_2 & \cdots & B_s}$;
-    \item (a $=$) $\beta = \bipart{c|c|c|c|c}{2-5}
+    \item $\beta = \bipart{c|c|c|c|c}{2-5}
       {i & C_1 & C_2 & \cdots & C_t}{j & B_1 & B_2 & \cdots & B_s}$;
-    \item (a $\neq$) $\beta = \bipart{c|c|c|c|c}{2-5}
+    \item $\beta = \bipart{c|c|c|c|c}{2-5}
       {k & C_1 & C_2 & \cdots & C_t}{j & B_1 & B_2 & \cdots & B_s}$,
       for some $k \neq i$;
-    \item (b intersect) $\beta = \bipart{c|c|c|c|c}{2-5}
+    \item $\beta = \bipart{c|c|c|c|c}{2-5}
       {i & C_1 & C_2 & \cdots & C_t}{l & j & B_2 & \cdots & B_s}$,
       for some $l \neq j$;
-    \item (b no intersect) $\beta = \bipart{c|c|c|c|c}{2-5}
+    \item $\beta = \bipart{c|c|c|c|c}{2-5}
       {k & C_1 & C_2 & \cdots & C_t}{l & j & B_2 & \cdots & B_s}$,
       for some $k \neq i$ and $l \neq j$.
     \end{enumerate}
@@ -856,14 +856,14 @@ congruence it generates.  Our findings are summarised in Table
     \subseteq (\alpha,\beta)^\sharp$, and (i) is complete.
     To do this, we will consider the cases (a)--(e) separately.
 
-    Firstly, assume (c) holds.  We have
+    Firstly, assume (a) holds.  We have
     $(\alpha\alpha^*)\beta = \widehat\alpha$, and Lemma
     \ref{lem:low-genpairs} (iii) gives
     $\delta_1 = (\alpha, \widehat\alpha)^\sharp = (\alpha\alpha^*\alpha,
     \alpha\alpha^*\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$, so
     $\delta_1 \subseteq (\alpha, \beta)^\sharp$.
 
-    Next, suppose (a=) holds.
+    Next, suppose (b) holds.
     Since $\alpha \neq \beta$, the blocks $A_1$ to $A_r$ cannot be the same as
     the blocks $C_1$ to $C_t$.  Hence, swapping $\alpha$ and $\beta$ if
     necessary, let $(a_1,a_2) \in \ker\alpha \setminus \ker\beta$.  Now let
@@ -880,7 +880,7 @@ congruence it generates.  Our findings are summarised in Table
     Lemma \ref{lem:low-genpairs} (iii) gives us
     $\delta_1 = (\tau\alpha,\tau\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$.
 
-    Next, suppose (a neq) holds.  Let $\tau = (i,i')^e$, the
+    Next, suppose (c) holds.  Let $\tau = (i,i')^e$, the
     bipartition containing just one non-trivial block $\{i,i'\}$, let
     $\bn \setminus \{i\}=\{i_1,\ldots,i_{n-1}\}$, and note that
     $\tau\alpha = \bipart{c|c|c|c}{2-4}
@@ -891,7 +891,7 @@ congruence it generates.  Our findings are summarised in Table
     Lemma \ref{lem:low-genpairs} (iii) we have
     $\delta_1 = (\alpha\tau,\beta\tau)^\sharp \subseteq (\alpha,\beta)^\sharp$.
 
-    Next, suppose (b intersect) holds.
+    Next, suppose (d) holds.
     Again let $\bn\setminus\{i\}=\{i_1,\ldots,i_{n-1}\}$, let
     $\tau=\bipart{c|c|c|c}{2-4}
     {i & A_1 & \cdots & A_r}{i & i_1 & \cdots & i_{n-1}}$, and note that
@@ -902,7 +902,7 @@ congruence it generates.  Our findings are summarised in Table
     Lemma \ref{lem:low-genpairs} (iii) we again have
     $\delta_1=(\alpha\tau, \beta\tau)^\sharp\subseteq(\alpha,\beta)^\sharp$.
 
-    Finally, suppose (b no intersect) holds.
+    Finally, suppose (e) holds.
     Let $\bn\setminus\{i,k\}=\{k_1,\ldots,k_{n-2}\}$, let
     $\tau=(i \to k,i \to k)$, and note that
     $\tau\alpha=\bipart{c|c|c|c|c}{2-5}
