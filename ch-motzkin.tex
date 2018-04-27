@@ -809,6 +809,188 @@ congruence it generates.  Our findings are summarised in Table
     $(\alpha,\beta) \in R_1 \setminus (\lambda_1 \cup \rho_1 \cup R_0)$.
   \end{enumerate}
   \begin{proof}
+    In each statement, as in the previous lemma, the ``only if'' part is
+    obvious; we just need to consider the left-to-right implications.  First we
+    will prove (i) and observe that (ii) follows from a symmetric argument.
+    Then we will prove (iii) and (iv) separately.
+
+    For (i), start by supposing
+    $(\alpha, \beta) \in \lambda_1 \setminus (\lambda_0 \cup \delta_1)$, as in
+    the premise.  To be outside $\lambda_0$, either $\alpha$ or $\beta$ must
+    have rank $1$---without loss of generality, assume $\rank(\alpha)=1$.  We
+    may therefore write
+    $\alpha=\bipart{c|c|c|c}{2-4}{i&A_1&\cdots&A_r}{j&B_1&\cdots&B_s}$.  Now,
+    since $\rank\beta \leq 1$ and $\coker\alpha = \coker\beta$, we may write
+    $\beta$ in one of the following ways.
+    \begin{enumerate}[\rm(a)]
+    \item (c) $\beta = \bipart{c|c|c|c|c}{1-5}
+      {C_0 & C_1 & C_2 & \cdots & C_t}{j & B_1 & B_2 & \cdots & B_s}$;
+    \item (a $=$) $\beta = \bipart{c|c|c|c|c}{2-5}
+      {i & C_1 & C_2 & \cdots & C_t}{j & B_1 & B_2 & \cdots & B_s}$;
+    \item (a $\neq$) $\beta = \bipart{c|c|c|c|c}{2-5}
+      {k & C_1 & C_2 & \cdots & C_t}{j & B_1 & B_2 & \cdots & B_s}$,
+      for some $k \neq i$;
+    \item (b intersect) $\beta = \bipart{c|c|c|c|c}{2-5}
+      {i & C_1 & C_2 & \cdots & C_t}{l & j & B_2 & \cdots & B_s}$,
+      for some $l \neq j$;
+    \item (b no intersect) $\beta = \bipart{c|c|c|c|c}{2-5}
+      {k & C_1 & C_2 & \cdots & C_t}{l & j & B_2 & \cdots & B_s}$,
+      for some $k \neq i$ and $l \neq j$.
+    \end{enumerate}
+    Since $(\alpha,\beta) \notin \delta_1$, we have
+    $\coker\alpha \neq \coker\beta$.  Let
+    $\gamma = \bipart{c|c|c|c}{1-4}
+    {j & B_1 & \cdots & B_s}{j & B_1 & \cdots & B_s}$.  Then
+    $(\alpha\gamma, \beta\gamma) \in (\alpha,\beta)^\sharp$, with
+    $\alpha\gamma = \bipart{c|c|c|c}{1-4}
+    {i & A_1 & \cdots & A_r}{j & B_1 & \cdots & B_s}$ and
+    $\beta\gamma = \bipart{c|c|c|c}{1-4}
+    {C_0 & C_1 & \cdots & C_t}{j & B_1 & \cdots & B_t}$.  In particular,
+    since $\alpha \neq \beta$, we find $\alpha\gamma \neq \beta\gamma$, and
+    therefore $(\alpha\gamma, \beta\gamma) \in \lambda_0 \setminus \Delta$, so
+    Lemma \ref{lem:low-genpairs} (i) gives us
+    $\lambda_0=(\alpha\gamma, \beta\gamma)^\sharp
+    \subseteq (\alpha, \beta)^\sharp$.
+    Since $\lambda_1 = \delta_1 \vee \lambda_0$ (by Lemma
+    \ref{lem:mn-lattice-inter} below), we need only show that $\delta_1
+    \subseteq (\alpha,\beta)^\sharp$, and (i) is complete.
+    To do this, we will consider the cases (a)--(e) separately.
+
+    Firstly, assume (c) holds.  We have
+    $(\alpha\alpha^*)\beta = \widehat\alpha$, and Lemma
+    \ref{lem:low-genpairs} (iii) gives
+    $\delta_1 = (\alpha, \widehat\alpha)^\sharp = (\alpha\alpha^*\alpha,
+    \alpha\alpha^*\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$, so
+    $\delta_1 \subseteq (\alpha, \beta)^\sharp$.
+
+    Next, suppose (a=) holds.
+    Since $\alpha \neq \beta$, the blocks $A_1$ to $A_r$ cannot be the same as
+    the blocks $C_1$ to $C_t$.  Hence, swapping $\alpha$ and $\beta$ if
+    necessary, let $(a_1,a_2) \in \ker\alpha \setminus \ker\beta$.  Now let
+    $\bn \setminus \{i,a_1,a_2\} = \{i_1, \ldots, i_{n-3}\}$, let
+    $\tau=\bipart{c|c|c|c|c}{2-5}
+    {a_1 & i,a_2 & i_1 & \ldots & i_{n-3}}
+    {a_1 & i,a_2 & i_1 & \ldots & i_{n-3}}$,
+    and note that
+    $\tau\alpha = \bipart{c|c|c|c|c}{2-5}
+    {a_1 & i,a_2 & i_1 & \ldots & i_{n-3}}{B_0 & B_1 & B_2 & \ldots & B_s}$ but
+    $\tau\beta = \bipart{c|c|c|c|c}{1-5}
+    {a_1 & i,a_2 & i_1 & \ldots & i_{n-3}}{B_0 & B_1 & B_2 & \ldots & B_s}$.
+    Hence we have $(\tau\alpha,\tau\beta) \in \delta_1 \setminus \Delta$, so
+    Lemma \ref{lem:low-genpairs} (iii) gives us
+    $\delta_1 = (\tau\alpha,\tau\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$.
+
+    Next, suppose (a neq) holds.  Let $\tau = (i,i')^e$, the
+    bipartition containing just one non-trivial block $\{i,i'\}$, let
+    $\bn \setminus \{i\}=\{i_1,\ldots,i_{n-1}\}$, and note that
+    $\tau\alpha = \bipart{c|c|c|c}{2-4}
+    {i & i_1 & \cdots & i_{n-1}}{j & B_1 & \cdots & B_s}$ but
+    $\tau\beta = \bipart{c|c|c|c}{1-4}
+    {i & i_1 & \cdots & i_{n-1}}{j & B_1 & \cdots & B_s}$.
+    Again we have $(\tau\alpha,\tau\beta) \in \delta_1 \setminus \Delta$, so by
+    Lemma \ref{lem:low-genpairs} (iii) we have
+    $\delta_1 = (\alpha\tau,\beta\tau)^\sharp \subseteq (\alpha,\beta)^\sharp$.
+
+    Next, suppose (b intersect) holds.
+    Again let $\bn\setminus\{i\}=\{i_1,\ldots,i_{n-1}\}$, let
+    $\tau=\bipart{c|c|c|c}{2-4}
+    {i & A_1 & \cdots & A_r}{i & i_1 & \cdots & i_{n-1}}$, and note that
+    $\tau\alpha = \alpha $ and
+    $\tau\beta = \bipart{c|c|c|c|c}{2-5}
+    {i & A_1 & A_2 & \cdots & A_r}{l & j & B_2 & \cdots & B_s}$.
+    We have $(\tau\alpha,\tau\beta) \in \delta_1 \setminus \Delta$, so by
+    Lemma \ref{lem:low-genpairs} (iii) we again have
+    $\delta_1=(\alpha\tau, \beta\tau)^\sharp\subseteq(\alpha,\beta)^\sharp$.
+
+    Finally, suppose (b no intersect) holds.
+    Let $\bn\setminus\{i,k\}=\{k_1,\ldots,k_{n-2}\}$, let
+    $\tau=(i \to k,i \to k)$, and note that
+    $\tau\alpha=\bipart{c|c|c|c|c}{2-5}
+    {i & k & k_1 & \ldots & k_{n-2}}
+    {j & l & B_2 & \ldots & B_s}$
+    and
+    $\tau\beta=\bipart{c|c|c|c|c}{2-5}
+    {k & i & k_1 & \ldots & k_{n-2}}
+    {l & j & B_2 & \ldots & B_s}$
+    We have $(\tau\alpha,\tau\beta) \in \delta_1 \setminus \Delta$, so again by
+    Lemma \ref{lem:low-genpairs} (iii) we have
+    $\delta_1 = (\tau\alpha, \tau\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$.
+
+    We have now considered all 5 cases, and shown that we always have
+    $\delta \subseteq (\alpha, \beta)^\sharp$.  This completes the proof of
+    (i).  Note that (ii) follows by a symmetric argument.
+
+    For (iii), suppose $(\alpha,\beta)\in R_0\setminus(\rho_0\cup\lambda_0)$.
+    Since $\rank\alpha = \rank\beta = 0$, we may write
+    $\alpha=\bipart{c|c|c}{1-3}{A_1 & \cdots & A_r}{B_1 & \cdots & B_s}$ and
+    $\beta=\bipart{c|c|c}{1-3}{C_1 & \cdots & C_t}{D_1 & \cdots & D_u}$.
+    % noting that $\ker(\alpha)\not=\ker(\beta)$ and
+    % $\coker(\alpha)\not=\coker(\beta)$.
+    By Lemma \ref{lem:mn-lattice-intra} (i) below, we have
+    $R_0 = \lambda_0\vee\rho_0$, so we will prove $(\alpha,\beta)^\sharp$
+    contains $R_0$ by showing that it contains both $\lambda_0$ and $\rho_0$.
+    Let $\gamma = \bipart{c|c|c}{1-3}{A_1 & \cdots & A_r}{D_1 & \cdots & D_u}$.
+    This gives us
+    $(\alpha,\gamma) = (\alpha\gamma,\beta\gamma) \in \lambda_0\setminus\Delta$,
+    so by Lemma \ref{lem:low-genpairs} (i) we have
+    $\lambda_0 = (\gamma,\beta)^\sharp \subseteq (\alpha, \beta)^\sharp$.  By a
+    similar argument we have
+    $\rho_0 = (\alpha,\gamma)^\sharp \subseteq (\alpha,\beta)^\sharp$, and hence
+    $R_0 \subseteq (\alpha,\beta)^\sharp$, completing (iii).
+
+    Finally, for (iv), suppose
+    $(\alpha,\beta) \in R_1 \setminus (\lambda_1 \cup \rho_1 \cup R_0)$, as in
+    the premise.  Since the pair is in $R_1$, the elements' ranks must both be
+    at most $1$; but since it is not in $R_0$, at least one must be of rank $1$
+    (without loss of generality, assume $\alpha$).  Since the pair is in neither
+    $\lambda$ nor $\rho$, we also know that $\ker\alpha \neq \ker\beta$ and
+    $\coker\alpha \neq \coker\beta$.
+    Hence we can write
+    $\alpha = \bipart{c|c|c|c}{2-4}
+    {i & A_1 & \cdots & A_r}{j & B_1 & \cdots & B_s}$, and
+    $\beta = \bipart{c|c|c|c}{2-4}
+    {k & C_1 & \cdots & C_t}{l & D_1 & \cdots & D_u}$ or
+    $\beta = \bipart{c|c|c|c}{1-4}
+    {k & C_1 & \cdots & C_t}{l & D_1 & \cdots & D_u}$.  Now, as in (iii),
+    since $R_1 = \lambda_1 \vee \rho_1$, by Lemma \ref{lem:mn-lattice-intra}, we
+    prove that $(\alpha,\beta)^\sharp = R_1$ by showing that
+    $(\alpha,\beta)^\sharp$ contains $\lambda_1$ and $\rho_1$.  We proceed by
+    solving three cases separately.  One of the following three statements about
+    $\beta$ must hold:
+    \begin{enumerate}[\rm(a)]
+      \setcounter{enumi}{5}
+    \item $\rank(\beta) = 0$;
+    \item $\rank(\beta) = 1$ and $j = l$;
+    \item $\rank(\beta) = 1$ and $j \neq l$.
+    \end{enumerate}
+
+    First, suppose (f) or (g) holds.  Let
+    $\gamma = \bipart{c|c|c|c}{2-4}
+    {j & B_1 & \cdots & B_s}{j & B_1 & \cdots & B_s}$.  Certainly we have
+    $\alpha\gamma = \alpha$.  To find $\beta\gamma$ we separate into two cases:
+    $\beta\gamma = \bipart{c|c|c|c}{1-4}
+    {k & C_1 & \cdots & C_t}{j & B_1 & \cdots & B_s}$---case (f)---or
+    $\beta\gamma = \bipart{c|c|c|c}{2-4}
+    {k & C_1 & \cdots & C_t}{j & B_1 & \cdots & B_s}$---case (g).
+    In either case, using (i), we have
+    $\lambda_1 = (\alpha\gamma, \beta\gamma)^\sharp
+    \subseteq (\alpha,\beta)^\sharp$, completing this case.
+
+    Next, assume (h) holds.
+    Write $\bn \setminus \{j\} = \{j_1, \ldots, j_{n-1}\}$, and let
+    $\tau = (j,j')^e$, the bipartition whose only non-trivial block is
+    $\{j, j'\}$.  Then we have
+    $\alpha\tau = \bipart{c|c|c|c}{2-4}
+    {i & A_1 & \cdots & A_r}{j & j_1 & \cdots & j_{n-1}}$ and
+    $\beta\tau = \bipart{c|c|c|c}{1-4}
+    {k & C_1 & \cdots & C_t}{j & j_1 & \cdots & j_{n-1}}$.
+    Using (i) again gives us
+    $\lambda_1 = (\alpha\tau, \beta\tau)^\sharp
+    \subseteq (\alpha,\beta)^\sharp$,
+    as required.  This completes the proof that
+    $\lambda_1 \subseteq (\alpha,\beta)^\sharp$.  The proof that
+    $\rho_1 \subseteq (\alpha,\beta)^\sharp$ is similar.  Hence $R_0 \subseteq
+    (\alpha,\beta)^\sharp$, and the proof of (iv) is complete.
   \end{proof}
 \end{lemma}
 
