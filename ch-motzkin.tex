@@ -824,7 +824,7 @@ congruence it generates.  Our findings are summarised in Table
     may therefore write
     $\alpha=\bipart{c|c|c|c}{2-4}{i&A_1&\cdots&A_r}{j&B_1&\cdots&B_s}$.  Now,
     since $\rank\beta \leq 1$ and $\coker\alpha = \coker\beta$, we may write
-    $\beta$ in one of the following ways.
+    $\beta$ in one of the following ways:
     \begin{enumerate}[\rm(a)]
     \item $\beta = \bipart{c|c|c|c|c}{1-5}
       {C_0 & C_1 & C_2 & \cdots & C_t}{j & B_1 & B_2 & \cdots & B_s}$;
@@ -841,7 +841,7 @@ congruence it generates.  Our findings are summarised in Table
       for some $k \neq i$ and $l \neq j$.
     \end{enumerate}
     Since $(\alpha,\beta) \notin \delta_1$, we have
-    $\coker\alpha \neq \coker\beta$.  Let
+    $\ker\alpha \neq \ker\beta$.  Let
     $\gamma = \bipart{c|c|c|c}{1-4}
     {j & B_1 & \cdots & B_s}{j & B_1 & \cdots & B_s}$.  Then
     $(\alpha\gamma, \beta\gamma) \in (\alpha,\beta)^\sharp$, with
@@ -849,18 +849,18 @@ congruence it generates.  Our findings are summarised in Table
     {i & A_1 & \cdots & A_r}{j & B_1 & \cdots & B_s}$ and
     $\beta\gamma = \bipart{c|c|c|c}{1-4}
     {C_0 & C_1 & \cdots & C_t}{j & B_1 & \cdots & B_t}$.  In particular,
-    since $\alpha \neq \beta$, we find $\alpha\gamma \neq \beta\gamma$, and
-    therefore $(\alpha\gamma, \beta\gamma) \in \lambda_0 \setminus \Delta$, so
-    Lemma \ref{lem:low-genpairs} (i) gives us
+    since $\ker\alpha \neq \ker\beta$, we find $\alpha\gamma \neq \beta\gamma$,
+    and therefore $(\alpha\gamma, \beta\gamma) \in \lambda_0 \setminus \Delta$,
+    so Lemma \ref{lem:low-genpairs} (i) gives us
     $\lambda_0=(\alpha\gamma, \beta\gamma)^\sharp
     \subseteq (\alpha, \beta)^\sharp$.
-    Since $\lambda_1 = \delta_1 \vee \lambda_0$ (by Lemma
+    Since $\lambda_1 = \lambda_0 \vee \delta_1$ (by Lemma
     \ref{lem:mn-lattice-inter} below), we need only show that $\delta_1
     \subseteq (\alpha,\beta)^\sharp$, and (i) is complete.
     To do this, we will consider the cases (a)--(e) separately.
 
-    Firstly, assume (a) holds.  We have
-    $(\alpha\alpha^*)\beta = \widehat\alpha$, and Lemma
+    Firstly, assume (a) holds.  We know that $\alpha \alpha^* \alpha = \alpha$,
+    and we can see that $\alpha\alpha^*\beta = \widehat\alpha$.  Hence Lemma
     \ref{lem:low-genpairs} (iii) gives
     $\delta_1 = (\alpha, \widehat\alpha)^\sharp = (\alpha\alpha^*\alpha,
     \alpha\alpha^*\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$, so
@@ -876,9 +876,9 @@ congruence it generates.  Our findings are summarised in Table
     {a_1 & i,a_2 & i_1 & \ldots & i_{n-3}}$,
     and note that
     $\tau\alpha = \bipart{c|c|c|c|c}{2-5}
-    {a_1 & i,a_2 & i_1 & \ldots & i_{n-3}}{B_0 & B_1 & B_2 & \ldots & B_s}$ but
+    {a_1 & i,a_2 & i_1 & \ldots & i_{n-3}}{j & B_1 & B_2 & \ldots & B_s}$ but
     $\tau\beta = \bipart{c|c|c|c|c}{1-5}
-    {a_1 & i,a_2 & i_1 & \ldots & i_{n-3}}{B_0 & B_1 & B_2 & \ldots & B_s}$.
+    {a_1 & i,a_2 & i_1 & \ldots & i_{n-3}}{j & B_1 & B_2 & \ldots & B_s}$.
     Hence we have $(\tau\alpha,\tau\beta) \in \delta_1 \setminus \Delta$, so
     Lemma \ref{lem:low-genpairs} (iii) gives us
     $\delta_1 = (\tau\alpha,\tau\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$.
@@ -892,7 +892,7 @@ congruence it generates.  Our findings are summarised in Table
     {i & i_1 & \cdots & i_{n-1}}{j & B_1 & \cdots & B_s}$.
     Again we have $(\tau\alpha,\tau\beta) \in \delta_1 \setminus \Delta$, so by
     Lemma \ref{lem:low-genpairs} (iii) we have
-    $\delta_1 = (\alpha\tau,\beta\tau)^\sharp \subseteq (\alpha,\beta)^\sharp$.
+    $\delta_1 = (\tau\alpha,\tau\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$.
 
     Next, suppose (d) holds.
     Again let $\bn\setminus\{i\}=\{i_1,\ldots,i_{n-1}\}$, let
@@ -903,11 +903,12 @@ congruence it generates.  Our findings are summarised in Table
     {i & A_1 & A_2 & \cdots & A_r}{l & j & B_2 & \cdots & B_s}$.
     We have $(\tau\alpha,\tau\beta) \in \delta_1 \setminus \Delta$, so by
     Lemma \ref{lem:low-genpairs} (iii) we again have
-    $\delta_1=(\alpha\tau, \beta\tau)^\sharp\subseteq(\alpha,\beta)^\sharp$.
+    $\delta_1=(\tau\alpha, \tau\beta)^\sharp\subseteq(\alpha,\beta)^\sharp$.
 
     Finally, suppose (e) holds.
     Let $\bn\setminus\{i,k\}=\{k_1,\ldots,k_{n-2}\}$, let
-    $\tau=(i \to k,i \to k)$, and note that
+    $\tau$ be the bipartition with non-trivial blocks $\{i,i'\}$ and $\{k,k'\}$,
+    and note that
     $\tau\alpha=\bipart{c|c|c|c|c}{2-5}
     {i & k & k_1 & \ldots & k_{n-2}}
     {j & l & B_2 & \ldots & B_s}$
@@ -920,8 +921,8 @@ congruence it generates.  Our findings are summarised in Table
     $\delta_1 = (\tau\alpha, \tau\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$.
 
     We have now considered all 5 cases, and shown that we always have
-    $\delta \subseteq (\alpha, \beta)^\sharp$.  This completes the proof of
-    (i).  Note that (ii) follows by a symmetric argument.
+    $\delta_1 \subseteq (\alpha, \beta)^\sharp$.  Hence the proof of
+    (i) is complete.  Note that (ii) follows by a symmetric argument.
 
     For (iii), suppose $(\alpha,\beta)\in R_0\setminus(\rho_0\cup\lambda_0)$.
     Since $\rank\alpha = \rank\beta = 0$, we may write
@@ -932,13 +933,15 @@ congruence it generates.  Our findings are summarised in Table
     By Lemma \ref{lem:mn-lattice-intra} (i) below, we have
     $R_0 = \lambda_0\vee\rho_0$, so we will prove $(\alpha,\beta)^\sharp$
     contains $R_0$ by showing that it contains both $\lambda_0$ and $\rho_0$.
-    Let $\gamma = \bipart{c|c|c}{1-3}{A_1 & \cdots & A_r}{D_1 & \cdots & D_u}$.
+    Let $\gamma = \alpha\beta =
+    \bipart{c|c|c}{1-3}{A_1 & \cdots & A_r}{D_1 & \cdots & D_u}$.
     This gives us
-    $(\alpha,\gamma) = (\alpha\gamma,\beta\gamma) \in \lambda_0\setminus\Delta$,
+    $(\gamma,\beta) \in \lambda_0\setminus\Delta$,
     so by Lemma \ref{lem:low-genpairs} (i) we have
-    $\lambda_0 = (\gamma,\beta)^\sharp \subseteq (\alpha, \beta)^\sharp$.  By a
-    similar argument we have
-    $\rho_0 = (\alpha,\gamma)^\sharp \subseteq (\alpha,\beta)^\sharp$, and hence
+    $\lambda_0 = (\gamma,\beta)^\sharp
+    = (\alpha\beta, \beta\beta)^\sharp
+    \subseteq (\alpha, \beta)^\sharp$.  By a similar argument we have
+    $\rho_0 \subseteq (\alpha,\beta)^\sharp$, and hence
     $R_0 \subseteq (\alpha,\beta)^\sharp$, completing (iii).
 
     Finally, for (iv), suppose
@@ -991,7 +994,7 @@ congruence it generates.  Our findings are summarised in Table
     $\lambda_1 = (\alpha\tau, \beta\tau)^\sharp
     \subseteq (\alpha,\beta)^\sharp$,
     as required.  This completes the proof that
-    $\lambda_1 \subseteq (\alpha,\beta)^\sharp$.  The proof that
+    $\lambda_1 \subseteq (\alpha,\beta)^\sharp$, and the proof that
     $\rho_1 \subseteq (\alpha,\beta)^\sharp$ is similar.  Hence $R_0 \subseteq
     (\alpha,\beta)^\sharp$, and the proof of (iv) is complete.
   \end{proof}
