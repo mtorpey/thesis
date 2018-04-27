@@ -1075,6 +1075,28 @@ every possible congruence.
     $\mu \mathrel\rho_1 \widehat\mu \mathrel\rho_1 \widehat\mu\widehat\nu
     \mathrel\lambda_0 \widehat\nu \mathrel\rho_1 \nu$, so
     $(\mu, \nu) \in \lambda_0 \vee \rho_1$, as required.
+
+    For (v), we will prove that $\lambda_0 \vee \delta_1 = \lambda_1$, and
+    observe that the other part follows by a symmetric argument.  Since
+    $\lambda_0 \subseteq \lambda_1$ and $\delta_1 \subseteq \lambda_1$, we must
+    have $\lambda_0 \vee \delta_1 \subseteq \lambda_1$.  To prove
+    $\lambda_1 \subseteq \lambda_0 \vee \delta_1$, let
+    $(\mu, \nu) \in \lambda_1$.  By the characterisation of $\lambda_1$ in
+    Proposition \ref{prop:mn-cong-char}, we have $\coker\mu = \coker\nu$, and
+    therefore $\coker\widehat\mu = \coker\widehat\nu$.  Hence
+    $\mu \mathrel\delta_1 \widehat\mu \mathrel\lambda_0 \widehat\nu
+    \mathrel\delta_1 \nu$, so $(\mu, \nu) \in \lambda_0 \vee \delta_1$, as
+    required.
+
+    Finally we prove the second part of (vi), $R_0 \vee \delta_1 = R_1$.  Since
+    $R_0 \subseteq R_1$ and $\delta_1 \subseteq R_1$, we must have
+    $R_0 \vee \delta_1 \subseteq R_1$.  To prove
+    $R_1 \subseteq R_0 \vee \delta_1$, let $(\mu, \nu) \in R_1$.  We certainly
+    have $\mu \mathrel\delta_1 \widehat\mu$ and
+    $\nu \mathrel\delta_1 \widehat\nu$, and since $R_0$ relates any pair of
+    bipartitions of rank $0$, we have
+    $\mu \mathrel\delta_1 \widehat\mu \mathrel{R_0} \widehat\nu \mathrel\delta_1
+    \nu$, so $(\mu, \nu) \in R_0 \vee \delta_1$, as required.
   \end{proof}
 \end{lemma}
 
