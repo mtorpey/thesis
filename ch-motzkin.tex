@@ -633,7 +633,7 @@ $\Delta_{\Mot_n}$ and $\nabla_{\Mot_n}$.
 
 % Proof of exhaustion: table of generating pairs, with references to
 % propositions
-For the rest of this section, we will state lemmas required to complete the
+For the rest of this section, we will state the lemmas required to complete the
 proof of Theorem \ref{thm:mn-congs}.  Firstly, we will focus on generating
 pairs; we will consider a pair $(\alpha, \beta)$ and decide which principal
 congruence it generates.  Our findings are summarised in Table
@@ -694,8 +694,8 @@ congruence it generates.  Our findings are summarised in Table
     trivial kernel and $\coker\gamma' = \coker\gamma$.  We claim that
     $(\gamma, \gamma') \in \sigma$ for any such $\gamma$.  This claim is proven
     by descending induction on $r$, the number of kernel-classes of $\gamma$: if
-    $r = n$ then $\gamma = \gamma'$ and we are done.  Otherwise we have
-    $r \leq n-1$, and we may write
+    $r = n$ (trivial kernel) then $\gamma = \gamma'$ and we are done.  Otherwise
+    we have $r \leq n-1$, and we write
     $\gamma = \bipart{c|c|c}{1-3}{A_1&\ldots&A_r}{B_1&\ldots&B_s}$.  Since
     $(\alpha,\beta) \in \lambda_0 \setminus \Delta$, Propisition
     \ref{prop:mn-cong-char} gives us $\rank\alpha = \rank\beta = 0$ and
@@ -711,7 +711,9 @@ congruence it generates.  Our findings are summarised in Table
     {m & p & A_2 & \ldots & A_r}
     {i & j & k_1 & \ldots & k_{n-2}}$, 
     where $A_1 = \{m, p\}$.
-    We observe that $\tau \alpha \gamma = \gamma$ and
+    We observe that $\tau \alpha \gamma = \gamma = \bipart{c|c|c|c|c}{1-5}
+    {\mc2{c|}{m,p} & A_2 & \ldots & A_r}
+    {B_1 & B_2 & B_3 & \ldots & B_s}$ and
     $\tau \beta \gamma = \bipart{c|c|c|c|c}{1-5}
     {m & p & A_2 & \ldots & A_r}
     {B_1 & B_2 & B_3 & \ldots & B_s}$.
@@ -730,17 +732,19 @@ congruence it generates.  Our findings are summarised in Table
     \ref{prop:mn-cong-char} we must have $\rank\mu = \rank\nu = 0$ and
     $\coker\mu = \coker\nu$, so we have $\mu' = \nu'$.  Hence, by the above
     claim, we have $\mu \mathrel\sigma \mu' = \nu' \mathrel\sigma \nu$,
-    completing (i).  Observe that (ii) follows by a similar argument.
+    so $(\mu, \nu) \in \sigma$, and (i) is complete.  Observe that (ii) follows
+    by a similar argument.
 
     To prove (iii), let $(\alpha,\beta)\in\delta_1\setminus\Delta$ as stated,
     and let $\sigma = (\alpha,\beta)^\sharp$.  Clearly
-    $\sigma \subseteq \delta_1$.  To prove that $\delta_1 \subseteq \sigma$ is
-    harder.  Since $(\alpha,\beta) \in \delta_1 \setminus \Delta$, $\alpha$ and
-    $\beta$ must each have rank $0$ or $1$, and have the same kernel and
+    $\sigma \subseteq \delta_1$; it remains to prove that
+    $\delta_1 \subseteq \sigma$.  Since
+    $(\alpha,\beta) \in \delta_1 \setminus \Delta$, $\alpha$ and $\beta$ must
+    each have rank $0$ or $1$, and have the same kernel and
     cokernel, but be distinct.  Since there is only one bipartition of rank $0$
-    with a given kernel and cokernel, they cannot both have rank $1$.  Hence,
+    with a given kernel and cokernel, they cannot both have rank $0$.  Hence,
     swapping $\alpha$ and $\beta$ if necessary, we may assume that
-    $\rank(\alpha)=1$, with transversal $\{i,j'\}$ and we can write
+    $\rank(\alpha)=1$, with transversal $\{i,j'\}$, and we can write
     $\alpha=\bipart{c|c|c|c}{2-4}
     {i & A_1 & \cdots & A_r}{j & B_1 & \cdots & B_s}$.
     Then $\beta$ has one of the following four forms, where without loss of
@@ -757,18 +761,17 @@ congruence it generates.  Our findings are summarised in Table
       replacing $j'$ with $l'$, a different point from $\bn'$;
     \item $\beta = \bipart{c|c|c|c|c}{2-5}
       {k & i & A_2 & \cdots & A_r}{l & j & B_2 & \cdots & B_s}$,
-      with a completely new transversal.
+      with a completely different transversal from $\alpha$.
     \end{enumerate}
-    Now, let us denote by $\tau_{ab}$ the bipartition $(a, b')^e$ in $\Mot_n$
-    which has just one non-trivial block $\{a,b'\}$.  We will use the
-    bipartitions $\tau_{ii}$ and $\tau_{jj}$. In all four cases above, we have
+    Now, let us denote by $\tau_{ab}$ the bipartition
+    $(a, b')^e \in \Mot_n$---this has just one non-trivial block, $\{a,b'\}$.
+    We will use the bipartitions $\tau_{ii}$ and $\tau_{jj}$. In all four cases
+    above, we have
     $\tau_{ii}\alpha\tau_{jj}= \tau_{ij}$ and
     $\tau_{ii}\beta\tau_{jj}= \tau_\varnothing$, the bipartition consisting
     entirely of singletons.  Since $\alpha \mathrel\sigma \beta$, we also have
-    $\tau_{ij} = \tau_{ii}\alpha\tau_{jj} \mathrel\sigma
-    \tau_{ii}\beta\tau_{jj}= \tau_\varnothing$, so
+    $\tau_{ii}\alpha\tau_{jj} \mathrel\sigma \tau_{ii}\beta\tau_{jj}$, so
     $\tau_{ij} \mathrel\sigma \tau_\varnothing$.
-
     Next, let $\gamma$ be an arbitrary bipartition in $\Mot_n$ with rank $1$.
     We can write
     $\gamma = \bipart{c|c|c|c}{2-4}
