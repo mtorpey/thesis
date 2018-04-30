@@ -123,24 +123,33 @@
 \newcommand{\ubc}[2]{ % Bottom curve (upper diagram)
   \draw(#1, 2.125) .. controls (#1, 2.5) and (#2, 2.5) .. (#2, 2.125);
 }
+\newcommand{\uutv}[2]{ % Transversal (3rd diagram)
+  \draw(#1,6)--(#2,4);
+}
+\newcommand{\uutc}[2]{ % Top curve (3rd diagram)
+  \draw(#1, 5.875) .. controls (#1, 5.5) and (#2, 5.5) .. (#2, 5.875);
+}
+\newcommand{\uubc}[2]{ % Bottom curve (3rd diagram)
+  \draw(#1, 4.125) .. controls (#1, 4.5) and (#2, 4.5) .. (#2, 4.125);
+}
 
 \newcommand{\trans}[5]{ % Transformation
   \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
     \fill(1,2)circle(.125); \fill(1,0)circle(.125); \draw(1,2)--(#1,0);
-    \fill(2,2)circle(.125); \fill(3,0)circle(.125); \draw(2,2)--(#2,0);
-    \fill(3,2)circle(.125); \fill(2,0)circle(.125); \draw(3,2)--(#3,0);
-    \fill(4,2)circle(.125); \fill(5,0)circle(.125); \draw(4,2)--(#4,0);
-    \fill(5,2)circle(.125); \fill(4,0)circle(.125); \draw(5,2)--(#5,0);
+    \fill(2,2)circle(.125); \fill(2,0)circle(.125); \draw(2,2)--(#2,0);
+    \fill(3,2)circle(.125); \fill(3,0)circle(.125); \draw(3,2)--(#3,0);
+    \fill(4,2)circle(.125); \fill(4,0)circle(.125); \draw(4,2)--(#4,0);
+    \fill(5,2)circle(.125); \fill(5,0)circle(.125); \draw(5,2)--(#5,0);
   \end{tikzpicture}
 }
 
 \newcommand{\bipartdiag}[1]{ % Single bipartition diagram
   \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
     \fill(1,2)circle(.125); \fill(1,0)circle(.125);
-    \fill(2,2)circle(.125); \fill(3,0)circle(.125);
-    \fill(3,2)circle(.125); \fill(2,0)circle(.125);
-    \fill(4,2)circle(.125); \fill(5,0)circle(.125);
-    \fill(5,2)circle(.125); \fill(4,0)circle(.125);
+    \fill(2,2)circle(.125); \fill(2,0)circle(.125);
+    \fill(3,2)circle(.125); \fill(3,0)circle(.125);
+    \fill(4,2)circle(.125); \fill(4,0)circle(.125);
+    \fill(5,2)circle(.125); \fill(5,0)circle(.125);
     #1
   \end{tikzpicture}~
 }
@@ -160,6 +169,17 @@
     \fill(3,4)circle(.125); \fill(3,2)circle(.125); \fill(2,0)circle(.125);
     \fill(4,4)circle(.125); \fill(4,2)circle(.125); \fill(5,0)circle(.125);
     \fill(5,4)circle(.125); \fill(5,2)circle(.125); \fill(4,0)circle(.125);
+    #1
+  \end{tikzpicture}~
+}
+
+\newcommand{\triplebipartdiag}[1]{ % Triple diagram (to show multiplication)
+  \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
+    \fill(1,6)circle(.125); \fill(1,4)circle(.125); \fill(1,2)circle(.125); \fill(1,0)circle(.125);
+    \fill(2,6)circle(.125); \fill(2,4)circle(.125); \fill(2,2)circle(.125); \fill(2,0)circle(.125);
+    \fill(3,6)circle(.125); \fill(3,4)circle(.125); \fill(3,2)circle(.125); \fill(3,0)circle(.125);
+    \fill(4,6)circle(.125); \fill(4,4)circle(.125); \fill(4,2)circle(.125); \fill(4,0)circle(.125);
+    \fill(5,6)circle(.125); \fill(5,4)circle(.125); \fill(5,2)circle(.125); \fill(5,0)circle(.125);
     #1
   \end{tikzpicture}~
 }

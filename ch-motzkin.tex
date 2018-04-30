@@ -1067,6 +1067,29 @@ congruence it generates.  Our findings are summarised in Table
     $0$, that is, $\widehat\gamma$.  Hence $(\gamma, \widehat\gamma) \in \sigma$
     in case (a).
 
+    \begin{figure}[h]
+      \centering
+      $$
+      \alpha = \bipartdiag{\tv11 \tv23 \tv34 \tc45} \qquad
+      \beta = \bipartdiag{\tv11 \tv23 \tv34}
+      $$
+      $$
+      \gamma = \bipartdiag{\tv11 \tc45 \bc34 \tv32} \qquad
+      \left.
+        \begin{array}{l}\tau\alpha\kappa\\ \tau\beta\kappa \end{array}
+      \right\} = \triplebipartdiag{
+        \uutv11\utv11\tv11
+        \uutv35\uubc42\utv23\tv32
+        \draw[densely dotted](5, 3.875) .. controls (5, 3.5) and (4, 3.5) .. (4, 3.875);
+        \uutc45 \utv34 \bc34
+      } = \bipartdiag{\tv11 \tc45 \bc34 \draw[densely dotted](3,2)--(2,0);}
+      $$
+
+      \caption{Splitting a transversal in Lemma \ref{lem:rees-genpairs} case
+        (a)}
+      \label{fig:case-a-example-1}
+    \end{figure}
+
     For case (b), instead let
     $\tau = \bipart{c|c|c|c|c|c}{4-6}
     {c_1 & \ldots & c_r & C_1 & \ldots & C_t}
