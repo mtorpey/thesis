@@ -1010,17 +1010,20 @@ congruence it generates.  Our findings are summarised in Table
     statement is obvious.  For the right-to-left implication, let
     $k \in \{2, \ldots, n\}$, and let
     $(\alpha, \beta) \in R_k \setminus R_{k-1}$.  For brevity, let
-    $\sigma = (\alpha, \beta)^\sharp$.  It is clear that $\sigma \subseteq R_k$,
-    so we now only need to prove that $R_k \subseteq \sigma$.
+    $\sigma = (\alpha, \beta)^\sharp$.  It is clear that $\sigma \subseteq R_k$
+    since $R_k$ is a congruence.  We now only need to prove that
+    $R_k \subseteq \sigma$.
 
     For $(\alpha, \beta)$ to lie in $R_k \setminus R_{k-1}$, at least one of
-    $\alpha$ and $\beta$ must have rank $k$---without loss of generality, assume
+    $\alpha$ and $\beta$ must have rank $k$.  Without loss of generality, assume
     $\rank\alpha = k$ and $\rank\beta \leq k$.  There must be exactly $k$
     transversals in $\alpha$, and since $\alpha \in \Mot_n$ they must all have
     size $2$.  Let $\dom\alpha = \{i_1, \ldots, i_k\}$ and
     $\codom\alpha = \{j_1, \ldots, j_k\}$, with $i_1 < \ldots < i_k$ and
-    $j_1 < \ldots < j_k$; since $\alpha$ is planar, the transversals must be
-    $\{i_1, j_1'\} \ldots \{i_k, j_k'\}$.
+    $j_1 < \ldots < j_k$; since $\alpha$ is planar, its transversals must be
+    $\{i_1, j_1'\}, \ldots, \{i_k, j_k'\}$.  We will also write
+    $\bn \setminus \dom\alpha = \{a_1, \ldots, a_{n-r}\}$ and
+    $\bn \setminus \codom\alpha = \{b_1, \ldots, b_{n-r}\}$.
 
     Our proof now splits into two cases.  Since $\alpha \neq \beta$ and
     $\rank\beta \leq \rank\alpha$, one of the following holds:
@@ -1028,9 +1031,9 @@ congruence it generates.  Our findings are summarised in Table
     \item $\alpha$ and $\beta$ have precisely the same transversals
       $\{i_1, j_1'\} \ldots \{i_k, j_k'\}$, but their other blocks
       differ---without loss of generality, assume there exists some
-      $(a,b) \in \ker\alpha \setminus \ker\beta$ with $a < b$;
-    \item there exists a transversal $\{i,j'\}$ of $\alpha$ that is not a
-      transversal of $\beta$.
+      $(a_1,a_2) \in \ker\alpha \setminus \ker\beta$ with $a_1 < a_2$;
+    \item there exists a transversal $\{i,j'\}$ of $\alpha$ that is not a block
+      of $\beta$.
     \end{enumerate}
     We will now prove two facts: firstly that
     $(\gamma, \widehat\gamma) \in \sigma$ for all $\gamma \in I_k$; and secondly
