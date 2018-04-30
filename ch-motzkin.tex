@@ -1043,8 +1043,42 @@ congruence it generates.  Our findings are summarised in Table
     We may write $\gamma = \bipart{c|c|c|c|c|c}{4-6}
     {c_1 & \ldots & c_r & C_1 & \ldots & C_t}
     {d_1 & \ldots & d_r & D_1 & \ldots & D_u}$.
+    First, assume (a) holds.
     Let $x$ be the maximal number such that $i_x < a$, and define
+    $\tau = \bipart{c|c|c|c|c|c|c|c|c|c|c}{8-11}
+    {c_1 & \ldots & c_{x-1} & c_x & c_{x+1} & \ldots & c_r
+      & \mc2{c|}{C_1} & \ldots & C_t}
+    {i_1 & \ldots & i_{x-1} & a_2 & i_{x+1} & \ldots & i_r
+      & i_x, a_1 & a_3 & \ldots & a_{n-r}}$
+    and $\kappa = \bipart{c|c|c|c|c|c}{4-6}
+    {j_1 & \ldots & j_r & b_1 & \ldots & b_{n-r}}
+    {d_1 & \ldots & d_r & D_1 & \ldots & D_u}$.
+    We have $\tau\alpha\kappa = \gamma$, but
+    $\tau\beta\kappa = \bipart{c|c|c|c|c|c|c|c|c|c}{7-10}
+    {c_1 & \ldots & c_{x-1} & c_{x+1} & \ldots & c_r & c_x
+      & C_1 & \ldots & C_t}
+    {d_1 & \ldots & d_{x-1} & d_{x+1} & \ldots & d_r & d_x
+      & D_1 & \ldots & D_u}$,
+    a copy of $\gamma$ but with the transversal $\{c_x, d_x'\}$ broken into
+    singletons.  See Figure \ref{fig:case-a-example-1} for an illustrative
+    example.  Hence $\gamma$ is $\sigma$-related to a bipartition with the same
+    kernel and cokernel but lower rank.  Applying this procedure repeatedly
+    relates $\gamma$ to a bipartition with the same kernel and cokernel but rank
+    $0$, that is, $\widehat\gamma$.  Hence $(\gamma, \widehat\gamma) \in \sigma$
+    in case (a).
 
+    For case (b), instead let
+    $\tau = \bipart{c|c|c|c|c|c}{4-6}
+    {c_1 & \ldots & c_r & C_1 & \ldots & C_t}
+    {i_1 & \ldots & i_r & a_1 & \ldots & a_{n-r}}$ and
+    $\kappa = \bipart{c|c|c|c|c|c}{4-6}
+    {j_1 & \ldots & j_r & b_1 & \ldots & b_{n-r}}
+    {d_1 & \ldots & d_r & D_1 & \ldots & D_u}$.
+    This gives us $\tau\alpha\kappa = \gamma$, but $\tau\beta\kappa$ equal to a
+    bipartition $\gamma'$ which shares a kernel and cokernel with $\gamma$ but
+    which has a lower rank.  We have $(\gamma, \gamma') \in \sigma$, and
+    repeating this process eventually gives
+    $(\gamma, \widehat\gamma) \in \sigma$.
   \end{proof}
 \end{lemma}
 
