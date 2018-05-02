@@ -1032,8 +1032,8 @@ congruence it generates.  Our findings are summarised in Table
       $\{i_1, j_1'\} \ldots \{i_k, j_k'\}$, but their other blocks
       differ---without loss of generality, assume there exists some
       $(a_1,a_2) \in \ker\alpha \setminus \ker\beta$ with $a_1 < a_2$;
-    \item there exists a transversal $\{i,j'\}$ of $\alpha$ that is not a block
-      of $\beta$.
+    \item there exists a transversal $\{i_x,j_x'\}$ of $\alpha$ that is not a
+      block of $\beta$.
     \end{enumerate}
     We will now prove two facts: firstly that
     $(\gamma, \widehat\gamma) \in \sigma$ for all $\gamma \in I_k$; and secondly
@@ -1060,7 +1060,7 @@ congruence it generates.  Our findings are summarised in Table
     {d_1 & \ldots & d_{x-1} & d_{x+1} & \ldots & d_r & d_x
       & D_1 & \ldots & D_u},$$
     a copy of $\gamma$ but with the transversal $\{c_x, d_x'\}$ broken into
-    singletons.  See Figure \ref{fig:case-a-example-1} for an illustrative
+    singletons.  See Figure \ref{fig:case-a-hat-example} for an illustrative
     example.  Hence $\gamma$ is $\sigma$-related to a bipartition with the same
     kernel and cokernel but lower rank.  Applying this procedure repeatedly
     relates $\gamma$ to a bipartition with the same kernel and cokernel but rank
@@ -1086,7 +1086,7 @@ congruence it generates.  Our findings are summarised in Table
       $$
       \caption{Splitting a transversal in Lemma \ref{lem:rees-genpairs} case
         (a)}
-      \label{fig:case-a-example-1}
+      \label{fig:case-a-hat-example}
     \end{figure}
     For case (b), instead let
     $$\tau = \bipart{c|c|c|c|c|c}{4-6}
@@ -1100,6 +1100,79 @@ congruence it generates.  Our findings are summarised in Table
     which has a lower rank.  Hence we have $(\gamma, \gamma') \in \sigma$, and
     repeating this process eventually gives
     $(\gamma, \widehat\gamma) \in \sigma$.
+
+    Next we will show that $R_0 \subseteq \sigma$---that is, that $\sigma$
+    relates any pair of elements of rank $0$.  We do this by showing that any
+    element $\gamma$ of rank $0$ is $\sigma$-related to $\varnothing^e$, the
+    bipartition consisting of just singletons; our claim follows by
+    transitivity.  Let
+    $\gamma = \bipart{c|c|c}{1-3}{C_1 & \ldots & C_t}{D_1 & \ldots & D_u}$.
+
+    First, assume (a) holds.  We will show that upper or lower block in $\gamma$
+    can be split into singletons to obtain a bipartition which is
+    $\sigma$-related to $\gamma$.  First, splitting an upper block: choose an
+    upper block of $\gamma$ of size $2$ (assume without loss of generality that
+    it is $C_1$), label its elements $C_1 = \{c_1, c_2\}$ with $c_1 < c_2$, and
+    write $\bn \setminus \{a_1, a_2\} = \{a_3, \ldots, a_n\}$.  We define
+    $\tau = \bipart{c|c|c|c|c}{3-5}
+    {c_1 & c_2 & C_2 & \ldots & C_t}
+    {a_1 & a_2 & a_3 & \ldots & a_n}$,
+    and observe that $\tau\alpha\gamma = \gamma$ but $\tau\beta\gamma$ is equal
+    to a copy of $\gamma$ with the block $\{c_1, c_2\}$ split into two blocks
+    $\{c_1\}$ and $\{c_2\}$.  This process is illustrated in Figure
+    \ref{fig:case-a-r0-example-upper}.
+
+    Next, splitting a lower block: choose a lower block of $\gamma$ of size $2$
+    (assume without loss of generality that it is $D_1$), and label its elements
+    $D_1 = \{d_1, d_2\}$ with $d_1 < d_2$.  Now choose two points
+    $i_x, i_y \in \dom\alpha$ such that $i_x < i_y < a_1 < a_2$ (or, if this is
+    impossible, such that $a_1 < a_2 < i_x < i_y$ or $i_y < a_1 < a_2 < i_x$).
+    Let $\tau$ be the bipartition of rank $0$ with the upper blocks of $\gamma$
+    and the lower blocks $\{i_x, a_2\}$, $\{i_y, a_1\}$, and the rest
+    singletons.  Let $\kappa$ be the bipartition with $2$ transversals
+    $\{j_x, d_1'\}$ and $\{j_y, d_2'\}$, lower blocks $D_2', \ldots, D_u'$, and
+    the rest of its blocks singletons.  Then $\tau\alpha\kappa = \gamma$, but
+    $\tau\beta\kappa$ is equal to a copy of $\gamma$ with the block
+    $\{d_1', d_2'\}$ split into two singletons.  This process is illustrated in
+    Figure \ref{fig:case-a-r0-example-lower}.
+
+    In either of the block-splitting procedures just mentioned, it should be
+    noted that we cannot split a block enveloped by another block: that is, we
+    cannot split a block $\{x_2, x_3\}$ if there exists another block
+    $\{x_1, x_4\}$ with $x_1 < x_2 < x_3 < x_4$.  However, we can first split
+    the block $\{x_1, x_4\}$ leaving the block $\{x_2, x_3\}$ to be split later.
+
+    We have now shown that we can split any block of $\gamma$ to produce a
+    bipartition $\sigma$-related to $\gamma$.  Hence, we can split every block
+    and we reach $\varnothing^e$, showing that
+    $(\gamma, \varnothing) \in \sigma$, and therefore that any two bipartitions
+    of rank 0 are $\sigma$-related, in case (a).
+
+    Now assume (b), and recall that
+    $\gamma = \bipart{c|c|c}{1-3}{C_1 & \ldots & C_t}{D_1 & \ldots & D_u}$.
+    Once again, assume without loss of generality that $C_1$ has size $2$, so
+    $C_1 = \{c_1, c_2\}$.  By (b) we have some transversal $\{i_x, j_x'\}$ in
+    $\alpha$ but not in $\beta$; let $\{i_y, j_y'\}$ be another transversal from
+    $\alpha$, which may or may not be in $\beta$.  Let $\tau$ be the bipartition
+    with transverse blocks $\{c_1, i_x'\}$ and $\{c_2, i_y'\}$, upper blocks
+    $C_2, \ldots, C_t$, and lower blocks all singletons.  Let $\kappa$ be the
+    bipartition of rank $0$ with lower blocks $D_1', \ldots, D_u'$, an upper
+    block $\{j_x, j_y\}$, and the rest singletons.  We have
+    $\tau\alpha\kappa = \gamma$, but $\tau\beta\kappa$ equal to a copy of
+    $\gamma$ with the upper block $\{c_1, c_2\}$ split into singletons.  This
+    can be performed repeatedly to split all upper blocks, and a similar process
+    can be applied to split all lower blocks.  Hence, as in (a), any two
+    bipartitions of rank $0$ are $\sigma$-related in case (b).
+
+    We have now proven the two facts in both cases, so we can proceed to show
+    that $R_k \subseteq \sigma$.  Let $(\mu, \nu) \in R_k$.  If $\mu=\nu$ then
+    certainly $(\mu, \nu) \in \sigma$; otherwise, $\mu$ and $\nu$ must both lie
+    in $I_k$.  Hence by the first fact, we have
+    $(\mu, \widehat\mu), (\nu, \widehat\nu) \in \sigma$.  By the second fact,
+    since $\rank\widehat\mu = \rank\widehat\nu = 0$, we have
+    $(\widehat\mu, \widehat\nu) \in \sigma$.  Hence that
+    $\mu \mathrel\sigma \widehat\mu \mathrel\sigma \widehat\nu \mathrel\sigma
+    \nu$, and by transitivity we can see $(\mu, \nu) \in \sigma$, as required.
   \end{proof}
 \end{lemma}
 
