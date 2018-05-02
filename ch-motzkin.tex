@@ -1108,19 +1108,45 @@ congruence it generates.  Our findings are summarised in Table
     transitivity.  Let
     $\gamma = \bipart{c|c|c}{1-3}{C_1 & \ldots & C_t}{D_1 & \ldots & D_u}$.
 
-    First, assume (a) holds.  We will show that upper or lower block in $\gamma$
-    can be split into singletons to obtain a bipartition which is
+    First, assume (a) holds.  We will show that any upper or lower block in
+    $\gamma$ can be split into singletons to obtain a bipartition which is
     $\sigma$-related to $\gamma$.  First, splitting an upper block: choose an
     upper block of $\gamma$ of size $2$ (assume without loss of generality that
     it is $C_1$), label its elements $C_1 = \{c_1, c_2\}$ with $c_1 < c_2$, and
     write $\bn \setminus \{a_1, a_2\} = \{a_3, \ldots, a_n\}$.  We define
-    $\tau = \bipart{c|c|c|c|c}{3-5}
-    {c_1 & c_2 & C_2 & \ldots & C_t}
-    {a_1 & a_2 & a_3 & \ldots & a_n}$,
-    and observe that $\tau\alpha\gamma = \gamma$ but $\tau\beta\gamma$ is equal
+    % $\tau = \bipart{c|c|c|c|c}{3-5}
+    % {c_1 & c_2 & C_2 & \ldots & C_t}
+    % {a_1 & a_2 & a_3 & \ldots & a_n}$,
+    $\tau$ to be the bipartition with transversals $\{c_1, a_1'\}$ and
+    $\{c_2, a_2'\}$, upper blocks $C_2, \ldots, C_t$, and the rest singletons.
+    Observe that $\tau\alpha\gamma = \gamma$ but $\tau\beta\gamma$ is equal
     to a copy of $\gamma$ with the block $\{c_1, c_2\}$ split into two blocks
     $\{c_1\}$ and $\{c_2\}$.  This process is illustrated in Figure
     \ref{fig:case-a-r0-example-upper}.
+
+    \begin{figure}[h]
+      \centering
+      $$
+      \alpha = \bipartdiag{\tv11 \tv23 \tv34 \tc45} \qquad
+      \beta = \bipartdiag{\tv11 \tv23 \tv34}
+      $$
+      $$
+      \gamma = \bipartdiag{\tc13 \tc45 \bC14 \bc23} \qquad
+      \left.
+        \begin{array}{l}\tau\alpha\gamma\\ \tau\beta\gamma \end{array}
+      \right\} = \triplebipartdiag{
+        \uutc13 \uutv44 \uutv55
+        \utv11 \utv23 \utv34
+        \draw[densely dotted](5, 3.875) .. controls (5, 3.5) and (4, 3.5) .. (4, 3.875);
+        \tc13 \tc45 \bC14 \bc23
+      } = \bipartdiag{\tc13 \bC14 \bc23
+        \draw[densely dotted](4, 1.875) .. controls (4, 1.5) and (5, 1.5) .. (5, 1.875);
+      }
+      $$
+      \caption{Splitting an upper block in Lemma \ref{lem:rees-genpairs} case
+        (a)}
+      \label{fig:case-a-r0-example-upper}
+    \end{figure}
 
     Next, splitting a lower block: choose a lower block of $\gamma$ of size $2$
     (assume without loss of generality that it is $D_1$), and label its elements
@@ -1135,6 +1161,34 @@ congruence it generates.  Our findings are summarised in Table
     $\tau\beta\kappa$ is equal to a copy of $\gamma$ with the block
     $\{d_1', d_2'\}$ split into two singletons.  This process is illustrated in
     Figure \ref{fig:case-a-r0-example-lower}.
+
+    \begin{figure}[h]
+      \centering
+      $$
+      \alpha = \bipartdiag{\tv11 \tv23 \tv34 \tc45} \qquad
+      \beta = \bipartdiag{\tv11 \tv23 \tv34}
+      $$
+      $$
+      \gamma = \bipartdiag{\tc13 \tc45 \bC14 \bc23} \qquad
+      \left.
+        \begin{array}{l}\tau\alpha\kappa\\ \tau\beta\kappa \end{array}
+      \right\} = \triplebipartdiag{
+        \uutc13 \uutc45 \uubC25 \uubc34
+        \utv11 \utv23 \utv34
+        \draw[densely dotted](5, 3.875)
+        .. controls (5, 3.5) and (4, 3.5)
+        .. (4, 3.875);
+        \tv31 \bc23 \tv44
+      } = \bipartdiag{\tc13 \tc45 \bc23
+        \draw[densely dotted](1, 0.125)
+        .. controls (1, 0.75) and (4, 0.75)
+        .. (4, 0.125);
+      }
+      $$
+      \caption{Splitting a lower block in Lemma \ref{lem:rees-genpairs} case
+        (a)}
+      \label{fig:case-a-r0-example-lower}
+    \end{figure}
 
     In either of the block-splitting procedures just mentioned, it should be
     noted that we cannot split a block enveloped by another block: that is, we
@@ -1161,8 +1215,9 @@ congruence it generates.  Our findings are summarised in Table
     $\tau\alpha\kappa = \gamma$, but $\tau\beta\kappa$ equal to a copy of
     $\gamma$ with the upper block $\{c_1, c_2\}$ split into singletons.  This
     can be performed repeatedly to split all upper blocks, and a similar process
-    can be applied to split all lower blocks.  Hence, as in (a), any two
-    bipartitions of rank $0$ are $\sigma$-related in case (b).
+    can be applied to split all lower blocks.  Note, again, that a block
+    enveloped by another block cannot be split immediately.  We can now see
+    that, as in (a), any two bipartitions of rank $0$ are $\sigma$-related.
 
     We have now proven the two facts in both cases, so we can proceed to show
     that $R_k \subseteq \sigma$.  Let $(\mu, \nu) \in R_k$.  If $\mu=\nu$ then

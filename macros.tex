@@ -132,6 +132,9 @@
 \newcommand{\uubc}[2]{ % Bottom curve (3rd diagram)
   \draw(#1, 4.125) .. controls (#1, 4.5) and (#2, 4.5) .. (#2, 4.125);
 }
+\newcommand{\uubC}[2]{ % Bottom curve (3rd diagram) (bigger)
+  \draw(#1, 4.125) .. controls (#1, 4.75) and (#2, 4.75) .. (#2, 4.125);
+}
 
 \newcommand{\trans}[5]{ % Transformation
   \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
@@ -145,6 +148,7 @@
 
 \newcommand{\bipartdiag}[1]{ % Single bipartition diagram
   \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
+    \fill[gray!20] (0.8,0) rectangle (5.2,2);
     \fill(1,2)circle(.125); \fill(1,0)circle(.125);
     \fill(2,2)circle(.125); \fill(2,0)circle(.125);
     \fill(3,2)circle(.125); \fill(3,0)circle(.125);
@@ -156,6 +160,7 @@
 
 \newcommand{\bipartdiagII}[1]{ % Single bipartition diagram (degree 2)
   \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
+    \fill[gray!20] (0.8,0) rectangle (2.2,2);
     \fill(1,2)circle(.125); \fill(1,0)circle(.125);
     \fill(2,2)circle(.125); \fill(2,0)circle(.125);
     #1
@@ -164,6 +169,7 @@
 
 \newcommand{\doublebipartdiag}[1]{ % Double diagram (to show multiplication)
   \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
+    \fill[gray!20] (0.8,0) rectangle (5.2,4);
     \fill(1,4)circle(.125); \fill(1,2)circle(.125); \fill(1,0)circle(.125);
     \fill(2,4)circle(.125); \fill(2,2)circle(.125); \fill(3,0)circle(.125);
     \fill(3,4)circle(.125); \fill(3,2)circle(.125); \fill(2,0)circle(.125);
@@ -175,6 +181,7 @@
 
 \newcommand{\triplebipartdiag}[1]{ % Triple diagram (to show multiplication)
   \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
+    \fill[gray!20] (0.8,0) rectangle (5.2,6);
     \fill(1,6)circle(.125); \fill(1,4)circle(.125); \fill(1,2)circle(.125); \fill(1,0)circle(.125);
     \fill(2,6)circle(.125); \fill(2,4)circle(.125); \fill(2,2)circle(.125); \fill(2,0)circle(.125);
     \fill(3,6)circle(.125); \fill(3,4)circle(.125); \fill(3,2)circle(.125); \fill(3,0)circle(.125);
