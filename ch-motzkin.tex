@@ -301,6 +301,7 @@ we need to use our two building blocks to produce a new congruence: a
 \begin{definition}
   \label{def:lifted-congruence}
   \index{lifted congruence}
+  \nomenclature{$\zeta_{I,\sigma}$}{Lifted congruence}
   Let $S$ be a semigroup with a minimal ideal $M$, let $I$ be a retractable
   ideal of $S$, and let $\sigma$ be a liftable congruence of $S$.  We associate
   to the pair $(I,\sigma)$ the relation
@@ -1333,3 +1334,59 @@ These two lemmas are sufficient to construct the congruence lattice in Figure
 
 \section{Other monoids}
 \label{sec:motzkin-other}
+In Section \ref{sec:motzkin-congs} we described the congruences of the Motzkin
+monoid.  These constructions and results were originally described in
+\cite{ourpaper}, culminating in the classification of the Motzkin monoid's
+congruence lattice as shown in Figure \ref{fig:mn-cong-lattice}.  However, that
+paper also considers other diagram monoids: the bipartition monoid $\Prt_n$ and
+several of its other submonoids.  Though these monoids are not the subject of
+this chapter, their congruence lattices are closely related to that of $\Mot_n$,
+and they use much of the preliminary theory described in Section
+\ref{sec:motzkin-prelim}.  We will therefore briefly describe these monoids and
+outline their congruence lattices, for completeness, referring the reader to
+\cite{ourpaper} for a full explanation.
+
+\subsection{Retractable IN-pairs}
+\label{sec:in-pairs}
+Before we can meaningfully describe the congruences of the other monoids in this
+section, we must make a definition which extends that of a lifted congruence
+(Definition \ref{def:lifted-congruence}) by further relating elements outside
+the ideal $I$, using a subgroup $N$ that lies above $I$ in the order of
+$\JJ$-classes.
+
+\begin{definition}[Definitions 3.16 \& 3.17 in \cite{ourpaper}]
+  \label{def:in-pair}
+  \index{IN-pair} Let $S$ be a finite semigroup.  An \textbf{IN-pair} on
+  $S$ is a pair $(I,N)$ consisting of:
+  \begin{itemize}
+  \item an ideal $I$ of $S$; and
+  \item a normal subgroup $N$ of some maximal subgroup of $S$ that lies in a
+    regular $\JJ$-class of $S$ that is minimal among the $\JJ$-classes in
+    $S \setminus I$.
+  \end{itemize}
+  The IN-pair $(I,N)$ is called \textbf{retractable} if the following hold:
+  \begin{enumerate}[\rm(i)]
+  \item $I$ is retractable (Definition \ref{def:retractable-ideal});
+  \item $|Nx| = |xN| = 1$ for each $x$ in the minimal ideal of $S$.
+  \end{enumerate}
+\end{definition}
+
+In the same way we associated to a retractable ideal $I$ and liftable congruence
+$\sigma$ the lifted congruence $\zeta_{I,\sigma}$ (Definition
+\ref{def:lifted-congruence}), we can associate to a rectractable IN-pair $(I,N)$
+and liftable congruence $\sigma$ a relation $\zeta_{I,N,\sigma}$ defined as
+follows:
+$$\zeta_{I,N,\sigma} = \zeta_{I,\sigma} \cup
+\{(sxt,syt) \in J \times J : x,y \in N \text{~and~} s,t \in S^1\},$$ where $J$
+is the $\JJ$-class containing $N$.  It turns out that this relation is a
+congruence on $S$ \cite[Proposition 3.22]{ourpaper}.
+\nomenclature{$\zeta_{I,N,\sigma}$}{Congruence defined by an IN-pair
+  and liftable congruence}
+
+We also define a relation which can always be built from an IN-pair, whether it
+is retractable or not.  If $(I,N)$ is an IN-pair, then let the relation
+$R_{I,N}$ be defined as follows:
+$$R_{I,N} = R_I \cup
+\{(sxt,syt) \in J \times J : x,y \in N \text{~and~} s,t \in S^1\},$$ where $J$
+is the $\JJ$-class containing $N$.  This can be viewed as an extension of the
+definition of a Rees congruence $R_I$.
