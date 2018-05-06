@@ -1431,7 +1431,8 @@ in Table \ref{tab:other-monoids}.
 We saw in Example \ref{ex:ptn-to-pn} a way in which partial transformations lie
 in the partition monoid $\Prt_n$.  We will therefore start with three monoids of
 partial transformations which embed into $\Prt_n$ as submonoids: $\Sym_n$,
-$\I_n$, and $\OO_n$.
+$\I_n$, and $\OO_n$.  For all the monoids below, we assume $n \geq 3$, since any
+lower $n$ has very few elements and is rather trivial to solve.
 
 \subsubsection{Symmetric group $\Sym_n$}
 The symmetric group $\Sym_n$ is isomorphic to the subgroup of $\Prt_n$
@@ -1517,15 +1518,64 @@ The Brauer monoid $\Brau_n$ consists of all the partitions in $\Prt_n$ whose
 blocks all have size $2$.  Again we can see that this monoid contains the
 Motzkin monoid; in fact, it is clear from the definitions that
 $\Mot_n = \PP_n \cap \Brau_n$.
-The Brauer monoid has $ $ elements.
-It splits into odd and even.
-Its congruences are
-\cite[\S8]{ourpaper}
+The Brauer monoid contains
+$$(2n-1)!! = (2n-1) \cdot (2n-3)\cdots 5 \cdot 3 \cdot 1$$
+elements in total \citeoeis{A001147}.  Since each block in $\Brau_n$ must have
+size $2$, the monoid only contains elements with rank equal to $n$ (mod
+$2$)---in particular, $\Brau_n$ never contains both an element of rank $0$ and
+an element of rank $1$.  For this reason, in classifying the congruences of
+$\Brau_n$, we must consider two different cases: one in which $n$ is odd, and
+one in which $n$ is even.
+
+The odd case is by far the simpler.  All bipartitions in $\Brau_n$ are odd in
+this case, so the Rees congruences are $\{R_1, R_3, \ldots, R_n\}$.  We also
+have lifted congruences $\{\delta_1, \lambda_1, \mu_1\}$ which are defined in
+the same way as for $\Mot_n$.  And finally, via IN-pairs, we have
+$R_{I_{k-2}, \Alt_k}$ and $R_{I_{k-2}, \Sym_k}$ for each
+$k \in \{3, 5, \ldots, n\}$.
+
+In the even case, there are many more congruences.  All bipartitions are even,
+so the Rees congruences are $\{R_0, R_2, \ldots, R_n\}$.  We also have lifted
+congruences
+$\{\zeta_{I_0,\Delta}, \zeta_{I_0,\lambda}, \zeta_{I_0,\rho},
+\zeta_{I_2,\Delta}, \zeta_{I_2,\lambda}, \zeta_{I_2,\rho}\}$, which we
+denote, in a way similar to the Motzkin monoid, as
+$\{\delta_0, \lambda_0, \rho_0, \delta_2, \lambda_2, \rho_2\}$.
+Some more congruences arise from IN-pairs: $(I_0, \Sym_2)$ gives rise
+to $$\delta_{\Sym_2} = \zeta_{I_0,\Sym_2,\Delta},\quad
+\lambda_{\Sym_2} = \zeta_{I_0,\Sym_2,\LL^0},\quad
+\rho_{\Sym_2} = \zeta_{I_0,\Sym_2,\RR^0},\quad
+R_{I_0,\Sym_2};$$
+and $(I_2, K_4)$ gives rise to
+$$\delta_{K_4} = \zeta_{I_2,K_4,\Delta},\quad
+\lambda_{K_4} = \zeta_{I_2,K_4,\LL^0},\quad
+\rho_{K_4} = \zeta_{I_2,K_4,\RR^0},\quad
+R_{I_2,K_4}.$$
+Finally, we have $R_{I_{k-2},\Alt_k}$ and $R_{I_{k-2},\Sym_k}$ for each $k \in
+\{4, 6, \ldots, n\}$.
+
+These results are proven in \cite[\S8]{ourpaper}, and the lattices are shown in
+Figure \ref{fig:bn-congs}.
 
 \subsubsection{Jones monoid $\Jon_n$}
 \nomenclature[Jn]{$\Jon_n$}{Jones monoid}
 \index{Jones monoid}
-\cite[\S9]{ourpaper}
+
+The Jones monoid $\Jon_n$ is the submonoid of $\Prt_n$ consisting of all planar
+bipartitions with blocks of size $2$.  By this definition, we can see that
+$\Jon_n = \PP_n \cap \Brau_n$.  As with the Brauer monoid, we consider two
+different cases based on whether $n$ is odd or even; however, the congruence
+lattices are much simpler.
+
+If $n$ is odd, then the only congruences are $\delta_1$, $\lambda_1$, $\rho_1$,
+and the Rees congruences $R_1, R_3, \ldots, R_n$.  If, on the other hand, $n$ is
+even, then the congruence lattice is isomorphic to that of $\Mot_n$, and its
+description can be obtained by doubling each number in the description of that
+lattice.  That is, the congruences are precisely
+$$\{\delta_0, \delta_2, \lambda_0, \lambda_2, \rho_0, \rho_2, R_0, R_2, \ldots,
+R_n\}.$$
+These results are proven in \cite[\S9]{ourpaper}, and the lattices are shown in
+Figure \ref{fig:jn-congs}.
 
 \subsubsection{Bipartition monoid $\Prt_n$ and partial Brauer monoid $\PB_n$}
 \index{partial Brauer monoid}
