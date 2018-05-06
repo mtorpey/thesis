@@ -1417,8 +1417,10 @@ in Table \ref{tab:other-monoids}.
     Monoid & Size & Number of congruences \\
     \hline
     $\Sym_n$ & $n!$ & $3$ \\
-    $\I_n$ & $\sum_{i=0}^n \binom{n}{i} \frac{n!}{i!}$ & $3n - 1$ \\
+    $\I_n$ & $\sum_{k=0}^n \binom{n}{k} \frac{n!}{k!}$ & $3n - 1$ \\
     $\OO_n$ & $\binom{2n}{n}$ & $n + 1$ \\
+    $\Mot_n$ & $\sum_{k=0}^n \binom{2n}{2k}C_k$ & $n + 7$ \\
+    $\PP_n$ & $C_{2n}$ & $n + 7$ \\
     \hline
   \end{tabular}
   \caption{Summary of the congruences of various diagram monoids.  The number of
@@ -1496,3 +1498,12 @@ $$\Delta_{\OO_n} = R_0 \subset R_1 \subset R_2 \subset \ldots
 \subset R_n = \nabla_{\OO_n}.$$
 This is shown in \cite[Proposition 2.6]{fernandes_2001}, though the notation
 $\mathcal{POI}_n$ is used for $\OO_n$.
+
+\subsubsection{Planar bipartition monoid $\PP_n$}
+The planar bipartition monoid $\PP_n$ simply consists of all the planar
+bipartitions in $\Prt_n$.  It therefore contains the Motzkin monoid, which has
+the additional restriction that a bipartition's blocks have size $1$ or $2$.
+The planar bipartition monoid $\PP_n$ has a number of elements equal to the
+Catalan number $C_{2n}$ \citeoeis{A000108}.  Its congruence lattice is in fact
+isomorphic to that of $\Mot_n$, and its congruences have the same
+descriptions---see Theorem \ref{thm:mn-congs}.
