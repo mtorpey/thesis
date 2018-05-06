@@ -1421,6 +1421,8 @@ in Table \ref{tab:other-monoids}.
     $\OO_n$ & $\binom{2n}{n}$ & $n + 1$ \\
     $\Mot_n$ & $\sum_{k=0}^n \binom{2n}{2k}C_k$ & $n + 7$ \\
     $\PP_n$ & $C_{2n}$ & $n + 7$ \\
+    $\Brau_n$ & $(2n - 1)!!$ & $\frac{3}{2}n + \frac{5}{2}$, $\frac{3}{2}n + 13$ \\
+    $\Jon_n$ & $C_n$ & $\frac{1}{2}n + \frac{7}{2}$, $\frac{1}{2}n + 7$ \\
     \hline
   \end{tabular}
   \caption{Summary of the congruences of various diagram monoids.  The number of
@@ -1563,10 +1565,11 @@ Figure \ref{fig:bn-congs}.
 
 The Jones monoid $\Jon_n$ is the submonoid of $\Prt_n$ consisting of all planar
 bipartitions with blocks of size $2$.  By this definition, we can see that
-$\Jon_n = \PP_n \cap \Brau_n$.  As with the Brauer monoid, we consider two
-different cases based on whether $n$ is odd or even; however, the congruence
-lattices are much simpler.
+$\Jon_n = \PP_n \cap \Brau_n$.  Its size is given by the Catalan number $C_n$
+\citeoeis{A000108}.
 
+As with the Brauer monoid, we consider two different cases based on whether $n$
+is odd or even; however, the congruence lattices are much simpler.
 If $n$ is odd, then the only congruences are $\delta_1$, $\lambda_1$, $\rho_1$,
 and the Rees congruences $R_1, R_3, \ldots, R_n$.  If, on the other hand, $n$ is
 even, then the congruence lattice is isomorphic to that of $\Mot_n$, and its
