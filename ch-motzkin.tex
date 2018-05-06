@@ -1402,3 +1402,95 @@ subgroups of just one maximal subgroup of $J$, and that it does not matter which
 subgroup is chosen.  We will therefore simply consider the isomorphism class of
 a maximal subgroup in $J$, without needing to specify which precise subgroup we
 are working with.
+
+\subsection{Results}
+\label{sec:other-monoids-results}
+We will now consider a number of submonoids in turn, giving the classification
+of their congruences.  The total number of congruences of each monoid is shown
+in Table \ref{tab:other-monoids}.
+
+\begin{table}[h]
+  \centering
+  \renewcommand\arraystretch{1.5}
+  \begin{tabular}{| c | c | c |}
+    \hline
+    Monoid & Size & Number of congruences \\
+    \hline
+    $\Sym_n$ & $n!$ & $3$ \\
+    $\I_n$ & $\sum_{i=0}^n \binom{n}{i} \frac{n!}{i!}$ & $3n - 1$ \\
+    $\OO_n$ & $\binom{2n}{n}$ & $n + 1$ \\
+    \hline
+  \end{tabular}
+  \caption{Summary of the congruences of various diagram monoids.  The number of
+  congruences is correct for $n \geq 5$}
+  \label{tab:other-monoids}
+\end{table}
+
+We saw in Example \ref{ex:ptn-to-pn} a way in which partial transformations lie
+in the partition monoid $\Prt_n$.  We will therefore start with three monoids of
+partial transformations which embed into $\Prt_n$ as submonoids: $\Sym_n$,
+$\I_n$, and $\OO_n$.
+
+\subsubsection{Symmetric group $\Sym_n$}
+The symmetric group $\Sym_n$ is isomorphic to the subgroup of $\Prt_n$
+consisting of all bipartitions of rank $n$ with blocks of size precisely $2$.
+Since $\Sym_n$ is a group, its congruences are described by its normal subgroups
+(see Section \ref{sec:normal-subgroups}).  These normal subgroups are well
+known: the trivial group $\{\id\}$, the alternating group $\Alt_n$, the whole
+symmetric group $\Sym_n$ itself, and uniquely in the case that $n=4$, the
+\textit{Klein 4-group} $K_4 = \langle (1~2)(3~4), (1~3)(2~4) \rangle$.  For
+$n \geq 3$ these normal subgroups (and hence these congruences) are all
+distinct.
+
+\subsubsection{Symmetric inverse monoid $\I_n$}
+Recall that the symmetric inverse monoid $\I_n$ consists of all the partial
+permutations of rank up to $n$ under composition.  This embeds into $\Prt_n$ as
+in Example \ref{ex:ptn-to-pn} as the submonoid consisting of all bipartitions
+with trivial kernel and cokernel.
+
+The ideals of $\I_n$ form a chain with respect to containment, and are precisely
+the sets $$I_k=\{\alpha \in \Mot_n : \rank \alpha \leq k\},$$ for
+$k \in \{0, \ldots, n\}$, as is the case for $\Prt_n$ and $\Mot_n$.
+
+The congruences of $\I_n$ were classified in \cite{liber_1953}, and are
+reformulated in the context of IN-pairs as follows.
+\begin{theorem}[Theorem 4.1 in \cite{ourpaper}]
+  \label{thm:in-congs}
+  Let $\I_n$ be the inverse symmetric monoid of degree $n$, for $n \geq 0$.  The
+  congruences of $\I_n$ form a chain, and are as follows:
+  \begin{itemize}
+  \item the Rees congruences $R_k$ corresponding to the ideals $I_k$, for
+    $k \in \{0, \ldots, n\}$;
+  \item the congruences $R_{I,N}$ corresponding to the IN-pairs $(I_{k-1}, N)$
+    for $k \in \{2, \ldots, n\}$ and $N \in \{K_4, \Alt_k, \Sym_k\}$ being any
+    non-trivial normal subgroup of $\Sym_k$ (the group isomorphic to a maximal
+    subgroup of $J_k$).
+  \end{itemize}
+\end{theorem}
+Note that $\Alt_k$ and $\Sym_k$ will be used for every $k \in \{2, \ldots, n\}$,
+while $K_4$ will only be used when $k=4$.  Note also that, since there is only
+one bipartition in $\I_n$ of rank $0$, we have $R_0 = \Delta_{\I_n}$.
+
+As an example, the congruences of $\I_6$ are as follows:
+\begin{align*}
+  \Delta_{\I_6} = R_0 & \subset R_1 \\
+      & \subset R_{I_1,\Sym_2} \subset R_2 \\
+      & \subset R_{I_2,\Alt_3} \subset R_{I_2, \Sym_3} \subset R_3 \\
+      & \subset R_{I_3,K_4} \subset R_{I_3,\Alt_4} \subset R_{I_3, \Sym_4} \subset R_4 \\
+      & \subset R_{I_4,\Alt_5} \subset R_{I_4, \Sym_5} \subset R_5 \\
+      & \subset R_{I_5,\Alt_6} \subset R_{I_5, \Sym_6} \subset R_6 = \nabla_{\I_6}.
+\end{align*}
+
+\subsubsection{Order-preserving partial permutation monoid $\OO_n$}
+\nomenclature[On]{$\OO_n$}{Monoid of order-preserving partial permutations} The
+monoid $\OO_n$ of all order-preserving partial permutations embeds into $\Prt_n$
+as the submonoid consisting of all the planar bipartitions with trivial kernel
+and cokernel.  An element of $\OO_n$ is defined by its domain and codomain, so
+$\OO_n$ contains $\binom{n}{r}^2$ elements of rank $r$, or
+$\sum_{r=0}^n \binom{n}{r}^2 = \binom{2n}{n}$ elements in total
+\cite[\href{https://oeis.org/A000984}{A000984}]{oeis}.
+
+Its ideals have the same description as for $\I_n$, and
+its congruences are all Rees.  Hence the congruences of $\OO_n$ form the chain
+$$\Delta_{\OO_n} = R_0 \subset R_1 \subset R_2 \subset \ldots
+\subset R_n = \nabla_{\OO_n}.$$
