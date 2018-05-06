@@ -1338,15 +1338,15 @@ In Section \ref{sec:motzkin-congs} we described the congruences of the Motzkin
 monoid.  These constructions and results were originally described in
 \cite{ourpaper}, culminating in the classification of the Motzkin monoid's
 congruence lattice as shown in Figure \ref{fig:mn-cong-lattice}.  However, that
-paper also considers other diagram monoids: the bipartition monoid $\Prt_n$ and
-several of its other submonoids.  Though these monoids are not the subject of
-this chapter, their congruence lattices are closely related to that of $\Mot_n$,
-and they use much of the preliminary theory described in Section
+paper also considers other diagram semigroups: the bipartition monoid $\Prt_n$
+and several of its other submonoids.  Though these monoids are not the subject
+of this chapter, their congruence lattices are closely related to that of
+$\Mot_n$, and they use much of the preliminary theory described in Section
 \ref{sec:motzkin-prelim}.  We will therefore briefly describe these monoids and
 outline their congruence lattices, for completeness, referring the reader to
 \cite{ourpaper} for a full explanation.
 
-\subsection{Retractable IN-pairs}
+\subsection{IN-pairs}
 \label{sec:in-pairs}
 Before we can meaningfully describe the congruences of the other monoids in this
 section, we must make a definition which extends that of a lifted congruence
@@ -1374,19 +1374,22 @@ $\JJ$-classes.
 In the same way we associated to a retractable ideal $I$ and liftable congruence
 $\sigma$ the lifted congruence $\zeta_{I,\sigma}$ (Definition
 \ref{def:lifted-congruence}), we can associate to a rectractable IN-pair $(I,N)$
-and liftable congruence $\sigma$ a relation $\zeta_{I,N,\sigma}$ defined as
-follows:
+and liftable congruence $\sigma$ a relation $\zeta_{I,N,\sigma}$ defined by
 $$\zeta_{I,N,\sigma} = \zeta_{I,\sigma} \cup
 \{(sxt,syt) \in J \times J : x,y \in N \text{~and~} s,t \in S^1\},$$ where $J$
-is the $\JJ$-class containing $N$.  It turns out that this relation is a
-congruence on $S$ \cite[Proposition 3.22]{ourpaper}.
+is the $\JJ$-class containing $N$.
 \nomenclature{$\zeta_{I,N,\sigma}$}{Congruence defined by an IN-pair
   and liftable congruence}
 
 We also define a relation which can always be built from an IN-pair, whether it
 is retractable or not.  If $(I,N)$ is an IN-pair, then let the relation
-$R_{I,N}$ be defined as follows:
+$R_{I,N}$ be defined by
 $$R_{I,N} = R_I \cup
 \{(sxt,syt) \in J \times J : x,y \in N \text{~and~} s,t \in S^1\},$$ where $J$
 is the $\JJ$-class containing $N$.  This can be viewed as an extension of the
 definition of a Rees congruence $R_I$.
+It turns out that both the relations
+$\zeta_{I,N,\sigma}$ and $R_{I,N}$ are congruences on $S$ \cite[Proposition
+3.22]{ourpaper}.  We will use these to describe congruences on the other monoids
+considered in the following section.
+\nomenclature{$R_{I,N}$}{Congruence defined by an IN-pair}
