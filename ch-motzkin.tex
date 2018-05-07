@@ -1423,6 +1423,8 @@ in Table \ref{tab:other-monoids}.
     $\PP_n$ & $C_{2n}$ & $n + 7$ \\
     $\Brau_n$ & $(2n - 1)!!$ & $\frac{3}{2}n + \frac{5}{2}$, $\frac{3}{2}n + 13$ \\
     $\Jon_n$ & $C_n$ & $\frac{1}{2}n + \frac{7}{2}$, $\frac{1}{2}n + 7$ \\
+    $\PB_n$ & $\sum_{k=0}^n \binom{2n}{2k} (2k-1)!!$ & $3n + 7$ \\
+    $\Prt_n$ & $B_{2n}$ & $3n + 7$ \\
     \hline
   \end{tabular}
   \caption{Summary of the congruences of various diagram monoids.  The number of
@@ -1583,5 +1585,26 @@ Figure \ref{fig:jn-congs}.
 \subsubsection{Bipartition monoid $\Prt_n$ and partial Brauer monoid $\PB_n$}
 \index{partial Brauer monoid}
 \nomenclature[PBn]{$\PB_n$}{Partial Brauer monoid}
-\cite[\S5--6]{ourpaper}
+
+Finally, we can state the congruence lattice of the entire bipartition monoid
+$\Prt_n$.  As in the case of the Motzkin monoid, we have Rees congruences
+$R_0, R_1, \ldots, R_n$ and lifted congruences
+$\delta_0, \delta_1, \lambda_0, \lambda_1, \rho_0, \rho_1$.  The additional
+congruences on $\Prt_n$ come from IN-pairs: the retractable IN-pair
+$(I_1, \Sym_2)$ gives rise to congruences
+$$\delta_{\Sym_2} = \zeta_{I_1,\Sym_2,\Delta},\quad
+\lambda_{\Sym_2} = \zeta_{I_1,\Sym_2,\LL^0},\quad
+\rho_{\Sym_2} = \zeta_{I_1,\Sym_2,\RR^0},\quad
+R_{I_1,\Sym_2};$$
+and the non-retractable IN-pairs $(I_{k-1},\Alt_k)$ and $(I_{k-1},\Sym_k)$ give
+us the congruences $R_{I_{k-1},\Alt_k}$ and $R_{I_{k-1},\Alt_k}$, for
+$k \in \{3, \ldots, n\}$.  These results are proven in \cite[\S5]{ourpaper}, and
+the lattice is shown in Figure \ref{fig:pn-congs}.
+
+We should also mention the partial Brauer monoid $\PB_n$, the submonoid of
+$\Prt_n$ consisting of all the bipartitions with blocks of size $1$ or $2$.  It
+has $$\sum_{k=0}^n \binom{2n}{2k} (2k-1)!!$$ elements \citeoeis{A066223}, as
+shown in \cite[2.1]{halverson_2014}.  Its congruence lattice has the same
+description as that of $\Prt_n$ \cite[\S6]{ourpaper}, and is therefore also
+shown in Figure \ref{fig:pn-congs}.
 
