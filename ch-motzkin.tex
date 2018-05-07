@@ -651,7 +651,7 @@ $\Delta_{\Mot_n}$ and $\nabla_{\Mot_n}$.
     \draw (R1)--(R2);
     \draw[dashed] (R2)--(Rn);
   \end{tikzpicture}
-  \caption{Congruence lattice of $\Mot_n$ (Hasse diagram)}
+  \caption[Congruence lattice of $\Mot_n$]{Congruence lattice of $\Mot_n$ (Hasse diagram)}
   \label{fig:mn-cong-lattice}
 \end{figure}
 
@@ -1536,7 +1536,7 @@ the additional restriction that a bipartition's blocks have size $1$ or $2$.
 The planar bipartition monoid $\PP_n$ has a number of elements equal to the
 Catalan number $C_{2n}$ \citeoeis{A000108}.  Its congruence lattice is in fact
 isomorphic to that of $\Mot_n$, and its congruences have the same
-descriptions \cite[\S7]{ourpaper}---see Theorem \ref{thm:mn-congs}.
+descriptions \cite[\S7]{ourpaper} (detailed in Theorem \ref{thm:mn-congs}).
 
 \subsubsection{Brauer monoid $\Brau_n$}
 \nomenclature[Bn]{$\Brau_n$}{Brauer monoid}
@@ -1583,6 +1583,84 @@ Finally, we have $R_{I_{k-2},\Alt_k}$ and $R_{I_{k-2},\Sym_k}$ for each $k \in
 
 These results are proven in \cite[\S8]{ourpaper}, and the lattices are shown in
 Figure \ref{fig:bn-congs}.
+
+\begin{figure}[p]
+  \centering
+  \begin{tikzpicture}
+    [cong/.style={circle, minimum size=1.3cm, draw},
+    scale=0.8, every node/.style={scale=0.7}]
+    \node[cong] (Rn)  at ( 0,19) {$R_n$};
+    \node[cong] (RA6) at ( 0,16) {$R_{I_4,\Alt_6}$};
+    \node[cong] (R4)  at ( 0,14) {$R_4$};
+    \node[cong] (RS4) at ( 0,12) {$R_{I_2,\Sym_4}$};
+    \node[cong] (RA4) at ( 0,10) {$R_{I_2,\Alt_4}$};
+
+    \node[cong] (RK)  at ( 0, 8) {$R_{I_2,K_4}$};
+    \node[cong] (rK)  at ( 3, 6) {$\rho_{K_4}$};
+    \node[cong] (lK)  at ( 0, 6) {$\lambda_{K_4}$};
+    \node[cong] (dK)  at ( 3, 4) {$\delta_{K_4}$};
+
+    \node[cong] (R2)  at (-3, 6) {$R_2$};
+    \node[cong] (r2)  at ( 0, 4) {$\rho_2$};
+    \node[cong] (l2)  at (-3, 4) {$\lambda_2$};
+    \node[cong] (d2)  at ( 0, 2) {$\delta_2$};
+
+    \node[cong] (RS2) at (-6, 4) {$R_{I_0,\Sym_2}$};
+    \node[cong] (rS2) at (-3, 2) {$\rho_{\Sym_2}$};
+    \node[cong] (lS2) at (-6, 2) {$\lambda_{\Sym_2}$};
+    \node[cong] (dS2) at (-3, 0) {$\delta_{\Sym_2}$};
+
+    \node[cong] (R0)  at (-9, 2) {$R_0$};
+    \node[cong] (r0)  at (-6, 0) {$\rho_0$};
+    \node[cong] (l0)  at (-9, 0) {$\lambda_0$};
+    \node[cong] (d0)  at (-6,-2) {$\delta_0$};
+
+    \node at ( 1.17, 19) {$=\nabla_{\Brau_n}$};
+    \node at (-4.83, -2) {$=\Delta_{\Brau_n}$};
+
+    % Bottom layer 
+    \draw (d0)--(l0) (dS2)--(lS2) (d2)--(l2) (dK)--(lK);
+    \draw (d0)--(dS2)--(d2)--(dK);
+    \draw (l0)--(lS2)--(l2)--(lK);
+
+    % Crossovers
+    \fill[white] (-4.5,1)circle(.15) (-7.5,1)circle(.15);
+    \fill[white] (-1.5,3)circle(.15) (-4.5,3)circle(.15);
+    \fill[white] ( 1.5,5)circle(.15) (-1.5,5)circle(.15);
+
+    % Supports
+    \draw (d0)--(r0) (dS2)--(rS2) (d2)--(r2) (dK)--(rK);
+    \draw (l0)--(R0) (lS2)--(RS2) (l2)--(R2) (lK)--(RK);
+    
+    % Top layer 
+    \draw (r0)--(R0) (rS2)--(RS2) (r2)--(R2) (rK)--(RK);
+    \draw (r0)--(rS2)--(r2)--(rK);
+    \draw (R0)--(RS2)--(R2)--(RK);
+
+    % Wick
+    \draw (RK)--(RA4)--(RS4)--(R4)--(RA6);
+    \draw[dashed] (RA6)--(Rn);
+
+    % Odd
+    \node[cong] (Rno) at (-10,19) {$R_n$};
+    \node[cong] (RA5) at (-10,16) {$R_{I_3,\Alt_5}$};
+    \node[cong] (R3)  at (-10,14) {$R_3$};
+    \node[cong] (RS3) at (-10,12) {$R_{I_1,\Sym_3}$};
+    \node[cong] (RA3) at (-10,10) {$R_{I_1,\Alt_3}$};
+    \node[cong] (R1)  at (-10, 8) {$R_1$};
+    \node[cong] (l1)  at (-13, 6) {$\lambda_1$};
+    \node[cong] (r1)  at (- 7, 6) {$\rho_1$};
+    \node[cong] (d1)  at (-10, 4) {$\delta_1$};
+    \node at (-8.83, 19) {$=\nabla_{\Brau_n}$};
+    \node at (-8.83,  4) {$=\Delta_{\Brau_n}$};
+    \draw (d1)--(l1)--(R1)--(r1)--(d1);
+    \draw (R1)--(RA3)--(RS3)--(R3)--(RA5);
+    \draw[dashed] (RA5)--(Rno);
+  \end{tikzpicture}
+  \caption[Congruence lattice of $\Brau_n$]{Congruence lattice of $\Brau_n$ when
+    $n$ is odd (left) and even (right)}
+  \label{fig:bn-congs}
+\end{figure}
 
 \subsubsection{Jones monoid $\Jon_n$}
 \nomenclature[Jn]{$\Jon_n$}{Jones monoid}
