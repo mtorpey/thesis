@@ -258,7 +258,7 @@ throughout this chapter.
   Let $S$ be a finite semigroup with minimal ideal $M$, and let $I$ be
   an ideal of $S$.  If $I$ is retractable and $\phi: I \rightarrow M$ is a
   retraction from $I$ to $M$, then $(sxt)\phi=s \cdot (x)\phi \cdot t$ for all
-  elements $x\in I$ and $s,t\in S^1$.
+  elements $x \in I$ and all $s,t\in S^1$.
   \begin{proof}
     Since $S$ is a finite semigroup, we know by Theorem
     \ref{thm:regular-min-ideal} that its minimal ideal $M$ is regular.  Hence
@@ -482,8 +482,11 @@ two rows.  See Figure \ref{fig:hat} for an example.  Note that $\widehat\alpha =
   The map $\phi: I_1 \to I_0$ defined by $\alpha \mapsto \widehat\alpha$ is a
   retraction.  Hence, $I_1$ is a retractable ideal.
   \begin{proof}
-    First, we will show that $\phi$ is a homomorphism.  Let
-    $\alpha,\beta \in I_1$---we will try to prove that
+    Since $\widehat\alpha = \alpha$ for $\alpha \in I_0$, we can see that $\phi$
+    satisfies the condition $(m)\phi = m$ from Definition
+    \ref{def:retractable-ideal}.  Hence we only need to show that $\phi$ is a
+    homomorphism. Let
+    $\alpha,\beta \in I_1$, and we will try to prove that
     $\widehat{\alpha\beta} = \widehat\alpha \widehat\beta$.  If both $\alpha$
     and $\beta$ have rank $0$ then
     $\widehat{\alpha\beta} = \alpha\beta = \widehat\alpha \widehat\beta$.  On
@@ -504,9 +507,7 @@ two rows.  See Figure \ref{fig:hat} for an example.  Note that $\widehat\alpha =
     \bipart{c|c|c|c}{1-4}{C_0&C_1&\ldots&C_t}{D_0&D_1&\ldots&D_u}$, and finally
     $\widehat{\alpha\beta} =
     \bipart{c|c|c|c}{1-4}{A_0&A_1&\ldots&A_r}{D_0&D_1&\ldots&D_u} =
-    \widehat\alpha \widehat\beta$, so $\phi$ is a homomorphism.  Since
-    $\widehat\alpha = \alpha$ for $\alpha \in I_0$, we can see that $\phi$ is a
-    retraction, as required.
+    \widehat\alpha \widehat\beta$, so $\phi$ is a homomorphism.
   \end{proof}
 \end{proposition}
 
@@ -526,32 +527,32 @@ congruences by Definition \ref{def:lifted-congruence} and Theorem
 \ref{thm:lifted-congruence}.  The congruences lifted from $\nabla_{I_0}$ are
 observed to be equal to the Rees congruences $R_0$ and $R_1$, while those lifted
 from $\Delta_{I_0}$, $\lL^{I_0}$ and $\rR^{I_0}$ are named with appropriate Greek symbols,
-as follows.
+as follows:
 \begin{align*}
   \delta_0 &= \zeta_{I_0,\Delta_{I_0}}
   = \{(\alpha,\beta) \in I_0 \times I_0 :
-    (\alpha, \beta) \in \Delta_{I_0}\} \cup \Delta_{\Mot_n} \\
+    (\alpha, \beta) \in \Delta_{I_0}\} \cup \Delta_{\Mot_n}, \\
   \delta_1 &= \zeta_{I_1,\Delta_{I_0}}
   = \{(\alpha,\beta) \in I_1 \times I_1 :
-    (\widehat\alpha, \widehat\beta) \in \Delta_{I_0}\} \cup \Delta_{\Mot_n} \\
+    (\widehat\alpha, \widehat\beta) \in \Delta_{I_0}\} \cup \Delta_{\Mot_n}, \\
   \lambda_0 &=\zeta_{I_0,\lL^{I_0}}
   = \{(\alpha,\beta) \in I_0 \times I_0 :
-    (\alpha, \beta) \in \lL^{I_0}\} \cup \Delta_{\Mot_n} \\
+    (\alpha, \beta) \in \lL^{I_0}\} \cup \Delta_{\Mot_n}, \\
   \lambda_1 &= \zeta_{I_1,\lL^{I_0}}
   = \{(\alpha,\beta) \in I_1 \times I_1 :
-    (\widehat\alpha, \widehat\beta) \in \lL^{I_0}\} \cup \Delta_{\Mot_n} \\
+    (\widehat\alpha, \widehat\beta) \in \lL^{I_0}\} \cup \Delta_{\Mot_n}, \\
   \rho_0 &= \zeta_{I_0,\rR^{I_0}}
   = \{(\alpha,\beta) \in I_0 \times I_0 :
-    (\alpha, \beta) \in \rR^{I_0}\} \cup \Delta_{\Mot_n} \\
+    (\alpha, \beta) \in \rR^{I_0}\} \cup \Delta_{\Mot_n}, \\
   \rho_1 &= \zeta_{I_1,\rR^{I_0}}
   = \{(\alpha,\beta) \in I_1 \times I_1 :
-    (\widehat\alpha, \widehat\beta) \in \rR^{I_0}\} \cup \Delta_{\Mot_n} \\
+    (\widehat\alpha, \widehat\beta) \in \rR^{I_0}\} \cup \Delta_{\Mot_n}, \\
   R_0 &= \zeta_{I_0,\nabla_{I_0}}
   = \{(\alpha,\beta) \in I_0 \times I_0 :
-    (\alpha, \beta) \in \nabla_{I_0}\} \cup \Delta_{\Mot_n} \\
+    (\alpha, \beta) \in \nabla_{I_0}\} \cup \Delta_{\Mot_n}, \\
   R_1 &= \zeta_{I_1,\nabla_{I_0}}
   = \{(\alpha,\beta) \in I_1 \times I_1 :
-    (\widehat\alpha, \widehat\beta) \in \nabla_{I_0}\} \cup \Delta_{\Mot_n}
+    (\widehat\alpha, \widehat\beta) \in \nabla_{I_0}\} \cup \Delta_{\Mot_n}.
 \end{align*}
 
 This naming convention is summarised in Table \ref{tab:mn-lifted-congruences}.
@@ -580,27 +581,27 @@ congruences in terms of a bipartition's rank, kernel and cokernel.
   The lifted congruences of $\Mot_n$ can be characterised in the following way,
   where $(\alpha, \beta) \in \Mot_n \times \Mot_n$:
   \begin{align*}
-    \delta_0 &= \Delta_{\Mot_n} \\
+    \delta_0 &= \Delta_{\Mot_n}, \\
     \delta_1 &= \{(\alpha,\beta) :
                   \rank\alpha,\rank\beta \leq 1,
                   \ker\alpha = \ker\beta,
-                  \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n} \\
+                  \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n}, \\
     \lambda_0 &= \{(\alpha,\beta) :
                    \rank\alpha,\rank\beta = 0,
-                   \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n} \\
+                   \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n}, \\
     \lambda_1 &= \{(\alpha,\beta) :
                    \rank\alpha,\rank\beta \leq 1,
-                   \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n} \\
+                   \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n}, \\
     \rho_0 &= \{(\alpha,\beta) :
                 \rank\alpha,\rank\beta = 0,
-                \ker\alpha = \ker\beta\} \cup \Delta_{\Mot_n} \\
+                \ker\alpha = \ker\beta\} \cup \Delta_{\Mot_n}, \\
     \rho_1 &= \{(\alpha,\beta) :
                 \rank\alpha,\rank\beta \leq 1,
-                \ker\alpha = \ker\beta\} \cup \Delta_{\Mot_n} \\
+                \ker\alpha = \ker\beta\} \cup \Delta_{\Mot_n}, \\
     R_0 &= \{(\alpha,\beta) :
-             \rank\alpha,\rank\beta = 0\} \cup \Delta_{\Mot_n} \\
+             \rank\alpha,\rank\beta = 0\} \cup \Delta_{\Mot_n}, \\
     R_1 &= \{(\alpha,\beta) :
-             \rank\alpha,\rank\beta \leq 1\} \cup \Delta_{\Mot_n}
+             \rank\alpha,\rank\beta \leq 1\} \cup \Delta_{\Mot_n}.
   \end{align*}
 \end{proposition}
 These characterisations will help us later when we consider generating pairs for
@@ -627,20 +628,6 @@ $\Delta_{\Mot_n}$ and $\nabla_{\Mot_n}$.
     from $\sigma$ not contained in any congruence below $\sigma$ in the
     congruence lattice.
   \end{enumerate}
-  \begin{proof}
-    Let $\Gamma$ be the set of relations stated in (i).  That the relations in
-    $\Gamma$ are congruences has already been established.  Table
-    \ref{tab:mn-genpairs} summarises the conditions for a single pair in
-    $\Mot_n \times \Mot_n$ to generate each congruence in $\Gamma$; it proves
-    that every congruence in $\Gamma$ is principal, and since each pair in
-    $\Mot_n \times \Mot_n$ satisfies one of the conditions, it proves that there
-    are no other principal congruences.  Lemmas \ref{lem:mn-lattice-intra} and
-    \ref{lem:mn-lattice-inter} show that the joins of these principal
-    congruences are as shown in Figure \ref{fig:mn-cong-lattice}---proving
-    (ii)---and therefore that $\Gamma$ is closed under taking joins, proving
-    that $\Mot_n$ has no other congruences.  This completes the proof of (i) and
-    (iii), and inspection of Table \ref{tab:mn-genpairs} establishes (iv).
-  \end{proof}
 \end{theorem}
 
 % Show the lattice
@@ -671,9 +658,26 @@ $\Delta_{\Mot_n}$ and $\nabla_{\Mot_n}$.
   \label{fig:mn-cong-lattice}
 \end{figure}
 
+The remainder of this section serves to prove Theorem \ref{thm:mn-congs}, as
+follows.  Let $\Gamma$ be the set of relations stated in (i).  That the
+relations in $\Gamma$ are congruences has already been established.  In order to
+see that these congruences are all distinct, we analyse the possible generating
+pairs of each congruence in Lemmas \ref{lem:low-genpairs},
+\ref{lem:high-genpairs} and \ref{lem:rees-genpairs}.  These results, which are
+summarised in Table \ref{tab:mn-genpairs}, exhaust all pairs in
+$\Mot_n \times \Mot_n$ and all congruences in $\Gamma$, proving that all the
+congruences in $\Gamma$ are principal, and that there are no other principal
+congruences.  Next we consider the joins of these congruences in Lemmas
+\ref{lem:mn-lattice-intra} and \ref{lem:mn-lattice-inter}.  These show that the
+congruences join together as in Figure \ref{fig:mn-cong-lattice}, and therefore
+that $\Gamma$ is closed under taking joins.  Since any congruence is a join of
+principal congruences, this proves that $\Mot_n$ has no congruences other than
+those in $\Gamma$.  This completes the proof of (i), (ii) and (iii), and
+inspection of Table \ref{tab:mn-genpairs} establishes (iv).
+
 % Proof of exhaustion: table of generating pairs, with references to
 % propositions
-For the rest of this section, we will state the lemmas required to complete the
+We will now state the lemmas required to complete the
 proof of Theorem \ref{thm:mn-congs}.  Firstly, we will focus on generating
 pairs; we will consider a pair $(\alpha, \beta)$ and decide which principal
 congruence it generates.  Our findings are summarised in Table
@@ -1369,7 +1373,27 @@ every possible congruence.
 
 These two lemmas are sufficient to construct the congruence lattice in Figure
 \ref{fig:mn-cong-lattice}, and thus to complete the proof of Theorem
-\ref{thm:mn-congs}.
+\ref{thm:mn-congs}.  We will state one corollary regarding the retractable
+ideals of $\Mot_n$.
+
+\begin{corollary}
+  \label{cor:rk-not-lifted}
+  The ideal $I_k$ of $\Mot_n$ is not retractable, and hence the congruence $R_k$
+  is not a lifted congruence, for $k \geq 2$.
+  \begin{proof}
+    Assume that $k \geq 2$, and that $I_k$ exists (i.e.~$n \geq 2$) and is
+    retractable.  Then we can choose a liftable congruence and use it with $I_k$
+    to create a lifted congruence.  We choose $\lL^{I_0}$, which gives us the
+    lifted congruence
+    $$\lambda_k = \zeta_{I_k, \lL^{I_0}}
+    = \{(\alpha,\beta) :
+    \rank\alpha,\rank\beta \leq k,
+    \coker\alpha = \coker\beta\} \cup \Delta_{\Mot_n}.$$
+    Observe that $\lambda_k$ is not equal to any of the congruences described in
+    Theorem \ref{thm:mn-congs}, and so it is not a congruence on $\Mot_n$, a
+    contradiction.
+  \end{proof}
+\end{corollary}
 
 \section{Other monoids}
 \label{sec:motzkin-other}
@@ -1581,19 +1605,19 @@ $k \in \{3, 5, \ldots, n\}$.
 In the even case, there are many more congruences.  All bipartitions are even,
 so the Rees congruences are $\{R_0, R_2, \ldots, R_n\}$.  We also have lifted
 congruences
-$\{\zeta_{I_0,\Delta}, \zeta_{I_0,\LL^0}, \zeta_{I_0,\RR^0},
-\zeta_{I_2,\Delta}, \zeta_{I_2,\LL^0}, \zeta_{I_2,\RR^0}\}$, which we
+$\{\zeta_{I_0,\Delta}, \zeta_{I_0,\lL^{I_0}}, \zeta_{I_0,\rR^{I_0}},
+\zeta_{I_2,\Delta}, \zeta_{I_2,\lL^{I_0}}, \zeta_{I_2,\rR^{I_0}}\}$, which we
 denote, in a way similar to the Motzkin monoid, as
 $\{\delta_0, \lambda_0, \rho_0, \delta_2, \lambda_2, \rho_2\}$.
 Some more congruences arise from IN-pairs: $(I_0, \Sym_2)$ gives rise
 to $$\delta_{\Sym_2} = \zeta_{I_0,\Sym_2,\Delta},\quad
-\lambda_{\Sym_2} = \zeta_{I_0,\Sym_2,\LL^0},\quad
-\rho_{\Sym_2} = \zeta_{I_0,\Sym_2,\RR^0},\quad
+\lambda_{\Sym_2} = \zeta_{I_0,\Sym_2,\lL^{I_0}},\quad
+\rho_{\Sym_2} = \zeta_{I_0,\Sym_2,\rR^{I_0}},\quad
 R_{I_0,\Sym_2};$$
 and $(I_2, K_4)$ gives rise to
 $$\delta_{K_4} = \zeta_{I_2,K_4,\Delta},\quad
-\lambda_{K_4} = \zeta_{I_2,K_4,\LL^0},\quad
-\rho_{K_4} = \zeta_{I_2,K_4,\RR^0},\quad
+\lambda_{K_4} = \zeta_{I_2,K_4,\lL^{I_0}},\quad
+\rho_{K_4} = \zeta_{I_2,K_4,\rR^{I_0}},\quad
 R_{I_2,K_4}.$$
 Finally, we have $R_{I_{k-2},\Alt_k}$ and $R_{I_{k-2},\Sym_k}$ for each $k \in
 \{4, 6, \ldots, n\}$.
@@ -1756,8 +1780,8 @@ $\{\delta_0, \delta_1, \lambda_0, \lambda_1, \rho_0, \rho_1\}$.  The additional
 congruences on $\Prt_n$ come from IN-pairs: the retractable IN-pair
 $(I_1, \Sym_2)$ gives rise to congruences
 $$\delta_{\Sym_2} = \zeta_{I_1,\Sym_2,\Delta},\quad
-\lambda_{\Sym_2} = \zeta_{I_1,\Sym_2,\LL^0},\quad
-\rho_{\Sym_2} = \zeta_{I_1,\Sym_2,\RR^0},\quad
+\lambda_{\Sym_2} = \zeta_{I_1,\Sym_2,\lL^{I_0}},\quad
+\rho_{\Sym_2} = \zeta_{I_1,\Sym_2,\rR^{I_0}},\quad
 R_{I_1,\Sym_2};$$
 and the non-retractable IN-pairs $(I_{k-1},\Alt_k)$ and $(I_{k-1},\Sym_k)$ give
 us the congruences $R_{I_{k-1},\Alt_k}$ and $R_{I_{k-1},\Alt_k}$, for
