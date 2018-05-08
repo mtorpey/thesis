@@ -1754,3 +1754,57 @@ shown in \cite[2.1]{halverson_2014}.  Its congruence lattice has the same
 description as that of $\Prt_n$ \cite[\S6]{ourpaper}, and is therefore also
 shown in Figure \ref{fig:pn-congs}.
 
+\begin{figure}[p]
+  \centering
+  \begin{tikzpicture}
+    [cong/.style={circle, minimum size=1.3cm, draw},
+    scale=0.8, every node/.style={scale=0.7}]
+    \node[cong] (Rn)  at ( 0,17) {$R_n$};
+    \node[cong] (R3)  at ( 0,14) {$R_3$};
+    \node[cong] (RS3) at ( 0,12) {$R_{I_2,\Sym_3}$};
+    \node[cong] (RA3) at ( 0,10) {$R_{I_2,\Alt_3}$};
+    \node[cong] (R2)  at ( 0, 8) {$R_2$};
+
+    \node[cong] (RS2) at ( 0, 6) {$R_{I_1,\Sym_2}$};
+    \node[cong] (rS2) at ( 3, 4) {$\rho_{\Sym_2}$};
+    \node[cong] (lS2) at ( 0, 4) {$\lambda_{\Sym_2}$};
+    \node[cong] (dS2) at ( 3, 2) {$\delta_{\Sym_2}$};
+
+    \node[cong] (R1)  at (-3, 4) {$R_1$};
+    \node[cong] (r1)  at ( 0, 2) {$\rho_1$};
+    \node[cong] (l1)  at (-3, 2) {$\lambda_1$};
+    \node[cong] (d1)  at ( 0, 0) {$\delta_1$};
+
+    \node[cong] (R0)  at (-6, 2) {$R_0$};
+    \node[cong] (r0)  at (-3, 0) {$\rho_0$};
+    \node[cong] (l0)  at (-6, 0) {$\lambda_0$};
+    \node[cong] (d0)  at (-3,-2) {$\delta_0$};
+
+    \node at ( 1.17, 17) {$=\nabla_{\Prt_n}$};
+    \node at (-1.83, -2) {$=\Delta_{\Prt_n}$};
+
+    % Bottom layer 
+    \draw (d0)--(l0) (d1)--(l1) (dS2)--(lS2);
+    \draw (d0)--(d1)--(dS2);
+    \draw (l0)--(l1)--(lS2);
+
+    % Crossovers
+    \fill[white] (-4.5,1)circle(.15) (-1.5,1)circle(.15);
+    \fill[white] (-1.5,3)circle(.15) ( 1.5,3)circle(.15);
+
+    % Supports
+    \draw (d0)--(r0) (d1)--(r1) (dS2)--(rS2);
+    \draw (l0)--(R0) (l1)--(R1) (lS2)--(RS2);
+    
+    % Top layer 
+    \draw (r0)--(R0) (r1)--(R1) (rS2)--(RS2);
+    \draw (r0)--(r1)--(rS2);
+    \draw (R0)--(R1)--(RS2);
+
+    % Wick
+    \draw (RS2)--(R2)--(RA3)--(RS3)--(R3);
+    \draw[dashed] (R3)--(Rn);
+  \end{tikzpicture}
+  \caption{Congruence lattice of $\Prt_n$ (or $\PB_n$)}
+  \label{fig:pn-congs}
+\end{figure}
