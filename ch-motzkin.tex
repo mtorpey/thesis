@@ -363,13 +363,13 @@ following proposition.
     be a pair in $\zeta$ and let $s \in S$.  To show $\zeta$ is a congruence, we
     must show that $(sx,sy)$ and $(xs,ys)$ both lie in $\zeta$.  If
     $(x,y) \in \Delta_S$, this is certainly true.  Otherwise, we have
-    $x, y \in I$ and $(x\phi, y\phi) \in \sigma$.  Since $I$ is an ideal, we
-    certainly have $xs,ys\in I$.  Now by Definition
+    $x, y \in I$ and $\big((x)\phi, (y)\phi\big) \in \sigma$.  Since $I$ is an
+    ideal, we certainly have $xs,ys\in I$.  Now by Definition
     \ref{def:liftable-congruence} part (iii), and by Lemma
     \ref{lem:retract-aux}, we have
-    $(sx)\phi = s \cdot (x)\phi \mathrel\sigma s \cdot (y)\phi = (sy)\phi$, so
-    that $(sx, sy) \in \zeta$.  A symmetric argument gives us
-    $(xs,ys) \in \zeta$.
+    $$\big(s \cdot (x)\phi, s \cdot (y)\phi\big)
+    = \big((sx)\phi, (sy)\phi\big) \in \sigma,$$
+    so $(sx, sy) \in \zeta$.  A symmetric argument gives us $(xs,ys) \in \zeta$.
   \end{proof}
 \end{theorem}
 
@@ -386,7 +386,7 @@ congruence on the semigroup, as we will see later.
 
 We can now apply the general theory of Section \ref{sec:motzkin-prelim} to the
 Motzkin monoid, in order to find its congruences.  First, let us mention the
-easiest congruences to describe---its Rees congruences (Definition
+easiest congruences to describe---the Rees congruences (Definition
 \ref{def:rees-congruence}).
 
 \begin{proposition}
@@ -403,39 +403,38 @@ easiest congruences to describe---its Rees congruences (Definition
 \end{proposition}
 
 We will refer to these congruences by the name $R_k$ for the rest of this
-chapter.  We will soon see that $R_0$ and $R_1$ are in fact lifted congruences,
-but the higher Rees congruences may not be.  Next, we will describe some other
-lifted congruences, by identifying some liftable congruences and retractions in
+chapter.  We will soon see that $R_0$ and $R_1$ are in fact lifted congruences.
+The higher Rees congruences are not lifted congruences, as we will see in
+Corollary \ref{cor:rk-not-lifted}.  Next, we will describe some other lifted
+congruences, by identifying some liftable congruences and retractions in
 $\Mot_n$ to use as building blocks.
 
 % L,R,H,Delta,Univ are liftable congs: lambda, rho, mu, eta, R
 First, recall that $I_0 = \{\alpha \in \Mot_n : \rank \alpha = 0\}$ is the
-minimal ideal of $\Mot_n$.  Let us denote by $\LL_0$ and $\RR_0$ the $\LL$ and
-$\RR$ relations of $\Mot_n$ restricted to $I_0$, and let $\Delta_0$ and
-$\nabla_0$ be abbreviations for $\Delta_{I_0}$ and $\nabla_{I_0}$ respectively.
-\nomenclature{$\Delta_0$}{Trivial congruence on the ideal $I_0$}
-\nomenclature{$\nabla_0$}{Universal congruence on the ideal $I_0$}
-\nomenclature[L0]{$\LL_0$}{Green's $\LL$ relation retricted to the ideal $I_0$}
-\nomenclature[R0]{$\RR_0$}{Green's $\RR$ relation retricted to the ideal $I_0$}
+minimal ideal of $\Mot_n$.  Let us denote by $\LL^{I_0}$ and $\RR^{I_0}$ the $\LL$- and
+$\RR$-relations of $\Mot_n$ restricted to $I_0$, and let $\Delta_{I_0}$ and
+$\nabla_{I_0}$ be the trivial and universal congruences respectively on $I_0$.
+\nomenclature[L0]{$\LL^{I_0}$}{Green's $\LL$-relation retricted to the ideal $I_0$}
+\nomenclature[R0]{$\RR^{I_0}$}{Green's $\RR$-relation retricted to the ideal $I_0$}
 
 \begin{proposition}
-  The relations $\Delta_0$, $\LL_0$, $\RR_0$ and $\nabla_0$ are all
+  The relations $\Delta_{I_0}$, $\lL^{I_0}$, $\rR^{I_0}$ and $\nabla_{I_0}$ are all
   liftable congruences of $\Mot_n$.
   \begin{proof}
-    Since $I_0$ is a semigroup, $\Delta_0$ and $\nabla_0$ are certainly
+    Since $I_0$ is a semigroup, $\Delta_{I_0}$ and $\nabla_{I_0}$ are certainly
     congruences of $I_0$; and both satisfy Definition
-    \ref{def:liftable-congruence} (i), since their unions with $\Delta_{\Mot_n}$
+    \ref{def:liftable-congruence}(i), since their unions with $\Delta_{\Mot_n}$
     are the congruences $\Delta_{\Mot_n}$ and $R_0$ respectively.
 
-    To see that $\LL_0$ is a liftable congruence, consider Definition
-    \ref{def:liftable-congruence} (iii); let $(a,b) \in \LL_0$ and
+    To see that $\lL^{I_0}$ is a liftable congruence, consider Definition
+    \ref{def:liftable-congruence}(iii); let $(a,b) \in \lL^{I_0}$ and
     $x \in \Mot_n$.  Since $I_0$ is the minimal ideal, we certainly have
     $xa,xb,ax,bx \in I_0$.  And since $\LL$ is a right congruence on $\Mot_n$
-    (see Proposition \ref{prop:greens-as-congs}) we have $(ax,bx) \in \LL$ and
-    therefore $(ax,bx) \in \LL_0$.  By Lemma \ref{lem:i0-rect-band} we also have
+    (see Proposition \ref{prop:greens-as-congs}) we have $(ax,bx) \in \lL$ and
+    therefore $(ax,bx) \in \lL^{I_0}$.  By Lemma \ref{lem:i0-rect-band} we also have
     $a(xa) = a$, so $xa \LL a$ and similarly $xb \LL b$.  This means that
-    $xa \LL a \LL b \LL xb$, so $(xa, xb) \in \LL_0$.  Hence $\LL_0$ is a
-    liftable congruence of $\Mot_n$, and by a similar argument, so is $\RR_0$.
+    $xa \LL a \LL b \LL xb$, so $(xa, xb) \in \lL^{I_0}$.  Hence $\lL^{I_0}$ is a
+    liftable congruence of $\Mot_n$, and by a similar argument, so is $\rR^{I_0}$.
   \end{proof}
 \end{proposition}
 
@@ -464,15 +463,15 @@ two rows.  See Figure \ref{fig:hat} for an example.  Note that $\widehat\alpha =
 \begin{figure}[h]
   \centering
   $$\alpha = \big\{
-    \{1,3,4,1'\}, \{2,3',4'\}, \{5\}, \{2'\}, \{5'\}
+    \{1\}, \{2,1'\}, \{3,5'\}, \{4,5\}, \{2',4'\}, \{3'\}
   \big\}$$
   $$\widehat\alpha = \big\{
-    \{1,3,4\}, \{1'\}, \{2\}, \{3',4'\}, \{5\}, \{2'\}, \{5'\}
+    \{1\}, \{2\}, \{3\}, \{4,5\}, \{1'\}, \{2',4'\}, \{3'\}, \{5'\}
   \big\}$$
-  $$\alpha = \bipartdiag{\tv11\tc13\tc34 \tv23\bc34} \quad
-  \widehat\alpha = \bipartdiag{\tc13\tc34 \bc34}$$
-  $$\alpha = \bipart{c|c|c|c}{3-4}{1,3,4 & 2 & \mc2c5}{1 & 3,4 & 2 & 5} \quad
-  \widehat\alpha = \bipart{c|c|c|c}{1-4}{1,3,4 & 2 & \mc2c5}{1 & 3,4 & 2 & 5}$$
+  $$\alpha = \bipartdiag{\tv21 \tv35 \tc45 \bc24} \quad
+  \widehat\alpha = \bipartdiag{\tc45 \bc24}$$
+  $$\alpha = \bipart{c|c|c|c}{3-4}{2 & 3 & 1 & 4,5}{1 & 5 & 2,4 & 3} \quad
+  \widehat\alpha = \bipart{c|c|c|c}{1-4}{2 & 3 & 1 & 4,5}{1 & 5 & 2,4 & 3}$$
   \caption{Computing $\widehat\alpha$ from $\alpha$}
   \label{fig:hat}
 \end{figure}
@@ -521,38 +520,38 @@ that these retractions are unique.
 % mu0, lam0, rho0, R0,
 % mu1, lam1, rho1, R1,
 % R2 ... Rn
-We now have four liftable congruences $\{\Delta_0, \LL_0, \RR_0, \nabla_0\}$ and
+We now have four liftable congruences $\{\Delta_{I_0}, \lL^{I_0}, \rR^{I_0}, \nabla_{I_0}\}$ and
 two retractable ideals $\{I_0, I_1\}$, giving rise to $4 \times 2 = 8$ lifted
 congruences by Definition \ref{def:lifted-congruence} and Theorem
-\ref{thm:lifted-congruence}.  The congruences lifted from $\nabla_0$ are
+\ref{thm:lifted-congruence}.  The congruences lifted from $\nabla_{I_0}$ are
 observed to be equal to the Rees congruences $R_0$ and $R_1$, while those lifted
-from $\Delta_0$, $\LL_0$ and $\RR_0$ are named with appropriate Greek symbols,
+from $\Delta_{I_0}$, $\lL^{I_0}$ and $\rR^{I_0}$ are named with appropriate Greek symbols,
 as follows.
 \begin{align*}
-  \delta_0 &= \zeta_{I_0,\Delta_0}
+  \delta_0 &= \zeta_{I_0,\Delta_{I_0}}
   = \{(\alpha,\beta) \in I_0 \times I_0 :
-    (\alpha, \beta) \in \Delta_0\} \cup \Delta_{\Mot_n} \\
-  \delta_1 &= \zeta_{I_1,\Delta_0}
+    (\alpha, \beta) \in \Delta_{I_0}\} \cup \Delta_{\Mot_n} \\
+  \delta_1 &= \zeta_{I_1,\Delta_{I_0}}
   = \{(\alpha,\beta) \in I_1 \times I_1 :
-    (\widehat\alpha, \widehat\beta) \in \Delta_0\} \cup \Delta_{\Mot_n} \\
-  \lambda_0 &=\zeta_{I_0,\LL_0}
+    (\widehat\alpha, \widehat\beta) \in \Delta_{I_0}\} \cup \Delta_{\Mot_n} \\
+  \lambda_0 &=\zeta_{I_0,\lL^{I_0}}
   = \{(\alpha,\beta) \in I_0 \times I_0 :
-    (\alpha, \beta) \in \LL_0\} \cup \Delta_{\Mot_n} \\
-  \lambda_1 &= \zeta_{I_1,\LL_0}
+    (\alpha, \beta) \in \lL^{I_0}\} \cup \Delta_{\Mot_n} \\
+  \lambda_1 &= \zeta_{I_1,\lL^{I_0}}
   = \{(\alpha,\beta) \in I_1 \times I_1 :
-    (\widehat\alpha, \widehat\beta) \in \LL_0\} \cup \Delta_{\Mot_n} \\
-  \rho_0 &= \zeta_{I_0,\RR_0}
+    (\widehat\alpha, \widehat\beta) \in \lL^{I_0}\} \cup \Delta_{\Mot_n} \\
+  \rho_0 &= \zeta_{I_0,\rR^{I_0}}
   = \{(\alpha,\beta) \in I_0 \times I_0 :
-    (\alpha, \beta) \in \RR_0\} \cup \Delta_{\Mot_n} \\
-  \rho_1 &= \zeta_{I_1,\RR_0}
+    (\alpha, \beta) \in \rR^{I_0}\} \cup \Delta_{\Mot_n} \\
+  \rho_1 &= \zeta_{I_1,\rR^{I_0}}
   = \{(\alpha,\beta) \in I_1 \times I_1 :
-    (\widehat\alpha, \widehat\beta) \in \RR_0\} \cup \Delta_{\Mot_n} \\
-  R_0 &= \zeta_{I_0,\nabla_0}
+    (\widehat\alpha, \widehat\beta) \in \rR^{I_0}\} \cup \Delta_{\Mot_n} \\
+  R_0 &= \zeta_{I_0,\nabla_{I_0}}
   = \{(\alpha,\beta) \in I_0 \times I_0 :
-    (\alpha, \beta) \in \nabla_0\} \cup \Delta_{\Mot_n} \\
-  R_1 &= \zeta_{I_1,\nabla_0}
+    (\alpha, \beta) \in \nabla_{I_0}\} \cup \Delta_{\Mot_n} \\
+  R_1 &= \zeta_{I_1,\nabla_{I_0}}
   = \{(\alpha,\beta) \in I_1 \times I_1 :
-    (\widehat\alpha, \widehat\beta) \in \nabla_0\} \cup \Delta_{\Mot_n}
+    (\widehat\alpha, \widehat\beta) \in \nabla_{I_0}\} \cup \Delta_{\Mot_n}
 \end{align*}
 
 This naming convention is summarised in Table \ref{tab:mn-lifted-congruences}.
@@ -563,10 +562,10 @@ This naming convention is summarised in Table \ref{tab:mn-lifted-congruences}.
   \begin{tabular}[h]{| c | c | c |}
     \cline{2-3}
     \mc1{c|}{} & $I_0$ & $I_1$ \\ \hline
-    $\Delta_0$ & $\delta_0$ & $\delta_1$ \\ \hline
-    $\LL_0$ & $\lambda_0$ & $\lambda_1$ \\ \hline
-    $\RR_0$ & $\rho_0$ & $\rho_1$ \\ \hline
-    $\nabla_0$ & $R_0$ & $R_1$ \\ \hline
+    $\Delta_{I_0}$ & $\delta_0$ & $\delta_1$ \\ \hline
+    $\lL^{I_0}$ & $\lambda_0$ & $\lambda_1$ \\ \hline
+    $\rR^{I_0}$ & $\rho_0$ & $\rho_1$ \\ \hline
+    $\nabla_{I_0}$ & $R_0$ & $R_1$ \\ \hline
   \end{tabular}
   \caption{Lifted congruences of $\Mot_n$}
   \label{tab:mn-lifted-congruences}
@@ -690,19 +689,19 @@ congruence it generates.  Our findings are summarised in Table
     $\delta_0$   & $\delta_0$
                  & Trivial                             \\
     $\delta_1$   & $\delta_1 \setminus \delta_0$
-                 & Lemma \ref{lem:low-genpairs} (iii)  \\
+                 & Lemma \ref{lem:low-genpairs}(iii)  \\
     $\lambda_0$  & $\lambda_0 \setminus \delta_0$
-                 & Lemma \ref{lem:low-genpairs} (i)    \\
+                 & Lemma \ref{lem:low-genpairs}(i)    \\
     $\lambda_1$  & $\lambda_1 \setminus (\lambda_0 \cup \delta_1)$
-                 & Lemma \ref{lem:high-genpairs} (i)   \\
+                 & Lemma \ref{lem:high-genpairs}(i)   \\
     $\rho_0$     & $\rho_0 \setminus \delta_0$
-                 & Lemma \ref{lem:low-genpairs} (ii)   \\
+                 & Lemma \ref{lem:low-genpairs}(ii)   \\
     $\rho_1$     & $\rho_1 \setminus (\rho_0 \cup \delta_1)$
-                 & Lemma \ref{lem:high-genpairs} (ii)  \\
+                 & Lemma \ref{lem:high-genpairs}(ii)  \\
     $R_0$        & $R_0 \setminus (\lambda_0 \cup \rho_0)$
-                 & Lemma \ref{lem:high-genpairs} (iii) \\
+                 & Lemma \ref{lem:high-genpairs}(iii) \\
     $R_1$        & $R_1 \setminus (\lambda_1 \cup \rho_1 \cup R_0)$
-                 & Lemma \ref{lem:high-genpairs} (iv)  \\
+                 & Lemma \ref{lem:high-genpairs}(iv)  \\
     $R_{k \geq 2}$ & $R_k \setminus R_{k-1}$
                  & Lemma \ref{lem:rees-genpairs}       \\
     \hline
@@ -892,7 +891,7 @@ congruence it generates.  Our findings are summarised in Table
     {C_0 & C_1 & \cdots & C_t}{j & B_1 & \cdots & B_t}$.  In particular,
     since $\ker\alpha \neq \ker\beta$, we find $\alpha\gamma \neq \beta\gamma$,
     and therefore $(\alpha\gamma, \beta\gamma) \in \lambda_0 \setminus \Delta$,
-    so Lemma \ref{lem:low-genpairs} (i) gives us
+    so Lemma \ref{lem:low-genpairs}(i) gives us
     $\lambda_0=(\alpha\gamma, \beta\gamma)^\sharp
     \subseteq (\alpha, \beta)^\sharp$.
     Since $\lambda_1 = \lambda_0 \vee \delta_1$ (by Lemma
@@ -902,7 +901,7 @@ congruence it generates.  Our findings are summarised in Table
 
     Firstly, assume (a) holds.  We know that $\alpha \alpha^* \alpha = \alpha$,
     and we can see that $\alpha\alpha^*\beta = \widehat\alpha$.  Hence Lemma
-    \ref{lem:low-genpairs} (iii) gives
+    \ref{lem:low-genpairs}(iii) gives
     $\delta_1 = (\alpha, \widehat\alpha)^\sharp = (\alpha\alpha^*\alpha,
     \alpha\alpha^*\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$, so
     $\delta_1 \subseteq (\alpha, \beta)^\sharp$.
@@ -921,7 +920,7 @@ congruence it generates.  Our findings are summarised in Table
     $\tau\beta = \bipart{c|c|c|c|c}{1-5}
     {a_1 & i,a_2 & i_1 & \ldots & i_{n-3}}{j & B_1 & B_2 & \ldots & B_s}$.
     Hence we have $(\tau\alpha,\tau\beta) \in \delta_1 \setminus \Delta$, so
-    Lemma \ref{lem:low-genpairs} (iii) gives us
+    Lemma \ref{lem:low-genpairs}(iii) gives us
     $\delta_1 = (\tau\alpha,\tau\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$.
 
     Next, suppose (c) holds.  Let $\tau = (i,i')^e$, the
@@ -932,7 +931,7 @@ congruence it generates.  Our findings are summarised in Table
     $\tau\beta = \bipart{c|c|c|c}{1-4}
     {i & i_1 & \cdots & i_{n-1}}{j & B_1 & \cdots & B_s}$.
     Again we have $(\tau\alpha,\tau\beta) \in \delta_1 \setminus \Delta$, so by
-    Lemma \ref{lem:low-genpairs} (iii) we have
+    Lemma \ref{lem:low-genpairs}(iii) we have
     $\delta_1 = (\tau\alpha,\tau\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$.
 
     Next, suppose (d) holds.
@@ -943,7 +942,7 @@ congruence it generates.  Our findings are summarised in Table
     $\tau\beta = \bipart{c|c|c|c|c}{2-5}
     {i & A_1 & A_2 & \cdots & A_r}{l & j & B_2 & \cdots & B_s}$.
     We have $(\tau\alpha,\tau\beta) \in \delta_1 \setminus \Delta$, so by
-    Lemma \ref{lem:low-genpairs} (iii) we again have
+    Lemma \ref{lem:low-genpairs}(iii) we again have
     $\delta_1=(\tau\alpha, \tau\beta)^\sharp\subseteq(\alpha,\beta)^\sharp$.
 
     Finally, suppose (e) holds.
@@ -958,7 +957,7 @@ congruence it generates.  Our findings are summarised in Table
     {k & i & k_1 & \ldots & k_{n-2}}
     {l & j & B_2 & \ldots & B_s}$
     We have $(\tau\alpha,\tau\beta) \in \delta_1 \setminus \Delta$, so again by
-    Lemma \ref{lem:low-genpairs} (iii) we have
+    Lemma \ref{lem:low-genpairs}(iii) we have
     $\delta_1 = (\tau\alpha, \tau\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$.
 
     We have now considered all 5 cases, and shown that we always have
@@ -971,14 +970,14 @@ congruence it generates.  Our findings are summarised in Table
     $\beta=\bipart{c|c|c}{1-3}{C_1 & \cdots & C_t}{D_1 & \cdots & D_u}$.
     % noting that $\ker(\alpha)\not=\ker(\beta)$ and
     % $\coker(\alpha)\not=\coker(\beta)$.
-    By Lemma \ref{lem:mn-lattice-intra} (i) below, we have
+    By Lemma \ref{lem:mn-lattice-intra}(i) below, we have
     $R_0 = \lambda_0\vee\rho_0$, so we will prove $(\alpha,\beta)^\sharp$
     contains $R_0$ by showing that it contains both $\lambda_0$ and $\rho_0$.
     Let $\gamma = \alpha\beta =
     \bipart{c|c|c}{1-3}{A_1 & \cdots & A_r}{D_1 & \cdots & D_u}$.
     This gives us
     $(\gamma,\beta) \in \lambda_0\setminus\Delta$,
-    so by Lemma \ref{lem:low-genpairs} (i) we have
+    so by Lemma \ref{lem:low-genpairs}(i) we have
     $\lambda_0 = (\gamma,\beta)^\sharp
     = (\alpha\beta, \beta\beta)^\sharp
     \subseteq (\alpha, \beta)^\sharp$.  By a similar argument we have
