@@ -1683,6 +1683,51 @@ R_n\}.$$
 These results are proven in \cite[\S9]{ourpaper}, and the lattices are shown in
 Figure \ref{fig:jn-congs}.
 
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    [cong/.style={circle, minimum size=1.3cm, draw},
+    scale=0.8, every node/.style={scale=0.7}]
+
+    % Even
+    \node[cong] (Rn) at ( 0,13) {$R_n$};
+    \node[cong] (R4) at ( 0,10) {$R_4$};
+    \node[cong] (R2) at ( 0, 8) {$R_2$};
+    \node[cong] (l2) at (-3, 6) {$\lambda_2$};
+    \node[cong] (R0) at ( 0, 6) {$R_0$};
+    \node[cong] (r2) at ( 3, 6) {$\rho_2$};
+    \node[cong] (l0) at (-3, 4) {$\lambda_0$};
+    \node[cong] (d2) at ( 0, 4) {$\delta_2$};
+    \node[cong] (r0) at ( 3, 4) {$\rho_0$};
+    \node[cong] (d0) at ( 0, 2) {$\delta_0$};
+    \node at (1.35,13) {$=\nabla_{\Jon_n}$};
+    \node at (1.35, 2) {$=\Delta_{\Jon_n}$};
+    \draw (d0)--(l0) (d0)--(r0) (l0)--(R0) (r0)--(R0);
+    \fill[white] (-1.5,5)circle(.15) (+1.5,5)circle(.15);
+    \draw (d0)--(d2) (l0)--(l2) (r0)--(r2) (R0)--(R2);
+    \draw (d2)--(l2) (d2)--(r2) (l2)--(R2) (r2)--(R2);
+    \draw (R2)--(R4);
+    \draw[dashed] (R4)--(Rn);
+
+    % Odd
+    \node[cong] (Rno) at (- 8,13) {$R_n$};
+    \node[cong] (R5)  at (- 8,10) {$R_5$};
+    \node[cong] (R3)  at (- 8, 8) {$R_3$};
+    \node[cong] (R1)  at (- 8, 6) {$R_1$};
+    \node[cong] (l1)  at (-11, 4) {$\lambda_1$};
+    \node[cong] (r1)  at (- 5, 4) {$\rho_1$};
+    \node[cong] (d1)  at (- 8, 2) {$\delta_1$};
+    \node at (-6.65, 13) {$=\nabla_{\Jon_n}$};
+    \node at (-6.65,  2) {$=\Delta_{\Jon_n}$};
+    \draw (d1)--(l1)--(R1)--(r1)--(d1);
+    \draw (R1)--(R3)--(R5);
+    \draw[dashed] (R5)--(Rno);
+  \end{tikzpicture}
+  \caption[Congruence lattice of $\Jon_n$]{Congruence lattice of $\Jon_n$ when
+    $n$ is odd (left) and even (right)}
+  \label{fig:jn-congs}
+\end{figure}
+
 \subsubsection{Bipartition monoid $\Prt_n$ and partial Brauer monoid $\PB_n$}
 \index{partial Brauer monoid}
 \nomenclature[PBn]{$\PB_n$}{Partial Brauer monoid}
