@@ -15,6 +15,9 @@
 \newcommand{\DD}{\mathrel{\mathscr{D}}}
 \newcommand{\JJ}{\mathrel{\mathscr{J}}}
 
+\newcommand{\lL}{\mathscr{L}}
+\newcommand{\rR}{\mathscr{R}}
+
 \newcommand{\nHH}{\mathrel{\cancel{\mathscr{H}}}}
 \newcommand{\nLL}{\mathrel{\cancel{\mathscr{L}}}}
 \newcommand{\nRR}{\mathrel{\cancel{\mathscr{R}}}}
@@ -145,6 +148,7 @@
 
 \newcommand{\trans}[5]{ % Transformation
   \begin{tikzpicture}[scale=\bipartdiagscale, baseline={([yshift=-.8ex]current bounding box.center)}]
+    \fill[gray!20] (0.8,0) rectangle (5.2,2);
     \fill(1,2)circle(.125); \fill(1,0)circle(.125); \draw(1,2)--(#1,0);
     \fill(2,2)circle(.125); \fill(2,0)circle(.125); \draw(2,2)--(#2,0);
     \fill(3,2)circle(.125); \fill(3,0)circle(.125); \draw(3,2)--(#3,0);
