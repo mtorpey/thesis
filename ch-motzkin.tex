@@ -10,8 +10,8 @@ whose congruence lattices can be found using a computer.
 One of the first semigroups towards which this new methodology was directed was
 the bipartition monoid $\Prt_n$, whose congruence lattice was not previously
 known.  Computing this lattice for the first few values of $n$ showed a lattice
-with a relatively simple structure---shown in Figure
-\ref{fig:gap-lattices}---which did not appear to increase much in complexity as
+with a relatively simple structure (see Figure
+\ref{fig:gap-lattices}) which did not appear to increase much in complexity as
 $n$ grew higher than $3$.  The congruence lattices of various submonoids of
 $\Prt_n$ were also computed, and appeared to have a similar structure (again,
 see Figure \ref{fig:gap-lattices}).
@@ -36,14 +36,14 @@ gap> Splash(DotString(LatticeOfCongruences(MotzkinMonoid(4)),
     \label{fig:gap-lattices}
 \end{figure}
 
-With the rapidly increasing size of $\Prt_n$ (see Table
-\ref{tab:pn-size}) it proved impractical to na\"ively calculate the congruence
-lattices beyond $n=4$, but careful study of the lattices for small values of
-$n$, along with those lattices computed for various submonoids of $\Prt_n$,
-yielded a general classification of the congruence lattice of $\Prt_n$ for
-arbitrary $n$, along with a classification of the congruence lattices of various
-important submonoids.  This classification is explained and proven in
-\cite{ourpaper}, the paper upon which this chapter is based.
+With the rapidly increasing size of $\Prt_n$ (see Table \ref{tab:pn-size}) it
+proved impractical to na\"ively calculate the congruence lattices beyond $n=4$,
+but careful study of the lattices for small values of $n$, along with those
+lattices computed for various submonoids of $\Prt_n$, yielded a general
+classification of the congruence lattice of $\Prt_n$ for arbitrary $n$ (see
+Figure \ref{fig:pn-congs}), along with a classification of the congruence
+lattices of various important submonoids.  This classification is explained and
+proven in \cite{ourpaper}, the paper upon which this chapter is based.
 
 In this chapter, we will examine the structure of these congruence lattices,
 focusing in particular on the Motzkin monoid $\Mot_n$, which was the present
@@ -53,7 +53,8 @@ thesis by the kind permission of my co-authors.  We will start with the
 definition of the Motzkin monoid, then describe some preliminary theory, then
 describe the Motzkin monoid's lattice of congruences (Theorem
 \ref{thm:mn-congs}), and finally give a brief description of how these ideas can
-be extended to $\Prt_n$ and its other submonoids.
+be extended to $\Prt_n$ and its other submonoids (Section
+\ref{sec:motzkin-other}).
 
 \section{The Motzkin monoid $\Mot_n$}
 \label{sec:motzkin-monoid}
