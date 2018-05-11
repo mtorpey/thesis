@@ -1067,8 +1067,8 @@ congruence it generates.  Our findings are summarised in Table
     $\codom\alpha = \{j_1, \ldots, j_k\}$, with $i_1 < \ldots < i_k$ and
     $j_1 < \ldots < j_k$; since $\alpha$ is planar, its transversals must be
     $\{i_1, j_1'\}, \ldots, \{i_k, j_k'\}$.  We will also write
-    $\bn \setminus \dom\alpha = \{a_1, \ldots, a_{n-r}\}$ and
-    $\bn \setminus \codom\alpha = \{b_1, \ldots, b_{n-r}\}$.
+    $\bn \setminus \dom\alpha = \{a_1, \ldots, a_{n-k}\}$ and
+    $\bn \setminus \codom\alpha = \{b_1, \ldots, b_{n-k}\}$.
 
     Our proof now splits into two cases.  Since $\alpha \neq \beta$ and
     $\rank\beta \leq \rank\alpha$, one of the following holds:
@@ -1089,14 +1089,16 @@ congruence it generates.  Our findings are summarised in Table
     {c_1 & \ldots & c_r & C_1 & \ldots & C_t}
     {d_1 & \ldots & d_r & D_1 & \ldots & D_u}$.
     First, assume (a) holds.
-    Let $x$ be the maximal number such that $x \leq r$ and $i_x < a$, and define
+    Let $x$ be the maximal number such that $x \leq r$ and $i_x < a_1$.  Note
+    that since $\alpha$ is planar we must have $i_x < a_1 < a_2 < i_{x+1}$ if
+    $i_{x+1}$ exists.  Now define
     $$\tau = \bipart{c|c|c|c|c|c|c|c|c|c|c}{8-11}
     {c_1 & \ldots & c_{x-1} & c_x & c_{x+1} & \ldots & c_r
       & \mc2{c|}{C_1} & \ldots & C_t}
     {i_1 & \ldots & i_{x-1} & a_2 & i_{x+1} & \ldots & i_r
-      & i_x, a_1 & a_3 & \ldots & a_{n-r}}$$
+      & i_x, a_1 & a_3 & \ldots & a_{n-k}}$$
     and $$\kappa = \bipart{c|c|c|c|c|c}{4-6}
-    {j_1 & \ldots & j_r & b_1 & \ldots & b_{n-r}}
+    {j_1 & \ldots & j_r & b_1 & \ldots & b_{n-k}}
     {d_1 & \ldots & d_r & D_1 & \ldots & D_u}.$$
     We have $\tau\alpha\kappa = \gamma$, but
     $$\tau\beta\kappa = \bipart{c|c|c|c|c|c|c|c|c|c}{7-10}
@@ -1157,7 +1159,8 @@ congruence it generates.  Our findings are summarised in Table
     $\gamma$ can be split into singletons to obtain a bipartition which is
     $\sigma$-related to $\gamma$.  First, splitting an upper block: choose an
     upper block of $\gamma$ of size $2$ (assume without loss of generality that
-    it is $C_1$), label its elements $C_1 = \{c_1, c_2\}$ with $c_1 < c_2$, and
+    it is $C_1$), label its elements $C_1 = \{c_1, c_2\}$ with $c_1 < c_2$.
+    Recall that $(a_1, a_2) \in \ker\alpha \setminus \ker\beta$, and
     write $\bn \setminus \{a_1, a_2\} = \{a_3, \ldots, a_n\}$.  We define
     % $\tau = \bipart{c|c|c|c|c}{3-5}
     % {c_1 & c_2 & C_2 & \ldots & C_t}
@@ -1244,7 +1247,7 @@ congruence it generates.  Our findings are summarised in Table
     We have now shown that we can split any block of $\gamma$ to produce a
     bipartition $\sigma$-related to $\gamma$.  Hence, we can split every block
     and we reach $\varnothing^e$, showing that
-    $(\gamma, \varnothing) \in \sigma$, and therefore that any two bipartitions
+    $(\gamma, \varnothing^e) \in \sigma$, and therefore that any two bipartitions
     of rank 0 are $\sigma$-related, in case (a).
 
     Now assume (b), and recall that
@@ -1253,7 +1256,7 @@ congruence it generates.  Our findings are summarised in Table
     $C_1 = \{c_1, c_2\}$.  By (b) we have some transversal $\{i_x, j_x'\}$ in
     $\alpha$ but not in $\beta$; let $\{i_y, j_y'\}$ be another transversal from
     $\alpha$, which may or may not be in $\beta$.  Let $\tau$ be the bipartition
-    with transverse blocks $\{c_1, i_x'\}$ and $\{c_2, i_y'\}$, upper blocks
+    with transversals $\{c_1, i_x'\}$ and $\{c_2, i_y'\}$, upper blocks
     $C_2, \ldots, C_t$, and lower blocks all singletons.  Let $\kappa$ be the
     bipartition of rank $0$ with lower blocks $D_1', \ldots, D_u'$, an upper
     block $\{j_x, j_y\}$, and the rest singletons.  We have
@@ -1270,7 +1273,7 @@ congruence it generates.  Our findings are summarised in Table
     in $I_k$.  Hence by the first fact, we have
     $(\mu, \widehat\mu), (\nu, \widehat\nu) \in \sigma$.  By the second fact,
     since $\rank\widehat\mu = \rank\widehat\nu = 0$, we have
-    $(\widehat\mu, \widehat\nu) \in \sigma$.  Hence that
+    $(\widehat\mu, \widehat\nu) \in \sigma$.  Hence we have
     $\mu \mathrel\sigma \widehat\mu \mathrel\sigma \widehat\nu \mathrel\sigma
     \nu$, and by transitivity we can see $(\mu, \nu) \in \sigma$, as required.
   \end{proof}
