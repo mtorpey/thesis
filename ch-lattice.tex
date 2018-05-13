@@ -138,6 +138,16 @@ generating pairs is described in Chapter \ref{chap:pairs}; in some cases this
 can be improved by first converting the congruence to another representation, as
 described in Chapter \ref{chap:converting}.
 
+Our second algorithm is called \textsc{JoinClosure}.  This algorithm takes a
+congruence poset $(\Gamma, \PO)$ as its argument, and returns the congruence
+poset containing all the congruences in $\Gamma$ along with all their joins.
+That is, for any collection of $k$ congruences
+$(\rho_i)_{1 \leq i \leq k}$ from $\Gamma$, the output of
+\textsc{JoinClosure} will contain the congruence
+$$\bigvee_{1 \leq i \leq k} \rho_i
+\quad=\quad \rho_1 \vee \rho_2 \vee \ldots \vee \rho_k.$$
+Pseudo-code for \textsc{JoinClosure} is shown in Algorithm
+\ref{alg:join-closure}.
 
 \begin{algorithm}
   \caption{The \textsc{JoinClosure} algorithm}
@@ -181,6 +191,58 @@ described in Chapter \ref{chap:converting}.
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}
+
+The \textsc{JoinClosure} algorithm works by keeping a list $\Gamma_I$ of
+``initial'' congruences (the ones we started with) and another list $\Gamma_N$
+of congruences needing to be joined.  To start with, these are both equal to the
+input $\Gamma$.  Each congruence in $\Gamma_N$ in turn is joined with each
+initial congruence from $\Gamma_I$, and we check whether this join $\rho$ is a
+new congruence or equal to one we have already found.  This check is done in a
+similar way to \textsc{PrincCongPoset}, by checking $\rho \subseteq \sigma$ as
+well as $\sigma \subseteq \rho$: if both are true, then we conclude that
+$\rho = \sigma$ and therefore we don't have a new congruence; if just one is
+true, we record the appropriate pair, and if $\rho$ is confirmed as a new
+congruence, we add it to $\PO$ later.
+
+In this algorithm, unlike in \textsc{PrincCongPoset}, we may encounter
+congruences with more than one generating pair.  Hence, for two congruences
+$\rho$ and $\sigma$, we cannot find out whether $\rho \subseteq \sigma$ in quite
+the same way as we did in that algorithm.  We have one useful result: if
+$\mathbf{R}$ and $\mathbf{S}$ are sets of generating pairs, then
+$$\R \subseteq \mathbf{S}^\sharp \quad\iff\quad
+\Rs \subseteq \mathbf{S}^\sharp,$$
+so we only have to check containment of generating pairs in order to check
+containment of congruences.  However, a congruence may have many generating
+pairs, so in some cases this check may take a long time.  For this reason, if
+there is an alternative way of representing the congruences (for example,
+another representation from Chapter \ref{chap:converting}) then it may be
+quicker to use a containment ($\subseteq$) method specific to that
+representation.  For example, if $S$ is a 0-simple semigroup, then our two
+congruences will have linked triples $(N_1,\sS_1,\tT_1)$ and $(N_2,\sS_2,\tT_2)$
+respectively; instead of checking containment of generating pairs, we can check
+whether $N_1 \leq N_2$, $\sS_1 \subseteq \sS_2$ and $\tT_1 \subseteq \tT_2$.
+
+Each time we find a new congruence, we add it to $\Gamma_N$, and then later we
+take its join with each initial congruence.  Hence, any congruence which can be
+built up as the join of congruences in the initial list is eventually found.
+For example, if there exists some congruence $\tau$ equal to
+$\rho_1 \vee \rho_2 \vee \rho_3$, with $\rho_1,\rho_2,\rho_3 \in \Gamma_I$, then
+we will find the congruence $\rho_1 \vee \rho_2$ on the first run of the while
+loop, and it will be added to $\Gamma_N$.  Then, on the second run of the while
+loop, we will compute $(\rho_1 \vee \rho_2) \vee \rho_3$, and hence we will find
+$\tau$.  In this way, it is guaranteed that any join of congruences from
+$\Gamma$ will appear in the output of
+\textsc{JoinClosure}$((\Gamma, \PO))$
+
+Now that we have described the two algorithms, it is easy to see how we can use
+them to find the whole congruence lattice of a finite semigroup $S$.
+\textsc{PrincCongPoset} finds all the principal congruences of $S$, and
+\textsc{JoinClosure} finds all the joins of a set of congruences.  Since, in a
+finite semigroup, any congruence is the join of a finite number of principal
+congruences, we can produce the congruence lattice of $S$ by simply calling
+\textsc{JoinClosure(PrincCongPoset($S$))}.  This is the basis of the function
+\texttt{LatticeOfCongruences} in the Semigroups package for GAP
+\cite{semigroups}.
 
 \section{Improvements}
 \label{sec:lattice-improvements}
