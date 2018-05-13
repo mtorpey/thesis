@@ -144,14 +144,14 @@ described in Chapter \ref{chap:converting}.
   \label{alg:join-closure}
   \index{JoinClosure@\textsc{JoinClosure}}
   \begin{algorithmic}[1]
-    \Require $S$ a finite semigroup, $(\Gamma,\PO)$ a poset of congruences on $S$
+    \Require
+    $S$ a finite semigroup,
+    $(\Gamma,\PO)$ a congruence poset on $S$,
+    all congruences in $\Gamma$ have generating pairs
+    
     \Procedure{JoinClosure}{$(\Gamma,\PO)$}
-      \If{$|\Gamma| = 0$}
-        \State \Return $(\Gamma, \PO)$
-      \EndIf
-
-      \State $\Gamma_N := \Gamma$ \Comment{New congruences (to be processed)}
       \State $\Gamma_I := \Gamma$ \Comment{Initial congruences}
+      \State $\Gamma_N := \Gamma$ \Comment{New congruences (to be joined)}
       \While{$\Gamma_N \neq \varnothing$}
         \For{$\rho_N \in \Gamma_N$}
           \State $\Gamma_N \gets \Gamma_N \setminus \{\rho_N\}$
