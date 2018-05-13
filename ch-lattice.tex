@@ -25,12 +25,11 @@ output of the algorithm, along with the set of congruences.  This algorithm was
 used as a starting point for the work described in Chapter \ref{chap:motzkin}.
 
 In Section \ref{sec:lattice-algorithm} we give the algorithm in pseudo-code, and
-explain how it works.  Then in Section \ref{sec:lattice-complexity} we discuss
-its complexity.  In Section \ref{sec:lattice-implementation} we outline some
-practical concerns for implementing the algorithm, with particular reference to
-how it is implemented in the Semigroups package \cite{semigroups} for GAP
-\cite{gap}.  And finally, in Section \ref{sec:lattice-examples}, we present some
-examples of lattices which have been computed using this algorithm.
+explain how it works.  In Section \ref{sec:lattice-implementation} we outline
+some practical concerns for implementing the algorithm, with particular
+reference to how it is implemented in the Semigroups package \cite{semigroups}
+for GAP \cite{gap}.  And finally, in Section \ref{sec:lattice-examples}, we
+present some examples of lattices which have been computed using this algorithm.
 
 \section{The algorithm}
 \label{sec:lattice-algorithm}
@@ -273,9 +272,6 @@ pair $\big((x,y), (c,d)\big)$ to $P$ and we can skip the comparison of $(x,y)$
 to $(c,d)$ later in the algorithm.
 
 Joining to known children/parents
-
-\section{Complexity}
-\label{sec:lattice-complexity}
 
 \section{Implementation}
 \label{sec:lattice-implementation}
