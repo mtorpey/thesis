@@ -246,6 +246,12 @@ function \texttt{LatticeOfCongruences} in the Semigroups package for GAP
 \section{Improvements}
 \label{sec:lattice-improvements}
 
+The algorithms given in the last section, and displayed in Algorithms
+\ref{alg:princ-cong-poset} and \ref{alg:join-closure}, are described in a loose
+way to allow the reader to understand the core ideas as easily as possible.  We
+now describe various modifications to the algorithms which may reduce
+unnecessary work and therefore improve the speed of computer implementations.
+
 The \textsc{PrincCongPoset} algorithm as shown in Algorithm
 \ref{alg:princ-cong-poset} is fairly simple, but can be modified in a few ways
 to improve its performance.  Firstly, we should consider the source of
