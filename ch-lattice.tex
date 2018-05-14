@@ -277,7 +277,19 @@ is itself already known to be a subset of some congruence $(c,d)$, then we can
 immediately add the pair $\big((x,y), (c,d)\big)$ to $P$ and we can skip the
 comparison of $(x,y)$ to $(c,d)$ later in the algorithm.
 
-Joining to known children/parents
+If we consider the \textsc{JoinClosure} algorithm alone, we notice that no use
+is made of pairs already in $\PO$ when we take the join of two congruences.  For
+example, imagine that we have congruences $\rho_N \in \Gamma_N$ and
+$\rho_I \in \Gamma_I$, and we are taking their join
+($\rho := \rho_N \vee \rho_I$).  It may well be that $\rho_I \subseteq \rho_N$;
+if so, the new congruence $\rho$ will simply be equal to $\rho_N$, and since it
+is not a new congruence, considering it at all is a waste of time.  In this
+case, there must be a pair $(\rho_I, \rho_N) \in \PO$ which could easily be
+looked up, to avoid doing any work with this new pair.  Hence, a good
+time-saving modification would be to add a check before
+$\rho := \rho_N \vee \rho _I$, which searches $\PO$ for the pairs
+$(\rho_N, \rho_I)$ and $(\rho_I, \rho_N)$; if one is found, then we skip to the
+next $\rho_I$.
 
 \section{Implementation}
 \label{sec:lattice-implementation}
