@@ -353,3 +353,59 @@ congruence representation in question.
 
 \section{Examples}
 \label{sec:lattice-examples}
+
+In this section we will show a few examples of congruence lattices that were
+computed in the Semigroups package \cite{semigroups} using the above algorithms.
+The output of the algorithm is shown in Figures \ref{fig:g3-lattice},
+\ref{fig:pbr1-lattice} and \ref{fig:c2-wr-t3-lattice}, and the code used to
+produce each lattice is shown underneath it.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-lattice/gossip3.pdf}
+  \texttt{gap> Splash(DotString(LatticeOfCongruences(GossipMonoid(3))));}
+  \caption[Congruence lattice of the Gossip monoid $G_3$]
+  {Congruence lattice of the Gossip monoid $G_3$ \cite[\S2]{gossip}}
+  \label{fig:g3-lattice}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{pics/ch-lattice/pbr1.pdf}
+  \texttt{gap> Splash(DotString(LatticeOfCongruences(FullPBRMonoid(1))));}
+  \caption[Congruence lattice of the full PBR monoid $\PBR_1$]
+  {Congruence lattice of the full PBR monoid $\PBR_1$
+    \cite[\S2.1]{diagram_semigroups}}
+  \label{fig:pbr1-lattice}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[height=0.9\textheight]{pics/ch-lattice/c2-wr-t3.pdf}
+  \doublespacing
+  \vspace{-1.5cm}
+  \begin{align*}
+    &\texttt{gap> C2 := Group((1, 2));;} \\
+    &\texttt{gap> T3 := FullTransformationMonoid(3);;} \\
+    &\texttt{gap> W := WreathProduct(C2, T3);;} \\
+    &\texttt{gap> Splash(DotString(LatticeOfCongruences(W)));}
+  \end{align*}
+  \vspace{-1.0cm}
+  \caption[Congruence lattice of the Wreath product $C_2 \wr \T_3$]
+  {Congruence lattice of the Wreath product $C_2 \wr \T_3$
+    \cite[\S10.1]{wreath}}
+  \label{fig:c2-wr-t3-lattice}
+\end{figure}
+
+Since the algorithm described above was implemented in the Semigroups package
+\cite{semigroups}, it has been possible to compute the congruence lattice of any
+sufficiently small semigroup.  Part \ref{part:results} of this thesis examines
+the congruence lattices of a variety of semigroups, and attempts to explain
+their structure.  Many of these lattices were originally computed using
+\textsc{PrincCongPoset} and \textsc{JoinClosure}.  After examining these
+lattices, it was possible in some cases to classify the congruences of entire
+infinite families of semigroups, with proofs that were independent of any
+computer code (see, for example, Theorems \ref{thm:mn-congs} and
+\ref{thm:dkstar-congs}).  In others it was possible at least to produce
+conjectures about families of semigroups, and to prove them for small cases (see
+Conjectures \ref{conj:not-cong-full} and \ref{conj:cong-nearfull-7}).
