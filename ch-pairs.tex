@@ -85,7 +85,7 @@ improvements that can be made by parallelising.
 When it comes to computing information about a congruence from generating pairs,
 there are various different approaches which can be taken: in Sections
 \ref{sec:p}, \ref{sec:tc} and \ref{sec:kb}, we describe three possible
-algorithms: pair orbit enumeration, Todd--Coxeter, and Knuth--Bendix/Froidure-Pin.
+algorithms: pair orbit enumeration, Todd--Coxeter, and Knuth--Bendix/Froidure--Pin.
 Depending on what sort of semigroup is given as an input (see Section
 \ref{sec:program-outputs}), several
 or all of these might be appropriate.  However, depending on certain properties
@@ -190,7 +190,7 @@ If $S$ is a concrete semigroup (as described in Section
 \ref{sec:applicable-types-of-semigroup}) then it will almost certainly be
 specified by a generating set; in this case, it is quick to use these generators
 to calculate a list of elements in $S$, along with left and right Cayley graphs
-for $S$, using the Froidure-Pin algorithm (see Section \ref{sec:find-pres}).  If on the
+for $S$, using the Froidure--Pin algorithm (see Section \ref{sec:find-pres}).  If on the
 other hand $S$ is a finitely presented semigroup, then the elements will not be
 known in advance.  In either case, a finite presentation $\pres X R$ can be
 given---a technique for efficiently finding a presentation for a concrete
@@ -429,9 +429,9 @@ adapted from the simplified version of the algorithm shown in
 \end{algorithm}
 
 We can improve further on this method.  The \texttt{libsemigroups}
-implementation of this chapter's algorithm uses the Froidure-Pin algorithm
+implementation of this chapter's algorithm uses the Froidure--Pin algorithm
 \cite{froidure_pin}, a method which is essentially a more advanced variation of
-Algorithm \ref{alg:inbetween-presentation}.  Froidure-Pin takes a concrete
+Algorithm \ref{alg:inbetween-presentation}.  Froidure--Pin takes a concrete
 semigroup $S$ and a set of generators $X$, and returns several useful pieces of
 information about it:
 \begin{itemize}
@@ -449,7 +449,7 @@ presentation $\pres X R$ for the semigroup $S$.  The fact that $R$ is confluent
 and terminating may also be useful when it is used as part of a rewriting system
 in the Knuth--Bendix process later (see Section \ref{sec:kb}).
 
-A full description of the Froidure-Pin algorithm is outside the scope of this
+A full description of the Froidure--Pin algorithm is outside the scope of this
 thesis, but for more information about the algorithm and its implementation in
 \texttt{libsemigroups}, see \cite{froidure_pin_jonusas} and \cite{froidure_pin}.
 
@@ -1291,7 +1291,7 @@ information which we can use to help us with our calculation.
 
 If we have such a semigroup $S$, then we can find a right Cayley graph $\Gamma$
 for $S$ with respect to its generators $X$: if $S$ is concrete, then we can find
-this graph using the Froidure-Pin algorithm (see Section \ref{sec:find-pres});
+this graph using the Froidure--Pin algorithm (see Section \ref{sec:find-pres});
 or if Todd--Coxeter has been run on $S$, then the resulting table contains all
 the information required for a right Cayley graph.  Either way, this graph tells us, for
 each element $s \in S$ and each generator $x \in X$, the value of $s \cdot x$.
@@ -2169,7 +2169,7 @@ project, these are areas which could bear investigation.
 The pre-filled Todd--Coxeter algorithm, as described in Section
 \ref{sec:tc-prefill}, works by starting the procedure with a right Cayley graph
 for $S$.  In \texttt{libsemigroups} and in the Semigroups package for GAP, a
-right Cayley graph for a semigroup is found using the Froidure-Pin method, which
+right Cayley graph for a semigroup is found using the Froidure--Pin method, which
 also returns the corresponding left Cayley graph.  Hence, we may also wish to
 find a way to use the left Cayley graph in the pre-filling process.
 
