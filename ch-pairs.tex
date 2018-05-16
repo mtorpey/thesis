@@ -85,7 +85,7 @@ improvements that can be made by parallelising.
 When it comes to computing information about a congruence from generating pairs,
 there are various different approaches which can be taken: in Sections
 \ref{sec:p}, \ref{sec:tc} and \ref{sec:kb}, we describe three possible
-algorithms: pair orbit enumeration, Todd--Coxeter, and Knuth-Bendix/Froidure-Pin.
+algorithms: pair orbit enumeration, Todd--Coxeter, and Knuth--Bendix/Froidure-Pin.
 Depending on what sort of semigroup is given as an input (see Section
 \ref{sec:program-outputs}), several
 or all of these might be appropriate.  However, depending on certain properties
@@ -283,7 +283,7 @@ congruence when requested:
 Recall from Section \ref{sec:program-inputs} that a concrete semigroup $S$ is
 not specified by a presentation, but by a set of generators whose multiplication
 and comparison are decidable.  In order to use the Todd--Coxeter and
-Knuth-Bendix algorithms, a finite presentation is required, and so a presentation
+Knuth--Bendix algorithms, a finite presentation is required, and so a presentation
 $\pres X R$ must be calculated for $S$.  For the purposes of the algorithm
 described in this chapter, it is not important how this presentation is
 obtained.  However, for the sake of completeness, we will briefly discuss how a
@@ -369,7 +369,7 @@ Consider the following example.
 This approach is simple to describe, but of course results in a large, unwieldy
 presentation which will be difficult to use in computations: it will have $|S|$
 generators and $|S|^2$ relations, which is likely to be far more than necessary,
-and will therefore slow down the Todd--Coxeter and Knuth-Bendix algorithms badly.
+and will therefore slow down the Todd--Coxeter and Knuth--Bendix algorithms badly.
 If $S$ is $\T_5$, the full transformation semigroup on $5$ points, it has only
 $3125$ elements, but the presentation produced would have $3125$ generators and
 $9,765,625$ relations, an absurdly large representation for a semigroup which
@@ -447,7 +447,7 @@ table (see Section \ref{sec:tc-prefill}).  But more importantly, the rewriting
 system $R$ is a set of pairs which can be used as the relations in a finite
 presentation $\pres X R$ for the semigroup $S$.  The fact that $R$ is confluent
 and terminating may also be useful when it is used as part of a rewriting system
-in the Knuth-Bendix process later (see Section \ref{sec:kb}).
+in the Knuth--Bendix process later (see Section \ref{sec:kb}).
 
 A full description of the Froidure-Pin algorithm is outside the scope of this
 thesis, but for more information about the algorithm and its implementation in
@@ -580,7 +580,7 @@ creation.  However, this approach is not used here, since adding the elements on
 they are found opens up the possibility of applying this method to infinite
 semigroups.  Our implementation in \texttt{libsemigroups} \cite{libsemigroups}
 includes such a possibility, by taking a semigroup presentation $\pres X R$ and
-using Knuth-Bendix (see Section \ref{sec:kb}) as a way of comparing the semigroup's
+using Knuth--Bendix (see Section \ref{sec:kb}) as a way of comparing the semigroup's
 elements.  The pair orbit enumeration procedure, as described above, can then be
 used, and will complete in finite time if and only if the number of elements in
 non-trivial congruence classes is finite.  This was implemented to answer
@@ -1511,7 +1511,7 @@ Lemma \ref{lem:newman} gives us an idea of how to check computationally whether
 a system is confluent: rather than checking every possible transitive rewriting
 of a word (its neighbours under $\tostar$), it suffices to check a word's
 immediate children (its neighbours under $\to$).  This lemma will help us later,
-with Theorem \ref{thm:knuth-bendix} and the Knuth-Bendix procedure.
+with Theorem \ref{thm:knuth-bendix} and the Knuth--Bendix procedure.
 
 We can now see an application of rewriting systems to the word problem in a
 finitely presented monoid.  Indeed, given an alphabet $X$ and a rewriting system
@@ -1523,7 +1523,7 @@ relation $\lrstar_\rws$, then the word problem can be solved
 simply by rewriting two words using $\rws$ until their irreducible
 representatives are found, and then comparing them.  The only difficulty is in
 finding a rewriting system which is confluent and terminating---but we can find
-one, by starting with the set of relations $R$, and then using the Knuth-Bendix
+one, by starting with the set of relations $R$, and then using the Knuth--Bendix
 completion algorithm.
 
 Let $M$ be a monoid with finite presentation $\pres X R$.
@@ -1545,9 +1545,9 @@ Once each relation from $R$ is added---possibly reordered---to $\rws$, we
 will have a terminating rewriting system such that
 $X^* / \lrstar_\rws\ = \pres X R$, as required.  It only remains to add
 rules to $\rws$ to make it confluent, without altering the relation
-$\lrstar$.  This is where we use the Knuth-Bendix completion process.
+$\lrstar$.  This is where we use the Knuth--Bendix completion process.
 
-\index{Knuth-Bendix}
+\index{Knuth--Bendix}
 First described by Knuth and Bendix in \cite{knuth_bendix}, the completion
 process adds rules to $\rws$ based on finding and resolving
 \textit{critical pairs}.  Roughly speaking, a critical pair is a pair of rules $(u_1, v_1)$ and
@@ -1575,7 +1575,7 @@ is as follows.
 \end{definition}
 
 The importance of critical pairs is shown in the following theorem, which is key
-to the Knuth-Bendix completion process.
+to the Knuth--Bendix completion process.
 
 \begin{theorem}[Lemma 12.17 in \cite{cgt}]
   \label{thm:knuth-bendix}
@@ -1584,7 +1584,7 @@ to the Knuth-Bendix completion process.
   $u \tostar w$ and $v \tostar w$.
 \end{theorem}
 
-Now we have all the concepts required to describe the Knuth-Bendix completion
+Now we have all the concepts required to describe the Knuth--Bendix completion
 process.  The process searches through rules in $\rws$ looking for critical
 pairs; when a critical pair $(u, v)$ is found which does not satisfy the
 condition stated in Theorem \ref{thm:knuth-bendix}, $(u, v)$ or $(v, u)$ is
@@ -1596,14 +1596,14 @@ chosen ordering on $X^*$ to make sure the system is terminating.
 
 Though, as mentioned in Section \ref{sec:computation-decidability}, the word problem for a
 semigroup presentation is undecidable in general, we do have a result about the
-Knuth-Bendix process which ensures completion in some cases.
+Knuth--Bendix process which ensures completion in some cases.
 
 \begin{theorem}
   Let $S$ be a semigroup with a finite presentation $\pres X R$, and let $\rws$
   be the rewriting system produced from $R$ by applying a shortlex ordering to
   all pairs, as described above.
 
-  If $S$ is finite, then the Knuth-Bendix process applied to $\rws$ will
+  If $S$ is finite, then the Knuth--Bendix process applied to $\rws$ will
   eventually halt with a finite, confluent and terminating set of rules.
 
   \begin{proof}
@@ -1611,7 +1611,7 @@ Knuth-Bendix process which ensures completion in some cases.
     $v$ describe the same element of $S$.  In particular, if $S$ is finite, then
     the $\lrstar_\rws$ relation will have finitely many classes---one for each
     element of $S$.  Using \cite[Corollary 12.21]{cgt}, we have that
-    Knuth-Bendix will halt with a finite, confluent and terminating set of
+    Knuth--Bendix will halt with a finite, confluent and terminating set of
     rules, as required.
   \end{proof}
 \end{theorem}
@@ -1627,7 +1627,7 @@ Definition \ref{def:critical-pair}.
 
   If there exists some $w \in X^*$ such that $cb \tostar w$ and $aa \tostar w$,
   then confluence is not violated; otherwise, we must add a new rule to $\rws$
-  to make sure confluence holds.  The Knuth-Bendix process adds the rule
+  to make sure confluence holds.  The Knuth--Bendix process adds the rule
   $(cb, aa)$, since $aa < cb$ in our shortlex order.  Now Theorem
   \ref{thm:knuth-bendix} is satisfied.
 \end{example}
@@ -1644,11 +1644,11 @@ Definition \ref{def:critical-pair}.
   confluence can be guaranteed.
 \end{example}
 
-The Knuth-Bendix completion process consists of searching for these critical
+The Knuth--Bendix completion process consists of searching for these critical
 pairs and adding rules where necessary.  For a more detailed description of
 precisely how these tasks are done, see \cite[\S 2.6]{sims}.
 
-A large part of the computational work involved in the Knuth-Bendix process
+A large part of the computational work involved in the Knuth--Bendix process
 consists of rewriting words using rules from $\rws$.  If the rewriting system is
 confluent and terminating, then the rules can be applied in any order and an
 irreducible word will eventually be reached.  However, the order in which the
@@ -1695,8 +1695,8 @@ does.  However, this process has one clear advantage over Todd--Coxeter, which i
 that it may complete even when the monoid $\pres X R$ is infinite, so long as
 the set of rules in the rewriting system is finite
 (see Example \ref{ex:bicyclic}).  This is a strong argument
-in favour of trying the Knuth-Bendix process along with other methods.  However,
-the Knuth-Bendix process cannot be used for left or right congruences, an area
+in favour of trying the Knuth--Bendix process along with other methods.  However,
+the Knuth--Bendix process cannot be used for left or right congruences, an area
 where Todd--Coxeter has a clear advantage.
 
 We give an example of a rewriting system which solves the word problem for an
@@ -1774,11 +1774,11 @@ classes, or it might be that a coincidence between their rows will be found in
 the future.  An answer of ``false'' can therefore not be returned until
 Todd--Coxeter is run to completion.
 
-A similar condition is true for both Knuth-Bendix and pair orbit enumeration.
-Imagine we have a rewriting system $\rws$ halfway through a run of Knuth-Bendix;
+A similar condition is true for both Knuth--Bendix and pair orbit enumeration.
+Imagine we have a rewriting system $\rws$ halfway through a run of Knuth--Bendix;
 if two words $u$ and $v$ rewrite to the same word under $\rws$, then we can
 return ``true'' immediately, but if they do not, then it might be that
-Knuth-Bendix will add rules to $\rws$ later which will cause $u$ and $v$ to
+Knuth--Bendix will add rules to $\rws$ later which will cause $u$ and $v$ to
 rewrite to the same word.  Pair orbit enumeration has this condition even more
 obviously: more and more pairs are found, and the pair we are looking for can
 turn up at any time.
@@ -1886,11 +1886,11 @@ use of a variety of algorithms.
   classes.  A test asks whether $(ab^{20}, a^2b^{20})$ is a pair in $\rho$.  The
   Todd--Coxeter methods would never complete, since they require a separate row
   for each congruence class and therefore an infinite amount of memory.
-  However, the Knuth-Bendix method is able to answer the question very quickly,
+  However, the Knuth--Bendix method is able to answer the question very quickly,
   since it is not restricted to finite objects.
 \end{example}
 
-% A specific utility of Knuth-Bendix with pair orbit enumeration (\texttt{kbp}) is
+% A specific utility of Knuth--Bendix with pair orbit enumeration (\texttt{kbp}) is
 % the ability to return a congruence's \textit{non-trivial congruence classes},
 % which in some cases cannot be determined by any of the other algorithms.
 % Consider the following example.
@@ -1965,7 +1965,7 @@ were compared to one another.  The algorithms used were:
 \begin{itemize}
 \item Todd--Coxeter (\texttt{tc}),
 \item Todd--Coxeter with pre-filled table (\texttt{tc\_prefill}),
-\item Knuth-Bendix (\texttt{kb}),
+\item Knuth--Bendix (\texttt{kb}),
 \item pair orbit enumeration (\texttt{p}),
 \item the parallel method described in this chapter (\texttt{default}),
 \item and the method implemented in the library of GAP (\texttt{GAP}).
@@ -1975,10 +1975,10 @@ As can be seen in Figure \ref{fig:bench-trans-1p-times}, the pre-filled Todd--Co
 method is the most likely to complete fastest, with regular Todd--Coxeter winning
 in a sizeable minority of cases.  This backs up the anecdotal observations group
 theorists have made \cite{havascomparing} that Todd--Coxeter tends to perform
-faster than Knuth-Bendix.  We may also observe that pair orbit enumeration
+faster than Knuth--Bendix.  We may also observe that pair orbit enumeration
 sometimes completes almost instantly, which makes some sense when we consider
 how little work the algorithm does when there are very few non-reflexive pairs
-in the congruence.  The Knuth-Bendix procedure lags behind badly on these
+in the congruence.  The Knuth--Bendix procedure lags behind badly on these
 examples, taking even longer than the built-in methods in GAP.  These results
 are a justification for the decision to run only the Todd--Coxeter algorithms in
 the case of a finite, concrete semigroup.
@@ -2145,16 +2145,16 @@ than it was for concrete semigroups, taking as much as $300,000$ times as long
 as \texttt{libsemigroups} to complete.  Due to the excessive times GAP took to
 complete some tests, the size of semigroups was restricted to $1000$.  In these
 tests, unlike for concrete semigroups,
-Knuth-Bendix tended to outperform GAP, but in
+Knuth--Bendix tended to outperform GAP, but in
 general Todd--Coxeter methods were still faster.  It should be noted, however,
 that these were all congruences that were guaranteed in advance to have a finite
 number of classes.  An arbitrary congruence on a finitely presented semigroup
 may have an infinite number of classes, and there are many examples in which
-Knuth-Bendix can return an answer but Todd--Coxeter cannot (see Example
+Knuth--Bendix can return an answer but Todd--Coxeter cannot (see Example
 \ref{ex:good-kbfp}).
 
 \textit{kbmag} generally performed worse in tests than Todd--Coxeter, but was
-comparable to our implementation of Knuth-Bendix (TODO: our KB will probably
+comparable to our implementation of Knuth--Bendix (TODO: our KB will probably
 improve a lot soon).  It generally took around $10$ times as long as the
 complete parallel method (\texttt{default} on the graphs).
 
@@ -2192,14 +2192,14 @@ $v$.  With such different left and right Cayley graphs, it seems likely that one
 piece of information would be much more helpful than the other in calculating
 congruences on the semigroup.
 
-\subsection{Interaction between Knuth-Bendix and Todd--Coxeter}
+\subsection{Interaction between Knuth--Bendix and Todd--Coxeter}
 \label{sec:linking-kb-tc}
-The Knuth-Bendix and Todd--Coxeter algorithms, as described in this chapter, do
-not interact with each other in any way.  The Knuth-Bendix process runs in one
+The Knuth--Bendix and Todd--Coxeter algorithms, as described in this chapter, do
+not interact with each other in any way.  The Knuth--Bendix process runs in one
 thread, and the Todd--Coxeter process runs in another.  However, information from
 one could perhaps be shared with the other.
 
-The main objective of Knuth-Bendix is the addition of new rewriting rules to a
+The main objective of Knuth--Bendix is the addition of new rewriting rules to a
 rewriting system $\rws$ to satisfy the condition of confluence: if a critical
 pair is found, and a new rule $u \to v$ is added to $\rws$, then this gives us a
 pair of words $(u,v)$ which represents a pair of congruent elements in the congruence we
@@ -2209,7 +2209,7 @@ at its next convenience would run \textsc{Coinc(Trace($1, u$), Trace($1, v$))}
 to identify the two corresponding rows in the table.
 
 Conversely, Todd--Coxeter may find information which could be used by
-Knuth-Bendix.  Firstly, it is trivial to record, for each row $i$ of the table,
+Knuth--Bendix.  Firstly, it is trivial to record, for each row $i$ of the table,
 the word $w_i$ which was first used to describe it: row $1$ is identified with
 the empty word ($w_1 := \varepsilon$), and if a row is created using
 \textsc{Add($i, x$)} then it is assigned the word $w_ix$.  For each row $i$, we
@@ -2219,7 +2219,7 @@ act as a representative for its congruence class.
 If, in a normal run of Todd--Coxeter, it is found that two rows $i$ and $j$
 represent the same class and must be combined, then this immediately gives a
 pair of words $(w_i,w_j)$ which represent the same congruence class.  This pair
-of words can be sent to a parallel instance of Knuth-Bendix, which can add it as
+of words can be sent to a parallel instance of Knuth--Bendix, which can add it as
 a rule $w_i \to w_j$ (or $w_j \to w_i$, as dictated by the chosen ordering).
 
 It may be that this sharing of knowledge between the two algorithms would
@@ -2250,14 +2250,14 @@ The pre-filling of Todd--Coxeter tables is one use of the concrete elements that
 we have already described and implemented, but they may be many more which would
 be effective.
 
-\subsection{Left and right congruences with Knuth-Bendix}
+\subsection{Left and right congruences with Knuth--Bendix}
 \label{sec:kb-l-r}
 The parallel method in this chapter, and its implementation in
 \texttt{libsemigroups}, include support for left congruences and right
 congruences, as well as the more important two-sided congruences.  Currently,
 Todd--Coxeter and pair enumeration are the only methods which support left and
-right congruences, while Knuth-Bendix is only applied in the two-sided case.
-However, there does exist a variation of the Knuth-Bendix procedure which could
+right congruences, while Knuth--Bendix is only applied in the two-sided case.
+However, there does exist a variation of the Knuth--Bendix procedure which could
 compute left and right congruences in some limited cases, namely when the
 semigroup in question is the free monoid $X^*$ for some set $X$.  The procedure
 involves appending an extra generator $\#$ and adding it as a prefix to all the
