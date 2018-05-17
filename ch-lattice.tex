@@ -9,12 +9,27 @@ semigroup.
 
 In group theory, we study normal subgroups instead of studying congruences
 directly (see Section \ref{sec:normal-subgroups}).  Several algorithms exist for
-computing a given group's normal subgroups, and therefore its congruences---see,
-for example, \cite{hulpke_1998} for one of the methods used in GAP.  However,
-since in the general case a semigroup's congruences are much less regular than
-in the group case (for example, congruence classes may have different sizes) it
-is certainly more computationally difficult to compute a complete list of
-congruences for a given semigroup.
+computing a given group's normal subgroups, and therefore its congruences.  We
+will briefly outline the approach used in GAP, referring the reader to
+\cite{hulpke_1998} for a fuller explanation.  To compute the normal subgroups of
+a group $G$, we first compute a \textit{chief series} for $G$---that is, a
+series of $k$ normal subgroups of $G$,
+\index{chief series}
+$$1 = N_k
+\triangleleft N_{k-1}
+\triangleleft \ldots
+\triangleleft N_1
+\triangleleft N_0 = G,$$
+such that there exists no normal subgroup $A \trianglelefteq G$ with
+$N_i \triangleleft A \triangleleft N_{i-1}$ for any $i \in \{1, \ldots, k\}$.
+Once such a chief series has been computed, the normal subgroups of $G / N_i$
+are computed inductively along the series: $G / N_0$ is trivial, and at each
+subsequent step we compute the normal subgroups of $G / N_i$ using the normal
+subgroups of $G / N_{i-1}$, until on the last step we have the normal subgroups
+of $G / N_k = G$.  Unfortunately, this method is not applicable to arbitrary
+semigroups, since semigroup theory has no concept equivalent to that of a chief
+series to which we might apply the algorithm.  Hence, we must seek an
+alternative approach to apply to semigroups more generally.
 
 In this chapter, we present a method for calculating all the congruences of a
 finite semigroup.  This algorithm takes advantage of the fact that congruences
