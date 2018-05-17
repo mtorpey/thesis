@@ -92,21 +92,23 @@ is discussed in more detail below.
       \Comment{Set of congruences}
       \State $\PO := \varnothing$
       \Comment{Partial order ($\subseteq$) on congruences}
-      \For{$(x,y) \in S \times S$}
+      \For{$(x,y) \in S \times S$} \label{line:for-x-y}
         \State $P := \left\{\big((x,y)^\sharp, (x,y)^\sharp\big)\right\}$
-        \Comment{Possible new pairs for $\PO$}
+        \Comment{$(x,y)^\sharp \subseteq (x,y)^\sharp$}
         \For{$(a,b)^\sharp \in \Gamma$}
           \If{$(x,y) \in (a,b)^\sharp$}
             \If{$(a,b) \in (x,y)^\sharp$}
-              \State Skip to the next pair $(x,y)$
+              \State \Goto line \ref{line:for-x-y} and next pair $(x,y)$
               \Comment{$(a,b)^\sharp = (x,y)^\sharp$}
             \Else
               \State $P \gets P \cup
                 \left\{\big((x,y)^\sharp, (a,b)^\sharp\big)\right\}$
+                \Comment{$(x,y)^\sharp \subseteq (a,b)^\sharp$}
             \EndIf
           \ElsIf{$(a,b) \in (x,y)^\sharp$}
               \State $P \gets P \cup
                 \left\{\big((a,b)^\sharp, (x,y)^\sharp\big)\right\}$
+                \Comment{$(a,b)^\sharp \subseteq (x,y)^\sharp$}
           \EndIf
         \EndFor
         \State $\Gamma \gets \Gamma \cup \{(x,y)^\sharp\}$
