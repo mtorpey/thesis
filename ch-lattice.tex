@@ -292,28 +292,33 @@ function \texttt{LatticeOfCongruences} in the Semigroups package for GAP
 \label{sec:lattice-implementation}
 
 So far, we have given a theoretical description of the \textsc{PrincCongPoset}
-and \textsc{JoinClosure} algorithms.  As mentioned above, they are implemented
-in the Semigroups package \cite{semigroups} for GAP \cite{gap}, including
-several of the improvements described in Section \ref{sec:lattice-improvements}.
-In implementing these algorithms, we have to take into account various technical
-details which we might see as unimportant from a theoretical point of view.
-Some of these details are described below.
+and \textsc{JoinClosure} algorithms.  As mentioned above, these correspond to
+functions implemented in the Semigroups package \cite{semigroups} for GAP
+\cite{gap}.  \textsc{PrincCongPoset} is implemented approximately as described
+above, while \textsc{JoinClosure} currently uses a rather more rudimentary
+method than the Froidure--Pin method, something closer to the na\"ive method
+described earlier.  In implementing these algorithms, we have to take into
+account various technical details which we might see as unimportant from a
+theoretical point of view.  Some of these details are described below.
 
-Firstly, let us consider how the partial order $\PO$ is stored on a computer.  A
-na\"ive approach would be simply to store all the pairs that are found in an
-array.  This approach has the advantage of simplicity, and the advantage that
-the computational object is as close as possible to the mathematical object it
-describes.  However, it has certain disadvantages that render it unattractive
-from a computational point of view---namely, that it is difficult to search for
-a given pair, and that it is difficult to find all the super-relations and
-sub-relations of a given congruence.  Consider looking up whether a given pair
-$(\rho,\sigma)$ is in an array of pairs: if the array is unsorted, this has
-complexity $O(n)$; even if the array is sorted, it has complexity $O(\log n)$.
-This complexity is similar to the problem, for a given $\rho$, of retrieving a
-list of all elements $\sigma$ such that $(\rho, \sigma)$ is in the array.
+Firstly, let us consider how the partial order $\PO$ is stored on a computer.
+This problem has certainly been considered before, and the solution we give here
+is not a new one, but is included for the interest and aid of anyone attempting
+to implement the algorithms described.  A na\"ive approach would be simply to
+store all the pairs that are found in an array.  This approach has the advantage
+of simplicity, and the advantage that the computational object is as close as
+possible to the mathematical object it describes.  However, it has certain
+disadvantages that render it unattractive from a computational point of
+view---namely, that it is difficult to search for a given pair, and that it is
+difficult to find all the super-relations and sub-relations of a given
+congruence.  Consider looking up whether a given pair $(\rho,\sigma)$ is in an
+array of pairs: if the array is unsorted, this has complexity $O(n)$; even if
+the array is sorted, it has complexity $O(\log n)$.  This complexity is similar
+to the problem, for a given $\rho$, of retrieving a list of all elements
+$\sigma$ such that $(\rho, \sigma)$ is in the array.
 
-A better representation than a list of pairs is that of \textit{parent lists}
-and \textit{child lists}.  This method requires $\Gamma$ to be stored with some
+A better representation than a list of pairs is that of \textit{adjacency lists}
+\cite{adj_list}.  This method requires $\Gamma$ to be stored with some
 order (which may be arbitrary).  Instead of an array of pairs for $\PO$, we have
 two lists of lists, \texttt{parents} and \texttt{children}, which store,
 respectively, a list of indices for all the congruences above each congruence,
