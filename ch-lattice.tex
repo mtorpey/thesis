@@ -404,9 +404,54 @@ produce each lattice is shown underneath it.
   \label{fig:c2-wr-t3-lattice}
 \end{figure}
 
+There are two main factors which determine how long
+\texttt{LatticeOfCongruences} takes to compute the lattice: the size of the
+semigroup $S$, and the number of congruences in the lattice $\Gamma$ itself.
+Informal analysis shows that these two values do not necessarily go hand in
+hand.  For instance, the monoids considered later in Section
+\ref{sec:motzkin-other} show a variety of numbers of congruences which do not
+always correspond to the sizes of the semigroup.  Even Figures
+\ref{fig:pbr1-lattice} and \ref{fig:c2-wr-t3-lattice} demonstrate between them
+that an increase in semigroup size need not indicate an increase in number of
+congruences.
+
+In one test, calculating the lattice of congruences of the wreath product
+$C_2 \wr \T_3$ (Figure \ref{fig:c2-wr-t3-lattice}) took $3140$ ms, of which
+almost all the time ($3019$ ms) was consumed by \textsc{PrincCongPoset}.  This
+is because the semigroup is relatively large ($216$ elements), and therefore
+iterating through all relevant pairs in $S \times S$ takes a long time; whereas
+the number of congruences is relatively small (only $47$) meaning that the
+taking of joins does not take long.  A contrasting example is the full PBR
+monoid $\PBR_1$ (Figure \ref{fig:pbr1-lattice}): this took $5445$ ms in total,
+of which almost all ($5422$ ms) was spent in \textsc{JoinClosure}.  This is
+because the semigroup is relatively small (only $16$ elements), so iterating
+through $S \times S$ is quick; but it has many congruences ($167$) meaning that
+it takes a long time to compute all the joins.
+
+Since it is unknown in advance how many congruences a semigroup has, it is
+difficult to predict the feasibility of computing the lattice of a given
+semigroup, even if its size is known.  Certainly all the semigroups up to size
+$7$ have had their congruence lattices computed using the \texttt{smallsemi}
+library \cite{smallsemi}, and tests on randomly generated transformation
+semigroups can usually calculate the lattice of a semigroup of size up to 400 in
+less than a minute.  However, we can choose very small examples in which
+\textsc{JoinClosure} runs for an unreasonable amount of time.  Computing the
+lattice for the zero semigroup $\Z_{10}$ with only $10$ elements does not
+complete within an hour, though computing the principal congruences takes
+only $16$ milliseconds.
+
+In both parts of the algorithm, most of the work consists of comparing
+congruences to each other.  These comparisons can be done relatively quickly by
+the efficient C++ code in \texttt{libsemigroups} for generating pairs (see
+Chapter \ref{chap:pairs}), but minimising the number of comparisons that need to
+be made is nevertheless helpful for the algorithm's overall runtime.  Hence it
+would be desirable, as future work, to improve the \textsc{PrincCongPoset}
+algorithm somehow to avoid unnecessary comparisons, as well as to implement the
+Froidure--Pin algorithm for \textsc{JoinClosure} in the Semigroups package.
+
 Since the algorithm described above was implemented in the Semigroups package
-\cite{semigroups}, it has been possible to compute the congruence lattice of any
-sufficiently small semigroup.  Part \ref{part:results} of this thesis examines
+\cite{semigroups}, it has been possible to compute the congruence lattice of
+many semigroups.  Part \ref{part:results} of this thesis examines
 the congruence lattices of a variety of semigroups, and attempts to explain
 their structure.  Many of these lattices were originally computed using
 \textsc{PrincCongPoset} and \textsc{JoinClosure}.  After examining these
