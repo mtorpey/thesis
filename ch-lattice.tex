@@ -16,12 +16,12 @@ a group $G$, we first compute a \textit{chief series} for $G$---that is, a
 series of $k$ normal subgroups of $G$,
 \index{chief series}
 $$1 = N_k
-\triangleleft N_{k-1}
-\triangleleft \ldots
-\triangleleft N_1
-\triangleleft N_0 = G,$$
+\subset N_{k-1}
+\subset \cdots
+\subset N_1
+\subset N_0 = G,$$
 such that there exists no normal subgroup $A \trianglelefteq G$ with
-$N_i \triangleleft A \triangleleft N_{i-1}$ for any $i \in \{1, \ldots, k\}$.
+$N_i \subset A \subset N_{i-1}$ for any $i \in \{1, \ldots, k\}$.
 Once such a chief series has been computed, the normal subgroups of $G / N_i$
 are computed inductively along the series: $G / N_0$ is trivial, and at each
 subsequent step we compute the normal subgroups of $G / N_i$ using the normal
