@@ -5,16 +5,46 @@ We can learn a lot about a semigroup's structure by examining its congruences:
 they describe a semigroup's homomorphic images, and quotient semigroups, as
 explained in Section \ref{sec:intro-congs}.  For this reason, it is of great
 interest to be able to produce a complete list of congruences on a given
-semigroup.
+semigroup $S$.
+
+It is natural, when considering a problem in semigroup theory, to consider the
+approach we would take in the group case, and to see whether we can apply any of
+the ideas in this approach to semigroups generally.  Hence, we will start by
+considering how to compute the congruence lattice of a group $G$.
 
 In group theory, we study normal subgroups instead of studying congruences
-directly (see Section \ref{sec:normal-subgroups}).  Several algorithms exist for
-computing a given group's normal subgroups, and therefore its congruences.  We
-will briefly outline the approach used in GAP, referring the reader to
-\cite{hulpke_1998} for a fuller explanation.  To compute the normal subgroups of
-a group $G$, we first compute a \textit{chief series} for $G$---that is, a
-series of $k$ normal subgroups of $G$,
-\index{chief series}
+directly.  As described in Section \ref{sec:normal-subgroups}, a normal subgroup
+$N$ of a group $G$ has cosets equal to the classes of a congruence $\rho_N$, and
+we know that all congruences on $G$ arise in this way.  Furthermore, containment
+of normal subgroups corresponds to containment of congruences
+(i.e.~$\rho_M \subseteq \rho_N \iff M \leq N$) so computing a group's congruence
+lattice is equivalent to computing the lattice of its normal subgroups.
+
+Several algorithms exist for computing a group's normal subgroups.  We will
+first describe a fairly na\"ive way to compute the normal subgroups, and then go
+on to outline the approach used in GAP.  First, recall that a subgroup
+$H \leq G$ is normal if and only if $g^{-1}hg \in H$ for all $h \in H$ and
+$g \in G$.
+
+\index{conjugacy class} A na\"ive way to compute the normal subgroups of a group
+$G$ is by using its \textit{conjugacy classes}---that is, the sets
+$C_x = \{g^{-1}xg : g \in G\}$ for all $x \in G$.  We can see, from the
+definition of a normal subgroup given above, that a subgroup of $G$ is normal if
+and only if it is a union of conjugacy classes.  Hence, we can compute the
+conjugacy classes of $G$, and then take normal closures of their unions.  All
+normal subgroups can be found in this way.  This approach is guaranteed to
+complete for a finite group, but it is not particularly efficient: firstly, the
+conjugacy classes of $G$ have to be computed, and then the taking of unions and
+normal closures are both likely to require a lot of work.  Just computing the
+conjugacy classes may take up as much run-time as the rest of the algorithm, as
+shown in \cite[Table 1]{hulpke_1998}.
+
+Next we mention a more sophisticated alternative, as used in GAP.  The process
+is rather technical, and is not the main focus of this thesis, so we will only
+give an outline of the method here, referring the reader to \cite{hulpke_1998}
+for a fuller explanation.  To compute the normal subgroups of a group $G$, we
+first compute a \textit{chief series} for $G$---that is, a series of $k$ normal
+subgroups of $G$, \index{chief series}
 $$1 = N_k
 \subset N_{k-1}
 \subset \cdots
@@ -26,7 +56,16 @@ Once such a chief series has been computed, the normal subgroups of $G / N_i$
 are computed inductively along the series: $G / N_0$ is trivial, and at each
 subsequent step we compute the normal subgroups of $G / N_i$ using the normal
 subgroups of $G / N_{i-1}$, until on the last step we have the normal subgroups
-of $G / N_k = G$.  Unfortunately, this method is not applicable to arbitrary
+of $G / N_k = G$.  This algorithm is a definite improvement on the na\"ive
+approach described above; indeed, tests summarised in \cite[Table
+1]{hulpke_1998} show that it is generally quicker to run this whole algorithm
+than to compute even just the conjugacy classes, the first step of the na\"ive
+method.  This quick run-time includes the time taken to find a chief series of
+$G$, methods for which can be found in \cite{chief_series}.
+
+% TODO: neither of these applies to semigroups
+
+Unfortunately, this method is not applicable to arbitrary
 semigroups, since semigroup theory has no concept equivalent to that of a chief
 series to which we might apply the algorithm.  Hence, we must seek an
 alternative approach to apply to semigroups more generally.
