@@ -5,7 +5,7 @@ We can learn a lot about a semigroup's structure by examining its congruences:
 they describe a semigroup's homomorphic images, and quotient semigroups, as
 explained in Section \ref{sec:intro-congs}.  For this reason, it is of great
 interest to be able to produce a complete list of congruences on a given
-semigroup $S$.
+semigroup $S$.  In this chapter, we present an algorithm to do this.
 
 It is natural, when considering a problem in semigroup theory, to consider the
 approach we would take in the group case, and to see whether we can apply any of
@@ -63,12 +63,37 @@ than to compute even just the conjugacy classes, the first step of the na\"ive
 method.  This quick run-time includes the time taken to find a chief series of
 $G$, methods for which can be found in \cite{chief_series}.
 
-% TODO: neither of these applies to semigroups
-
-Unfortunately, this method is not applicable to arbitrary
-semigroups, since semigroup theory has no concept equivalent to that of a chief
-series to which we might apply the algorithm.  Hence, we must seek an
-alternative approach to apply to semigroups more generally.
+In examining these group algorithms, we hope to find ideas that can be extended
+to apply to semigroups generally.  However, inspecting the two approaches
+described reveals nothing obvious which we can use.  Firstly, we consider the
+na\"ive algorithm: the whole method is based on a normal subgroup being a union
+of conjugacy classes.  Since a semigroup does not generally have inverses, the
+definition of conjugacy given above is not well-defined on a generic semigroup,
+meaning that a similar statement cannot be made that links the notion of
+conjugacy to the classes of a congruence.  Several attempts have been made to
+extend the idea of conjugacy to semigroups in general
+\cite{conjugation_in_semigroups} but none of these has an obvious link to
+congruences.  Hence, the first algorithm described cannot easily be extended to
+semigroup theory.  Considering the second algorithm, there is also no concept of
+a chief series in semigroup theory.  A related idea would be a chain of $k$
+congruences on $S$,
+$$\Delta_S = \rho_k
+\subset \rho_{k-1}
+\subset \cdots
+\subset \rho_1
+\subset \rho_0 = \nabla_S,$$
+such that there exists no congruence $\rho$ on $G$ with
+$\rho_i \subset \rho \subset \rho_{i-1}$ for any $i \in \{1, \ldots, k\}$.
+However, it is not clear how such a series could be computed without doing as
+much work as it would take to compute all the congruences on $S$ anyway.
+Furthermore, it is not clear how the congruences on $S / \rho_i$ could be
+computed from the congruences on $S / \rho_{i-1}$, the obvious analogue of the
+inductive step described above; the bulk of \cite{hulpke_1998} describes how
+this step can be achieved in various group theory cases, applying such concepts
+as group center, conjugacy, and splitting of a normal subgroup into simple
+groups, all concepts which are very different for generic semigroups.  Hence the
+second algorithm also cannot easily be converted.  We instead seek a new
+algorithm, based on ideas from semigroup theory.
 
 In this chapter, we present a method for calculating all the congruences of a
 finite semigroup.  This algorithm takes advantage of the fact that congruences
