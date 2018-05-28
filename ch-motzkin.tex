@@ -1089,7 +1089,10 @@ congruence it generates.  Our findings are summarised in Table
     {c_1 & \ldots & c_r & C_1 & \ldots & C_t}
     {d_1 & \ldots & d_r & D_1 & \ldots & D_u}$.
     First, assume (a) holds.
-    Let $x$ be the maximal number such that $x \leq r$ and $i_x < a_1$.  Note
+    Let $x$ be the maximal number such that $1 \leq x \leq r$ and $i_x < a_1$
+    (if this is not possible, we instead let $x$ be the minimal number such that
+    $a_2 < i_x$, producing a case the same as what we describe, but flipped
+    horizontally).  Note
     that since $\alpha$ is planar we must have $i_x < a_1 < a_2 < i_{x+1}$ if
     $i_{x+1}$ exists.  Now define
     $$\tau = \bipart{c|c|c|c|c|c|c|c|c|c|c}{8-11}
@@ -1110,6 +1113,7 @@ congruence it generates.  Our findings are summarised in Table
     singletons.  See Figure \ref{fig:case-a-hat-example} for an illustrative
     example.  Hence $\gamma$ is $\sigma$-related to a bipartition with the same
     kernel and cokernel but lower rank.  Applying this procedure repeatedly
+    and using transitivity
     relates $\gamma$ to a bipartition with the same kernel and cokernel but rank
     $0$, that is, $\widehat\gamma$.  Hence $(\gamma, \widehat\gamma) \in \sigma$
     in case (a).
