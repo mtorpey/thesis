@@ -322,6 +322,15 @@ but it is described more completely in \cite{froidure_pin}, and the version
 implemented in \texttt{libsemigroups} is explained in
 \cite{froidure_pin_jonusas}.
 
+It is sometimes preferable to use other methods when enumerating a semigroup.
+For example, the Semigroups package uses the method described in
+\cite{computing_finite_semigroups} to enumerate semigroups of transformations,
+partial permutations, matrices, and various other important classes, taking
+advantage of their Green's relations in order to avoid certain calculations.
+However, a lattice is known to be $\dD$-trivial, meaning that the advantages of
+\cite{computing_finite_semigroups} do not apply to it.  For this reason, the
+Froidure--Pin algorithm is likely to be a better choice.
+
 The Froidure--Pin algorithm requires a method of deciding whether two
 congruences are equal.  In \textsc{JoinClosure}, unlike in
 \textsc{PrincCongPoset}, we may encounter congruences with more than one
