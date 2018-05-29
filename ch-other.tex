@@ -167,7 +167,7 @@ of its kernel (i.e.~its image is a \textit{cross-section} of its kernel).
   \end{proof}
 \end{lemma}
 
-\subsubsection{Principal Factors of $\T_n$}
+\subsubsection{Principal factors of $\T_n$}
 As mentioned in Section \ref{sec:princfact-def}, any principal factor is either
 simple or 0-simple, and so it can be identified with a Rees matrix semigroup or
 Rees 0-matrix semigroup.  Hence, for some $k > 1$, let
@@ -179,70 +179,65 @@ its image (all the different ways to assign the $k$ image points to the $k$
 classes of the kernel) this group is isomorphic to the symmetric group $S_k$.
 
 To consider the congruences of $\pf{D_k^n}$, we first recognise the universal
-congruence $\pf{D_k^n} \times \pf{D_k^n}$.  All the other congruences are in bijective
-correspondence with $\pf{D_k^n}$'s linked triples $(N,\mathcal{S},\mathcal{T})$, as
-follows.
-
-\begin{definition}
-  \label{def:linkedtriple}
-  For a finite 0-simple Rees 0-matrix semigroup
-  $\mathcal{M}^0[G;I,\Lambda;P]$, a \textbf{linked triple} is a
-  triple $$(N,\mathcal{S},\mathcal{T})$$ consisting of a normal subgroup $N
-  \trianglelefteq G$, an equivalence relation $\mathcal{S}$ on $I$ and an
-  equivalence relation $\mathcal{T}$ on $\Lambda$, such that the following are
-  satisfied:
-  \begin{enumerate}[\rm(1)]
-  \item $\mathcal{S} \subseteq \varepsilon_I$, where $\varepsilon_I =
-    \left\{(i,j) \in I \times I\, \middle|\, \forall \lambda \in \Lambda:
-      p_{\lambda i}=0 \iff p_{\lambda j}=0 \right\}$,
-  \item $\mathcal{T} \subseteq \varepsilon_\Lambda$, where $\varepsilon_\Lambda
-    = \left\{(\lambda,\mu) \in \Lambda \times \Lambda\, \middle|\, \forall i \in
-      I: p_{\lambda i}=0 \iff p_{\mu i}=0 \right\}$,
-  \item For all $i,j \in I$ and $\lambda, \mu \in \Lambda$ such that
-    $p_{\lambda i}, p_{\lambda j}, p_{\mu i}, p_{\mu j} \neq 0$ and either
-    $(i,j) \in \mathcal{S}$ or $(\lambda,\mu) \in \mathcal{T}$, we have
-    that $q_{\lambda \mu i j} \in N$, where $$q_{\lambda \mu i j} = p_{\lambda
-      i} p_{\mu i}^{-1} p_{\mu j} p_{\lambda j}^{-1}.$$
-  \end{enumerate}
-  \cite[p.86]{howie}
-\end{definition}
-
+congruence $\nabla_{\pf{D_k^n}}$.  All the other congruences are in bijective
+correspondence with the linked triples of $\pf{D_k^n}$.  Recall the definition
+of a linked triples $(N,\mathcal{S},\mathcal{T})$, from Definition
+\ref{def:linked-triple}---that is, a normal subgroup $N \trianglelefteq G$, an
+equivalence relation $\mathcal{S}$ on $I$ and an equivalence relation
+$\mathcal{T}$ on $\Lambda$, such that the following are satisfied:
+\begin{enumerate}[\rm(1)]
+\item $\mathcal{S} \subseteq \varepsilon_I$, where
+  $\varepsilon_I = \left\{(i,j) \in I \times I\, \middle|\, \forall \lambda \in
+    \Lambda: p_{\lambda i}=0 \iff p_{\lambda j}=0 \right\}$;
+\item $\mathcal{T} \subseteq \varepsilon_\Lambda$, where
+  $\varepsilon_\Lambda = \left\{(\lambda,\mu) \in \Lambda \times \Lambda\,
+    \middle|\, \forall i \in I: p_{\lambda i}=0 \iff p_{\mu i}=0 \right\}$;
+\item For all $i,j \in I$ and $\lambda, \mu \in \Lambda$ such that
+  $p_{\lambda i}, p_{\lambda j}, p_{\mu i}, p_{\mu j} \neq 0$ and either
+  $(i,j) \in \mathcal{S}$ or $(\lambda,\mu) \in \mathcal{T}$, we have that
+  $q_{\lambda \mu i j} \in N$, where
+  $$q_{\lambda \mu i j} = p_{\lambda i} p_{\mu i}^{-1} p_{\mu j} p_{\lambda
+    j}^{-1}.$$
+\end{enumerate}
 We shall first find all the triples which satisfy conditions (1) and (2), and
 then we shall show that in this case all of them satisfy condition (3).
 
 First, recall that an element $p_{\lambda i}$ is non-zero if and only if the
-corresponding $\HH$-class is a group.  By Lemma \ref{lem:hclasses} we can see that
-for any pair of columns $i,j \in I$ there exists a row $\lambda \in \Lambda$
-such that $p_{\lambda i} \neq 0 = p_{\lambda j}$.  Hence $\varepsilon_I =
-\Delta_I$.  Similarly, in the limited case that $k>1$, Lemma \ref{lem:hclasses}
-gives us that for any pair of rows $\lambda, \mu \in \Lambda$ there exists a
-column $i \in I$ such that $p_{\lambda i} \neq 0 = p_{\mu i}$.  Hence if $k>1$
-then we have $\varepsilon_\Lambda = \Delta_\Lambda$.
+corresponding $\HH$-class is a group.  By Lemma \ref{lem:dk-hclasses} we can see
+that for any pair of columns $i,j \in I$ there exists a row
+$\lambda \in \Lambda$ such that $p_{\lambda i} \neq 0 = p_{\lambda j}$.  Hence
+$\varepsilon_I = \Delta_I$.  Similarly, in the limited case that $k>1$, Lemma
+\ref{lem:dk-hclasses} gives us that for any pair of rows
+$\lambda, \mu \in \Lambda$ there exists a column $i \in I$ such that
+$p_{\lambda i} \neq 0 = p_{\mu i}$.  Hence if $k>1$ then we have
+$\varepsilon_\Lambda = \Delta_\Lambda$.
 
 \subsubsection{Linked Triples for $k = 1$}
 \label{sec:k1}
-First let us consider the linked triples of $\pf{D_1^n}$.  Since this $\DD$-class
-consists of the transformations with rank $1$, there are $n$ possible images
-$$\{1\}, \{2\}, \dots, \{n\}$$ and only one possible kernel
-$$\big\{\{1 \dots n\}\big\}.$$
+First let us consider the linked triples of $\pf{D_1^n}$.  Since this
+$\DD$-class consists of the transformations with rank $1$, its elements have $n$
+possible images,
+$$\{1\}, \{2\}, \dots, \{n\}$$
+and only one possible kernel,
+$$\big\{\{1, \dots, n\}\big\}.$$
 Hence the matrix $P$ of $\pf{D_1^n}$ has $n$ rows and $1$ column.  Every element in
 $D_1^n$ has the form
 $$\begin{pmatrix}
   1 & 2 & \cdots & n \\
   i & i & \cdots & i
-\end{pmatrix}$$ for some $i \in \{1 \dots n\}$, so each element is an idempotent
-in its own $\HH$-class.  Hence each $\HH$-class is a group, so the matrix $P$ has no
-zeroes, and $\varepsilon_\Lambda = \Lambda \times \Lambda$.  The underlying
-group $G$ of the Rees 0-matrix semigroup $\pf{D_1^n}$ must be trivial, since each
-$\HH$-class contains just one element.
+\end{pmatrix}$$ for some $i \in \{1, \dots, n\}$, so each element is an
+idempotent in its own $\HH$-class.  Hence each $\HH$-class is a group, so the
+matrix $P$ has no zeroes, and $\varepsilon_\Lambda = \Lambda \times \Lambda$.
+The underlying group $G$ of the Rees 0-matrix semigroup $\pf{D_1^n}$ must be
+trivial, since each $\HH$-class contains just one element.
 
 Taking all this information together, we can classify all the triples $(N,
 \mathcal{S}, \mathcal{T})$ which satisfy conditions (1) and (2) as follows:
 \begin{itemize}
-\item $N$ must be a normal subgroup of the trivial group.  Hence $N = 1$.
-\item $\mathcal{S}$ must be a subset of the trivial relation $\Delta_I$.  Hence
-  $\mathcal{S} = \Delta_I$.
-\item $\mathcal{T}$ may be any subset of $\Lambda \times \Lambda$.
+\item $N$ must be a normal subgroup of the trivial group---hence $N = 1$;
+\item $\mathcal{S}$ must be a subset of the trivial relation $\Delta_I$---hence
+  $\mathcal{S} = \Delta_I$;
+\item $\mathcal{T}$ may be any equivalence on $\Lambda$.
 \end{itemize}
 This gives us all triples of the form $(1,\Delta_I,\mathcal{T})$, where
 $\mathcal{T}$ can be any partition of the $n$ rows in $\Lambda$.  The number of
@@ -266,7 +261,7 @@ $S_k$, so $N$ can be chosen to be any normal subgroup of $S_k$.
 The only normal subgroups of $S_k$ for $k=3$ and $k \geq 5$ are the trivial group, the
 alternating group $A_k$, and the symmetric group $S_k$ itself.  For $k=2$ we
 have $1 = A_2 < S_2$, and for $k=4$ alone we must add a fourth normal subgroup,
-$V_4 = \langle (1~2)(3~4), (1~3)(2~4) \rangle$.
+$K_4 = \langle (1~2)(3~4), (1~3)(2~4) \rangle$.
 
 To see that all these triples also fulfil condition (3) we use the triviality of
 the relations $\mathcal{S} = \Delta_I$ and $\mathcal{T} = \Delta_\Lambda$.
@@ -279,90 +274,92 @@ $$q_{\lambda \mu i j} = (p_{\lambda i} p_{\lambda i}^{-1}) (p_{\lambda j}
 p_{\lambda j}^{-1}) = 1 \cdot 1 = 1 \in N.$$ Hence condition (3) is fulfilled
 and all of the triples described are \textit{linked}.
 
-\subsection{Numbers of Congruence Classes}
+\subsubsection{Numbers of Congruence Classes}
 \label{sec:nrclasses}
-The universal congruence $\pf{D_k^n} \times \pf{D_k^n}$ has, by definition, one congruence
-class.  Any other congruence on a principal factor has a linked triple
-$(N,\mathcal{S},\mathcal{T})$, and we can use this triple to calculate the
-number of congruence classes.  Each non-zero class corresponds to a triple
-$(Nx,i\mathcal{S},\lambda\mathcal{T})$ of a coset of $N$, a class of
-$\mathcal{S}$ and a class of $\mathcal{T}$.  Hence the total number of classes
-is equal to
-$$|G:N| \cdot |I/\mathcal{S}| \cdot |\Lambda/\mathcal{T}| + 1.$$
+The universal congruence $\pf{D_k^n} \times \pf{D_k^n}$ has, by definition, one
+congruence class.  Any other congruence on a principal factor has a linked
+triple $(N,\mathcal{S},\mathcal{T})$, and we can use this triple to calculate
+the number of congruence classes.  Each non-zero class corresponds to a triple
+$(Nx,[i]_\mathcal{S},[\lambda]_\mathcal{T})$ consisting of a coset of $N$, a
+class of $\mathcal{S}$ and a class of $\mathcal{T}$, as described in
+\cite[Theorem 3.2]{mtorpey_pre_msc}.  Hence the total number of classes is equal
+to the product of the index $|G:N|$, the number of classes of $\sS$, and the
+number of classes of $\tT$, plus $1$ for the universal congruence.
 
-\subsection{Summary of Results}
+\subsubsection{Summary of Results}
 \label{sec:summary}
 We can now describe all the congruences of the principal factors $\pf{D_k^n}$ of the
 full transformation monoid $\mathcal{T}_n$.  If $(N,\mathcal{S},\mathcal{T})$ is a linked
 triple on $\pf{D_k^n}$, then let $[N,\mathcal{S},\mathcal{T}]$ be the non-universal
 congruence associated with that triple.
 For brevity, let $[N] = [N, \Delta_I, \Delta_\Lambda]$ and
-let $u_n = \binom{n}{k} \cdot S(n,k)$, the number of
+let $h_n = \binom{n}{k} \cdot S(n,k)$, the number of
 $\HH$-classes in $D_k^n$.
 
 \begin{theorem}
   \label{thm:dkstar-congs}
-The congruences of $\pf{D_k^n}$ are as follows.
-\\ \\
-% \begin{table}[h]
-%   \centering
-  \begin{tabular}{| r | r | c | r |}
-    \hline
-    \multicolumn{1}{|c|}{$k$} & \multicolumn{1}{|c|}{\textbf{Congruences of $\pf{D_k^n}$}} & \textbf{Number} & \multicolumn{1}{|c|}{\textbf{Number of classes}} \\
-    \hline
-    $1$ & $[1, \Delta_I, \mathcal{T}] (\forall \mathcal{T}), D_1^* \times D_1^*$ & $B_n + 1$
-    & $|\Lambda/\mathcal{T}|+1$, $1$ \\
-    $2$ & $[1], [S_2], D_2^* \times D_2^*$ & $3$ & $2u_2+1, u_2+1, 1$ \\
-    $3$ & $[1], [A_3], [S_3], D_3^* \times D_3^*$ & $4$ & $6u_3+1, 2u_3+1, u_3+1, 1$ \\
-    $4$ & $[1], [V_4], [A_4], [S_4], D_4^* \times D_4^*$ & $5$ & $24u_4+1, 6u_4+1, 2u_4+1, u_4+1, 1$ \\
-    $\geq 5$ & $[1], [A_k], [S_k], \pf{D_k^n} \times \pf{D_k^n}$ & $4$ & $k!u_k+1, 2u_k+1, u_k+1, 1$ \\
-    \hline
-  \end{tabular}
-% \end{table}
+  The congruences of $\pf{D_k^n}$ are shown in Table \ref{tab:dkstar-congs}.
+  \begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{| r | r | c | r |}
+      \hline
+      \multicolumn{1}{|c|}{$k$} & \multicolumn{1}{|c|}{\textbf{Congruences of $\pf{D_k^n}$}} & \textbf{Number} & \multicolumn{1}{|c|}{\textbf{Number of classes}} \\
+      \hline
+      $1$ & $[1, \Delta_I, \mathcal{T}] (\forall \mathcal{T})$ & $B_n$
+          & from $1$ to $n$ \\
+      $2$ & $[1], [S_2], \nabla$ & $3$ & $2h_2+1, h_2+1, 1$ \\
+      $3$ & $[1], [A_3], [S_3], \nabla$ & $4$ & $6h_3+1, 2h_3+1, h_3+1, 1$ \\
+      $4$ & $[1], [K_4], [A_4], [S_4], \nabla$ & $5$ & $24h_4+1, 6h_4+1, 2h_4+1, h_4+1, 1$ \\
+      $\geq 5$ & $[1], [A_k], [S_k], \nabla$ & $4$ & $k!h_k+1, 2h_k+1, h_k+1, 1$ \\
+      \hline
+    \end{tabular}
+    \caption{Summary of the congruences of the principal factors of $\T_n$}
+    \label{tab:dkstar-congs}
+  \end{table}
 \end{theorem}
 
-Note that some alternative definitions of $\pf{D_k^n}$ include a zero element only
-when ``necessary'', i.e.~only when there exist two elements in $D_k^n$ which multiply together to
-give an element not in $D_k^n$.  If this definition is preferred (as in the
-Semigroups package \cite{semigroups} of the GAP computational algebra
-system \cite{gap}) there will be no zero element in $\pf{D_1^n}$ or $\pf{D_n^n}$, so the
-additional universal congruence in the preceding summary should be removed in
-those two cases, and the number of congruences adjusted down by $1$.
-
 We can now summarise the numbers of congruence classes for some small values of
-$n$.  The following table gives the number of classes of each congruence on each
-principal factor $\pf{D_k^n}$ of $\T_n$, for $n$ up to $7$.  Note that for $k=1$ only
-the set of distinct values has been given, since there are $B_n+1$ different
-congruences which must be considered.
+$n$.  Table \ref{tab:dkstar-nrclasses} gives the number of classes of each
+congruence on each principal factor $\pf{D_k^n}$ of $\T_n$, for $n$ up to $7$.
+Note that for $k=1$ only the set of distinct values has been given, since there
+are $B_n+1$ different congruences which must be considered.
 
 \begin{table}[h]
   \centering
+  \renewcommand{\arraystretch}{1.3}
   \begin{tabular}{|r|r|r|r|r|r|r|r|r|}
     \hline
     & $n=1$ & $n=2$ & $n=3$ & $n=4$ & $n=5$ \\ \hline
-    $k=1$ & $\{1, 2\}$ & $\{1\dots 3\}$ & $\{1\dots 4\}$ & $\{1\dots 5\}$ & $\{1\dots 6\}$ \\
-    $k=2$ & - & 3, 2, 1 & 19, 10, 1 & 85, 43, 1 & 301, 151, 1 \\
-    $k=3$ & - & - & 7, 3, 2, 1 & 145, 49, 25, 1 & 1501, 501, 251, 1 \\
-    $k=4$ & - & - & - & 25, 7, 3, 2, 1 & 1201, 301, 101, 51, 1 \\
-    $k=5$ & - & - & - & - & 121, 3, 2, 1 \\
+    $k=1$ & $1$ & $1$ to $2$ & $1$ to $3$ & $1$ to $4$ & $1$ to $5$ \\
+    $k=2$ & -- & 3, 2, 1 & 19, 10, 1 & 85, 43, 1 & 301, 151, 1 \\
+    $k=3$ & -- & -- & 7, 3, 2, 1 & 145, 49, 25, 1 & 1501, 501, 251, 1 \\
+    $k=4$ & -- & -- & -- & 25, 7, 3, 2, 1 & 1201, 301, 101, 51, 1 \\
+    $k=5$ & -- & -- & -- & -- & 121, 3, 2, 1 \\
     \hline
   \end{tabular}
-\end{table}
 
-\begin{table}[h]
-  \centering
+  \phantom{BLANK}
+  
   \begin{tabular}{|r|r|r|}
     \hline
     & $n=6$ & $n=7$ \\ \hline
-    $k=1$ & $\{1\dots 7\}$ & $\{1\dots 8\}$ \\
+    $k=1$ & $1$ to $6$ & $1$ to $7$ \\
     $k=2$ & 931, 466, 1 & 2647, 1324, 1 \\
     $k=3$ & 10801, 3601, 1801, 1 & 63211, 21071, 10536, 1 \\
     $k=4$ & 23401, 5851, 1951, 976, 1 & 294001, 73501, 24501, 12251, 1 \\
     $k=5$ & 10801, 181, 91, 1 & 352801, 5881, 2941, 1 \\
     $k=6$ & 721, 3, 2, 1 & 105841, 295, 148, 1 \\
-    $k=7$ & - & 5041, 3, 2, 1 \\
+    $k=7$ & -- & 5041, 3, 2, 1 \\
     \hline
   \end{tabular}
+  \caption[Congruence classes on principal factors of $\T_n$]{Number of classes
+    of the congruences on the principal factors of $\T_n$, for $n$ up to $7$}
+  \label{tab:dkstar-nrclasses}
+\end{table}
+
+\begin{table}[h]
+  \centering
 \end{table}
 
 \subsection{Other monoids}
