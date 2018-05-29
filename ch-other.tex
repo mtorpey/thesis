@@ -108,6 +108,7 @@ $k$ classes and a given image with $k$ elements, there are $k!$ different ways
 to assign image elements to kernel classes, simply the permutations of the set
 $\{1, \dots, k\}$.  Hence there are $k!$ elements in each $\HH$-class.
 
+\subsubsection{Group $\HH$-classes of $\T_n$}
 To understand the principal factor corresponding to a $\DD$-class $D_k^n$, we need
 to understand which of its $\HH$-classes are groups and whcih are not.  To
 determine which $\HH$-classes are groups, we recall that in any semigroup an
@@ -166,31 +167,15 @@ of its kernel (i.e.~its image is a \textit{cross-section} of its kernel).
   \end{proof}
 \end{lemma}
 
-\subsection{Principal Factors}
-\label{sec:principal}
-
-\begin{definition}
-\label{def:principalfactor}
-The \textbf{principal factor} $\pf{D_k^n}$ of a $\DD$-class $D_k^n$ is the Rees
-0-matrix semigroup $\mathcal{M}^0[G;I,\Lambda;P]$ isomorphic to the set $D_k^n \cup
-\{0\}$, with multiplication $*$ given by
-$$s * t = \left\{
-  \begin{array}{l l}
-    st & \text{if~} s,t,st \in D_k^n, \\
-    0 & \text{otherwise}.
-  \end{array}\right.$$
-\end{definition}
-
-The principal factor of a $\DD$-class must always be a 0-simple
-semigroup, and so we can use \textit{linked triples} to classify its
-congruences \cite[\S3.5]{howie}.
-% TODO: this applies to REGULAR ones only.  Irregular ones have a zero semigroup
-
-Let $\pf{D_k^n} = \mathcal{M}^0[G;I,\Lambda;P]$ as above.
-The rows and columns of the matrix $P$ correspond respectively to the $\LL$-classes and
-$\RR$-classes of $D_k^n$, and $G$ is the group isomorphic to each of $D_k^n$'s group
-$\HH$-classes.  Since the elements of an $\HH$-class here correspond to all the permutations
-of its image (all the different ways to assign the $k$ image points to the $k$
+\subsubsection{Principal Factors of $\T_n$}
+As mentioned in Section \ref{sec:princfact-def}, any principal factor is either
+simple or 0-simple, and so it can be identified with a Rees matrix semigroup or
+Rees 0-matrix semigroup.  Hence, for some $k > 1$, let
+$\pf{D_k^n} = \mathcal{M}^0[G;I,\Lambda;P]$.  The rows and columns of the matrix
+$P$ correspond respectively to the $\LL$-classes and $\RR$-classes of $D_k^n$,
+and $G$ is the group isomorphic to each of the group $\HH$-classes of $D_k^n$.
+Since the elements of an $\HH$-class here correspond to all the permutations of
+its image (all the different ways to assign the $k$ image points to the $k$
 classes of the kernel) this group is isomorphic to the symmetric group $S_k$.
 
 To consider the congruences of $\pf{D_k^n}$, we first recognise the universal
