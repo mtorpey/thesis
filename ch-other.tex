@@ -40,16 +40,17 @@ $S^1 J S^1 \setminus J$.  This allows us to make the following definition.
 \begin{definition}
   \label{def:princfact}
   \index{principal factor}
-  \nomenclature[*]{$^*$}{Principal factor}
+  \nomenclature[-]{$\pf{\phantom{D}}$}{Principal factor}
   Let $S$ be a semigroup, and let $J$ be a $\JJ$-class of $S$.  The
-  \textbf{principal factor} of $J$ is denoted by $J^*$, and defined as follows:
+  \textbf{principal factor} of $J$ is denoted by $\pf{J}$, and defined as
+  follows:
   \begin{itemize}
-  \item $J^* = J$ if $J$ is the minimal ideal;
-  \item $J^* = S^1 J S^1 / (S^1 J S^1 \setminus J)$ otherwise.
+  \item $\pf{J} = J$ if $J$ is the minimal ideal;
+  \item $\pf{J} = S^1 J S^1 / (S^1 J S^1 \setminus J)$ otherwise.
   \end{itemize}
 \end{definition}
 
-We will identify a principal factor $J^*$ as the set $J \cup \{0\}$, with
+We will identify a principal factor $\pf{J}$ as the set $J \cup \{0\}$, with
 multiplication $\circ$ defined by
 $$a \circ b = \left\{
   \begin{array}{l l}
@@ -59,9 +60,9 @@ $$a \circ b = \left\{
 In the case that $J$ is the minimal ideal of $S$, we do not need to append a
 zero.
 
-Since $J^*$ is composed of a single $\JJ$-class, possibly with a zero appended,
+Since $\pf{J}$ is composed of a single $\JJ$-class, possibly with a zero appended,
 it is a simple or 0-simple semigroup.  Hence, if $S$ is finite, we may also
-identify $J^*$ with a Rees matrix semigroup $\mathcal{M}[G;I,\Lambda;P]$ or Rees
+identify $\pf{J}$ with a Rees matrix semigroup $\mathcal{M}[G;I,\Lambda;P]$ or Rees
 0-matrix semigroup $\mathcal{M}^0[G;I,\Lambda;P]$, by the Rees Theorem (Theorem
 \ref{thm:rees}).  This will help us to classify its congruences later.
 
@@ -70,7 +71,7 @@ identify $J^*$ with a Rees matrix semigroup $\mathcal{M}[G;I,\Lambda;P]$ or Rees
 
 Now we will consider the principal factors of an important monoid, the full
 transformation monoid $\T_n$.  Recall that $\T_n$ is the semigroup consisting of
-all transformations on the set $\{1 \dots n\}$, for some $n \in \mathbb{N}$
+all transformations on the set $\{1, \dots, n\}$, for some $n \in \mathbb{N}$
 (Definition \ref{def:tn}).  In order to describe the principal factors of
 $\T_n$, we must first consider its Green's relations, as follows.
 
@@ -87,27 +88,27 @@ $\T_n$, we must first consider its Green's relations, as follows.
 \end{proposition}
 
 The last part of the above proposition allows us to name the semigroup's
-$\DD$-classes $D_1, D_2, \dots, D_n$, where each $D_k$ is the $\DD$-class
-consisting of transformations with rank $k$.  Then the usual partial ordering of
-$\JJ$-classes (which in a finite semigroup are the same as $\DD$-classes) gives
-$D_1 < D_2 < \dots < D_n$.
+$\DD$-classes $D_1^n, D_2^n, \dots, D_n^n$, where each $D_k^n$ is the
+$\DD$-class of $\T_n$ consisting of transformations with rank $k$.  Then the
+usual partial ordering of $\JJ$-classes (which in a finite semigroup are the
+same as $\DD$-classes) gives $D_1^n < D_2^n < \dots < D_n^n$.
 
-Inside a given $\DD$-class $D_k$, elements are divided into $\LL$-classes
+Inside a given $\DD$-class $D_k^n$, elements are divided into $\LL$-classes
 according to their image set; since all elements have rank $k$, their images
 must have size $k$, and so there are $\binom{n}{k}$ $\LL$-classes in total.
-Similarly, the elements of $D_k$ are divided into $\RR$-classes according to
+Similarly, the elements of $D_k^n$ are divided into $\RR$-classes according to
 their kernel; the possible kernels are all $k$-partitions of an $n$-set, so the
 total number of $\RR$-classes is given by the Stirling number of the second
 kind, $S(n,k)$ \citeoeis{A008277}.
 
-Each $\HH$-class in $D_k$ is the intersection of an $\LL$-class and an
+Each $\HH$-class in $D_k^n$ is the intersection of an $\LL$-class and an
 $\RR$-class, so each one corresponds to an image-kernel pair (hence we will talk
 about the \textit{image and kernel of an $\HH$-class}).  For a given kernel with
 $k$ classes and a given image with $k$ elements, there are $k!$ different ways
 to assign image elements to kernel classes, simply the permutations of the set
 $\{1, \dots, k\}$.  Hence there are $k!$ elements in each $\HH$-class.
 
-To understand the principal factor corresponding to a $\DD$-class $D_k$, we need
+To understand the principal factor corresponding to a $\DD$-class $D_k^n$, we need
 to understand which of its $\HH$-classes are groups and whcih are not.  To
 determine which $\HH$-classes are groups, we recall that in any semigroup an
 $\HH$-class H is a group if and only if it contains an idempotent (an element
@@ -118,7 +119,7 @@ $$i \alpha = i \quad (\forall i \in \im \alpha).$$
 Given an image and a kernel, we can choose a transformation with this condition
 if and only if no pair of points in the image are in the same kernel-class---
 that is, each image point is in a different kernel-class.  Hence an $\HH$-class
-of $D_k$ is a group if and only if its image contains one point from each class
+of $D_k^n$ is a group if and only if its image contains one point from each class
 of its kernel (i.e.~its image is a \textit{cross-section} of its kernel).
 \index{cross-section}
 
@@ -127,15 +128,15 @@ of its kernel (i.e.~its image is a \textit{cross-section} of its kernel).
   Let $k,n \in \mathbb{N}$ with $k \leq n$, and let $D_k^n$ be the $\DD$-class
   of $\T_n$ consisting of the elements of rank $k$.  The following hold:
   \begin{enumerate}[\rm(1)]
-  \item For any two distinct $\RR$-classes $R_1$ and $R_2$ of $D_k$ there is an
+  \item For any two distinct $\RR$-classes $R_1$ and $R_2$ of $D_k^n$ there is an
     $\LL$-class $L$ such that $L \cap R_1$ is a group $\HH$-class, but
     $L \cap R_2$ is not.
   \item If $k > 1$, then for any two distinct $\LL$-classes $L_1$ and $L_2$ of
-    $D_k$ there is an $\RR$-class $R$ such that $L_1 \cap R$ is a group
+    $D_k^n$ there is an $\RR$-class $R$ such that $L_1 \cap R$ is a group
     $\HH$-class, but $L_2 \cap R$ is not.
   \end{enumerate}
   \begin{proof}
-    For (1), let $R_1$ and $R_2$ be distinct $\RR$-classes of $D_k$.  These two
+    For (1), let $R_1$ and $R_2$ be distinct $\RR$-classes of $D_k^n$.  These two
     classes correspond to distinct kernels $P_1$ and $P_2$, each partitioning
     $\{1, \dots, n\}$ into $k$ classes.  If $k=n$ then there is only one
     possible partition, $\big\{\{1\}, \dots, \{n\}\big\}$, and so $R_1$ and
@@ -148,7 +149,7 @@ of its kernel (i.e.~its image is a \textit{cross-section} of its kernel).
     corresponding to image $X$, $L \cap R_1$ is a group $\HH$-class but
     $L \cap R_2$ is not a group $\HH$-class.
 
-    For (2), let $L_1$ and $L_2$ be distinct $\LL$-classes of $D_k$, with
+    For (2), let $L_1$ and $L_2$ be distinct $\LL$-classes of $D_k^n$, with
     $1 < k \leq n$.  These two classes correspond to distinct images of size $k$
     in $\{1 \dots n\}$; let us call these images $I_1$ and $I_2$ respectively.
     Without loss of generality, let $I_1 = \{1, 2, \dots, k\}$.  Since
@@ -170,12 +171,12 @@ of its kernel (i.e.~its image is a \textit{cross-section} of its kernel).
 
 \begin{definition}
 \label{def:principalfactor}
-The \textbf{principal factor} $D_k^*$ of a $\DD$-class $D_k$ is the Rees
-0-matrix semigroup $\mathcal{M}^0[G;I,\Lambda;P]$ isomorphic to the set $D_k \cup
+The \textbf{principal factor} $\pf{D_k^n}$ of a $\DD$-class $D_k^n$ is the Rees
+0-matrix semigroup $\mathcal{M}^0[G;I,\Lambda;P]$ isomorphic to the set $D_k^n \cup
 \{0\}$, with multiplication $*$ given by
 $$s * t = \left\{
   \begin{array}{l l}
-    st & \text{if~} s,t,st \in D_k, \\
+    st & \text{if~} s,t,st \in D_k^n, \\
     0 & \text{otherwise}.
   \end{array}\right.$$
 \end{definition}
@@ -185,16 +186,16 @@ semigroup, and so we can use \textit{linked triples} to classify its
 congruences \cite[\S3.5]{howie}.
 % TODO: this applies to REGULAR ones only.  Irregular ones have a zero semigroup
 
-Let $D_k^* = \mathcal{M}^0[G;I,\Lambda;P]$ as above.
+Let $\pf{D_k^n} = \mathcal{M}^0[G;I,\Lambda;P]$ as above.
 The rows and columns of the matrix $P$ correspond respectively to the $\LL$-classes and
-$\RR$-classes of $D_k$, and $G$ is the group isomorphic to each of $D_k$'s group
+$\RR$-classes of $D_k^n$, and $G$ is the group isomorphic to each of $D_k^n$'s group
 $\HH$-classes.  Since the elements of an $\HH$-class here correspond to all the permutations
 of its image (all the different ways to assign the $k$ image points to the $k$
 classes of the kernel) this group is isomorphic to the symmetric group $S_k$.
 
-To consider the congruences of $D_k^*$, we first recognise the universal
-congruence $D_k^* \times D_k^*$.  All the other congruences are in bijective
-correspondence with $D_k^*$'s linked triples $(N,\mathcal{S},\mathcal{T})$, as
+To consider the congruences of $\pf{D_k^n}$, we first recognise the universal
+congruence $\pf{D_k^n} \times \pf{D_k^n}$.  All the other congruences are in bijective
+correspondence with $\pf{D_k^n}$'s linked triples $(N,\mathcal{S},\mathcal{T})$, as
 follows.
 
 \begin{definition}
@@ -235,19 +236,19 @@ then we have $\varepsilon_\Lambda = \Delta_\Lambda$.
 
 \subsubsection{Linked Triples for $k = 1$}
 \label{sec:k1}
-First let us consider the linked triples of $D_1^*$.  Since this $\DD$-class
+First let us consider the linked triples of $\pf{D_1^n}$.  Since this $\DD$-class
 consists of the transformations with rank $1$, there are $n$ possible images
 $$\{1\}, \{2\}, \dots, \{n\}$$ and only one possible kernel
 $$\big\{\{1 \dots n\}\big\}.$$
-Hence the matrix $P$ of $D_1^*$ has $n$ rows and $1$ column.  Every element in
-$D_1$ has the form
+Hence the matrix $P$ of $\pf{D_1^n}$ has $n$ rows and $1$ column.  Every element in
+$D_1^n$ has the form
 $$\begin{pmatrix}
   1 & 2 & \cdots & n \\
   i & i & \cdots & i
 \end{pmatrix}$$ for some $i \in \{1 \dots n\}$, so each element is an idempotent
 in its own $\HH$-class.  Hence each $\HH$-class is a group, so the matrix $P$ has no
 zeroes, and $\varepsilon_\Lambda = \Lambda \times \Lambda$.  The underlying
-group $G$ of the Rees 0-matrix semigroup $D_1^*$ must be trivial, since each
+group $G$ of the Rees 0-matrix semigroup $\pf{D_1^n}$ must be trivial, since each
 $\HH$-class contains just one element.
 
 Taking all this information together, we can classify all the triples $(N,
@@ -261,14 +262,14 @@ Taking all this information together, we can classify all the triples $(N,
 This gives us all triples of the form $(1,\Delta_I,\mathcal{T})$, where
 $\mathcal{T}$ can be any partition of the $n$ rows in $\Lambda$.  The number of
 these triples is the Bell number $B_n$.  Now consider condition (3): since the
-underlying group of $D_1^*$ is trivial, and our chosen normal subgroup $N$ is
+underlying group of $\pf{D_1^n}$ is trivial, and our chosen normal subgroup $N$ is
 also trivial, we have that any four nonzero elements from the matrix $P$ must
 multiply together to give the identity $1$, which will always be in $N$.  Hence all the
 triples described are \textit{linked}, and there are $B_n$ of them.
 
 \subsubsection{Linked Triples for $k \geq 2$}
 \label{sec:k2}
-Now let us consider the linked triples of $D_k^*$ for $k \geq 2$.  We already
+Now let us consider the linked triples of $\pf{D_k^n}$ for $k \geq 2$.  We already
 know that $\varepsilon_I = \Delta_I$ and $\varepsilon_\Lambda = \Delta_\Lambda$,
 so any triple satisfying conditions (1) and (2) must have the form
 $$(N, \Delta_I, \Delta_\Lambda)$$
@@ -295,7 +296,7 @@ and all of the triples described are \textit{linked}.
 
 \subsection{Numbers of Congruence Classes}
 \label{sec:nrclasses}
-The universal congruence $D_k^* \times D_k^*$ has, by definition, one congruence
+The universal congruence $\pf{D_k^n} \times \pf{D_k^n}$ has, by definition, one congruence
 class.  Any other congruence on a principal factor has a linked triple
 $(N,\mathcal{S},\mathcal{T})$, and we can use this triple to calculate the
 number of congruence classes.  Each non-zero class corresponds to a triple
@@ -306,46 +307,46 @@ $$|G:N| \cdot |I/\mathcal{S}| \cdot |\Lambda/\mathcal{T}| + 1.$$
 
 \subsection{Summary of Results}
 \label{sec:summary}
-We can now describe all the congruences of the principal factors $D_k^*$ of the
+We can now describe all the congruences of the principal factors $\pf{D_k^n}$ of the
 full transformation monoid $\mathcal{T}_n$.  If $(N,\mathcal{S},\mathcal{T})$ is a linked
-triple on $D_k^*$, then let $[N,\mathcal{S},\mathcal{T}]$ be the non-universal
+triple on $\pf{D_k^n}$, then let $[N,\mathcal{S},\mathcal{T}]$ be the non-universal
 congruence associated with that triple.
 For brevity, let $[N] = [N, \Delta_I, \Delta_\Lambda]$ and
 let $u_n = \binom{n}{k} \cdot S(n,k)$, the number of
-$\HH$-classes in $D_k$.
+$\HH$-classes in $D_k^n$.
 
 \begin{theorem}
   \label{thm:dkstar-congs}
-The congruences of $D_k^*$ are as follows.
+The congruences of $\pf{D_k^n}$ are as follows.
 \\ \\
 % \begin{table}[h]
 %   \centering
   \begin{tabular}{| r | r | c | r |}
     \hline
-    \multicolumn{1}{|c|}{$k$} & \multicolumn{1}{|c|}{\textbf{Congruences of $D_k^*$}} & \textbf{Number} & \multicolumn{1}{|c|}{\textbf{Number of classes}} \\
+    \multicolumn{1}{|c|}{$k$} & \multicolumn{1}{|c|}{\textbf{Congruences of $\pf{D_k^n}$}} & \textbf{Number} & \multicolumn{1}{|c|}{\textbf{Number of classes}} \\
     \hline
     $1$ & $[1, \Delta_I, \mathcal{T}] (\forall \mathcal{T}), D_1^* \times D_1^*$ & $B_n + 1$
     & $|\Lambda/\mathcal{T}|+1$, $1$ \\
     $2$ & $[1], [S_2], D_2^* \times D_2^*$ & $3$ & $2u_2+1, u_2+1, 1$ \\
     $3$ & $[1], [A_3], [S_3], D_3^* \times D_3^*$ & $4$ & $6u_3+1, 2u_3+1, u_3+1, 1$ \\
     $4$ & $[1], [V_4], [A_4], [S_4], D_4^* \times D_4^*$ & $5$ & $24u_4+1, 6u_4+1, 2u_4+1, u_4+1, 1$ \\
-    $\geq 5$ & $[1], [A_k], [S_k], D_k^* \times D_k^*$ & $4$ & $k!u_k+1, 2u_k+1, u_k+1, 1$ \\
+    $\geq 5$ & $[1], [A_k], [S_k], \pf{D_k^n} \times \pf{D_k^n}$ & $4$ & $k!u_k+1, 2u_k+1, u_k+1, 1$ \\
     \hline
   \end{tabular}
 % \end{table}
 \end{theorem}
 
-Note that some alternative definitions of $D_k^*$ include a zero element only
-when ``necessary'', i.e.~only when there exist two elements in $D_k$ which multiply together to
-give an element not in $D_k$.  If this definition is preferred (as in the
+Note that some alternative definitions of $\pf{D_k^n}$ include a zero element only
+when ``necessary'', i.e.~only when there exist two elements in $D_k^n$ which multiply together to
+give an element not in $D_k^n$.  If this definition is preferred (as in the
 Semigroups package \cite{semigroups} of the GAP computational algebra
-system \cite{gap}) there will be no zero element in $D_1^*$ or $D_n^*$, so the
+system \cite{gap}) there will be no zero element in $\pf{D_1^n}$ or $\pf{D_n^n}$, so the
 additional universal congruence in the preceding summary should be removed in
 those two cases, and the number of congruences adjusted down by $1$.
 
 We can now summarise the numbers of congruence classes for some small values of
 $n$.  The following table gives the number of classes of each congruence on each
-principal factor $D_k^*$ of $\T_n$, for $n$ up to $7$.  Note that for $k=1$ only
+principal factor $\pf{D_k^n}$ of $\T_n$, for $n$ up to $7$.  Note that for $k=1$ only
 the set of distinct values has been given, since there are $B_n+1$ different
 congruences which must be considered.
 
