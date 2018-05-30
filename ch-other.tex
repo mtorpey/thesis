@@ -573,56 +573,76 @@ stated in the next conjecture.
   anti-isomorphism) of size $n$ which have $2B_{n-1}$ congruences.
 \end{conjecture}
 
-The 7 semigroups are described in Table \ref{tab:cong-nearfull-7}, and a diagram
-is given for $n = 4$.  In the descriptions, when $\Z_{n-1}$ is a subsemigroup of
-$S$, the zero of $\Z_{n-1}$ is called $z$.
+The 7 semigroups are shown and described in Figures \ref{fig:nearfull-1} to
+\ref{fig:nearfull-7}, including diagrams for $n = 4$.  In the descriptions,
+when $\Z_{n-1}$ is a subsemigroup of $S$, the zero of $\Z_{n-1}$ is called $z$.
 
-\begin{table}[h]
+\begin{figure}[p]
   \centering
-  \renewcommand{\arraystretch}{1.3}
-  \singlespacing
-  \begin{longtable}{| c | >{\centering}m{0.5\linewidth} | m{0.3\linewidth} |}
-    \hline
-    No. & Diagram of $S$ & Description of $S$
-    \\ \hline
-    1 & \includesvg{pics/ch-other/lz-plus-id}
-    & Left-zero semigroup $\LZ_{n-1}$ with an idempotent $c$ appended.
-    There is a distinguished $p \in M$ such that $cx=p$ and $xc=x$ for
-    all $x \in M$.
-    \\ \hline
-    2 & \includesvg{pics/ch-other/lz-plus-nonid}
-    & Left-zero semigroup $\LZ_{n-1}$ with a non-idempotent element $c$
-    appended.
-    Multiplication defined by $cx=c^2$ and $xc=x$ for all $x \in M$.
-    \\ \hline
-    3 & \includesvg{pics/ch-other/z-plus-zero}
-    & Zero semigroup $\Z_{n-1}$ with a zero appended.
-    \\ \hline
-    4 & \includesvg[scale=0.8]{pics/ch-other/z-plus-id} % TODO: consistent scale
-    & Zero semigroup $\Z_{n-1}$ with an idempotent $c$ appended above the minimal
-    ideal.
-    Multiplication defined by $cx=xc=z$ for all $x \in \Z_{n-1}$.
-    \\ \hline
-    5 & \includesvg{pics/ch-other/z-plus-m-id}
-    & Zero semigroup $\Z_{n-1}$ with an idempotent $c$ appended in the minimal
-    ideal.
-    Multiplication defined by $cx=c$ and $xc=z$ for all $x \in \Z_{n-1}$.
-    \\ \hline
-    6 & \includesvg{pics/ch-other/c2-plus-nonids}
-    & Zero semigroup $\Z_{n-1}$ with an element $c$ appended in the same
-    $\HH$-class as $z$.
-    Multiplication defined by $c^2=z$ and $xc=cx=c$ for all $x \in \Z_{n-1}$.
-    \\ \hline
-    7 & \includesvg{pics/ch-other/c2-plus-nonids}
-    & Cyclic group $C_2 = \{\id, g\}$ with $n-2$ elements appended such that
-    $xy=\id$, $x \id=\id x=g$ (for all $x,y \in S \setminus C_2$).
-    \\ \hline
-  \end{longtable}
-  \caption{Semigroups with $n$ elements and $2B_{n-1}$ congruences, for $n=4$}
-  \label{tab:cong-nearfull-7}
-\end{table}
+  \includesvg{pics/ch-other/lz-plus-id}
+  \caption[Nearly congruence-full semigroup 1]{Nearly congruence-full semigroup
+    1.  Left-zero semigroup $\LZ_{n-1}$ with an idempotent $c$ appended.  There
+    is a distinguished $p \in M$ such that $cx=p$ and $xc=x$ for all $x \in M$}
+  \label{fig:nearfull-1}
+\end{figure}
 
-Of the 7 semigroups in the table above, semigroups 1 to 6 contain a copy of
+\begin{figure}[p]
+  \centering
+  \includesvg{pics/ch-other/lz-plus-nonid}
+  \caption[Nearly congruence-full semigroup 2]{Nearly congruence-full semigroup
+    2.  Left-zero semigroup $\LZ_{n-1}$ with a non-idempotent element $c$
+    appended.  Multiplication defined by $cx=c^2$ and $xc=x$ for all $x \in M$}
+  \label{fig:nearfull-2}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includesvg{pics/ch-other/z-plus-zero}
+  \caption[Nearly congruence-full semigroup 3]{Nearly congruence-full semigroup
+    3.  Zero semigroup $\Z_{n-1}$ with a zero appended}
+  \label{fig:nearfull-3}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includesvg{pics/ch-other/z-plus-id}
+  \caption[Nearly congruence-full semigroup 4]{Nearly congruence-full semigroup
+    4.  Zero semigroup $\Z_{n-1}$ with an idempotent $c$ appended above the
+    minimal ideal.  Multiplication defined by $cx=xc=z$ for all
+    $x \in \Z_{n-1}$}
+  \label{fig:nearfull-4}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includesvg{pics/ch-other/z-plus-m-id}
+  \caption[Nearly congruence-full semigroup 5]{Nearly congruence-full semigroup
+    5.  Zero semigroup $\Z_{n-1}$ with an idempotent $c$ appended in the minimal
+    ideal.  Multiplication defined by $cx=c$ and $xc=z$ for all
+    $x \in \Z_{n-1}$}
+  \label{fig:nearfull-5}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includesvg{pics/ch-other/c2-plus-nonids}
+  \caption[Nearly congruence-full semigroup 6]{Nearly congruence-full semigroup
+    6.  Zero semigroup $\Z_{n-1}$ with an element $c$ appended in the same
+    $\HH$-class as $z$.  Multiplication defined by $c^2=z$ and $xc=cx=c$ for all
+    $x \in \Z_{n-1}$}
+  \label{fig:nearfull-6}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includesvg{pics/ch-other/c2-plus-nonids}
+  \caption[Nearly congruence-full semigroup 7]{Nearly congruence-full semigroup
+    7.  Cyclic group $C_2 = \{\id, g\}$ with $n-2$ elements appended such that
+    $xy=\id$, $x \id=\id x=g$ (for all $x,y \in S \setminus C_2$)}
+  \label{fig:nearfull-7}
+\end{figure}
+
+Of the 7 semigroups shown, each of the first 6 contain a copy of
 either $\Z_{n-1}$ or $\LZ_{n-1}$ as a subsemigroup.  The one element outside
 this subsemigroup, which we will call $c$ (the \textit{child element}) is key to
 understanding why these semigroups have $2B_{n-1}$ congruences.  In each
@@ -635,9 +655,9 @@ $S$ in two different ways: by including $c$ as a singleton, or by including $c$
 in the same congruence class as $p$.  Since there are $B_{n-1}$ choices for
 $\sim$, this gives us precisely $2B_{n-1}$ congruences on $S$.
 
-Semigroup 7 is unique in that it does not contain $\Z_{n-1}$ or $\LZ_{n-1}$ as a
-subsemigroup.  However, it still fulfils the \textit{child/parent} condition
-above, where $c = \id$ and $p = g$.
+The seventh semigroup (Figure \ref{fig:nearfull-7}) is unique in that it does
+not contain $\Z_{n-1}$ or $\LZ_{n-1}$ as a subsemigroup.  However, it still
+fulfils the \textit{child--parent} condition above, where $c = \id$ and $p = g$.
 
 \subsection{Other findings}
 We applied the methods from Chapter \ref{chap:lattice} to a bunch of semigroups,
