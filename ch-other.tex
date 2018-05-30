@@ -371,9 +371,10 @@ very least, a semigroup $S$ must have congruences $\Delta_S$ and $\nabla_S$,
 which are equal if and only if $|S| = 1$; so any semigroup has at least one
 congruence.  For an upper bound, consider that a congruence is an equivalence;
 the number of equivalences on a set is given by the Bell numbers
-\citeoeis{A000110}, so $S$ cannot have more congruences than the Bell number
-$B_{|S|}$.  All semigroups have a number of congruences between these two
-bounds, but the precise number depends on the structure of the semigroup.
+\citeoeis{A000110}, so a finite semigroup $S$ cannot have more congruences than
+the Bell number $B_{|S|}$.  All finite semigroups have a number of congruences
+between these two bounds, but the precise number depends on the structure of the
+semigroup.
 
 In this section, we consider how many congruences there are on various
 semigroups, showing some computational results on small semigroups, as well as
@@ -410,9 +411,9 @@ semigroups.
   \begin{proof}
     Let $S$ be a congruence-full semigroup with more than $2$ elements, and let
     $M$ be its minimal ideal.  Since $M$ is simple, every $\HH$-class of $M$ is
-    a group.  We will proceed by considering possible sizes of $M$'s
-    $\HH$-classes, and showing that any size greater than $1$ violates the
-    assumption that $S$ is congruence-full.
+    a group.  We will proceed by considering possible sizes of the $\HH$-classes
+    of $M$, and showing that any size greater than $1$ violates the assumption
+    that $S$ is congruence-full.
 
     Firstly, let $H$ be an $\HH$-class in $M$ with at least $3$ elements.  Let
     $1_H$ be the group identity of $H$, and let $g,h \in H\setminus\{1_H\}$
