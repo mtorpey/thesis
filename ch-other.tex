@@ -369,9 +369,19 @@ are $B_n+1$ different congruences which must be considered.
 \section{The number of congruences of a semigroup}
 \label{sec:nrcongs}
 
-Introduction
+Now that it is possible to compute the congruences of a semigroup, we may be
+interested in the number of congruences a given semigroup possesses.  At the
+very least, a semigroup $S$ must have congruences $\Delta_S$ and $\nabla_S$,
+which are equal if and only if $|S| = 1$; so any semigroup has at least one
+congruence.  For an upper bound, consider that a congruence is an equivalence;
+the number of equivalences on a set is given by the Bell numbers
+\citeoeis{A000110}, so $S$ cannot have more congruences than the Bell number
+$B_{|S|}$.  All semigroups have a number of congruences between these two
+bounds, but the precise number depends on the structure of the semigroup.
 
-How many congruences does a semigroup have? %TODO: proper introduction
+In this section, we consider how many congruences there are on various
+semigroups, showing some computational results on small semigroups, as well as
+proving some more general results.
 
 \subsection{Congruence-full semigroups}
 % TODO: this section needs a full rethink of infinite semigroups
