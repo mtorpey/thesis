@@ -176,7 +176,7 @@ $P$ correspond respectively to the $\LL$-classes and $\RR$-classes of $D_k^n$,
 and $G$ is the group isomorphic to each of the group $\HH$-classes of $D_k^n$.
 Since the elements of an $\HH$-class here correspond to all the permutations of
 its image (all the different ways to assign the $k$ image points to the $k$
-classes of the kernel) this group is isomorphic to the symmetric group $S_k$.
+classes of the kernel) this group is isomorphic to the symmetric group $\Sym_k$.
 
 To consider the congruences of $\pf{D_k^n}$, we first recognise the universal
 congruence $\nabla_{\pf{D_k^n}}$.  All the other congruences are in bijective
@@ -256,11 +256,11 @@ $$(N, \Delta_I, \Delta_\Lambda)$$
 with freedom only in the choice of a normal subgroup $N$ of $G$.  We may write
 this simply as $(N, \Delta, \Delta)$ for brevity.  This
 underlying group $G$ is, as stated above, isomorphic to the symmetric group
-$S_k$, so $N$ can be chosen to be any normal subgroup of $S_k$.
+$\Sym_k$, so $N$ can be chosen to be any normal subgroup of $\Sym_k$.
 
-The only normal subgroups of $S_k$ for $k=3$ and $k \geq 5$ are the trivial group, the
-alternating group $A_k$, and the symmetric group $S_k$ itself.  For $k=2$ we
-have $1 = A_2 < S_2$, and for $k=4$ alone we must add a fourth normal subgroup,
+The only normal subgroups of $\Sym_k$ for $k=3$ and $k \geq 5$ are the trivial group, the
+alternating group $\Alt_k$, and the symmetric group $\Sym_k$ itself.  For $k=2$ we
+have $1 = \Alt_2 < \Sym_2$, and for $k=4$ alone we must add a fourth normal subgroup,
 $K_4 = \langle (1~2)(3~4), (1~3)(2~4) \rangle$.
 
 To see that all these triples also fulfil condition (3) we use the triviality of
@@ -288,7 +288,7 @@ number of classes of $\tT$, plus $1$ for the universal congruence.  Many of our
 congruences have $\sS=\Delta_I$ and $\tT=\Delta_\Lambda$; the total number of
 classes for these congruences will be
 $$|G:N| \cdot |I| \cdot |\Lambda| + 1
-\quad=\quad \big|S_k:N\big| S(n,k) \binom{n}{k} + 1.$$
+\quad=\quad \big|\Sym_k:N\big| S(n,k) \binom{n}{k} + 1.$$
 
 \subsubsection{Summary of Results}
 \label{sec:summary}
@@ -311,10 +311,10 @@ $h_k^n = S(n,k) \cdot \binom{n}{k}$, the number of $\HH$-classes in $D_k^n$.
       \hline
       $1$ & $[1, \Delta_I, \mathcal{T}] (\forall \mathcal{T})$ & $B_n$
           & from $1$ to $n$ \\
-      $2$ & $[1], [S_2], \nabla$ & $3$ & $2h_2^n+1, h_2^n+1, 1$ \\
-      $3$ & $[1], [A_3], [S_3], \nabla$ & $4$ & $6h_3^n+1, 2h_3^n+1, h_3^n+1, 1$ \\
-      $4$ & $[1], [K_4], [A_4], [S_4], \nabla$ & $5$ & $24h_4^n+1, 6h_4^n+1, 2h_4^n+1, h_4^n+1, 1$ \\
-      $\geq 5$ & $[1], [A_k], [S_k], \nabla$ & $4$ & $k!h_k^n+1, 2h_k^n+1, h_k^n+1, 1$ \\
+      $2$ & $[1], [\Sym_2], \nabla$ & $3$ & $2h_2^n+1, h_2^n+1, 1$ \\
+      $3$ & $[1], [\Alt_3], [\Sym_3], \nabla$ & $4$ & $6h_3^n+1, 2h_3^n+1, h_3^n+1, 1$ \\
+      $4$ & $[1], [K_4], [\Alt_4], [\Sym_4], \nabla$ & $5$ & $24h_4^n+1, 6h_4^n+1, 2h_4^n+1, h_4^n+1, 1$ \\
+      $\geq 5$ & $[1], [\Alt_k], [\Sym_k], \nabla$ & $4$ & $k!h_k^n+1, 2h_k^n+1, h_k^n+1, 1$ \\
       \hline
     \end{tabular}
     \caption{Summary of the congruences of the principal factors of $\T_n$}
