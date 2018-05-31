@@ -276,7 +276,7 @@ and all of the triples described are \textit{linked}.
 
 \subsubsection{Numbers of Congruence Classes}
 \label{sec:nrclasses}
-The universal congruence $\pf{D_k^n} \times \pf{D_k^n}$ has, by definition, one
+The universal congruence $\nabla_{\pf{D_k^n}}$ has, by definition, one
 congruence class.  Any other congruence on a principal factor has a linked
 triple $(N,\mathcal{S},\mathcal{T})$, and we can use this triple to calculate
 the number of congruence classes.  Each non-zero class corresponds to a triple
@@ -284,17 +284,20 @@ $(Nx,[i]_\mathcal{S},[\lambda]_\mathcal{T})$ consisting of a coset of $N$, a
 class of $\mathcal{S}$ and a class of $\mathcal{T}$, as described in
 \cite[Theorem 3.2]{mtorpey_pre_msc}.  Hence the total number of classes is equal
 to the product of the index $|G:N|$, the number of classes of $\sS$, and the
-number of classes of $\tT$, plus $1$ for the universal congruence.
+number of classes of $\tT$, plus $1$ for the universal congruence.  Many of our
+congruences have $\sS=\Delta_I$ and $\tT=\Delta_\Lambda$; the total number of
+classes for these congruences will be
+$$|G:N| \cdot |I| \cdot |\Lambda| + 1
+\quad=\quad \big|S_k:N\big| S(n,k) \binom{n}{k} + 1.$$
 
 \subsubsection{Summary of Results}
 \label{sec:summary}
-We can now describe all the congruences of the principal factors $\pf{D_k^n}$ of the
-full transformation monoid $\mathcal{T}_n$.  If $(N,\mathcal{S},\mathcal{T})$ is a linked
-triple on $\pf{D_k^n}$, then let $[N,\mathcal{S},\mathcal{T}]$ be the non-universal
-congruence associated with that triple.
-For brevity, let $[N] = [N, \Delta_I, \Delta_\Lambda]$ and
-let $h_n = \binom{n}{k} \cdot S(n,k)$, the number of
-$\HH$-classes in $D_k^n$.
+We can now describe all the congruences of the principal factors $\pf{D_k^n}$ of
+the full transformation monoid $\mathcal{T}_n$.  If
+$(N,\mathcal{S},\mathcal{T})$ is a linked triple on $\pf{D_k^n}$, then let
+$[N,\mathcal{S},\mathcal{T}]$ be the non-universal congruence associated with
+that triple.  For brevity, let $[N] = [N, \Delta_I, \Delta_\Lambda]$ and let
+$h_k^n = S(n,k) \cdot \binom{n}{k}$, the number of $\HH$-classes in $D_k^n$.
 
 \begin{theorem}
   \label{thm:dkstar-congs}
@@ -308,10 +311,10 @@ $\HH$-classes in $D_k^n$.
       \hline
       $1$ & $[1, \Delta_I, \mathcal{T}] (\forall \mathcal{T})$ & $B_n$
           & from $1$ to $n$ \\
-      $2$ & $[1], [S_2], \nabla$ & $3$ & $2h_2+1, h_2+1, 1$ \\
-      $3$ & $[1], [A_3], [S_3], \nabla$ & $4$ & $6h_3+1, 2h_3+1, h_3+1, 1$ \\
-      $4$ & $[1], [K_4], [A_4], [S_4], \nabla$ & $5$ & $24h_4+1, 6h_4+1, 2h_4+1, h_4+1, 1$ \\
-      $\geq 5$ & $[1], [A_k], [S_k], \nabla$ & $4$ & $k!h_k+1, 2h_k+1, h_k+1, 1$ \\
+      $2$ & $[1], [S_2], \nabla$ & $3$ & $2h_2^n+1, h_2^n+1, 1$ \\
+      $3$ & $[1], [A_3], [S_3], \nabla$ & $4$ & $6h_3^n+1, 2h_3^n+1, h_3^n+1, 1$ \\
+      $4$ & $[1], [K_4], [A_4], [S_4], \nabla$ & $5$ & $24h_4^n+1, 6h_4^n+1, 2h_4^n+1, h_4^n+1, 1$ \\
+      $\geq 5$ & $[1], [A_k], [S_k], \nabla$ & $4$ & $k!h_k^n+1, 2h_k^n+1, h_k^n+1, 1$ \\
       \hline
     \end{tabular}
     \caption{Summary of the congruences of the principal factors of $\T_n$}
