@@ -1489,7 +1489,7 @@ in Table \ref{tab:other-monoids}.
     \hline
     $\Sym_n$ & $n!$ & $3$ \\
     $\I_n$ & $\sum_{k=0}^n \binom{n}{k} \frac{n!}{k!}$ & $3n - 1$ \\
-    $\OO_n$ & $\binom{2n}{n}$ & $n + 1$ \\
+    $\POI_n$ & $\binom{2n}{n}$ & $n + 1$ \\
     $\Mot_n$ & $\sum_{k=0}^n \binom{2n}{2k}C_k$ & $n + 7$ \\
     $\PP_n$ & $C_{2n}$ & $n + 7$ \\
     $\Brau_n$ & $(2n - 1)!!$ & $\frac{3}{2}n + \frac{5}{2}$ or $\frac{3}{2}n + 13$ \\
@@ -1507,7 +1507,7 @@ in Table \ref{tab:other-monoids}.
 We saw in Example \ref{ex:ptn-to-pn} a way in which partial transformations lie
 in the partition monoid $\Prt_n$.  We will therefore start with three monoids of
 partial transformations which embed into $\Prt_n$ as submonoids: $\Sym_n$,
-$\I_n$, and $\OO_n$.  For all the monoids below, we assume $n \geq 3$, since any
+$\I_n$, and $\POI_n$.  For all the monoids below, we assume $n \geq 3$, since any
 lower $n$ has very few elements and is rather trivial to solve.
 
 \subsubsection{Symmetric group $\Sym_n$}
@@ -1560,21 +1560,20 @@ As an example, the congruences of $\I_6$ are as follows:
       & \subset R_{I_5,\Alt_6} \subset R_{I_5, \Sym_6} \subset R_6 = \nabla_{\I_6}.
 \end{align*}
 
-\subsubsection{Order-preserving partial permutation monoid $\OO_n$}
-\nomenclature[On]{$\OO_n$}{Monoid of order-preserving partial permutations} The
-monoid $\OO_n$ of all order-preserving partial permutations embeds into $\Prt_n$
-as the submonoid consisting of all the planar bipartitions with trivial kernel
-and cokernel.  An element of $\OO_n$ is defined by its domain and codomain, so
-$\OO_n$ contains $\binom{n}{r}^2$ elements of rank $r$, or
+\subsubsection{Order-preserving partial permutation monoid $\POI_n$}
+\nomenclature[POIn]{$\POI_n$}{Monoid of order-preserving partial permutations}
+The monoid $\POI_n$ of all order-preserving partial permutations embeds into
+$\Prt_n$ as the submonoid consisting of all the planar bipartitions with trivial
+kernel and cokernel.  An element of $\POI_n$ is defined by its domain and
+codomain, so $\POI_n$ contains $\binom{n}{r}^2$ elements of rank $r$, or
 $\sum_{r=0}^n \binom{n}{r}^2 = \binom{2n}{n}$ elements in total
 \citeoeis{A000984}.
 
 Its ideals have the same description as for $\I_n$, and
-its congruences are all Rees.  Hence the congruences of $\OO_n$ form the chain
-$$\Delta_{\OO_n} = R_0 \subset R_1 \subset R_2 \subset \ldots
-\subset R_n = \nabla_{\OO_n}.$$
-This is shown in \cite[Proposition 2.6]{fernandes_2001}, though the notation
-$\mathcal{POI}_n$ is used for $\OO_n$.
+its congruences are all Rees.  Hence the congruences of $\POI_n$ form the chain
+$$\Delta_{\POI_n} = R_0 \subset R_1 \subset R_2 \subset \ldots
+\subset R_n = \nabla_{\POI_n}.$$
+This is shown in \cite[Proposition 2.6]{fernandes_2001}.
 
 \subsubsection{Planar bipartition monoid $\PP_n$}
 \nomenclature[PPn]{$\PP_n$}{Planar bipartition monoid}
