@@ -375,9 +375,102 @@ we consider the three corresponding order-preserving submonoids.
 
 \subsubsection{Partial transformation monoid $\PT_n$}
 \label{sec:princfact-in}
+Recall that $\PT_n$ is the monoid of all partial transformations on the set
+$\bn = \{1, \ldots, n\}$, that is, all transformations on some subset of $\bn$.
+In many respects a partial transformation behaves like a transformation: it has
+an image, a rank (the size of the image), and a kernel.  However, we should also
+consider a partial transformation's codomain: the set of points which it maps.
+The kernel is a partition of the codomain.  Using these definitions, the Green's
+relations of $\PT_n$ are described in the same way as those of $\T_n$: the
+$\DD$-classes are determined by rank, the $\LL$-classes by image, the
+$\RR$-classes by kernel, and the $\HH$-classes by image and kernel.  Idempotents
+are also described in the same way: a partial transformation $\alpha \in \PT_n$
+is an idempotent if and only if its image is a cross-section of its kernel.
+
+The $\DD$-classes of $\PT_n$ are somewhat different from $\T_n$.  Firstly, there
+exists an element $0 = \transN---$ with rank $0$, so we have an additional
+$\DD$-class $D_0^n$.  For a given rank $k$, there are still $\binom{n}{k}$
+possible images with size $k$, so the $\DD$-class $D_k^n$ has $\binom{n}{k}$
+$\LL$-classes, like $\T_n$.  However, the possibility of points not being in the
+domain mean that there are not just $S(n,k)$ possible kernels, but
+$S(n+1, k+1)$; the intuition behind this is that, instead of considering all
+$k$-partitions of $\{1, \ldots, n\}$, we are considering all $k+1$-partitions of
+$\{1, \ldots, n+1\}$, where the class containing $n+1$ represents those points
+outside the domain.
+
+Lemma \ref{lem:dk-hclasses} holds true for $\PT_n$---in fact, both parts hold
+even when $k = 0$ or $1$.  For $k=0$ we simply observe that $D_0^n$ is trivial,
+and the two statements follow.  The proof given for (1) is sufficient for
+$\PT_n$ when $k \geq 1$, so (1) is proven.  For (2), the proof given is only
+sufficient for $\PT_n$ when $k \geq 2$.  For $k=1$, it is proven as follows.  We
+must have $I_1 = \{i\}$ and $I_2 = \{j\}$ with $i \neq j$; simply let
+$P = \big\{\{i\}\big\}$, a cross-section of $I_1$ but not $I_2$.  This is not
+possible in $\T_n$ because any kernel has to contain all the elements of $\bn$
+somewhere; but by missing out points from the domain, it is possible in $\PT_n$.
+
+Since Lemma \ref{lem:dk-hclasses} holds for all $k$, we have
+$\varepsilon_I = \Delta_I$ and $\varepsilon_\Lambda = \Delta_\Lambda$ in each
+principal factor $\pf{D_k^n}$.  Hence every linked triple on $\pf{D_k^n}$ must
+have the form $(N, \Delta, \Delta)$.  Each group $\HH$-class in $D_k^n$ is
+isomorphic to $\Sym_k$, since it corresponds to all the ways of mapping the
+$k$ classes of the kernel onto the $k$ points in the image.  Hence the possible
+normal subgroups $N$ are again the normal subgroups of $\Sym_k$.
+The congruences are summarised in Table \ref{tab:dkstar-congs-ptn}, where
+$h_k^n$ is equal to $$S(n+1, k+1) \binom{n}{k},$$ the number of $\HH$-classes in
+$D_k^n$.
+
+\begin{table}[h]
+  \centering
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{| r | r | c | r |}
+    \hline
+    \multicolumn{1}{|c|}{$k$} & \multicolumn{1}{c|}{\textbf{Congruences of $\pf{D_k^n}$}} & \textbf{Number} & \multicolumn{1}{c|}{\textbf{Number of classes}} \\
+    \hline
+    $0$ & $[1]$ & $1$ & $1$ \\
+    $1$ & $[1], \nabla$ & $2$ & $h_1^n+1, 1$ \\
+    $2$ & $[1], [\Sym_2], \nabla$ & $3$ & $2h_2^n+1, h_2^n+1, 1$ \\
+    $3$ & $[1], [\Alt_3], [\Sym_3], \nabla$ & $4$ & $6h_3^n+1, 2h_3^n+1, h_3^n+1, 1$ \\
+    $4$ & $[1], [K_4], [\Alt_4], [\Sym_4], \nabla$ & $5$ & $24h_4^n+1, 6h_4^n+1, 2h_4^n+1, h_4^n+1, 1$ \\
+    $\geq 5$ & $[1], [\Alt_k], [\Sym_k], \nabla$ & $4$ & $k!h_k^n+1, 2h_k^n+1, h_k^n+1, 1$ \\
+    \hline
+  \end{tabular}
+  \caption{Summary of the congruences of the principal factors of $\PT_n$ or
+    $\I_n$}
+  \label{tab:dkstar-congs-ptn}
+\end{table}
 
 \subsubsection{Symmetric inverse monoid $\I_n$}
 \label{sec:princfact-in}
+Recall that the symmetric inverse monoid $\I_n$ consists of all partial
+permutations on the set $\bn$; that is, $\I_n$ is the submonoid of $\PT_n$
+consisting of the injective maps.  The Green's relations of $\I_n$ are
+determined by rank, image and kernel, as for $\PT_n$, but we can think of the
+$\RR$ relation in a slightly simpler way.  Since each element of $\I_n$ is a
+partial permutation, its kernel must be the diagonal relation on the domain;
+hence, two elements are $\RR$-related if and only if they have the same domain.
+This creates a certain symmetry between the $\LL$ and $\RR$ relations: if an
+element is written in two-row notation, the set of points in the top row
+determine its $\RR$-class, and the set of points in the bottom row determine its
+$\LL$-class.
+
+This symmetry makes the classification of the principal factors' congruences
+quite straightforward.  The $\DD$-class $D_k^n$ of elements with rank $k$
+contains $\binom{n}{k}$ $\LL$-classes and $\binom{n}{k}$ $\RR$-classes.  The
+idempotents of $\I_n$ are simply the identity maps (that is, the elements
+$\alpha$ such that $i\alpha = i$ for all $i \in \dom\alpha$) so an $\HH$-class
+is a group if and only if its image and its domain are equal.  Hence each
+$\LL$-class and each $\RR$-class contains precisely one group $\HH$-class.  This
+is enough to prove the whole of Lemma \ref{lem:dk-hclasses}, for all $k$ from
+$0$ to $n$.  Hence, as for $\PT_n$, all linked triples on $\pf{D_k^n}$ are of
+the form $(N, \Delta, \Delta)$.
+
+There are $k!$ elements with a given image and domain of size $k$, and if the
+image and domain are equal they form a group isomorphic to $\Sym_k$, so like
+$\PT_n$ we have that the choices for $N$ are all the normal subgroups of
+$\Sym_k$.  The result is that the congruences of the principal factors of $\I_n$
+have the same description as those of the principal factors of $\PT_n$.  They
+can be seen in Table \ref{tab:dkstar-congs-ptn}, where the number of
+$\HH$-classes $h_k^n$ is in this case given by $\binom{n}{k}^2$.
 
 \subsubsection{Order-preserving partial transformations $\PO_n$}
 \label{sec:princfact-on}
