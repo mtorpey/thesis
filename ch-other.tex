@@ -515,7 +515,7 @@ $\PO_n$ a given kernel and image determines a single element, not $k!$ elements,
 since order must be preserved.  This means that the underlying group of $D_k^n$
 is not $\Sym_k$, but simply the trivial group $1$.  This result puts the
 principal factors $\pf{D_k^n}$ into the category of \textit{congruence-free}
-semigroups by Theorem \ref{thm:congruence-free}, meaning that the only
+semigroups by Proposition \ref{prop:congruence-free}, meaning that the only
 congruences on $\pf{D_k^n}$ are $\Delta$ and $\nabla$.  Indeed, the only linked
 triple of $\pf{D_k^n}$ is $(1, \Delta, \Delta)$, corresponding to the trivial
 congruence.  This result is summarised in Table \ref{tab:dkstar-congs-pon},
@@ -661,13 +661,44 @@ proving some more general results.
 
 \subsection{Congruence-free semigroups}
 \label{sec:congruence-free}
+
+The notion of a \textit{congruence-free} semigroup has long been understood, but
+is presented here for completeness.  Note that any semigroup must have at least
+the trivial and universal congruences $\Delta$ and $\nabla$; the definition of
+a congruence-free semigroup is as follows.
+
 \begin{definition}
   \label{def:congruence-free}
+  \index{congruence-free semigroup}
+  A semigroup $S$ is congruence free if it has no congruences other than
+  $\Delta_S$ and $\nabla_S$.
 \end{definition}
 
-\begin{theorem}
-  \label{thm:congruence-free}
-\end{theorem}
+By the above definition, any congruence-free semigroup has $2$ congruences,
+except the trivial semigroup, which has only $1$ congruence.  Note that the
+language used here differs from that used in group theory: if a group is
+congruence-free (and therefore has no proper non-trivial normal subgroups) it is
+called a \textit{simple group}. \index{simple!group} This is not to be confused
+with the concept of a \textit{simple semigroup} (Definition
+\ref{def:zerosimple}).
+
+It is relatively easy to determine whether a finite semigroup is
+congruence-free, using the following theorem based partly on material in
+\cite[\S3.7]{howie}.  A full proof is included in \cite[Chapter
+5]{mtorpey_pre_msc}.
+
+\begin{proposition}
+  \label{prop:congruence-free}
+  A finite semigroup $S$ is congruence-free if and only if one of the following
+  holds:
+  \begin{enumerate}[\rm(1)]
+  \item $S$ has no more than $2$ elements;
+  \item $S$ is a simple group;
+  \item $S$ is isomorphic to a Rees 0-matrix semigroup
+    $\mathcal{M}^0[G;I,\Lambda;P]$ where $G$ is the trivial group and $P$ is
+    regular with no two identical rows and no two identical columns.
+  \end{enumerate}
+\end{proposition}
 
 \subsection{Congruence-full semigroups}
 % TODO: this section needs a full rethink of infinite semigroups
