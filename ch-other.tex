@@ -547,7 +547,7 @@ $$\binom{n}{k} \sum_{i=k}^n \binom{n}{i} \binom{i-1}{k-1}.$$
 \subsubsection{Order-preserving partial permutations $\POI_n$}
 \label{sec:princfact-poin}
 Next we consider the order-preserving partial permuations, which form the monoid
-$\POI_n = \PO_n \cap I_n$.  Like $\I_n$, the $\LL$ and $\RR$ relations are
+$\POI_n = \PO_n \cap \I_n$.  Like $\I_n$, the $\LL$ and $\RR$ relations are
 determined by image and domain, and so Lemma \ref{lem:dk-hclasses} is proven in
 the same way as for $\I_n$, and applies to all $k$ from $0$ to $n$.  Since the
 kernel of a partial permutation is always a diagonal relation, we do not
@@ -610,7 +610,34 @@ $\binom{n}{k} \binom{n-1}{k-1}$.
 
 \subsection{Further work}
 \label{sec:princfact-further}
+We have considered the monoids of partial transformations $\PT_n$,
+transformations $\T_n$, and partial permutations $\I_n$, and for each of those
+monoids we have considered the submonoid of order-preserving elements.  In the
+future, the ideas presented here could perhaps be extended to other similar
+submonoids of these three, such as the following submonoids, considered in
+\cite[\S1.2]{wilf_ii}:
 
+\begin{itemize}
+\item the monoids of order-preserving \textit{or order-reversing} elements:
+  $\mathcal{P\!O\!D\!}_n$, $\mathcal{O\!D\!}_n$, and $\mathcal{P\!O\!D\!I\!}_n$
+  respectively;
+\item the monoids of \textit{orientation}-preserving elements:
+  $\mathcal{P\!O\!P\!}_n$, $\mathcal{O\!P\!}_n$, and $\mathcal{P\!O\!P\!I\!}_n$
+  respectively;
+\item the monoids of orientation-preserving or or orientation-reversing
+  elements: $\mathcal{P\!O\!R\!}_n$, $\mathcal{O\!R\!}_n$, and
+  $\mathcal{P\!O\!R\!I\!}_n$ respectively.
+\end{itemize}
+
+We could also consider some important monoids which do not consist of partial
+transformations.  After the results in Chapter \ref{chap:motzkin}, it would be
+interesting to learn about the congruences of the principal factors of the
+Motzkin monoid and other bipartition monoids such as $\Prt_n$.  These monoids
+are not as straightforward as the ones we have so far considered; certainly,
+identifying the idempotents in a semigroups of bipartitions is more complicated
+than for partial transformations \cite[Theorem 5]{pn_ids}.  However, it is
+possible that their principal factors' congruences could be classified in a
+similar way.
 
 
 
