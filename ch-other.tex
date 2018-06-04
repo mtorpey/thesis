@@ -118,11 +118,11 @@ $\alpha \in \T_n$ is an idempotent if and only if each point in its image is
 mapped by $\alpha$ to itself, i.e.
 $$i \alpha = i \quad (\forall i \in \im \alpha).$$
 Given an image and a kernel, we can choose a transformation with this condition
-if and only if no pair of points in the image are in the same kernel-class---
-that is, each image point is in a different kernel-class.  Hence an $\HH$-class
-of $D_k^n$ is a group if and only if its image contains one point from each class
-of its kernel (i.e.~its image is a \textit{cross-section} of its kernel).
-\index{cross-section}
+if and only if no pair of points in the image are in the same
+kernel-class---that is, each image point is in a different kernel-class.  Hence
+an $\HH$-class of $D_k^n$ is a group if and only if its image contains one point
+from each class of its kernel (i.e.~its image is a \textit{cross-section} of its
+kernel).  \index{cross-section}
 
 \begin{lemma}
   \label{lem:dk-hclasses}
@@ -501,7 +501,14 @@ choosing which $i$ of the $n$ points are the lowest in their kernel-class.
 Point $1$ must be lowest, so we have $\binom{n-1}{i-1}$ choices.  The exception
 to this rule is $D_0^n$, which simply has one $\RR$-class.
 
-% TODO: prove the lemma
+Idempotents have the same characterisation as for $\PT_n$.  Lemma
+\ref{lem:dk-hclasses} holds for all $k$ from $0$ to $n$, as follows.  $D_0^n$ is
+trivial, so both statements hold for $k=0$.  The proof given for (1) is
+sufficient in this case for all $k \geq 1$.  To prove (2) for $k=1$, we use the
+same approach described for $\PT_n$.  To prove (2) for $k \geq 2$, let $I_1$ and
+$I_2$ be the images of $L_1$ and $L_2$ respectively; if we take the kernel
+$\Delta_{I_1}$, then $I_1$ is a cross-section of it but $I_2$ is not, so the
+$\RR$-class corresponding to that kernel satisfies the requirement.
 
 Perhaps the most important difference between $\PO_n$ and $\PT_n$ is that in
 $\PO_n$ a given kernel and image determines a single element, not $k!$ elements,
