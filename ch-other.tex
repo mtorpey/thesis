@@ -518,7 +518,9 @@ principal factors $\pf{D_k^n}$ into the category of \textit{congruence-free}
 semigroups by Theorem \ref{thm:congruence-free}, meaning that the only
 congruences on $\pf{D_k^n}$ are $\Delta$ and $\nabla$.  Indeed, the only linked
 triple of $\pf{D_k^n}$ is $(1, \Delta, \Delta)$, corresponding to the trivial
-congruence.  This result is summarised in Table \ref{tab:dkstar-congs-pon}.
+congruence.  This result is summarised in Table \ref{tab:dkstar-congs-pon},
+where $h_k^n$ is the number of $\HH$-classes in $D_k^n$, given by
+$$\binom{n}{k} \sum_{i=k}^n \binom{n}{i} \binom{i-1}{k-1}.$$
 
 \begin{table}[h]
   \centering
@@ -534,15 +536,30 @@ congruence.  This result is summarised in Table \ref{tab:dkstar-congs-pon}.
     $\geq 1$
     & $[1], \nabla$
     & $2$
-    & $\sum_{i=k}^n \binom{n}{i} \binom{i-1}{k-1} + 1, 1$ \\
+    & $h_k^n + 1, 1$ \\
     \hline
   \end{tabular}
-  \caption{Summary of the congruences of the principal factors of $\PO_n$}
+  \caption{Summary of the congruences of the principal factors of $\PO_n$ or
+    $\POI_n$}
   \label{tab:dkstar-congs-pon}
 \end{table}
 
 \subsubsection{Order-preserving partial permutations $\POI_n$}
 \label{sec:princfact-poin}
+Next we consider the order-preserving partial permuations, which form the monoid
+$\POI_n = \PO_n \cap I_n$.  Like $\I_n$, the $\LL$ and $\RR$ relations are
+determined by image and domain, and so Lemma \ref{lem:dk-hclasses} is proven in
+the same way as for $\I_n$, and applies to all $k$ from $0$ to $n$.  Since the
+kernel of a partial permutation is always a diagonal relation, we do not
+encounter and kernels which cannot preserve order; hence the Green's classes of
+$\POI_n$ is isomorphic to that of $\I_n$.  In particular, there are
+$\binom{n}{k}^2$ $\HH$-classes in $D_k^n$.  The main difference between $\POI_n$
+and $\I_n$ is that each $\HH$-class contains just one element, since each
+domain--image pair defines only one order-preserving element.  Hence the
+underlying group of $\pf{D_k^n}$ is the trivial group $1$, and so $\POI_n$ is
+congruence-free like $\PO_n$.  This information is summarised in Table
+\ref{tab:dkstar-congs-pon}, where in this case the number of $\HH$-classes
+$h_k^n$ is equal to $\binom{n}{k}^2$.
 
 \subsubsection{Order-preserving transformations $\OO_n$}
 \label{sec:princfact-on}
