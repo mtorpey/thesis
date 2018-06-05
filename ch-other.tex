@@ -74,7 +74,7 @@ using the concept of linked triples (see Definition \ref{def:linked-triple}).
 \label{sec:princfact-tn}
 
 Now we will consider the principal factors of an important monoid, the full
-transformation monoid $\T_n$.  Recall that $\T_n$ is the semigroup consisting of
+transformation monoid $\T_n$.  Recall that $\T_n$ is the monoid consisting of
 all transformations on the set $\{1, \dots, n\}$, for some $n \in \mathbb{N}$
 (Definition \ref{def:tn}).  In order to describe the principal factors of
 $\T_n$, we must first consider its Green's relations, as follows.
@@ -114,9 +114,9 @@ $\{1, \dots, k\}$.  Hence there are $k!$ elements in each $\HH$-class.
 
 \subsubsection{Group $\HH$-classes of $\T_n$}
 To understand the principal factor corresponding to a $\DD$-class $D_k^n$, we need
-to understand which of its $\HH$-classes are groups and whcih are not.  To
+to understand which of its $\HH$-classes are groups and which are not.  To
 determine which $\HH$-classes are groups, we recall that in any semigroup an
-$\HH$-class H is a group if and only if it contains an idempotent (an element
+$\HH$-class $H$ is a group if and only if it contains an idempotent (an element
 $\alpha \in H$ such that $\alpha \alpha = \alpha$).  A transformation
 $\alpha \in \T_n$ is an idempotent if and only if each point in its image is
 mapped by $\alpha$ to itself, i.e.
@@ -216,7 +216,7 @@ $\lambda, \mu \in \Lambda$ there exists a column $i \in I$ such that
 $p_{\lambda i} \neq 0 = p_{\mu i}$.  Hence if $k>1$ then we have
 $\varepsilon_\Lambda = \Delta_\Lambda$.
 
-\subsubsection{Linked Triples for $k = 1$}
+\subsubsection{Linked triples for rank $1$}
 \label{sec:k1}
 First let us consider the linked triples of $\pf{D_1^n}$.  Since this
 $\DD$-class consists of the transformations with rank $1$, its elements have $n$
@@ -224,8 +224,11 @@ possible images,
 $$\{1\}, \{2\}, \dots, \{n\}$$
 and only one possible kernel,
 $$\big\{\{1, \dots, n\}\big\}.$$
-Hence the matrix $P$ of $\pf{D_1^n}$ has $n$ rows and $1$ column.  Every element in
-$D_1^n$ has the form
+Hence the matrix $P$ of $\pf{D_1^n}$ has $n$ rows and $1$ column.  Since
+$\pf{D_1^n}$ is simple, this means that it is a right zero semigroup.  Later in
+this chapter we will see that every equivalence on a right zero semigroup is a
+congruence (see Theorem \ref{thm:congruence-full}).  For now we will classify
+the congruences using linked triples.  Every element in $D_1^n$ has the form
 $$\begin{pmatrix}
   1 & 2 & \cdots & n \\
   i & i & \cdots & i
@@ -251,9 +254,10 @@ also trivial, we have that any four nonzero elements from the matrix $P$ must
 multiply together to give the identity $1$, which will always be in $N$.  Hence all the
 triples described are \textit{linked}, and there are $B_n$ of them.
 
-\subsubsection{Linked Triples for $k \geq 2$}
+\subsubsection{Linked triples for rank $2$ and higher}
 \label{sec:k2}
-Now let us consider the linked triples of $\pf{D_k^n}$ for $k \geq 2$.  We already
+Now let us consider the linked triples of $\pf{D_k^n}$ for $k \geq 2$.  By Lemma
+\ref{lem:dk-hclasses} we
 know that $\varepsilon_I = \Delta_I$ and $\varepsilon_\Lambda = \Delta_\Lambda$,
 so any triple satisfying conditions (1) and (2) must have the form
 $$(N, \Delta_I, \Delta_\Lambda)$$
