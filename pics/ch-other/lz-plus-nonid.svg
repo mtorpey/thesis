@@ -17,13 +17,13 @@
 </g>
 <!-- 2 -->
 <g id="node2" class="node"><title>2</title>
-<polygon fill="gray" stroke="none" points="8.5,-3.5 8.5,-40.5 37.5,-40.5 37.5,-3.5 8.5,-3.5"/>
+<polygon fill="lightblue" stroke="none" points="8.5,-3.5 8.5,-40.5 37.5,-40.5 37.5,-3.5 8.5,-3.5"/>
 <polygon fill="none" stroke="black" points="8.5,-3.5 8.5,-40.5 37.5,-40.5 37.5,-3.5 8.5,-3.5"/>
 <text text-anchor="start" x="19.5" y="-18.3" font-family="Times,serif" font-size="14.00">1</text>
-<polygon fill="gray" stroke="none" points="37.5,-3.5 37.5,-40.5 66.5,-40.5 66.5,-3.5 37.5,-3.5"/>
+<polygon fill="lightblue" stroke="none" points="37.5,-3.5 37.5,-40.5 66.5,-40.5 66.5,-3.5 37.5,-3.5"/>
 <polygon fill="none" stroke="black" points="37.5,-3.5 37.5,-40.5 66.5,-40.5 66.5,-3.5 37.5,-3.5"/>
 <text text-anchor="start" x="48.5" y="-18.3" font-family="Times,serif" font-size="14.00">1</text>
-<polygon fill="gray" stroke="none" points="66.5,-3.5 66.5,-40.5 95.5,-40.5 95.5,-3.5 66.5,-3.5"/>
+<polygon fill="lightblue" stroke="none" points="66.5,-3.5 66.5,-40.5 95.5,-40.5 95.5,-3.5 66.5,-3.5"/>
 <polygon fill="none" stroke="black" points="66.5,-3.5 66.5,-40.5 95.5,-40.5 95.5,-3.5 66.5,-3.5"/>
 <text text-anchor="start" x="77.5" y="-18.3" font-family="Times,serif" font-size="14.00">1</text>
 </g>

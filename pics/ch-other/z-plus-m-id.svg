@@ -17,10 +17,10 @@
 </g>
 <!-- 3 -->
 <g id="node3" class="node"><title>3</title>
-<polygon fill="gray" stroke="none" points="34,-3.5 34,-40.5 63,-40.5 63,-3.5 34,-3.5"/>
+<polygon fill="lightblue" stroke="none" points="34,-3.5 34,-40.5 63,-40.5 63,-3.5 34,-3.5"/>
 <polygon fill="none" stroke="black" points="34,-3.5 34,-40.5 63,-40.5 63,-3.5 34,-3.5"/>
 <text text-anchor="start" x="45" y="-18.3" font-family="Times,serif" font-size="14.00">1</text>
-<polygon fill="gray" stroke="none" points="63,-3.5 63,-40.5 92,-40.5 92,-3.5 63,-3.5"/>
+<polygon fill="lightblue" stroke="none" points="63,-3.5 63,-40.5 92,-40.5 92,-3.5 63,-3.5"/>
 <polygon fill="none" stroke="black" points="63,-3.5 63,-40.5 92,-40.5 92,-3.5 63,-3.5"/>
 <text text-anchor="start" x="74" y="-18.3" font-family="Times,serif" font-size="14.00">1</text>
 </g>

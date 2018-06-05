@@ -17,7 +17,7 @@
 </g>
 <!-- 4 -->
 <g id="node4" class="node"><title>4</title>
-<polygon fill="gray" stroke="none" points="49,-84.5 49,-121.5 78,-121.5 78,-84.5 49,-84.5"/>
+<polygon fill="lightblue" stroke="none" points="49,-84.5 49,-121.5 78,-121.5 78,-84.5 49,-84.5"/>
 <polygon fill="none" stroke="black" points="49,-84.5 49,-121.5 78,-121.5 78,-84.5 49,-84.5"/>
 <text text-anchor="start" x="60" y="-99.3" font-family="Times,serif" font-size="14.00">1</text>
 </g>
@@ -37,7 +37,7 @@
 </g>
 <!-- 3 -->
 <g id="node3" class="node"><title>3</title>
-<polygon fill="gray" stroke="none" points="49,-3.5 49,-40.5 78,-40.5 78,-3.5 49,-3.5"/>
+<polygon fill="lightblue" stroke="none" points="49,-3.5 49,-40.5 78,-40.5 78,-3.5 49,-3.5"/>
 <polygon fill="none" stroke="black" points="49,-3.5 49,-40.5 78,-40.5 78,-3.5 49,-3.5"/>
 <text text-anchor="start" x="60" y="-18.3" font-family="Times,serif" font-size="14.00">1</text>
 </g>
