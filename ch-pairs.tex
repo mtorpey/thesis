@@ -1089,7 +1089,7 @@ classes of $\rho$ (see Algorithm \ref{alg:tc-twosided} for a full description).
 \label{alg:tc-twosided}
 \index{ToddCoxeterTwoSided@\textsc{ToddCoxeterTwoSided}}
 \begin{algorithmic}[1]
-\Procedure{ToddCoxeterTwoSided}{$\pres X R, W$}
+\Procedure{ToddCoxeterTwoSided}{$\pres X R$, $W$}
 \State $n := 1$
 \State $\mathbf{N} := \{1\}$
 \State $\tau : \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$
@@ -1131,7 +1131,7 @@ of Algorithm \ref{alg:tc-right}.
 \label{alg:tc-right}
 \index{ToddCoxeterRight@\textsc{ToddCoxeterRight}}
 \begin{algorithmic}[1]
-\Procedure{ToddCoxeterRight}{$\pres X R, W$}
+\Procedure{ToddCoxeterRight}{$\pres X R$, $W$}
 \State $n := 1$
 \State $\mathbf{N} := \{1\}$
 \State $\tau : \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$
@@ -1156,12 +1156,12 @@ To see that this algorithm is correct, consider the following theorem.
 \begin{theorem}
   Let $\pres X R$ and $W$ be as in Section \ref{sec:program-inputs} and $\rho$
   be the right congruence they specify.
-  \textsc{ToddCoxeterRight}($\pres X R, W$) returns a table which describes the
+  \textsc{ToddCoxeterRight}($\pres X R$, $W$) returns a table which describes the
   classes of $\rho$ (after the identity row $1$ is removed).
   \begin{proof}
     We may safely assume that the basic Todd--Coxeter algorithm is correct
     \cite{todd_coxeter_1936, beetham_campbell_1976} and therefore that
-    \textsc{ToddCoxeterTwoSided($\pres X R, W$)} gives the correct answer for a
+    \textsc{ToddCoxeterTwoSided($\pres X R$, $W$)} gives the correct answer for a
     two-sided congruence, since it is equivalent to running Todd--Coxeter on the
     presentation $\pres{X}{R,W}$.  We must now consider how
     \textsc{ToddCoxeterRight} differs from \textsc{ToddCoxeterTwoSided}, and
@@ -1217,7 +1217,7 @@ Algorithm \ref{alg:tc-left} for a pseudo-code description.
 \label{alg:tc-left}
 \index{ToddCoxeterLeft@\textsc{ToddCoxeterLeft}}
 \begin{algorithmic}[1]
-\Procedure{ToddCoxeterLeft}{$\pres X R, W$}
+\Procedure{ToddCoxeterLeft}{$\pres X R$, $W$}
 \State $\bar R := \varnothing$
 \State $\bar W := \varnothing$
 \For{$(u,v) \in R$}
@@ -1238,7 +1238,7 @@ Algorithm \ref{alg:tc-left} for a pseudo-code description.
 \begin{theorem}
   Let $\pres X R$ and $W$ be as in Section \ref{sec:program-inputs} and $\rho$
   be the left congruence they specify.
-  \textsc{ToddCoxeterLeft}($\pres X R, W$) returns a table which describes the
+  \textsc{ToddCoxeterLeft}($\pres X R$, $W$) returns a table which describes the
   classes of $\rho$ (after the identity row $1$ is removed, and with respect to
   left multiplication).
   \begin{proof}
@@ -1324,7 +1324,7 @@ relations from $W$ and combining rows together.
 \label{alg:tc-prefill}
 \index{ToddCoxeterPrefill@\textsc{ToddCoxeterPrefill}}
 \begin{algorithmic}[1]
-\Procedure{ToddCoxeterPrefill}{$\pres X R, W, S$}
+\Procedure{ToddCoxeterPrefill}{$\pres X R$, $W, S$}
 \Require{$S = \{s_1, s_2, \ldots, s_k\}$ is a semigroup with its elements known in a defined order}
 \State $n := |S| + 1$
 \State $\mathbf{N} := \{1 \ldots n\}$
@@ -1348,8 +1348,8 @@ relations from $W$ and combining rows together.
 \begin{theorem}
   Let $\pres X R$ and $W$ be as in Section \ref{sec:program-inputs} and $S$ be a
   concrete semigroup presented by $\pres X R$.
-  \textsc{ToddCoxeterPrefill}($\pres X R, W, S$) has output identical to
-  \textsc{ToddCoxeterTwoSided}($\pres X R, W$), up to relabelling of the rows.
+  \textsc{ToddCoxeterPrefill}($\pres X R$, $W$, $S$) has output identical to
+  \textsc{ToddCoxeterTwoSided}($\pres X R$, $W$), up to relabelling of the rows.
   \begin{proof}
     The only difference between \textsc{Prefill} and \textsc{TwoSided} is that
     \textsc{Prefill} initialises the Todd--Coxeter table with a right Cayley
