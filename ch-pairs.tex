@@ -1962,7 +1962,7 @@ A large number of example congruences were generated randomly and run using each
 different algorithm, along with the default implementation in GAP \cite{gap}, to
 analyse performance.
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-times}
   \caption[Benchmark: all algorithms, concrete, 1 pair]
@@ -1971,7 +1971,7 @@ analyse performance.
   \label{fig:bench-trans-1p-times}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-3p-times}
   \caption[Benchmark: all algorithms, concrete, 3 pairs]
@@ -1980,7 +1980,7 @@ analyse performance.
   \label{fig:bench-trans-3p-times}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-vp-times}
   \caption[Benchmark: all algorithms, concrete, $n$ pairs]
@@ -2031,7 +2031,7 @@ generating pairs \texttt{tc} tends to perform relatively better, since there are
 likely to be fewer congruence classes and therefore fewer rows in the coset
 table.
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-1p-tccomp}
   \caption[Benchmark: Todd--Coxeter, concrete, 1 pair]
@@ -2040,7 +2040,7 @@ table.
   \label{fig:bench-trans-tc-1p-tccomp}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-vp-tccomp}
   \caption[Benchmark: Todd--Coxeter, concrete, $n$ pairs]
@@ -2069,7 +2069,7 @@ many small classes.  This reinforces the idea given in Examples \ref{ex:good-tc}
 and \ref{ex:good-tc-prefill}, that the winning algorithm may depend on number of
 classes, and it is therefore not clear in advance which algorithm may be better.
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-tc-vp-right-bynrclasses}
   \caption[Benchmark: Todd--Coxeter, concrete, right, $n$ pairs]
@@ -2087,7 +2087,7 @@ perhaps because in \textsc{ToddCoxeterRight} so little time is spent applying
 relations from $W$, so the work is almost finished by the time the table has
 been pre-filled.
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-gap}
   \caption[Benchmark: GAP/\texttt{libsemigroups}, concrete, 1 pair]
@@ -2096,7 +2096,7 @@ been pre-filled.
   \label{fig:bench-trans-1p-gap}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-vp-gap}
   \caption[Benchmark: GAP/\texttt{libsemigroups}, concrete, $n$ pairs]
@@ -2125,7 +2125,7 @@ In order to produce a further comparison, the tests for finitely presented
 semigroups were also run with the \textit{kbmag} package for GAP \cite{kbmag}.
 The results are shown on the graphs with the name \texttt{kbmag}.
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-times}
   \caption[Benchmark: all algorithms, finitely presented, 1 pair]
@@ -2134,7 +2134,7 @@ The results are shown on the graphs with the name \texttt{kbmag}.
   \label{fig:bench-fp-1p-times}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-times}
   \caption[Benchmark: all algorithms, finitely presented, 3 pairs]
@@ -2143,7 +2143,7 @@ The results are shown on the graphs with the name \texttt{kbmag}.
   \label{fig:bench-fp-3p-times}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-times}
   \caption[Benchmark: all algorithms, finitely presented, $n$ pairs]
@@ -2152,7 +2152,7 @@ The results are shown on the graphs with the name \texttt{kbmag}.
   \label{fig:bench-fp-vp-times}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-gap}
   \caption[Benchmark: GAP/\texttt{libsemigroups}, finitely presented, 1 pair]
@@ -2161,7 +2161,7 @@ The results are shown on the graphs with the name \texttt{kbmag}.
   \label{fig:bench-fp-1p-gap}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-gap}
   \caption[Benchmark: GAP/\texttt{libsemigroups}, finitely presented, 3 pairs]
@@ -2170,7 +2170,7 @@ The results are shown on the graphs with the name \texttt{kbmag}.
   \label{fig:bench-fp-3p-gap}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-gap}
   \caption[Benchmark: GAP/\texttt{libsemigroups}, finitely presented, $n$ pairs]
