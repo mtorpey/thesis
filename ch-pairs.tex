@@ -1495,14 +1495,13 @@ Another definition will help us to determine whether a rewriting system is
 confluent: \textit{local confluence}.  This is a weaker condition than
 confluence, but the two are strongly linked by Lemma \ref{lem:newman}.
 
-
 \begin{definition}
   A rewriting system is \textbf{locally confluent} if, for any words
   $u,v_1,v_2 \in X^*$ such that $u \to v_1$ and $u \to v_2$, there exists a word
   $w \in X^*$ such that $v_1 \tostar w$ and $v_2 \tostar w$.
 \end{definition}
 
-\begin{lemma}[Newman's diamond lemma] % TODO: reference
+\begin{lemma}[Newman's diamond lemma {\cite[Lemma 12.15]{cgt}}]
   \label{lem:newman}
   A terminating rewriting system is confluent if and only if it is locally
   confluent.
@@ -1527,20 +1526,59 @@ finding a rewriting system which is confluent and terminating---but we can find
 one, by starting with the set of relations $R$, and then using the Knuth--Bendix
 completion algorithm.
 
-Let $M$ be a monoid with finite presentation $\pres X R$.
-We start with no rules in our rewriting system, $\rws = \varnothing$, and
-we begin to add relations from $R$.  However, in order to ensure our system is
+Let $M$ be a monoid with finite presentation $\pres X R$.  We start with no
+rules in our rewriting system, $\rws = \varnothing$, and we begin to add
+relations from $R$.  However, in order to ensure our system is
 \textit{terminating}, we must reorder each relation to ensure we do not create
-any loops.  For this purpose, we define a total ordering on $X^*$ and reorder
-each relation so that a rule $(u, v)$ has the property that $u < v$.  Criteria
-for this ordering are discussed in \cite[p.~420]{cgt}, but it will suffice to
-use the \textit{shortlex ordering}: $u < v$ if and only if $u$ is shorter than
-$v$ or they have equal length and $u$ is less than $v$ lexicographically.  Hence the
-first few words over the alphabet $\{a, b\}$ are
+any loops.  For this purpose, we define a total ordering $\leq$ on $X^*$ and
+reorder each relation so that a rule $(u, v)$ has the property that $u > v$.
+Our chosen ordering $\leq$ must be a \index{reduction ordering}
+\textit{reduction ordering}, meaning that if we have $u \leq v$ then we must
+also have $wux \leq wvx$ for all $w,x \in X^*$ \cite[\S12.2]{cgt}.  For our
+purposes, it will suffice to use the \index{shortlex ordering} \textit{shortlex
+  ordering}: $u < v$ if and only if $u$ is shorter than $v$ or they have equal
+length and $u$ is less than $v$ lexicographically.  Hence the first few words
+over the alphabet $\{a, b\}$ are
 $$\varepsilon < a < b < aa < ab < ba < bb < aaa < aab < aba < \ldots$$
 Note that this requires a well-understood total order on the alphabet $X$
-itself.  This ordering justifies the use of the words ``reducible'' and
-``irreducible''---words are always replaced with lesser words.
+itself.  Another possible reduction ordering is \textit{wreath product ordering}
+\cite[\S2.1]{sims}, which has a particular application to polycyclic groups;
+however, this has no particular advantage when applied to semigroups, so the
+simpler shortlex ordering is preferable.  The use of a reduction ordering
+justifies the use of the words ``reducible'' and ``irreducible''---words are
+always replaced with lesser words.
+
+\begin{example}[Exercise 3.1 in {\cite[\S2.3]{sims}}]
+  \label{ex:rws}
+  Let $X = \{a,b\}$, and let $\rws$ be a rewriting system on $X^*$ given by
+  $$\rws = \Big\{
+  \big(a^5, \varepsilon\big),\quad
+  \big(b^5, \varepsilon\big),\quad
+  \big(b^4a^4, (ab)^4\big),\quad
+  \big((ba)^4, a^4b^4\big)
+  \Big\}.$$
+  We can apply any sequence of these rules to any word we wish.  For example, we
+  can rewrite the word $b^5a^6$ using the last two rules as follows:
+  $$b^5a^6
+  = b\underline{bbbbaaaa}aa
+  \to_\rws ba\underline{babababa}a
+  \to_\rws baaaaabbbba.$$
+  Hence $b^5a^6 \tostar_\rws ba^5b^4a$.  Alternatively we could rewrite it using
+  the first two rules:
+  $$b^5a^6
+  \to_\rws \varepsilon a^6
+  = a^5a
+  \to_\rws \varepsilon a
+  = a.$$
+  Hence $b^5a^6 \tostar_\rws a$.  Using both these results together with
+  transitivity, we have $a \lrstar_\rws ba^5b^4a$.
+  
+  Let us consider the shortlex ordering described above.  The first two rules in
+  $\rws$ shorten a word by 5 characters, and the last two rules replace a
+  subword of length 8 beginning with $b$ by one beginning with $a$.  Hence all
+  four rules $(u,v)$ have $u > v$ with respect to shortlex ordering.  Hence
+  $\rws$ is a terminating rewriting system.
+\end{example}
 
 Once each relation from $R$ is added---possibly reordered---to $\rws$, we
 will have a terminating rewriting system such that
