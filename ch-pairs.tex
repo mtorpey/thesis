@@ -1405,7 +1405,7 @@ for the word problem on a finitely presented semigroup.  We understand that this
 is the same as the problem of whether a given pair of words represent semigroup
 elements related to each other by a two-sided congruence $\rho$.  The ideas do
 not extend easily to left and right congruences, which will therefore not have
-this method as an option.
+this method as an option (but see Section \ref{sec:kb-l-r}).
 
 In order
 to describe the process, we must first explain some background theory.  A full
@@ -1448,9 +1448,10 @@ rewritten in a useful way.  A rewriting system could allow an endless loop of
 rewriting; for example, a system over the alphabet $\{a,b\}$ could contain rules
 $(aa,b)$ and $(b,aa)$ which would allow the rewrite sequence
 $$aa \to b \to aa \to b \to aa \to b \to aa \to \ldots$$
-to go on forever.  Alternatively, a it could be possible to rewrite one word in
+to go on forever.  It could also be possible to rewrite one word in
 two different ways; for example, a system over the alphabet $\{a,b,c\}$ could
 contain rules $(aa,b)$ and $(aa,c)$.
+
 In order to solve the word problem for a semigroup, we require a
 rewriting system with certain properties.  We will describe these properties,
 and then explain how to produce a rewriting system which satisfies them.
@@ -2308,5 +2309,3 @@ limited in its possible use for the algorithm described in this chapter.
 However, it might cause a performance improvement in those few cases.
 
 % TODO: In the GAP library, anything interesting they might do
-
-\clearpage
