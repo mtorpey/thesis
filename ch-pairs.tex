@@ -854,14 +854,13 @@ generator $x$.
 
 Note that there is no guarantee that the end of $\mathbf{N}$ will ever be
 reached: if the given presentation defines an infinite semigroup, the table will
-grow forever and the procedure will never terminate.  On the other hand, if the
-presentation defines a finite semigroup, the procedure is guaranteed to
-terminate in a finite number of steps (see
-\cite[Theorem 5.5]{cgt} and \cite[Theorem 3]{beetham_campbell_1976}).
-This number of steps is, however, unbounded; and since a user may
-not know in advance whether a presentation defines a finite or infinite
-semigroup, it is impossible to
-know, while the procedure is running, whether it will end.
+grow forever and the procedure will never terminate.  On the other hand, the
+procedure is guaranteed to terminate in a finite number of steps if and only if
+the presentation defines a finite semigroup (see \cite[Theorem 5.5]{cgt} and
+\cite[Theorem 3]{beetham_campbell_1976}).  This number of steps is, however,
+unbounded; and since we may not know in advance whether a presentation defines a
+finite or infinite semigroup, it is impossible to know, while the procedure is
+running, whether it will end.
 
 \subsubsection{An example}
 We now give an example of the Todd--Coxeter algorithm running on the semigroup
