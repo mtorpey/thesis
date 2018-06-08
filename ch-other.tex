@@ -659,8 +659,8 @@ number of congruences a given semigroup possesses.  At the very least, a
 semigroup $S$ must have congruences $\Delta_S$ and $\nabla_S$, which are equal
 if and only if $|S| = 1$; so any semigroup has at least one congruence.  For an
 upper bound, consider that a congruence is an equivalence; the number of
-equivalences on a set is given by the Bell numbers \citeoeis{A000110}, so a
-finite semigroup $S$ cannot have more congruences than the Bell number
+equivalences on a finite set is given by the Bell numbers \citeoeis{A000110}, so
+a finite semigroup $S$ cannot have more congruences than the Bell number
 $B_{|S|}$.  All finite semigroups have a number of congruences between these two
 bounds, but the precise number depends on the structure of the semigroup.
 
@@ -704,8 +704,9 @@ congruence-free, using the following theorem based partly on material in
   \item $S$ has no more than $2$ elements;
   \item $S$ is a simple group;
   \item $S$ is isomorphic to a Rees 0-matrix semigroup
-    $\mathcal{M}^0[G;I,\Lambda;P]$ where $G$ is the trivial group and $P$ is
-    regular with no two identical rows and no two identical columns.
+    $\mathcal{M}^0[G;I,\Lambda;P]$ where $G$ is the trivial group, and $P$ is
+    regular, with all its rows pairwise distinct and all its columns pairwise
+    distinct.
   \end{enumerate}
 \end{proposition}
 
@@ -720,8 +721,8 @@ with the \textit{congruence-free} semigroups described in the last section.
   $S$ is a congruence.
 \end{definition}
 
-Since the number of equivalences on a set is given by the sequence of Bell
-numbers $(B_n)_{n \in \mathbb{N}}$, we can say that a finite semigroup is
+Since the number of equivalences on a finite set is given by the sequence of
+Bell numbers $(B_n)_{n \in \mathbb{N}}$, we can say that a finite semigroup is
 congruence-full if and only if it has precisely $B_n$ congruences, where $n$ is
 the size of the semigroup.
 
