@@ -893,10 +893,13 @@ are required.
 \subsection{Semigroups with fewer congruences}
 
 If a semigroup of finite size $n$ is not congruence-full, it has fewer than
-$B_n$ congruences.  For some low values of $n$ a semigroup may have $B_n - 1$
-congruences, but as $n$ grows, computational experiments show that the number of
-congruences seems to be lower.  In this section we propose a value for the
-second highest number of congruences possible on a semigroup of size $n$.
+$B_n$ congruences.  If $n$ is $2$ or $3$, there exist semigroups of size $n$
+with precisely $B_n - 1$ congruences.  However, for $4 \leq n \leq 7$,
+computational experiments show that there is no semigroup of size $n$ with
+$B_n - 1$ congruences, and it seems unlikely that such a semigroup could be
+found for any higher $n$.  In this section we propose a value for the second
+highest number of congruences possible on a semigroup of size $n$---that is, the
+highest number of congruences on a semigroup that is not congruence-full.
 
 \begin{conjecture}
   \label{conj:not-cong-full}
@@ -916,9 +919,11 @@ stated in the next conjecture.
   anti-isomorphism) of size $n$ which have $2B_{n-1}$ congruences.
 \end{conjecture}
 
-The 7 semigroups are shown and described in Figures \ref{fig:nearfull-1} to
-\ref{fig:nearfull-7}, including diagrams for $n = 4$.  In the descriptions,
-when $\Z_{n-1}$ is a subsemigroup of $S$, the zero of $\Z_{n-1}$ is called $z$.
+The seven semigroups are shown and described in Figures \ref{fig:nearfull-1} to
+\ref{fig:nearfull-7}, including diagrams for $n = 4$.  In the descriptions, when
+the zero semigroup with $n-1$ elements $\Z_{n-1}$ is a subsemigroup of $S$, the
+zero of $\Z_{n-1}$ is called $z$.  \nomenclature[Zn]{$\Z_n$}{Left zero
+  semigroup}
 
 \begin{figure}[p]
   \centering
@@ -985,22 +990,31 @@ when $\Z_{n-1}$ is a subsemigroup of $S$, the zero of $\Z_{n-1}$ is called $z$.
   \label{fig:nearfull-7}
 \end{figure}
 
-Of the 7 semigroups shown, each of the first 6 contain a copy of
-either $\Z_{n-1}$ or $\LZ_{n-1}$ as a subsemigroup.  The one element outside
-this subsemigroup, which we will call $c$ (the \textit{child element}) is key to
-understanding why these semigroups have $2B_{n-1}$ congruences.  In each
-semigroup, there is another element $p$ (the \textit{parent element}) such that
-an equivalence $\sim$ is a congruence if and only if $c \sim p$ or $[c]_\sim$ is
-a singleton.  In other words, the child has to be alone or with its parent.
-Now, since $S \setminus \{c\}$ is congruence-full, we can take any congruence
-(any equivalence) $\sim$ on $S \setminus \{c\}$ and extend it to a congruence on
-$S$ in two different ways: by including $c$ as a singleton, or by including $c$
-in the same congruence class as $p$.  Since there are $B_{n-1}$ choices for
-$\sim$, this gives us precisely $2B_{n-1}$ congruences on $S$.
+Of the seven semigroups shown, each of the first 6 contain a copy of either the zero
+semigroup $\Z_{n-1}$ or the left zero semigroup $\LZ_{n-1}$ as a subsemigroup.
+\nomenclature[LZn]{$\LZ_n$}{Left zero semigroup}
+The one element outside this subsemigroup, which we will call $c$ (the
+\textit{child element}) is key to understanding why these semigroups have
+$2B_{n-1}$ congruences.  In each semigroup, there is another element $p$ (the
+\textit{parent element}) such that an equivalence $\sim$ is a congruence if and
+only if $c \sim p$ or $[c]_\sim$ is a singleton.  In other words, the child has
+to be alone or with its parent.  Now, since $S \setminus \{c\}$ is
+congruence-full, we can take any congruence (any equivalence) $\sim$ on
+$S \setminus \{c\}$ and extend it to a congruence on $S$ in two different ways:
+by including $c$ as a singleton, or by including $c$ in the same congruence
+class as $p$.  Since there are $B_{n-1}$ choices for $\sim$, this gives us
+precisely $2B_{n-1}$ congruences on $S$.
 
 The seventh semigroup (Figure \ref{fig:nearfull-7}) is unique in that it does
 not contain $\Z_{n-1}$ or $\LZ_{n-1}$ as a subsemigroup.  However, it still
 fulfils the \textit{child--parent} condition above, where $c = \id$ and $p = g$.
+
+Conjecture \ref{conj:cong-nearfull-7} does not have a proof, and it is certainly
+possible that there may be more than just these seven semigroups when $n > 7$.
+However, the statement is certainly true for sizes 4, 5, 6 and 7, so it seems
+likely that the pattern may continue.  The feasibility of computational
+experiments for higher values of $n$ is discussed at the end of Section
+\ref{sec:smallsemi}.
 
 \section{Small semigroups}
 \label{sec:smallsemi}
