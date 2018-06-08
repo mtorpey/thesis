@@ -738,32 +738,32 @@ semigroups.
   A finite congruence-full semigroup of size greater than $2$ has $\HH$-trivial
   minimal ideal.
   \begin{proof}
-    Let $S$ be a finite congruence-full semigroup with more than $2$ elements,
+    Let $S$ be a finite semigroup with more than $2$ elements,
     and let $M$ be its minimal ideal.  Since $M$ is simple, every $\HH$-class of
     $M$ is a group.  We will proceed by considering possible sizes of the
-    $\HH$-classes of $M$, and showing that any size greater than $1$ violates
-    the assumption that $S$ is congruence-full.
+    $\HH$-classes of $M$, and showing that any $\HH-class$ size greater than $1$
+    implies that $S$ is not congruence-full.
 
     Firstly, let $H$ be an $\HH$-class in $M$ with at least $3$ elements.  Let
-    $1_H$ be the group identity of $H$, and let $g,h \in H\setminus\{1_H\}$
-    with $g \neq h$.  Now let $\sim$ be $(1_H, g)^e$.  Since $g$ is not the
-    identity, we know that $gh \neq h$.  Hence we have $1_H \sim g$ but
-    $1_H h \nsim gh$, so $\sim$ is not a congruence.  Hence $S$ is not
-    congruence-full, a contradiction.
+    $1_H$ be the group identity of $H$, and let $g,h \in H\setminus\{1_H\}$ with
+    $g \neq h$.  Now let $\sim$ be $(1_H, g)^e$, the equivalence whose only
+    non-singleton class is $\{1_H,g\}$.  Since $g$ is not the identity, we know
+    that $gh \neq h$.  Hence we have $1_H \sim g$ but $1_H h \nsim gh$, so
+    $\sim$ is not a congruence.  Hence $S$ is not congruence-full.
 
     Instead, let $H$ be an $\HH$-class in $M$ with precisely $2$ elements.
     Since $|S| \geq 3$ we know that $S \setminus H$ is non-empty.  If there
     exists some $x \in S \setminus M$, then let $h \in H \setminus \{1_H x\}$,
     and let $\sim$ be $(x,h)^e$; since $h \neq 1_H x$ we have $x \sim h$ but
-    $1_H x \nsim 1_H h$, so $\sim$ is not a congruence.  If on the other hand
+    $1_H x \nsim 1_H h$ (since $(1_Hx, 1_Hh)$ is not equal to $(x,h)$ or $(h,x)$
+    and is not reflexive) so $\sim$ is not a congruence.  If on the other hand
     $S \setminus M$ is empty, then $M$ must contain an $\HH$-class other than
     $H$.  Choose some $x \in M \setminus H$ such that $x \LL 1_H$ (if this is
     not possible, we can choose $x$ such that $x \RR 1_H$, and a similar
     argument holds).  Let $h \in H \setminus \{1_H\}$, and let $\sim$ be
     $(x,1_H)^e$.  We have $xh \RR x \nRR h$, so $xh \nRR h$ and in particular
-    $xh \neq h$.  Hence $x \sim 1_H$ but $xh \nsim 1_H h$, so $\sim$ is
-    not a congruence.  Either of these cases violates the assumption that $S$
-    is congruence-full, a contradiction.
+    $xh \neq h$.  Hence $x \sim 1_H$ but $xh \nsim 1_H h$, so $\sim$ is not a
+    congruence.  Either of these cases shows that $S$ is not congruence-full.
   \end{proof}
 \end{lemma}
 
@@ -807,8 +807,9 @@ semigroups.
     let $\sim$ be $(n,x)^e$: since by $\LL$-triviality $mn = n$, and since
     $mx = m$, we have $n \sim x$ but $mn \nsim mx$, so $\sim$ is not a
     congruence, a contradiction.  If on the other hand $mx \neq m$, then let
-    $\sim$ be $(m,x)^e$: since $x \neq mx \neq m$ and $xx=x$, we have $m \sim x$
-    but $mx \nsim xx$, so $\sim$ is not a congruence, a contradiction.
+    $\sim$ be $(m,x)^e$: since $mx \neq x$ and $mx \neq m$ and $xx=x$, we have
+    $m \sim x$ but $mx \nsim xx$, so $\sim$ is not a congruence, a
+    contradiction.
 
     If instead, $S \setminus M$ does not contain an idempotent, then there must
     exist some $x \in S \setminus M$ such that $x^2 \in M$.
@@ -861,9 +862,11 @@ finite congruence-full semigroups.
     $2$.  If $S$ is not simple, then by Lemma \ref{lem:simple-or-zero-semigroup}
     it is a zero semigroup.  If $S$ is simple, it is equal to its minimal ideal.
     Therefore, by Lemma \ref{lem:m-is-l-or-r-trivial}, $S$ is either
-    $\LL$-trivial or $\RR$-trivial.  If it is $\LL$-trivial then $xy=y$ for all
-    $x,y \in S$, so it is a right zero semigroup.  If it is $\RR$-trivial then
-    $xy=x$ for all $x,y \in S$, so it is a left zero semigroup.
+    $\LL$-trivial or $\RR$-trivial.  For any simple semigroup we have
+    $x \RR xy \LL y$ for all $x,y \in S$.  If $S$ is $\LL$-trivial, then $xy=y$
+    for all $x,y \in S$, so $S$ is a right zero semigroup.  If $S$ is
+    $\RR$-trivial, then $xy=x$ for all $x,y \in S$, so $S$ is a left zero
+    semigroup.
 
     To prove the converse, we consider zero, left zero, and right zero
     semigroups in turn.  First, let $S$ be a zero semigroup and let $\sim$ be an
@@ -878,6 +881,12 @@ finite congruence-full semigroups.
     A similar argument proves the statement for right zero semigroups.
   \end{proof}
 \end{theorem}
+
+Note that some semigroups of size $2$ fall into categories (2), (3), or (4) of
+the above theorem.  However, some semigroups of size 2 are not zero, left zero,
+or right zero semigroups---for example, $1^1$, the trivial group with an
+identity attached---but these are still congruence-free.  Hence all four cases
+are required.
 
 
 
