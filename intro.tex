@@ -57,6 +57,10 @@ will sometimes refer to the set $\{1, \ldots, n\}$ using the notation $\bn$.
 
 \section{Semigroups}
 \label{sec:intro-semigroups}
+We start with an introduction to semigroups from a completely abstract point of
+view.  Here we will define a semigroup and a few closely related concepts, and
+in later sections we will see examples of how semigroups arise (Sections
+\ref{sec:intro-presentations}, \ref{sec:intro-elements}). % TODO
 
 \begin{definition}
   \label{def:semigroup}
@@ -87,6 +91,27 @@ ambiguity, in the manner of multiplication.
   $$ex = xe = x$$
   for all $x \in M$.  The element $e$ is called the \textit{identity} of $M$.
 \end{definition}
+
+\begin{definition}
+  \label{def:group}
+  \index{group}
+  \nomenclature[G]{$G$}{Group}
+  A \textbf{group} $G$ is a monoid in which every element $x \in G$ has an
+  inverse $x^{-1} \in G$ such that $xx^{-1}=x^{-1}x = e$.
+\end{definition}
+
+\begin{definition}
+  \label{def:subsemigroup}
+  \index{subsemigroup}
+  Let $S$ be a semigroup.  A \textbf{subsemigroup} of $S$ is a subset of $S$
+  which forms a semigroup in its own right, under the same operation as $S$.
+\end{definition}
+
+If a subsemigroup of $S$ happens to be a monoid, then we may call it a
+\textbf{submonoid} of $S$.  Similarly, if a subsemigroup happens to be a group,
+we call it a \textbf{subgroup}.  The subgroups of a semigroup are an important
+part of its structure, and will be discussed later in the context of Green's
+relations (Section \ref{sec:intro-greens}).
 
 \begin{definition}
   \label{def:cayley-graph}
