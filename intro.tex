@@ -1,26 +1,59 @@
 \chapter{Preliminaries}
 \label{chap:intro}
 
-% Notation without page references
-\nomenclature[N]{$\mathbb{N}$}{Natural numbers $\{1, 2, 3, \ldots\}$\nomnorefpage}
-\nomenclature[R]{$\mathbb{R}$}{Real numbers\nomnorefpage}
+In this chapter, we will introduce various objects and results that are required
+to understand the later chapters of this thesis.  It is expected that the
+material covered here should enable any postgraduate mathematician with some
+knowledge of algebra to understand the arguments in the rest of the thesis.  For
+those less experienced in semigroup theory or in algebra in general, a reference
+work might be useful -- some good examples would be \cite{warner},
+\cite{petrich}, and particularly \cite{howie}.
 
-% TODO: write this properly
-Notation:
-maps on the right
-compose maps left-to-right
-$\subseteq$ for subsets possibly including equality
-$\subset$ for strict containment
+\section{Basic notation}
+\label{sec:intro-notation}
+
+We should first mention some conventions adopted in this thesis where notation
+might differ from other authors.  On the whole, care has been taken to conflict
+as little as possible from standard notation, but where ambiguity might arise,
+the following are the conventions that were chosen.
+
+Maps are written on the right.  Hence, if we have a function $f$ that takes an
+input $x$, its output is written $(x)f$, with the parentheses always included.
+If two maps are composed, they are written left-to-right.  Hence, if we have
+another map $g$ to be applied to the output of $f$, then their composition is
+written $f \circ g$ or simply $fg$, and we have
+$$\big((x)f\big)g = (x)fg.$$
+
+Where we denote subsets, the symbol $\subset$ is used to denote containment with
+possible equality, while $\subseteq$ is used to denote strict containment.
+Hence $X \subset Y$ implies that $X$ is not equal to $Y$, while $X \subseteq Y$
+implies that $X$ may be equal to $Y$ or may contain only some of the elements of
+$Y$.  In this way, the symbols are similar to the symbols $<$ and $\leq$ for
+comparing numbers.
 \nomenclature[<=]{$\subseteq$}{Subset containment (including equality)}
 \nomenclature[<]{$\subset$}{Strict subset containment (excluding equality)}
-$[x]_E$ is the class of equivalence $E$ containing element $x$
 
-$\mathbf{n} = \{1, \ldots, n\}$ for $n \in \mathbb{N}$
-\nomenclature[n]{$\mathbf{n}$}{$\{1, 2, \ldots, n\}$ for some $n \in \mathbb{N}$}
-
-$\Delta_S$ and $\nabla_S$
+If $E$ is an equivalence relation on a set $X$, and $x \in X$, then $[x]_E$ will
+denote the equivalence class of $E$ containing the element $x$.  That is,
+$$[x]_E = \{y \in X : (x,y) \in E\}.$$
+\nomenclature{$[\phantom{x}]$}{Equivalence class containing an element}
+Where there is no risk of ambiguity, we will omit the subscript $_E$ and simply
+write $[x]$.  We will denote by $\Delta_X$ the \textit{diagonal relation} or
+\textit{trivial equivalence}
+$\Delta_X = \{(x,x): x \in X\},$
+and we will denote by $\nabla_X$ the \textit{universal relation}
+$\nabla_X = X \times X = \{(x,y): x,y \in X\}.$
 \nomenclature{$\Delta$}{Diagonal relation}
 \nomenclature{$\nabla$}{Universal relation}
+
+The set of natural numbers will be denoted by $\mathbb{N}$, and will be equal to
+the set $\{1, 2, 3, \ldots\}$, excluding $0$.  For a given $n \in \mathbb{N}$ we
+will abbreviate the set $\{1, \ldots, n\}$ with the notation $\bn$.
+\nomenclature[N]{$\mathbb{N}$}{Natural numbers $\{1, 2, 3, \ldots\}$}
+\nomenclature[n]{$\mathbf{n}$}{$\{1, 2, \ldots, n\}$ for some $n \in \mathbb{N}$}
+
+% Notation without page references
+\nomenclature[R]{$\mathbb{R}$}{Real numbers\nomnorefpage}
 
 \section{Semigroups}
 \label{sec:intro-semigroups}
