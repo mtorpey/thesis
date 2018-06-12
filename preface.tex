@@ -1,13 +1,81 @@
 \chapter*{Preface}
 \addcontentsline{toc}{chapter}{Preface}
 
-Semigroups
+Semigroup theory has its roots in group theory.  Groups in some form were used
+in order to solve equations as early as the late 1700s by Lagrange; this work
+was continued in the early 1800s by Galois, who first used the word
+\textit{group} to describe them.  Groups were then studied in various different
+contexts -- in geometry, in number theory, and as permutation groups -- for some
+time before the various branches of theory were united into one, with von Dyck
+inventing the modern abstract definition of a group in 1882 \cite{dyck_1882},
+with the study of group theory flourishing since then.  By contrast, semigroup
+theory is a relatively young area of study, having been defined only in the
+early 1900s and having been studied very little before the 1950s, other than a
+few early papers by authors such as Suschkewitch \cite{susch_1928}.
 
-Groups
+Since any group is a semigroup, it might be imagined that groups would be
+studied simply as a special case within semigroup theory.  However, in practice
+it turns out that groups are a very important topic within the study of generic
+semigroups.  For example, important features of the structure of a semigroup are
+determined by that semigroup's maximal subgroups, for example their Green's
+relations, or the linked triples on a completely 0-simple semigroup.  As a
+result, groups are often a central part of semigroup theory, allowing us to
+borrow from the richly developed field of group theory in order to solve
+problems for semigroups in general.
 
-Congruences
+Computational algebra has existed for nearly as long as the theory of
+computation itself.  For instance, perhaps the earliest published group theory
+algorithm is the Dehn algorithm \cite{dehn_1911} for solving the word problem in
+certain groups.  The Todd--Coxeter algorithm \cite{todd_coxeter_1936}, which
+enumerates the cosets of a subgroup in a group, was certainly designed to be
+carried by hand, having been described in the 1930s before the invention of
+electronic computers.  When computers did arrive, there was early interest in
+using them for group theory problems, with Todd--Coxeter being implemented on an
+the EDSAC II in Cambridge as early as 1953 \cite{leech_1963}.  Since then, group
+theory has flourished, with a variety of software packages such as
+\textsf{Magma} \cite{magma}, \ACE{} \cite{ace}, and particularly \GAP{}
+\cite{gap}, which has a variety of packages including algorithms to solve a wide
+range of problems.  A lot of material is available on computational group
+theory, including dedicated books \cite{sims, cgt}.  By comparison,
+computational semigroup theory is much younger and less developed, as is
+semigroup theory as a whole.  Computers were used as early as 1953 to classify
+semigroups of low order \cite{tamura_1953, froidure_pin}, but the theory of
+computing with semigroups developed more slowly than with groups, and no package
+emerged for Semigroups on the scale of the group algorithms in \GAP{}.  However,
+there has been considerable interest in computational semigroup theory in recent
+years, and increasingly there does exist software for computing with semigroups,
+such as \Semigroupe{} \cite{semigroupe}, \libsemigroups{} \cite{libsemigroups},
+and the \GAP{} packages \Semigroups{} \cite{semigroups}, \smallsemi{}
+\cite{smallsemi} and \kbmag{} \cite{kbmag}.
 
-Computational semigroup theory/computational group theory
+In the same way that semigroup theory borrows results from group theory,
+computational semigroup theory often borrows algorithms from computational group
+theory.  The Todd--Coxeter and Knuth--Bendix algorithms, for instance, both of
+which were originally applied to groups, extend naturally to semigroups, and to
+semigroup congruences, as will be discussed in this thesis.  Furthermore, when
+we use the maximal subgroups of a semigroup, we can use group algorithms to
+compute information about the semigroup.  For example, when computing the
+linked triples on a completely simple semigroup, we can use group theory to find
+all the normal subgroups of a given maximal subgroup.  In this way,
+computational group theory is not just a subset, but a key part, of
+computational semigroup theory.
+
+This thesis deals primarily with the congruences of a semigroup.  A semigroup's
+congruences describe its homomorphic kernels and images -- that is, the ways in
+which the semigroup can be mapped onto another semigroup while preserving the
+semigroup operation.  In this way, a semigroup's congruences serve the same
+function as a group's normal subgroups, or a ring's two-sided ideals, though the
+definition is more abstract and general than either of these.  The congruences
+of several famous semigroups have been classified previously -- for example, the
+full transformation monoid $\T_n$ by Mal$'$cev \cite{malcev_1952}, the symmetric
+inverse monoid $\I_n$ by Liber \cite{liber_1953} and the partial transformation
+monoid $\PT_n$ by Shutov \cite{shutov_1988} -- and in recent years a host of
+other monoids of partial transformations, restricted variously to elements that
+preserve or reverse the order or orientation of the set being acted on, have
+also had their congruences classified \cite{fernandes_2000, lisbon_ii,
+  lisbon_i}.  Classifying the congruences of other important semigroups is a
+major activity in the study of congruences, and will form the majority of Part
+\ref{part:results} of this thesis.
 
 Computing with congruences
 
