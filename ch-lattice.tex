@@ -200,7 +200,7 @@ is discussed in more detail below.
 The \textsc{PrincCongPoset} algorithm is not a very sophisticated algorithm,
 being based on a concept with a lot of brute-force work checking the presence of
 pairs in a congruence.  However, when paired with the fast code in
-\texttt{libsemigroups} \cite{libsemigroups} for testing the presence of a pair
+\libsemigroups{} \cite{libsemigroups} for testing the presence of a pair
 in a single congruence (as described in Chapter \ref{chap:pairs}) it can usually
 give results about small semigroups (say, up to size $400$) in a reasonable
 amount of time (see Section \ref{sec:lattice-examples}).
@@ -318,7 +318,7 @@ of containment ($\subseteq$).  Note that the left Cayley graph will be identical
 to the right Cayley graph, since the lattice is commutative.  Again, a full
 description of the Froidure--Pin algorithm is outside the scope of this thesis,
 but it is described more completely in \cite{froidure_pin}, and the version
-implemented in \texttt{libsemigroups} is explained in
+implemented in \libsemigroups{} is explained in
 \cite{froidure_pin_jonusas}.
 
 It is sometimes preferable to use other methods when enumerating a semigroup.
@@ -521,7 +521,7 @@ congruence.
 
 In both parts of the algorithm, most of the work consists of comparing
 congruences to each other.  These comparisons can be done relatively quickly by
-the efficient C++ code in \texttt{libsemigroups} for generating pairs (see
+the efficient C++ code in \libsemigroups{} for generating pairs (see
 Chapter \ref{chap:pairs}), but minimising the number of comparisons that need to
 be made is nevertheless helpful for the algorithm's overall runtime.  Hence it
 would be desirable, as future work, to improve the \textsc{PrincCongPoset}

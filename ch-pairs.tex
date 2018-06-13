@@ -55,7 +55,7 @@ pairs, and some algorithms designed for two-sided congruences can be used with
 minor modifications to compute information about left and right congruences.
 
 This chapter describes a parallelised approach for computing a congruence from a
-set of generating pairs, as implemented in \texttt{libsemigroups}
+set of generating pairs, as implemented in \libsemigroups{}
 \cite{libsemigroups}.  First we will give a general outline of the system
 and what questions it hopes to answer, then we will describe in detail each
 algorithm used, its advantages and disadvantages, and when it can be applied.
@@ -428,7 +428,7 @@ adapted from the simplified version of the algorithm shown in
   \end{algorithmic}
 \end{algorithm}
 
-We can improve further on this method.  The \texttt{libsemigroups}
+We can improve further on this method.  The \libsemigroups{}
 implementation of this chapter's algorithm uses the Froidure--Pin algorithm
 \index{Froidure--Pin}
 \cite{froidure_pin}, a method which is essentially a more advanced variation of
@@ -452,7 +452,7 @@ in the Knuth--Bendix process later (see Section \ref{sec:kb}).
 
 A full description of the Froidure--Pin algorithm is outside the scope of this
 thesis, but for more information about the algorithm and its implementation in
-\texttt{libsemigroups}, see \cite{froidure_pin_jonusas} and \cite{froidure_pin}.
+\libsemigroups{}, see \cite{froidure_pin_jonusas} and \cite{froidure_pin}.
 
 \section{The methods}
 
@@ -579,7 +579,7 @@ It would be possible, instead of increasing the length of $\tau$ when a new
 element is found, to make $\tau$'s original length equal to the size of $S$ at
 creation.  However, this approach is not used here, since adding the elements only as
 they are found opens up the possibility of applying this method to infinite
-semigroups.  Our implementation in \texttt{libsemigroups} \cite{libsemigroups}
+semigroups.  Our implementation in \libsemigroups{} \cite{libsemigroups}
 includes such a possibility, by taking a semigroup presentation $\pres X R$ and
 using Knuth--Bendix (see Section \ref{sec:kb}) as a way of comparing the semigroup's
 elements.  The pair orbit enumeration procedure, as described above, can then be
@@ -606,7 +606,7 @@ non-reflexive pairs -- that is, congruences with many classes.  Conversely, it i
 exceedingly slow for congruences with many pairs and few classes.
 
 Some improvements can be made to the basic algorithm shown above.  For example,
-the \texttt{libsemigroups} implementation makes use of the symmetry of pairs: a
+the \libsemigroups{} implementation makes use of the symmetry of pairs: a
 pair $(a,b)$ is not added to $\mathbf{R}'$ if the pair $(b,a)$ has previously
 been added.  Tweaks like this can make the algorithm slightly faster, though
 they do not address the high complexity of the method.
@@ -1817,7 +1817,7 @@ it is not worth including.
 \end{table}
 
 The positions in the table marked with a tilde are chosen based on extensive
-benchmarking tests with \texttt{libsemigroups}, which can be seen in detail in
+benchmarking tests with \libsemigroups{}, which can be seen in detail in
 Section \ref{sec:benchmarking}.  It is true that in certain examples these
 algorithms will complete faster than the others; however, so few of these
 examples have been encountered that it seems more desirable to eliminate the
@@ -1890,7 +1890,7 @@ very long time (or even an infinite length of time) to run to completion.
 \label{sec:benchmarking}
 
 The approach described in this chapter was implemented in the C++ programming
-language in \texttt{libsemigroups} \cite{libsemigroups}, and this allows us to
+language in \libsemigroups{} \cite{libsemigroups}, and this allows us to
 run benchmarking tests to analyse the performance of the different algorithms,
 compared to each other and compared to existing programs.  In this section we
 provide some examples of such tests.
@@ -1899,7 +1899,7 @@ provide some examples of such tests.
 Firstly, it will be helpful to examine a few examples of problems which can be
 solved by the different algorithms, and to compare the types of problems in
 which each algorithm is most effective.  These examples were implemented in the
-benchmarking section of \texttt{libsemigroups}, and their performance was tested
+benchmarking section of \libsemigroups{}, and their performance was tested
 with various algorithms.
 
 \begin{example}
@@ -1907,7 +1907,7 @@ with various algorithms.
   Consider $\PBR_2$, the full PBR monoid of degree $2$.  It has $65536$ elements
   and is therefore large enough to require significant processing time when
   considering its congruences.   We take a set of pairs which we know will
-  generate the universal congruence, and we ask \texttt{libsemigroups} for the
+  generate the universal congruence, and we ask \libsemigroups{} for the
   number of congruence classes, using simple Todd--Coxeter in one case and
   pre-filled Todd--Coxeter in the other.
 
@@ -2115,8 +2115,8 @@ been pre-filled.
 \begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-gap}
-  \caption[Benchmark: GAP/\texttt{libsemigroups}, concrete, 1 pair]
-  {Comparison between \texttt{libsemigroups} and the GAP library, for
+  \caption[Benchmark: GAP/\libsemigroups{}, concrete, 1 pair]
+  {Comparison between \libsemigroups{} and the GAP library, for
     transformation semigroups with one generating pair}
   \label{fig:bench-trans-1p-gap}
 \end{figure}
@@ -2124,8 +2124,8 @@ been pre-filled.
 \begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-vp-gap}
-  \caption[Benchmark: GAP/\texttt{libsemigroups}, concrete, $n$ pairs]
-  {Comparison between \texttt{libsemigroups} and the GAP library, for
+  \caption[Benchmark: GAP/\libsemigroups{}, concrete, $n$ pairs]
+  {Comparison between \libsemigroups{} and the GAP library, for
     transformation semigroups with a variable number of generating pairs}
   \label{fig:bench-trans-vp-gap}
 \end{figure}
@@ -2133,11 +2133,11 @@ been pre-filled.
 Figures \ref{fig:bench-trans-1p-gap} and \ref{fig:bench-trans-vp-gap} show data
 from the same tests, plotted not by
 the size of the semigroup, but simply in order of the ratio between GAP's
-runtime and that of the default method in \texttt{libsemigroups}.  As can be
-seen, the \texttt{libsemigroups} methods run much faster than the GAP methods in
+runtime and that of the default method in \libsemigroups{}.  As can be
+seen, the \libsemigroups{} methods run much faster than the GAP methods in
 almost all cases, with the GAP methods taking as much as $7000$ times as long
 for one generating pair.  Out of the $500$ tests shown in total in these two
-figures, GAP never performed better than \texttt{libsemigroups}.
+figures, GAP never performed better than \libsemigroups{}.
 
 Further tests were carried out in a similar way, but using finitely presented
 semigroups instead of concrete semigroups.  The main difference between these
@@ -2180,8 +2180,8 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-gap}
-  \caption[Benchmark: GAP/\texttt{libsemigroups}, finitely presented, 1 pair]
-  {Comparison between \texttt{libsemigroups} and the GAP library, for
+  \caption[Benchmark: GAP/\libsemigroups{}, finitely presented, 1 pair]
+  {Comparison between \libsemigroups{} and the GAP library, for
     finitely presented semigroups and one generating pair}
   \label{fig:bench-fp-1p-gap}
 \end{figure}
@@ -2189,8 +2189,8 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-gap}
-  \caption[Benchmark: GAP/\texttt{libsemigroups}, finitely presented, 3 pairs]
-  {Comparison between \texttt{libsemigroups} and the GAP library, for
+  \caption[Benchmark: GAP/\libsemigroups{}, finitely presented, 3 pairs]
+  {Comparison between \libsemigroups{} and the GAP library, for
     finitely presented semigroups and three generating pairs}
   \label{fig:bench-fp-3p-gap}
 \end{figure}
@@ -2198,8 +2198,8 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-gap}
-  \caption[Benchmark: GAP/\texttt{libsemigroups}, finitely presented, $n$ pairs]
-  {Comparison between \texttt{libsemigroups} and the GAP library, for
+  \caption[Benchmark: GAP/\libsemigroups{}, finitely presented, $n$ pairs]
+  {Comparison between \libsemigroups{} and the GAP library, for
     finitely presented semigroups and a variable number of generating pairs}
   \label{fig:bench-fp-vp-gap}
 \end{figure}
@@ -2207,7 +2207,7 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 As can be seen in Figures \ref{fig:bench-fp-1p-gap} to \ref{fig:bench-fp-vp-gap}, the
 performance of the GAP library over finitely presented semigroups is far worse
 than it was for concrete semigroups, taking as much as $300,000$ times as long
-as \texttt{libsemigroups} to complete.  Due to the excessive times GAP took to
+as \libsemigroups{} to complete.  Due to the excessive times GAP took to
 complete some tests, the size of semigroups was restricted to $1000$.  In these
 tests, unlike for concrete semigroups,
 Knuth--Bendix tended to outperform GAP, but in
@@ -2233,7 +2233,7 @@ project, these are areas which could bear investigation.
 \label{sec:prefill-left}
 The pre-filled Todd--Coxeter algorithm, as described in Section
 \ref{sec:tc-prefill}, works by starting the procedure with a right Cayley graph
-for $S$.  In \texttt{libsemigroups} and in the Semigroups package for GAP, a
+for $S$.  In \libsemigroups{} and in the Semigroups package for GAP, a
 right Cayley graph for a semigroup is found using the Froidure--Pin method, which
 also returns the corresponding left Cayley graph.  Hence, we may also wish to
 find a way to use the left Cayley graph in the pre-filling process.
@@ -2318,7 +2318,7 @@ be effective.
 \subsection{Left and right congruences with Knuth--Bendix}
 \label{sec:kb-l-r}
 The parallel method in this chapter, and its implementation in
-\texttt{libsemigroups}, include support for left congruences and right
+\libsemigroups{}, include support for left congruences and right
 congruences, as well as the more important two-sided congruences.  Currently,
 Todd--Coxeter and pair enumeration are the only methods which support left and
 right congruences, while Knuth--Bendix is only applied in the two-sided case.
