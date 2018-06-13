@@ -85,8 +85,23 @@ algorithms for computing information about a given congruence have existed in
 the \GAP{} library for many years, but many of them lack sophistication, being
 close to brute-force.  In some cases, we can do little to improve on these
 algorithms, since semigroup congruences in general do not have the regular
-structure of
-%TODO
+structure of their group theory or ring theory counterparts.  However, in other
+cases we can improve on these using existing knowledge about specific categories
+of semigroup.  Firstly we can do this by considering alternative structures that
+correspond to a semigroup's congruences.  For instance, in group theory we
+consider a group's normal subgroups rather than studying its congruences
+directly; in the same way, we can study a completely simple semigroup's linked
+triples, or an inverse semigroup's kernel--trace pairs, in place of their
+congruences, and we can often produce the answers to computational questions
+more quickly than by using direct methods.  This approach forms the basis of the
+present author's previous works \cite{mtorpey_pre_msc, mtorpey_msc}, which are
+expanded upon in this thesis. In the more general cases, where no such
+alternative structure exists, we may still make improvements on existing
+algorithms by applying new algorithms that are not currently used for
+congruences.  We will take both these approaches in Part \ref{part:algorithms}
+of this thesis, presenting new congruence algorithms, as well as showing ways in
+which existing algorithms can be successfully adapted for congruence-related
+purposes.
 
 Chapter 1
 
