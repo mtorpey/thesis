@@ -2,13 +2,13 @@
 \label{chap:converting}
 
 A congruence is a binary relation, and therefore is formally described as a set
-of pairs---a subset of $S \times S$.  In both computational and mathematical
+of pairs -- a subset of $S \times S$.  In both computational and mathematical
 settings, it is worth thinking about how a congruence could be stored.
 
 One approach to storing a congruence $\rho$ on a semigroup $S$ is simply to
 store every one of its pairs.  In principle, it is possible to store
 $\rho$ in this way if and only if $S$ is finite.  However, this could well use a
-lot of storage---even the trivial congruence would use $O(|S|)$ space, and in
+lot of storage -- even the trivial congruence would use $O(|S|)$ space, and in
 general a congruence could even use $O(|S|^2)$ space.
 
 % TODO: reference to "most congs don't need many generating pairs" section
@@ -85,10 +85,10 @@ this chapter.  It is of course possible to calculate the set of all pairs in
 $\R^\sharp$ and convert that to the other representation; however, in
 order to find other representations with as little work as possible, it is
 desirable to use the pairs in $\R$ directly, calculating as few extra
-pairs as possible---see, for example, Sections \ref{sec:pairs-to-linked-triple}
+pairs as possible -- see, for example, Sections \ref{sec:pairs-to-linked-triple}
 and \ref{sec:pairs-to-kertr}.  Conversely, if we wish to convert another
 representation for a congruence $\rho$ to a set of generating pairs, it is
-desirable to find as small a set of pairs as possible---see, for example,
+desirable to find as small a set of pairs as possible -- see, for example,
 Sections \ref{sec:linked-triple-to-pairs} and \ref{sec:rees-to-pairs}.  When
 converting between generating pairs and other representations, these will be the
 goals.
@@ -97,8 +97,8 @@ goals.
 \label{sec:normal-subgroups}
 
 In group theory, it is unusual to encounter discussion of congruences.  This is
-because a group's congruences are closely related to another structure---its
-normal subgroups---and any questions we could ask about a group's congruences are
+because a group's congruences are closely related to another structure -- its
+normal subgroups -- and any questions we could ask about a group's congruences are
 easily described using normal subgroups instead.  Recall that a subgroup $N$ of
 a group $G$ is \textit{normal} if and only if $g^{-1}ng \in N$ for all $g \in G$
 and $n \in N$; recall also that a \textit{coset} of $N$ is the set $Ng$ or $gN$
@@ -143,8 +143,8 @@ quickly, using a variety of well-known algorithms.  One method for finding the
 normal subgroups of a finite group is given in \cite{hulpke_1998}; this is the
 method used in the most general case by GAP \cite{gap}, though more specific
 methods are used for certain specific categories of group.  In the case of an
-infinite group, it may be impossible to find all normal subgroups---indeed, this
-problem is undecidable in general \cite[Theorem 3.17]{miller_1992}---but the
+infinite group, it may be impossible to find all normal subgroups -- indeed, this
+problem is undecidable in general \cite[Theorem 3.17]{miller_1992} -- but the
 \textsc{LowIndexSubgroups} algorithm \cite[\S 5.4]{cgt} may be used to find all
 normal subgroups up to a given index, given a small modification to exclude
 subgroups which are not normal \cite[\S 5.5]{cgt}.
@@ -201,7 +201,7 @@ relating to idempotents.
 \end{definition}
 
 Definitions \ref{def:zerosimple} and \ref{def:completelyzerosimple} are
-equivalent for finite semigroups---that is to say, a finite semigroup is
+equivalent for finite semigroups -- that is to say, a finite semigroup is
 completely simple if and only if it is simple, and it is completely 0-simple if
 and only if it is 0-simple.  Some of the conversions described in this chapter
 will be applicable only to finite semigroups, and in those circumstances we will
@@ -259,7 +259,7 @@ completely 0-simple semigroups.
 
 Now we can replace any completely 0-simple semigroup with its isomorphic Rees
 0-matrix semigroup when we wish to perform any isomorphism-invariant
-calculations---hence we can restrict our further investigations just to this
+calculations -- hence we can restrict our further investigations just to this
 type of semigroup.  Note that if $\mathcal{M}^0[G;I,\Lambda;P]$ is finite, then
 $G$, $I$, $\Lambda$ and $P$ are all finite.
 
@@ -312,7 +312,7 @@ This theorem shows us an alternative way to look at congruences on completely
 at congruences on groups.  However, in order to use this at all in a
 computational setting, we must have a concrete function $\Gamma$ which we can
 use to convert a congruence to a linked triple and back again, rather than just
-the knowledge that such a function exists---indeed, describing such a function
+the knowledge that such a function exists -- indeed, describing such a function
 is the purpose of this section.  We define the function $\Gamma$ as follows.
 
 \begin{definition}[\S 3.5 in \cite{howie}]
@@ -339,7 +339,7 @@ is the purpose of this section.  We define the function $\Gamma$ as follows.
   $p_{\mu i} \neq 0$).  Finally, we define the normal subgroup
   $N_\rho \trianglelefteq G$ as follows.  First, fix some $\xi \in \Lambda$, a
   row of the matrix $P$.  Since $P$ is regular, row $\xi$ must contain a
-  non-zero entry---fix some $k \in I$ such that $p_{\xi k} \neq 0$.  Now we can
+  non-zero entry -- fix some $k \in I$ such that $p_{\xi k} \neq 0$.  Now we can
   define
   $$N_\rho = \{a \in G ~|~ (k, a, \xi) ~\rho~ (k, 1_G, \xi)\},$$
   where $1_G$ is the identity in the group $G$.
@@ -390,7 +390,7 @@ with the removal of the zero element, and linked triples follow Definition
 \ref{def:linked-triple}, where the restrictions related to placements of $0$ in
 $P$ are irrelevant.  It should also be noted that even the universal congruence
 has a linked triple in this
-case---$(G, I \times I, \Lambda \times \Lambda)$---so the domain of $\Gamma$ is
+case -- $(G, I \times I, \Lambda \times \Lambda)$ -- so the domain of $\Gamma$ is
 not only the non-universal congruences, but all congruences on $S$.
 
 \subsection{Inverse semigroups: kernel-trace pairs}
@@ -668,7 +668,7 @@ definition and theorem from \cite{mtorpey_msc}.
 \end{theorem}
 
 This theorem is enough to show the correctness of our algorithm for converting a
-set of generating pairs to a linked triple---we present this algorithm here as
+set of generating pairs to a linked triple -- we present this algorithm here as
 Algorithm \ref{alg:pairs-to-linked-triple}.  In reading the algorithm, it will
 be helpful to refer to Definition \ref{def:linked-triple} for the relations
 $\varepsilon_I$ and $\varepsilon_\Lambda$ and elements of the form
@@ -856,7 +856,7 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
     $\sS_\rho \subseteq \sS_{\Rs}$.  Similarly by (2) we have
     $\tT_\rho \subseteq \tT_{\Rs}$.
 
-    Now we turn our attention to $N_\rho$, and its generating set $N_\rho'$---we
+    Now we turn our attention to $N_\rho$, and its generating set $N_\rho'$ -- we
     wish to show that $N_\rho \subseteq N_{\Rs}$.  Let $n \in N_\rho'$.  By (3),
     there exist $i, j, x \in I$ and $\lambda, \mu, \xi \in \Lambda$ such that
     $p_{\xi i}$ and $p_{\lambda x}$ are both non-zero and
@@ -888,7 +888,7 @@ thesis as Algorithm \ref{alg:linked-triple-to-pairs}.  Given a linked triple
 $(N, \sS, \tT)$, we only need to choose applicable subsets $N' \subseteq N$,
 $\sS' \subseteq \sS$ and $\tT' \subseteq \tT$ and we have a
 good idea of what pairs are necessary to generate a congruence.  In the
-algorithm, we assume that a generating set $N'$ is known for $N$---this is
+algorithm, we assume that a generating set $N'$ is known for $N$ -- this is
 certainly likely to be the case in a computational setting, for example in GAP
 \cite{gap} where groups almost always have a known generating set (see the
 discussion of computing using generators in Chapter \ref{chap:intro}).  We should
@@ -915,14 +915,14 @@ exhausted, and so the total number of pairs returned by the algorithm is equal
 to
 $$\max(|N'|, |I| - k_\sS, |\Lambda| - k_\tT).$$
 If the sets have different sizes, then any element can be reused from one of
-the sets when it runs out---in Algorithm \ref{alg:linked-triple-to-pairs} the
+the sets when it runs out -- in Algorithm \ref{alg:linked-triple-to-pairs} the
 last one popped is used repeatedly.  If any of the sets is empty at the
 start, an arbitrary entry can be used instead: for $n$ we can use the identity
 $1_G$ which must always be in $N$; for $(i,j)$ or $(\lambda,\mu)$ we can use a
 reflexive pair, from $\Delta_I$ or $\Delta_\Lambda$ respectively.
 
 It is natural to ask whether a set of generating pairs obtained from
-\textsc{PairsFromLinkedTriple} is minimal---that is, to ask whether
+\textsc{PairsFromLinkedTriple} is minimal -- that is, to ask whether
 any smaller set of pairs could be found which generates the same congruence.
 
 \begin{theorem}
@@ -1038,7 +1038,7 @@ We can see how the algorithm performs on the following example.
   \end{pmatrix}.
   $$
   This semigroup has 8 congruences: the universal congruence $\nabla_S$, and 7
-  congruences defined by linked triples---this can be calculated slowly by hand,
+  congruences defined by linked triples -- this can be calculated slowly by hand,
   but much more quickly using the Semigroups package \cite{semigroups}.  One
   such congruence is given by the linked triple $\left(\Alt_4, \Delta_3, (2,3)^e\right)$,
   where $\Alt_4$ is the alternating group of degree $4$, $\Delta_3$ is the
@@ -1118,7 +1118,7 @@ Given a set of generating pairs $\R$ over a semigroup $S$, we may wish
 to consider the congruence $\rho = \R^\sharp$ and ask questions such as
 whether a pair lies in the congruence, or the number of congruence classes.
 This is certainly possible by various methods, for example the variety of
-algorithms mentioned in Chapter \ref{chap:pairs}---however, if $S$ is an inverse
+algorithms mentioned in Chapter \ref{chap:pairs} -- however, if $S$ is an inverse
 semigroup then any calculation we wish to carry out will be much faster if we
 know the congruence's kernel-trace pair, as described in Section
 \ref{sec:kertr}.  We therefore wish for an algorithm that determines the kernel
@@ -1138,7 +1138,7 @@ require some explanation.  It is based on a simple idea: firstly, populate $K$
 and $\tau$ with those elements that are implied directly by the pairs in
 $\R$; then, add further elements to $K$ and $\tau$ to satisfy the
 conditions of a kernel-trace pair.  This means we return the least kernel-trace
-pair $(K, \tau)$ that implies the pairs in $\R$---that is, we return
+pair $(K, \tau)$ that implies the pairs in $\R$ -- that is, we return
 the kernel-trace pair that corresponds to $\R^\sharp$.  This idea is
 explained more explicitly below.
 
@@ -1248,7 +1248,7 @@ akin to Lemma \ref{lem:linked-triple-subsets} for linked triples.
 
 The kernel $K$ starts out containing just the idempotents $E$, and the trace
 $\tau$ starts out as the trivial congruence on $E$.  Every kernel and trace must
-contain at least these elements---in fact, $(K, \tau)$ currently corresponds to
+contain at least these elements -- in fact, $(K, \tau)$ currently corresponds to
 the trivial congruence $\Delta_S$.  We assume that we have generating sets $S'$
 for $S$ and $E'$ for $E$.  In the worst case, we can use $S$ and $E$ themselves,
 but the algorithm is likely to run faster with a smaller generating set.
@@ -1258,7 +1258,7 @@ and a smaller generating set can sometimes be created by eliminating unnecessary
 elements.
 
 Once these setup steps have been done, we add information from the known pairs
-of $\rho$---that is, from the pairs in $\R$.  Theorem
+of $\rho$ -- that is, from the pairs in $\R$.  Theorem
 \ref{thm:kernel-trace-pair} tells us that a pair $(a,b)$ lies in $\rho$ if and
 only if $ab^{-1} \in K$ and $(a^{-1}a, b^{-1}b) \in \tau$.  Now instead of using
 $K$ and $\tau$ to determine whether a pair is in $\rho$, we are using a pair in
@@ -1279,8 +1279,8 @@ Recall from Definitions \ref{def:kernel-normal}, \ref{def:trace-normal} and
 \ref{def:kernel-trace-pair} the conditions for a kernel-trace pair.  We require
 $(K, \tau)$ to satisfy these conditions, and we must make any additions
 necessary until they are all fulfilled.  For this purpose we have three
-sub-methods---\textsc{EnumerateKernel}, \textsc{EnumerateTrace}, and
-\textsc{EnforceConditions}---which test the conditions for a kernel-trace pair
+sub-methods -- \textsc{EnumerateKernel}, \textsc{EnumerateTrace}, and
+\textsc{EnforceConditions} -- which test the conditions for a kernel-trace pair
 and add any elements necessary.  Any of these methods might add to $K$ or
 $\tau$, which might in turn imply that another method has more information to
 find.  Hence, the three methods are run repeatedly until an entire run is
@@ -1299,8 +1299,8 @@ is enough to guarantee that $K$ is a normal subsemigroup.
 
 The \textsc{EnumerateTrace} method ensures that $\tau$ is a normal congruence
 (see Definition \ref{def:trace-normal}).  It considers all the pairs that have
-been added to $\tau$ since the last call to \textsc{EnumerateTrace}---these are
-precisely the pairs in $\mathbf{T}$---and makes sure that any pairs implied by
+been added to $\tau$ since the last call to \textsc{EnumerateTrace} -- these are
+precisely the pairs in $\mathbf{T}$ -- and makes sure that any pairs implied by
 them are added to $\tau$ and $\mathbf{T}$.  For each $(x,y) \in \mathbf{T}$, the
 left and right multiples of $(x,y)$ must be in $\tau$ (as required by the
 definition of a congruence).  In fact, only the right-multiples $(xe, ye)$ need
@@ -1345,7 +1345,7 @@ interact with $I$.
 Since $I$ is an ideal, it must be a non-empty union of $\JJ$-classes, and since $S$ is
 inverse, it has an idempotent in every $\JJ$-class; hence, there is at least one
 idempotent in $I$.  The kernel of $\rho_I$ is defined as the set of all elements
-which are related to an idempotent---that is, all elements in $I$ and all
+which are related to an idempotent -- that is, all elements in $I$ and all
 idempotents outside $I$.  Hence $\ker \rho_I = E \cup I$.  The trace of $\rho_I$
 is defined as the restriction of $\rho_I$ to the idempotents.  Two distinct
 idempotents are $\rho_I$-related if and only if they both lie in $I$; hence
@@ -1431,7 +1431,7 @@ it can be represented by a normal subgroup or by a kernel-trace pair.  Let
 $\rho$ be such a congruence, on a group $G$: the classes of $\rho$ are the
 cosets of some normal subgroup $N$.  The kernel of $\rho$ is defined as the set
 of elements which are $\rho$-related to an idempotent.  Since there is only one
-idempotent---the identity $1_G$---the kernel is all the elements in $N$.  The
+idempotent -- the identity $1_G$ -- the kernel is all the elements in $N$.  The
 trace of $\rho$ is defined as the restriction of $\rho$ to the idempotent; so
 $\tr\rho$ is just the trivial equivalence on the single element $1_G$.  Hence a
 congruence with normal subgroup $N$ has kernel-trace pair

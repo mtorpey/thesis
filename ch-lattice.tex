@@ -27,7 +27,7 @@ $H \leq G$ is normal if and only if $g^{-1}hg \in H$ for all $h \in H$ and
 $g \in G$.
 
 \index{conjugacy class} A na\"ive way to compute the normal subgroups of a group
-$G$ is by using its \textit{conjugacy classes}---that is, the sets
+$G$ is by using its \textit{conjugacy classes} -- that is, the sets
 $C_x = \{g^{-1}xg : g \in G\}$ for all $x \in G$.  We can see, from the
 definition of a normal subgroup given above, that a subgroup of $G$ is normal if
 and only if it is a union of conjugacy classes.  Hence, we can compute the
@@ -43,7 +43,7 @@ Next we mention a more sophisticated alternative, as used in GAP.  The process
 is rather technical, and is not the main focus of this thesis, so we will only
 give an outline of the method here, referring the reader to \cite{hulpke_1998}
 for a fuller explanation.  To compute the normal subgroups of a group $G$, we
-first compute a \textit{chief series} for $G$---that is, a series of $k$ normal
+first compute a \textit{chief series} for $G$ -- that is, a series of $k$ normal
 subgroups of $G$, \index{chief series}
 $$1 = N_k
 \subset N_{k-1}
@@ -382,7 +382,7 @@ store all the pairs that are found in an array.  This approach has the advantage
 of simplicity, and the advantage that the computational object is as close as
 possible to the mathematical object it describes.  However, it has certain
 disadvantages that render it unattractive from a computational point of
-view---namely, that it is difficult to search for a given pair, and that it is
+view -- namely, that it is difficult to search for a given pair, and that it is
 difficult to find all the super-relations and sub-relations of a given
 congruence.  Consider looking up whether a given pair $(\rho,\sigma)$ is in an
 array of pairs: if the array is unsorted, this has complexity $O(n)$; even if

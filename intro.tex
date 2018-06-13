@@ -637,7 +637,7 @@ $\mathbf{E}$ must always contain the trivial congruence $\Delta_S$.
 \section{Presentations}
 \label{sec:intro-presentations}
 
-We have now encountered two important concepts for congruences---a congruence
+We have now encountered two important concepts for congruences -- a congruence
 can be defined by generating pairs, and a quotient semigroup is defined by a
 congruence.  We can combine these two concepts to give a very general way of
 describing semigroups: presentations.  First we require the definition of a
@@ -878,7 +878,7 @@ Since a given equivalence may have several spanning skeletons, a bipartition may
 be represented by several different diagrams; for example, note the two
 different representations of $\alpha \beta$ in Figure
 \ref{fig:bipartition-example}.  In general, it does not matter which diagram is
-used, only that it represents the appropriate bipartition---we will usually
+used, only that it represents the appropriate bipartition -- we will usually
 choose the diagram which illustrates the bipartition most clearly.  In
 particular, for each block that contains points from both $\mathbf{n}$ and
 $\mathbf{n}'$, we will usually draw only one line crossing the diagram from top
@@ -1121,7 +1121,7 @@ thesis, we present one such formulation here for completeness.
   \item $H \subseteq Q$ is a subset of states known as the \textit{halting
       states}.
   \end{itemize}
-  This machine is paired with a conceptual infinite \textit{tape}---a
+  This machine is paired with a conceptual infinite \textit{tape} -- a
   sequence of characters from $\Sigma$ which continues infinitely in both
   directions.  This tape is provided as an input to the algorithm.  The machine
   starts in state $q_0$ with its read/write head pointed to a given position on
@@ -1260,7 +1260,7 @@ particularly the pair orbit enumeration algorithm in Section \ref{sec:p}.  We
 begin by recalling a few definitions, and stating a problem we wish to solve.
 
 Let $X$ be a set.  Recall that an \textbf{equivalence} on $X$ is a relation (a
-subset of $X \times X$) which is reflexive, symmetric, and transitive---that is,
+subset of $X \times X$) which is reflexive, symmetric, and transitive -- that is,
 a partition of $X$ into disjoint subsets.  Also recall from Definition
 \ref{def:re} the relation $\mathbf{R}^e$, the least equivalence containing a
 given relation $\mathbf{R}$.  It may be that, given a set of pairs $\mathbf{R}$,
@@ -1294,7 +1294,7 @@ $\mathbf{R}^e$-related, and we will wish to record this.  If either of $x$ or
 $y$ is not already in $\Lambda$, we call \textsc{AddElement} to start tracking
 it in the union-find system; \textsc{AddElement} simply adds the element to the
 end of $\Lambda$ and adds a new entry to the end of $\tau$ with value equal to
-the new length of $\Lambda$---a value not yet used in the table.  See Algorithm
+the new length of $\Lambda$ -- a value not yet used in the table.  See Algorithm
 \ref{alg:uf-addelement} for pseudo-code.  Then we call \textsc{Union($x,y$)} to
 combine the two classes as described below.
 
@@ -1317,7 +1317,7 @@ and $y$ are in the same equivalence class if and only if $x,y \in \Lambda$ and
 $\tau_x = \tau_y$.  By this method, \textsc{Union($x,y$)} would go through the
 whole of $\tau$, finding every entry which equals $\tau_y$, and updating it to
 point to $\tau_x$, thus making the two classes equal.  However, this operation
-has high time complexity---in the worst case, $O(|X|)$---and would cause any
+has high time complexity -- in the worst case, $O(|X|)$ -- and would cause any
 implementation of this algorithm to take a long time to complete.  Instead, the
 union-find algorithm treats $\tau_x$ as a pointer to a parent element, as
 follows.
