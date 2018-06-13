@@ -1,31 +1,35 @@
 \begin{abstract}
-Semigroup theory has its roots in group theory.
-Since any group is a semigroup, it might be imagined that groups would be
-studied simply as a special case within semigroup theory.
-Computational algebra has existed for nearly as long as the theory of
-computation itself.
-In the same way that semigroup theory borrows results from group theory,
-computational semigroup theory often borrows algorithms from computational group
-theory.
-This thesis deals primarily with the congruences of a semigroup.
-The computational theory of semigroup congruences is also a young field.
-After introducing some preliminary theory, this thesis is divided into two broad
-parts.
-Chapter \ref{chap:intro} acts as an introduction to this document, providing the
-preliminary knowledge which is required to understand the material in the rest
-of the thesis.
-Chapter \ref{chap:pairs} presents a new way of computing with congruences
-defined by generating pairs.
-Chapter \ref{chap:converting} concerns the various ways of representing a
-congruence, other than as a set of pairs.
-Chapter \ref{chap:lattice} presents an algorithm for computing the entire
-congruence lattice of a finite semigroup.
-Chapter \ref{chap:motzkin} considers the Motzkin monoid $\Mot_n$, the monoid of
-all planar bipartitions of degree $n$ with blocks of size no greater than $2$.
-Chapter \ref{chap:other} completes this thesis by presenting some other results
-obtained or precipitated by computational experiments in the \Semigroups{}
-package.
-At the end of this document we provide an index of the various terms that are
-used.
+
+  Computational semigroup theory is an area of research that is subject to
+  growing interest.  The development of semigroup algorithms allows for new
+  theoretical results to be discovered, which in turn informs the creation of
+  more new algorithms.  Groups have benefitted from this cycle since before the
+  invention of electronic computers, and the popularity of computational group
+  theory has resulted in a rich and detailed literature.  Computational
+  semigroup theory is a less developed field, but recent work has resulted in a
+  variety of algorithms, and some important pieces of software such as the
+  \Semigroups{} package for \GAP{}.
+
+  Congruences are an important part of semigroup theory, describing a
+  semigroup's homomorphic images in the same way as a group's normal subgroups.
+  There currently exist few algorithms for computing with semigroup congruences.
+  However, a number of results about alternative representations for
+  congruences, as well as existing algorithms that can be borrowed from group
+  theory, make congruences a fertile area for improvement.  In this thesis, we
+  first consider computational techniques that can be applied to the study of
+  congruences, and then present some results that have been produced or
+  precipitated by applying these techniques to examples.
+
+  After some preliminary theory, we start with a new parallel approach to
+  computing with congruences specified by generating pairs.  We then consider
+  alternative ways of representing a congruence, using intermediate objects such
+  as normal subgroups and linked triples.  We also present an algorithm for
+  computing the entire congruence lattice of a finite semigroup.  In the second
+  part of the thesis, we classify the congruences of the Motzkin monoid and
+  other monoids of bipartitions, as well as the principal factors of the full
+  transformation monoid and several related monoids.  Finally, we consider the
+  number of congruences a semigroup can have, and examine the congruences on
+  semigroups of size up to seven.
+  
   \thispagestyle{plain}
 \end{abstract}
