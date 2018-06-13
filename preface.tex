@@ -7,46 +7,49 @@ was continued in the early 1800s by Galois, who first used the word
 \textit{group} to describe them.  Groups were then studied in various different
 contexts -- in geometry, in number theory, and as permutation groups -- for some
 time before the various branches of theory were united into one, with von Dyck
-inventing the modern abstract definition of a group in 1882 \cite{dyck_1882},
-with the study of group theory flourishing since then.  By contrast, semigroup
+inventing the modern abstract definition of a group in 1882 \cite{dyck_1882}.
+The study of group theory has flourished since then.  By contrast, semigroup
 theory is a relatively young area of study, having been defined only in the
 early 1900s and having been studied very little before the 1950s, other than a
-few early papers by authors such as Suschkewitch \cite{susch_1928}.
+few early papers by authors such as Suschkewitch \cite{susch_1928}.  However, in
+the second half of the twentieth century, semigroup theory gained traction, and
+now accounts for a significant body of work, with dedicated journals such as
+Semigroup Forum, and seminal books such as \cite{howie, petrich}.
 
 Since any group is a semigroup, it might be imagined that groups would be
-studied simply as a special case within semigroup theory.  However, in practice
-it turns out that groups are a very important topic within the study of generic
-semigroups.  For example, important features of the structure of a semigroup are
-determined by that semigroup's maximal subgroups, for example their Green's
-relations, or the linked triples on a completely 0-simple semigroup.  As a
-result, groups are often a central part of semigroup theory, allowing us to
-borrow from the richly developed field of group theory in order to solve
-problems for semigroups in general.
+studied simply as a special case within semigroup theory.  In practice, however,
+group theory tends to inform semigroup theory, since it turns out that groups
+are a very important topic within the study of generic semigroups.  Important
+features of a semigroup's structure are determined by its maximal subgroups --
+for example their Green's relations, or the linked triples on a completely
+simple semigroup.  As a result, groups are often a central part of semigroup
+theory, allowing us to borrow from the richly developed field of group theory in
+order to solve problems for semigroups in general.
 
 Computational algebra has existed for nearly as long as the theory of
 computation itself.  For instance, perhaps the earliest published group theory
-algorithm is the Dehn algorithm \cite{dehn_1911} for solving the word problem in
+algorithm is that by Dehn \cite{dehn_1911} for solving the word problem in
 certain groups.  The Todd--Coxeter algorithm \cite{todd_coxeter_1936}, which
 enumerates the cosets of a subgroup in a group, was certainly designed to be
-carried by hand, having been described in the 1930s before the invention of
+carried out by hand, having been described in the 1930s before the invention of
 electronic computers.  When computers did arrive, there was early interest in
-using them for group theory problems, with Todd--Coxeter being implemented on an
-the EDSAC II in Cambridge as early as 1953 \cite{leech_1963}.  Since then, group
-theory has flourished, with a variety of software packages such as
-\textsf{Magma} \cite{magma}, \ACE{} \cite{ace}, and particularly \GAP{}
+using them for group theory problems, with Todd--Coxeter being implemented on
+the EDSAC II in Cambridge as early as 1953 \cite{leech_1963}.  Since then,
+computational group theory has flourished, with a variety of software packages
+such as \textsf{Magma} \cite{magma}, \ACE{} \cite{ace}, and particularly \GAP{}
 \cite{gap}, which has a variety of packages including algorithms to solve a wide
-range of problems.  A lot of material is available on computational group
-theory, including dedicated books \cite{sims, cgt}.  By comparison,
+range of problems.  A wealth of material is available on computational group
+theory, including several dedicated books \cite{sims, cgt}.  By comparison,
 computational semigroup theory is much younger and less developed, as is
 semigroup theory as a whole.  Computers were used as early as 1953 to classify
 semigroups of low order \cite{tamura_1953, froidure_pin}, but the theory of
 computing with semigroups developed more slowly than with groups, and no package
 emerged for Semigroups on the scale of the group algorithms in \GAP{}.  However,
 there has been considerable interest in computational semigroup theory in recent
-years, and increasingly there does exist software for computing with semigroups,
-such as \Semigroupe{} \cite{semigroupe}, \libsemigroups{} \cite{libsemigroups},
-and the \GAP{} packages \Semigroups{} \cite{semigroups}, \smallsemi{}
-\cite{smallsemi} and \kbmag{} \cite{kbmag}.
+years, and increasingly there do exist algorithms for semigroups, as well as
+software packages implementing them, such as \Semigroupe{} \cite{semigroupe},
+\libsemigroups{} \cite{libsemigroups}, and the \GAP{} packages \Semigroups{}
+\cite{semigroups}, \smallsemi{} \cite{smallsemi} and \kbmag{} \cite{kbmag}.
 
 In the same way that semigroup theory borrows results from group theory,
 computational semigroup theory often borrows algorithms from computational group
@@ -77,11 +80,12 @@ also had their congruences classified \cite{fernandes_2000, lisbon_ii,
 major activity in the study of congruences, and will form the majority of Part
 \ref{part:results} of this thesis.
 
-Computing with semigroup congruences is also a young field.  Some algorithms for
-computing information about a given congruence have existed in the \GAP{}
-library for many years, but many of them lack sophistication, being close to
-brute-force.  In some cases, we can do little to improve on these algorithms,
-since semigroup congruences in general do not have the regular structure of
+The computational theory of semigroup congruences is also a young field.  Some
+algorithms for computing information about a given congruence have existed in
+the \GAP{} library for many years, but many of them lack sophistication, being
+close to brute-force.  In some cases, we can do little to improve on these
+algorithms, since semigroup congruences in general do not have the regular
+structure of
 %TODO
 
 Chapter 1
