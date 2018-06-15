@@ -1065,11 +1065,48 @@ equal to its degree.
 \subsection{Order-preserving elements}
 \label{sec:order-preserving}
 
+Partial transformations (including transformations) can map points in their
+domain to points in their image in any order.  We now define an interesting
+property a partial transformation may have that \textit{preserves order}, an
+important feature when we come to consider \textit{planar} bipartitions later
+(Definition \ref{def:planar}).
+
 \begin{definition}
-  A partial transformation is \textbf{order-preserving}
+  A partial transformation $\tau$ is \textbf{order-preserving} if for all
+  $i,j \in \dom\tau$, we have $i \leq j$ if and only if $(i)\tau \leq (j)\tau$.
 \end{definition}
 
-$\POI_n$ etc.
+Each of the monoids $\PT_n$, $\T_n$, $\I_n$ and $\Sym_n$ contains a submonoid
+consisting of the order-preserving elements: $\PO_n$, $\OO_n$, $\POI_n$ and the
+dihedral group $\mathcal{D}_n$ respectively, as shown in Figure
+\ref{fig:ord-pres}.  The first three of these will be considered in some detail
+in Section \ref{sec:princfact-other}, while the last will not be mentioned
+again.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    [monoid/.style={rounded rectangle, draw}]
+    \node[monoid] (R1) at ( 0, 8) {$\PT_n$};
+    \node[monoid] (l1) at (-3, 6) {$\I_n$};
+    \node[monoid] (R0) at ( 0, 6) {$\PO_n$};
+    \node[monoid] (r1) at ( 3, 6) {$\T_n$};
+    \node[monoid] (l0) at (-3, 4) {$\POI_n$};
+    \node[monoid] (d1) at ( 0, 4) {$\Sym_n$};
+    \node[monoid] (r0) at ( 3, 4) {$\OO_n$};
+    \node[monoid] (d0) at ( 0, 2) {$\mathcal{D}_n$};
+    \node[monoid] (id) at ( 0, 0.5) {$\{\id_n\}$};
+    \draw (d0)--(l0) (d0)--(r0) (l0)--(R0) (r0)--(R0);
+    \fill[white] (-1.5,5)circle(.15) (+1.5,5)circle(.15);
+    \draw (d0)--(d1) (l0)--(l1) (r0)--(r1) (R0)--(R1);
+    \draw (d1)--(l1) (d1)--(r1) (l1)--(R1) (r1)--(R1);
+    \draw (id)--(d0);
+  \end{tikzpicture}
+  \caption[Important monoids of partial transformations]{Hasse diagram showing
+    containment of some important monoids of partial transformations, along with
+    their order-preserving submonoids}
+  \label{fig:ord-pres}
+\end{figure}
 
 \subsection{Bipartitions}
 \label{sec:bipartitions}
