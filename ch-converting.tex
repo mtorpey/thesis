@@ -43,7 +43,7 @@ they can be converted to one another are summarised in Table
     \cline{2-7}
     & Linked triple ((0-)simple) ~\ref{sec:linked-triples} & \ref{sec:linked-triple-to-pairs} & \ref{sec:normal-subgroup-to-linked-triple} & \cellcolor{gray} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions} \\
     \cline{2-7}
-    & Kernel-trace (inverse) ~\ref{sec:kertr} & \textcolor{gray}{\ref{sec:kertr-to-pairs}} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions} & \cellcolor{gray} & \ref{sec:rees-to-kertr} \\
+    & Kernel--trace (inverse) ~\ref{sec:kertr} & \textcolor{gray}{\ref{sec:kertr-to-pairs}} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions} & \cellcolor{gray} & \ref{sec:rees-to-kertr} \\
     \cline{2-7}
     & Rees congruence ~\ref{sec:converting-rees} & \ref{sec:rees-to-pairs} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions} & \ref{sec:rees-to-kertr} & \cellcolor{gray}\\
     \cline{2-7}
@@ -393,18 +393,18 @@ has a linked triple in this
 case -- $(G, I \times I, \Lambda \times \Lambda)$ -- so the domain of $\Gamma$ is
 not only the non-universal congruences, but all congruences on $S$.
 
-\subsection{Inverse semigroups: kernel-trace pairs}
+\subsection{Inverse semigroups: kernel--trace pairs}
 \label{sec:kertr}
 % TODO: Wilf's book about semilattice congruences: Symmetric Inverse Semigroups
 
 An inverse semigroup also has a structure which can be used in place of its
-congruences: its \textit{kernel-trace pairs} (sometimes confusingly known as
+congruences: its \textit{kernel--trace pairs} (sometimes confusingly known as
 ``congruence pairs'').  In \cite[Chapter 5]{mtorpey_msc} the author focused on a
-computational use of kernel-trace pairs to solve problems about congruences.
+computational use of kernel--trace pairs to solve problems about congruences.
 They can certainly be used effectively to carry out calculations, in a similar
 way to linked triples.
 
-The basic theory about kernel-trace pairs is presented here, for reference.  In
+The basic theory about kernel--trace pairs is presented here, for reference.  In
 all these definitions, $S$ is an inverse semigroup, $E$ is the set of
 idempotents in $S$, and and $\rho$ is a congruence on $S$.  Recall that $E$ is
 an inverse subsemigroup of $S$.  This is standard background theory, which is
@@ -426,7 +426,7 @@ adapted from \cite[\S 5.3]{howie}.
 \end{definition}
 
 We will shortly see that a congruence on $S$ is completely defined by its kernel
-and trace.  First we will approach kernel-trace pairs from an abstract route
+and trace.  First we will approach kernel--trace pairs from an abstract route
 which will help us to classify the congruences on $S$ completely.  We start with
 two different definitions of the word ``normal'', one for subsemigroups and one
 for congruences.
@@ -447,13 +447,13 @@ for congruences.
   for every pair $(e,f) \in \tau$ and every element $a \in S$.
 \end{definition}
 
-Now we can define a \textit{kernel-trace pair}, an abstract structure which
+Now we can define a \textit{kernel--trace pair}, an abstract structure which
 relates very closely to a congruence.
 
 \begin{definition}
   \label{def:kernel-trace-pair}
-  \index{kernel-trace pair!for an inverse semigroup}
-  A \textbf{kernel-trace pair} on $S$ is a pair $(K,\tau)$ consisting of a
+  \index{kernel--trace pair!for an inverse semigroup}
+  A \textbf{kernel--trace pair} on $S$ is a pair $(K,\tau)$ consisting of a
   normal subsemigroup $K$ of $S$ and a normal congruence $\tau$ on $E$, such
   that
   \begin{enumerate}[\rm(1)]
@@ -463,22 +463,22 @@ relates very closely to a congruence.
   for all elements $a \in S$ and $e \in E$.
 \end{definition}
 
-Now we state the result which identifies an abstract kernel-trace pair with the
+Now we state the result which identifies an abstract kernel--trace pair with the
 kernel and trace of a congruence, and allows us to calculate information about
 $\rho$ by using $\ker \rho$ and $\tr \rho$ directly.
 
 \begin{theorem}
   \label{thm:kernel-trace-pair}
   % Let $\rho$ be a congruence on an inverse semigroup $S$ with idempotent
-  % semigroup $E$.  $(\ker\rho, \tr\rho)$ is a kernel-trace pair.
+  % semigroup $E$.  $(\ker\rho, \tr\rho)$ is a kernel--trace pair.
 
-  % Conversely, every kernel-trace pair $(K,\tau)$ on $S$ defines a congruence
+  % Conversely, every kernel--trace pair $(K,\tau)$ on $S$ defines a congruence
   % $$\rho_{(K,\tau)} = \{(x,y) \in S \times S ~|~ (x^{-1}x, y^{-1}y) \in \tau,
   % xy^{-1} \in K\}$$
   % whose kernel is equal to $K$ and whose trace is equal to $\tau$.  Finally,
   % $\rho_{(\ker\rho,\tr\rho)} = \rho$.
   Let $S$ be an inverse semigroup.  There exists a bijection $\Psi$ from the
-  congruences on $S$ to the kernel-trace pairs on $S$, defined by
+  congruences on $S$ to the kernel--trace pairs on $S$, defined by
   $$\Psi: \rho \mapsto (\ker\rho, \tr\rho),$$
   and its inverse satisfies
   $$\Psi^{-1} : (K,\tau) \mapsto
@@ -488,15 +488,15 @@ $\rho$ by using $\ker \rho$ and $\tr \rho$ directly.
   \end{proof}
 \end{theorem}
 
-This theorem tells us everything we need to know about kernel-trace pairs and
+This theorem tells us everything we need to know about kernel--trace pairs and
 their relationship to congruences on an inverse semigroup.  Once we have the
-kernel-trace pair of a congruence, we can solve any problem we wish to using the
+kernel--trace pair of a congruence, we can solve any problem we wish to using the
 kernel and trace alone, and computational problems such as determining whether a
 given pair $(x,y)$ lies in the congruence are much faster than using
 generating pairs directly \cite[\S 6.1.3]{mtorpey_msc}.  However, we may find
 that if a congruence is specified initially using generating pairs, it may be
-costly to find its kernel-trace pair in the first place; Section
-\ref{sec:pairs-to-kertr} presents a relatively fast method for finding a kernel-trace pair.
+costly to find its kernel--trace pair in the first place; Section
+\ref{sec:pairs-to-kertr} presents a relatively fast method for finding a kernel--trace pair.
 
 \subsection{Rees congruences}
 \label{sec:converting-rees}
@@ -1120,16 +1120,16 @@ whether a pair lies in the congruence, or the number of congruence classes.
 This is certainly possible by various methods, for example the variety of
 algorithms mentioned in Chapter \ref{chap:pairs} -- however, if $S$ is an inverse
 semigroup then any calculation we wish to carry out will be much faster if we
-know the congruence's kernel-trace pair, as described in Section
+know the congruence's kernel--trace pair, as described in Section
 \ref{sec:kertr}.  We therefore wish for an algorithm that determines the kernel
 and trace of $\rho$.
 
 One way of calculating the kernel and trace would be simply to enumerate all the
 elements in all the classes of $\rho$, and to search for the idempotents to
 compute the kernel and trace.  However, enumerating all the classes is very
-time-consuming, and the main reason to calculate the kernel-trace pair in the
+time-consuming, and the main reason to calculate the kernel--trace pair in the
 first place is probably to avoid this work.  Hence, we want to find the
-kernel-trace pair directly from the generating pairs $\R$, enumerating
+kernel--trace pair directly from the generating pairs $\R$, enumerating
 as few pairs in $\R^\sharp$ as possible.
 
 A new way of finding the kernel and trace directly from the generating pairs is
@@ -1137,9 +1137,9 @@ presented in pseudo-code in Algorithm \ref{alg:pairs-to-kertr}, which will
 require some explanation.  It is based on a simple idea: firstly, populate $K$
 and $\tau$ with those elements that are implied directly by the pairs in
 $\R$; then, add further elements to $K$ and $\tau$ to satisfy the
-conditions of a kernel-trace pair.  This means we return the least kernel-trace
+conditions of a kernel--trace pair.  This means we return the least kernel--trace
 pair $(K, \tau)$ that implies the pairs in $\R$ -- that is, we return
-the kernel-trace pair that corresponds to $\R^\sharp$.  This idea is
+the kernel--trace pair that corresponds to $\R^\sharp$.  This idea is
 explained more explicitly below.
 
 \begin{algorithm}
@@ -1225,7 +1225,7 @@ akin to Lemma \ref{lem:linked-triple-subsets} for linked triples.
 
 \begin{lemma}
   \label{lem:kertr-subsets}
-  Let $\rho$ and $\sigma$ be congruences on $S$ with kernel-trace pairs
+  Let $\rho$ and $\sigma$ be congruences on $S$ with kernel--trace pairs
   $(K_\rho, \tau_\rho)$ and $(K_\sigma, \tau_\sigma)$ respectively.  We have
   $\rho \subseteq \sigma$ if and only if $K_\rho \leq K_\sigma$ and
   $\tau_\rho \subseteq \tau_\sigma$.
@@ -1272,20 +1272,20 @@ $\tau$ straight away.
 Once this has been done, the rule that $(a,b)$ lies in $\rho$ if and only if
 $ab^{-1} \in K$ and $(a^{-1}a, b^{-1}b) \in \tau$ is satisfied for all pairs
 $(a,b) \in \R$.  All that is left to do is to add any elements to $K$
-and pairs to $\tau$ required to make $(K, \tau)$ a kernel-trace pair.  The rest
+and pairs to $\tau$ required to make $(K, \tau)$ a kernel--trace pair.  The rest
 of the algorithm focuses on this task.
 
 Recall from Definitions \ref{def:kernel-normal}, \ref{def:trace-normal} and
-\ref{def:kernel-trace-pair} the conditions for a kernel-trace pair.  We require
+\ref{def:kernel-trace-pair} the conditions for a kernel--trace pair.  We require
 $(K, \tau)$ to satisfy these conditions, and we must make any additions
 necessary until they are all fulfilled.  For this purpose we have three
 sub-methods -- \textsc{EnumerateKernel}, \textsc{EnumerateTrace}, and
-\textsc{EnforceConditions} -- which test the conditions for a kernel-trace pair
+\textsc{EnforceConditions} -- which test the conditions for a kernel--trace pair
 and add any elements necessary.  Any of these methods might add to $K$ or
 $\tau$, which might in turn imply that another method has more information to
 find.  Hence, the three methods are run repeatedly until an entire run is
 completed in which no new information is found.  If no new information is found,
-$(K, \tau)$ is guaranteed to be a kernel-trace pair, and we can return.  The
+$(K, \tau)$ is guaranteed to be a kernel--trace pair, and we can return.  The
 three methods could be run in any order without the correctness of the algorithm
 being affected, but the order shown in Algorithm \ref{alg:pairs-to-kertr} seems
 to have the best time performance, based on informal experiments.  All three
@@ -1318,14 +1318,14 @@ $(K,\tau)$ is guaranteed to satisfy conditions 1 and 2, at least on a run in
 which the other two methods make no changes.
 
 If all three methods complete without any new information being found, they will
-have acted as a test ensuring that $(K, \tau)$ is a valid kernel-trace pair.
+have acted as a test ensuring that $(K, \tau)$ is a valid kernel--trace pair.
 This means that $(K, \tau)$ corresponds to a congruence $(K,\tau)\Psi^{-1}$, and
 we know that this congruence contains every pair in $\R$.  Hence
 $\R^\sharp \subseteq (K,\tau)\Psi^{-1}$.  Since we did not add any
 elements to $K$ or $\tau$ except those implied by $\R$ or those required
-by the definition of a kernel-trace pair, we can also be sure that
+by the definition of a kernel--trace pair, we can also be sure that
 $(K, \tau)\Psi^{-1} \subseteq \R^\sharp$, by Lemma
-\ref{lem:kertr-subsets}.  Hence $(K, \tau)$ is the kernel-trace pair
+\ref{lem:kertr-subsets}.  Hence $(K, \tau)$ is the kernel--trace pair
 corresponding to the congruence $\R^\sharp$.
 
 \subsection{Kernel and trace of a Rees congruence}
@@ -1334,7 +1334,7 @@ Let $S$ be an inverse semigroup with idempotents $E$.  Each congruence on $S$ is
 defined by its kernel and trace (see Section \ref{sec:kertr}), and some
 congruences on $S$ may be Rees (see Section \ref{sec:converting-rees}).  We may wish
 to find the kernel and trace of a Rees congruence given the ideal that defines
-it.  Conversely, we may wish to determine whether a given kernel-trace pair on
+it.  Conversely, we may wish to determine whether a given kernel--trace pair on
 $S$ describes a Rees congruence, and if so, what ideal it is associated with.
 
 Let $I$ be an ideal in $S$, and let $\rho_I$ be $(I \times I) \cup \Delta_S$,
@@ -1352,13 +1352,13 @@ idempotents are $\rho_I$-related if and only if they both lie in $I$; hence
 $\tr \rho_I = \left((E \cap I) \times (E \cap I)\right) \cup \Delta_E$.
 
 Now we turn our attention to the other direction.  Let $\rho$ be a congruence
-defined by a kernel-trace pair $(K, \tau)$.  How can we determine directly from
+defined by a kernel--trace pair $(K, \tau)$.  How can we determine directly from
 $K$ and $\tau$ whether $\rho$ is a Rees congruence?
 
 \begin{theorem}
   \label{thm:kertr-to-rees}
   Let $S$ be an inverse semigroup with set of idempotents $E$.  If $(K, \tau)$
-  is a kernel-trace pair on $S$, then the congruence it defines is a Rees
+  is a kernel--trace pair on $S$, then the congruence it defines is a Rees
   congruence if and only if the following hold:
   \begin{enumerate}[\rm(1)]
   \item $\tau$ is a Rees congruence on $E$, with ideal denoted by $I_\tau$;
@@ -1406,7 +1406,7 @@ $K$ and $\tau$ whether $\rho$ is a Rees congruence?
 
     We now wish to show the converse, that $\rho$ being Rees implies (1) and
     (2).  Assume $\rho$ is a Rees congruence with ideal $I$, and let $(K,\tau)$
-    be its kernel-trace pair.  The trace $\tau$ of $\rho$ is the restriction of
+    be its kernel--trace pair.  The trace $\tau$ of $\rho$ is the restriction of
     $\rho$ to the idempotents $E$; this is easily seen to be a Rees congruence
     on $E$ with ideal $I \cap E$.  This gives us (1), where $I_\tau = I \cap E$.
     The kernel $K$ of $\rho$ is the set of elements $\rho$-congruent to an
@@ -1425,16 +1425,16 @@ Some of the conversions between different representations are particularly
 trivial in nature, requiring almost no computational resources to calculate.
 However, it is worth mentioning them here for completeness.
 
-\subsubsection{Normal subgroups and kernel-trace pairs}
+\subsubsection{Normal subgroups and kernel--trace pairs}
 All groups are inverse semigroups.  Hence, if we have a congruence on a group,
-it can be represented by a normal subgroup or by a kernel-trace pair.  Let
+it can be represented by a normal subgroup or by a kernel--trace pair.  Let
 $\rho$ be such a congruence, on a group $G$: the classes of $\rho$ are the
 cosets of some normal subgroup $N$.  The kernel of $\rho$ is defined as the set
 of elements which are $\rho$-related to an idempotent.  Since there is only one
 idempotent -- the identity $1_G$ -- the kernel is all the elements in $N$.  The
 trace of $\rho$ is defined as the restriction of $\rho$ to the idempotent; so
 $\tr\rho$ is just the trivial equivalence on the single element $1_G$.  Hence a
-congruence with normal subgroup $N$ has kernel-trace pair
+congruence with normal subgroup $N$ has kernel--trace pair
 $(N, \Delta_{\{1_G\}})$.
 
 \subsubsection{Normal subgroups and Rees congruences}
@@ -1451,8 +1451,8 @@ semigroup $\mathcal{M}[G;I,\Lambda;P]$ has only one Rees congruence: the
 universal congruence, which has linked triple $(G, \nabla_I, \nabla_\Lambda)$.
 % TODO: use nabla elsewhere instead of I x I or whatever
 
-\subsubsection{Linked triples and kernel-trace pairs}
-We may wish to convert between linked triples and kernel-trace pairs, in the
+\subsubsection{Linked triples and kernel--trace pairs}
+We may wish to convert between linked triples and kernel--trace pairs, in the
 case of an inverse semigroup which is completely simple or completely 0-simple.
 An inverse semigroup has exactly one idempotent in each $\LL$-class and each
 $\RR$-class, while a simple semigroup has just one $\DD$-class and an idempotent
@@ -1461,8 +1461,8 @@ $\HH$-class, and since it contains an idempotent it must be a group.  Since it
 is a group, we can conclude that any congruence on a completely simple inverse
 semigroup has a linked triple of the form $(N, \Delta_I, \Delta_\Lambda)$ (see
 Section \ref{sec:normal-subgroup-to-linked-triple}) which corresponds to the
-kernel-trace pair $(N, \Delta_{\{1_G\}})$ (see \textit{Normal subgroups and
-  kernel-trace pairs} in this section).
+kernel--trace pair $(N, \Delta_{\{1_G\}})$ (see \textit{Normal subgroups and
+  kernel--trace pairs} in this section).
 
 A completely 0-simple inverse semigroup is somewhat different, but also
 uncomplicated.  Let $S$ be such a semigroup, with idempotent set $E$.  Since
@@ -1546,12 +1546,12 @@ However, there are more areas of research which could be investigated, both in
 creating new representations, and in creating new algorithms to convert from one
 to another.
 
-\subsection{Generating pairs from a kernel-trace pair}
+\subsection{Generating pairs from a kernel--trace pair}
 \label{sec:kertr-to-pairs}
-Given an inverse semigroup $S$ and a congruence $\rho$ defined by a kernel-trace
+Given an inverse semigroup $S$ and a congruence $\rho$ defined by a kernel--trace
 pair $(K, \tau)$, it is natural to wish for a set of generating pairs for
 $\rho$.  There is not yet an algorithm to produce a set of generating pairs
-directly from a kernel-trace pair, but this would be an interesting area of
+directly from a kernel--trace pair, but this would be an interesting area of
 future research.
 
 A solution to this problem might follow the same structure as
@@ -1572,7 +1572,7 @@ for $\tau$ so that $(\tau')^e = \tau$, adding all the pairs from $\tau'$ would
 ensure that the trace contains $\tau$.  This approach would result in a very
 large generating set, and could almost certainly be improved in some ways,
 particularly by exploiting (1) and (2) in Definition \ref{def:kernel-trace-pair}
-of a kernel-trace pair.
+of a kernel--trace pair.
 
 \subsection{Rees congruences from generating pairs}
 \label{sec:pairs-to-rees}
@@ -1605,22 +1605,22 @@ Recall that a regular semigroup \index{regular!semigroup} is one in which every 
 $x'$ such that $x = xx'x$.  An inverse semigroup is a regular semigroup in which
 inverses are unique.  In Section \ref{sec:kertr} we discussed how a congruence
 on an inverse semigroup is uniquely determined by its kernel and trace, and gave
-both an abstract characterisation of a kernel-trace pair (Definition
+both an abstract characterisation of a kernel--trace pair (Definition
 \ref{def:kernel-trace-pair}) and a concise description of how this pair
 describes its congruence ($\Psi^{-1}$ in Theorem \ref{thm:kernel-trace-pair}).
 It turns out that the congruences on a regular semigroup can be described in a
 similar way, which we will briefly examine here.
 
 A congruence on a regular semigroup is uniquely determined by its kernel and
-trace \cite[Corollary 2.11]{pastijn_1986}, and a kernel-trace pair can be
+trace \cite[Corollary 2.11]{pastijn_1986}, and a kernel--trace pair can be
 characterised in the following way, analogue to Definition
 \ref{def:kernel-trace-pair}.  Recall the definition of $\mathbf{E}^\flat$
 (Definition \ref{def:e-flat}).
 
 \begin{definition}[Definition 2.12 in \cite{pastijn_1986}]
   \label{def:regular-kernel-trace-pair}
-  \index{kernel-trace pair!for regular semigroups}
-  A \textbf{kernel-trace pair} on a regular semigroup $S$ is a pair $(K,\tau)$
+  \index{kernel--trace pair!for regular semigroups}
+  A \textbf{kernel--trace pair} on a regular semigroup $S$ is a pair $(K,\tau)$
   such that the following hold:
   \begin{enumerate}[\rm(1)]
   \item $K \subseteq S$ and $K = \ker \pi_K$;
@@ -1635,13 +1635,13 @@ characterised in the following way, analogue to Definition
     \quad (x,y \in S^1)\right\}$.
 \end{definition}
 
-We even have a description of how a kernel-trace pair describes its congruence,
+We even have a description of how a kernel--trace pair describes its congruence,
 analogue to Theorem \ref{thm:kernel-trace-pair}.
 
 \begin{theorem}[Theorem 2.13 in \cite{pastijn_1986}]
   \label{thm:regular-kernel-trace-pair}
   Let $S$ be a regular semigroup.  There exists a bijection $\Psi$ from the
-  congruences on $S$ to the kernel-trace pairs on $S$, defined by
+  congruences on $S$ to the kernel--trace pairs on $S$, defined by
   $$\Psi: \rho \mapsto (\ker\rho, \tr\rho),$$
   and its inverse satisfies
   $$\Psi^{-1} : (K,\tau) \mapsto \pi_K \cap
@@ -1651,15 +1651,15 @@ analogue to Theorem \ref{thm:kernel-trace-pair}.
 
 This characterisation of congruences on regular semigroups falls short of its
 inverse semigroup counterpart.  Firstly, this broader definition of a
-kernel-trace pair is a lot more complicated and harder to compute with: for
+kernel--trace pair is a lot more complicated and harder to compute with: for
 example, calculating $\pi_K$ could be computationally difficult, as could
 verifying (3) and (4) in Definition \ref{def:regular-kernel-trace-pair}.  It is
 certainly difficult to contemplate any analogue of \textsc{KerTraceFromPairs}
-(Algorithm \ref{alg:pairs-to-kertr}) which could find the least kernel-trace
+(Algorithm \ref{alg:pairs-to-kertr}) which could find the least kernel--trace
 pair from a set of generating pairs in anything like as quick a time or as
 simple a procedure as in the inverse semigroup case.  Secondly, the result in
 Theorem \ref{thm:regular-kernel-trace-pair} is not as convenient as the inverse
-semigroup version (Theorem \ref{thm:kernel-trace-pair}): if the kernel-trace
+semigroup version (Theorem \ref{thm:kernel-trace-pair}): if the kernel--trace
 pair of an inverse semigroup congruence is known, checking the presence of a
 given pair $(x,y)$ is as simple as looking up one easily computed element in the
 kernel, and looking up another easily computed pair in the trace.  In the
@@ -1668,12 +1668,12 @@ $\pi_K \cap (\LL\mathrel{\tau}\LL\mathrel{\tau}\LL \cap
 \RR\mathrel{\tau}\RR\mathrel{\tau}\RR)^\flat$ does not appear to be anything
 like as easy or quick.
 
-For these reasons, using the kernel-trace approach for regular semigroups is not
+For these reasons, using the kernel--trace approach for regular semigroups is not
 nearly as attractive as using it for inverse semigroups.  However, it is
 possible that using the representation in a computational way would be feasible,
 and it is possible that in some cases it would be preferable to the na\"{i}ve
 use of generating pairs.  An algorithm to check the presence of a pair in
-$(K,\tau)\Psi^{-1}$ given a kernel-trace pair $(K,\tau)$ would be the first
+$(K,\tau)\Psi^{-1}$ given a kernel--trace pair $(K,\tau)$ would be the first
 requirement; then a version of \textsc{KerTraceFromPairs} would be highly
 desirable, since it would allow us to use this approach even when the kernel and
 trace of a congruence are not known in advance, without enumerating the entire
