@@ -59,7 +59,7 @@ they can be converted to one another are summarised in Table
 \label{sec:ways-of-representing}
 
 We will begin by describing several different ways of representing a congruence.
-These representations all exist in some form in GAP \cite{gap} or the Semigroups
+These representations all exist in some form in \GAP{} \cite{gap} or the Semigroups
 package \cite{semigroups}.
 
 \subsection{Generating pairs}
@@ -141,7 +141,7 @@ congruences.
 It is possible to calculate the normal subgroups of a finite group relatively
 quickly, using a variety of well-known algorithms.  One method for finding the
 normal subgroups of a finite group is given in \cite{hulpke_1998}; this is the
-method used in the most general case by GAP \cite{gap}, though more specific
+method used in the most general case by \GAP{} \cite{gap}, though more specific
 methods are used for certain specific categories of group.  In the case of an
 infinite group, it may be impossible to find all normal subgroups -- indeed, this
 problem is undecidable in general \cite[Theorem 3.17]{miller_1992} -- but the
@@ -889,7 +889,7 @@ $(N, \sS, \tT)$, we only need to choose applicable subsets $N' \subseteq N$,
 $\sS' \subseteq \sS$ and $\tT' \subseteq \tT$ and we have a
 good idea of what pairs are necessary to generate a congruence.  In the
 algorithm, we assume that a generating set $N'$ is known for $N$ -- this is
-certainly likely to be the case in a computational setting, for example in GAP
+certainly likely to be the case in a computational setting, for example in \GAP{}
 \cite{gap} where groups almost always have a known generating set (see the
 discussion of computing using generators in Chapter \ref{chap:intro}).  We should
 note that this set should act as a set of normal subgroup generators, meaning
@@ -1252,7 +1252,7 @@ contain at least these elements -- in fact, $(K, \tau)$ currently corresponds to
 the trivial congruence $\Delta_S$.  We assume that we have generating sets $S'$
 for $S$ and $E'$ for $E$.  In the worst case, we can use $S$ and $E$ themselves,
 but the algorithm is likely to run faster with a smaller generating set.
-Certainly in computational settings such as the Semigroups package for GAP
+Certainly in computational settings such as the Semigroups package for \GAP{}
 \cite{semigroups} semigroups such as $S$ and $E$ have a generating set stored,
 and a smaller generating set can sometimes be created by eliminating unnecessary
 elements.

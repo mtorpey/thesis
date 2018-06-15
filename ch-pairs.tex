@@ -1983,7 +1983,7 @@ able to execute all at once and return in whichever run-time is quickest.
 
 \subsection{Comparison on random examples}
 A large number of example congruences were generated randomly and run using each
-different algorithm, along with the default implementation in GAP \cite{gap}, to
+different algorithm, along with the default implementation in \GAP{} \cite{gap}, to
 analyse performance.  All these tests were conducted using an Intel Core
 i7-4770S CPU running at $3.10$GHz with 16GB of memory.
 
@@ -2033,7 +2033,7 @@ were compared to one another.  The algorithms used were:
 \item Knuth--Bendix (\texttt{kb}),
 \item pair orbit enumeration (\texttt{p}),
 \item the parallel method described in this chapter (\texttt{default}),
-\item and the method implemented in the library of GAP (\texttt{GAP}).
+\item and the method implemented in the library of \GAP{} (\texttt{GAP}).
 \end{itemize}
 
 As can be seen in Figure \ref{fig:bench-trans-1p-times}, the pre-filled Todd--Coxeter
@@ -2044,7 +2044,7 @@ faster than Knuth--Bendix.  We may also observe that pair orbit enumeration
 sometimes completes almost instantly, which makes some sense when we consider
 how little work the algorithm does when there are very few non-reflexive pairs
 in the congruence.  The Knuth--Bendix procedure lags behind badly on these
-examples, taking even longer than the built-in methods in GAP.  These results
+examples, taking even longer than the built-in methods in \GAP{}.  These results
 are a justification for the decision to run only the Todd--Coxeter algorithms in
 the case of a finite, concrete semigroup.
 
@@ -2115,8 +2115,8 @@ been pre-filled.
 \begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-1p-gap}
-  \caption[Benchmark: GAP/\libsemigroups{}, concrete, 1 pair]
-  {Comparison between \libsemigroups{} and the GAP library, for
+  \caption[Benchmark: \GAP{}/\libsemigroups{}, concrete, 1 pair]
+  {Comparison between \libsemigroups{} and the \GAP{} library, for
     transformation semigroups with one generating pair}
   \label{fig:bench-trans-1p-gap}
 \end{figure}
@@ -2124,20 +2124,20 @@ been pre-filled.
 \begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-trans-vp-gap}
-  \caption[Benchmark: GAP/\libsemigroups{}, concrete, $n$ pairs]
-  {Comparison between \libsemigroups{} and the GAP library, for
+  \caption[Benchmark: \GAP{}/\libsemigroups{}, concrete, $n$ pairs]
+  {Comparison between \libsemigroups{} and the \GAP{} library, for
     transformation semigroups with a variable number of generating pairs}
   \label{fig:bench-trans-vp-gap}
 \end{figure}
 
 Figures \ref{fig:bench-trans-1p-gap} and \ref{fig:bench-trans-vp-gap} show data
 from the same tests, plotted not by
-the size of the semigroup, but simply in order of the ratio between GAP's
+the size of the semigroup, but simply in order of the ratio between \GAP{}'s
 runtime and that of the default method in \libsemigroups{}.  As can be
-seen, the \libsemigroups{} methods run much faster than the GAP methods in
-almost all cases, with the GAP methods taking as much as $7000$ times as long
+seen, the \libsemigroups{} methods run much faster than the \GAP{} methods in
+almost all cases, with the \GAP{} methods taking as much as $7000$ times as long
 for one generating pair.  Out of the $500$ tests shown in total in these two
-figures, GAP never performed better than \libsemigroups{}.
+figures, \GAP{} never performed better than \libsemigroups{}.
 
 Further tests were carried out in a similar way, but using finitely presented
 semigroups instead of concrete semigroups.  The main difference between these
@@ -2147,7 +2147,7 @@ for $S$, and that presentation was used in tests instead of the concrete
 semigroup $S$ itself.  This is intended to test which algorithms are effective
 when the elements of the semigroup are not known in advance.
 In order to produce a further comparison, the tests for finitely presented
-semigroups were also run with the \textit{kbmag} package for GAP \cite{kbmag}.
+semigroups were also run with the \textit{kbmag} package for \GAP{} \cite{kbmag}.
 The results are shown on the graphs with the name \texttt{kbmag}.
 
 \begin{figure}[p]
@@ -2180,8 +2180,8 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-1p-gap}
-  \caption[Benchmark: GAP/\libsemigroups{}, finitely presented, 1 pair]
-  {Comparison between \libsemigroups{} and the GAP library, for
+  \caption[Benchmark: \GAP{}/\libsemigroups{}, finitely presented, 1 pair]
+  {Comparison between \libsemigroups{} and the \GAP{} library, for
     finitely presented semigroups and one generating pair}
   \label{fig:bench-fp-1p-gap}
 \end{figure}
@@ -2189,8 +2189,8 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-3p-gap}
-  \caption[Benchmark: GAP/\libsemigroups{}, finitely presented, 3 pairs]
-  {Comparison between \libsemigroups{} and the GAP library, for
+  \caption[Benchmark: \GAP{}/\libsemigroups{}, finitely presented, 3 pairs]
+  {Comparison between \libsemigroups{} and the \GAP{} library, for
     finitely presented semigroups and three generating pairs}
   \label{fig:bench-fp-3p-gap}
 \end{figure}
@@ -2198,19 +2198,19 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{pics/ch-pairs/bench-fp-vp-gap}
-  \caption[Benchmark: GAP/\libsemigroups{}, finitely presented, $n$ pairs]
-  {Comparison between \libsemigroups{} and the GAP library, for
+  \caption[Benchmark: \GAP{}/\libsemigroups{}, finitely presented, $n$ pairs]
+  {Comparison between \libsemigroups{} and the \GAP{} library, for
     finitely presented semigroups and a variable number of generating pairs}
   \label{fig:bench-fp-vp-gap}
 \end{figure}
 
 As can be seen in Figures \ref{fig:bench-fp-1p-gap} to \ref{fig:bench-fp-vp-gap}, the
-performance of the GAP library over finitely presented semigroups is far worse
+performance of the \GAP{} library over finitely presented semigroups is far worse
 than it was for concrete semigroups, taking as much as $300,000$ times as long
-as \libsemigroups{} to complete.  Due to the excessive times GAP took to
+as \libsemigroups{} to complete.  Due to the excessive times \GAP{} took to
 complete some tests, the size of semigroups was restricted to $1000$.  In these
 tests, unlike for concrete semigroups,
-Knuth--Bendix tended to outperform GAP, but in
+Knuth--Bendix tended to outperform \GAP{}, but in
 general Todd--Coxeter methods were still faster.  It should be noted, however,
 that these were all congruences that were guaranteed in advance to have a finite
 number of classes.  An arbitrary congruence on a finitely presented semigroup
@@ -2233,7 +2233,7 @@ project, these are areas which could bear investigation.
 \label{sec:prefill-left}
 The pre-filled Todd--Coxeter algorithm, as described in Section
 \ref{sec:tc-prefill}, works by starting the procedure with a right Cayley graph
-for $S$.  In \libsemigroups{} and in the Semigroups package for GAP, a
+for $S$.  In \libsemigroups{} and in the Semigroups package for \GAP{}, a
 right Cayley graph for a semigroup is found using the Froidure--Pin method, which
 also returns the corresponding left Cayley graph.  Hence, we may also wish to
 find a way to use the left Cayley graph in the pre-filling process.
@@ -2333,4 +2333,4 @@ Since this is limited to left and right congruences over free monoids, it is
 limited in its possible use for the algorithm described in this chapter.
 However, it might cause a performance improvement in those few cases.
 
-% TODO: In the GAP library, anything interesting they might do
+% TODO: In the \GAP{} library, anything interesting they might do
