@@ -2147,7 +2147,7 @@ for $S$, and that presentation was used in tests instead of the concrete
 semigroup $S$ itself.  This is intended to test which algorithms are effective
 when the elements of the semigroup are not known in advance.
 In order to produce a further comparison, the tests for finitely presented
-semigroups were also run with the \textit{kbmag} package for \GAP{} \cite{kbmag}.
+semigroups were also run with the \kbmag{} package for \GAP{} \cite{kbmag}.
 The results are shown on the graphs with the name \texttt{kbmag}.
 
 \begin{figure}[p]
@@ -2218,7 +2218,7 @@ may have an infinite number of classes, and there are many examples in which
 Knuth--Bendix can return an answer but Todd--Coxeter cannot (see Example
 \ref{ex:good-kbfp}).
 
-\textit{kbmag} generally performed worse in tests than Todd--Coxeter, but was
+\kbmag{} generally performed worse in tests than Todd--Coxeter, but was
 comparable to our implementation of Knuth--Bendix (TODO: our KB will probably
 improve a lot soon).  It generally took around $10$ times as long as the
 complete parallel method (\texttt{default} on the graphs).
