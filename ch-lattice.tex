@@ -105,7 +105,7 @@ used as a starting point for the work described in Chapter \ref{chap:motzkin}.
 In Section \ref{sec:lattice-algorithm} we give the algorithm in pseudo-code, and
 explain how it works.  In Section \ref{sec:lattice-implementation} we outline
 some practical concerns for implementing the algorithm, with particular
-reference to how it is implemented in the Semigroups package \cite{semigroups}
+reference to how it is implemented in the \Semigroups{} package \cite{semigroups}
 for \GAP{} \cite{gap}.  And finally, in Section \ref{sec:lattice-examples}, we
 present some examples of lattices which have been computed using this algorithm.
 
@@ -322,7 +322,7 @@ implemented in \libsemigroups{} is explained in
 \cite{froidure_pin_jonusas}.
 
 It is sometimes preferable to use other methods when enumerating a semigroup.
-For example, the Semigroups package uses the method described in
+For example, the \Semigroups{} package uses the method described in
 \cite{computing_finite_semigroups} to enumerate semigroups of transformations,
 partial permutations, matrices, and various other important classes, taking
 advantage of their Green's relations in order to avoid certain calculations.
@@ -358,7 +358,7 @@ them to find the whole congruence lattice of a finite semigroup $S$.
 finite semigroup, any congruence is the join of a finite number of principal
 congruences, we can produce the congruence lattice of $S$ by simply calling
 $$\textsc{JoinClosure\big(PrincCongPoset($S$)\big)}.$$  This is the basis of the
-function \texttt{LatticeOfCongruences} in the Semigroups package for \GAP{}
+function \texttt{LatticeOfCongruences} in the \Semigroups{} package for \GAP{}
 \cite{semigroups}.
 
 \section{Implementation}
@@ -366,7 +366,7 @@ function \texttt{LatticeOfCongruences} in the Semigroups package for \GAP{}
 
 So far, we have given a theoretical description of the \textsc{PrincCongPoset}
 and \textsc{JoinClosure} algorithms.  As mentioned above, these correspond to
-functions implemented in the Semigroups package \cite{semigroups} for \GAP{}
+functions implemented in the \Semigroups{} package \cite{semigroups} for \GAP{}
 \cite{gap}.  \textsc{PrincCongPoset} is implemented approximately as described
 above, while \textsc{JoinClosure} currently uses a rather more rudimentary
 method than the Froidure--Pin method, something closer to the na\"ive method
@@ -407,7 +407,7 @@ $i \in \mathtt{children}[j]$ or $j \in \mathtt{parents}[i]$.
 We mentioned above that the containment method ($\subseteq$) based on checking
 generating pairs can sometimes be improved by adopting a different congruence
 representation, for example using linked triples or kernel-trace pairs (see
-Chapter \ref{chap:converting}).  In the Semigroups package, these different
+Chapter \ref{chap:converting}).  In the \Semigroups{} package, these different
 representations may be used automatically via \GAP{}'s method selection feature.
 When a congruence is created from a generating pair $(x,y)$, the semigroup and
 the generating pair are supplied as arguments to a function
@@ -430,7 +430,7 @@ congruence representation in question.
 \label{sec:lattice-examples}
 
 In this section we will show a few examples of congruence lattices that were
-computed in the Semigroups package \cite{semigroups} using the above algorithms.
+computed in the \Semigroups{} package \cite{semigroups} using the above algorithms.
 The output of the algorithm is shown in Figures \ref{fig:g3-lattice},
 \ref{fig:pbr1-lattice} and \ref{fig:c2-wr-t3-lattice}, and the code used to
 produce each lattice is shown underneath it.
@@ -526,9 +526,9 @@ Chapter \ref{chap:pairs}), but minimising the number of comparisons that need to
 be made is nevertheless helpful for the algorithm's overall runtime.  Hence it
 would be desirable, as future work, to improve the \textsc{PrincCongPoset}
 algorithm somehow to avoid unnecessary comparisons, as well as to implement the
-Froidure--Pin algorithm for \textsc{JoinClosure} in the Semigroups package.
+Froidure--Pin algorithm for \textsc{JoinClosure} in the \Semigroups{} package.
 
-Since the algorithm described above was implemented in the Semigroups package
+Since the algorithm described above was implemented in the \Semigroups{} package
 \cite{semigroups}, it has been possible to compute the congruence lattice of
 many semigroups.  Part \ref{part:results} of this thesis examines
 the congruence lattices of a variety of semigroups, and attempts to explain

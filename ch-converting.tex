@@ -59,7 +59,7 @@ they can be converted to one another are summarised in Table
 \label{sec:ways-of-representing}
 
 We will begin by describing several different ways of representing a congruence.
-These representations all exist in some form in \GAP{} \cite{gap} or the Semigroups
+These representations all exist in some form in \GAP{} \cite{gap} or the \Semigroups{}
 package \cite{semigroups}.
 
 \subsection{Generating pairs}
@@ -1039,7 +1039,7 @@ We can see how the algorithm performs on the following example.
   $$
   This semigroup has 8 congruences: the universal congruence $\nabla_S$, and 7
   congruences defined by linked triples -- this can be calculated slowly by hand,
-  but much more quickly using the Semigroups package \cite{semigroups}.  One
+  but much more quickly using the \Semigroups{} package \cite{semigroups}.  One
   such congruence is given by the linked triple $\left(\Alt_4, \Delta_3, (2,3)^e\right)$,
   where $\Alt_4$ is the alternating group of degree $4$, $\Delta_3$ is the
   diagonal relation on the column set $\{1, 2, 3\}$, and $(2,3)^e$ is the
@@ -1252,7 +1252,7 @@ contain at least these elements -- in fact, $(K, \tau)$ currently corresponds to
 the trivial congruence $\Delta_S$.  We assume that we have generating sets $S'$
 for $S$ and $E'$ for $E$.  In the worst case, we can use $S$ and $E$ themselves,
 but the algorithm is likely to run faster with a smaller generating set.
-Certainly in computational settings such as the Semigroups package for \GAP{}
+Certainly in computational settings such as the \Semigroups{} package for \GAP{}
 \cite{semigroups} semigroups such as $S$ and $E$ have a generating set stored,
 and a smaller generating set can sometimes be created by eliminating unnecessary
 elements.
@@ -1578,7 +1578,7 @@ of a kernel-trace pair.
 \label{sec:pairs-to-rees}
 Given a semigroup $S$ and a set $\R \subseteq S \times S$, we may wish to know
 whether the generated congruence $\Rs$ is a Rees congruence.  A method exists
-for this in the Semigroups package \cite{semigroups}.  It finds the congruence
+for this in the \Semigroups{} package \cite{semigroups}.  It finds the congruence
 classes of $\Rs$ and examines their sizes: if all classes are singletons, then
 $\Rs$ is Rees if and only if a zero element exists, and if so, the ideal is
 $\{0\}$; otherwise, we check that there is only one non-trivial class, and if
