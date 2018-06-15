@@ -858,44 +858,209 @@ heavy use of these objects as examples.
 \subsection{Transformations}
 \label{sec:transformations}
 
+Transformations are perhaps the most important type of element we will talk
+about in semigroup theory, as justified shortly by Theorem
+\ref{thm:cayley-semigroups}.  They are defined very simply, as follows.
+
 \begin{definition}
-  transformation
+  \label{def:transformation}
+  \index{transformation}
+  A \textbf{transformation} on a set $X$ is a function $\tau: X \to X$.
 \end{definition}
+
+In almost all cases in this thesis, a transformation will be on the set
+$\bn = \{1, \ldots, n\}$ for some $n \in \mathbb{N}$.  This number $n$ is called
+the \textbf{degree} of the transformation. \index{degree} A transformation
+$\tau$ on $\bn$ can be written in \textit{two-row notation}, \index{two-row
+  notation} that is with the numbers $1$ to $n$ written on one row, and their
+images under $\tau$ written directly beneath, all surrounded by parentheses.
+For example, the transformation of degree $5$ sending even numbers to $1$ and
+odd numbers to $3$ would be written $\transV31313$.
+
+Two transformations of a given degree can be composed to produce a new
+transformation of the same degree.  For example, if $\tau = \transV53341$ and
+$\sigma = \transV22524$ then we can compose the two functions to give
+$\tau\sigma = \transV45522$.  This operation is the basis of the following
+important semigroup.
 
 \begin{definition}
   \label{def:tn}
   \index{full transformation monoid}
   \nomenclature[Tn]{$\T_n$}{Full transformation monoid}
-  Full transformation monoid $\T_n$.
+  The \textbf{full transformation monoid} on a set $X$ is the
+  set of all transformations on $X$, under the operation of composition, and it
+  is denoted $\T_X$.  If $X = \bn$, then we call it the full transformation
+  monoid of degree $n$, and denote it $\T_n$.
 \end{definition}
 
+Any semigroup of transformations is a subsemigroup of the full transformation
+monoid for some $n$.  Note that this semigroup is a monoid because it contains
+the \textit{identity map} $\id_n = \transN{1}{2}{n}$.
+\nomenclature[idn]{$\id_n$}{Identity map}
+
+The true importance of transformations in semigroup theory is shown by the
+following theorem, which effectively states that any semigroup can be viewed as
+a transformation semigroup.
+
 \begin{theorem}[Cayley for semigroups]
-  
+  \label{thm:cayley-semigroups}
+  Every semigroup is isomorphic to a subsemigroup of a full transformation
+  monoid.
+  \begin{proof}
+    We give an outline of the proof.  Let $S$ be a semigroup, and consider the
+    full transformation $\T_S$ on the set of $S$.  Define a map
+    $\phi: S \to \T_S$ by $(x)\phi: s \mapsto sx$ for $x,s \in S$; that is,
+    $(x)\phi$ is the transformation in $\T_S$ which maps any point in $S$ to its
+    right multiple by $x$.  We can observe that this is a monomorphism, and
+    hence that the image of $\phi$ is isomorphic to $S$.  Hence $S$ is
+    isomorphic to a subsemigroup of $\T_S$.  In particular, if $S$ is finite,
+    then it is isomorphic to $\T_n$, where $n = |S|$.  Note that $S$ may also be
+    isomorphic to a subsemigroup of $\T_n$ for some much smaller $n$.
+  \end{proof}
 \end{theorem}
 
-\index{symmetric group}
-\nomenclature[Sn]{$\Sym_n$}{Symmetric group}
+The result of this theorem is that an algorithm for transformation semigroups
+can be applied to any semigroup.  Furthermore, if we want to prove a result that
+only relies on the isomorphism class of a semigroup, we can prove it simply for
+transformation semigroups.
+
+Next we consider a particular type of transformation of interest in group
+theory: permutations.
+
+\begin{definition}
+  \label{def:permutation}
+  \index{permutation}
+  A \textbf{permutation} is a transformation that is a bijection, i.e.~a
+  transformation $\sigma: X \to X$ such that the following hold:
+  \begin{itemize}
+  \item $(i)\sigma=(j)\sigma$ if and only if $i=j$;
+  \item every $j \in X$ has some $i \in X$ such that $(i)\sigma = j$.
+  \end{itemize}
+\end{definition}
+
+Since a permutation $\sigma$ is a bijection, we can define its inverse
+$\sigma^{-1}$, which acts an an inverse in the group theory sense (see
+Definition \ref{def:group}).  This allows us to define a group comparable to the
+full transformation monoid, consisting of all the permutations in $\T_X$.
+Consider the following definition.
+
+\begin{definition}
+  \label{def:sn}
+  \index{symmetric group}
+  \nomenclature[Sn]{$\Sym_n$}{Symmetric group}
+  The \textbf{symmetric group} on a set $X$ is the set of all permutations on
+  $X$, under the operation of composition, and it is denoted $\Sym_X$.  If
+  $X = \bn$, then we call it the symmetric group of degree $n$, and denote it
+  $\Sym_n$.
+\end{definition}
+
+The symmetric group plays the same role in group theory as the full
+transformation monoid does in semigroup theory, as shown in the following
+important theorem.
 
 \begin{theorem}[Cayley for groups]
-  
+  \label{thm:cayley-groups}
+  Every group is isomorphic to a subgroup of a symmetric group.
 \end{theorem}
+
+This theorem is proven in much the same way as Cayley's theorem for semigroups
+(Theorem \ref{thm:cayley-semigroups}).  It also entails the same important fact,
+which is that any group can be viewed as a group of permutations, for the sake
+of determining information that is isomorphism-invariant.
 
 \subsection{Partial transformations}
 \label{sec:partial-transformations}
 
+We will also deal with a generalisation of transformations known as
+\textit{partial transformations}.  A partial transformation can be seen as a
+transformation which simply fails to map certain points.  The formal definition
+is as follows:
+
 \begin{definition}
-  partial transformation
+  \label{def:partial-transformation}
+  \index{partial transformation}
+  A \textbf{partial transformation} on a set $X$ is a function $Y \to X$ for
+  some subset $Y$ of $X$.
 \end{definition}
 
-\index{partial transformation}
+Again, the set $X$ in this thesis will typically be $\bn = \{1, \ldots, n\}$,
+and we will talk about a partial transformation of degree $n$ in this case.  In
+two-row notation we can show that a point is not mapped by a partial
+transformation by writing a $-$ symbol under it, as in the partial
+transformation $\transV4--33$ which maps $1$ to $4$, $4$ to $3$ and $5$ to $3$,
+and does not map $2$ or $3$ at all.  We compose two partial transformations
+$\sigma$ and $\tau$ by the rule that $(i)\sigma\tau = \big((i)\sigma\big)\tau$
+if $(i)\sigma$ and $\big((i)\sigma\big)$ are both defined, and is undefined
+otherwise.  Using this composition rule, we can define the \textbf{partial
+  transformation monoid} $\PT_n$ of all partial transformations of degree $n$,
+in the same manner as the full transformation monoid $\T_n$.
+\index{partial transformation monoid}
 \nomenclature[PTn]{$\PT_n$}{Partial transformation monoid}
 
-\index{symmetric inverse monoid}
-\nomenclature[In]{$\I_n$}{Symmetric inverse monoid}
+We also have a partial counterpart to permutations, as follows.
 
-\begin{theorem}[Funny name for inverse semigroups]
-  
+\begin{definition}
+  \label{def:partial-perm}
+  \index{partial permutation}
+  A \textbf{partial permutation} is a partial transformation that is injective,
+  i.e.~a partial transformation such that $(i)\sigma=(j)\sigma$ if and only if
+  $i=j$.
+\end{definition}
+
+The product of two partial permutations is also a partial permutation, giving
+rise to the following important inverse semigroup, analogous to $\T_n$, $\Sym_n$
+and $\PT_n$.
+
+\begin{definition}
+  \label{def:in}
+  \index{symmetric inverse monoid}
+  \nomenclature[In]{$\I_n$}{Symmetric inverse monoid}
+  The \textbf{symmetric inverse monoid} on a set $X$ is the set of all partial
+  permutations on $X$, under the operation of composition, and it is denoted
+  $\I_X$.  If $X = \bn$, then we call it the symmetric inverse monoid of degree
+  $n$, and denote it $\I_n$.
+\end{definition}
+
+This monoid plays the same important role for inverse semigroups that $\T_n$ and
+$\Sym_n$ play for semigroups and groups, as the following analogue to the Cayley
+theorems shows.
+
+\begin{theorem}[Wagner--Preston {\cite[Theorem 5.1.7]{howie}}]
+  \label{thm:wagner-preston}
+  Every inverse semigroup is isomorphic to a subsemigroup of a symmetric inverse
+  monoid.
 \end{theorem}
+
+We have now described several different types of partial transformation.  We now
+define a few attributes of a partial transformation which will be used at
+various points.
+
+\begin{definition}
+  Let $\tau$ be a partial transformation from $\PT_n$.  We define the following
+  attributes of $\tau$.
+  \begin{itemize}
+  \item $\dom \tau$, the \textbf{domain} of $\tau$, is the set of points which
+    are mapped by $\tau$;
+  \item $\rank \tau$, the \textbf{rank} of $\tau$, is size of $\dom \tau$;
+  \item $\ker \tau$, the \textbf{kernel} of $\tau$, is the equivalence relation
+    on $\dom \tau$ which contains all pairs $(a,b)$ such that
+    $(a)\tau = (b)\tau$;
+  \item $\im \tau$, the \textbf{image} of $\tau$, is the set of points which are
+    mapped onto by $\tau$.
+  \end{itemize}
+  \nomenclature[dom]{$\dom$}{Domain of a (partial) transformation}
+  \nomenclature[rank]{$\rank$}{Rank of a (partial) transformation}
+  \nomenclature[ker]{$\ker$}{Kernel of a (partial) transformation}
+  \nomenclature[im]{$\im$}{Image of a (partial) transformation}
+  \index{domain!of a (partial) transformation}
+  \index{rank!of a (partial) transformation}
+  \index{kernel!of a (partial) transformation}
+  \index{image!of a (partial) transformation}
+\end{definition}
+
+Note that these attributes are also well-defined for transformations, since they
+are a subset of partial transformations.  A transformation's rank is always
+equal to its degree.
 
 \subsection{Order-preserving elements}
 \label{sec:order-preserving}
