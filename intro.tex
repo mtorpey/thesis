@@ -115,7 +115,26 @@ If a subsemigroup of $S$ happens to be a monoid, then we may call it a
 \textbf{submonoid} of $S$.  Similarly, if a subsemigroup happens to be a group,
 we call it a \textbf{subgroup}.  The subgroups of a semigroup are an important
 part of its structure, and will be discussed later in the context of Green's
-relations (Section \ref{sec:intro-greens}).
+relations (Section \ref{sec:intro-greens}).  We should also mention an important
+type of subgroup possessed by a group.
+
+\begin{definition}
+  \label{def:normal-subgroup}
+  \index{normal!subgroup}
+  Let $G$ be a group, and $H$ be a subgroup of $G$.  We call $H$ a
+  \textbf{normal subgroup} of $G$ if one, and hence all, of the following
+  equivalent statements hold:
+  \begin{itemize}
+  \item $Hg = gH$ for all $g \in G$;
+  \item $g^{-1}Hg = H$ for all $g \in G$;
+  \item $g^{-1}hg \in H$ for all $g \in G$ and $h \in H$.
+  \end{itemize}
+\end{definition}
+
+Trivially, we can see that any group $G$ has both the trivial group $\{\id_G\}$
+and the whole group $G$ as normal subgroups.  As will be seen later (Section
+\ref{sec:normal-subgroups}) a group's normal subgroups correspond to its
+congruences, so these will come up at various times as important objects.
 
 \section{Generators}
 \label{sec:intro-generators}
