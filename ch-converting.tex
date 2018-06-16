@@ -1353,7 +1353,15 @@ $\tr \rho_I = \left((E \cap I) \times (E \cap I)\right) \cup \Delta_E$.
 
 Now we turn our attention to the other direction.  Let $\rho$ be a congruence
 defined by a kernel--trace pair $(K, \tau)$.  How can we determine directly from
-$K$ and $\tau$ whether $\rho$ is a Rees congruence?
+$K$ and $\tau$ whether $\rho$ is a Rees congruence?  We first prove a lemma, and
+then go on to answer this question.
+
+\begin{lemma}
+  \label{lem:xly}
+  Let $x$ and $y$ be elements of an inverse semigroup $S$.  If $xy^{-1}$ is
+  idempotent and $x^{-1}x = y^{-1}y$, then $x = y$.
+  % TODO: prove this silly inverse semigroup lemma
+\end{lemma}
 
 \begin{theorem}
   \label{thm:kertr-to-rees}
@@ -1395,14 +1403,15 @@ $K$ and $\tau$ whether $\rho$ is a Rees congruence?
     \ref{thm:kernel-trace-pair} we have $xy^{-1} \in K = I \cup E$ and
     $(x^{-1}x, y^{-1}y) \in \tau$: either $x^{-1}x=y^{-1}y$, or
     $x^{-1}x,y^{-1}y \in I_\tau$.  If $x^{-1}x = y^{-1}y$, then $x \LL y$; we
-    also have $(xy^{-1})y = xx^{-1}x = x$, so $x \RR xy^{-1}$; now, since $x$,
-    $y$ and $xy^{-1}$ are all $\JJ$-related, we have $x,y \in I$ in the case
-    that $xy^{-1} \in I$, and $x=y$ in the case that $xy^{-1} \in E$ (why?);
-    % TODO: get rid of the (why?)
-    either way, $(x,y) \in \rho_I$.  If $x^{-1}x, y^{-1}y \in I_\tau$, then
-    since $x \JJ x^{-1}x$ and $y \JJ y^{-1}y$, we have $x,y \in SI_\tau S$,
-    that is $x,y \in I$ and so $(x,y) \in \rho_I$.  So $(x,y) \in \rho$ implies
-    $\rho_I$, as required.  Hence $\rho = \rho_I$, so $\rho$ is Rees.
+    also have $(xy^{-1})y = xx^{-1}x = x$, so $x \RR xy^{-1}$.  Now, since
+    $\lL \subseteq \jJ$ and $\rR \subseteq \jJ$, we know that $x$, $y$ and
+    $xy^{-1}$ are all $\JJ$-related, so we have $x,y \in I$ in the case that
+    $xy^{-1} \in I$.  In the case that $xy^{-1} \in E$, we must have $x=y$ by
+    Lemma \ref{lem:xly}.  Either way, $(x,y) \in \rho_I$.  Alternatively, if
+    $x^{-1}x, y^{-1}y \in I_\tau$, then since $x \JJ x^{-1}x$ and
+    $y \JJ y^{-1}y$, we have $x,y \in SI_\tau S$, that is $x,y \in I$ and so
+    $(x,y) \in \rho_I$.  So $(x,y) \in \rho$ implies $\rho_I$, as required.
+    Hence $\rho = \rho_I$, so $\rho$ is Rees.
 
     We now wish to show the converse, that $\rho$ being Rees implies (1) and
     (2).  Assume $\rho$ is a Rees congruence with ideal $I$, and let $(K,\tau)$
