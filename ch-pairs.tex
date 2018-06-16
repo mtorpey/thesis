@@ -63,8 +63,7 @@ Examples of these algorithms would be brute force searches, or rendering of
 computer graphics.
 These are suited so well to parallelisation that splitting the operation into
 $n$ parallel threads reduces the expected run-time to barely more than
-$\frac{1}{n}$ what it would be when run in a single thread.  Other
-% TODO: don't say "1/n what it would be"
+$\frac{1}{n}$ times the expected run-time in a single thread.  Other
 algorithms do not parallelise so well: sometimes threads have to communicate, or
 use shared resources, causing significant slowdown and severely limiting the
 improvements that can be made by parallelising.
@@ -157,7 +156,6 @@ indistinguishable from one that will run forever.  For a fuller explanation of
 presentations and decidability issues, see Sections
 \ref{sec:intro-presentations} and \ref{sec:computation-decidability}.
 
-
 Finitely presented monoids are treated as equivalent to finitely presented
 semigroups, since a monoid presentation $\pres X R$ can be easily converted into
 an equivalent semigroup presentation: an extra generator $\varepsilon$ should be
@@ -171,7 +169,7 @@ Our algorithm determines the properties of a single left, right, or two-sided
 congruence defined by generating pairs, over a semigroup $S$.
 For the remainder of this chapter, the word ``congruence'' will be used to refer
 to left, right, and two-sided congruences equally, without having the default
-meaning of ``two-sided congruence''. % TODO: move this warning?
+meaning of ``two-sided congruence''.
 
 If $S$ is a concrete semigroup (as described in Section
 \ref{sec:applicable-types-of-semigroup}) then it will almost certainly be
@@ -1873,7 +1871,7 @@ very long time (or even an infinite length of time) to run to completion.
 % \end{algorithmic}
 % \end{algorithm}
 
-% TODO: \section{Implementation} ?
+% TODO? \section{Implementation}
 
 \section{Benchmarking}
 \label{sec:benchmarking}
@@ -1950,7 +1948,6 @@ use of a variety of algorithms.
 
 % \begin{example}
 %   \label{ex:good-kbp}
-%   TODO: find a simpler example.
 
 %   Let $S$ be the semigroup defined by the presentation
 %   $$\pres{a,b,c}{b^7=b,\ c^5=c,\ bc^2ba=bc^2b,\ bc^2bc=bc^2b,\ b^2cbca=b^2cbc,\ b^2cbcb=b^2cbc}.$$
@@ -2208,9 +2205,9 @@ Knuth--Bendix can return an answer but Todd--Coxeter cannot (see Example
 \ref{ex:good-kbfp}).
 
 \kbmag{} generally performed worse in tests than Todd--Coxeter, but was
-comparable to our implementation of Knuth--Bendix (TODO: our KB will probably
-improve a lot soon).  It generally took around $10$ times as long as the
-complete parallel method (\texttt{default} on the graphs).
+comparable to our implementation of Knuth--Bendix.  It generally took around
+$10$ times as long as the complete parallel method (\texttt{default} on the
+graphs).
 
 \section{Future work}
 
@@ -2322,4 +2319,4 @@ Since this is limited to left and right congruences over free monoids, it is
 limited in its possible use for the algorithm described in this chapter.
 However, it might cause a performance improvement in those few cases.
 
-% TODO: In the \GAP{} library, anything interesting they might do
+% TODO? In the \GAP{} library, anything interesting they might do
