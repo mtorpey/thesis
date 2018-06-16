@@ -1556,9 +1556,12 @@ Note that this requires a well-understood total order on the alphabet $X$
 itself.  Another possible reduction ordering is \textit{wreath product ordering}
 \cite[\S2.1]{sims}, which has a particular application to polycyclic groups;
 however, this has no particular advantage when applied to semigroups, so the
-simpler shortlex ordering is preferable.  The use of a reduction ordering
-justifies the use of the words ``reducible'' and ``irreducible'' -- words are
-always replaced with lesser words.
+simpler shortlex ordering is preferable.
+
+The use of a reduction ordering justifies the use of the words ``reducible'' and
+``irreducible'' -- words are always replaced with lesser words.  We must ensure,
+at all points during the algorithm, that every rule $(u,v) \in \rws$ satisfies
+$u > v$.
 
 \begin{example}[Exercise 3.1 in {\cite[\S2.3]{sims}}]
   \label{ex:rws}
@@ -1639,11 +1642,10 @@ Now we have all the concepts required to describe the Knuth--Bendix completion
 process.  The process searches through rules in $\rws$ looking for critical
 pairs; when a critical pair $(u, v)$ is found which does not satisfy the
 condition stated in Theorem \ref{thm:knuth-bendix}, $(u, v)$ or $(v, u)$ is
-added to $\rws$ in order to ensure confluence.  The choice of pair depends on
+added to $\rws$ in order to ensure confluence.  As mentioned earlier, the choice
+of which pair we add depends on
 whether $u < v$, since all pairs in $\rws$ must reduce words with respect to the
 chosen ordering on $X^*$ to make sure the system is terminating.
-% TODO: the whole u<v v<u thing should be mentioned explicitly earlier, not as
-% an afterthought.
 
 Though, as mentioned in Section \ref{sec:computation-decidability}, the word problem for a
 semigroup presentation is undecidable in general, we do have a result about the
