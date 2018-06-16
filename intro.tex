@@ -434,7 +434,7 @@ congruence.
 \begin{definition}
   \label{def:natural-homomorphism}
   \index{natural homomorphism}
-  \nomenclature{$\pi_\rho$}{Natural homomorphism}
+  \nomenclature{$\pi$}{Natural homomorphism}
   Let $S$ be a semigroup, and let $\rho$ be a congruence on $S$.  The
   \textbf{natural homomorphism} $\pi_\rho: S \to S / \rho$ is the map which
   takes an element of $S$ to its $\rho$-class:
@@ -453,7 +453,6 @@ important part of a semigroup's structure.  Consider the following theorem.
   $T$.  Then the kernel of $\phi$ is a congruence on $S$, and the image of
   $\phi$ is isomorphic to the quotient semigroup $S / \ker{\phi}$.
 \end{theorem}
-%TODO: define phi-bar, and maybe explain how these diagrams work?
 
 \begin{figure}[h]
   \centering
@@ -463,7 +462,11 @@ important part of a semigroup's structure.  Consider the following theorem.
     S / \ker{\phi} \ar[ur, dashed, hook, "\bar\phi"']
   \end{tikzcd}
   $
-  \caption{Illustration of Theorem \ref{thm:first-isomorphism}}
+  \caption[Illustration of Theorem \ref{thm:first-isomorphism}]
+  {Illustration of Theorem \ref{thm:first-isomorphism}, where
+    $\pi : S \to S/\ker\phi$ is the natural homomorphism, and
+    $\bar\phi: S/\ker\phi \to T$ acts as an isomorphism between $S/\ker\phi$ and
+    $\im\phi$}
   \label{fig:first-isomorphism-theorem}
 \end{figure}
 
