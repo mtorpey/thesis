@@ -1199,8 +1199,8 @@ explained more explicitly below.
       \State $\mathbf{T} \gets \mathbf{T} \cup \{(xe, ye)\}$
       \State $\tau \gets (\tau \cup \{(xe, ye)\})^e$
       \For{$a \in S'$}
-        % TODO: should this be a^-1 xe a?
-        \If{$(a^{-1}xa, a^{-1}ya) \notin \tau$}
+        % TODO? check code: should this definitely be a^-1 xe a, with the e?
+        \If{$(a^{-1}xea, a^{-1}yea) \notin \tau$}
           \State $\mathbf{T} \gets \mathbf{T} \cup \{(a^{-1}xa, a^{-1}ya)\}$
           \State $\tau \gets (\tau \cup \{(a^{-1}xa, a^{-1}ya)\})^e$
         \EndIf
