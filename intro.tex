@@ -56,8 +56,8 @@ will sometimes refer to the set $\{1, \ldots, n\}$ using the notation $\bn$.
 \label{sec:intro-semigroups}
 We start with an introduction to semigroups from a completely abstract point of
 view.  Here we will define a semigroup and a few closely related concepts, and
-in later sections we will see examples of how semigroups arise (Sections
-\ref{sec:intro-presentations}, \ref{sec:intro-elements}). % TODO
+in later sections we will see examples of how semigroups arise (see Sections
+\ref{sec:intro-presentations} and \ref{sec:element-types}).
 
 \begin{definition}
   \label{def:semigroup}
@@ -145,6 +145,26 @@ Trivially, we can see that any group $G$ has both the trivial group $\{\id_G\}$
 and the whole group $G$ as normal subgroups.  As will be seen later (Section
 \ref{sec:normal-subgroups}) a group's normal subgroups correspond to its
 congruences, so these will come up at various times as important objects.
+
+We should define a few special semigroups which will be used later.  Other
+important semigroups are described in Section \ref{sec:element-types}.
+
+\begin{definition}
+  \label{def:zn}
+  \index{zero!semigroup}
+  \index{left zero semigroup}
+  \index{right zero semigroup}
+  Let $n \in \mathbb{N}$.  We define semigroups $\Z_n$, $\LZ_n$, and $\RZ_n$ as
+  follows:
+  \begin{itemize}
+  \item $\Z_n$ is the \textbf{zero semigroup} with $n$ elements, defined by a
+    zero element and the rule $ab=0$ for all $a,b \in \Z_n$;
+  \item $\LZ_n$ is the \textbf{left zero semigroup} with $n$ elements, defined
+    by the rule $ab=a$ for all $a,b \in \Z_n$;
+  \item $\RZ_n$ is the \textbf{right zero semigroup} with $n$ elements, defined
+    by the rule $ab=b$ for all $a,b \in \Z_n$.
+  \end{itemize}
+\end{definition}
 
 \section{Generators}
 \label{sec:intro-generators}
@@ -2101,7 +2121,6 @@ have close to constant time complexity.
 
 \section{Introductions to-do}
 \begin{itemize}
-\item Zero semigroup
 \item Idempotent ordering
 \item Digraph, digraph-with-edge-labels
 \item Regular elements, J-classes, semigroups
