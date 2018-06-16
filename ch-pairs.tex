@@ -469,17 +469,17 @@ piece of information encoded in Algorithm \ref{alg:p} as $\sigma \in \{L,R,T\}$.
 We start with a list of pairs $\mathbf{R}'$ which we initialise to be equal to
 the set of generating pairs $\mathbf{R}$; this list $\mathbf{R}'$ will hold all
 the pairs that have been found so far, except those we infer from reflexivity,
-symmetry and transitivity.  We will also have a union-find table
+symmetry and transitivity.  We will also have a union--find table
 $(\tau,\Lambda)$ for storing the classes, and we will be using the three
 operations \textsc{AddElement}, \textsc{Union} and \textsc{Find} to modify them.
-See Section \ref{sec:union-find} for a full description of the union-find
+See Section \ref{sec:union-find} for a full description of the union--find
 method.
 
 Now we can describe the overall structure of the pair orbit enumeration method.
 We begin iterating through the pairs in $\mathbf{R}'$, and as we do so we
 will add further pairs to $\mathbf{R}'$ which will also need to be iterated on,
 until we reach the end of the list.  For each pair $(a,b)$ we first need to
-merge $a$ and $b$ in the union-find table -- if either $a$ or $b$ is not
+merge $a$ and $b$ in the union--find table -- if either $a$ or $b$ is not
 already in $\Lambda$, then it will need to be added first.  Now,
 for each generator $x$, we can find the two pairs $(xa,xb)$ and $(ax,ab)$.
 Depending on whether we are calculating a left, right, or two-sided congruence,
@@ -499,7 +499,7 @@ turn.  Pseudo-code for this method is shown in Algorithm \ref{alg:p}.
 \State $\mathbf{R}' := \mathbf{R}$
 %\Comment{$\mathbf{R}'$ is the list of pairs found so far}
 \State $\Lambda := ()$ \Comment{an empty list of elements from $S$}
-\State $\tau := ()$ \Comment{an empty table for union-find}
+\State $\tau := ()$ \Comment{an empty table for union--find}
 \For{$(a,b) \in \mathbf{R}'$}
   \If{$a \notin \Lambda$}
     \State \Call{AddElement}{$a$}
@@ -560,10 +560,10 @@ state the following theorem.
     $\mathbf{R}^r$, and if $\sigma = T$, the algorithm finds all the pairs in
     $\mathbf{R}^c$.
 
-    The remainder of the proof considers the union-find method.  As described
-    above, since union-find stores pairs as a partition, it automatically takes
+    The remainder of the proof considers the union--find method.  As described
+    above, since union--find stores pairs as a partition, it automatically takes
     care of reflexivity, symmetry, and transitivity.  That is, if a set of pairs
-    $Q$ is fed into the union-find table using \textsc{Union} on every pair in
+    $Q$ is fed into the union--find table using \textsc{Union} on every pair in
     $Q$, then the resulting table describes $Q^e$, the least equivalence
     relation containing $Q$.  Hence, if $\sigma = L$, the table produced by
     $\textsc{PairOrbit}$ will describe the relation $(R^l)^e$; if $\sigma = R$, it will

@@ -1989,10 +1989,10 @@ subset of $X \times X$) which is reflexive, symmetric, and transitive -- that is
 a partition of $X$ into disjoint subsets.  Also recall from Definition
 \ref{def:re} the relation $\mathbf{R}^e$, the least equivalence containing a
 given relation $\mathbf{R}$.  It may be that, given a set of pairs $\mathbf{R}$,
-we wish to compute the equivalence $\mathbf{R}^e$.  This is where the union-find
+we wish to compute the equivalence $\mathbf{R}^e$.  This is where the union--find
 method can be useful.
 
-A \textbf{union-find} table, also known as a disjoint-set data structure, is a
+A \textbf{union--find} table, also known as a disjoint-set data structure, is a
 data structure that stores and modifies an equivalence relation by viewing it as
 a partition and using trees to keep track of which elements lie in which class.
 This approach was first described in 1964 in \cite{galler_1964}, and its time
@@ -2002,7 +2002,7 @@ for a detailed survey of different improvements and their possible advantages
 and drawbacks.
 
 Assume we wish to compute $\mathbf{R}^e$ for a relation $\mathbf{R}$ on a set
-$X$.  A union-find table, for us, is a pair $(\tau, \Lambda)$ consisting of a
+$X$.  A union--find table, for us, is a pair $(\tau, \Lambda)$ consisting of a
 table $\tau$ of integers and a list $\Lambda$ of elements from $X$, which will
 both begin as arrays of size $0$.  The list $\Lambda$ will contain all elements
 not in singletons, and the table $\tau$ will be used to keep track of which
@@ -2017,14 +2017,14 @@ singleton, so $\Lambda$ and $\tau$ are both empty.  As the algorithm progresses,
 at various times we will find that two elements (say $x$ and $y$) are
 $\mathbf{R}^e$-related, and we will wish to record this.  If either of $x$ or
 $y$ is not already in $\Lambda$, we call \textsc{AddElement} to start tracking
-it in the union-find system; \textsc{AddElement} simply adds the element to the
+it in the union--find system; \textsc{AddElement} simply adds the element to the
 end of $\Lambda$ and adds a new entry to the end of $\tau$ with value equal to
 the new length of $\Lambda$ -- a value not yet used in the table.  See Algorithm
 \ref{alg:uf-addelement} for pseudo-code.  Then we call \textsc{Union($x,y$)} to
 combine the two classes as described below.
 
 \begin{algorithm}
-\caption{The \textsc{AddElement} algorithm (union-find)}
+\caption{The \textsc{AddElement} algorithm (union--find)}
 \label{alg:uf-addelement}
 \index{AddElement@\textsc{AddElement}}
   \begin{algorithmic}
@@ -2044,7 +2044,7 @@ whole of $\tau$, finding every entry which equals $\tau_y$, and updating it to
 point to $\tau_x$, thus making the two classes equal.  However, this operation
 has high time complexity -- in the worst case, $O(|X|)$ -- and would cause any
 implementation of this algorithm to take a long time to complete.  Instead, the
-union-find algorithm treats $\tau_x$ as a pointer to a parent element, as
+union--find algorithm treats $\tau_x$ as a pointer to a parent element, as
 follows.
 
 Rather than treating $\tau$ as a simple table in which elements are
@@ -2057,7 +2057,7 @@ the position of an element $x \in \Lambda$) and returns the number of its
 equivalence class, as shown in Algorithm \ref{alg:uf-find}.
 
 \begin{algorithm}
-\caption{The \textsc{Find} algorithm (union-find)}
+\caption{The \textsc{Find} algorithm (union--find)}
 \label{alg:uf-find}
 \index{Find@\textsc{Find}}
   \begin{algorithmic}
@@ -2079,7 +2079,7 @@ higher one to point to the lower.  Its pseudo-code is shown in Algorithm
 \ref{alg:uf-union}.
 
 \begin{algorithm}
-\caption{The \textsc{Union} algorithm (union-find)}
+\caption{The \textsc{Union} algorithm (union--find)}
 \label{alg:uf-union}
 \index{Union@\textsc{Union}}
   \begin{algorithmic}
@@ -2100,7 +2100,7 @@ equivalence relation on a semigroup.  Whenever a pair $(x,y)$ is found in
 $\rho$, we call \textsc{AddElement($x$)} and \textsc{AddElement($y$)} if
 necessary, and then call \textsc{Union($x,y$)}.
 
-Note that this union-find method has automatically removed the problem of
+Note that this union--find method has automatically removed the problem of
 transitivity, as well as those of reflexivity and symmetry: if we relate the
 element $x$ to $y$, and then $y$ to $z$, we have combined all three elements
 into a single class, and so we will see that
@@ -2111,8 +2111,8 @@ $x$.  In other words, if we perform \textsc{Union} on all the pairs of
 $\mathbf{R}$ one by one, we produce $\Lambda$ and $\tau$ which describe the
 equivalence $\mathbf{R}^e$.
 
-Other descriptions of union-find do not always include \textsc{AddElement}.  The
-union-find algorithm is generally used to calculate equivalences on finite sets,
+Other descriptions of union--find do not always include \textsc{AddElement}.  The
+union--find algorithm is generally used to calculate equivalences on finite sets,
 but it is possible to use it with infinite sets as well.  The method described
 here allows for $X$ to be an infinite set, and stores information only about
 elements that are not in singletons, by calling \textsc{AddElement} on each
@@ -2172,7 +2172,7 @@ computed with this method.
       \end{forest}
     }
     $$
-    \caption{Diagrams of union-find table in Example \ref{ex:uf}}
+    \caption{Diagrams of union--find table in Example \ref{ex:uf}}
     \label{fig:uf}
   \end{figure}
 
