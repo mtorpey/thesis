@@ -11,7 +11,7 @@ $\rho$ in this way if and only if $S$ is finite.  However, this could well use a
 lot of storage -- even the trivial congruence would use $O(|S|)$ space, and in
 general a congruence could even use $O(|S|^2)$ space.
 
-% TODO: reference to "most congs don't need many generating pairs" section
+% TODO? quantify that we need very few pairs
 In Chapter \ref{chap:pairs} we looked in detail at how a congruence can be
 represented by a set of generating pairs.  As we found there, a congruence can
 be described by a subset $\R \subseteq \rho$, which in many cases can be
@@ -197,7 +197,6 @@ relating to idempotents.
   \item \textbf{completely 0-simple} if it is 0-simple and contains a primitive
     idempotent.
   \end{itemize}
-  %TODO: rephrase in terms of partial ordering of idempotents?
 \end{definition}
 
 Definitions \ref{def:zerosimple} and \ref{def:completelyzerosimple} are
@@ -208,7 +207,6 @@ will be applicable only to finite semigroups, and in those circumstances we will
 refer to \textit{finite simple} or \textit{finite 0-simple} semigroups, knowing
 that these are completely simple or completely 0-simple, respectively.
 Note that a finite semigroup is simple if and only if it is $\JJ$-trivial.
-%TODO: only finite?
 
 Completely simple and completely 0-simple semigroups have a strong and useful
 isomorphism property, which allows us to say a great deal about their structure
@@ -395,7 +393,7 @@ not only the non-universal congruences, but all congruences on $S$.
 
 \subsection{Inverse semigroups: kernel--trace pairs}
 \label{sec:kertr}
-% TODO: Wilf's book about semilattice congruences: Symmetric Inverse Semigroups
+% TODO? Wilf's book about semilattice congruences: Symmetric Inverse Semigroups
 
 An inverse semigroup also has a structure which can be used in place of its
 congruences: its \textit{kernel--trace pairs} (sometimes confusingly known as
@@ -900,7 +898,6 @@ Hence each class requires a number of pairs in $\sS'$ equal to one less than the
 size of the class; and so $|\sS'| = |I| - k_\sS$, where $k_\sS$ is the number
 of classes in $\sS$.  Similarly $|\tT'| = |\Lambda| - k_\tT$, where $k_\tT$ is
 the number of classes in $\tT$.
-% TODO: actually write the discussion of computing using generators in intro
 
 Once our three generating sets have been calculated, we collate them into the
 set of pairs $\R$ as efficiently as possible: each pair we add to $\R$ can
@@ -1458,7 +1455,6 @@ congruence has no linked triple, while the trivial congruence corresponds to the
 linked triple $(\{1_G\}, \Delta_I, \Delta_\Lambda)$.  A completely simple
 semigroup $\mathcal{M}[G;I,\Lambda;P]$ has only one Rees congruence: the
 universal congruence, which has linked triple $(G, \nabla_I, \nabla_\Lambda)$.
-% TODO: use nabla elsewhere instead of I x I or whatever
 
 \subsubsection{Linked triples and kernel--trace pairs}
 We may wish to convert between linked triples and kernel--trace pairs, in the
