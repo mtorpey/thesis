@@ -295,7 +295,7 @@ concrete semigroup: by using its Cayley table directly.
 
     Let $u,v \in \bar{S}^+$ such that $(u, v) \in R^\sharp$.  As in Theorem
     \ref{thm:rsharp}, there must be a chain of words
-    $$u = w_1 \to w_2 \to \ldots \to w_k = v$$
+    $$u = w_1 \to w_2 \to \cdots \to w_k = v$$
     such that $w_i = xay$ and $w_{i+1} = xby$ for some words $x,y \in \bar{S}^*$ and
     $a,b \in \bar{S}^+$ where either $(a,b)$ or $(b,a)$ is in $R$, for each
     $i \in \{1, \ldots, k-1\}$.  In each of these steps, $(a,b)$ or $(b,a)$
@@ -1446,7 +1446,7 @@ $s, t \in X^*$ such that $u=sw_1t$ and $v=sw_2t$.
 That is, $u \to_\rws v$ if a rule rewrites a contiguous subword of $u$ to turn
 $u$ into $v$.  The relation $\tostar_\rws$ is simply the reflexive transitive
 closure of $\to_\rws$; that is, $u \tostar_\rws v$ if and only if $u = v$ or
-$$u = u_0 \to_\rws u_1 \to_\rws \ldots \to_\rws u_n = v,$$
+$$u = u_0 \to_\rws u_1 \to_\rws \cdots \to_\rws u_n = v,$$
 for some $u_0, \ldots, u_n \in X^*$.
 Finally, $\lrstar_\rws$ is the symmetric closure of
 $\tostar_\rws$.  It is easy to see that $\lrstar_\rws$ is an equivalence
@@ -1458,7 +1458,7 @@ This definition of a rewriting system does not guarantee that a word can be
 rewritten in a useful way.  A rewriting system could allow an endless loop of
 rewriting; for example, a system over the alphabet $\{a,b\}$ could contain rules
 $(aa,b)$ and $(b,aa)$ which would allow the rewrite sequence
-$$aa \to b \to aa \to b \to aa \to b \to aa \to \ldots$$
+$$aa \to b \to aa \to b \to aa \to b \to aa \to \cdots$$
 to go on forever.  It could also be possible to rewrite one word in
 two different ways; for example, a system over the alphabet $\{a,b,c\}$ could
 contain rules $(aa,b)$ and $(aa,c)$.
