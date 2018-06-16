@@ -146,6 +146,46 @@ and the whole group $G$ as normal subgroups.  As will be seen later (Section
 \ref{sec:normal-subgroups}) a group's normal subgroups correspond to its
 congruences, so these will come up at various times as important objects.
 
+\begin{definition}
+  \label{def:cayley-table}
+  \index{cayley table}
+  We can express a finite semigroup $S$ using a \textbf{Cayley table} or
+  \textbf{multiplication table}: a square $|S| \times |S|$ table with its rows
+  and its columns labelled by all the elements of $S$.  The cell in the row
+  corresponding to an element $x$ and the column corresponding to an element $y$
+  contains the product $xy$.  See Figure \ref{fig:cayley-table} for an example.
+
+  \begin{table}[h]
+    \centering
+    \renewcommand\arraystretch{1.2}
+    $$
+    \begin{array}{c | c c c c}
+      & a & b & c & d \\
+      \hline
+      a & a & b & c & d \\
+      b & b & a & c & d \\
+      c & c & d & c & d \\
+      d & d & c & c & d \\
+    \end{array}
+    $$
+    % \begin{tabular}{c | c | c | c | c |}
+    %   \mc{1}{c}{} & \mc{1}{c}{a} & \mc{1}{c}{b} & \mc{1}{c}{c} & \mc{1}{c}{d} \\
+    %   \cline{2-5}
+    %   a & a & b & b & d \\
+    %   \cline{2-5}
+    %   b & b & a & a & d \\
+    %   \cline{2-5}
+    %   c & b & a & a & d \\
+    %   \cline{2-5}
+    %   d & d & d & d & d \\
+    %   \cline{2-5}
+    % \end{tabular}
+    \renewcommand\arraystretch{0.7}
+    \caption{Cayley table of a semigroup with four elements}
+    \label{fig:cayley-table}
+  \end{table}
+\end{definition}
+
 We should define a few special semigroups which will be used later.  Other
 important semigroups are described in Section \ref{sec:element-types}.
 
@@ -2127,5 +2167,4 @@ have close to constant time complexity.
   \begin{theorem}\label{thm:regular-min-ideal}finite semigroup has regular min ideal\end{theorem}
 \item Rectangular bands
   \begin{definition}\label{def:rectangular-band}Rectangular band\end{definition}
-\item Cayley table?
 \end{itemize}
