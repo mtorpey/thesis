@@ -1719,6 +1719,54 @@ is illustrated in Table \ref{tab:pn-size}.
   \label{tab:pn-size}
 \end{table}
 
+\section{Regularity}
+\label{sec:intro-regularity}
+
+Regular elements, J-classes, semigroups
+
+In Definition \ref{def:inverse-semigroup} of an inverse semigroup, we
+encountered the concept of a semigroup element's \textit{inverse}.
+
+\begin{definition}
+  \label{def:inverse}
+  \index{inverse!of a regular element}
+  Let $x$ be an element of a semigroup $S$.  Another element $y \in S$ is called
+  an \textbf{inverse} of $x$ if
+  $$xyx = x.$$
+\end{definition}
+
+This definition is not the same as an inverse in a group (see Definition
+\ref{def:group}) but it is compatible with it, in the sense that a group
+element's inverse is also a semigroup inverse in the sense of Definition
+\ref{def:inverse}.  In an inverse semigroup, every element has a unique inverse,
+but in general an element might not have an inverse, or might have more than
+one.  We can now define the term \textit{regular}.
+
+\begin{definition}
+  \label{def:regular-element}
+  \index{regular!element}
+  A semigroup element is called \textbf{regular} if it has an inverse.
+\end{definition}
+
+A semigroup may contain regular and non-regular elements.  However, it turns out
+that a $\DD$-class contains either no regular elements, or only regular elements
+\cite[Proposition 2.3.1]{howie}.  This establishes the following definition.
+
+\begin{definition}
+  \label{def:regular-semigroup}
+  \index{regular!$\DD$-class}
+  \index{regular!semigroup}
+  A $\DD$-class of a semigroup is called \textbf{regular} if some, and hence
+  all, of its elements are regular.  A semigroup is called \textbf{regular} if
+  all its $\DD$-classes are regular.
+\end{definition}
+
+Under this definition, we can see that all inverse semigroups are regular, as
+are all groups.  Since regular semigroups are not a central part of this thesis,
+we will not explain the wealth of theory attached to them, but where theory is
+needed we will cite appropriate literature.  For a fuller explanation of regular
+semigroups, see \cite[\S2.4]{howie}.
+
 \section{Computation \& decidability}
 \label{sec:computation-decidability}
 
@@ -2162,9 +2210,8 @@ have close to constant time complexity.
 \section{Introductions to-do}
 \begin{itemize}
 \item Idempotent ordering
-\item Digraph, digraph-with-edge-labels
-\item Regular elements, J-classes, semigroups
-  \begin{theorem}\label{thm:regular-min-ideal}finite semigroup has regular min ideal\end{theorem}
 \item Rectangular bands
   \begin{definition}\label{def:rectangular-band}Rectangular band\end{definition}
 \end{itemize}
+
+% TODO: Digraph, digraph-with-edge-labels
