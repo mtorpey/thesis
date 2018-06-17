@@ -2032,17 +2032,17 @@ were compared to one another.  The algorithms used were:
 \item and the method implemented in the library of \GAP{} (\texttt{GAP}).
 \end{itemize}
 
-As can be seen in Figure \ref{fig:bench-trans-1p-times}, the pre-filled Todd--Coxeter
-method is the most likely to complete fastest, with regular Todd--Coxeter winning
-in a sizeable minority of cases.  This backs up the anecdotal observations group
-theorists have made \cite{havascomparing} that Todd--Coxeter tends to perform
-faster than Knuth--Bendix.  We may also observe that pair orbit enumeration
-sometimes completes almost instantly, which makes some sense when we consider
-how little work the algorithm does when there are very few non-reflexive pairs
-in the congruence.  The Knuth--Bendix procedure lags behind badly on these
-examples, taking even longer than the built-in methods in \GAP{}.  These results
-are a justification for the decision to run only the Todd--Coxeter algorithms in
-the case of a finite, concrete semigroup.
+As can be seen in Figure \ref{fig:bench-trans-1p-times}, the pre-filled
+Todd--Coxeter method is the most likely to complete fastest, with regular
+Todd--Coxeter winning in a sizeable minority of cases.  This backs up the
+observations that group theorists have made that Todd--Coxeter tends to perform
+faster than Knuth--Bendix \cite{havascomparing}.  We may also observe that pair
+orbit enumeration sometimes completes almost instantly, which makes some sense
+when we consider how little work the algorithm does when there are very few
+non-reflexive pairs in the congruence.  The Knuth--Bendix procedure lags behind
+badly on these examples, taking even longer than the built-in methods in \GAP{}.
+These results are a justification for the decision to run only the Todd--Coxeter
+algorithms in the case of a finite, concrete semigroup.
 
 Figures \ref{fig:bench-trans-3p-times} and \ref{fig:bench-trans-vp-times} show
 that with a higher number of generating pairs, the pair orbit enumeration
