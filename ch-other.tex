@@ -132,7 +132,7 @@ kernel).  \index{cross-section}
   \label{lem:dk-hclasses}
   Let $k,n \in \mathbb{N}$ with $k \leq n$, and let $D_k^n$ be the $\DD$-class
   of $\T_n$ consisting of the elements of rank $k$.  The following hold:
-  \begin{enumerate}[\rm(1)]
+  \begin{enumerate}[\rm(i)]
   \item For any two distinct $\RR$-classes $R_1$ and $R_2$ of $D_k^n$ there is an
     $\LL$-class $L$ such that $L \cap R_1$ is a group $\HH$-class, but
     $L \cap R_2$ is not.
@@ -141,7 +141,7 @@ kernel).  \index{cross-section}
     $\HH$-class, but $L_2 \cap R$ is not.
   \end{enumerate}
   \begin{proof}
-    For (1), let $R_1$ and $R_2$ be distinct $\RR$-classes of $D_k^n$.  These two
+    For (i), let $R_1$ and $R_2$ be distinct $\RR$-classes of $D_k^n$.  These two
     classes correspond to distinct kernels $P_1$ and $P_2$, each partitioning
     $\{1, \dots, n\}$ into $k$ classes.  If $k=n$ then there is only one
     possible partition, $\big\{\{1\}, \dots, \{n\}\big\}$, and so $R_1$ and
@@ -154,7 +154,7 @@ kernel).  \index{cross-section}
     corresponding to image $X$, $L \cap R_1$ is a group $\HH$-class but
     $L \cap R_2$ is not a group $\HH$-class.
 
-    For (2), let $L_1$ and $L_2$ be distinct $\LL$-classes of $D_k^n$, with
+    For (ii), let $L_1$ and $L_2$ be distinct $\LL$-classes of $D_k^n$, with
     $1 < k \leq n$.  These two classes correspond to distinct images of size $k$
     in $\{1 \dots n\}$; let us call these images $I_1$ and $I_2$ respectively.
     Without loss of generality, let $I_1 = \{1, 2, \dots, k\}$.  Since
@@ -189,7 +189,7 @@ of a linked triples $(N,\mathcal{S},\mathcal{T})$, from Definition
 \ref{def:linked-triple} -- that is, a normal subgroup $N \trianglelefteq G$, an
 equivalence relation $\mathcal{S}$ on $I$ and an equivalence relation
 $\mathcal{T}$ on $\Lambda$, such that the following are satisfied:
-\begin{enumerate}[\rm(1)]
+\begin{enumerate}[\rm(i)]
 \item $\mathcal{S} \subseteq \varepsilon_I$, where
   $\varepsilon_I = \left\{(i,j) \in I \times I\, \middle|\, \forall \lambda \in
     \Lambda: p_{\lambda i}=0 \iff p_{\lambda j}=0 \right\}$;
@@ -203,8 +203,8 @@ $\mathcal{T}$ on $\Lambda$, such that the following are satisfied:
   $$q_{\lambda \mu i j} = p_{\lambda i} p_{\mu i}^{-1} p_{\mu j} p_{\lambda
     j}^{-1}.$$
 \end{enumerate}
-We shall first find all the triples which satisfy conditions (1) and (2), and
-then we shall show that in this case all of them satisfy condition (3).
+We shall first find all the triples which satisfy conditions (i) and (ii), and
+then we shall show that in this case all of them satisfy condition (iii).
 
 First, recall that an element $p_{\lambda i}$ is non-zero if and only if the
 corresponding $\HH$-class is a group.  By Lemma \ref{lem:dk-hclasses} we can see
@@ -239,7 +239,7 @@ The underlying group $G$ of the Rees 0-matrix semigroup $\pf{D_1^n}$ must be
 trivial, since each $\HH$-class contains just one element.
 
 Taking all this information together, we can classify all the triples $(N,
-\mathcal{S}, \mathcal{T})$ which satisfy conditions (1) and (2) as follows:
+\mathcal{S}, \mathcal{T})$ which satisfy conditions (i) and (ii) as follows:
 \begin{itemize}
 \item $N$ must be a normal subgroup of the trivial group -- hence $N = 1$;
 \item $\mathcal{S}$ must be a subset of the trivial relation $\Delta_I$ -- hence
@@ -248,7 +248,7 @@ Taking all this information together, we can classify all the triples $(N,
 \end{itemize}
 This gives us all triples of the form $(1,\Delta_I,\mathcal{T})$, where
 $\mathcal{T}$ can be any partition of the $n$ rows in $\Lambda$.  The number of
-these triples is the Bell number $B_n$.  Now consider condition (3): since the
+these triples is the Bell number $B_n$.  Now consider condition (iii): since the
 underlying group of $\pf{D_1^n}$ is trivial, and our chosen normal subgroup $N$ is
 also trivial, we have that any four nonzero elements from the matrix $P$ must
 multiply together to give the identity $1$, which will always be in $N$.  Hence all the
@@ -259,7 +259,7 @@ triples described are \textit{linked}, and there are $B_n$ of them.
 Now let us consider the linked triples of $\pf{D_k^n}$ for $k \geq 2$.  By Lemma
 \ref{lem:dk-hclasses} we
 know that $\varepsilon_I = \Delta_I$ and $\varepsilon_\Lambda = \Delta_\Lambda$,
-so any triple satisfying conditions (1) and (2) must have the form
+so any triple satisfying conditions (i) and (ii) must have the form
 $$(N, \Delta_I, \Delta_\Lambda)$$
 with freedom only in the choice of a normal subgroup $N$ of $G$.  We may write
 this simply as $(N, \Delta, \Delta)$ for brevity.  This
@@ -271,7 +271,7 @@ alternating group $\Alt_k$, and the symmetric group $\Sym_k$ itself.  For $k=2$ 
 have $1 = \Alt_2 < \Sym_2$, and for $k=4$ alone we must add a fourth normal subgroup,
 $K_4 = \langle (1~2)(3~4), (1~3)(2~4) \rangle$.
 
-To see that all these triples also fulfil condition (3) we use the triviality of
+To see that all these triples also fulfil condition (iii) we use the triviality of
 the relations $\mathcal{S} = \Delta_I$ and $\mathcal{T} = \Delta_\Lambda$.
 Observe that $(i,j) \in \mathcal{S}$ only if $i = j$, and $(\lambda,\mu) \in
 \mathcal{T}$ only if $\lambda = \mu$.  In the former case, we have
@@ -279,7 +279,7 @@ $$q_{\lambda \mu i j} = p_{\lambda i} (p_{\mu i}^{-1} p_{\mu i}) p_{\lambda
   i}^{-1} = p_{\lambda i} p_{\lambda i}^{-1} = 1 \in N,$$
 and in the latter case,
 $$q_{\lambda \mu i j} = (p_{\lambda i} p_{\lambda i}^{-1}) (p_{\lambda j}
-p_{\lambda j}^{-1}) = 1 \cdot 1 = 1 \in N.$$ Hence condition (3) is fulfilled
+p_{\lambda j}^{-1}) = 1 \cdot 1 = 1 \in N.$$ Hence condition (iii) is fulfilled
 and all of the triples described are \textit{linked}.
 
 \subsubsection{Numbers of Congruence Classes}
@@ -408,8 +408,8 @@ outside the domain.
 
 Lemma \ref{lem:dk-hclasses} holds true for $\PT_n$ -- in fact, both parts hold
 even when $k = 0$ or $1$.  For $k=0$ we simply observe that $D_0^n$ is trivial,
-and the two statements follow.  The proof given for (1) is sufficient for
-$\PT_n$ when $k \geq 1$, so (1) is proven.  For (2), the proof given is only
+and the two statements follow.  The proof given for (i) is sufficient for
+$\PT_n$ when $k \geq 1$, so (i) is proven.  For (ii), the proof given is only
 sufficient for $\PT_n$ when $k \geq 2$.  For $k=1$, it is proven as follows.  We
 must have $I_1 = \{i\}$ and $I_2 = \{j\}$ with $i \neq j$; simply let
 $P = \big\{\{i\}\big\}$, a cross-section of $I_1$ but not $I_2$.  This is not
@@ -511,9 +511,9 @@ to this rule is $D_0^n$, which simply has one $\RR$-class.
 
 Idempotents have the same characterisation as for $\PT_n$.  Lemma
 \ref{lem:dk-hclasses} holds for all $k$ from $0$ to $n$, as follows.  $D_0^n$ is
-trivial, so both statements hold for $k=0$.  The proof given for (1) is
-sufficient in this case for all $k \geq 1$.  To prove (2) for $k=1$, we use the
-same approach described for $\PT_n$.  To prove (2) for $k \geq 2$, let $I_1$ and
+trivial, so both statements hold for $k=0$.  The proof given for (i) is
+sufficient in this case for all $k \geq 1$.  To prove (ii) for $k=1$, we use the
+same approach described for $\PT_n$.  To prove (ii) for $k \geq 2$, let $I_1$ and
 $I_2$ be the images of $L_1$ and $L_2$ respectively; if we take the kernel
 $\Delta_{I_1}$, then $I_1$ is a cross-section of it but $I_2$ is not, so the
 $\RR$-class corresponding to that kernel satisfies the requirement.
@@ -582,7 +582,7 @@ $i$ either is in the same class as $i-1$, or is minimal in its class.  Hence
 $D_k^n$ contains $\binom{n-1}{k-1}$ $\RR$-classes, since our only choice is
 which $k-1$ of the $n-1$ points in $\bn$ are minimal, apart from $1$.  There are
 still $\binom{n}{k}$ $\LL$-classes, as in $\T_n$.  Lemma \ref{lem:dk-hclasses}
-applies to $\OO_n$ in the same way as it applies to $\T_n$, with statement (2)
+applies to $\OO_n$ in the same way as it applies to $\T_n$, with statement (ii)
 only applying when $k > 1$.  Hence the linked triples for $k \geq 2$ have the
 form $(N, \Delta, \Delta)$ while the linked triples for $k=1$ have the form
 $(N, \Delta, \tT)$ for other possible values of $\tT$.
@@ -700,7 +700,7 @@ congruence-free, using the following theorem based partly on material in
   \label{prop:congruence-free}
   A finite semigroup $S$ is congruence-free if and only if one of the following
   holds:
-  \begin{enumerate}[\rm(1)]
+  \begin{enumerate}[\rm(i)]
   \item $S$ has no more than $2$ elements;
   \item $S$ is a simple group;
   \item $S$ is isomorphic to a Rees 0-matrix semigroup
@@ -849,7 +849,7 @@ finite congruence-full semigroups.
   \label{thm:congruence-full}
   A finite semigroup $S$ is congruence-full if and only if one of the following
   holds:
-  \begin{enumerate}[\rm(1)]
+  \begin{enumerate}[\rm(i)]
   \item $S$ has no more than $2$ elements;
   \item $S$ is a zero semigroup;
   \item $S$ is a left zero semigroup;
@@ -884,7 +884,7 @@ finite congruence-full semigroups.
   \end{proof}
 \end{theorem}
 
-Note that some semigroups of size $2$ fall into categories (2), (3), or (4) of
+Note that some semigroups of size $2$ fall into categories (ii), (iii), or (iv) of
 the above theorem.  However, some semigroups of size 2 are not zero, left zero,
 or right zero semigroups -- for example, $1^1$, the trivial group with an
 identity attached -- but these are still congruence-free.  Hence all four cases

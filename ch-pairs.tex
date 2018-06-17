@@ -1626,7 +1626,7 @@ is as follows.
   the same word by two different rules.
   Critical pairs arise in two different ways.
   Let $(u_1, v_1)$ and $(u_2, v_2)$ be rules in $\rws$.
-  \begin{enumerate}[\rm(1)]
+  \begin{enumerate}[\rm(i)]
   \item If $u_1 = rs$ and $u_2 = st$ with $r,s,t \in X^*$ and
     $s \neq \varepsilon$, then $rst \to v_1t$ and $rst \to rv_2$, so
     $(v_1t, rv_2)$ is a critical pair.
@@ -1684,7 +1684,7 @@ Definition \ref{def:critical-pair}.
   Let $X=\{a,b,c\}$, and let $\rws$ be a rewriting system on $X$, containing
   two rules $(ab, c)$ and $(bb, a)$.  Here the word $abb$ could be
   rewritten by either rule: $abb = (ab)b \to cb$, but also
-  $abb = a(bb) \to aa$.  Hence $(cb, aa)$ is a critical pair of type (1).
+  $abb = a(bb) \to aa$.  Hence $(cb, aa)$ is a critical pair of type (i).
 
   If there exists some $w \in X^*$ such that $cb \tostar w$ and $aa \tostar w$,
   then confluence is not violated; otherwise, we must add a new rule to $\rws$
@@ -1697,7 +1697,7 @@ Definition \ref{def:critical-pair}.
   Let $X=\{a,b,c\}$ and let $\rws$ be a rewriting system on $X$ with rules
   $(abc, c)$ and $(b, a)$.  The word $abc$ can now be written by either rule,
   $abc \to c$ or $abc \to aac$.  Hence $(c, aac)$ is a critical pair of type
-  (2).
+  (ii).
 
   Again, if there are other rules allowing both words to be rewritten to a word
   $w \in X^*$, then no rules need to be added; if however there are no such

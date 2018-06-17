@@ -277,7 +277,7 @@ Next we consider the congruences of a finite 0-simple semigroup.
   $N \trianglelefteq G$, an equivalence relation $\mathcal{S}$ on $I$ and an
   equivalence relation $\mathcal{T}$ on $\Lambda$, such that the following are
   satisfied:
-  \begin{enumerate}[\rm(1)]
+  \begin{enumerate}[\rm(i)]
   \item $\mathcal{S} \subseteq \varepsilon_I$, where $\varepsilon_I =
     \left\{(i,j) \in I \times I\, \middle|\, \forall \lambda \in \Lambda:
       p_{\lambda i}=0 \iff p_{\lambda j}=0 \right\}$,
@@ -458,7 +458,7 @@ relates very closely to a congruence.
   A \textbf{kernel--trace pair} on $S$ is a pair $(K,\tau)$ consisting of a
   normal subsemigroup $K$ of $S$ and a normal congruence $\tau$ on $E$, such
   that
-  \begin{enumerate}[\rm(1)]
+  \begin{enumerate}[\rm(i)]
   \item If $ae \in K$ and $(e,a^{-1}a) \in \tau$, then $a \in K$
   \item If $a \in K$, then $(aa^{-1},a^{-1}a) \in \tau$
   \end{enumerate}
@@ -826,7 +826,7 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
   \item $\tT_\rho = (\tT_\rho')^e$.
   \end{itemize}
   If $\R$ is a subset of $\rho$ such that
-  \begin{enumerate}[\rm(1)]
+  \begin{enumerate}[\rm(i)]
   \item for each pair $(i, j) \in \sS_\rho'$ there exist $\lambda, \mu \in \Lambda$
     and $a, b \in G$ such that $(i, a, \lambda) ~\R~ (j, b, \mu)$;
   \item for each pair $(\lambda, \mu) \in \tT_\rho'$ there exist $i, j \in I$ and
@@ -850,16 +850,16 @@ relies on ideas from Theorem \ref{thm:pairs-to-linked-triple}.
     that $\rho \subseteq \R$ by Lemma \ref{lem:linked-triple-subsets}.
 
     Recall the relations $\R_I$ and $\R_\Lambda$ from Definition \ref{def:ri}.
-    By (1) we can see that $\sS_\rho' \subseteq \R_I$ and hence
+    By (i) we can see that $\sS_\rho' \subseteq \R_I$ and hence
     $(\sS_\rho')^e \subseteq (\R_I)^e$.  Meanwhile by Theorem
     \ref{thm:pairs-to-linked-triple} we have $(\R_I)^e = \mathcal{S}_{\Rs}$.  In
     total this gives us
     $\sS_\rho = (\sS_\rho')^e \subseteq (\R_I)^e = \mathcal{S}_{\Rs}$, so
-    $\sS_\rho \subseteq \sS_{\Rs}$.  Similarly by (2) we have
+    $\sS_\rho \subseteq \sS_{\Rs}$.  Similarly by (ii) we have
     $\tT_\rho \subseteq \tT_{\Rs}$.
 
     Now we turn our attention to $N_\rho$, and its generating set $N_\rho'$ -- we
-    wish to show that $N_\rho \subseteq N_{\Rs}$.  Let $n \in N_\rho'$.  By (3),
+    wish to show that $N_\rho \subseteq N_{\Rs}$.  Let $n \in N_\rho'$.  By (iii),
     there exist $i, j, x \in I$ and $\lambda, \mu, \xi \in \Lambda$ such that
     $p_{\xi i}$ and $p_{\lambda x}$ are both non-zero and
     $(i, a, \lambda) ~\R~ (j, b, \mu)$, where
@@ -910,7 +910,7 @@ $(i,j) \in \sS'$, one pair $(\lambda, \mu) \in \tT'$, and one element
 $n \in N'$: the pair we add is
 $$\big((i, p_{\xi i}^{-1}np_{\lambda k}^{-1}, \lambda),
 (j, p_{\xi j}^{-1}p_{\mu k}^{-1}, \mu)\big),$$
-which can be seen by inspection to satisfy (1), (2) and (3) for the three
+which can be seen by inspection to satisfy (i), (ii) and (iii) for the three
 generators in question.  These pairs are added until all three sets are
 exhausted, and so the total number of pairs returned by the algorithm is equal
 to
@@ -1372,7 +1372,7 @@ then go on to answer this question.
   Let $S$ be an inverse semigroup with set of idempotents $E$.  If $(K, \tau)$
   is a kernel--trace pair on $S$, then the congruence it defines is a Rees
   congruence if and only if the following hold:
-  \begin{enumerate}[\rm(1)]
+  \begin{enumerate}[\rm(i)]
   \item $\tau$ is a Rees congruence on $E$, with ideal denoted by $I_\tau$;
   \item $K = S I_\tau S \cup E$.
   \end{enumerate}
@@ -1381,10 +1381,10 @@ then go on to answer this question.
     $x(x^{-1}x)=(xx^{-1})x=x$ for any $x$ in an inverse semigroup.
 
     Let $\rho$ be the congruence defined by $(K, \tau)$.  We will first show
-    that (1) and (2) imply that $\rho$ is Rees, and then we will show that
-    $\rho$ being Rees implies (1) and (2).
+    that (i) and (ii) imply that $\rho$ is Rees, and then we will show that
+    $\rho$ being Rees implies (i) and (ii).
 
-    First, assume that (1) and (2) hold.  Let $I = S I_\tau S$, so that
+    First, assume that (i) and (ii) hold.  Let $I = S I_\tau S$, so that
     $K = I \cup E$.  This $I$ is closed under left and right multiplication, so
     it is certainly an ideal of $S$.  We will show that $\rho$ is equal to the
     Rees congruence $\rho_I$, by showing $\rho_I \subseteq \rho$ and
@@ -1417,18 +1417,18 @@ then go on to answer this question.
     $(x,y) \in \rho_I$.  So $(x,y) \in \rho$ implies $\rho_I$, as required.
     Hence $\rho = \rho_I$, so $\rho$ is Rees.
 
-    We now wish to show the converse, that $\rho$ being Rees implies (1) and
-    (2).  Assume $\rho$ is a Rees congruence with ideal $I$, and let $(K,\tau)$
+    We now wish to show the converse, that $\rho$ being Rees implies (i) and
+    (ii).  Assume $\rho$ is a Rees congruence with ideal $I$, and let $(K,\tau)$
     be its kernel--trace pair.  The trace $\tau$ of $\rho$ is the restriction of
     $\rho$ to the idempotents $E$; this is easily seen to be a Rees congruence
-    on $E$ with ideal $I \cap E$.  This gives us (1), where $I_\tau = I \cap E$.
+    on $E$ with ideal $I \cap E$.  This gives us (i), where $I_\tau = I \cap E$.
     The kernel $K$ of $\rho$ is the set of elements $\rho$-congruent to an
     idempotent: this gives us $K = I \cup E$, since $K$ consists of every
     element in the ideal $I$ along with any other idempotents.  Since any ideal
     is a union of $\JJ$-classes, and since any $\JJ$-class in an inverse
     semigroup contains an idempotent, we know that $I$ is equal to
     $S(I \cap E)S$, which is equal to $S I_\tau S$.  Hence
-    $K = S I_\tau S \cup E$, and so we have (2).
+    $K = S I_\tau S \cup E$, and so we have (ii).
   \end{proof}
 \end{theorem}
 
@@ -1583,7 +1583,7 @@ restriction of $\rho$ to the idempotents; hence, if $\tau'$ is a spanning forest
 for $\tau$ so that $(\tau')^e = \tau$, adding all the pairs from $\tau'$ would
 ensure that the trace contains $\tau$.  This approach would result in a very
 large generating set, and could almost certainly be improved in some ways,
-particularly by exploiting (1) and (2) in Definition \ref{def:kernel-trace-pair}
+particularly by exploiting (i) and (ii) in Definition \ref{def:kernel-trace-pair}
 of a kernel--trace pair.
 
 \subsection{Rees congruences from generating pairs}
@@ -1634,7 +1634,7 @@ characterised in the following way, analogue to Definition
   \index{kernel--trace pair!for regular semigroups}
   A \textbf{kernel--trace pair} on a regular semigroup $S$ is a pair $(K,\tau)$
   such that the following hold:
-  \begin{enumerate}[\rm(1)]
+  \begin{enumerate}[\rm(i)]
   \item $K \subseteq S$ and $K = \ker \pi_K$;
   \item $\tau$ is an equivalence on $E$ such that $\tau = \tr(\tau^\sharp)$;
   \item
@@ -1665,7 +1665,7 @@ This characterisation of congruences on regular semigroups falls short of its
 inverse semigroup counterpart.  Firstly, this broader definition of a
 kernel--trace pair is a lot more complicated and harder to compute with: for
 example, calculating $\pi_K$ could be computationally difficult, as could
-verifying (3) and (4) in Definition \ref{def:regular-kernel-trace-pair}.  It is
+verifying (iii) and (iv) in Definition \ref{def:regular-kernel-trace-pair}.  It is
 certainly difficult to contemplate any analogue of \textsc{KerTraceFromPairs}
 (Algorithm \ref{alg:pairs-to-kertr}) which could find the least kernel--trace
 pair from a set of generating pairs in anything like as quick a time or as
