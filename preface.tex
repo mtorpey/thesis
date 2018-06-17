@@ -1,20 +1,21 @@
 \chapter*{Preface}
 \addcontentsline{toc}{chapter}{Preface}
 
-Semigroup theory has its roots in group theory.  Groups in some form were used
-in order to solve equations as early as the late 1700s by Lagrange; this work
+Semigroup theory has its roots in group theory.  Groups were used in some form
+as early as the late 1700s by Lagrange, in order to solve equations; this work
 was continued in the early 1800s by Galois, who first used the word
 \textit{group} to describe them.  Groups were then studied in various different
 contexts -- in geometry, in number theory, and as permutation groups -- for some
 time before the various branches of theory were united into one, with von Dyck
 inventing the modern abstract definition of a group in 1882 \cite{dyck_1882}.
-The study of group theory has flourished since then.  By contrast, semigroup
-theory is a relatively young area of study, having been defined only in the
-early 1900s and having been studied very little before the 1950s, other than a
-few early papers by authors such as Suschkewitch \cite{susch_1928}.  However, in
-the second half of the twentieth century, semigroup theory gained traction, and
-now accounts for a significant body of work, with dedicated journals such as
-Semigroup Forum, and seminal books such as \cite{howie, petrich}.
+The study of group theory has flourished since then, becoming a major area of
+research in pure mathematics.  By contrast, semigroup theory is a relatively
+young area of study, having been defined only in the early 1900s and having been
+studied very little before the 1950s, other than a few early papers by authors
+such as Suschkewitch \cite{susch_1928}.  However, in the second half of the
+twentieth century, semigroup theory gained traction, and now accounts for a
+significant body of work, with dedicated journals such as Semigroup Forum, and
+seminal books such as \cite{howie} and \cite{petrich}.
 
 Since any group is a semigroup, it might be imagined that groups would be
 studied simply as a special case within semigroup theory.  In practice, however,
@@ -22,9 +23,9 @@ group theory tends to inform semigroup theory, since it turns out that groups
 are a very important topic within the study of generic semigroups.  Important
 features of a semigroup's structure are determined by its maximal subgroups --
 for example their Green's relations, or the linked triples on a completely
-simple semigroup.  As a result, groups are often a central part of semigroup
-theory, allowing us to borrow from the richly developed field of group theory in
-order to solve problems for semigroups in general.
+simple semigroup.  As a result, groups are a central part of semigroup theory,
+allowing us to borrow from the richly developed field of group theory in order
+to solve problems for semigroups in general.
 
 Computational algebra has existed for nearly as long as the theory of
 computation itself.  For instance, perhaps the earliest published group theory
@@ -37,19 +38,20 @@ using them for group theory problems, with Todd--Coxeter being implemented on
 the EDSAC II in Cambridge as early as 1953 \cite{leech_1963}.  Since then,
 computational group theory has flourished, with a variety of software packages
 such as \textsf{Magma} \cite{magma}, \ACE{} \cite{ace}, and particularly \GAP{}
-\cite{gap}, which has a variety of packages including algorithms to solve a wide
-range of problems.  A wealth of material is available on computational group
-theory, including several dedicated books \cite{sims, cgt}.  By comparison,
-computational semigroup theory is much younger and less developed, as is
-semigroup theory as a whole.  Computers were used as early as 1953 to classify
-semigroups of low order \cite{tamura_1953, froidure_pin}, but the theory of
-computing with semigroups developed more slowly than with groups, and no package
-emerged for semigroups on the scale of the group algorithms in \GAP{}.  However,
-there has been considerable interest in computational semigroup theory in recent
-years, and increasingly there do exist algorithms for semigroups, as well as
-software packages implementing them, such as \Semigroupe{} \cite{semigroupe},
-\libsemigroups{} \cite{libsemigroups}, and the \GAP{} packages \Semigroups{}
-\cite{semigroups}, \smallsemi{} \cite{smallsemi} and \kbmag{} \cite{kbmag}.
+\cite{gap}, which has a variety of packages containing algorithms to solve a
+wide range of problems.  A wealth of material is available on computational
+group theory, including several dedicated books \cite{sims, cgt}.  By
+comparison, computational semigroup theory is much younger and less developed,
+as is semigroup theory as a whole.  Computers were used as early as 1953 to
+classify semigroups of low order \cite{tamura_1953, froidure_pin}, but the
+theory of computing with semigroups developed more slowly than with groups, and
+no package emerged for semigroups on the scale of the group algorithms in
+\GAP{}.  However, there has been considerable interest in computational
+semigroup theory in recent years, and increasingly there do exist algorithms for
+semigroups, as well as software packages implementing them, such as
+\Semigroupe{} \cite{semigroupe}, \libsemigroups{} \cite{libsemigroups}, and the
+\GAP{} packages \Semigroups{} \cite{semigroups}, \smallsemi{} \cite{smallsemi}
+and \kbmag{} \cite{kbmag}.
 
 In the same way that semigroup theory borrows results from group theory,
 computational semigroup theory often borrows algorithms from computational group
@@ -57,13 +59,13 @@ theory.  The Todd--Coxeter and Knuth--Bendix algorithms, for instance, both of
 which were originally applied to groups, extend naturally to semigroups, and to
 semigroup congruences, as will be discussed in this thesis.  Furthermore, when
 we use the maximal subgroups of a semigroup, we can use group algorithms to
-compute information about the semigroup.  For example, when computing the
-linked triples on a completely simple semigroup, we can use group theory to find
-all the normal subgroups of a given maximal subgroup.  In this way,
-computational group theory is not just a subset, but a key part, of
-computational semigroup theory.
+compute information about the semigroup.  For example, when computing the linked
+triples on a completely simple semigroup, we can use group theory to find all
+the normal subgroups of a given maximal subgroup.  In this way, computational
+group theory is not just a subset, but a key part, of computational semigroup
+theory.
 
-This thesis deals primarily with the congruences of a semigroup.  A semigroup's
+This thesis deals primarily with the congruences on a semigroup.  A semigroup's
 congruences describe its homomorphic kernels and images -- that is, the ways in
 which the semigroup can be mapped onto another semigroup while preserving the
 semigroup operation.  In this way, a semigroup's congruences serve the same
@@ -92,16 +94,16 @@ correspond to a semigroup's congruences.  For instance, in group theory we
 consider a group's normal subgroups rather than studying its congruences
 directly; in the same way, we can study a completely simple semigroup's linked
 triples, or an inverse semigroup's kernel--trace pairs, in place of their
-congruences, and we can often produce the answers to computational questions
-more quickly than by using direct methods.  This approach forms the basis of the
-present author's previous works \cite{mtorpey_pre_msc, mtorpey_msc}, which are
-expanded upon in this thesis. In the more general cases, where no such
-alternative structure exists, we may still make improvements on existing
-algorithms by applying new algorithms that are not currently used for
-congruences.  We will take both these approaches in Part \ref{part:algorithms}
-of this thesis, presenting new congruence algorithms, as well as showing ways in
-which existing algorithms can be successfully adapted for congruence-related
-purposes.
+congruences, and thus we can often produce the answers to computational
+questions more quickly than by using direct methods.  This approach forms the
+basis of the present author's previous works \cite{mtorpey_pre_msc,
+  mtorpey_msc}, which are expanded upon in this thesis. In the more general
+cases, where no such alternative structure exists, we may still make
+improvements on existing algorithms by applying new algorithms that are not
+currently used for congruences.  We will take both these approaches in Part
+\ref{part:algorithms} of this thesis, presenting new congruence algorithms, as
+well as showing ways in which existing algorithms can be successfully adapted
+for congruence-related purposes.
 
 After introducing some preliminary theory, this thesis is divided into two broad
 parts.  Part \ref{part:algorithms} discusses the computational theory of
@@ -122,11 +124,11 @@ used later on.
 Chapter \ref{chap:pairs} presents a new way of computing with congruences
 defined by generating pairs.  The method presented uses parallel computation to
 run a variety of algorithms -- including Todd--Coxeter, Knuth--Bendix, and an
-unsophisticated algorithm known as \textit{pair orbit enumeration} -- which test
+unsophisticated algorithm known as \textit{pair orbit enumeration} -- that test
 whether a given pair lies in a congruence, given its generating pairs.  This
 approach takes advantage of the different algorithms' abilities to return an
-answer quickly in various cases, exhibiting run-times close to the minimum of
-all the different algorithms in each case.  Modifications for left and right
+answer quickly in various cases, in each case exhibiting run-times close to the
+minimum of all the different algorithms.  Modifications for left and right
 congruences are explained, and different versions are described for finitely
 presented semigroups and for \textit{concrete} semigroups (finite semigroups of
 transformations or other similar elements).  This approach was implemented in
@@ -150,12 +152,12 @@ Chapter \ref{chap:lattice} presents an algorithm for computing the entire
 congruence lattice of a finite semigroup.  This algorithm is rather rudimentary,
 but various shortcuts and improvements are described to try to reduce the
 computational time required, where possible.  A version of this algorithm is
-implemented in \Semigroups{}, which allows us to take advantage of the methods
-described in Chapters \ref{chap:pairs} and \ref{chap:converting}.  This makes it
-possible to compute the lattices of many sufficiently small semigroups in a
-reasonable time; a brief analysis is included of the sizes of semigroup and
-lattice which make this feasible, along with some visual examples of lattices
-that have been computed using this method.
+implemented in \Semigroups{}, and thus takes advantage of the methods described
+in Chapters \ref{chap:pairs} and \ref{chap:converting}.  This makes it possible
+to compute the lattices of many sufficiently small semigroups in a reasonable
+time; a brief analysis is included of the sizes of semigroup and lattice which
+are feasible, along with some visual examples of lattices that have been
+computed using this method.
 
 Chapter \ref{chap:motzkin} considers the Motzkin monoid $\Mot_n$, the monoid of
 all planar bipartitions of degree $n$ with blocks of size no greater than $2$.
