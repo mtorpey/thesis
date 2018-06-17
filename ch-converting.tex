@@ -189,8 +189,8 @@ relating to idempotents.
 
 \begin{definition}
   \label{def:completelyzerosimple}
-  \index{simple!completely}
-  \index{0-simple!completely}
+  \index{completely!simple}
+  \index{completely!0-simple}
   A semigroup is:
   \begin{itemize}
   \item \textbf{completely simple} if it is simple and contains a primitive
@@ -380,9 +380,10 @@ lemma, and independence from the choice of $k$ follows by a similar argument.
   \end{proof}
 \end{lemma}
 
+\index{Rees matrix semigroup}
 Our discussion so far has focused on 0-simple semigroups, but very similar
 structures exist for completely \textit{simple} semigroups.  They are isomorphic
-to \textit{Rees matrix semigroups}, and linked triples can be defined on them in
+to \textbf{Rees matrix semigroups}, and linked triples can be defined on them in
 almost exactly the same way, except for the removal of complications related to
 the zero element.  A Rees matrix semigroup follows Definition \ref{def:rzms} but
 with the removal of the zero element, and linked triples follow Definition
@@ -499,7 +500,7 @@ costly to find its kernel--trace pair in the first place; Section
 
 \subsection{Rees congruences}
 \label{sec:converting-rees}
-Recall that a \textbf{Rees congruence} is a congruence on a semigroup $S$ with a
+Recall that a \textit{Rees congruence} is a congruence on a semigroup $S$ with a
 distinguished congruence class $I$ which is a two-sided ideal of $S$, and in
 which every other congruence class is a singleton.  We may write this congruence
 as $\rho_I$, and we may write its quotient $S/\rho_I$ as $S/I$.  Hence, a pair
@@ -1144,6 +1145,9 @@ explained more explicitly below.
 \caption{The \textsc{KerTraceFromPairs} algorithm}
 \label{alg:pairs-to-kertr}
 \index{KerTraceFromPairs@\textsc{KerTraceFromPairs}}
+\index{EnumerateKernel@\textsc{EnumerateKernel}}
+\index{EnforceConditions@\textsc{EnforceConditions}}
+\index{EnumerateTrace@\textsc{EnumerateTrace}}
 \begin{algorithmic}[1]
 \Require $S$ an inverse semigroup with idempotents $E$
 \Require $\R \subseteq S \times S$
