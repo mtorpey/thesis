@@ -1575,10 +1575,10 @@ $u > v$.
   \label{ex:rws}
   Let $X = \{a,b\}$, and let $\rws$ be a rewriting system on $X^*$ given by
   $$\rws = \Big\{
-  \big(a^5, \varepsilon\big),\quad
-  \big(b^5, \varepsilon\big),\quad
-  \big(b^4a^4, (ab)^4\big),\quad
-  \big((ba)^4, a^4b^4\big)
+  \big(a^5, \varepsilon\big),
+  \ \big(b^5, \varepsilon\big),
+  \ \big(b^4a^4, (ab)^4\big),
+  \ \big((ba)^4, a^4b^4\big)
   \Big\}.$$
   We can apply any sequence of these rules to any word we wish.  For example, we
   can rewrite the word $b^5a^6$ using the last two rules as follows:
@@ -1716,10 +1716,10 @@ irreducible word will eventually be reached.  However, the order in which the
 rules are applied can have a great effect on the overall runtime of the
 algorithm.  In Algorithm \ref{alg:rewrite} we present one possible strategy,
 known as \textit{rewriting from the left}, which is based on the
-\textsc{Rewrite\_From\_Left} procedure described in \cite[\S 2.4]{sims}.  It
-takes two arguments -- a word $u$ and a terminating rewriting system
-$\rws$ -- and returns the irreducible word produced from $u$ by applying rules in
-$\rws$.
+REWRITE\texttt{\char`_}FROM\texttt{\char`_}LEFT procedure described in
+\cite[\S2.4]{sims}.  It takes two arguments -- a word $u$ and a terminating
+rewriting system $\rws$ -- and returns the irreducible word produced from $u$ by
+applying rules in $\rws$.
 
 \begin{algorithm}
 \caption{The \textsc{Rewrite} algorithm}
