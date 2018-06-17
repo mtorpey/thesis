@@ -2,23 +2,23 @@
 \label{chap:intro}
 
 In this chapter, we will introduce various objects and results that are required
-to understand the later chapters of this thesis.  It is expected that the
-material covered here should enable any postgraduate mathematician with some
-knowledge of algebra to understand the arguments in the rest of the thesis.  For
-those less experienced in semigroup theory or in algebra in general, a reference
-work might be useful -- some good examples would be \cite{warner},
-\cite{petrich}, and particularly \cite{howie}.
+to understand this thesis.  It is expected that the material covered here should
+enable any postgraduate mathematician with some knowledge of algebra to
+understand the arguments in the rest of the document.  For those less
+experienced in semigroup theory or in algebra in general, a reference work might
+be useful -- some good examples would be \cite{warner}, \cite{petrich}, and
+particularly \cite{howie}.
 
 \section{Basic notation}
 \label{sec:intro-notation}
 
 We should first mention some conventions adopted in this thesis where notation
-might differ from other authors.  On the whole, care has been taken to conflict
+might differ from other authors.  On the whole, care has been taken to deviate
 as little as possible from standard notation, but where ambiguity might arise,
 the following are the conventions that were chosen.
 
 Maps are written on the right.  Hence, if we have a function $f$ that takes an
-input $x$, its output is written $(x)f$, with the parentheses always included.
+input $x$, its output is written $(x)f$, with the parentheses sometimes omitted.
 If two maps are composed, they are written left-to-right.  Hence, if we have
 another map $g$ to be applied to the output of $f$, then their composition is
 written $f \circ g$ or simply $fg$, and we have
@@ -69,7 +69,7 @@ in later sections we will see examples of how semigroups arise (see Sections
   $$(x \cdot y) \cdot z = x \cdot (y \cdot z)$$
   for all $x, y, z \in S$.
 \end{definition}
-Note that some writers leave out the requirement that $S$ must be non-empty,
+Note that some authors leave out the requirement that $S$ must be non-empty,
 resulting in the empty semigroup $\varnothing$.  This extra semigroup is of
 little theoretical interest, but requires awkward caveats to be added to various
 statements that only apply to a non-empty semigroup, adding unnecessary
@@ -135,8 +135,8 @@ If a subsemigroup of $S$ happens to be a monoid, then we may call it a
 \textbf{submonoid} of $S$.  Similarly, if a subsemigroup happens to be a group,
 we call it a \textbf{subgroup}.  The subgroups of a semigroup are an important
 part of its structure, and will be discussed later in the context of Green's
-relations (Section \ref{sec:intro-greens}).  We should also mention an important
-type of subgroup possessed by a group.
+relations (see Proposition \ref{prop:group-h-class}).  We should also mention an
+important type of subgroup possessed by a group.
 \index{submonoid} \index{subgroup}
 
 \begin{definition}
@@ -212,9 +212,9 @@ important semigroups are described in Section \ref{sec:element-types}.
   \item $\Z_n$ is the \textbf{zero semigroup} with $n$ elements, defined by a
     zero element and the rule $ab=0$ for all $a,b \in \Z_n$;
   \item $\LZ_n$ is the \textbf{left zero semigroup} with $n$ elements, defined
-    by the rule $ab=a$ for all $a,b \in \Z_n$;
+    by the rule $ab=a$ for all $a,b \in \LZ_n$;
   \item $\RZ_n$ is the \textbf{right zero semigroup} with $n$ elements, defined
-    by the rule $ab=b$ for all $a,b \in \Z_n$.
+    by the rule $ab=b$ for all $a,b \in \RZ_n$.
   \end{itemize}
 \end{definition}
 
@@ -236,14 +236,15 @@ a small subset of its elements, known as \textit{generators}, as follows.
 \end{definition}
 
 The above definition only makes sense when our semigroup $\langle X \rangle$ is
-defined as a subsemigroup of another semigroup $S$.  A set of elements $X$ does
-not act as a generating set unless its operation is well understood because it
-lies inside a well-defined semigroup -- a semigroup in isolation cannot be
-stored using generators.  However, most of the semigroups we will encounter will
-be comprised of elements that have a natural operation which implies a semigroup
-they are a part of -- for example, a set of transformations of degree $n$ can
-generate a semigroup, because they are understood to be a subset of the full
-transformation semigroup $\T_n$.
+defined as a subsemigroup of another semigroup $S$.  A set of elements $X$ that
+is not understood to lie inside a semigroup does not have a well-defined
+operation, so the concept of generating more elements does not make sense.
+However, most of the semigroups we will encounter will be comprised of elements
+with a natural operation that implies a semigroup they are a part of.
+For example, a set of transformations of degree $n$ can generate a semigroup,
+because they are understood to be a subset of the full transformation semigroup
+$\T_n$.  Hence, we can talk about a set of transformations generating a
+semigroup, without explicitly stating that it is a subsemigroup of $\T_n$.
 
 Aside from generators for a semigroup, we also have the concept of generators
 for a monoid, a group, and an inverse semigroup.  These are defined analogously
@@ -280,7 +281,7 @@ group, using the following definition.
   \index{generator!for a normal subgroup}
   \nomenclature[<>2]{$\llangle\phantom{X}\rrangle$}{Normal closure}
   Let $G$ be a group, and let $X$ be a subset of $G$.  The least normal subgroup
-  of $G$ containing all the elements of $X$ is known as the \textit{normal
+  of $G$ containing all the elements of $X$ is known as the \textbf{normal
     closure} of $X$, and is denoted by $\llangle X \rrangle$.
 \end{definition}
 
@@ -365,7 +366,7 @@ something about how elements are mapped to each other.
 Monoid homomorphisms are defined analogously to semigroup homomorphisms,
 replacing the word ``semigroup'' with ``monoid''.  If not specified, it is
 assumed that ``homomorphism'' refers to a semigroup homomorphism.  Note that a
-monoid homomorphism $\phi:S \to T$ always maps tbe identity of $S$ to the
+monoid homomorphism $\phi:S \to T$ always maps the identity of $S$ to the
 identity of $T$, since
 $(x)\phi \cdot (\id)\phi
 = (x \id)\phi
@@ -526,13 +527,13 @@ $\rho \cap \sigma$ is also a congruence on $S$, as can be seen from the
 definition of a congruence.  Less obvious is that their \textit{join}
 $\rho \vee \sigma$ (the least equivalence containing both $\rho$ and $\sigma$)
 is also a congruence on $S$, as shown in \cite[\S1.5]{howie}.  Hence we have
-three operations $\subseteq$, $\cap$ and $\vee$ under which the set of
-congruences on $S$ is closed.  We will soon find that the set of congruences
+three operations $\subseteq$, $\cap$ and $\vee$ which apply to the set of
+congruences on $S$.  We will soon find that the set of congruences
 forms a special type of semigroup under these three operations.  We will first
 define this special type of semigroup.
 
-Recall that a \textit{poset} is a set $X$ together with a partial order $\leq$,
-that is a relation $\leq$ on $X$ which is reflexive, anti-symmetric and
+Recall that a \textit{poset} is a set $X$ together with a partial order $\leq$
+-- that is, a relation $\leq$ on $X$ which is reflexive, anti-symmetric and
 transitive.  If $X$ is a poset, and $Y \subseteq X$, then $x \in X$ is called an
 \textit{upper bound} for $Y$ if $y \leq x$ for all $y \in Y$; similarly, $x$ is
 a \textit{lower bound} for $Y$ if $x \leq y$ for all $y \in Y$.  An upper bound
@@ -571,7 +572,8 @@ The fact that congruences lie in a lattice, and therefore form a semigroup,
 allows us to use some semigroup theory on the congruences as semigroup elements
 in their own right.  In Chapter \ref{chap:lattice} in particular we will
 generate a congruence lattice using just its principal congruences as generators
-and join ($\vee$) as a semigroup operation.  And at various times in this thesis
+and join ($\vee$) as a semigroup operation (see Proposition
+\ref{prop:congruence-lattice-gens}).  And at various times in this thesis
 we will show the Hasse diagrams of congruence lattices, viewing them as partial
 orders (for some examples, see Figures \ref{fig:g3-lattice} and
 \ref{fig:mn-cong-lattice}).
@@ -941,8 +943,9 @@ describing semigroups: presentations.  First we require the definition of a
 \end{definition}
 
 When we consider free semigroups and monoids, the set $X$ is usually referred to
-as an \textit{alphabet}, its elements as \textit{letters}, and sequences of
-letters as \textit{words}.
+as an \textbf{alphabet}, its elements as \textbf{letters}, and sequences of
+letters as \textbf{words}.
+\index{alphabet} \index{letter} \index{word}
 
 The justification for the use of the name ``free'' comes from category theory.
 We can see that the free semigroup $X^+$ has the following property, an
@@ -1093,7 +1096,7 @@ principal ideal can be written $S^1xS^1$ for some $x \in S$.
 \index{principal!ideal}
 
 An ideal gives rise to a special congruence, known as a \textit{Rees
-  congruence}, in the following way.
+  congruence}, defined in the following way.
 
 \begin{definition}
   \label{def:rees-congruence}
@@ -1115,8 +1118,8 @@ quotient semigroup $S / \rho_I$ is typically denoted by $S / I$.
 A critically important feature of a semigroup is its Green's relations.  First
 described by Green in 1951 \cite{green}, a semigroup's Green's relations reveal
 a great deal of information about its multiplication, its ideals, its maximal
-subgroups and its congruences.  We will define five relations $\JJ$, $\DD$,
-$\LL$, $\RR$ and $\HH$, and explain how they are linked to each other and some
+subgroups and its congruences.  We will define five relations $\LL$, $\RR$,
+$\HH$, $\DD$ and $\JJ$, and explain how they are linked to each other and some
 other features of a semigroup.
 
 \begin{definition}
@@ -1129,11 +1132,11 @@ other features of a semigroup.
   \index{Green's relations}
 
   Let $S$ be a semigroup.  We define five relations $\LL$, $\RR$, $\HH$, $\DD$
-  and $\JJ$ on $S$ as follows;
+  and $\JJ$ on $S$ as follows:
   \begin{itemize}
-  \item $x \LL y$ if and only if $S^1x = S^1y$, i.e.~if $ax=y$ and $by=x$ for
+  \item $x \LL y$ if and only if $S^1x = S^1y$, i.e.~$ax=y$ and $by=x$ for
     some $a,b \in S$;
-  \item $x \RR y$ if and only if $xS^1 = yS^1$, i.e.~if $xa=y$ and $yb=x$ for
+  \item $x \RR y$ if and only if $xS^1 = yS^1$, i.e.~$xa=y$ and $yb=x$ for
     some $a,b \in S$;
   \item $x \HH y$ if and only if $x \LL y$ and $x \RR y$;
   \item $x \DD y$ if and only if there exists some $z \in S$ such that
@@ -1146,8 +1149,8 @@ other features of a semigroup.
 
 A few features are fairly obvious straight from these definitions.  We can see
 that all five relations are equivalences; it is also fairly obvious that
-$\HH = \LL \cap \RR$, $\LL \subseteq \DD$, and $\RR \subseteq \DD$.  Less
-obvious is that we always have $\DD \subseteq \JJ$, with $\DD = \JJ$ if $S$ is
+$\hH = \lL \cap \rR$, $\lL \subseteq \dD$, and $\rR \subseteq \dD$.  Less
+obvious is that we always have $\dD \subseteq \jJ$, with $\dD = \jJ$ if $S$ is
 finite \cite[\S2.1]{howie}.  These containments are shown in Figure
 \ref{fig:greens-containment}.
 
@@ -1165,7 +1168,7 @@ finite \cite[\S2.1]{howie}.  These containments are shown in Figure
     \draw (D)--(J);
   \end{tikzpicture}
   \caption[Hasse diagram of Green's relations under containment]{Hasse diagram
-    of Green's relations under containment.  Note that $\DD = \JJ$ in the finite
+    of Green's relations under containment.  Note that $\dD = jJ$ in the finite
     case}
   \label{fig:greens-containment}
 \end{figure}
@@ -1177,13 +1180,12 @@ finite \cite[\S2.1]{howie}.  These containments are shown in Figure
   \begin{proof}
     Let $(x,y) \in \lL$, and let $s \in S$.  From Definition
     \ref{def:greens-relations} we have $a,b \in S$ such that $ax=y$ and $by=x$.
-    We have $xs = bys$ and $ys = axs$, so using the same $a$ and $b$ we have
-    $(xs,ys) \in \lL$, and so $\LL$ is a right congruence.  By a similar
-    argument, $\RR$ is a left congruence.
+    We have $xs = bys$ and $ys = axs$, so $(xs,ys) \in \lL$, and $\LL$ is a
+    right congruence.  By a similar argument, $\RR$ is a left congruence.
   \end{proof}
 \end{proposition}
 
-The $\JJ$-classes of a semigroup are arranges in a natural partial order by
+The $\JJ$-classes of a semigroup are arranged in a natural partial order by
 their corresponding principal ideals, as follows.  Let $a$ and $b$ be elements
 of a semigroup $S$, and let their $\JJ$-classes be denoted $J_a$ and $J_b$.
 Just as $J_a = J_b$ if and only if $S^1aS^1 = S^1bS^1$, we say that
@@ -1202,22 +1204,23 @@ apply group theory to semigroups.  Consider the following proposition.
 This allows us to split the $\HH$-classes of a semigroup into two categories:
 \textit{group $\HH$-classes} and \textit{non-group $\HH$-classes}.
 
+\index{eggbox diagram}
 We can display a finite semigroup's Green's relations pictorially using an
-\textit{eggbox diagram}, which is constructed in the following way.  First, note
-that $\DD = \JJ$ for a finite semigroup; we break the semigroup into
-$\JJ$-classes and draw a box for each $\JJ$-class, arranged as a Hasse diagram
-defined by the partial order of $\JJ$-classes described above.  Now, since
-$\LL \subseteq \DD$ and $\RR \subseteq \DD$, we can break up a $\DD$-class in
-two different ways.  We split the box into rows representing its $\LL$-classes
-and into columns representing its $\RR$-classes.  Now each cell in the box
-represents the intersection of an $\LL$-class $L$ with an $\RR$-class $R$.
-Since $L$ and $R$ are in the same $\DD$-class, $L \cap R$ must be non-empty
+\textbf{eggbox diagram}, which is constructed in the following way.  First, note
+that $\dD = \jJ$ for a finite semigroup; we break the semigroup into
+$\jJ$-classes and draw a box for each $\jJ$-class, arranged as a Hasse diagram
+defined by the partial order of $\jJ$-classes described above.  Now, since
+$\lL \subseteq \dD$ and $\rR \subseteq \dD$, we can break up a $\dD$-class in
+two different ways.  We split the box into rows representing its $\lL$-classes
+and into columns representing its $\rR$-classes.  Now each cell in the box
+represents the intersection of an $\lL$-class $L$ with an $\rR$-class $R$.
+Since $L$ and $R$ are in the same $\dD$-class, $L \cap R$ must be non-empty
 (there must be some $z \in L \cap R$ linking each pair $(x,y) \in L \times R$,
-as in Definition \ref{def:greens-relations}).  And since $\HH = \LL \cap \RR$,
-$L \cap R$ is an $\HH$-class.  Hence, we have a diagram in which outer boxes
-represent $\DD$-classes, rows represent $\LL$-classes, columns represent
-$\RR$-classes, and cells represent $\HH$-classes.  Finally, we highlight each
-group $\HH$-class on the diagram: we shade it in, and mark it with a $*$ symbol
+as in Definition \ref{def:greens-relations}).  And since $\hH = \lL \cap \rR$,
+$L \cap R$ is an $\hH$-class.  Hence, we have a diagram in which outer boxes
+represent $\dD$-classes, rows represent $\lL$-classes, columns represent
+$\rR$-classes, and cells represent $\hH$-classes.  Finally, we highlight each
+group $\hH$-class on the diagram: we shade it in, and mark it with a $*$ symbol
 or a symbol representing the isomorphism class of the group.  An example of an
 eggbox diagram is shown in Figure \ref{fig:eggbox-diagram}.
 
@@ -1232,7 +1235,7 @@ eggbox diagram is shown in Figure \ref{fig:eggbox-diagram}.
 \section{Element types}
 \label{sec:element-types}
 
-In this thesis we will encounted several types of object which have a natural
+In this thesis we will encounter several types of object that have a natural
 associative operation defined on them, and which are therefore well-suited to
 forming semigroups.  We will define a few such objects in this section, drawing
 particular attention to Cayley's theorem and its analogues, which justify the
@@ -1358,9 +1361,9 @@ important theorem.
 \end{theorem}
 
 This theorem is proven in much the same way as Cayley's theorem for semigroups
-(Theorem \ref{thm:cayley-semigroups}).  It also entails the same important fact,
-which is that any group can be viewed as a group of permutations, for the sake
-of determining information that is isomorphism-invariant.
+(Theorem \ref{thm:cayley-semigroups}).  It also entails a similar important
+fact, which is that any group can be viewed as a group of permutations, for the
+sake of determining information that is isomorphism-invariant.
 
 \subsection{Partial transformations}
 \label{sec:partial-transformations}
@@ -1424,8 +1427,8 @@ and $\PT_n$.
 \end{definition}
 
 This monoid plays the same important role for inverse semigroups that $\T_n$ and
-$\Sym_n$ play for semigroups and groups, as the following analogue to the Cayley
-theorems shows.
+$\Sym_n$ play for semigroups and groups, as shown by the following analogue to
+the two Cayley theorems.
 
 \begin{theorem}[Wagner--Preston {\cite[Theorem 5.1.7]{howie}}]
   \label{thm:wagner-preston}
@@ -1433,8 +1436,8 @@ theorems shows.
   monoid.
 \end{theorem}
 
-We have now described several different types of partial transformation.  We now
-define a few attributes of a partial transformation which will be used at
+We have now described several different types of partial transformation.  We
+next define a few attributes of a partial transformation which will be used at
 various points.
 
 \begin{definition}
@@ -1469,9 +1472,8 @@ equal to its degree.
 
 Partial transformations (including transformations) can map points in their
 domain to points in their image in any order.  We now define an interesting
-property a partial transformation may have that \textit{preserves order}, an
-important feature when we come to consider \textit{planar} bipartitions later
-(Definition \ref{def:planar}).
+property a partial transformation may have that will be important when we come
+to consider \textit{planar} bipartitions later (Definition \ref{def:planar}).
 
 \begin{definition}
   \label{def:order-preserving}
@@ -1809,7 +1811,7 @@ encountered the concept of a semigroup element's \textit{inverse}.
 \end{definition}
 
 This definition is not the same as an inverse in a group (see Definition
-\ref{def:group}) but it is compatible with it, in the sense that a group
+\ref{def:group}), but it is compatible with it, in the sense that a group
 element's inverse is also a semigroup inverse in the sense of Definition
 \ref{def:inverse}.  In an inverse semigroup, every element has a unique inverse,
 but in general an element might not have an inverse, or might have more than
