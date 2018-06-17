@@ -1383,9 +1383,17 @@ two-row notation we can show that a point is not mapped by a partial
 transformation by writing a $-$ symbol under it, as in the partial
 transformation $\transV4--33$ which maps $1$ to $4$, $4$ to $3$ and $5$ to $3$,
 and does not map $2$ or $3$ at all.  We compose two partial transformations
-$\sigma$ and $\tau$ by the rule that $(i)\sigma\tau = \big((i)\sigma\big)\tau$
-if $(i)\sigma$ and $\big((i)\sigma\big)$ are both defined, and is undefined
-otherwise.  Using this composition rule, we can define the \textbf{partial
+$\sigma$ and $\tau$ by the rule
+$$(i)\sigma\tau = \left\{
+  \begin{array}{l l}
+    \big((i)\sigma\big)\tau,
+    & \text{if~} (i)\sigma \text{~and~}
+      \big((i)\sigma\big)\tau \text{~are both defined;} \\
+    \text{undefined}, & \text{otherwise.}
+  \end{array}
+\right.$$
+
+Using this composition rule, we can define the \textbf{partial
   transformation monoid} $\PT_n$ of all partial transformations of degree $n$,
 in the same manner as the full transformation monoid $\T_n$.
 \index{partial transformation monoid}
