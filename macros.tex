@@ -105,36 +105,48 @@
 
 % Transformations
 \newcommand{\transII}[2]{
+  \begingroup
+  \renewcommand*\arraystretch{.9}
   \scriptsize
-  \arraycolsep=2pt
+  \arraycolsep=1.5pt
   \begin{pmatrix}
     1 & 2 \\
     #1 & #2
   \end{pmatrix}
+  \endgroup
 }
 \newcommand{\transIV}[4]{
+  \begingroup
+  \renewcommand*\arraystretch{.9}
   \scriptsize
-  \arraycolsep=2pt
+  \arraycolsep=1.5pt
   \begin{pmatrix}
     1 & 2 & 3 & 4 \\
     #1 & #2 & #3 & #4
   \end{pmatrix}
+  \endgroup
 }
 \newcommand{\transV}[5]{
+  \begingroup
+  \renewcommand*\arraystretch{.9}
   \scriptsize
-  \arraycolsep=2pt
+  \arraycolsep=1.5pt
   \begin{pmatrix}
     1 & 2 & 3 & 4 & 5 \\
     #1 & #2 & #3 & #4 & #5
   \end{pmatrix}
+  \endgroup
 }
 \newcommand{\transN}[3]{
+  \begingroup
+  \renewcommand*\arraystretch{.9}
   \scriptsize
-  \arraycolsep=2pt
+  \arraycolsep=1.5pt
   \begin{pmatrix}
     1 & 2 & \cdots & n \\
     #1 & #2 & \cdots & #3
   \end{pmatrix}
+  \endgroup
 }
 
 % Presentations
@@ -261,6 +273,9 @@
 }
 
 \newcommand{\bipart}[4]{ % Bracketed notation for a bipartition
+  \begingroup
+  \setlength{\jot}{-1ex}
+  \renewcommand*\arraystretch{.7}
   \left[
     \hspace{-0.75mm}
     \scriptsize
@@ -272,6 +287,7 @@
     \end{array}
     \hspace{-0.6mm}
   \right]
+  \endgroup
 }
 \newcommand{\mc}{\multicolumn}
 \newcommand{\two}[2]{\multicolumn{3}{c}{\begin{array}{c|c}#1\ \ &\ #2\end{array}}}
