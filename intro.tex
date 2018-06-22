@@ -1244,6 +1244,70 @@ eggbox diagram is shown in Figure \ref{fig:eggbox-diagram}.
   \label{fig:eggbox-diagram}
 \end{figure}
 
+\section{Regularity}
+\label{sec:intro-regularity}
+
+In Section \ref{sec:intro-semigroups}, we encountered the concept of a semigroup
+element's \textit{inverse}.  This definition is not the same as an inverse in a
+group (see Definition \ref{def:group}), but it is compatible with it, in the
+sense that a group element's inverse is also a semigroup inverse.  In an inverse
+semigroup, every element has a unique inverse, but in general an element might
+not have an inverse, or might have more than one.  We now present a slightly
+weaker condition than a semigroup inverse, the concept of a \textit{regular}
+element.
+
+\begin{definition}
+  \label{def:regular-element}
+  \index{regular!element}
+  Let $S$ be a semigroup.  An element $x \in S$ is called \textbf{regular} if
+  there exists an element $y \in S$ such that
+  $$xyx = x.$$
+\end{definition}
+
+Note that this definition is not enough to conclude that $y$ is an inverse of
+$x$, without the additional requirement that $yxy = y$.  However, an element
+with an inverse is certainly regular.
+
+A semigroup may contain regular and non-regular elements.  However, it turns out
+that a $\DD$-class contains either no regular elements, or only regular elements
+\cite[Proposition 2.3.1]{howie}.  This establishes the following definition.
+
+\begin{definition}
+  \label{def:regular-semigroup}
+  \index{regular!$\DD$-class}
+  \index{regular!semigroup}
+  A $\DD$-class of a semigroup is called \textbf{regular} if some, and hence
+  all, of its elements are regular.  A semigroup is called \textbf{regular} if
+  all its $\DD$-classes are regular.
+\end{definition}
+
+Since any element with an inverse is regular, we can see that all inverse
+semigroups are regular, as are all groups.  We should mention one more
+interesting type of regular semigroup: a \textit{rectangular band}.
+
+\begin{definition}
+  \label{def:rectangular-band}
+  \index{rectangular band}
+  A \textbf{rectangular band} is a semigroup $S$ such that $xyx=x$ (i.e.~$y$ is
+  an inverse of $x$) for all $x,y \in S$.
+\end{definition}
+
+Rectangular bands will appear in Chapters \ref{chap:motzkin} and
+\ref{chap:other}, and the latter will use an important isomorphism theorem for
+rectangular bands, as follows.
+
+\begin{theorem}[{\cite[Theorem 1.1.3]{howie}}]
+  \label{thm:rectangular-band}
+  A rectangular band is isomorphic to the set $A \times B$ for two sets $A$ and
+  $B$, under the operation defined by
+  $$(a_1, b_1) (a_2, b_2) = (a_1, b_2).$$
+\end{theorem}
+
+Since regular semigroups are not a central part of this thesis,
+we will not explain the wealth of theory attached to them, but where theory is
+needed we will cite appropriate literature.  For a fuller explanation of regular
+semigroups, see \cite[\S2.4]{howie}.
+
 \section{Element types}
 \label{sec:element-types}
 
@@ -1809,70 +1873,6 @@ is illustrated in Table \ref{tab:pn-size}.
     $n$}
   \label{tab:pn-size}
 \end{table}
-
-\section{Regularity}
-\label{sec:intro-regularity}
-
-In Definition \ref{def:inverse-semigroup} of an inverse semigroup, we
-encountered the concept of a semigroup element's \textit{inverse}.  This
-definition is not the same as an inverse in a group (see Definition
-\ref{def:group}), but it is compatible with it, in the sense that a group
-element's inverse is also a semigroup inverse.  In an inverse semigroup, every
-element has a unique inverse, but in general an element might not have an
-inverse, or might have more than one.  We now present a slightly weaker
-condition than a semigroup inverse, the concept of a \textit{regular} element.
-
-\begin{definition}
-  \label{def:regular-element}
-  \index{regular!element}
-  Let $S$ be a semigroup.  An element $x \in S$ is called \textbf{regular} if
-  there exists an element $y \in S$ such that
-  $$xyx = x.$$
-\end{definition}
-
-Note that this definition is not enough to conclude that $y$ is an inverse of
-$x$, without the additional requirement that $yxy = y$.  However, an element
-with an inverse is certainly regular.
-
-A semigroup may contain regular and non-regular elements.  However, it turns out
-that a $\DD$-class contains either no regular elements, or only regular elements
-\cite[Proposition 2.3.1]{howie}.  This establishes the following definition.
-
-\begin{definition}
-  \label{def:regular-semigroup}
-  \index{regular!$\DD$-class}
-  \index{regular!semigroup}
-  A $\DD$-class of a semigroup is called \textbf{regular} if some, and hence
-  all, of its elements are regular.  A semigroup is called \textbf{regular} if
-  all its $\DD$-classes are regular.
-\end{definition}
-
-Since any element with an inverse is regular, we can see that all inverse
-semigroups are regular, as are all groups.  We should mention one more
-interesting type of regular semigroup: a \textit{rectangular band}.
-
-\begin{definition}
-  \label{def:rectangular-band}
-  \index{rectangular band}
-  A \textbf{rectangular band} is a semigroup $S$ such that $xyx=x$ (i.e.~$y$ is
-  an inverse of $x$) for all $x,y \in S$.
-\end{definition}
-
-Rectangular bands will appear in Chapters \ref{chap:motzkin} and
-\ref{chap:other}, and the latter will use an important isomorphism theorem for
-rectangular bands, as follows.
-
-\begin{theorem}[{\cite[Theorem 1.1.3]{howie}}]
-  \label{thm:rectangular-band}
-  A rectangular band is isomorphic to the set $A \times B$ for two sets $A$ and
-  $B$, under the operation defined by
-  $$(a_1, b_1) (a_2, b_2) = (a_1, b_2).$$
-\end{theorem}
-
-Since regular semigroups are not a central part of this thesis,
-we will not explain the wealth of theory attached to them, but where theory is
-needed we will cite appropriate literature.  For a fuller explanation of regular
-semigroups, see \cite[\S2.4]{howie}.
 
 \section{Computation \& decidability}
 \label{sec:computation-decidability}
