@@ -81,11 +81,13 @@ ambiguity, in the manner of multiplication.
 A semigroup $S$ may contain a few special elements: an \textbf{identity} is an
 element $e \in S$ such that $ex = xe = x$ for any $x \in S$; a \textbf{zero} is
 an element $0 \in S$ such that $0x = x0 = 0$ for any $x \in S$; an
-\textbf{idempotent} is an element $e \in S$ such that $ee=e$.  All of these will
+\textbf{idempotent} is an element $e \in S$ such that $ee=e$; and an element $x$
+has an \textbf{inverse} $y$ if $xyx = x$ and $yxy=y$.  All of these will
 be used later to define certain semigroups, or properties of semigroups.  We
 will use the notation $S^1$ to denote the semigroup $S$ with an identity $1$
 appended if $S$ does not already have one.
 \index{identity} \index{zero} \index{idempotent}
+\index{inverse!of a semigroup element}
 \nomenclature[1]{$^1$}{Semigroup with a possible identity appended}
 
 We now define three important categories of semigroup, based on properties
@@ -103,18 +105,21 @@ possessed by their elements.
 \end{definition}
 
 \begin{definition}
-  \label{def:group}
-  \index{group}
-  \nomenclature[G]{$G$}{Group}
-  A \textbf{group} $G$ is a monoid in which every element $x \in G$ has an
-  inverse $x^{-1} \in G$ such that $xx^{-1}=x^{-1}x = e$.
+  \label{def:inverse-semigroup}
+  \index{inverse!semigroup}
+  \nomenclature[-1]{$^{-1}$}{Inverse of an element}
+  An \textbf{inverse semigroup} is a semigroup $S$ in which every element
+  $x \in S$ has a unique inverse, i.e.~an element $x^{-1} \in S$ such that
+  $xx^{-1}x=x$ and $x^{-1}xx^{-1}=x^{-1}$.
 \end{definition}
 
 \begin{definition}
-  \label{def:inverse-semigroup}
-  \index{inverse semigroup}
-  An \textbf{inverse semigroup} is a semigroup $S$ in which every element $x
-  \in S$ has a unique inverse $x^{-1} \in S$ such that $xx^{-1}x=x$.
+  \label{def:group}
+  \index{group}
+  \index{inverse!of a group element}
+  \nomenclature[G]{$G$}{Group}
+  A \textbf{group} $G$ is a monoid in which every element $x \in G$ has a
+  group inverse, i.e.~an element $x^{-1} \in G$ such that $xx^{-1}=x^{-1}x = e$.
 \end{definition}
 
 These three definitions represent important subcategories of semigroups, with
@@ -1809,28 +1814,25 @@ is illustrated in Table \ref{tab:pn-size}.
 \label{sec:intro-regularity}
 
 In Definition \ref{def:inverse-semigroup} of an inverse semigroup, we
-encountered the concept of a semigroup element's \textit{inverse}.
-
-\begin{definition}
-  \label{def:inverse}
-  \index{inverse!of a regular element}
-  Let $x$ be an element of a semigroup $S$.  Another element $y \in S$ is called
-  an \textbf{inverse} of $x$ if
-  $$xyx = x.$$
-\end{definition}
-
-This definition is not the same as an inverse in a group (see Definition
+encountered the concept of a semigroup element's \textit{inverse}.  This
+definition is not the same as an inverse in a group (see Definition
 \ref{def:group}), but it is compatible with it, in the sense that a group
-element's inverse is also a semigroup inverse in the sense of Definition
-\ref{def:inverse}.  In an inverse semigroup, every element has a unique inverse,
-but in general an element might not have an inverse, or might have more than
-one.  We can now define the term \textit{regular}.
+element's inverse is also a semigroup inverse.  In an inverse semigroup, every
+element has a unique inverse, but in general an element might not have an
+inverse, or might have more than one.  We now present a slightly weaker
+condition than a semigroup inverse, the concept of a \textit{regular} element.
 
 \begin{definition}
   \label{def:regular-element}
   \index{regular!element}
-  A semigroup element is called \textbf{regular} if it has an inverse.
+  Let $S$ be a semigroup.  An element $x \in S$ is called \textbf{regular} if
+  there exists an element $y \in S$ such that
+  $$xyx = x.$$
 \end{definition}
+
+Note that this definition is not enough to conclude that $y$ is an inverse of
+$x$, without the additional requirement that $yxy = y$.  However, an element
+with an inverse is certainly regular.
 
 A semigroup may contain regular and non-regular elements.  However, it turns out
 that a $\DD$-class contains either no regular elements, or only regular elements
@@ -1845,9 +1847,9 @@ that a $\DD$-class contains either no regular elements, or only regular elements
   all its $\DD$-classes are regular.
 \end{definition}
 
-Under this definition, we can see that all inverse semigroups are regular, as
-are all groups.  We should mention one more interesting type of regular
-semigroup: a \textit{rectangular band}.
+Since any element with an inverse is regular, we can see that all inverse
+semigroups are regular, as are all groups.  We should mention one more
+interesting type of regular semigroup: a \textit{rectangular band}.
 
 \begin{definition}
   \label{def:rectangular-band}
