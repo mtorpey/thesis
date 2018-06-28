@@ -19,7 +19,7 @@
 \usepackage{cancel}
 \usepackage{colortbl}
 \usepackage{dot2texi}
-\usepackage{draftwatermark}
+%\usepackage{draftwatermark}
 \usepackage{enumerate}
 \usepackage{float}
 \usepackage{forest}
@@ -70,6 +70,7 @@
 % \renewcommand*\arraystretch{.7}
 
 % Watermark with git hash
+\iffalse
 \immediate\write18{git rev-parse --short HEAD > hash.info}
 \immediate\write18{git diff --shortstat > changes.info}
 \immediate\write18{git diff --staged --shortstat >> changes.info}
@@ -78,6 +79,7 @@
 \SetWatermarkFontSize{0.5cm}
 \SetWatermarkAngle{90}
 \SetWatermarkHorCenter{1.625cm}
+\fi
 
 % Macros
 \input{macros}
