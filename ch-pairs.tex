@@ -137,7 +137,7 @@ are words in $X^+$, then it may be undecidable whether $w_1$ and $w_2$ represent
 the same element of $S$.
 
 There are many examples of presentations for which the word problem is
-undecidable (see Examples \ref{ex:makanin} and \ref{ex:cijtin}), Many
+undecidable (see Examples \ref{ex:makanin} and \ref{ex:cijtin}). Many
 presentations do have decidable word problem (see Example
 \ref{ex:presentation-decidable}), but since many do not, and there is no algorithm
 to decide whether a given presentation does, we must conclude that semigroups
@@ -152,8 +152,9 @@ always finite and so an answer is guaranteed; but in the case of a finitely
 presented semigroup, it is unknown in advance whether a semigroup is finite or
 not.  Hence, the user of this algorithm might not know whether a particular run
 is guaranteed to terminate, since a run that is about to finish is
-indistinguishable from one that will run forever.  For a fuller explanation of
-presentations and decidability issues, see Sections
+indistinguishable from one that will run forever.  In some cases, however, we
+may be able to return an answer even if $S$ is infinite.  For a fuller
+explanation of presentations and decidability issues, see Sections
 \ref{sec:intro-presentations} and \ref{sec:computation-decidability}.
 
 Finitely presented monoids are treated as equivalent to finitely presented
