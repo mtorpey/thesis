@@ -183,8 +183,8 @@ semigroup is given in Section \ref{sec:find-pres}.
 The exact parameters supplied to the algorithm are therefore as follows:
 \begin{itemize}
 \item A set of generators $X$;
-\item A finite set of relations $R \subseteq X^* \times X^*$;
-\item A finite set of generating pairs $W \subseteq X^* \times X^*$;
+\item A finite set of relations $R \subseteq X^+ \times X^+$;
+\item A finite set of generating pairs $W \subseteq X^+ \times X^+$;
 \item A record of whether we are computing a left, right, or two-sided
   congruence.
 \end{itemize}
@@ -193,7 +193,7 @@ The following are also supplied if and only if $S$ is concrete:
 \item A list of elements of $S$;
 \item Left and right Cayley graphs for $S$ (see Definition
   \ref{def:cayley-graph});
-\item A factorisation function $f : S \to X^*$.
+\item A factorisation function $f : S \to X^+$.
 \end{itemize}
 
 We shall now make clear the meanings of these different parameters, by giving a
