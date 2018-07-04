@@ -60,15 +60,15 @@ semigroups, as well as software packages implementing them, such as
 
 In the same way that semigroup theory borrows results from group theory,
 computational semigroup theory often borrows algorithms from computational group
-theory.  The Todd--Coxeter and Knuth--Bendix algorithms, for instance, both of
-which were originally applied to groups, extend naturally to semigroups, and to
-semigroup congruences, as will be discussed in this thesis.  Furthermore, when
-we use the maximal subgroups of a semigroup, we can use group algorithms to
-compute information about the semigroup.  For example, when computing the linked
-triples on a completely simple semigroup, we can use group theory to find all
-the normal subgroups of a given maximal subgroup.  In this way, computational
-group theory is not just a subset, but a key part, of computational semigroup
-theory.
+theory.  The Todd--Coxeter algorithm, for instance, was originally designed to
+calculate a subgroup's cosets inside a group -- but with a few changes, it can
+be used to find the elements of a finitely presented semigroup, or the classes
+of a congruence on such a semigroup, as we will see in this thesis.  We also
+borrow from computational group theory by using properties of a semigroup's
+subgroups.  For example, when computing the linked triples on a completely
+simple semigroup, we can use group theory to find all the normal subgroups of a
+given maximal subgroup.  In this way, computational group theory is not just a
+subset, but a key part, of computational semigroup theory.
 
 This thesis deals primarily with the congruences on a semigroup.  A semigroup's
 congruences describe its homomorphic kernels and images -- that is, the ways in
