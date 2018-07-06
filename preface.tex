@@ -96,28 +96,26 @@ semigroups whose congruences have not yet been classified.  Finding the
 congruences on various other semigroups will form the majority of Part
 \ref{part:results} of this thesis.
 
-The computational theory of semigroup congruences is also a young field.  Some
-algorithms for computing information about a given congruence have existed in
-the \GAP{} library for many years, but many of them lack sophistication, being
-close to brute-force.  In some cases, we can do little to improve on these
-algorithms, since semigroup congruences in general do not have the regular
-structure of their group theory or ring theory counterparts.  However, in other
-cases we can improve on these using existing knowledge about specific categories
-of semigroup.  Firstly we can do this by considering alternative structures that
-correspond to a semigroup's congruences.  For instance, in group theory we
-consider a group's normal subgroups rather than studying its congruences
-directly; in the same way, we can study a completely simple semigroup's linked
-triples, or an inverse semigroup's kernel--trace pairs, in place of their
-congruences, and thus we can often produce the answers to computational
-questions more quickly than by using direct methods.  This approach forms the
-basis of the present author's previous works \cite{mtorpey_pre_msc,
-  mtorpey_msc}, which are expanded upon in this thesis. In the more general
-cases, where no such alternative structure exists, we may still make
-improvements on existing algorithms by applying new algorithms that are not
-currently used for congruences.  We will take both these approaches in Part
-\ref{part:algorithms} of this thesis, presenting new congruence algorithms, as
-well as showing ways in which existing algorithms can be successfully adapted
-for congruence-related purposes.
+The computational theory of semigroup congruences is also a young field.
+Algorithms for computing information about a given congruence have existed in
+the \GAP{} library for many years, but many of them lack sophistication and may
+take an unreasonably long time to return results about semigroups with more than
+about 25000 elements.  We can improve on these algorithms in two different ways.
+Firstly we can consider alternative structures that correspond to a semigroup's
+congruences.  For instance, in group theory we consider a group's normal
+subgroups rather than studying its congruences directly; in the same way, we can
+study a completely simple semigroup's linked triples, or an inverse semigroup's
+kernel--trace pairs, in place of their congruences, and thus we can often
+produce the answers to computational questions more quickly than by using direct
+methods.  This approach forms the basis of the present author's previous works
+\cite{mtorpey_pre_msc, mtorpey_msc}, which are expanded upon in this
+thesis. Secondly, in the more general cases where no such alternative structure
+exists, we may still make improvements on existing algorithms by applying new
+algorithms that are not currently used for congruences, such as the
+Todd--Coxeter coset enumeration procedure, or the Knuth--Bendix completion
+process.  We will take both approaches in Part \ref{part:algorithms} of this
+thesis, presenting new congruence algorithms, as well as showing ways in which
+existing algorithms can be successfully adapted for congruence-related purposes.
 
 After introducing some preliminary theory, this thesis is divided into two broad
 parts.  Part \ref{part:algorithms} discusses the computational theory of
@@ -160,15 +158,18 @@ representation, and thus answer questions about the congruence in as short a
 time as possible.  All twenty of the possible conversions between the five
 representations are considered: many of these are currently implemented in
 \Semigroups{} \cite{semigroups}, some having never been described before; others
-are trivial or unnecessary; and two remain open problems.
+are trivial or unnecessary; and two remain open problems (converting from
+kernel--trace to generating pairs, and from generating pairs to an ideal).  See
+Table \ref{tab:converting} for a summary of all the conversions described in the
+chapter.
 
 Chapter \ref{chap:lattice} presents an algorithm for computing the entire
 congruence lattice of a finite semigroup.  This algorithm is rather rudimentary,
 but various shortcuts and improvements are described to try to reduce the
-computational time required, where possible.  A version of this algorithm is
+computational work required, where possible.  A version of this algorithm is
 implemented in \Semigroups{}, and thus takes advantage of the methods described
 in Chapters \ref{chap:pairs} and \ref{chap:converting}.  This makes it possible
-to compute the lattices of many sufficiently small semigroups in a reasonable
+to compute the lattices of any sufficiently small semigroup in a reasonable
 time; a brief analysis is included of the sizes of semigroup and lattice which
 are feasible, along with some visual examples of lattices that have been
 computed using this method.

@@ -2,12 +2,9 @@
 \label{chap:intro}
 
 In this chapter, we will introduce various objects and results that are required
-to understand this thesis.  It is expected that the material covered here should
-enable any postgraduate mathematician with some knowledge of algebra to
-understand the arguments in the rest of the document.  For those less
-experienced in semigroup theory or in algebra in general, a reference work might
-be useful -- some good examples would be \cite{warner}, \cite{petrich}, and
-particularly \cite{howie}.
+to understand this thesis.  For reference works relating to semigroup theory and
+to algebra in general, see \cite{warner}, \cite{petrich}, and particularly
+\cite{howie}.
 
 \section{Basic notation}
 \label{sec:intro-notation}
@@ -136,19 +133,20 @@ study of its linked triples, for example.  We define subgroups along with
   which forms a semigroup in its own right, under the same operation as $S$.
 \end{definition}
 
-If a subsemigroup of $S$ happens to be a monoid, then we may call it a
-\textbf{submonoid} of $S$.  Similarly, if a subsemigroup happens to be a group,
-we call it a \textbf{subgroup}.  The subgroups of a semigroup are an important
-part of its structure, and will be discussed later in the context of Green's
-relations (see Proposition \ref{prop:group-h-class}).  We should also mention an
-important type of subgroup possessed by a group.
-\index{submonoid} \index{subgroup}
+Similarly, if $M$ is a monoid, then a subset of $M$ which forms a monoid with
+the same identity is called a \textbf{submonoid} of $M$.  \index{submonoid}
+
+If a subsemigroup of $S$ happens to be a group, we call it a \textbf{subgroup}
+of $S$.  The subgroups of a semigroup are an important part of its structure,
+and will be discussed later in the context of Green's relations (see Proposition
+\ref{prop:group-h-class}).  We should also mention an important type of subgroup
+possessed by a group.  \index{subgroup}
 
 \begin{definition}
   \label{def:normal-subgroup}
   \index{normal!subgroup}
   \nomenclature[N]{$N$}{Normal subgroup}
-  Let $G$ be a group, and $H$ be a subgroup of $G$.  We call $H$ a
+  Let $G$ be a group, and let $H$ be a subgroup of $G$.  We call $H$ a
   \textbf{normal subgroup} of $G$ if one, and hence all, of the following
   equivalent statements hold:
   \begin{itemize}
@@ -245,11 +243,12 @@ defined as a subsemigroup of another semigroup $S$.  A set of elements $X$ that
 is not understood to lie inside a semigroup does not have a well-defined
 operation, so the concept of generating more elements does not make sense.
 However, most of the semigroups we will encounter will be comprised of elements
-with a natural operation that implies a semigroup they are a part of.
-For example, a set of transformations of degree $n$ can generate a semigroup,
-because they are understood to be a subset of the full transformation semigroup
-$\T_n$.  Hence, we can talk about a set of transformations generating a
-semigroup, without explicitly stating that it is a subsemigroup of $\T_n$.
+that have a natural associative operation, and hence belong to an implicitly
+defined semigroup.  For example, a set of transformations of degree $n$ can
+generate a semigroup, because it is understood to be a subset of the full
+transformation monoid $\T_n$ (see Definition \ref{def:tn}).  Hence, we can
+talk about a set of transformations generating a semigroup, without explicitly
+stating that it is a subsemigroup of $\T_n$.
 
 Aside from generators for a semigroup, we also have the concept of generators
 for a monoid, a group, and an inverse semigroup.  These are defined analogously
@@ -277,8 +276,8 @@ A semigroup with a set of generators can be described using a \textit{Cayley
   analogously, replacing $s \cdot x$ with $x \cdot s$.
 \end{definition}
 
-Finally, it is worth noting that we can also generate a normal subgroup of a
-group, using the following definition.
+Finally, it is worth noting that we can also use a set of elements to generate a
+normal subgroup of a group, using the following definition.
 
 \begin{definition}
   \label{def:normal-closure}
@@ -290,10 +289,14 @@ group, using the following definition.
     closure} of $X$, and is denoted by $\llangle X \rrangle$.
 \end{definition}
 
-This definition is particularly interesting in the study of congruences.  Since
-a normal subgroup is the group theory analogue of a semigroup congruence, it
-follows that the taking of normal closures in a group is analogous to the use of
-generating pairs in a semigroup (see Section \ref{sec:intro-gen-pairs}).
+We will see that this definition is particularly interesting in the study of
+congruences (see Section \ref{sec:intro-congs}).  A congruence on a group has
+classes equal to the cosets of a normal subgroup, and every congruence arises in
+this way.  Hence, since normal subgroups are the group theory analogue of
+semigroup congruences, it follows that the taking of normal closures in a group
+is analogous to the use of generating pairs in a semigroup (see Section
+\ref{sec:intro-gen-pairs}).  This correspondence is explained in detail in
+Section \ref{sec:normal-subgroups}.
 
 \section{Homomorphisms}
 \label{sec:homomorphisms}
@@ -344,8 +347,7 @@ follows.
   $$S \hooktwoheadrightarrow T$$
 \end{definition}
 
-Next we define some important attributes of a homomorphism, which tell us
-something about how elements are mapped to each other.
+Next we define some important attributes of a homomorphism.
 
 \begin{definition}
   \label{def:kernel-homo}
@@ -362,17 +364,17 @@ something about how elements are mapped to each other.
   \label{def:image}
   \index{image!of a homomorphism}
   \nomenclature[im]{$\im$}{Image of a homomorphism}
-  The \textbf{image} $\im\phi$ of a homomorphism $\phi:S \to T$ is the set of
-  elements $t \in T$ such that
+  The \textbf{image} $\im\phi$ of a homomorphism $\phi:S \to T$ is $(S)\phi$,
+  the set of elements $t \in T$ such that
   $$(s)\phi = t$$
   for some $s \in S$.
 \end{definition}
 
 Monoid homomorphisms are defined analogously to semigroup homomorphisms,
 replacing the word ``semigroup'' with ``monoid''.  If not specified, it is
-assumed that ``homomorphism'' refers to a semigroup homomorphism.  Note that a
-monoid homomorphism $\phi:S \to T$ always maps the identity of $S$ to the
-identity of $T$, since
+assumed that ``homomorphism'' refers to a semigroup homomorphism.  By this
+definition, we can see that a monoid homomorphism $\phi:S \to T$ always maps the
+identity of $S$ to the identity of $T$, since
 $(x)\phi \cdot (\id)\phi
 = (x \id)\phi
 = (x)\phi
@@ -574,11 +576,11 @@ semigroup.
 \end{proposition}
 
 The fact that congruences lie in a lattice, and therefore form a semigroup,
-allows us to use some semigroup theory on the congruences as semigroup elements
+allows us to view congruences as semigroup elements
 in their own right.  In Chapter \ref{chap:lattice} in particular we will
 generate a congruence lattice using just its principal congruences as generators
 and join ($\vee$) as a semigroup operation (see Proposition
-\ref{prop:congruence-lattice-gens}).  And at various times in this thesis
+\ref{prop:congruence-lattice-gens}), and at various points in this thesis
 we will show the Hasse diagrams of congruence lattices, viewing them as partial
 orders (for some examples, see Figures \ref{fig:g3-lattice} and
 \ref{fig:mn-cong-lattice}).
@@ -594,7 +596,7 @@ The idea of a congruence fits closely with the concept of a semigroup
 We now describe a concept key to Chapter \ref{chap:pairs} as well as to
 semigroup presentations, that of \textit{generating pairs}.  Much of the
 description in this section is adapted from a previous thesis,
-\cite{mtorpey_msc}.
+\cite{mtorpey_msc}, which itself closely follows \cite[\S1.4--1.5]{howie}.
 
 \begin{definition}
   \label{def:gen-pairs}
@@ -1187,8 +1189,8 @@ finite \cite[\S2.1]{howie}.  These containments are shown in Figure
 
 \begin{proposition}
   \label{prop:greens-as-congs}
-  Let $S$ be a semigroup.  $\LL$ is a right congruence on $S$, and $\RR$ is a
-  left congruence on $S$.
+  Let $S$ be a semigroup.  The relation $\LL$ is a right congruence on $S$, and
+  the relation $\RR$ is a left congruence on $S$.
   \begin{proof}
     Let $(x,y) \in \lL$, and let $s \in S$.  From Definition
     \ref{def:greens-relations} we have $a,b \in S$ such that $ax=y$ and $by=x$.
