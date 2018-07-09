@@ -2339,13 +2339,51 @@ The parallel method in this chapter, and its implementation in \libsemigroups{},
 include support for left congruences and right congruences, as well as the more
 important two-sided congruences.  Currently, Todd--Coxeter and pair enumeration
 are the only methods which support left and right congruences, while
-Knuth--Bendix is only applied in the two-sided case.  However, there does exist
-a variation of the Knuth--Bendix procedure which could compute left and right
-congruences in some limited cases, namely when the semigroup in question is the
-free monoid $X^*$ for some set $X$.  The procedure involves appending an extra
-generator denoted by `$\#$' and adding it as a prefix to all the words in the
-set of generating pairs $W$.  It is described in more detail in
-\cite[\S2.8]{sims}.
+Knuth--Bendix is only applied in the two-sided case.  It is worth explaining why
+Knuth--Bendix as described in this chapter does not apply to left and right
+congruences, as well as mentioning a way in which it could be altered to compute
+left and right congruences as well.
+
+Assume that we are given parameters $X$, $R$, and $W$, and that as in the rest
+of this chapter, we are attempting to calculate the two-sided congruence defined
+by $W$ on the semigroup presented by $\pres X R$.  The Knuth--Bendix procedure
+as described above uses $X$ as an alphabet, and $R \cup W$ as the basis of a
+rewriting system $\rws$, reversing pairs as necessary in order to make sure they
+are all terminating.  It then adds pairs to $\rws$ to make it a confluent,
+terminating rewriting system, and then we can use $\rws$ to rewrite any word $w$
+in $X^+$ to the unique canonical word $w'$ which defines the congruence class of
+$w$.  Rewriting a word $w$ using $\rws$ consists of searching through $w$ for
+any occurrence of a word on the left-hand side of a rule in $\rws$, and
+replacing it with the word on the right-hand side of that rule, until no more
+rules can be applied.  In other words, given a rule $u \to v$ in $\rws$, we can
+rewrite any word of the form $aub$ to $avb$, for any $a,b \in X^*$.  This makes
+sense because in a congruence $\rho$, a pair $(u,v) \in \rho$ implies the pair
+$(aub, avb) \in \rho$, for $a,b,u,v$ as described above.
+
+Now assume that we are given the parameters $X$, $R$, and $W$, as above, except
+that we are calculating the \textit{right} congruence they define, instead of
+the two-sided congruence.  Clearly the pair $(u,v) \in \rho$ does not imply the
+pair $(aub, avb) \in \rho$, and we we cannot have a rewriting system that
+rewrites $aub$ to $avb$.  The definition of a right congruence instead entails
+the more limited rule that $(u,v) \in \rho$ implies $(ub, vb) \in \rho$ for any
+$b \in X^*$.  We could therefore imagine a new type of rewriting system, which
+only applies the rule $u \to v$ to words which have $u$ is a prefix.  However,
+we now have the problem that our semigroup is defined by the presentation
+$\pres X R$, and that rules from $R$ need to be applied to words in $X^*$ in the
+traditional two-sided way in order for words representing the same element of
+$S$ to be related by $\lrstar_\rws$.  It is possible that two separate rewriting
+systems, one to be applied in the usual way, and one only to be applied to a
+suffix, could be combined in order to make such a method possible.  However, it
+is not clear how confluence could be enforced on such a hybrid system.  Hence,
+for the moment, no such algorithm exists in \libsemigroups{}.
+
+Though a general Knuth--Bendix procedure for left and right congruences is not
+forthcoming, there does exist a variation of the procedure which could compute
+left and right congruences in some limited cases, namely when the semigroup in
+question is the free monoid $X^*$ for some set $X$.  The procedure involves
+appending an extra generator denoted by `$\#$' to $X$, and adding it as a prefix
+or suffix to all the words in the set of generating pairs $W$.  It is described
+in more detail in \cite[\S2.8]{sims}.
 
 Since this is limited to left and right congruences over free monoids, it is
 limited in its possible use for the algorithm described in this chapter.
