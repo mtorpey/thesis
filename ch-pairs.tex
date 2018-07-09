@@ -105,10 +105,11 @@ the definitions of terms surrounding finite presentations.
 \begin{definition}
   \label{def:concrete}
   \index{concrete}
-  A semigroup $S$ is \textbf{concrete} if it is finite, and lies in a category
-  with decidable word problem; that is, for a presentation $\pres X R$ for $S$, and
-  any two words $w_1$ and $w_2$ in $X^+$, it can always be decided in a finite
-  time whether $w_1$ and $w_2$ represent the same element of $S$.
+  A semigroup $S$ will be called \textbf{concrete} if it is known in advance to
+  be finite.  In particular, a concrete semigroup has decidable word problem --
+  that is, given a presentation $\pres X R$ for $S$, and any two words $w_1$ and
+  $w_2$ in $X^+$, it can always be decided in a finite time whether $w_1$ and
+  $w_2$ represent the same element of $S$.
 \end{definition}
 
 Concrete semigroups can have many different forms.  Perhaps the most trivial and
@@ -120,15 +121,15 @@ Definition \ref{def:cayley-table}).  Semigroups specified by
 Cayley tables are therefore concrete; but in practice they are used very little,
 since they require a great deal of space to store -- order $O(|S|^2)$.
 
-A more common representation is a transformation semigroup, or a semigroup of
-partial permutations.  These contain elements which can be multiplied and
-compared without reference to the semigroup as a whole: for example, if
-$x = \transV 13342$ and $y = \transV 24422$ then we can calculate
-$xy = \transV 24424$ without knowing anything about $S$, the semigroup that
-contains $x$ and $y$.  So long as all elements in these semigroups have finite
-degree, any multiplication or comparison is guaranteed to complete in finite
-time, and so the word problem on such a semigroup $S$ is decidable, and $S$ is
-concrete.
+It will be more common for us to consider semigroups of partial transformations.
+These contain elements which can be multiplied and compared without reference to
+the semigroup as a whole: for example, if $x = \transV 13342$ and
+$y = \transV 24422$ then we can calculate $xy = \transV 24424$ without knowing
+anything about $S$, the semigroup that contains $x$ and $y$.  So long as all
+elements in these semigroups have finite degree, and so long as there are only a
+finite number of generators, the semigroup in question will also certainly be
+finite.  Hence, we can consider semigroups of partial transformations as
+concrete semigroups.
 
 Finitely presented semigroups are a different case, in that their elements
 cannot be compared without reference to the semigroup as a whole.  If $S$ is a
