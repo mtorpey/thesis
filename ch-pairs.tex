@@ -1447,9 +1447,9 @@ the semigroup element of $S$ represented by $w$.
 For ease of notation and understanding, this section will describe an algorithm
 for the word problem on a finitely presented semigroup.  We understand that this
 is the same as the problem of whether a given pair of words represent semigroup
-elements related to each other by a two-sided congruence $\rho$.  The ideas do
-not extend easily to left and right congruences, which will therefore not have
-this method as an option (but see Section \ref{sec:kb-l-r}).
+elements related to each other by a two-sided congruence $\rho$.  The current
+implementation of this method in \libsemigroups{} does not include left and
+right congruences as an option (but see Section \ref{sec:kb-l-r}).
 
 In order
 to describe the process, we must first explain some background theory.  A full
@@ -1778,20 +1778,20 @@ applying rules in $\rws$.
 \end{algorithmic}
 \end{algorithm}
 
-It should be noted that, like the
-Todd--Coxeter procedure, there is no guarantee that the algorithm will complete
-in a finite time unless the presentation $\pres X R$ is known to be finite.
-More rules may be added continually, which themselves need to
-be checked for critical pairs, without a complete set ever being found.  It may
-also be that a confluent terminating rewriting system will be found, but after a
-very long time, and it is never known whether the process will finish until it
-does.  However, this process has one clear advantage over Todd--Coxeter, which is
-that it may complete even when the monoid $\pres X R$ is infinite, so long as
-the set of rules in the rewriting system is finite
-(see Example \ref{ex:bicyclic}).  This is a strong argument
-in favour of trying the Knuth--Bendix process along with other methods.  However,
-the Knuth--Bendix process cannot be used for left or right congruences, an area
-where Todd--Coxeter has a clear advantage (again, see Section \ref{sec:kb-l-r}).
+It should be noted that, like the Todd--Coxeter procedure, there is no guarantee
+that the algorithm will complete in a finite time unless the presentation
+$\pres X R$ is known to be finite.  More rules may be added continually, which
+themselves need to be checked for critical pairs, without a complete set ever
+being found.  It may also be that a confluent terminating rewriting system will
+eventually be found, but not for a very long time -- and it is never known in
+advance whether the process is going to terminate.  However, this process has
+one clear advantage over Todd--Coxeter, which is that it may complete even when
+the monoid $\pres X R$ is infinite, so long as the set of rules in the rewriting
+system is finite (see Example \ref{ex:bicyclic}).  This is a strong argument in
+favour of trying the Knuth--Bendix process along with other methods.  The
+Knuth--Bendix process as currently implemented cannot be used for left or right
+congruences, an area where Todd--Coxeter has a clear advantage (but again, see
+Section \ref{sec:kb-l-r}).
 
 We give an example of a rewriting system which solves the word problem for an
 infinite monoid:
@@ -2353,54 +2353,40 @@ The parallel method in this chapter, and its implementation in \libsemigroups{},
 include support for left congruences and right congruences, as well as the more
 important two-sided congruences.  Currently, Todd--Coxeter and pair enumeration
 are the only methods which support left and right congruences, while
-Knuth--Bendix is only applied in the two-sided case.  It is worth explaining why
-Knuth--Bendix as described in this chapter does not apply to left and right
-congruences, as well as mentioning a way in which it could be altered to compute
-left and right congruences as well.
+Knuth--Bendix is only applied in the two-sided case.  However, there does exist
+a version of Knuth--Bendix which applies to left and right congruences, and
+it could be considered a useful addition to the parallel algorithm described in
+this chapter.
 
-Assume that we are given parameters $X$, $R$, and $W$, and that as in the rest
-of this chapter, we are attempting to calculate the two-sided congruence defined
-by $W$ on the semigroup presented by $\pres X R$.  The Knuth--Bendix procedure
-as described above uses $X$ as an alphabet, and $R \cup W$ as the basis of a
-rewriting system $\rws$, reversing pairs as necessary in order to make sure they
-are all terminating.  It then adds pairs to $\rws$ to make it a confluent,
-terminating rewriting system, and then we can use $\rws$ to rewrite any word $w$
-in $X^+$ to the unique canonical word $w'$ which defines the congruence class of
-$w$.  Rewriting a word $w$ using $\rws$ consists of searching through $w$ for
-any occurrence of a word on the left-hand side of a rule in $\rws$, and
-replacing it with the word on the right-hand side of that rule, until no more
-rules can be applied.  In other words, given a rule $u \to v$ in $\rws$, we can
-rewrite any word of the form $aub$ to $avb$, for any $a,b \in X^*$.  This makes
-sense because in a congruence $\rho$, a pair $(u,v) \in \rho$ implies the pair
-$(aub, avb) \in \rho$, for $a,b,u,v$ as described above.
+The algorithm for right congruences is described in \cite[\S2.8]{sims}, and is
+summarised as follows.  Given parameters $X$, $R$, and $W$, as described in
+Section \ref{sec:program-inputs}, we wish to find the right congruence $\rho$
+defined by $W$ on the semigroup $S$ presented by $\pres X R$.
+Our goal is to find a rewriting system $\rws$ which rewrites two words $u$ and
+$v$ to the same word if and only if they represent elements of $S$ which are in
+the same $\rho$-class.  We define a new symbol, `$\#$', which we will use as an
+additional generator in the new alphabet $Y = X \cup \{\#\}$.  We then consider the
+pairs in $W$, and produce the set
+$$\#W = \{(\#u, \#v) : (u, v) \in W\}.$$
+Now, we apply the Knuth--Bendix completion procedure to the presentation
+$\pres{Y}{R, \#W}$ in the same way as described in Section \ref{sec:kb}.  The
+algorithm produces a rewriting system $\rws$.  Next we consider the subset
+$\#X^+ \subseteq Y^+$ defined by
+$$\#X^+ = \{\#w : w \in X^+\}.$$
+It is shown in \cite[\S2.8]{sims} that $\#X^+$ is a union of
+$\lrstar_\rws$-classes, and that the $\lrstar_\rws$-classes contained in $\#X^+$
+are in one-to-one correspondence with the $\rho$-classes of $X^+$.  That is,
+given a pair of words $(u,v) \in X^+$, the elements $[u]$ and $[v]$ in $S$ lie
+in the same $\rho$-class if and only if the words $u$ and $v$ are rewritten to
+the same word by $\rws$.  A symmetric approach would work for left congruences,
+with the $\#$ symbols being added to the ends of words instead of to the start.
 
-Now assume that we are given the parameters $X$, $R$, and $W$, as above, except
-that we are calculating the \textit{right} congruence they define, instead of
-the two-sided congruence.  Clearly the pair $(u,v) \in \rho$ does not imply the
-pair $(aub, avb) \in \rho$, and we we cannot have a rewriting system that
-rewrites $aub$ to $avb$.  The definition of a right congruence instead entails
-the more limited rule that $(u,v) \in \rho$ implies $(ub, vb) \in \rho$ for any
-$b \in X^*$.  We could therefore imagine a new type of rewriting system, which
-only applies the rule $u \to v$ to words which have $u$ is a prefix.  However,
-we now have the problem that our semigroup is defined by the presentation
-$\pres X R$, and that rules from $R$ need to be applied to words in $X^*$ in the
-traditional two-sided way in order for words representing the same element of
-$S$ to be related by $\lrstar_\rws$.  It is possible that two separate rewriting
-systems, one to be applied in the usual way, and one only to be applied to a
-suffix, could be combined in order to make such a method possible.  However, it
-is not clear how confluence could be enforced on such a hybrid system.  Hence,
-for the moment, no such algorithm exists in \libsemigroups{}.
-
-Though a general Knuth--Bendix procedure for left and right congruences is not
-forthcoming, there does exist a variation of the procedure which could compute
-left and right congruences in some limited cases, namely when the semigroup in
-question is the free monoid $X^*$ for some set $X$.  The procedure involves
-appending an extra generator denoted by `$\#$' to $X$, and adding it as a prefix
-or suffix to all the words in the set of generating pairs $W$.  It is described
-in more detail in \cite[\S2.8]{sims}.
-
-Since this is limited to left and right congruences over free monoids, it is
-limited in its possible use for the algorithm described in this chapter.
-However, it might cause a performance improvement in those few cases.
-
-% TODO? In the \GAP{} library, anything interesting they might do
+This additional method could be included in the parallel algorithm, and in
+\libsemigroups{}, without too much extra work.  It may be that it would perform
+well, returning faster than Todd--Coxeter on some examples -- but it would need
+to be benchmarked in a manner similar to Section \ref{sec:benchmarking} in order
+to establish whether it were worth running in either the concrete case or the
+finitely presented case.  Once this were decided, we would be able to remove the
+two cross (\xmark) symbols in the `KB' column of Table
+\ref{tab:running-in-parallel}, and change each one to either a tick (\cmark) or
+a tilde ($\sim$).
