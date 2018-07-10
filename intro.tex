@@ -120,11 +120,32 @@ possessed by their elements.
 \end{definition}
 
 These three definitions represent important subcategories of semigroups, with
-group theory in particular being an important field in its own right.  As
+group theory in particular being an important field in its own right.  Inverse
+semigroups are not a core part of this thesis, but we will state a few
+elementary facts which will be required in Chapter \ref{chap:converting}:
+
+\begin{proposition}
+  \label{prop:inverse-semigroup-facts}
+  Let $S$ be an inverse semigroup, and let $x$ be an element of $S$.  The
+  following hold:
+  \begin{enumerate}[\rm(i)]
+  \item The elements $x^{-1}x$ and $xx^{-1}$ are idempotent;
+  \item Every $\LL$-class and every $\RR$-class of $S$ contains exactly one
+    idempotent;
+  \end{enumerate}
+  where $\LL$ and $\RR$ are as defined in Section \ref{sec:intro-greens}.
+  \begin{proof}
+    For (i), simply observe that $(x^{-1}x)(x^{-1}x)=(x^{-1}xx^{-1})x = x^{-1}x$
+    and $(xx^{-1})(xx^{-1})=(xx^{-1}x)x^{-1} = xx^{-1}$.  For (ii), see
+    \cite[Theorem 5.1.1]{howie}.
+  \end{proof}
+\end{proposition}
+
+As
 mentioned in the preface, groups are also an important part of any semigroup's
 structure -- we will encounter a semigroup's \textit{subgroups} as part of the
 study of its linked triples, for example.  We define subgroups along with
-\textit{subsemigroups}, as follows.
+\textit{submonoids} and \textit{subsemigroups}, as follows.
 
 \begin{definition}
   \label{def:subsemigroup}

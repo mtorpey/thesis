@@ -1363,7 +1363,20 @@ then go on to answer this question.
   \label{lem:xly}
   Let $x$ and $y$ be elements of an inverse semigroup $S$.  If $xy^{-1}$ is
   idempotent and $x^{-1}x = y^{-1}y$, then $x = y$.
-  % TODO: prove this silly inverse semigroup lemma
+  \begin{proof}
+    We start by proving that $xy^{-1} = yy^{-1}$, and then go on to prove that
+    $x=y$.  By Proposition \ref{prop:inverse-semigroup-facts}(i), we know that
+    $yy^{-1}$ is idempotent.  We can left-multiply each of $xy^{-1}$ and
+    $yy^{-1}$ by an element in $S$ to give the other:
+    $yx^{-1}(xy^{-1}) = y(x^{-1}x)y^{-1} = yy^{-1}yy^{-1} = yy^{-1}$ and
+    $xy^{-1}(yy^{-1}) = xy^{-1}$.  Hence $xy^{-1} \LL yy^{-1}$.  However, we
+    know from Proposition \ref{prop:inverse-semigroup-facts}(ii) that an inverse
+    semigroup has only one idempotent in each $\LL$-class.  Since $xy^{-1}$ and
+    $yy^{-1}$ are both idempotent, we must therefore conclude that
+    $xy^{-1} = yy^{-1}$.  Finally, we observe that
+    $$x = x(x^{-1}x) = x(y^{-1}y) = (xy^{-1})y = (yy^{-1})y = y,$$
+    and so we have $x=y$ as required.
+  \end{proof}
 \end{lemma}
 
 \begin{theorem}
