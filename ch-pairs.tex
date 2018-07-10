@@ -24,7 +24,7 @@ of only the pairs in $R$ along with the pairs required by the axioms of a
 congruence (reflexivity, symmetry, transitivity and compatibility).  Thus a
 congruence can be described completely by storing only a few pairs.
 Indeed, many congruences are \textit{principal}, requiring only one pair to
-generate them: see, for example the congruences studied in Chapter
+generate them: see, for example, the congruences studied in Chapter
 \ref{chap:motzkin}, most of which are principal.
 
 Another justification for the use of generating pairs is that it is a completely
@@ -36,18 +36,31 @@ semigroups, linked triples \cite[\S 3.5]{howie} -- but generating pairs can
 represent a congruence on any semigroup whatsoever.  Furthermore, one
 might be interested in what pairs are implied by a given pair or set of pairs in
 a congruence, and this representation can answer such questions.
-
 Left congruences and right congruences can also be described using generating
 pairs, and some algorithms designed for two-sided congruences can be used with
 minor modifications to compute information about left and right congruences.
 
-This chapter describes a parallelised approach for computing a congruence from a
-set of generating pairs, as implemented in \libsemigroups{}
-\cite{libsemigroups}.  First we will give a general outline of the system
-and what questions it hopes to answer, then we will describe in detail each
+Algorithms for computing a congruence defined by generating pairs have existed
+in the \GAP{} library for many years \cite[\texttt{lib/mgmcong.gi}]{gap}, but
+lack sophistication and perform slowly (see Section
+\ref{sec:random-benchmarking} for benchmarks).  The approach taken in the
+library is based on an algorithm in \cite{atkinson_1984} for finding the blocks
+of a transitive permutation group: essentially it consists of repeatedly left-
+and right-multiplying the generating pairs by generators of the semigroup, and
+storing the generated relation in a union--find table (see Section
+\ref{sec:union-find}).  This approach is essentially the same as the
+\textit{pair orbit enumeration} algorithm that is described in detail in Section
+\ref{sec:p}.
+
+This chapter describes a new parallelised approach for computing a congruence
+from a set of generating pairs, as implemented in \libsemigroups{}
+\cite{libsemigroups}.  First we will give a general outline of the system and
+what questions it hopes to answer; then we will describe in detail each
 algorithm used, its advantages and disadvantages, and when it can be applied.
-Finally we will explain how the different algorithms are executed together, and
-consider their implementation in \cite{libsemigroups}.
+Next we will explain how the different algorithms are executed together, and
+consider their implementation in \libsemigroups{}; and finally we will show the
+results of some benchmarking tests which compare its performance to the code in
+the \GAP{} library.
 
 \section{Reasons for parallelisation}
 
@@ -2000,6 +2013,7 @@ which algorithms may perform well or which may return at all, it is useful to be
 able to execute all at once and return in whichever run-time is quickest.
 
 \subsection{Comparison on random examples}
+\label{sec:random-benchmarking}
 A large number of example congruences were generated randomly and run using each
 different algorithm, along with the default implementation in \GAP{} \cite{gap}, to
 analyse performance.  All these tests were conducted using an Intel Core
