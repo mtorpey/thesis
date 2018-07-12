@@ -37,13 +37,13 @@ they can be converted to one another are summarised in Table
     \cline{2-7}
     \multirow{7}{*}{\rotatebox[origin=c]{90}{From\ldots}} &  & GP & NS & LT & KT & RC \\
     \cline{2-7}
-    & Generating pairs ~\ref{sec:converting-pairs} & \cellcolor{black} & \ref{sec:trivial-conversions} & \ref{sec:pairs-to-linked-triple} & \ref{sec:pairs-to-kertr} & \textcolor{gray}{\ref{sec:pairs-to-rees}} \\
+    & Generating pairs ~\ref{sec:converting-pairs} & \cellcolor{black} & \ref{sec:trivial-conversions} & \ref{sec:pairs-to-linked-triple} & \ref{sec:pairs-to-kertr} & \textcolor{gray!50}{\ref{sec:pairs-to-rees}} \\
     \cline{2-7}
     & Normal subgroup (groups) ~\ref{sec:normal-subgroups} & \ref{sec:trivial-conversions} & \cellcolor{black} & \ref{sec:normal-subgroup-to-linked-triple} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions}\\
     \cline{2-7}
     & Linked triple ((0-)simple) ~\ref{sec:linked-triples} & \ref{sec:linked-triple-to-pairs} & \ref{sec:normal-subgroup-to-linked-triple} & \cellcolor{black} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions} \\
     \cline{2-7}
-    & Kernel--trace (inverse) ~\ref{sec:kertr} & \textcolor{gray}{\ref{sec:kertr-to-pairs}} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions} & \cellcolor{black} & \ref{sec:rees-to-kertr} \\
+    & Kernel--trace (inverse) ~\ref{sec:kertr} & \textcolor{gray!50}{\ref{sec:kertr-to-pairs}} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions} & \cellcolor{black} & \ref{sec:rees-to-kertr} \\
     \cline{2-7}
     & Rees congruence ~\ref{sec:converting-rees} & \ref{sec:rees-to-pairs} & \ref{sec:trivial-conversions} & \ref{sec:trivial-conversions} & \ref{sec:rees-to-kertr} & \cellcolor{black}\\
     \cline{2-7}
@@ -51,7 +51,7 @@ they can be converted to one another are summarised in Table
   \renewcommand{\arraystretch}{0.7}
   \caption[References to conversion algorithms]
   {Section references to algorithms for converting between different congruence
-    representations.  Grey references represent open problems.}
+    representations.  Grey references represent open problems}
   \label{tab:converting}
 \end{table}
 
@@ -90,7 +90,7 @@ pairs as possible -- see, for example, Sections \ref{sec:pairs-to-linked-triple}
 and \ref{sec:pairs-to-kertr}.  Conversely, if we wish to convert another
 representation for a congruence $\rho$ to a set of generating pairs, it is
 desirable to find as small a set of pairs as possible -- see, for example,
-Sections \ref{sec:linked-triple-to-pairs} and \ref{sec:rees-to-pairs}.  When
+Sections \ref{sec:rees-to-pairs} and \ref{sec:linked-triple-to-pairs}.  When
 converting between generating pairs and other representations, these will be the
 goals.
 
@@ -264,7 +264,7 @@ $G$, $I$, $\Lambda$ and $P$ are all finite.
 
 Next we consider the congruences of a finite 0-simple semigroup.
 
-\begin{definition}
+\begin{definition}[{\cite[\S 3.5]{howie}}]
   \label{def:linked-triple}
   \index{linked triple}
   \nomenclature[N,S,T]{$(N,\sS,\tT)$}{Linked triple}
@@ -290,7 +290,6 @@ Next we consider the congruences of a finite 0-simple semigroup.
     $$q_{\lambda \mu i j} = p_{\lambda i} p_{\mu i}^{-1} p_{\mu j} p_{\lambda
       j}^{-1}.$$
   \end{enumerate}
-  \cite[\S 3.5]{howie}
 \end{definition}
 
 We can associate the linked triples of a finite 0-simple semigroup with its
@@ -555,7 +554,7 @@ Since $|I|=|\Lambda|={1}$ and $P=(1_G)$, this last condition simplifies to
 $ab^{-1} \in N'$.
 
 Let $\rho'$ be the congruence on $\mathcal{M}[G; I, \Lambda; P]$ such that
-$(x)\phi ~\rho~ (y)\phi$ (i.e.~$(1,x,1) \mathrel{\rho'} (1,y,1)$) if and only if
+$(x)\phi ~\rho'~ (y)\phi$ (i.e.~$(1,x,1) \mathrel{\rho'} (1,y,1)$) if and only if
 $x ~\rho~ y$.  The condition defining $\rho$, that $xy^{-1} \in N$, is
 equivalent to the condition defined by the linked triple
 $(N, \Delta_I, \Delta_\Lambda)$, since $I$ and $\Lambda$ are both trivial.
@@ -620,12 +619,12 @@ other information.  We could do this by enumerating all the elements of all the
 classes of the congruence, and then simply looking up the relevant information
 to find the linked triple.  However, this is very expensive, and once the
 classes are enumerated there is likely no need for the linked triple, since all
-information about the congruence has been calculated.
+information about the congruence has already been calculated.
 
 In \cite[\S 3.2]{mtorpey_msc}, the author presents an algorithm to calculate a
 congruence's linked triple directly from a set of generating pairs, calculating
 as few extra pairs as possible.  This algorithm performs quickly, representing a
-big improvement on using a more naive algorithm to find the linked triple
+big improvement on using a more na\"ive algorithm to find the linked triple
 \cite[\S 6.1.2]{mtorpey_msc}.  The algorithm is justified by the following
 definition and theorem from \cite{mtorpey_msc}.
 
@@ -742,11 +741,11 @@ We can see the algorithm working in the following example.
   \end{pmatrix}.
   $$
   Let $\rho$ be the congruence generated by the single pair
-  $\left(\left(1, (), 1\right), \left(3, (1~2~3~4), 1\right)\right)$.  We can
+  $\big(\left(1, (), 1\right), \left(3, (1~2~3~4), 1\right)\big)$.  We can
   use \textsc{LinkedTripleFromPairs} to find the linked triple corresponding to
   $\rho$, or to determine that $\rho$ is universal.
 
-  We set our triple to $(\{()\}, \Delta_4, \Delta_2)$ to start with, where
+  We set our triple to $\big(\{()\}, \Delta_4, \Delta_2\big)$ to start with, where
   $\Delta_n$ is the diagonal relation on $\{1, \ldots, n\}$.  Then we consider
   the single pair in the generating set: $x = \left(1, (), 1\right)$ and
   $y = \left(3, (1~2~3~4), 1\right)$.  We do not have $x=y$, $x=0$ or $y=0$, so
@@ -891,8 +890,7 @@ $\sS' \subseteq \sS$ and $\tT' \subseteq \tT$ and we have a
 good idea of what pairs are necessary to generate a congruence.  In the
 algorithm, we assume that a generating set $N'$ is known for $N$ -- this is
 certainly likely to be the case in a computational setting, for example in \GAP{}
-\cite{gap} where groups almost always have a known generating set (see the
-discussion of computing using generators in Chapter \ref{chap:intro}).  We should
+\cite{gap} where groups almost always have a known generating set.  We should
 note that this set should act as a set of normal subgroup generators, meaning
 that it might be even smaller than a standard set of subgroup generators.  For
 $\sS'$ we choose a minimal spanning tree of depth $1$ for each class of $\sS$, by linking
@@ -978,7 +976,7 @@ in all cases.
 \label{alg:linked-triple-to-pairs}
 \index{PairsFromLinkedTriple@\textsc{PairsFromLinkedTriple}}
 \begin{algorithmic}[1]
-  \Procedure{PairsFromLinkedTriple}{$(N, \mathcal{S}, \mathcal{T})$}
+  \Procedure{PairsFromLinkedTriple}{$N, \mathcal{S}, \mathcal{T}$}
     \State $N' := $ normal subgroup generating set for $N$
     \State $\sS' := \varnothing$
     \For{each non-singleton class $\{i_1, i_2, \ldots, i_n\}$ of $\mathcal{S}$}
@@ -1011,10 +1009,10 @@ in all cases.
       \EndIf
       \State Fix some $\xi \in \Lambda$ such that $p_{\xi i} \neq 0$
       \State Fix some $k \in I$ such that $p_{\lambda k} \neq 0$
-      \State $\R \gets \R \cup \left\{\left(
+      \State $\R \gets \R \cup \Big\{\big(
         (i, p_{\xi i}^{-1}ap_{\lambda k}^{-1}, \lambda),
         (j, p_{\xi j}^{-1}p_{\mu k}^{-1}, \mu)
-        \right)\right\}$
+        \big)\Big\}$
     \EndWhile
     \State \Return $\R$
   \EndProcedure
@@ -1061,53 +1059,53 @@ We can see how the algorithm performs on the following example.
   $(i,j)=(1,1)$, and $(\lambda,\mu)=(2,3)$.  We use the lowest possible values
   for $\xi$ and $k$: $\xi = 2$ and $k = 1$.  The pair we add is
   \begin{align*}
-    \left(
+    \big(
       (i, p_{\xi i}^{-1}ap_{\lambda k}^{-1}, \lambda),
       (j, p_{\xi j}^{-1}p_{\mu k}^{-1}, \mu)
-    \right)
-    &= \left(
+    \big)
+    &= \big(
       (1, p_{2 1}^{-1}(1~2~3)p_{2 1}^{-1}, 2),
       (1, p_{2 1}^{-1}p_{3 1}^{-1}, 3)
-    \right) \\
-    &= \left(
+    \big) \\
+    &= \big(
       \left(1, (1~4)(1~2~3)(1~4), 2\right),
       \left(1, (1~4)(1~4~2~3), 3\right)
-    \right) \\
-    &= \left(
+    \big) \\
+    &= \big(
       \left(1, (2~3~4), 2\right),
       \left(1, (1~2~3), 3\right)
-    \right).
+    \big).
   \end{align*}
   For the second pair, we change $a$ to the second generator $(2~3~4)$, and
   having exhausted both $\sS'$ and $\tT'$ we leave $(i,j)$ and $(\lambda,\mu)$
   unchanged.  We can use the same values for $\xi$ and $k$, so the next pair we
   add is
   \begin{align*}
-    \left(
+    \big(
       (1, p_{2 1}^{-1}(2~3~4)p_{2 1}^{-1}, 2),
       (1, p_{2 1}^{-1}p_{3 1}^{-1}, 3)
-    \right)
-    &= \left(
+    \big)
+    &= \big(
       \left(1, (1~4)(2~3~4)(1~4), 2\right),
       \left(1, (1~4)(1~4~2~3), 3\right)
-    \right) \\
-    &= \left(
+    \big) \\
+    &= \big(
       \left(1, (1~2~3), 2\right),
       \left(1, (1~2~3), 3\right)
-    \right).
+    \big).
   \end{align*}
   This exhausts $N'$ as well, so have exhausted all three sets.  We therefore
   return the set of two pairs,
-  $$\left\{
-    \left(
+  $$\Big\{
+    \big(
       \left(1, (2~3~4), 2\right),
       \left(1, (1~2~3), 3\right)
-    \right),
-    \left(
+    \big),
+    \big(
       \left(1, (1~2~3), 2\right),
       \left(1, (1~2~3), 3\right)
-    \right)
-  \right\},$$
+    \big)
+  \Big\},$$
   which is a valid generating set for the congruence.
 \end{example}
 
@@ -1495,7 +1493,7 @@ relations $\varepsilon_I$ and $\varepsilon_\Lambda$ are both trivial, so the
 non-universal congruences on $S$ correspond to triples of the form
 $(N, \Delta_I, \Delta_\Lambda)$ for any normal subgroup $N \trianglelefteq G$.
 Now, the triviality of $\Delta_I$ and $\Delta_\Lambda$ implies that no two
-elements can be related by a non-trivial congruence $\rho$ unless they lie
+elements can be related by a non-universal congruence $\rho$ unless they lie
 inside the same $\HH$-class.  Hence no two idempotents are related, so
 $\tr \rho = \Delta_E$.  The kernel consists of all elements in $S$ related to an
 idempotent.  Idempotents are either $0$ or have the form
@@ -1625,11 +1623,13 @@ certain congruences, which is desirable.
 
 \subsection{Regular semigroups}
 \label{sec:converting-regular}
-Recall that a regular semigroup \index{regular!semigroup} is one in which every element $x$ has an inverse
-$x'$ such that $x = xx'x$.  An inverse semigroup is a regular semigroup in which
-inverses are unique.  In Section \ref{sec:kertr} we discussed how a congruence
-on an inverse semigroup is uniquely determined by its kernel and trace, and gave
-both an abstract characterisation of a kernel--trace pair (Definition
+Recall that a regular semigroup \index{regular!semigroup} is one in which every
+element $x$ has an element $x'$ such that $x = xx'x$.  An inverse semigroup is a
+regular semigroup in which each element has a unique such element $x^{-1}$, with
+the additional requirement that $x^{-1}xx^{-1}=x^{-1}$.  In Section
+\ref{sec:kertr} we discussed how a congruence on an inverse semigroup is
+uniquely determined by its kernel and trace, and gave both an abstract
+characterisation of a kernel--trace pair (Definition
 \ref{def:kernel-trace-pair}) and a concise description of how this pair
 describes its congruence ($\Psi^{-1}$ in Theorem \ref{thm:kernel-trace-pair}).
 It turns out that the congruences on a regular semigroup can be described in a
@@ -1637,7 +1637,7 @@ similar way, which we will briefly examine here.
 
 A congruence on a regular semigroup is uniquely determined by its kernel and
 trace \cite[Corollary 2.11]{pastijn_1986}, and a kernel--trace pair can be
-characterised in the following way, analogue to Definition
+characterised in the following way, analogous to Definition
 \ref{def:kernel-trace-pair}.  Recall the definition of $\mathbf{E}^\flat$
 (Definition \ref{def:e-flat}).
 
