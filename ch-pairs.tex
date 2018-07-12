@@ -127,12 +127,14 @@ the definitions of terms surrounding finite presentations.
 
 Concrete semigroups can have many different forms.  Perhaps the most trivial and
 obvious example of a concrete semigroup would be a semigroup specified by a
-Cayley table: the generating set $X$ contains all the elements of $S$, and two
-words $w_1$ and $w_2$ represent the same element if and only if they produce the
-same number when their product is determined through the Cayley table (see
-Definition \ref{def:cayley-table}).  Semigroups specified by
-Cayley tables are therefore concrete; but in practice they are used very little,
-since they require a great deal of space to store -- order $O(|S|^2)$.
+Cayley table.  A Cayley table has a finite number of rows and columns, and
+therefore must describe a finite semigroup.  We can solve such a semigroup's
+word problem easily: if $X$ is the generating set containing all the elements of
+$S$, then two words $w_1$ and $w_2$ represent the same element if and only if
+they produce the same number when their product is determined through the Cayley
+table (see Definition \ref{def:cayley-table}).  Semigroups specified by Cayley
+are concrete, but in practice they are used very little, since they require a
+great deal of space to store -- order $O(|S|^2)$.
 
 It will be more common for us to consider semigroups of partial transformations.
 These contain elements which can be multiplied and compared without reference to
@@ -466,7 +468,7 @@ in the Knuth--Bendix process later (see Section \ref{sec:kb}).
 
 A full description of the Froidure--Pin algorithm is outside the scope of this
 thesis, but for more information about the algorithm and its implementation in
-\libsemigroups{}, see \cite{froidure_pin_jonusas} and \cite{froidure_pin}.
+\libsemigroups{}, see \cite{froidure_pin} and \cite{froidure_pin_jonusas}.
 
 \section{The methods}
 
@@ -635,8 +637,8 @@ finitely generated subgroup of a finitely presented group.  Arriving before the
 advent of electronic computers, the algorithm was originally intended to be
 carried out by hand.  Perhaps the earliest automatic implementation was on the
 EDSAC II computer in Cambridge \cite{leech_1963}.  Since then, a wide variety of
-efficient, optimised versions have been implemented, one example being \ACE{}
-\cite{ace}.
+efficient, optimised versions have been implemented, one notable example being
+\ACE{} \cite{ace}.
 
 A variation of Todd--Coxeter for semigroups was described in 1967
 \cite{neumann_1967}.  The algorithm takes a presentation $\pres X R$
@@ -650,7 +652,7 @@ Todd--Coxeter for semigroups can be found in \cite[Chapter 12]{ruskuc_thesis} an
 \cite[Chapter 1.2]{walker_thesis}, and a variation specific to inverse
 semigroups can be found in \cite{cutting_thesis}.  Our version of the algorithm
 is based closely on an implementation by G\"otz Pfeiffer, found in
-\cite[\texttt{lib/tcsemi.gi}]{gap}, and based on \cite{walker_thesis}.
+\cite[\texttt{lib/tcsemi.gi}]{gap}, itself based on \cite{walker_thesis}.
 
 We will now describe the Todd--Coxeter method as used in the context of this
 chapter.  Though the method itself does not represent new work, it is an
@@ -696,10 +698,9 @@ $$
 \begin{matrix*}[l]
   i & \textnormal{if~} w=\varepsilon,\\
   0 & \textnormal{if~} (i, w_1)\tau=0,\\
-  ((i, w_1)\tau, w_2 \ldots w_n)\bar\tau & \textnormal{otherwise}.
+  \big((i, w_1)\tau, w_2 \ldots w_n\big)\bar\tau & \textnormal{otherwise}.
 \end{matrix*} \right.
 $$
-
 The effect of $\bar\tau$ is to trace an entire word through the table, starting
 at a given row.
 
@@ -807,7 +808,8 @@ higher number in the table are replaced by the lower number.  The two rows are
 combined into one, with all known information being preserved -- this may imply
 that another pair of rows are equal, another coincidence that should be
 processed by a recursive call to \textsc{Coinc} (or should be stored in a list
-for processing after this call is finished).
+for processing after this call is finished).  Pseudo-code for \textsc{Coinc} can
+be found in Algorithm \ref{alg:coinc}.
 
 \begin{algorithm}
 \caption{The \textsc{Coinc} algorithm (Todd--Coxeter)}
@@ -1041,11 +1043,11 @@ state.
   \cline{2-3}
   3 & 5 & 4 \\
   \cline{2-3}
-  4 & \cancel{\textcolor{gray}{6}}5\!\!\! & 4 \\
+  4 & \cancel{\textcolor{gray!50}{6}}5\!\!\! & 4 \\
   \cline{2-3}
   5 & 4 & 5 \\
   \cline{2-3}
-  \textcolor{gray}{6} & \textcolor{gray}{4} & \textcolor{gray}{6} \\[-1.6ex]
+  \textcolor{gray!50}{6} & \textcolor{gray!50}{4} & \textcolor{gray!50}{6} \\[-1.6ex]
   \hline\noalign{\vspace{\dimexpr 1.4ex}} \cline{2-3}
 }
 
@@ -1107,7 +1109,7 @@ relatively small.
 
 \subsubsection{Left, right, and two-sided congruences}
 \label{sec:tc-l-r}
-In this section we will describe how to apply the given Todd--Coxeter method to
+Next we will describe how to apply the given Todd--Coxeter method to
 left, right and two-sided congruences.  The description of Todd--Coxeter given
 above is a method for finding the elements of the semigroup $S$ given by the
 presentation $\pres X R$, and describing their multiplication.  More precisely,
@@ -1115,7 +1117,7 @@ Todd--Coxeter produces a table in which each row represents one element
 $s \in S^1$, each column represents one generator $x \in X$, and the cell in the
 row of $s$ and the column of $x$ contains the row number of the element $sx$.
 Hence its columns describe a right regular representation of $S$, as described
-at the end of Example \ref{ex:tc}.  In the language of congruences, this is
+in Section \ref{sec:transformations}.  In the language of congruences, this is
 equivalent to finding the classes of the trivial congruence $\Delta_S$ on the
 semigroup $S$, or of the two-sided congruence $R^\sharp$ on the free semigroup
 $X^+$.
@@ -1200,7 +1202,7 @@ To see that this algorithm is correct, consider the following theorem.
 \begin{theorem}
   Let $\pres X R$ and $W$ be as in Section \ref{sec:program-inputs} and $\rho$
   be the right congruence they specify.
-  \textsc{ToddCoxeterRight}($\pres X R$, $W$) returns a table which describes the
+  \textsc{ToddCoxeterRight($\pres X R$, $W$)} returns a table which describes the
   classes of $\rho$ (after the identity row $1$ is removed).
   \begin{proof}
     We may safely assume that the basic Todd--Coxeter algorithm is correct
@@ -1282,7 +1284,7 @@ Algorithm \ref{alg:tc-left} for a pseudo-code description.
 \begin{theorem}
   Let $\pres X R$ and $W$ be as in Section \ref{sec:program-inputs} and $\rho$
   be the left congruence they specify.
-  \textsc{ToddCoxeterLeft}($\pres X R$, $W$) returns a table which describes the
+  \textsc{ToddCoxeterLeft($\pres X R$, $W$)} returns a table which describes the
   classes of $\rho$ (after the identity row $1$ is removed, and with respect to
   left multiplication).
   \begin{proof}
@@ -1461,6 +1463,7 @@ since it is easy to change between the two by appending or removing an identity
 \begin{definition}
   \label{def:rws}
   \index{rewriting system}
+  \nomenclature[R]{$\rws$}{Rewriting system}
   Let $X$ be an alphabet.  A \textbf{rewriting system} $\rws$ on $X^*$ is a set
   of ordered pairs $(u,v)$ where $u, v \in X^*$.
 \end{definition}
@@ -1473,6 +1476,9 @@ A rewriting system $\rws$ extends to relations
 $\to_\rws$, $\tostar_\rws$, and $\lrstar_\rws$
 which describe how words are rewritten, and which are defined as follows.
 
+\nomenclature[->R]{$\to_\rws$}{Rewriting system operation}
+\nomenclature[->R*]{$\tostar_\rws$}{Reflexive transitive closure of rewriting system operation}
+\nomenclature[->R*<]{$\lrstar_\rws$}{Equivalence of rewriting system operation}
 Let $u, v \in X^*$ and let $\rws$ be a rewriting system.
 We write $u \to_\rws v$ if there exist $(w_1, w_2) \in \rws$ and
 $s, t \in X^*$ such that $u=sw_1t$ and $v=sw_2t$.
@@ -1877,7 +1883,7 @@ rewrite to the same word.  Pair orbit enumeration has this condition even more
 obviously: more and more pairs are found, and the pair we are looking for can
 turn up at any time.
 
-In an implementation of this parallel method, it may therefore be prudent to
+In an implementation of this parallel method, it is therefore prudent to
 have a periodic check to see whether a desired pair is present, and return
 immediately if it is.  This check could be done by each individual algorithm
 every few hundred operations, or on a timer every few milliseconds.  In this
@@ -2014,10 +2020,11 @@ able to execute all at once and return in whichever run-time is quickest.
 
 \subsection{Comparison on random examples}
 \label{sec:random-benchmarking}
-A large number of example congruences were generated randomly and run using each
-different algorithm, along with the default implementation in \GAP{} \cite{gap}, to
-analyse performance.  All these tests were conducted using an Intel Core
-i7-4770S CPU running at $3.10$GHz with 16GB of memory.
+In order to analyse performance, a large number of example congruences were
+generated randomly, and tested using each different algorithm described in this
+chapter, along with the default implementation in \GAP{} \cite{gap}.  All these
+tests were conducted using an Intel Core i7-4770S CPU running at $3.10$GHz with
+16GB of memory.
 
 \begin{figure}[p]
   \centering
@@ -2078,7 +2085,7 @@ when we consider how little work the algorithm does when there are very few
 non-reflexive pairs in the congruence.  The Knuth--Bendix procedure lags behind
 badly on these examples, taking even longer than the built-in methods in \GAP{}.
 These results are a justification for the decision to run only the Todd--Coxeter
-algorithms in the case of a finite, concrete semigroup.
+algorithms in the case of a concrete semigroup.
 
 Figures \ref{fig:bench-trans-3p-times} and \ref{fig:bench-trans-vp-times} show
 that with a higher number of generating pairs, the pair orbit enumeration
@@ -2109,7 +2116,7 @@ table.
 This tendency is illustrated further in Figures
 \ref{fig:bench-trans-tc-1p-tccomp} and
 \ref{fig:bench-trans-tc-vp-tccomp}, which show larger tests, each using $5$
-generators of degree $8$, and of size up to $100,000$.  In these figures we
+generators of degree $8$, and of size up to 100,000.  In these figures we
 compare the standard Todd--Coxeter algorithm with the pre-filled version, arranged
 according to whether the congruence in question has many or few classes relative
 to its size.  The $x$ axis in these figures is
@@ -2174,7 +2181,7 @@ figures, \GAP{} never performed better than \libsemigroups{}.
 Further tests were carried out in a similar way, but using finitely presented
 semigroups instead of concrete semigroups.  The main difference between these
 tests and the ones described previously is that for each transformation
-semigroup $S$ which was generated, a finite presentation $\pres X R$ was found
+semigroup $S$ that was generated, a finite presentation $\pres X R$ was found
 for $S$, and that presentation was used in tests instead of the concrete
 semigroup $S$ itself.  This is intended to test which algorithms are effective
 when the elements of the semigroup are not known in advance.
@@ -2238,9 +2245,9 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 
 As can be seen in Figures \ref{fig:bench-fp-1p-gap} to \ref{fig:bench-fp-vp-gap}, the
 performance of the \GAP{} library over finitely presented semigroups is far worse
-than it was for concrete semigroups, taking as much as $300,000$ times as long
+than it was for concrete semigroups, taking as much as 300,000 times as long
 as \libsemigroups{} to complete.  Due to the excessive times \GAP{} took to
-complete some tests, the size of semigroups was restricted to $1000$.  In these
+complete some tests, the size of semigroups was restricted to 1000.  In these
 tests, unlike for concrete semigroups,
 Knuth--Bendix tended to outperform \GAP{}, but in
 general Todd--Coxeter methods were still faster.  It should be noted, however,
@@ -2258,8 +2265,8 @@ graphs).
 \section{Future work}
 
 The parallel approach described in this chapter is quite open-ended, and could
-be extended or improved in several ways.  Given more time to spend on the
-project, these are areas which could bear investigation.
+be extended or improved in several ways.  We will now discuss some areas which
+could bear investigation, given more time to spend on the project.
 
 \subsection{Pre-filling Todd--Coxeter with a left Cayley graph}
 \label{sec:prefill-left}
@@ -2302,7 +2309,7 @@ pair is found, and a new rule $u \to v$ is added to $\rws$, then this gives us a
 pair of words $(u,v)$ which represents a pair of congruent elements in the congruence we
 are studying.  If a Todd--Coxeter procedure is running in parallel, it would be
 possible to send the pair of words $(u,v)$ to the Todd--Coxeter thread, which
-at its next convenience would run \textsc{Coinc(Trace($1, u$), Trace($1, v$))}
+at its next convenience would run \textsc{Coinc$\big($Trace($1, u$), Trace($1, v$)$\big)$}
 to identify the two corresponding rows in the table.
 
 Conversely, Todd--Coxeter may find information which could be used by
@@ -2312,7 +2319,6 @@ the empty word ($w_1 := \varepsilon$), and if a row is created using
 \textsc{Add($i, x$)} then it is assigned the word $w_ix$.  For each row $i$, we
 now have \textsc{Trace}$(1, w_i) = i$; that is, each row has a word which can
 act as a representative for its congruence class.
-
 If, in a normal run of Todd--Coxeter, it is found that two rows $i$ and $j$
 represent the same class and must be combined, then this immediately gives a
 pair of words $(w_i,w_j)$ which represent the same congruence class.  This pair
@@ -2321,14 +2327,14 @@ a rule $w_i \to w_j$ (or $w_j \to w_i$, as dictated by the chosen ordering).
 
 It may be that this sharing of knowledge between the two algorithms would
 greatly increase the speed of certain calculations; or it may be that the time
-and space overhead required to implement these ideas would be so great that the
+and space overhead required in the implementation of these ideas would be so great that the
 algorithms would not speed up at all.  Experiments with this idea might show it
 to be useful, or might suggest that it is not worth pursuing.
 
 \subsection{Using concrete elements in Todd--Coxeter}
 \label{sec:tc-concrete-elms}
 The Todd--Coxeter procedure uses a finite presentation $\pres X R$ and a set of
-extra pairs $\mathbf{W}$ in order to calculate information about a congruence
+extra pairs $W$ in order to calculate information about a congruence
 over a semigroup $S$.  If $S$ is a concrete semigroup, then $\pres X R$ and $W$
 must be calculated before the beginning of Todd--Coxeter, so that the procedure
 can use them as parameters.  However, once this information has been calculated,
@@ -2377,7 +2383,7 @@ It is shown in \cite[\S2.8]{sims} that $\#X^+$ is a union of
 $\lrstar_\rws$-classes, and that the $\lrstar_\rws$-classes contained in $\#X^+$
 are in one-to-one correspondence with the $\rho$-classes of $X^+$.  That is,
 given a pair of words $(u,v) \in X^+$, the elements $[u]$ and $[v]$ in $S$ lie
-in the same $\rho$-class if and only if the words $u$ and $v$ are rewritten to
+in the same $\rho$-class if and only if the words $\#u$ and $\#v$ are rewritten to
 the same word by $\rws$.  A symmetric approach would work for left congruences,
 with the $\#$ symbols being added to the ends of words instead of to the start.
 
