@@ -47,16 +47,16 @@ classify semigroups of low order up to isomorphism and anti-isomorphism: all 4
 semigroups of order 2 and all 18 semigroups of order 3 were classified by Tamura
 in 1953 \cite{tamura_1953}; Forsythe followed in 1955 with the 126 semigroups of
 order 4 \cite{order_4}; and the following year Motzkin and Selfridge found the
-1160 semigroups of order 5 \cite{order_5, jurgensen_1977}.  Despite these early
-successes, however, the
-theory of computing with semigroups developed more slowly than with groups, and
-no package emerged for semigroups on the scale of the group algorithms in
-\GAP{}.  However, there has been considerable interest in computational
-semigroup theory in recent years, and increasingly there do exist algorithms for
-semigroups, as well as software packages implementing them, such as
-\textsf{Semigroup for Windows} \cite{sgpwin}, \Semigroupe{} \cite{semigroupe},
-\libsemigroups{} \cite{libsemigroups}, and the \GAP{} packages \Semigroups{}
-\cite{semigroups}, \smallsemi{} \cite{smallsemi} and \kbmag{} \cite{kbmag}.
+1160 semigroups of order 5 \cite{order_5, jurgensen_1977}.  But despite these
+early successes, the theory of computing with semigroups developed more slowly
+than with groups, and no package has yet emerged for semigroups on the scale of
+the group algorithms in \GAP{}.  However, there has been considerable interest
+in computational semigroup theory in recent years, and increasingly there do
+exist algorithms for semigroups, as well as software packages implementing them,
+such as \textsf{Semigroup for Windows} \cite{sgpwin}, \Semigroupe{}
+\cite{semigroupe}, \libsemigroups{} \cite{libsemigroups}, and the \GAP{}
+packages \Semigroups{} \cite{semigroups}, \smallsemi{} \cite{smallsemi} and
+\kbmag{} \cite{kbmag}.
 
 In the same way that semigroup theory borrows results from group theory,
 computational semigroup theory often borrows algorithms from computational group
@@ -129,9 +129,9 @@ preliminary knowledge which is required to understand the material in the rest
 of the thesis.  It is mostly concerned with ideas from semigroup theory such as
 Green's relations, generators, congruences and presentations.  It also
 introduces several important types of elements that form semigroups, such as
-partial transformations and bipartitions.  Later, some computational issues such
-as algorithms and decidability are covered, as well as some algorithms that are
-used later on.
+partial transformations and bipartitions.  Some computational issues such as
+algorithms and decidability are also covered, as well as some algorithms that
+are used later on.
 
 Chapter \ref{chap:pairs} presents a new way of computing with congruences
 defined by generating pairs.  The method presented uses parallel computation to
@@ -142,8 +142,8 @@ approach takes advantage of the different algorithms' abilities to return an
 answer quickly in various cases, in each case exhibiting run-times close to the
 minimum of all the different algorithms.  Modifications for left and right
 congruences are explained, and different versions are described for finitely
-presented semigroups and for \textit{concrete} semigroups (finite semigroups of
-transformations or other similar elements).  This approach was implemented in
+presented semigroups and for \textit{concrete} semigroups (semigroups known in
+advance to be finite).  This approach was implemented in
 \libsemigroups{} \cite{libsemigroups}, and the results of benchmarking tests on
 that implementation are shown near the end of the chapter.
 
@@ -174,7 +174,7 @@ time; a brief analysis is included of the sizes of semigroup and lattice which
 are feasible, along with some visual examples of lattices that have been
 computed using this method.
 
-Chapter \ref{chap:motzkin} considers the Motzkin monoid $\Mot_n$, the monoid of
+Chapter \ref{chap:motzkin} considers the Motzkin monoid $\Mot_n$ -- that is, the monoid of
 all planar bipartitions of degree $n$ with blocks of size no greater than $2$.
 An investigation into the congruence lattice of this monoid was initiated by
 computational experiments, using the method described in Chapter
