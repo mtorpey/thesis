@@ -559,6 +559,8 @@ three operations $\subseteq$, $\cap$ and $\vee$ which apply to the set of
 congruences on $S$.  We will soon find that the set of congruences forms a
 special structure under these three operations.  We will first define this
 structure, and then go on to explain how it can be viewed as a semigroup.
+\nomenclature[^i]{$\cap$}{Intersection of two sets}
+\nomenclature[^j]{$\vee$}{Join of two equivalences}
 
 Recall that a \textit{poset} is a set $X$ together with a partial order $\leq$
 -- that is, a relation $\leq$ on $X$ which is reflexive, anti-symmetric and
@@ -1243,8 +1245,8 @@ This allows us to split the $\HH$-classes of a semigroup into two categories:
 We can display a finite semigroup's Green's relations pictorially using an
 \textbf{eggbox diagram}, which is constructed in the following way.  First, note
 that $\dD = \jJ$ for a finite semigroup; we break the semigroup into
-$\jJ$-classes and draw a box for each $\jJ$-class, arranged as a Hasse diagram
-defined by the partial order of $\jJ$-classes described above.  Now, since
+$\dD$-classes and draw a box for each $\dD$-class, arranged as a Hasse diagram
+according to the partial order of $\jJ$-classes described above.  Now, since
 $\lL \subseteq \dD$ and $\rR \subseteq \dD$, we can break up a $\dD$-class in
 two different ways.  We split the box into rows representing its $\lL$-classes
 and into columns representing its $\rR$-classes.  Now each cell in the box
@@ -1584,9 +1586,12 @@ to consider \textit{planar} bipartitions later (Definition \ref{def:planar}).
 \end{definition}
 
 Each of the monoids $\PT_n$, $\T_n$, $\I_n$ and $\Sym_n$ contains a submonoid
-consisting of the order-preserving elements: respectively, $\PO_n$, $\OO_n$, $\POI_n$ and the
-group consisting of just the identity map $\id_n$.  The containment of these
-monoids is shown in Figure \ref{fig:ord-pres}.
+consisting of the order-preserving elements: respectively, $\PO_n$, $\OO_n$,
+$\POI_n$ and the group consisting of just the identity map $\id_n$.  The
+containment of these monoids is shown in Figure \ref{fig:ord-pres}.
+\nomenclature[POn]{$\PO_n$}{Monoid of order-preserving partial transformations}
+\nomenclature[POIn]{$\POI_n$}{Monoid of order-preserving partial permutations}
+\nomenclature[On]{$\OO_n$}{Monoid of order-preserving transformations}
 
 \begin{figure}[ht]
   \centering
@@ -1905,8 +1910,9 @@ make precise some computational terms.  We start with a definition of
 ``algorithm'', a term which is generally well understood, but whose precise
 definition is debatable.  In this thesis, we opt for a definition in line with
 the Church--Turing thesis, which has been favoured by a variety of authors since
-it was established \cite{gurevich_2000, minsky_1967}.
+it was established \cite{minsky_1967, gurevich_2000}.
 
+\index{Church--Turing thesis}
 The Church--Turing thesis evolved from work by G\"{o}del, Church and Turing in
 the 1930s, in which they established three different models of computation:
 \textit{general recursive functions} \cite{godel}, \textit{$\lambda$-calculus}
@@ -2017,7 +2023,7 @@ that there is no single algorithm which can be applied to every presentation to
 solve its word problem.  In fact, we can make a stronger statement: there are
 some presentations for which there is not even a specific algorithm to solve
 the word problem.  Consider the
-following example from Gennadi\'{i} Makanin, which has only three generators.
+following example from Makanin, which has only three generators.
 
 \begin{example}[Makanin, 1966]
   \label{ex:makanin}
@@ -2026,10 +2032,10 @@ following example from Gennadi\'{i} Makanin, which has only three generators.
     \langle a,b,c ~|~ & c^2b^2 = b^2c^2,\ bc^3b^2 = cb^3c^2,\ ac^2b^2 = b^2a,\\
                       & abc^3b^2 = cb^2a,\ b^2c^2b^4c^2 = b^2c^2b^4c^2a \rangle
   \end{align*}
-  defines a semigroup which has undecidable word problem.  \cite{makanin_1966}
+  defines a semigroup which has undecidable word problem \cite{makanin_1966}.
 \end{example}
 
-Furthermore, consider the following example from G.S.~Cijtin, perhaps the
+Furthermore, consider the following example from Cijtin, perhaps the
 simplest undecidable presentation, with 5 generators but only 33 occurrences of
 those generators in its relations.
 
@@ -2040,8 +2046,8 @@ those generators in its relations.
     \langle a,b,c,d,e ~|~ & ac=ca,\ ad=da,\ bc=cb,\ bd=db,\\
                           & ce=eca,\ de=edb,\ c^2e=c^2ae \rangle
   \end{align*}
-  defines a semigroup which has undecidable word problem.
-  \cite{cijtin_1957, collins_1986}
+  defines a semigroup which has undecidable word problem
+  \cite{cijtin_1957, collins_1986}.
 \end{example}
 % TODO? give proofs.
 
@@ -2073,7 +2079,7 @@ semigroup it describes:
 \item is regular; or
 \item is simple.
 \end{itemize}
-References for these, and a survey of many other decidability problems for
+References for these facts, and a survey of many other decidability problems for
 finitely presented semigroups, can be found in \cite{cain_maltcev}.
 
 \section{Union--find}
