@@ -45,12 +45,13 @@ definition.
   \index{principal!factor}
   \nomenclature[-]{$\pf{\phantom{D}}$}{Principal factor}
   Let $S$ be a semigroup, and let $J$ be a $\JJ$-class of $S$.  The
-  \textbf{principal factor} of $J$ is denoted by $\pf{J}$, and defined as
-  follows:
-  \begin{itemize}
-  \item $\pf{J} = J$ if $J$ is the minimal ideal;
-  \item $\pf{J} = I_J / (I_J \setminus J)$ otherwise.
-  \end{itemize}
+  \textbf{principal factor} of $J$ is denoted by $\pf{J}$, and defined by
+  $$\pf{J} = \left\{
+    \begin{array}{l l}
+      J & \text{if~}J\text{~is the minimal ideal}; \\
+      I_J / (I_J \setminus J) & \text{otherwise}.
+    \end{array}
+  \right.$$
 \end{definition}
 
 If $J$ is not the minimal ideal, then the principal factor $\pf{J}$ is
@@ -107,7 +108,7 @@ total number of $\RR$-classes is given by the Stirling number of the second
 kind, $S(n,k)$ \citeoeis{A008277}.
 
 Each $\HH$-class in $D_k^n$ is the intersection of an $\LL$-class and an
-$\RR$-class, so each one corresponds to an image-kernel pair (hence we will talk
+$\RR$-class, so each one corresponds to an image--kernel pair (hence we will talk
 about the \textit{image and kernel of an $\HH$-class}).  For a given kernel with
 $k$ classes and a given image with $k$ elements, there are $k!$ different ways
 to assign image elements to kernel classes, simply the permutations of the set
@@ -643,7 +644,7 @@ transformations.  After the results in Chapter \ref{chap:motzkin}, it would be
 interesting to learn about the congruences of the principal factors of the
 Motzkin monoid and other bipartition monoids such as $\Prt_n$.  These monoids
 are not as straightforward as the ones we have so far considered; certainly,
-identifying the idempotents in a semigroups of bipartitions is more complicated
+identifying the idempotents in a semigroup of bipartitions is more complicated
 than for partial transformations \cite[Theorem 5]{pn_ids}.  However, it is
 possible that their principal factors' congruences could be classified in a
 similar way.
