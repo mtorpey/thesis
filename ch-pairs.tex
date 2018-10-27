@@ -106,61 +106,63 @@ particularly important, since for certain semigroups and congruences some
 algorithms will never terminate, while others may terminate in a very short
 time.
 
-\section{Applicable types of semigroup}
-\label{sec:applicable-types-of-semigroup}
+\section{Applicable representations of a semigroup}
+\label{sec:applicable-representations-of-a-semigroup}
 
-The type of element in a semigroup affects which methods will be most effective,
-or even which methods will be applicable.  For this purpose, we divide
-semigroups into two categories: finitely presented semigroups, and
-\textit{concrete} semigroups.  Recall Section \ref{sec:intro-presentations} for
+A semigroup can be represented computationally in different ways.  For example,
+a semigroup of transformations could be specified by a set of transformations
+that generates it, or alternatively by a finite presentation.
+Which representation is used affects which methods will be most effective,
+or even which methods will be applicable.  For this purpose, we consider two
+different categories of semigroup representation: finitely presentations, and
+\textit{concrete} representations.  Recall Section \ref{sec:intro-presentations} for
 the definitions of terms surrounding finite presentations.
 
 \begin{definition}
   \label{def:concrete}
   \index{concrete}
-  A semigroup $S$ will be called \textbf{concrete} if it is known in advance to
-  be finite.  In particular, a concrete semigroup has decidable word problem --
-  that is, given a presentation $\pres X R$ for $S$, and any two words $w_1$ and
-  $w_2$ in $X^+$, it can always be decided in a finite time whether $w_1$ and
-  $w_2$ represent the same element of $S$.
+  Let $S$ be a semigroup.
+  A \textbf{concrete representation} for $S$ is a data structure that can be
+  used to:
+  \begin{itemize}
+  \item produce a list of all the elements of $S$;
+  \item produce the product of two elements of $S$;
+  \end{itemize}
+  in a finite amount of time.
 \end{definition}
 
-Concrete semigroups can have many different forms.  Perhaps the most trivial and
-obvious example of a concrete semigroup would be a semigroup specified by a
-Cayley table.  A Cayley table has a finite number of rows and columns, and
-therefore must describe a finite semigroup.  We can solve such a semigroup's
-word problem easily: if $X$ is the generating set containing all the elements of
-$S$, then two words $w_1$ and $w_2$ represent the same element if and only if
-they produce the same number when their product is determined through the Cayley
-table (see Definition \ref{def:cayley-table}).  Semigroups specified by Cayley
-are concrete, but in practice they are used very little, since they require a
-great deal of space to store -- order $O(|S|^2)$.
+Note that only finite semigroups can have concrete representations, since we
+cannot produce an infinite list of elements in finite time.
+
+There are many different concrete representations for semigroups.  Perhaps the
+most trivial and obvious example would be a semigroup's Cayley table (see
+Definition \label{def:cayley-table}).  A Cayley table has a finite number of
+rows and columns, and therefore must describe a finite semigroup.  A list of
+elements of the semigroup can be taken directly from the indices of the table,
+and the product $xy$ of two elements $x$ and $y$ can be found by simply reading
+the entry in row $x$ and column $y$.  Hence Cayley tables are concrete, but in
+practice in computation they are used very little, since they require a great
+deal of space to store -- order $O(|S|^2)$.
 
 It will be more common for us to consider semigroups of partial transformations.
-These contain elements which can be multiplied and compared without reference to
-the semigroup as a whole: for example, if $x = \transV 13342$ and
-$y = \transV 24422$ then we can calculate $xy = \transV 24424$ without knowing
-anything about $S$, the semigroup that contains $x$ and $y$.  So long as all
+If $S$ is a semigroup of partial transformations, then a set of generators for
+$S$ is a concrete representation of $S$.  Two elements can be multiplied and
+compared without reference to the semigroup as a whole: for example, if
+$x = \transV 13342$ and $y = \transV 24422$ then we can calculate
+$xy = \transV 24424$ without knowing anything else about $S$.  So long as all
 elements in these semigroups have finite degree, and so long as there are only a
 finite number of generators, the semigroup in question will also certainly be
-finite.  Hence, we can consider semigroups of partial transformations as
-concrete semigroups.
+finite, and we can produce a list of its elements using, for example, the
+Froidure--Pin algorithm (see Section \ref{sec:froidure-pin}).  Hence, a
+generating set for a semigroups of partial transformations is a concrete
+representation.
 
-Finitely presented semigroups are a different case, in that their elements
-cannot be compared without reference to the semigroup as a whole.  If $S$ is a
-semigroup described by a finite presentation $\pres X R$, and $w_1$ and $w_2$
-are words in $X^+$, then it may be undecidable whether $w_1$ and $w_2$ represent
-the same element of $S$.
-
-There are many examples of presentations for which the word problem is
-undecidable (see Examples \ref{ex:makanin} and \ref{ex:cijtin}). Many
-presentations do have decidable word problem (see Example
-\ref{ex:presentation-decidable}), but since many do not, and there is no algorithm
-to decide whether a given presentation does, we must conclude that semigroups
-specified by finite presentations are not concrete.  Besides, finite
-presentations, even if their word problem is decidable, can describe infinite
-semigroups, and the finiteness of $S$ is also not known in advance -- nor, in
-general, is it decidable.
+A finite presentation, on the other hand, is an example of a semigroup
+representation that is not concrete.  If $\pres X R$ is a finite presentation,
+and $S$ is the semigroup it defines, then it may be that $S$ is infinite, and so
+a list of elements of $S$ cannot be produced in finite time -- furthermore, the
+finiteness of $S$ might be undecidable.  Hence a finite presentation is not, in
+general, a concrete representation.
 
 The only guarantee that can be given by the algorithm is that an answer will be
 returned if $S$ happens to be finite.  In the concrete case, semigroups are
@@ -188,9 +190,9 @@ For the remainder of this chapter, the word ``congruence'' will be used to refer
 to left, right, and two-sided congruences equally, without having the default
 meaning of ``two-sided congruence''.
 
-If $S$ is a concrete semigroup (as described in Section
-\ref{sec:applicable-types-of-semigroup}) then it will almost certainly be
-specified by a generating set; in this case, it is quick to use these generators
+If $S$ has a concrete representation (as described in Section
+\ref{sec:applicable-representations-of-a-semigroup}) then we will certainly
+have a generating set for $S$; in this case, it is quick to use these generators
 to calculate a list of elements in $S$, along with left and right Cayley graphs
 for $S$, using the Froidure--Pin algorithm (see Section \ref{sec:find-pres}).
 The Froidure--Pin algorithm also gives us, for each element $s \in S$, a word
@@ -203,8 +205,8 @@ corresponding word $w$.
 If on the
 other hand $S$ is a finitely presented semigroup, then the elements will not be
 known in advance.  In either case, a finite presentation $\pres X R$ can be
-given -- a technique for efficiently finding a presentation for a concrete
-semigroup is given in Section \ref{sec:find-pres}.
+given -- a technique for efficiently finding a presentation from a concrete
+representation is given in Section \ref{sec:find-pres}.
 The exact parameters supplied to the algorithm are therefore as follows:
 \begin{itemize}
 \item A set of generators $X$;
@@ -213,7 +215,7 @@ The exact parameters supplied to the algorithm are therefore as follows:
 \item A record of whether we are computing a left, right, or two-sided
   congruence.
 \end{itemize}
-The following are also supplied if and only if $S$ is concrete:
+The following are also available only in the case of a concrete representation:
 \begin{itemize}
 \item A list of elements of $S$;
 \item Left and right Cayley graphs for $S$ (see Definition
@@ -294,9 +296,8 @@ answer each of these questions.
 \section{Finding a presentation}
 \label{sec:find-pres}
 
-Recall from Section \ref{sec:program-inputs} that a concrete semigroup $S$ is
-not specified by a presentation, but by a set of generators whose multiplication
-and comparison are decidable.  In order to use the Todd--Coxeter and
+Recall from Section \ref{sec:program-inputs} that a concrete representation for
+a semigroup may not include a finite presentation.  In order to use the Todd--Coxeter and
 Knuth--Bendix algorithms, a finite presentation is required, and so a presentation
 $\pres X R$ must be calculated for $S$.  For the purposes of the algorithm
 described in this chapter, it is not important how this presentation is
@@ -304,11 +305,11 @@ obtained.  However, for the sake of completeness, we will briefly discuss how a
 presentation could be computed.
 
 We will start by describing a very simple way of producing a presentation from a
-concrete semigroup: by using its Cayley table directly.
+concrete representation: by using its Cayley table directly.
 
 \begin{method}
   \label{meth:trivial-presentation}
-  Let $S$ be a concrete semigroup, and assume we have access to its Cayley
+  Let $S$ be a semigroup with concrete representation, and assume we have access to its Cayley
   table.  We can produce a presentation as follows.  Let $\bar S$ be a set with
   the same cardinality as $S$, containing an element $\bar{x}$ for each element
   $x \in S$, and let $R \subseteq \bar{S} \times \bar{S}$ be defined by
@@ -399,10 +400,10 @@ adapted from the simplified version of the algorithm shown in
 
 \begin{method}
   \label{meth:inbetween-presentation}
-  Let $S$ be a concrete semigroup, and let $X \subseteq S$ be a generating set
-  for $S$.  We can produce a presentation $\pres X R$ consisting of the known
-  generating set $X$ together with some relations $R$ which are computed as
-  follows.
+  Let $S$ be a finite semigroup with a concrete representation, and let
+  $X \subseteq S$ be a generating set for $S$.  We can produce a presentation
+  $\pres X R$ consisting of the known generating set $X$ together with some
+  relations $R$ which are computed as follows.
 
   Let $R$ begin empty, and start enumerating the elements of the monoid $S^1$.
   We keep a list $L_S$ of elements that have been found in $S^1$, and another
@@ -448,8 +449,8 @@ We can improve further on this method.  The \libsemigroups{}
 implementation of this chapter's algorithm uses the Froidure--Pin algorithm
 \index{Froidure--Pin}
 \cite{froidure_pin}, a method which is essentially a more advanced variation of
-Algorithm \ref{alg:inbetween-presentation}.  Froidure--Pin takes a set of
-generators $X$ for a concrete semigroup $S$, and returns several useful pieces
+Algorithm \ref{alg:inbetween-presentation}.  Froidure--Pin takes a concrete set of
+generators $X$ for a semigroup $S$, and returns several useful pieces
 of information:
 \begin{itemize}
 \item a left Cayley graph for $S$ with respect to $X$;
@@ -469,6 +470,20 @@ in the Knuth--Bendix process later (see Section \ref{sec:kb}).
 A full description of the Froidure--Pin algorithm is outside the scope of this
 thesis, but for more information about the algorithm and its implementation in
 \libsemigroups{}, see \cite{froidure_pin} and \cite{froidure_pin_jonusas}.
+
+The presentation produced by the algorithms above presents a finite semigroup,
+and therefore has decidable word problem.  Hence, when we have a concrete
+representation for a semigroup $S$, we can always find a presentation in which
+we can compare two words and say whether they represent the same element of $S$.
+However, if we started with a finite presentation instead of a concrete
+representation, we may not have this guarantee.  There are many examples of
+presentations for which the word problem is undecidable (see Examples
+\ref{ex:makanin} and \ref{ex:cijtin}). Many presentations do have decidable word
+problem (see Example \ref{ex:presentation-decidable}), but many do not, and
+there is no algorithm to decide whether a given presentation does.  Besides,
+finite presentations, even if their word problem is decidable, can describe
+infinite semigroups, and the finiteness of $S$ is also not known in advance --
+nor, in general, is it decidable.
 
 \section{The methods}
 
@@ -608,8 +623,8 @@ This is the simplest of the algorithms discussed in this section, and generally
 does not perform as well as the others in practice.  However, it has certain
 advantages such as its small overhead and quick setup, and therefore on certain
 examples performs better than the others.  Furthermore, it is applicable to any
-problem discussed in this chapter, whether $S$ is a concrete or finitely
-presented semigroup, and whether $\rho$ is a left, right or two-sided
+problem discussed in this chapter, whether we have a concrete representation or
+a finite presentation, and whether $\rho$ is a left, right or two-sided
 congruence.  Uniquely among the methods described in this chapter, it does not
 even require a presentation in order to be run.
 
@@ -1332,12 +1347,12 @@ In the ordinary Todd--Coxeter procedure as described above, we begin with just a
 single row representing the empty word, and we add rows to represent the
 different congruence classes as we go along, merging rows together if they are
 found to describe the same congruence class.  However, in the case that we are
-calculating a congruence over a concrete semigroup -- or indeed, over a finitely
+calculating a congruence over a concretely represented semigroup -- or indeed, over a finitely
 presented semigroup on which Todd--Coxeter has already been run -- we have certain
 information which we can use to help us with our calculation.
 
 If we have such a semigroup $S$, then we can find a right Cayley graph $\Gamma$
-for $S$ with respect to its generators $X$: if $S$ is concrete, then we can find
+for $S$ with respect to its generators $X$: if we have a concrete representation, then we can find
 this graph using the Froidure--Pin algorithm (see Section \ref{sec:find-pres});
 or if Todd--Coxeter has been run on $S$, then the resulting table contains all
 the information required for a right Cayley graph.  Either way, this graph tells us, for
@@ -1392,8 +1407,9 @@ relations from $W$ and combining rows together.
 \end{algorithm}
 
 \begin{theorem}
-  Let $\pres X R$ and $W$ be as in Section \ref{sec:program-inputs} and $S$ be a
-  concrete semigroup presented by $\pres X R$.
+  Let $\pres X R$ and $W$ be as in Section \ref{sec:program-inputs}, let $S$ be a
+  semigroup presented by $\pres X R$, and assume we have a concrete
+  representation for $S$.
   \textsc{ToddCoxeterPrefill}($\pres X R$, $W$, $S$) has output identical to\\
   \textsc{ToddCoxeterTwoSided}($\pres X R$, $W$), up to relabelling of the rows.
   \begin{proof}
@@ -1823,8 +1839,8 @@ algorithms together.
 The basic principle is not complicated: run all the described algorithms
 simultaneously, and whenever one of the algorithms finds an answer, kill all the
 other algorithms and return the answer that was given.  However, the precise
-details depend on whether we are considering a concrete or finitely presented
-semigroup, as well as whether we are considering a left, right or two-sided
+details depend on whether we have a concrete representation or a finite
+presentation, as well as whether we are considering a left, right or two-sided
 congruence.  Table \ref{tab:running-in-parallel} shows which algorithms are run
 in which cases.  A tick (\cmark) denotes that the algorithm is used, a cross
 (\xmark) denotes that it cannot be used, and a tilde ($\sim$) denotes that the
@@ -2086,7 +2102,7 @@ when we consider how little work the algorithm does when there are very few
 non-reflexive pairs in the congruence.  The Knuth--Bendix procedure lags behind
 badly on these examples, taking even longer than the built-in methods in \GAP{}.
 These results are a justification for the decision to run only the Todd--Coxeter
-algorithms in the case of a concrete semigroup.
+algorithms in the case of a concrete representation.
 
 Figures \ref{fig:bench-trans-3p-times} and \ref{fig:bench-trans-vp-times} show
 that with a higher number of generating pairs, the pair orbit enumeration
@@ -2179,12 +2195,12 @@ almost all cases, with the \GAP{} methods taking as much as $7000$ times as long
 for one generating pair.  Out of the $500$ tests shown in total in these two
 figures, \GAP{} never performed better than \libsemigroups{}.
 
-Further tests were carried out in a similar way, but using finitely presented
-semigroups instead of concrete semigroups.  The main difference between these
+Further tests were carried out in a similar way, but using finite presentations
+instead of concrete representations.  The main difference between these
 tests and the ones described previously is that for each transformation
 semigroup $S$ that was generated, a finite presentation $\pres X R$ was found
 for $S$, and that presentation was used in tests instead of the concrete
-semigroup $S$ itself.  This is intended to test which algorithms are effective
+representation.  This is intended to test which algorithms are effective
 when the elements of the semigroup are not known in advance.
 In order to produce a further comparison, the tests for finitely presented
 semigroups were also run with the \kbmag{} package for \GAP{} \cite{kbmag}.
@@ -2245,11 +2261,11 @@ The results are shown on the graphs with the name \texttt{kbmag}.
 \end{figure}
 
 As can be seen in Figures \ref{fig:bench-fp-1p-gap} to \ref{fig:bench-fp-vp-gap}, the
-performance of the \GAP{} library over finitely presented semigroups is far worse
-than it was for concrete semigroups, taking as much as 300,000 times as long
+performance of the \GAP{} library over finite presentations is far worse
+than it was for concrete representations, taking as much as 300,000 times as long
 as \libsemigroups{} to complete.  Due to the excessive times \GAP{} took to
 complete some tests, the size of semigroups was restricted to 1000.  In these
-tests, unlike for concrete semigroups,
+tests, unlike for concrete representations,
 Knuth--Bendix tended to outperform \GAP{}, but in
 general Todd--Coxeter methods were still faster.  It should be noted, however,
 that these were all congruences that were guaranteed in advance to have a finite
@@ -2336,14 +2352,14 @@ to be useful, or might suggest that it is not worth pursuing.
 \label{sec:tc-concrete-elms}
 The Todd--Coxeter procedure uses a finite presentation $\pres X R$ and a set of
 extra pairs $W$ in order to calculate information about a congruence
-over a semigroup $S$.  If $S$ is a concrete semigroup, then $\pres X R$ and $W$
+over a semigroup $S$.  If $S$ has a concrete representation, then $\pres X R$ and $W$
 must be calculated before the beginning of Todd--Coxeter, so that the procedure
 can use them as parameters.  However, once this information has been calculated,
 no other information about $S$ is used for the rest of the algorithm, which only
 deals with words, abstract generators and relations.
 
-It may prove helpful to use the concrete elements from $S$ in the Todd--Coxeter
-procedure, if they are known.  For instance, when \textsc{Add($i, x$)} for some
+It may prove helpful to use the concrete representation from $S$ in the Todd--Coxeter
+procedure, if one is available.  For instance, when \textsc{Add($i, x$)} for some
 row $i$ and generator $x$, it would be possible to find an element corresponding
 to row $i$, find the element corresponding to the generator $x$, multiply the
 two, and see whether a row already exists which represents that element.  In
@@ -2393,7 +2409,7 @@ This additional method could be included in the parallel algorithm, and in
 well, returning faster than Todd--Coxeter on some examples -- but it would need
 to be benchmarked in a manner similar to Section \ref{sec:benchmarking} in order
 to establish whether it were worth running in either the concrete case or the
-finitely presented case.  Once this were decided, we would be able to remove the
+finite presentation case.  Once this were decided, we would be able to remove the
 two cross (\xmark) symbols in the `KB' column of Table
 \ref{tab:running-in-parallel}, and change each one to either a tick (\cmark) or
 a tilde ($\sim$).
