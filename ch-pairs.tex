@@ -160,9 +160,10 @@ representation.
 A finite presentation, on the other hand, is an example of a semigroup
 representation that is not concrete.  If $\pres X R$ is a finite presentation,
 and $S$ is the semigroup it defines, then it may be that $S$ is infinite, and so
-a list of elements of $S$ cannot be produced in finite time -- furthermore, the
-finiteness of $S$ might be undecidable.  Hence a finite presentation is not, in
-general, a concrete representation.
+a list of elements of $S$ cannot be produced in finite time -- consider, for
+example, the presentation $\pres a \varnothing$ with one generator and no
+relations, which presents the free semigroup $\{a\}^+$.  Hence a finite
+presentation is not, in general, a concrete representation.
 
 The only guarantee that can be given by the algorithm is that an answer will be
 returned if $S$ happens to be finite.  In the concrete case, semigroups are
