@@ -285,14 +285,22 @@ Our system should be able to return the following information about a given
 congruence when requested:
 
 \begin{itemize}
-\item Presence of a given pair $(x,y)$ in the congruence;
-\item Number of congruence classes;
-\item The elements in each non-trivial congruence class;
-\item Class number of a given element.
+\item An algorithm to determine whether a given pair $(x,y)$ is in the
+  congruence;
+\item The number of congruence classes;
+\item An algorithm that takes an element $x$ and returns the index of the
+  congruence class to which it belongs (it should return the same index for
+  elements $x$ and $y$ if and only if $(x,y)$ is in the congruence);
+\item A list of the elements in each non-trivial congruence class (only if
+  finite).
 \end{itemize}
 
-Each of our algorithms will produce a data structure which allows us to
-answer each of these questions.
+Each of our algorithms will produce a data structure which allows us to answer
+each of these questions.  After each algorithm is described in Section
+\ref{sec:methods}, we will explain how that algorithm can be used to produce
+each of these four pieces of inforation.  Note however that the last item in the
+list can only be produced by an algorithm if it happens to be finite -- that is,
+only if all but finitely many elements of the semigroup lie in singletons.
 
 \section{Finding a presentation}
 \label{sec:find-pres}
@@ -487,6 +495,7 @@ infinite semigroups, and the finiteness of $S$ is also not known in advance --
 nor, in general, is it decidable.
 
 \section{The methods}
+\label{sec:methods}
 
 \subsection{Pair orbit enumeration}
 \label{sec:p}
@@ -628,6 +637,8 @@ problem discussed in this chapter, whether we have a concrete representation or
 a finite presentation, and whether $\rho$ is a left, right or two-sided
 congruence.  Uniquely among the methods described in this chapter, it does not
 even require a presentation in order to be run.
+
+% TODO: answering the questions
 
 This algorithm's run-time is a product of the number of pairs in the congruence:
 its space and time complexity are order $O(r)$, where $r$ is the number of
@@ -1340,6 +1351,9 @@ Algorithm \ref{alg:tc-left} for a pseudo-code description.
   \end{proof}
 \end{theorem}
 
+\subsubsection{Computing program outputs}
+\label{sec:tc-output}
+% TODO: answer the four questions
 
 \subsubsection{Pre-filling the table}
 \label{sec:tc-prefill}
@@ -1829,6 +1843,10 @@ infinite monoid:
   there are no critical pairs, the system is confluent by Theorem
   \ref{thm:knuth-bendix}.
 \end{example}
+
+\subsubsection{Computing program outputs}
+\label{sec:kb-output}
+% TODO: answer the four questions
 
 \section{Running in parallel}
 \label{sec:running-in-parallel}
