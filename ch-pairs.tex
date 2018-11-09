@@ -284,7 +284,7 @@ information, but it is important to consider which questions we aim to answer.
 Our system should be able to return the following information about a given
 congruence when requested:
 
-\begin{itemize}
+\begin{enumerate}[(i)]
 \item An algorithm to determine whether a given pair $(x,y)$ is in the
   congruence;
 \item The number of congruence classes;
@@ -293,14 +293,14 @@ congruence when requested:
   elements $x$ and $y$ if and only if $(x,y)$ is in the congruence);
 \item A list of the elements in each non-trivial congruence class (only if
   finite).
-\end{itemize}
+\end{enumerate}
 
 Each of our algorithms will produce a data structure which allows us to answer
 each of these questions.  After each algorithm is described in Section
 \ref{sec:methods}, we will explain how that algorithm can be used to produce
-each of these four pieces of inforation.  Note however that the last item in the
-list can only be produced by an algorithm if it happens to be finite -- that is,
-only if all but finitely many elements of the semigroup lie in singletons.
+each of these four pieces of inforation.  Note however that item (iv) can only
+be produced by an algorithm if the list happens to be finite -- that is, only if
+all but finitely many elements of the semigroup lie in singletons.
 
 \section{Finding a presentation}
 \label{sec:find-pres}
