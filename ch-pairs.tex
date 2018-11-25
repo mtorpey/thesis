@@ -638,19 +638,18 @@ a finite presentation, and whether $\rho$ is a left, right or two-sided
 congruence.  Uniquely among the methods described in this chapter, it does not
 even require a presentation in order to be run.
 
-% TODO: answering the questions
 Now that we have explained the pair orbit algorithm, we should consider how it
 can be used to answer the questions in Section \ref{sec:program-outputs}.
 Assume we have a congruence $\rho$ on a semigroup $S$, and the pair orbit
 algorithm has been completed.  For (i), we can determine whether a given pair $(x,y)$
 lies in $\rho$ fairly easily using the resultant union--find table: $(x,y) \in
-\rho$ if and only if $\textsc{Find}(x) = \textsc{Find}(y)$.  To find the number
+\rho$ if and only if $\textsc{Find}(x) = \textsc{Find}(y)$.  For (ii), to find the number
 of congruence classes of $\rho$, we first find the number of different blocks in
 the union--find table (that is, the number of different values returned by
 \textsc{Find} when given elements in $\Lambda$), and then we add the number of
 singletons (that is, the number of elements not in $\Lambda$).  Hence the number
 of congruence classes of $\rho$ is equal to
-$$|\{\textsc{Find(x)}: x \in \Lambda\}| + |S \setminus \Lambda|.$$
+$$|\{\textsc{Find}(x): x \in \Lambda\}| + |S \setminus \Lambda|.$$
 For (iii), we require an algorithm that takes an element and returns a unique
 integer corresponding to the congruence class in which it lies; we can simply
 use the function $\textsc{Find}$.  Finally for (iv) we require a list of the
