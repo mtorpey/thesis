@@ -1371,7 +1371,48 @@ Algorithm \ref{alg:tc-left} for a pseudo-code description.
 
 \subsubsection{Computing program outputs}
 \label{sec:tc-output}
-% TODO: answer the four questions
+So far we have described how the Todd--Coxeter procedure operates and the output
+it produces.  However, on completion of \textsc{ToddCoxeterLeft} or
+\textsc{Right} or \textsc{TwoSided}, it may not be immediately obvious how
+information about the congruence can be retrieved from the resultant table.  In
+this section we will explain how the output of these algorithms can be used to
+produce the four program outputs (i) to (iv) required by Section
+\ref{sec:program-outputs}.  Assume that we have taken inputs $X,R,W$ and applied
+them to one of the three algorithms; let $\rho$ be the left, right, or two-sided
+congruence described by these inputs, over the semigroup $S$.
+
+Firstly, we require (i), an algorithm to determine whether a given pair $(x,y)$
+of elements in the semigroup lies in $\rho$.  If $x$ and $y$ are elements of
+$S$, then we can find words $w_x$ and $w_y$ over the alphabet $X$ which
+represent them (see Section \ref{sec:program-inputs}).  We can then simply
+compute \textsc{Trace}$(1, w_x)$ and \textsc{Trace}$(1, w_y)$, which will be
+equal to each other if and only if $(x,y) \in \rho$.
+  
+For (ii), the number of congruence classes of $\rho$, we simply observe that
+each congruence class is represented by one unique row in the Todd--Coxeter
+table.  Each row corresponds to a single congruence class, except row 1 which
+acts as an appended identity.  Hence the number of classes is equal to one less
+than the number of rows in the table.
+
+For (iii) we require an algorithm that takes an element $x$ and returns the
+index of the congruence class to which it belongs.  As described above for (i),
+we can simply take a word $w_x$ that represents $x$, and call
+\textsc{Trace}$(1, w_x)$: the result is the index of the congruence class.
+  
+Finally, output (iv) is a list of the elements in each non-trivial congruence
+class.  This is not so immediately available, but may still be computed if $S$
+is finite.  Firstly, we require a list of the elements of $S$: if we have a
+concrete representation, then this is given; if we have only a finite
+presentation $\pres X R$ then \textsc{ToddCoxeter} can be called on the
+presentation, and a representative word for each element can be found during
+this run.  Once a list of elements is found, we can use \textsc{Trace} on each
+element, as for (iii), to find which congruence class it lies in.  These results
+can then be compiled, and singletons discarded, to produce the desired output.
+
+Note that output (iv) cannot be produced using Todd--Coxeter when $S$ is
+infinite.  However, the pair orbit algorithm will succeed for infinite $S$, so
+long as there are only finitely many elements in non-trivial classes.  See
+Section \ref{sec:p} for more detail.
 
 \subsubsection{Pre-filling the table}
 \label{sec:tc-prefill}
