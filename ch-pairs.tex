@@ -1905,7 +1905,59 @@ infinite monoid:
 
 \subsubsection{Computing program outputs}
 \label{sec:kb-output}
-% TODO: answer the four questions
+We have shown how the inputs $X$, $R$ and $W$ can be used as inputs to the
+Knuth--Bendix algorithm in order to produce a rewriting system.  However, we
+have not explicitly stated how this can be used to produce the information we
+require about the congruence in question, in the sense of the four program
+outputs in Section \ref{sec:program-outputs}.  We will now consider each of
+these outputs in turn, and explain how the rewriting system $\rws$ can be used
+to produce them.  Let $X$, $R$ and $W$ be as described earlier, let $S$ be the
+semigroup in question, and let $\rho$ be the congruence we are computing.
+
+For (i) we require an algorithm to determine whether a given pair $(x,y)$ is in
+$\rho$.  This is the simplest of the four: we take two words $w_x$ and $w_y$
+over the alphabet $X$, which represent $x$ and $y$ respectively, and we rewrite
+them both using $\rws$.  The pair $(x,y)$ is in the congruence if and only if
+the two words rewrite to the same word.
+
+For (ii) we require the number of classes the congruence has.  As just
+mentioned, an element's class is defined by the word produced by rewriting it
+with $\rws$; hence, the number of classes is equal to the number of different
+words to which words can be rewritten.  If $S$ is finite, this number can be
+found by taking a word that represents each element of $S$, rewriting it with
+$\rws$, and calculating the number of distinct words computed.  However, if $S$
+is infinite, we do not have such a method available, and we cannot return a
+number in this case.  Note that there could still be a finite number of classes,
+in which case the Todd--Coxeter algorithm could return an answer (see
+``Computing program outputs'' in Section \ref{sec:tc-output}).
+
+For (iii) we require an algorithm \textsc{ClassNo} that takes an element $x$ and
+returns the index of the congruence class to which it belongs.  That is, it
+should return a positive integer for any element, and it should have the same
+output for elements $x$ and $y$ if and only if $(x,y) \in \rho$.  In
+\libsemigroups{} we take an approach which creates indices for classes as calls
+are made to the algorithm.  We start with an empty list $L$.  When
+\textsc{ClassNo}$(x)$ is called, the algorithm takes a word representing $x$,
+and rewrites it to some word $w$ using the rewriting system $\rws$.  If $w$ is
+in $L$, then the algorithm returns its position in the list; if not, then the
+algorithm adds it to the end of $L$, and returns its new position.  This gives
+\textsc{ClassNo} the required behaviour, but it is important to note that the
+outputs depend on the order in which past calls were made.  In two different
+program sessions, in which calls were made in a different order, different
+numbers would be returned.  In this sense, \textsc{ClassNo} is not canonical.
+
+Finally, for (iv), we wish for a list of the elements in each non-trivial
+congruence class.  If $S$ is finite and we have a list of its elements, we can
+use (iii) and apply \textsc{ClassNo} to each element, to find out which elements
+lie in which class.  However, if $S$ is infinite, no such method is available,
+and we would have to rely on the pair orbit algorithm to produce the answer.
+
+Note that outputs (ii) and (iv) require a list of the elements of $S$, which
+might not be immediately available at the end of the Knuth--Bendix algorithm.
+If we have a concrete representation for $S$, then we do have a list of all the
+elements of S.  However, if we only have a finite presentation for $S$, then we
+would need to run another algorithm such as the Todd--Coxeter algorithm on
+$\pres X R$ in order to find a list of its elements.
 
 \section{Running in parallel}
 \label{sec:running-in-parallel}
