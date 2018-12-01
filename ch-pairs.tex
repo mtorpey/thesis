@@ -1387,7 +1387,7 @@ $S$, then we can find words $w_x$ and $w_y$ over the alphabet $X$ which
 represent them (see Section \ref{sec:program-inputs}).  We can then simply
 compute \textsc{Trace}$(1, w_x)$ and \textsc{Trace}$(1, w_y)$, which will be
 equal to each other if and only if $(x,y) \in \rho$.
-  
+
 For (ii), the number of congruence classes of $\rho$, we simply observe that
 each congruence class is represented by one unique row in the Todd--Coxeter
 table.  Each row corresponds to a single congruence class, except row 1 which
@@ -1398,7 +1398,7 @@ For (iii) we require an algorithm that takes an element $x$ and returns the
 index of the congruence class to which it belongs.  As described above for (i),
 we can simply take a word $w_x$ that represents $x$, and call
 \textsc{Trace}$(1, w_x)$: the result is the index of the congruence class.
-  
+
 Finally, output (iv) is a list of the elements in each non-trivial congruence
 class.  This is not so immediately available, but may still be computed if $S$
 is finite.  Firstly, we require a list of the elements of $S$: if we have a
@@ -1724,7 +1724,7 @@ $u > v$.
   = a.$$
   Hence $b^5a^6 \tostar_\rws a$.  Using both these results together with
   transitivity, we have $a \lrstar_\rws ba^5b^4a$.
-  
+
   Let us consider the shortlex ordering described above.  The first two rules in
   $\rws$ shorten a word by 5 characters, and the last two rules replace a
   subword of length 8 beginning with $b$ by one beginning with $a$.  Hence all
