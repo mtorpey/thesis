@@ -84,7 +84,7 @@ improvements that can be made by parallelising.
 When it comes to computing information about a congruence from generating pairs,
 there are various different approaches which can be taken: in Sections
 \ref{sec:p}, \ref{sec:tc} and \ref{sec:kb}, we describe three possible
-algorithms: pair orbit enumeration, Todd--Coxeter, and Knuth--Bendix.
+algorithms: pair orbit enumeration, the Todd--Coxeter algorithm, and the Knuth--Bendix algorithm.
 Depending on what sort of semigroup is given as an input (see Section
 \ref{sec:program-outputs}), several
 or all of these might be appropriate.  However, depending on certain properties
@@ -458,7 +458,7 @@ We can improve further on this method.  The \libsemigroups{}
 implementation of this chapter's algorithm uses the Froidure--Pin algorithm
 \index{Froidure--Pin}
 \cite{froidure_pin}, a method which is essentially a more advanced variation of
-Algorithm \ref{alg:inbetween-presentation}.  Froidure--Pin takes a concrete set of
+Algorithm \ref{alg:inbetween-presentation}.  The Froidure--Pin algorithm takes a concrete set of
 generators $X$ for a semigroup $S$, and returns several useful pieces
 of information:
 \begin{itemize}
@@ -622,7 +622,7 @@ creation.  However, this approach is not used here, since adding the elements on
 they are found opens up the possibility of applying this method to infinite
 semigroups.  Our implementation in \libsemigroups{} \cite{libsemigroups}
 includes such a possibility, by taking a semigroup presentation $\pres X R$ and
-using Knuth--Bendix (see Section \ref{sec:kb}) as a way of comparing the semigroup's
+using the Knuth--Bendix algorithm (see Section \ref{sec:kb}) as a way of comparing the semigroup's
 elements.  The pair orbit enumeration procedure, as described above, can then be
 used, and will complete in finite time if and only if the number of elements in
 non-trivial congruence classes is finite.  This was implemented to answer
@@ -672,7 +672,7 @@ pair $(a,b)$ is not added to $\mathbf{R}'$ if the pair $(b,a)$ has previously
 been added.  Tweaks like this can make the algorithm slightly faster, though
 they do not address the high complexity of the method.
 
-\subsection{Todd--Coxeter}
+\subsection{The Todd--Coxeter algorithm}
 \label{sec:tc}
 \index{Todd--Coxeter}
 
@@ -685,7 +685,7 @@ EDSAC II computer in Cambridge \cite{leech_1963}.  Since then, a wide variety of
 efficient, optimised versions have been implemented, one notable example being
 \ACE{} \cite{ace}.
 
-A variation of Todd--Coxeter for semigroups was described in 1967
+A variation of the Todd--Coxeter algorithm for semigroups was described in 1967
 \cite{neumann_1967}.  The algorithm takes a presentation $\pres X R$
 for a semigroup $S$ and computes the right regular representation of $S^1$ with
 respect to the generators $X$ -- that is, it computes all the elements of $S$ and
@@ -693,7 +693,7 @@ the result of right-multiplying each element by each generator (see Section
 \ref{sec:transformations}).  Since the
 original algorithm makes very little use of those properties unique to groups,
 the method applied to semigroups is essentially the same.  Other descriptions of
-Todd--Coxeter for semigroups can be found in \cite[Chapter 12]{ruskuc_thesis} and
+the Todd--Coxeter algorithm for semigroups can be found in \cite[Chapter 12]{ruskuc_thesis} and
 \cite[Chapter 1.2]{walker_thesis}, and a variation specific to inverse
 semigroups can be found in \cite{cutting_thesis}.  Our version of the algorithm
 is based closely on an implementation by G\"otz Pfeiffer, found in
@@ -1147,7 +1147,7 @@ relatively small.
   The numbers $100$ and $101$ in this example can be replaced by $N$ and $N+1$
   for an arbitrarily large value of $N$; the presentation will still define the
   trivial semigroup, but computation time will be arbitrarily long, increasing
-  with $N$.  In this way, we can see that although Todd--Coxeter is guaranteed
+  with $N$.  In this way, we can see that although the Todd--Coxeter algorithm is guaranteed
   to terminate in a finite number of steps when the input defines a finite
   semigroup, this number of steps is unbounded.
 \end{example}
@@ -1155,10 +1155,10 @@ relatively small.
 \subsubsection{Left, right, and two-sided congruences}
 \label{sec:tc-l-r}
 Next we will describe how to apply the given Todd--Coxeter method to
-left, right and two-sided congruences.  The description of Todd--Coxeter given
+left, right and two-sided congruences.  The description of the Todd--Coxeter algorithm given
 above is a method for finding the elements of the semigroup $S$ given by the
 presentation $\pres X R$, and describing their multiplication.  More precisely,
-Todd--Coxeter produces a table in which each row represents one element
+the Todd--Coxeter algorithm produces a table in which each row represents one element
 $s \in S^1$, each column represents one generator $x \in X$, and the cell in the
 row of $s$ and the column of $x$ contains the row number of the element $sx$.
 Hence its columns describe a right regular representation of $S$, as described
@@ -1202,7 +1202,7 @@ classes of $\rho$ (see Algorithm \ref{alg:tc-twosided} for a full description).
 
 However, if we are considering a left or right congruence we
 must alter the method slightly.  We shall now describe how to modify
-Todd--Coxeter to compute the right congruence $\rho$ (see Algorithm
+the Todd--Coxeter algorithm to compute the right congruence $\rho$ (see Algorithm
 \ref{alg:tc-right} for pseudo-code).
 
 Let $\pres X R$ and $W$ be as described in Section \ref{sec:program-inputs}, and
@@ -1253,7 +1253,7 @@ To see that this algorithm is correct, consider the following theorem.
     We may safely assume that the basic Todd--Coxeter algorithm is correct
     \cite{todd_coxeter_1936, beetham_campbell_1976} and therefore that
     \textsc{ToddCoxeterTwoSided($\pres X R$, $W$)} gives the correct answer for a
-    two-sided congruence, since it is equivalent to running Todd--Coxeter on the
+    two-sided congruence, since it is equivalent to running the Todd--Coxeter algorithm on the
     presentation $\pres{X}{R,W}$.  We must now consider how
     \textsc{ToddCoxeterRight} differs from \textsc{ToddCoxeterTwoSided}, and
     prove that the resulting table does indeed define the right congruence
@@ -1287,7 +1287,7 @@ To see that this algorithm is correct, consider the following theorem.
   \end{proof}
 \end{theorem}
 
-In summary, when computing a right congruence with Todd--Coxeter, each relation
+In summary, when computing a right congruence with the Todd--Coxeter algorithm, each relation
 $u=v$ from $R$ must be applied to every single row $e \in \mathbf{N}$
 (\textsc{Trace($e, u=v$)}), while the relations from $W$ only need to be applied
 to the identity row (\textsc{Trace($1, u=v$)}).
@@ -1409,7 +1409,7 @@ this run.  Once a list of elements is found, we can use \textsc{Trace} on each
 element, as for (iii), to find which congruence class it lies in.  These results
 can then be compiled, and singletons discarded, to produce the desired output.
 
-Note that output (iv) cannot be produced using Todd--Coxeter when $S$ is
+Note that output (iv) cannot be produced using the Todd--Coxeter algorithm when $S$ is
 infinite.  However, the pair orbit algorithm will succeed for infinite $S$, so
 long as there are only finitely many elements in non-trivial classes.  See
 Section \ref{sec:p} for more detail.
@@ -1422,13 +1422,13 @@ single row representing the empty word, and we add rows to represent the
 different congruence classes as we go along, merging rows together if they are
 found to describe the same congruence class.  However, in the case that we are
 calculating a congruence over a concretely represented semigroup -- or indeed, over a finitely
-presented semigroup on which Todd--Coxeter has already been run -- we have certain
+presented semigroup on which the Todd--Coxeter algorithm has already been run -- we have certain
 information which we can use to help us with our calculation.
 
 If we have such a semigroup $S$, then we can find a right Cayley graph $\Gamma$
 for $S$ with respect to its generators $X$: if we have a concrete representation, then we can find
 this graph using the Froidure--Pin algorithm (see Section \ref{sec:find-pres});
-or if Todd--Coxeter has been run on $S$, then the resulting table contains all
+or if the Todd--Coxeter algorithm has been run on $S$, then the resulting table contains all
 the information required for a right Cayley graph.  Either way, this graph tells us, for
 each element $s \in S$ and each generator $x \in X$, the value of $s \cdot x$.
 The graph can then be converted easily into a Todd--Coxeter table, as follows.
@@ -1445,7 +1445,7 @@ Recall the notation we defined in Section \ref{sec:program-inputs}: our
 semigroup $S$ is presented by $\pres X R$, and we wish to calculate a congruence
 $\rho$ defined by the generating pairs $W$.  Pre-filling the table with the
 right Cayley graph as described above is equivalent to processing all the
-relations $R$ and running Todd--Coxeter to completion: we have a table which
+relations $R$ and running the Todd--Coxeter algorithm to completion: we have a table which
 describes the elements of $S$, or the congruence classes of the trivial
 congruence $\Delta_S$.  Since we wish to calculate the classes of $\rho$, we now
 have to consider the pairs $W$, and find out which $\Delta_S$-classes should be
@@ -1801,7 +1801,7 @@ Knuth--Bendix process which ensures completion in some cases.
     $v$ describe the same element of $S$.  In particular, if $S$ is finite, then
     the $\lrstar_\rws$ relation will have finitely many classes -- one for each
     element of $S$.  Using \cite[Corollary 12.21]{cgt}, we have that
-    Knuth--Bendix will halt with a finite, confluent and terminating set of
+    the Knuth--Bendix algorithm will halt with a finite, confluent and terminating set of
     rules, as required.
   \end{proof}
 \end{theorem}
@@ -1881,12 +1881,12 @@ themselves need to be checked for critical pairs, without a complete set ever
 being found.  It may also be that a confluent terminating rewriting system will
 eventually be found, but not for a very long time -- and it is never known in
 advance whether the process is going to terminate.  However, this process has
-one clear advantage over Todd--Coxeter, which is that it may complete even when
+one clear advantage over the Todd--Coxeter algorithm, which is that it may complete even when
 the monoid $\pres X R$ is infinite, so long as the set of rules in the rewriting
 system is finite (see Example \ref{ex:bicyclic}).  This is a strong argument in
 favour of trying the Knuth--Bendix process along with other methods.  The
 Knuth--Bendix process as currently implemented cannot be used for left or right
-congruences, an area where Todd--Coxeter has a clear advantage (but again, see
+congruences, an area where the Todd--Coxeter algorithm has a clear advantage (but again, see
 Section \ref{sec:kb-l-r}).
 
 We give an example of a rewriting system which solves the word problem for an
@@ -2008,7 +2008,7 @@ in the vast majority of cases this will speed things up.
 
 It should be noted that any one of these algorithms might be able to return an
 answer before its respective data structure has been completely evaluated.  For
-instance, if we are running Todd--Coxeter in order to decide whether two words
+instance, if we are running the Todd--Coxeter algorithm in order to decide whether two words
 $u$ and $v$ are congruent, we can at any time check whether
 $(1,u)\bar\tau = (1,v)\bar\tau$: if this equality holds, then the two words lie
 in the same congruence class, and since a class is never split in two by the
@@ -2018,13 +2018,13 @@ the other hand, $(1,u)\bar\tau \neq (1,v)\bar\tau$, then we cannot return an
 answer: it might be that the words genuinely lie in different congruence
 classes, or it might be that a coincidence between their rows will be found in
 the future.  An answer of ``false'' can therefore not be returned until
-Todd--Coxeter is run to completion.
+the Todd--Coxeter algorithm is run to completion.
 
-A similar condition is true for both Knuth--Bendix and pair orbit enumeration.
-Imagine we have a rewriting system $\rws$ halfway through a run of Knuth--Bendix;
+A similar condition is true for both the Knuth--Bendix algorithm and pair orbit enumeration.
+Imagine we have a rewriting system $\rws$ halfway through a run of the Knuth--Bendix algorithm;
 if two words $u$ and $v$ rewrite to the same word under $\rws$, then we can
 return ``true'' immediately, but if they do not, then it might be that
-Knuth--Bendix will add rules to $\rws$ later which will cause $u$ and $v$ to
+the Knuth--Bendix algorithm will add rules to $\rws$ later which will cause $u$ and $v$ to
 rewrite to the same word.  Pair orbit enumeration has this condition even more
 obviously: more and more pairs are found, and the pair we are looking for can
 turn up at any time.
@@ -2093,30 +2093,30 @@ with various algorithms.
   large enough to require significant processing time when considering its
   congruences.  We take a set of pairs which we know will generate a two-sided
   congruence equal to the universal congruence, and we ask \libsemigroups{} for
-  the number of congruence classes, using simple Todd--Coxeter in one case and
-  pre-filled Todd--Coxeter in the other.
+  the number of congruence classes, using the simple Todd--Coxeter algorithm in one case and
+  the pre-filled Todd--Coxeter algorithm in the other.
 
-  On average, simple Todd--Coxeter returns an answer in 724 milliseconds, while
-  pre-filled Todd--Coxeter requires an average 3057 milliseconds, more than 4
+  On average, the simple Todd--Coxeter algorithm returns an answer in 724 milliseconds, while
+  the pre-filled version requires an average of 3057 milliseconds, more than 4
   times as long.  This difference can be explained by the structure
   of the table at completion: a single row representing the one congruence
   class.  In the pre-fill case, a coset table must be constructed with 65536
-  rows, only to have all but one row deleted.  In the simple Todd--Coxeter case,
+  rows, only to have all but one row deleted.  In the simple case,
   the number of rows may stay very small throughout the procedure, drastically
   reducing the amount of work which needs to be done.
 \end{example}
 
 \begin{example}
   \label{ex:good-tc-prefill}
-  The virtue of pre-filled Todd--Coxeter is shown by a different congruence on
+  The virtue of the pre-filled Todd--Coxeter algorithm is shown by a different congruence on
   $\PBR_2$.  A much smaller set of generating pairs gives rise to a two-sided congruence
   $\rho$ with 19009 congruence classes, in contrast to the universal congruence
-  which has only one.  On average, simple Todd--Coxeter returns in around 128
+  which has only one.  On average, the simple Todd--Coxeter algorithm returns in around 128
   seconds, while the pre-filled version completes in under 12 seconds, a tenfold
   increase in speed.  This disparity can be explained by the large number of
-  rows which must be in the table on completion: simple Todd--Coxeter has to
+  rows which must be in the table on completion: the simple algorithm has to
   compute a large amount of information from relations, and add rows one by one,
-  while pre-filled Todd--Coxeter begins the process with much of the table's
+  while the pre-filled algorithm begins the process with much of the table's
   information already known, and only has to combine rows which coincide.
 \end{example}
 
@@ -2139,7 +2139,7 @@ use of a variety of algorithms.
   since it is not restricted to finite objects.
 \end{example}
 
-% A specific utility of Knuth--Bendix with pair orbit enumeration (\texttt{kbp}) is
+% A specific utility of the Knuth--Bendix algorithm with pair orbit enumeration (\texttt{kbp}) is
 % the ability to return a congruence's \textit{non-trivial congruence classes},
 % which in some cases cannot be determined by any of the other algorithms.
 % Consider the following example.
@@ -2153,7 +2153,7 @@ use of a variety of algorithms.
 %   defined by the pair $(ab^2a, a^2bab)$.  It turns out that $\rho$ has only one
 %   non-trivial congruence class, which is simply equal to $\{ab^2a, a^2bab\}$,
 %   and all other classes are singletons.  Since the total number of congruence
-%   classes is infinite, Todd--Coxeter cannot complete.  The \texttt{kbfp} method
+%   classes is infinite, the Todd--Coxeter algorithm cannot complete.  The \texttt{kbfp} method
 %   can certainly rewrite any pair of words to identify whether a pair lies in
 %   $\rho$; but only \texttt{kbp} has a way of looking up which elements are not
 %   in singletons, and thus returning an answer to the question: \textit{what are
@@ -2214,19 +2214,19 @@ as shown in \ref{fig:bench-trans-3p-times} and \ref{fig:bench-trans-vp-times}.
 The time taken to return an answer was recorded in each case, and these figures
 were compared to one another.  The algorithms used were:
 \begin{itemize}
-\item Todd--Coxeter (\texttt{tc}),
-\item Todd--Coxeter with pre-filled table (\texttt{tc\_prefill}),
-\item Knuth--Bendix (\texttt{kb}),
+\item the Todd--Coxeter algorithm (\texttt{tc}),
+\item the Todd--Coxeter algorithm with pre-filled table (\texttt{tc\_prefill}),
+\item the Knuth--Bendix algorithm (\texttt{kb}),
 \item pair orbit enumeration (\texttt{p}),
 \item the parallel method described in this chapter (\texttt{default}),
 \item and the method implemented in the library of \GAP{} (\texttt{GAP}).
 \end{itemize}
 
 As can be seen in Figure \ref{fig:bench-trans-1p-times}, the pre-filled
-Todd--Coxeter method is the most likely to complete fastest, with regular
-Todd--Coxeter winning in a sizeable minority of cases.  This backs up the
-observations that group theorists have made that Todd--Coxeter tends to perform
-faster than Knuth--Bendix \cite{havascomparing}.  We may also observe that pair
+Todd--Coxeter method is the most likely to complete fastest, with the standard
+Todd--Coxeter algorithm winning in a sizeable minority of cases.  This backs up the
+observations that group theorists have made that the Todd--Coxeter algorithm tends to perform
+faster than the Knuth--Bendix algorithm \cite{havascomparing}.  We may also observe that pair
 orbit enumeration sometimes completes almost instantly, which makes some sense
 when we consider how little work the algorithm does when there are very few
 non-reflexive pairs in the congruence.  The Knuth--Bendix procedure lags behind
@@ -2396,16 +2396,16 @@ than it was for concrete representations, taking as much as 300,000 times as lon
 as \libsemigroups{} to complete.  Due to the excessive times \GAP{} took to
 complete some tests, the size of semigroups was restricted to 1000.  In these
 tests, unlike for concrete representations,
-Knuth--Bendix tended to outperform \GAP{}, but in
-general Todd--Coxeter methods were still faster.  It should be noted, however,
+the Knuth--Bendix algorithm tended to outperform \GAP{}, but in
+general the Todd--Coxeter methods were still faster.  It should be noted, however,
 that these were all congruences that were guaranteed in advance to have a finite
 number of classes.  An arbitrary congruence on a finitely presented semigroup
 may have an infinite number of classes, and there are many examples in which
-Knuth--Bendix can return an answer but Todd--Coxeter cannot (see Example
+the Knuth--Bendix algorithm can return an answer but the Todd--Coxeter algorithm cannot (see Example
 \ref{ex:good-kbfp}).
 
-\kbmag{} generally performed worse in tests than Todd--Coxeter, but was
-comparable to our implementation of Knuth--Bendix.  It generally took around
+\kbmag{} generally performed worse in tests than the Todd--Coxeter algorithm, but was
+comparable to our implementation of the Knuth--Bendix algorithm.  It generally took around
 $10$ times as long as the complete parallel method (\texttt{default} on the
 graphs).
 
@@ -2415,7 +2415,7 @@ The parallel approach described in this chapter is quite open-ended, and could
 be extended or improved in several ways.  We will now discuss some areas which
 could bear investigation, given more time to spend on the project.
 
-\subsection{Pre-filling Todd--Coxeter with a left Cayley graph}
+\subsection{Pre-filling the Todd--Coxeter algorithm with a left Cayley graph}
 \label{sec:prefill-left}
 The pre-filled Todd--Coxeter algorithm, as described in Section
 \ref{sec:tc-prefill}, works by starting the procedure with a right Cayley graph
@@ -2424,7 +2424,7 @@ right Cayley graph for a semigroup is found using the Froidure--Pin method, whic
 also returns the corresponding left Cayley graph.  Hence, we may also wish to
 find a way to use the left Cayley graph in the pre-filling process.
 
-As mentioned in Section \ref{sec:tc-l-r}, it is possible to use Todd--Coxeter
+As mentioned in Section \ref{sec:tc-l-r}, it is possible to use the Todd--Coxeter algorithm
 with a reversed multiplication, essentially studying a semigroup anti-isomorphic
 to $S$.  It would be possible to apply the same principle, reverse the
 multiplication of elements in $S$, and thus use the left Cayley graph instead of
@@ -2443,14 +2443,14 @@ $v$.  With such different left and right Cayley graphs, it seems likely that one
 piece of information would be much more helpful than the other in calculating
 congruences on the semigroup.
 
-\subsection{Interaction between Knuth--Bendix and Todd--Coxeter}
+\subsection{Interaction between the Knuth--Bendix and Todd--Coxeter algorithms}
 \label{sec:linking-kb-tc}
 The Knuth--Bendix and Todd--Coxeter algorithms, as described in this chapter, do
 not interact with each other in any way.  The Knuth--Bendix process runs in one
 thread, and the Todd--Coxeter process runs in another.  However, information from
 one could perhaps be shared with the other.
 
-The main objective of Knuth--Bendix is the addition of new rewriting rules to a
+The main objective of the Knuth--Bendix algorithm is the addition of new rewriting rules to a
 rewriting system $\rws$ to satisfy the condition of confluence: if a critical
 pair is found, and a new rule $u \to v$ is added to $\rws$, then this gives us a
 pair of words $(u,v)$ which represents a pair of congruent elements in the congruence we
@@ -2459,17 +2459,17 @@ possible to send the pair of words $(u,v)$ to the Todd--Coxeter thread, which
 at its next convenience would run \textsc{Coinc$\big($Trace($1, u$), Trace($1, v$)$\big)$}
 to identify the two corresponding rows in the table.
 
-Conversely, Todd--Coxeter may find information which could be used by
-Knuth--Bendix.  Firstly, it is trivial to record, for each row $i$ of the table,
+Conversely, the Todd--Coxeter algorithm may find information which could be used by
+the Knuth--Bendix algorithm.  Firstly, it is trivial to record, for each row $i$ of the table,
 the word $w_i$ which was first used to describe it: row $1$ is identified with
 the empty word ($w_1 := \varepsilon$), and if a row is created using
 \textsc{Add($i, x$)} then it is assigned the word $w_ix$.  For each row $i$, we
 now have \textsc{Trace}$(1, w_i) = i$; that is, each row has a word which can
 act as a representative for its congruence class.
-If, in a normal run of Todd--Coxeter, it is found that two rows $i$ and $j$
+If, in a normal run of the Todd--Coxeter algorithm, it is found that two rows $i$ and $j$
 represent the same class and must be combined, then this immediately gives a
 pair of words $(w_i,w_j)$ which represent the same congruence class.  This pair
-of words can be sent to a parallel instance of Knuth--Bendix, which can add it as
+of words can be sent to a parallel instance of the Knuth--Bendix algorithm, which can add it as
 a rule $w_i \to w_j$ (or $w_j \to w_i$, as dictated by the chosen ordering).
 
 It may be that this sharing of knowledge between the two algorithms would
@@ -2478,17 +2478,17 @@ and space overhead required in the implementation of these ideas would be so gre
 algorithms would not speed up at all.  Experiments with this idea might show it
 to be useful, or might suggest that it is not worth pursuing.
 
-\subsection{Using concrete elements in Todd--Coxeter}
+\subsection{Using concrete elements in the Todd--Coxeter algorithm}
 \label{sec:tc-concrete-elms}
 The Todd--Coxeter procedure uses a finite presentation $\pres X R$ and a set of
 extra pairs $W$ in order to calculate information about a congruence
 over a semigroup $S$.  If $S$ has a concrete representation, then $\pres X R$ and $W$
-must be calculated before the beginning of Todd--Coxeter, so that the procedure
+must be calculated before the beginning of the Todd--Coxeter algorithm, so that the procedure
 can use them as parameters.  However, once this information has been calculated,
 no other information about $S$ is used for the rest of the algorithm, which only
 deals with words, abstract generators and relations.
 
-It may prove helpful to use the concrete representation from $S$ in the Todd--Coxeter
+It may prove helpful to use the concrete representation from $S$ in the the Todd--Coxeter algorithm
 procedure, if one is available.  For instance, when \textsc{Add($i, x$)} for some
 row $i$ and generator $x$, it would be possible to find an element corresponding
 to row $i$, find the element corresponding to the generator $x$, multiply the
@@ -2500,14 +2500,14 @@ The pre-filling of Todd--Coxeter tables is one use of the concrete elements that
 we have already described and implemented, but they may be many more which would
 be effective.
 
-\subsection{Left and right congruences with Knuth--Bendix}
+\subsection{Left and right congruences with the Knuth--Bendix algorithm}
 \label{sec:kb-l-r}
 The parallel method in this chapter, and its implementation in \libsemigroups{},
 include support for left congruences and right congruences, as well as the more
-important two-sided congruences.  Currently, Todd--Coxeter and pair enumeration
-are the only methods which support left and right congruences, while
-Knuth--Bendix is only applied in the two-sided case.  However, there does exist
-a version of Knuth--Bendix which applies to left and right congruences, and
+important two-sided congruences.  Currently, the Todd--Coxeter and pair enumeration
+algorithms are the only methods which support left and right congruences, while
+the Knuth--Bendix algorithm is only applied in the two-sided case.  However, there does exist
+a version of the Knuth--Bendix algorithm which applies to left and right congruences, and
 it could be considered a useful addition to the parallel algorithm described in
 this chapter.
 
@@ -2536,7 +2536,7 @@ with the $\#$ symbols being added to the ends of words instead of to the start.
 
 This additional method could be included in the parallel algorithm, and in
 \libsemigroups{}, without too much extra work.  It may be that it would perform
-well, returning faster than Todd--Coxeter on some examples -- but it would need
+well, returning faster than the Todd--Coxeter algorithm on some examples -- but it would need
 to be benchmarked in a manner similar to Section \ref{sec:benchmarking} in order
 to establish whether it were worth running in either the concrete case or the
 finite presentation case.  Once this were decided, we would be able to remove the
