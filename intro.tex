@@ -2113,24 +2113,26 @@ for a detailed survey of different improvements and their possible advantages
 and drawbacks.
 
 Assume we wish to compute $\mathbf{R}^e$ for a relation $\mathbf{R}$ on a set
-$X$.  A union--find table, for us, is a pair $(\tau, \Lambda)$ consisting of a
-table $\tau$ of integers and a list $\Lambda$ of elements from $X$, which will
-both begin as arrays of size $0$.  The list $\Lambda$ will contain all elements
-not in singletons, and the table $\tau$ will be used to keep track of which
-elements of $\Lambda$ are in which class.  We will denote by $\tau_n$ the $n$th
-entry of $\tau$, and we will denote by $\tau_x$ the entry in $\tau$ in the same
-position as $x$ in $\Lambda$.  We will then update $\Lambda$ and $\tau$ using
-three operations \textsc{AddElement}, \textsc{Union} and \textsc{Find} in the
-following way.
+$X$.  A union--find table, for us, is a pair $(\Lambda, \tau)$ consisting of a
+set $\Lambda$ of elements from $X$ and a function $\tau: \Lambda \to \Lambda$.
+The set $\Lambda$ will contain all elements not in singletons, and the function
+$\tau$ will be used to keep track of which elements of $\Lambda$ are in which
+equivalence class.  Initially $\Lambda$ is empty, and $\tau$ is the empty
+function $\varnothing \to \varnothing$.  This initial state represents the
+diagonal relation $\Delta_X$.  We proceed by iterating through the pairs in
+$\mathbf{R}$, and updating $\Lambda$ and $\tau$ using three operations
+\textsc{AddElement}, \textsc{Union} and \textsc{Find} in the following way.
 
 At the beginning of the algorithm, every $\mathbf{R}^e$-class is assumed to be a
-singleton, so $\Lambda$ and $\tau$ are both empty.  As the algorithm progresses,
+singleton.  The set $\Lambda$ contains only elements in non-singletons, so it
+is empty; the function $\tau$ is defined over $\Lambda$, so it is also empty.
+As the algorithm progresses,
 at various times we will find that two elements (say $x$ and $y$) are
 $\mathbf{R}^e$-related, and we will wish to record this.  If either of $x$ or
 $y$ is not already in $\Lambda$, we call \textsc{AddElement} to start tracking
-it in the union--find system; \textsc{AddElement} simply adds the element to the
-end of $\Lambda$ and adds a new entry to the end of $\tau$ with value equal to
-the new length of $\Lambda$ -- a value not yet used in the table.  See Algorithm
+it in the union--find system; \textsc{AddElement} simply adds an element -- for
+example, $x$ -- to the
+end of $\Lambda$, and redefines $\tau$ such that $(x)\tau = x$.  See Algorithm
 \ref{alg:uf-addelement} for pseudo-code.  Then we call \textsc{Union($x,y$)} to
 combine the two classes as described below.
 
@@ -2141,8 +2143,8 @@ combine the two classes as described below.
   \begin{algorithmic}
     \Require{$x \notin \Lambda$}
     \Procedure{AddElement}{$x$}
-      \State{Append $x$ to the end of $\Lambda$}
-      \State{Append $|\Lambda|$ to the end of $\tau$}
+      \State $\Lambda \gets \Lambda \cup \{x\}$
+      \State $(x)\tau := x$
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}
@@ -2175,8 +2177,8 @@ equivalence class, as shown in Algorithm \ref{alg:uf-find}.
     \Procedure{Find}{$x$}
       \State $n := $ position of $x$ in $\Lambda$
       \Repeat
-        \State $n \gets \tau_n$
-      \Until{$n = \tau_n$}
+        \State $n \gets (n)\tau$
+      \Until{$n = (n)\tau$}
       \State \Return $n$
     \EndProcedure
   \end{algorithmic}
@@ -2198,9 +2200,9 @@ higher one to point to the lower.  Its pseudo-code is shown in Algorithm
       \State $m \gets $ \Call{Find}{$x$}
       \State $n \gets $ \Call{Find}{$y$}
       \If{$m<n$}
-        \State $\tau_n \gets m$
+        \State $(n)\tau \gets m$
       \ElsIf{$n<m$}
-        \State $\tau_m \gets n$
+        \State $(m)\tau \gets n$
       \EndIf
     \EndProcedure
   \end{algorithmic}
