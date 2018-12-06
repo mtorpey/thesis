@@ -2117,22 +2117,29 @@ $X$.  A union--find table, for us, is a pair $(\Lambda, \tau)$ consisting of a
 set $\Lambda$ of elements from $X$ and a function $\tau: \Lambda \to \Lambda$.
 The set $\Lambda$ will contain all elements not in singletons, and the function
 $\tau$ will be used to keep track of which elements of $\Lambda$ are in which
-equivalence class.  Initially $\Lambda$ is empty, and $\tau$ is the empty
-function $\varnothing \to \varnothing$.  This initial state represents the
-diagonal relation $\Delta_X$.  We proceed by iterating through the pairs in
-$\mathbf{R}$, and updating $\Lambda$ and $\tau$ using three operations
-\textsc{AddElement}, \textsc{Union} and \textsc{Find} in the following way.
+equivalence class, in a way described below.  Initially $\Lambda$ is empty, and
+$\tau$ is the empty function $\varnothing \to \varnothing$.  This initial state
+represents the diagonal relation $\Delta_X$.  We proceed by iterating through
+the pairs in $\mathbf{R}$, and updating $\Lambda$ and $\tau$ using the following
+three operations:
+\begin{itemize}
+\item \textsc{AddElement} takes an element $x \in X$ and starts tracking it
+  using the union--find table;
+\item \textsc{Union} takes two elements $x,y \in X$ and alters the table to
+  indicate that they lie in the same class in $\mathbf{R}^e$;
+\item \textsc{Find} takes an element $x \in X$ and returns a canonical element
+  $x'$ that lies in the same equivalence class as $x$.
+\end{itemize}
 
 At the beginning of the algorithm, every $\mathbf{R}^e$-class is assumed to be a
-singleton.  The set $\Lambda$ contains only elements in non-singletons, so it
-is empty; the function $\tau$ is defined over $\Lambda$, so it is also empty.
+singleton.  The set $\Lambda$ only needs to contain the elements that are in non-singletons, so it
+starts empty; the function $\tau$ is defined over $\Lambda$, so it is also empty.
 As the algorithm progresses,
 at various times we will find that two elements (say $x$ and $y$) are
 $\mathbf{R}^e$-related, and we will wish to record this.  If either of $x$ or
-$y$ is not already in $\Lambda$, we call \textsc{AddElement} to start tracking
-it in the union--find system; \textsc{AddElement} simply adds an element -- for
-example, $x$ -- to the
-end of $\Lambda$, and redefines $\tau$ such that $(x)\tau = x$.  See Algorithm
+$y$ is not already in $\Lambda$, we call \textsc{AddElement} on it to start tracking
+it in the union--find table; \textsc{AddElement} simply adds an element -- for
+example, $x$ -- to the set $\Lambda$, and redefines $\tau$ such that $(x)\tau = x$.  See Algorithm
 \ref{alg:uf-addelement} for pseudo-code.  Then we call \textsc{Union($x,y$)} to
 combine the two classes as described below.
 
@@ -2149,25 +2156,28 @@ combine the two classes as described below.
   \end{algorithmic}
 \end{algorithm}
 
-A simple way of tracking classes would be for each entry in $\tau$ to contain
-the equivalence class number of the appropriate element: distinct elements $x$
-and $y$ are in the same equivalence class if and only if $x,y \in \Lambda$ and
-$\tau_x = \tau_y$.  By this method, \textsc{Union($x,y$)} would go through the
-whole of $\tau$, finding every entry which equals $\tau_y$, and updating it to
-point to $\tau_x$, thus making the two classes equal.  However, this operation
-has high time complexity -- in the worst case, $O(|X|)$ -- and would cause any
-implementation of this algorithm to take a long time to complete.  Instead, the
-union--find algorithm treats $\tau_x$ as a pointer to a parent element, as
+A simple way of tracking classes would be for $\tau$ to be a function from $X$
+to $\mathbb{N}$, where $(x)\tau$ would be the index of the equivalence class in
+which $x$ lies: distinct elements $x$ and $y$ would be in the same equivalence
+class if and only if $x,y \in \Lambda$ and $(x)\tau = (y)\tau$.  By this method,
+\textsc{Union($x,y$)} would need go through the whole of $\tau$, finding every
+$z$ such that $(z)\tau = (y)\tau$, and updating it so that $(z)\tau = (x)\tau$,
+thus making the two classes equal.  However, this operation has high time
+complexity -- in the worst case, $O(|X|)$ -- and would cause any implementation
+of this algorithm to take a long time to complete.  Instead, the union--find
+algorithm treats $\tau$ as a pointer to a parent element in a tree structure, as
 follows.
 
-Rather than treating $\tau$ as a simple table in which elements are
-$\mathbf{R}^e$-related if and only if they have the same number in their $\tau$
-entry, we treat an entry in the table as a pointer to another entry in the
-table.  Only if an entry in the table points to itself do we treat it as the
-actual number of the equivalence class.  Hence we have a function,
-\textsc{Find}, which takes an integer between $1$ and $|\Lambda|$ (referring to
-the position of an element $x \in \Lambda$) and returns the number of its
-equivalence class, as shown in Algorithm \ref{alg:uf-find}.
+Rather than treating $\tau$ as a simple function such that elements are
+$\mathbf{R}^e$-related if and only if they have the same $\tau$ output,
+we instead have $\tau$ map an element in $\Lambda$ to another element in the
+same class.  If $x$ is an element in $\Lambda$, then $(x)\tau$ is the parent of
+$x$ in a tree that contains all elements in a class.  Each class contains a
+single element $r$ such that $(r)\tau = r$, which we can think of as the root of
+the tree.  Hence the \textsc{Find} function takes an element $x$, and traverses
+the tree all the way back to the root by starting with $x$, and calling $\tau$
+on it again and again until we find an element $y$ such that $(y)\tau = y$.
+Pseudo-code is given in Algorithm \ref{alg:uf-find}.
 
 \begin{algorithm}
 \caption{The \textsc{Find} algorithm (union--find)}
