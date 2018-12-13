@@ -2149,7 +2149,7 @@ combine the two classes as described below.
 \caption{The \textsc{AddElement} algorithm (union--find)}
 \label{alg:uf-addelement}
 \index{AddElement@\textsc{AddElement}}
-  \begin{algorithmic}
+  \begin{algorithmic}[1]
     \Require{$x \notin \Lambda$}
     \Procedure{AddElement}{$x$}
       \State $\Lambda \gets \Lambda \cup \{x\}$
@@ -2185,7 +2185,7 @@ Pseudo-code is given in Algorithm \ref{alg:uf-find}.
 \caption{The \textsc{Find} algorithm (union--find)}
 \label{alg:uf-find}
 \index{Find@\textsc{Find}}
-  \begin{algorithmic}
+  \begin{algorithmic}[1]
     \Procedure{Find}{$x$}
       \Repeat
         \State $x \gets (x)\tau$  \Comment{Set $x$ to the parent of the old $x$}
@@ -2205,7 +2205,7 @@ point to the other.  Its pseudo-code is shown in Algorithm \ref{alg:uf-union}.
 \caption{The \textsc{Union} algorithm (union--find)}
 \label{alg:uf-union}
 \index{Union@\textsc{Union}}
-  \begin{algorithmic}
+  \begin{algorithmic}[1]
     \Procedure{Union}{$x,y$}
       \State $m \gets $ \Call{Find}{$x$}
       \State $n \gets $ \Call{Find}{$y$}
