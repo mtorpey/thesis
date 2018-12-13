@@ -2127,15 +2127,17 @@ three operations:
   using the union--find table;
 \item \textsc{Union} takes two elements $x,y \in X$ and alters the table to
   indicate that they lie in the same class in $\mathbf{R}^e$;
-\item \textsc{Find} takes an element $x \in X$ and returns a canonical element
-  $x'$ that lies in the same equivalence class as $x$.
+\item \textsc{Find} takes an element $x \in X$ and returns a canonical
+  representative $x'$ of the equivalence class in which $x$ lies.  For two
+  elements $x, y \in X$, we have $\textsc{Find}(x) = \textsc{Find}(y)$ if and
+  only if $(x,y) \in \mathbf{R}^e$.
 \end{itemize}
 
 At the beginning of the algorithm, every $\mathbf{R}^e$-class is assumed to be a
 singleton.  The set $\Lambda$ only needs to contain the elements that are in non-singletons, so it
 starts empty; the function $\tau$ is defined over $\Lambda$, so it is also empty.
 As the algorithm progresses,
-at various times we will find that two elements (say $x$ and $y$) are
+at various times we will find that two distinct elements (say $x$ and $y$) are
 $\mathbf{R}^e$-related, and we will wish to record this.  If either of $x$ or
 $y$ is not already in $\Lambda$, we call \textsc{AddElement} on it to start tracking
 it in the union--find table; \textsc{AddElement} simply adds an element -- for
@@ -2172,11 +2174,11 @@ Rather than treating $\tau$ as a simple function such that elements are
 $\mathbf{R}^e$-related if and only if they have the same $\tau$ output,
 we instead have $\tau$ map an element in $\Lambda$ to another element in the
 same class.  If $x$ is an element in $\Lambda$, then $(x)\tau$ is the parent of
-$x$ in a tree that contains all elements in a class.  Each class contains a
+$x$ in a tree that contains all the elements in the class.  Each class contains a
 single element $r$ such that $(r)\tau = r$, which we can think of as the root of
 the tree.  Hence the \textsc{Find} function takes an element $x$, and traverses
 the tree all the way back to the root by starting with $x$, and calling $\tau$
-on it again and again until we find an element $y$ such that $(y)\tau = y$.
+on it again and again until we reach the root.
 Pseudo-code is given in Algorithm \ref{alg:uf-find}.
 
 \begin{algorithm}
@@ -2185,21 +2187,19 @@ Pseudo-code is given in Algorithm \ref{alg:uf-find}.
 \index{Find@\textsc{Find}}
   \begin{algorithmic}
     \Procedure{Find}{$x$}
-      \State $n := $ position of $x$ in $\Lambda$
       \Repeat
-        \State $n \gets (n)\tau$
-      \Until{$n = (n)\tau$}
-      \State \Return $n$
+        \State $x \gets (x)\tau$  \Comment{Set $x$ to the parent of the old $x$}
+      \Until{$x = (x)\tau$}  \Comment{Check whether the new $x$ is the root}
+      \State \Return $x$
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}
 
 Now we may view the operation of finding an element's class as traversing a tree
-from its leaf up to its root, and we can view the entire connected tree as the
+from a node up to its root, and we can view the entire connected tree as the
 class itself.  In order to combine two classes, therefore, we have the function
-\textsc{Union}, which simply finds the roots of the two trees and changes the
-higher one to point to the lower.  Its pseudo-code is shown in Algorithm
-\ref{alg:uf-union}.
+\textsc{Union}, which simply finds the roots of the two trees and changes one to
+point to the other.  Its pseudo-code is shown in Algorithm \ref{alg:uf-union}.
 
 \begin{algorithm}
 \caption{The \textsc{Union} algorithm (union--find)}
