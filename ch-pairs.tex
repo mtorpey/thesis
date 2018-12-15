@@ -532,24 +532,26 @@ the congruence $\rho$ we are trying to compute.  It will also be important to
 remember whether we are calculating a left, right, or two-sided congruence, a
 piece of information encoded in Algorithm \ref{alg:p} as $\sigma \in \{L,R,T\}$.
 We start with a list of pairs $\mathbf{R}'$ which we initialise to be equal to
-the set of generating pairs $\mathbf{R}$; this list $\mathbf{R}'$ will hold all
+the set of generating pairs $\mathbf{R}$ (line 3); this list $\mathbf{R}'$ will hold all
 the pairs that have been found so far, except those we infer from reflexivity,
-symmetry and transitivity.  We will also have a union--find table
-$(\tau,\Lambda)$ for storing the classes, and we will be using the three
+symmetry and transitivity.  We will also create a union--find table
+$(\Lambda,\tau)$ for storing the classes (line 4), and we will be using the three
 operations \textsc{AddElement}, \textsc{Union} and \textsc{Find} to modify them.
 See Section \ref{sec:union-find} for a full description of the union--find
 method.
 
 Now we can describe the overall structure of the pair orbit enumeration method.
-We begin iterating through the pairs in $\mathbf{R}'$, and as we do so we
+We begin iterating through the pairs in $\mathbf{R}'$ (the repeat loop starting on line 6), and as we do so we
 will add further pairs to $\mathbf{R}'$ which will also need to be iterated on,
-until we reach the end of the list.  For each pair $(a,b)$ we first need to
-merge $a$ and $b$ in the union--find table -- if either $a$ or $b$ is not
-already in $\Lambda$, then it will need to be added first.  Now,
-for each generator $x$, we can find the two pairs $(xa,xb)$ and $(ax,ab)$.
-Depending on whether we are calculating a left, right, or two-sided congruence,
+until we reach the end of the list (line 19).  For each pair $(a,b)$ we first need to
+merge the congruence classes of $a$ and $b$ in the union--find table using
+\textsc{Union} (line 13).  However, if either $a$ or $b$ is not
+already in $\Lambda$, then it will need to be added first using \textsc{AddElement} (lines 9--12).  Now,
+for each generator $x$, we can find the two pairs $(xa,xb)$ and $(ax,bx)$.
+Depending on whether we are calculating a left, right, or two-sided congruence
+(that is, depending on the value of $\sigma$)
 we add one or both of these pairs to $\mathbf{R}'$ to be processed in its own
-turn.  Pseudo-code for this method is shown in Algorithm \ref{alg:p}.
+turn (lines 16 and 18).
 
 \begin{algorithm}
 \caption{The \textsc{PairOrbit} algorithm}
@@ -563,9 +565,12 @@ turn.  Pseudo-code for this method is shown in Algorithm \ref{alg:p}.
 \State Let $X$ be a generating set for $S$
 \State $\mathbf{R}' := \mathbf{R}$
 %\Comment{$\mathbf{R}'$ is the list of pairs found so far}
-\State $\Lambda := ()$ \Comment{an empty list of elements from $S$}
-\State $\tau := ()$ \Comment{an empty table for union--find}
-\For{$(a,b) \in \mathbf{R}'$}
+\State $(\Lambda, \tau) := (\varnothing, \varnothing)$
+\Comment{An initialised union--find table}
+\State $i := 0$  \Comment{Number of pairs we have looped over}
+\Repeat
+  \State $i \gets i + 1$
+  \State $(a,b) :=$ the $i$th pair in $\mathbf{R}'$
   \If{$a \notin \Lambda$}
     \State \Call{AddElement}{$a$}
   \EndIf
@@ -575,24 +580,24 @@ turn.  Pseudo-code for this method is shown in Algorithm \ref{alg:p}.
   \State \Call{Union}{$a, b$}
   \For{$x \in X$}
     \If{$\sigma \in \{L, T\}$}
-      \State $\mathbf{R}' \gets \mathbf{R}' \cup \{(xa, xb)\}$
+      \State Add $(xa, xb)$ to $\mathbf{R}'$ if not already present
     \EndIf
     \If{$\sigma \in \{R, T\}$}
-      \State $\mathbf{R}' \gets \mathbf{R}' \cup \{(ax, bx)\}$
+      \State Add $(ax, bx)$ to $\mathbf{R}'$ if not already present
     \EndIf
   \EndFor
-\EndFor
-\State \Return $(\tau, \Lambda)$
+\Until{$i = |\mathbf{R}'|$}  \Comment{There are no pairs left to process}
+\State \Return $(\Lambda, \tau)$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
-Once this procedure is finished, we have a complete table $\tau$ which describes
+Once this procedure is finished, we have a complete table $(\Lambda,\tau)$ which describes
 the congruence's non-trivial classes.  To check whether a pair $(a,b)$ lies in
 the congruence, we now just need to look up $a$ and $b$ in the table using
 \textsc{Find}, and if they lie in the same class we return true.  If either
 element has not been added to $\Lambda$, then it lies in a singleton, and $(a,b)$
-is only in the congruence if $a=b$.
+is in the congruence if and only if $a=b$.
 
 In order to prove that this method is valid, we will recall some facts from
 Chapter \ref{chap:intro}, as well as citing several sources for some theory.
@@ -616,8 +621,12 @@ state the following theorem.
     where we are computing the left congruence.  For each pair
     $(a,b) \in \mathbf{R}$, the pair orbit enumeration procedure finds all the
     pairs $(xa, xb)$ where $x$ is a generator of $S$.  That pair is then added
-    to $\mathbf{R}'$, and so its left multiples are found: $(yxa, yxb)$ for
-    every generator $y$ of $S$.  And in this way, $(sa, sb)$ is found for every
+    to $\mathbf{R}'$ (line 16), and so it is kept in line for processing.  On a
+    later run through the repeat loop, when $i$ is incremented in line 7 and
+    reaches the position of $(xa, xb)$ in $\mathbf{R}'$, $(xa, xb)$ is
+    considered as a pair in its own right, and all of its left multiples are
+    found in their turn: $(yxa, yxb)$ for every generator $y \in X$.  In this
+    way, $(sa, sb)$ is found for every
     $s \in S$, so the set of pairs found by the \textsc{PairOrbit} algorithm is
     $$\{(sa, sb) ~|~ (a,b) \in \mathbf{R}, s \in S\},$$
     which is equal to the relation $\mathbf{R}^l$.
@@ -636,22 +645,26 @@ state the following theorem.
     know from Theorem \ref{thm:rsharp}, these relations are respectively the least
     left, right, and two-sided congruence containing $\mathbf{R}$, so the output
     of \textsc{PairOrbit} describes $\rho$ accurately, and \textsc{Find} may be used as
-    described to compare elements.
+    described to determine whether two elements lie in the same congruence class.
   \end{proof}
 \end{theorem}
 
-It would be possible, instead of increasing the length of $\tau$ when a new
-element is found, to make $\tau$'s original length equal to the size of $S$ at
-creation.  However, this approach is not used here, since adding the elements only as
-they are found opens up the possibility of applying this method to infinite
+In \textsc{PairOrbit}, we call \textsc{AddElement}, and thus add
+elements to $\Lambda$, only when an element is found in a pair.
+This approach opens up the possibility of applying this method to infinite
 semigroups.  Our implementation in \libsemigroups{} \cite{libsemigroups}
 includes such a possibility, by taking a semigroup presentation $\pres X R$ and
 using the Knuth--Bendix algorithm (see Section \ref{sec:kb}) as a way of comparing the semigroup's
 elements.  The pair orbit enumeration procedure, as described above, can then be
 used, and will complete in finite time if and only if the number of elements in
-non-trivial congruence classes is finite.  This was implemented to answer
-questions other than checking a pair's inclusion in the congruence, and will
-therefore not be discussed in any more detail in this chapter.
+non-trivial congruence classes is finite.  It should be noted that we can rely
+on \textsc{PairOrbit} terminating in a finite number of steps so long as $S$ and
+$X$ are finite.  There are only two loops in the algorithm: the inner for-loop
+is limited by the finite length of $X$, so it has only a finite number of steps;
+and the outer repeat loop can only be run at most $|S|^2$ times, since it runs
+once for each pair added to $\mathbf{R}'$, which is a subset of $S \times S$ --
+note that new pairs are only added if they are not already present (lines 16 and
+18).
 
 This is the simplest of the algorithms discussed in this section, and generally
 does not perform as well as the others in practice.  However, it has certain
@@ -676,7 +689,8 @@ of congruence classes of $\rho$ is equal to
 $$|\{\textsc{Find}(x): x \in \Lambda\}| + |S \setminus \Lambda|.$$
 For (iii), we require an algorithm that takes an element and returns a unique
 integer corresponding to the congruence class in which it lies; we can simply
-use the function $\textsc{Find}$.  Finally for (iv) we require a list of the
+use the function $\textsc{Find}$ and create a map of outputs to integers over
+successive calls.  Finally for (iv) we require a list of the
 elements in each non-trivial congruence class; this can be produced by calling
 \textsc{Find} on each element $x$ in $\Lambda$, and putting $x$ into a list
 labelled $L_i$ where $i = \textsc{Find}(i)$, creating new lists as necessary --
