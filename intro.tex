@@ -2200,6 +2200,16 @@ from a node up to its root, and we can view the entire connected tree as the
 class itself.  In order to combine two classes, therefore, we have the function
 \textsc{Union}, which simply finds the roots of the two trees and changes one to
 point to the other.  Its pseudo-code is shown in Algorithm \ref{alg:uf-union}.
+Note that a total ordering $<$ of elements is used; this ordering can be
+arbitrary, but since it is only ever used for elements in non-singletons, we
+choose to use the order in which elements were added to $\Lambda$.  In
+lines 2 and 3, we find the roots $x'$ and $y'$ of the trees of $x$ and $y$, by
+using \textsc{Find}.  Whichever of these is higher ($x' < y'$ or $y' < x'$) is
+set so that its $\tau$ output is equal to the one which is lower:
+$(y')\tau \gets x'$ or $(x')\tau \gets y'$.  Hence, a future call to
+$\textsc{Find}(x)$ will return the same result as a call to $\textsc{Find}(y)$
+-- the result will be whichever is the lower of $x'$ and $y'$.  Example
+\ref{ex:uf} shows this algorithm in action.
 
 \begin{algorithm}
 \caption{The \textsc{Union} algorithm (union--find)}
@@ -2207,27 +2217,35 @@ point to the other.  Its pseudo-code is shown in Algorithm \ref{alg:uf-union}.
 \index{Union@\textsc{Union}}
   \begin{algorithmic}[1]
     \Procedure{Union}{$x,y$}
-      \State $m \gets $ \Call{Find}{$x$}
-      \State $n \gets $ \Call{Find}{$y$}
-      \If{$m<n$}
-        \State $(n)\tau \gets m$
-      \ElsIf{$n<m$}
-        \State $(m)\tau \gets n$
+      \State $x' := $ \Call{Find}{$x$}
+      \State $y' := $ \Call{Find}{$y$}
+      \If{$x' < y'$}
+        \State $(y')\tau \gets x'$
+      \ElsIf{$y' < x'$}
+        \State $(x')\tau \gets y'$
       \EndIf
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}
 
-These three functions allow us to use two simple arrays to describe any
+Note that the algorithms described only ever make $z$ an output of $\tau$ if
+$(z)\tau = z$.  This ensures that when \textsc{Find} traverses a tree towards
+the root, it always moves towards a root, and never gets caught in a cycle.
+Hence, if $\Lambda$ is finite and $\tau$ was created using the methods
+described, all three algorithms will halt in finite time.
+
+These three algorithms allow us to use a simple data structure $(\Lambda, \tau)$ to describe any
 equivalence relation on a semigroup.  Whenever a pair $(x,y)$ is found in
 $\rho$, we call \textsc{AddElement($x$)} and \textsc{AddElement($y$)} if
 necessary, and then call \textsc{Union($x,y$)}.
+This combines the congruence classes of $x$ and $y$, and forces
+$\textsc{Find}(x) = \textsc{Find}(y)$.
 
 Note that this union--find method has automatically removed the problem of
 transitivity, as well as those of reflexivity and symmetry: if we relate the
 element $x$ to $y$, and then $y$ to $z$, we have combined all three elements
 into a single class, and so we will see that
-$\textsc{Find}(x) = \textsc{Find}(y)$, so we have added the pair $(x,z)$ with no
+$\textsc{Find}(x) = \textsc{Find}(z)$, so we have added the pair $(x,z)$ with no
 additional effort; similarly every element $x$ is related to itself from the
 very beginning; and relating $x$ to $y$ is precisely the same as relating $y$ to
 $x$.  In other words, if we perform \textsc{Union} on all the pairs of
@@ -2246,31 +2264,32 @@ computed with this method.
 
 \begin{example}
   \label{ex:uf}
-  Let $X = \{a,b,c,d,e,f,g,h\}$ and let $R$ be the set of pairs
+  Let $X = \{a,b,c,d,e,f,g,h\}$ and let $\mathbf{R}$ be the set of pairs
   $$\{(f,b), (d,c), (e,b), (b,d)\}.$$
   We can calculate the classes of $\mathbf{R}^e$ by applying \textsc{Union} to
   each pair in $\mathbf{R}$ in turn, calling \textsc{AddElement} on any
   appropriate elements to add them to $\Lambda$ first.
 
   First we call \textsc{AddElement}$(f)$ and \textsc{AddElement}$(b)$, then
-  \textsc{Union}$(f,b)$.  After these operations we have $\Lambda = (f,b)$ and
-  $\tau = (1,1)$, representing just one non-singleton class containing both
-  elements.  Next we call \textsc{AddElement} on $d$ and $c$, and then
-  \textsc{Union}$(d,c)$, after which we have $\Lambda = (f,b,d,c)$ and
-  $\tau = (1,1,3,3)$, shown in tree form in the first diagram of Figure
+  \textsc{Union}$(f,b)$.  After these operations we have $\Lambda = \{f,b\}$ and
+  $\tau$ has the results $(f)\tau=f$ and $(b)\tau=f$, representing just one
+  non-singleton class containing both elements.  Next we call
+  \textsc{AddElement} on $d$ and $c$, and then \textsc{Union}$(d,c)$, after
+  which we have $\Lambda = \{f,b,d,c\}$ and new results $(d)\tau=d$ and
+  $(c)\tau=d$.  This state is shown in tree form in the first diagram of Figure
   \ref{fig:uf}.
 
   Next we \textsc{AddElement}$(e)$ and call \textsc{Union}$(e,b)$.
-  \textsc{Union} follows $b$ to its parent $f$ in the tree, and sets
-  $\tau_x \gets 1$, resulting in $\Lambda = (f,b,d,c,e)$ and
-  $\tau = (1,1,3,3,1)$.  This is represented in tree form in the second diagram
-  of Figure \ref{fig:uf}.
+  \textsc{Union} follows $b$ to its parent $f$ in the tree, and sets $e$ to
+  point to it; hence $\Lambda = \{f,b,d,c,e\}$ and $(e)\tau = f$.  This is
+  represented in tree form in the second diagram of Figure \ref{fig:uf}.
 
   Finally we process the last pair by calling \textsc{Union}$(b,d)$.  This finds
   the root of $b$, which is $f$, and the root of $d$, which is $d$ itself, and
-  unites the two roots.  $f$ has a lower position in $\Lambda$ than $d$ does, so
-  $\tau_d$ is set equal to $f$.  At this final stage we have
-  $\Lambda = \{f,b,d,c,e\}$ as before, and $\tau = (1,1,1,3,1)$, representing
+  unites the two roots.  $f$ was added to $\Lambda$ before $d$ was, so
+  $(d)\tau$ is set equal to $f$.  At this final stage we have
+  $\Lambda = \{f,b,d,c,e\}$ as before, and $\tau$ maps the elements $f,b,d,c,e$
+  to $f,f,f,d,f$ respectively, representing
   the tree structure shown in the third diagram of Figure \ref{fig:uf}.
 
   \begin{figure}[ht]\centering
@@ -2311,7 +2330,7 @@ height of a tree created by repeated applications of \textsc{Union} can be as
 great as the size of the set $X$, which means that the worst-case time
 complexity of both \textsc{Find} and \textsc{Union} is $O(|X|)$.
 But we may consider
-the following improvements to both find and union, which limit the height of
+the following improvements to both \textsc{Find} and \textsc{Union}, which limit the height of
 trees and thus lower complexity.
 
 The \textsc{Find} operation descends all the way from a node to the root of its
@@ -2330,7 +2349,8 @@ Alternatives have been proposed which do less up-front work, for example
 describe shortly.
 
 The \textsc{Union} operation combines two trees by making one root the parent of
-the other.  In the method described above, we choose the root with lower $\Lambda$-index
+the other.  In the method described above, we choose the root that was added to
+$\Lambda$ earlier
 to be the new parent, but we might choose the parent differently.  The
 \textit{union by size} method keeps track of the size of each tree, and makes
 the smaller tree point to the larger \cite{galil_1991}; the \textit{union by
