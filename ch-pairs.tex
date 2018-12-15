@@ -405,28 +405,49 @@ therefore might consider an alternative.
 If $S$ has a known generating set $X$, we can use it to produce a presentation
 which is likely to much smaller.  Consider the following approach, which is
 adapted from the simplified version of the algorithm shown in
-\cite[\S 3.1]{froidure_pin}.
+\cite[\S 3.1]{froidure_pin}, where its correctness is proven in more detail.
 
 \begin{method}
   \label{meth:inbetween-presentation}
   Let $S$ be a finite semigroup with a concrete representation, and let
   $X \subseteq S$ be a generating set for $S$.  We can produce a presentation
   $\pres X R$ consisting of the known generating set $X$ together with some
-  relations $R$ which are computed as follows.
+  relations $R$ which are computed as follows, with complete pseudo-code in
+  Algorithm \ref{alg:inbetween-presentation}.
 
-  Let $R$ begin empty, and start enumerating the elements of the monoid $S^1$.
-  We keep a list $L_S$ of elements that have been found in $S^1$, and another
-  list $L_{X^*}$ of words made up of generators from $X$.  We also define a
+  Let $R$ begin empty (line 2), and start enumerating the elements of the monoid $S^1$.
+  We keep a list $L_S$ of elements that have been found in $S^1$ (initially just
+  the identity $\id$, as in line 3), and we keep another
+  list $L_{X^*}$ of words made up of generators from $X$ (initially just the
+  empty word $\varepsilon$, as in line 4).  We also define a
   function $\nu : X^* \to S^1$ which maps a word $w=x_1x_2\ldots x_n$ to the
   element $x_1\cdot x_2\cdots x_n$ found by multiplying the generators (and
-  $\varepsilon \mapsto \id$ as a special case).  For each found word, we append
-  each generator to the end of it to make a new word: if this new word
-  represents a new semigroup element, we add it to the list; if not, we have two
-  words which represent the same element, so we obtain a new relation which is
-  added to $R$.  For a more precise description of this process, see the
-  pseudo-code in Algorithm \ref{alg:inbetween-presentation}.
+  $\varepsilon \mapsto \id$ as a special case).
+  We now loop over the words $w$ that have been found and added to $L_{X^*}$;
+  initially this list contains only one word, but in each iteration of the loop,
+  we may discover new words, which we add to the end of the list, and iterate
+  over in course, until we have considered all words (line 16).
 
-  The resulting presentation $\pres X R$ defines the semigroup $S$.
+  In each iteration of the loop, we take the next word $w \in L_{X^*}$ (line 8)
+  and for each generator $x \in X$ in turn we consider the new word $wx$ made by
+  appending $x$ to the end of $w$.  If this new word represents an element of
+  $S^1$ that has already been found -- that is, if $(wx)\nu \in L_S$ -- then we
+  add a new relation $(wx, w')$ to $R$, where $w'$ is the word we have already
+  stored that represents $(wx)\nu$ (line 12).  If, on the other hand, this new
+  word does not represent an element that we already know, then we have
+  encountered a new element which must be added to $L_S$ (line 14) and we have a
+  word that represents it, which must be added to $L_X*$ (line 15).
+
+  Once the loop is run to the end, this if--else statement (lines 10--15)
+  ensures that every word $w \in X^*$ can be rewritten by a relation in $R$ to a
+  word in $L_{X^*}$, and that every element in $S$ has precisely one word in
+  $L_{X^*}$ which represents it.
+  Hence the resulting presentation $\pres X R$ defines the semigroup $S$.
+
+  We can also see that this algorithm always terminates for finite $X$ and
+  finite $S$: the repeat-loop is only run once for each element of $S$, and the
+  for-loop inside is only run once for each generator in $X$.  Hence the loop
+  must complete, and the algorithm halts.
 \end{method}
 
 \begin{algorithm}
@@ -438,17 +459,20 @@ adapted from the simplified version of the algorithm shown in
       \State $R := \varnothing$
       \State $L_S := \{\id\}$
       \State $L_{X^*} := \{\varepsilon\}$
-      \For{$w \in L_{X^*}$}
+      \State $i := 0$  \Comment{Number of words we have looped over}
+      \Repeat
+      \State $i \gets i + 1$
+      \State $w :=$ the $i$th element of $L_{X^*}$
         \For{$x \in X$}
-          \If{$(wx)\nu \in L_S$}
-          \State Let $w'$ be the unique element in $L_{X^*}$ such that $(w')\nu = (wx)\nu$
+          \If{$(wx)\nu \in L_S$}  \Comment{New word for known element}
+          \State $w' :=$ the unique element in $L_{X^*}$ such that $(w')\nu = (wx)\nu$
             \State Add $(wx, w')$ to $R$
-          \Else
+          \Else  \Comment{Previously unknown element}
             \State Add $(wx)\nu$ to $L_S$
             \State Add $wx$ to $L_{X^*}$
           \EndIf
         \EndFor
-      \EndFor
+      \Until{$i = |L_{X^*}|$}  \Comment{There are no words left to consider}
       \State \Return $\pres X R$
     \EndProcedure
   \end{algorithmic}
