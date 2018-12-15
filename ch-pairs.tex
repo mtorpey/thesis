@@ -790,10 +790,11 @@ at a given row.
 \subsubsection{Elementary operations}
 
 We now describe 3 operations which may be applied to the table.  These
-operations will be described loosely to give an intuition behind what they are
-designed to do, and then each one will be described formally in pseudo-code
+operations will be described in turn to give an understanding of what they are
+designed to do, along with their description in pseudo-code
 (Algorithms \ref{alg:add}, \ref{alg:trace} and \ref{alg:coinc}).  We will then
 describe the overall Todd--Coxeter procedure which uses these operations
+to find all the elements of a semigroup from a presentation
 (Algorithm \ref{alg:tc}).
 
 \begin{itemize}
@@ -802,16 +803,24 @@ describe the overall Todd--Coxeter procedure which uses these operations
 \item \textsc{Coinc}: Process a coincidence.
 \end{itemize}
 
-The first operation, \textsc{Add}, is simple.  A new row is added at the bottom
-of the table, and its number is written into the blank cell in the table
-specified by the arguments given to \textsc{Add}.  Pseudo-code for this
-operation is given in Algorithm \ref{alg:add}.
+The first operation, \textsc{Add}, is the simplest of the three, and is shown in
+pseudo-code in Algorithm \ref{alg:add}.  Calling $\textsc{Add}(i,x)$ should fill
+in a blank cell in the table in row $i$ and column $x$ -- that is, a position
+such that $(i,x)\tau = 0$.  It fills it in with the address of a new row, which
+must first be created.  We add a new row at the bottom of the table by
+incrementing the number of rows $n$ (line 2), adding its new value to the list
+of active rows $\mathbf{N}$ (line 3), and filling in all its entries with blanks
+-- that is, setting its $\tau$-outputs to 0 (lines 4--5).  Finally, the address
+of the new row is written into the blank cell that was specified -- that is, we
+set $(i,x)\tau$ to the new row's address $n$ (line 6).  Now the blank cell has
+been filled with the address of a new row, as required.
 
 \begin{algorithm}
 \caption{The \textsc{Add} algorithm (Todd--Coxeter)}
 \label{alg:add}
 \index{Add@\textsc{Add}}
 \begin{algorithmic}[1]
+\Require{$(i,x)\tau = 0$}
 \Procedure{Add}{$i, x$}
 \State $n \gets n + 1$
 \State $\mathbf{N} \gets \mathbf{N} \cup \{n\}$
@@ -823,29 +832,41 @@ operation is given in Algorithm \ref{alg:add}.
 \end{algorithmic}
 \end{algorithm}
 
-\textsc{Trace} takes two arguments: a relation $v=w$ from $R$, and a row $e$
-in the table.  We now give an informal description of this procedure -- see
+\textsc{Trace} takes two arguments: a row $e$ in the table, and a relation $v=w$
+from $R$.  Its goal is to ensure that, starting at $e$, applying the word $v$
+has the same result as applying the word $w$ -- in other words, to ensure that
+$(e,v)\bar\tau = (e,w)\bar\tau$.  We will now describe how this is done, referring to
 Algorithm \ref{alg:trace} for pseudo-code.
 
-We start from row $e$, and find $(e, v)\bar\tau$ by processing $v$ one letter at a time: we
-find the column corresponding to the letter, and look at that position in the
-table; this gives us the number of the new row which we move to.  If we
-encounter a blank entry before the final letter, we apply \textsc{Add} to that
-cell, and follow the new entry.  At the end of the process we have an entry in
-the table, blank or filled, called $(e, v)\bar\tau$.  We repeat the
-process with the other word to find $(e, w)\bar\tau$.
+First we follow both words through the table, one letter at a time, up to and
+including their penultimate letter.  For $v$, we use a variable $s$, which
+starts at $e$ (line 4) and we go through $v$ one letter $v_i$ at a time up to
+the second-last letter (line 5).  At each step, we consider $(s, v_i)\tau$, the
+entry in the table which we must follow next to continue going through the
+word.  If it is not set, we call \textsc{Add} to create a new row to point it
+towards (lines 6--7).  Then we follow it, setting $s$ to the new value (line
+8).  At the end of this loop, we only need to follow the last letter $v_m$ to
+complete the word -- that is, $(s, v_m)\tau = (e, v)\bar\tau$.
 
-To satisfy $v=w$, we need to set these two entries such that
-$(e, v)\bar\tau = (e, w)\bar\tau$.
+We follow a similar process for $w$ in lines 9--13, going through all letters of
+$w$ except the last one, and finding a row $t$ such that
+$(t, w_n)\tau = (e, w)\bar\tau$.  Now in order to satisfy the objective
+$(e,v)\bar\tau = (e,w)\bar\tau$, we just need to ensure that two specific cells
+in the table are equal: we need to ensure that $(s, v_m)\tau = (t, w_n)\tau$.
+We do this by considering four different cases:
 \begin{itemize}
-\item If $(e, v)\bar\tau$ and $(e, w)\bar\tau$ are both blank, then we apply
-  \textsc{Add} to $(e, v)\bar\tau$ and copy the entry into $(e, w)\bar\tau$.
-\item If just one of the entries is filled, then the filled entry is copied into
-  the blank one.
-\item If both entries are filled and equal, we need do nothing.
-\item If both entries are filled and are distinct, we apply \textsc{Coinc} to
-  the two entries.
+\item if the two cells are both empty, then we apply \textsc{Add} to
+  $(s, v_m)\tau$ to create a new row for it to point to, and then we copy that
+  entry into $(t, w_n)\tau$ (lines 14--16);
+\item if just one of the entries is empty, then the filled entry is copied into
+  the empty one (lines 17--20);
+\item if both entries are filled and equal, we do not need to do anything;
+\item if both entries are filled and are distinct, then we need to force the two
+  rows they point towards to be equal, by applying \textsc{Coinc} to the two
+  entries (lines 21--22).
 \end{itemize}
+After each of these cases, the result is that $(s, v_m)\tau = (t, w_n)\tau$, and
+hence that $(e, v)\bar\tau = (e, w)\bar\tau$ as required.
 
 \begin{algorithm}
 \caption{The \textsc{Trace} algorithm (Todd--Coxeter)}
@@ -857,25 +878,25 @@ $(e, v)\bar\tau = (e, w)\bar\tau$.
 \State Write $w = w_1 \ldots w_n$ \Comment $(w_i \in X \text{~for~} 1 \leq i \leq n)$
 \State $s \gets e$
 \For{$i \in \{1, \ldots, m-1\}$}
-  \If{$(s, v_i)\tau = \varepsilon$}
+  \If{$(s, v_i)\tau = 0$}
     \State \Call{Add}{$s, v_i$}
   \EndIf
   \State $s \gets (s, v_i)\tau$
 \EndFor
 \State $t \gets e$
 \For{$i \in \{1, \ldots, n-1\}$}
-  \If{$(t, w_i)\tau = \varepsilon$}
+  \If{$(t, w_i)\tau = 0$}
     \State \Call{Add}{$t, w_i$}
   \EndIf
   \State $t \gets (t, w_i)\tau$
 \EndFor
 
-\If{$(s, v_m)\tau = (t, w_n)\tau = \varepsilon$}
+\If{$(s, v_m)\tau = (t, w_n)\tau = 0$}
   \State \Call{Add}{$s, v_m$}
   \State $(t, w_n)\tau \gets (s, v_m)\tau$
-\ElsIf{$(s, v_m)\tau = \varepsilon$}
+\ElsIf{$(s, v_m)\tau = 0$}
   \State $(s, v_m)\tau \gets (t, w_n)\tau$
-\ElsIf{$(t, w_n)\tau = \varepsilon$}
+\ElsIf{$(t, w_n)\tau = 0$}
   \State $(t, w_n)\tau \gets (s, v_m)\tau$
 \ElsIf{$(s, v_m)\tau \neq (t, w_n)\tau$}
   \State \Call{Coinc}{$(s, v_m)\tau, (t, w_n)\tau$}
@@ -886,13 +907,20 @@ $(e, v)\bar\tau = (e, w)\bar\tau$.
 \end{algorithm}
 
 \textsc{Coinc} is used when two rows in the table are found to refer to the same
-element of $S$.  The higher-numbered row is deleted, and all occurrences of the
-higher number in the table are replaced by the lower number.  The two rows are
-combined into one, with all known information being preserved -- this may imply
-that another pair of rows are equal, another coincidence that should be
-processed by a recursive call to \textsc{Coinc} (or should be stored in a list
-for processing after this call is finished).  Pseudo-code for \textsc{Coinc} can
-be found in Algorithm \ref{alg:coinc}.
+element of $S$; it modifies the table to delete one row and use the other
+instead.  Pseudo-code for \textsc{Coinc} can be found in Algorithm
+\ref{alg:coinc}.  First, the higher-numbered row $s$ is deleted from the list of
+active rows ($\mathbf{N} \gets \mathbf{N} \setminus \{s\}$), and all occurrences
+of the higher number $s$ are replaced by the lower number $r$ (lines 5--6), in
+every row (line 3) and every column (line 4) of the table.  Next, the two rows
+are combined into one, with all known information being preserved: any columns
+that are filled in the lower row but empty in the upper row are copied (lines
+8--9) and if there is any column that has different non-empty entries in rows
+$r$ and $s$ (line 10), we know that those two entries refer to the same element,
+and the coincidence needs to be processed with another call to \textsc{Coinc}
+(line 11).  After the algorithm is finished, all references to $s$ have been
+removed from the table, and all information from row $s$ has been incorporated
+into row $r$.
 
 \begin{algorithm}
 \caption{The \textsc{Coinc} algorithm (Todd--Coxeter)}
