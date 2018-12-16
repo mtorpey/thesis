@@ -1311,11 +1311,11 @@ akin to Lemma \ref{lem:linked-triple-subsets} for linked triples.
   \end{proof}
 \end{lemma}
 
-The kernel $K$ starts out containing just the idempotents $E$, and the trace
-$\tau$ starts out as the trivial congruence on $E$.  Every kernel and trace must
-contain at least these elements -- in fact, $(K, \tau)$ currently corresponds to
+The kernel $K$ starts out containing just the idempotents $E$ (line 2), and the trace
+$\tau$ starts out as the trivial congruence on $E$ (line 3).  Every kernel and trace must
+contain at least these elements -- in fact, after line 3, $(K, \tau)$ corresponds to
 the trivial congruence $\Delta_S$.  We assume that we have generating sets $S'$
-for $S$ and $E'$ for $E$.  In the worst case, we can use $S$ and $E$ themselves,
+for $S$ and $E'$ for $E$ (lines 4--5).  In the worst case, we can use $S$ and $E$ themselves,
 but the algorithm is likely to run faster with a smaller generating set.
 Certainly in computational settings such as the \Semigroups{} package for \GAP{}
 \cite{semigroups} semigroups such as $S$ and $E$ have a generating set stored,
@@ -1330,21 +1330,21 @@ $K$ and $\tau$ to determine whether a pair is in $\rho$, we are using a pair in
 $\rho$ to impose conditions on $K$ and $\tau$.  We have two sets, $X$ and
 $\mathbf{T}$, which act as queues for elements that need to be processed in $K$
 and $\tau$ respectively.  For each $(a,b) \in \R$ we put $ab^{-1}$ into
-$X$ and $(a^{-1}a, b^{-1}b)$ into $\mathbf{T}$; elements in $X$ will be added
+$X$ (line 6) and $(a^{-1}a, b^{-1}b)$ into $\mathbf{T}$ (line 7); elements in $X$ will be added
 to $K$ next time we call \textsc{EnumerateKernel}, and we add $\mathbf{T}$ to
-$\tau$ straight away.
+$\tau$ straight away (line 8).
 
 Once this has been done, the rule that $(a,b)$ lies in $\rho$ if and only if
 $ab^{-1} \in K$ and $(a^{-1}a, b^{-1}b) \in \tau$ is satisfied for all pairs
 $(a,b) \in \R$.  All that is left to do is to add any elements to $K$
 and pairs to $\tau$ required to make $(K, \tau)$ a kernel--trace pair.  The rest
-of the algorithm focuses on this task.
+of the algorithm (lines 9--15 and the three sub-procedures) focuses on this task.
 
 Recall from Definitions \ref{def:kernel-normal}, \ref{def:trace-normal} and
 \ref{def:kernel-trace-pair} the conditions for a kernel--trace pair.  We require
 $(K, \tau)$ to satisfy these conditions, and we must make any additions
 necessary until they are all fulfilled.  For this purpose we have three
-sub-methods -- \textsc{EnumerateKernel}, \textsc{EnumerateTrace}, and
+sub-procedures -- \textsc{EnumerateKernel}, \textsc{EnumerateTrace}, and
 \textsc{EnforceConditions} -- which test the conditions for a kernel--trace pair
 and add any elements necessary.  Any of these methods might add to $K$ or
 $\tau$, which might in turn imply that another method has more information to
@@ -1357,10 +1357,16 @@ to have the best time performance, based on informal experiments.  All three
 methods are considered to have access to any of the variables in the overall
 algorithm.
 
-The first method, \textsc{EnumerateKernel}, adds all the elements from $X$ to
-$K$, and takes the normal closure of $K$, ensuring that it is self-conjugate
-(see Definition \ref{def:kernel-normal}).  Since $K$ starts containing $E$, this
-is enough to guarantee that $K$ is a normal subsemigroup.
+The first method, \textsc{EnumerateKernel}, first checks whether there are any
+new elements in $X$ that have not already been added to $K$ (line 17).  If there
+are, it adds all the elements from $X$ to $K$, and then on line 18 it adds any
+necessary elements to $K$ to ensure that it is self-conjugate (this is denoted
+with the notation $\llangle \cdot \rrangle$ -- see Definition
+\ref{def:kernel-normal}).  Since $K$ starts containing $E$, this is enough to
+guarantee that $K$ is a normal subsemigroup, a fact we can be certain of at the
+end of \textsc{EnumerateKernel}.  If a change was made, we set
+$\delta$ to true, and in any case we empty the set $X$ to indicate that no new
+elements have been found since this sub-procedure was run.
 
 The \textsc{EnumerateTrace} method ensures that $\tau$ is a normal congruence
 (see Definition \ref{def:trace-normal}).  It considers all the pairs that have
@@ -1369,21 +1375,49 @@ precisely the pairs in $\mathbf{T}$ -- and makes sure that any pairs implied by
 them are added to $\tau$ and $\mathbf{T}$.  For each $(x,y) \in \mathbf{T}$, the
 left and right multiples of $(x,y)$ must be in $\tau$ (as required by the
 definition of a congruence).  In fact, only the right-multiples $(xe, ye)$ need
-to be added, since idempotents commute in an inverse semigroup.  If any of these
+to be added, since idempotents commute in an inverse semigroup, and the trace is
+only a relation on the idempotents.  If any of these
 pairs are new, they are added to $\mathbf{T}$ so that further multiples can be
 found; this is why we only need to multiply by the generators from $E'$, rather
-than all elements in $E$.  The congruence $\tau$ is also made normal by adding
-the pairs $(a^{-1}xa, a^{-1}ya)$.  Thus, at the end of the method, $\tau$ is
-guaranteed to be a normal congruence.
+than all elements in $E$.
+So, in \textsc{EnumerateTrace}, we go through all the pairs $(x,y)$ in
+$\mathbf{T}$ one at a time (lines 34--35) and apply each generator $e \in E'$ to
+its right-hand side to make the pair $(xe, ye)$ (lines 36--37), which is equal
+to $(ex, ey)$ by commutativity.  For each one of these pairs that is not already
+in $\tau$, we have to add it to $\tau$ to ensure that $\tau$ remains a
+congruence (line 40), and we have to add it to $\mathbf{T}$ (line 39) to ensure
+that we process all of its right-multiples in a future iteration of the
+while-loop.  In order to ensure that $\tau$ is normal, we also need to conjugate
+the pair by each generator of the semigroup $a$, and add any of these to $\tau$
+and $\mathbf{T}$ if they are not already present (lines 41--44).  At the end of
+a call to \textsc{EnumerateTrace}, we can thus be sure that $\tau$ is a normal
+congruence.  If any changes are made in this call to \textsc{EnumerateTrace},
+then we must of course set $\delta$ to true (line 38).
+% TODO: a-1xa, a-1ya should be a-1xea, a-1yea ?
 
-The last method, \textsc{EnforceConditions}, deals with conditions 1 and 2 from
+Finally, \textsc{EnforceConditions} deals with conditions (i) and (ii) from
 Definition \ref{def:kernel-trace-pair}.  It adds any necessary elements to $X$
 and any necessary pairs to $\mathbf{T}$ and $\tau$, and when finished,
-$(K,\tau)$ is guaranteed to satisfy conditions 1 and 2, at least on a run in
-which the other two methods make no changes.
+$(K,\tau)$ is guaranteed to satisfy conditions (i) and (ii), at least on a run
+in which the other two methods make no changes.  To achieve this, we iterate
+through each element $a$ in the semigroup (line 22).  If $a$ is in the kernel
+$K$ (line 23), then we need to ensure that $(aa^{-1}, a^{-1}a)$ is in the trace
+$\tau$ to enforce condition (ii); we add it if necessary (lines 24--26).  If $a$
+is not in the kernel $K$ but $ae \in K$ and $(e, a^{-1}a) \in \tau$ for some
+idempotent $e$, then we need to add $a$ to the kernel in order to satisfy
+condition (i).  Hence, if $a$ is not in the kernel (line 28), we check any
+idempotents $e$ that are $\tau$-related to $a^{-1}a$ (line 29), and if $ae$ is
+in the kernel (line 30) then we add $a$ to the list $X$ of elements to be added
+to the kernel in the next run of \textsc{EnumerateKernel} (line 31).  At the end
+of a call to \textsc{EnforceConditions}, we can thus be sure that conditions (i)
+and (ii) are satisfied.  If we make any changes to $\mathbf{T}$ or $X$ in this
+procedure, we again set $\delta$ to true (lines 27 and 32).
 
 If all three methods complete without any new information being found, they will
-have acted as a test ensuring that $(K, \tau)$ is a valid kernel--trace pair.
+have acted as a test ensuring that
+$K$ is a normal subsemigroup of $S$, that $\tau$ is a normal congruence on $E$,
+and that the two conditions in Definition \ref{def:kernel-trace-pair} are
+satisfied; in other words, that $(K, \tau)$ is a valid kernel--trace pair.
 This means that $(K, \tau)$ corresponds to a congruence $(K,\tau)\Psi^{-1}$, and
 we know that this congruence contains every pair in $\R$.  Hence
 $\R^\sharp \subseteq (K,\tau)\Psi^{-1}$.  Since we did not add any
@@ -1392,6 +1426,16 @@ by the definition of a kernel--trace pair, we can also be sure that
 $(K, \tau)\Psi^{-1} \subseteq \R^\sharp$, by Lemma
 \ref{lem:kertr-subsets}.  Hence $(K, \tau)$ is the kernel--trace pair
 corresponding to the congruence $\R^\sharp$.
+
+Note that, so long as $S$ is finite, the \textsc{KerTraceFromPairs} algorithm is
+guaranteed to complete in finite time.  Due to the way $\delta$ is set, the
+repeat-loop can only continue so long as the last iteration of the loop added
+something new to $K$ or $\tau$.  Since $K$ can only contain elements from $S$
+and $\tau$ can only contain elements from $E \times E$, we therefore have an
+upper bound of $|K| + |E|^2$ times that the loop can be executed, and the likely
+number of times it will be executed is much lower.  Similarly, there are no
+loops inside any of the sub-procedures that can run indefinitely.  Hence the
+algorithm is certain to terminate and return an answer eventually.
 
 \subsection{Kernel and trace of a Rees congruence}
 \label{sec:rees-to-kertr}
