@@ -1345,11 +1345,12 @@ Recall from Definitions \ref{def:kernel-normal}, \ref{def:trace-normal} and
 $(K, \tau)$ to satisfy these conditions, and we must make any additions
 necessary until they are all fulfilled.  For this purpose we have three
 sub-procedures -- \textsc{EnumerateKernel}, \textsc{EnumerateTrace}, and
-\textsc{EnforceConditions} -- which test the conditions for a kernel--trace pair
+\textsc{EnforceConditions} -- that test the conditions for a kernel--trace pair
 and add any elements necessary.  Any of these methods might add to $K$ or
 $\tau$, which might in turn imply that another method has more information to
 find.  Hence, the three methods are run repeatedly until an entire run is
-completed in which no new information is found.  If no new information is found,
+completed in which no new information is found ($\delta$ remains false
+throughout the entire run).  If no new information is found,
 $(K, \tau)$ is guaranteed to be a kernel--trace pair, and we can return.  The
 three methods could be run in any order without the correctness of the algorithm
 being affected, but the order shown in Algorithm \ref{alg:pairs-to-kertr} seems
@@ -1360,13 +1361,13 @@ algorithm.
 The first method, \textsc{EnumerateKernel}, first checks whether there are any
 new elements in $X$ that have not already been added to $K$ (line 17).  If there
 are, it adds all the elements from $X$ to $K$, and then on line 18 it adds any
-necessary elements to $K$ to ensure that it is self-conjugate (this is denoted
-with the notation $\llangle \cdot \rrangle$ -- see Definition
-\ref{def:kernel-normal}).  Since $K$ starts containing $E$, this is enough to
+necessary elements to $K$ to ensure that it is self-conjugate in the sense of
+Definition \ref{def:kernel-normal} (this is denoted with the notation
+$\llangle \cdot \rrangle$).  Since $K$ starts containing $E$, this is enough to
 guarantee that $K$ is a normal subsemigroup, a fact we can be certain of at the
-end of \textsc{EnumerateKernel}.  If a change was made, we set
-$\delta$ to true, and in any case we empty the set $X$ to indicate that no new
-elements have been found since this sub-procedure was run.
+end of \textsc{EnumerateKernel}.  If a change was made, we set $\delta$ to true,
+and in any case we empty the set $X$ to indicate that no new elements have been
+found since this sub-procedure was run.
 
 The \textsc{EnumerateTrace} method ensures that $\tau$ is a normal congruence
 (see Definition \ref{def:trace-normal}).  It considers all the pairs that have
@@ -1408,10 +1409,9 @@ idempotent $e$, then we need to add $a$ to the kernel in order to satisfy
 condition (i).  Hence, if $a$ is not in the kernel (line 28), we check any
 idempotents $e$ that are $\tau$-related to $a^{-1}a$ (line 29), and if $ae$ is
 in the kernel (line 30) then we add $a$ to the list $X$ of elements to be added
-to the kernel in the next run of \textsc{EnumerateKernel} (line 31).  At the end
-of a call to \textsc{EnforceConditions}, we can thus be sure that conditions (i)
-and (ii) are satisfied.  If we make any changes to $\mathbf{T}$ or $X$ in this
-procedure, we again set $\delta$ to true (lines 27 and 32).
+to the kernel in the next run of \textsc{EnumerateKernel} (line 31).  If we make
+any changes to $\mathbf{T}$ or $X$ in this procedure, we again set $\delta$ to
+true (lines 27 and 32).
 
 If all three methods complete without any new information being found, they will
 have acted as a test ensuring that
