@@ -1030,6 +1030,10 @@ and so could be removed from $N'$ without any loss.  Identifying which elements
 are required in $N'$ and which are not could be difficult computationally, but
 could be an interesting area of further research that would guarantee minimality
 in all cases.
+Note that, so long as $N'$, $\sS'$ and $\tT'$ are all finite, the set of pairs
+is guaranteed to be finite, as is the number of steps in the algorithm.  Hence
+we can be certain that the algorithm will terminate, since we can never enter an
+infinite loop.
 
 \begin{algorithm}
 \caption{The \textsc{PairsFromLinkedTriple} algorithm}
