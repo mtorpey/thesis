@@ -934,34 +934,48 @@ thesis as Algorithm \ref{alg:linked-triple-to-pairs}.  Given a linked triple
 $(N, \sS, \tT)$, we only need to choose applicable subsets $N' \subseteq N$,
 $\sS' \subseteq \sS$ and $\tT' \subseteq \tT$ and we have a
 good idea of what pairs are necessary to generate a congruence.  In the
-algorithm, we assume that a generating set $N'$ is known for $N$ -- this is
+algorithm, we assume that a generating set $N'$ is known for $N$ (line 2) -- this is
 certainly likely to be the case in a computational setting, for example in \GAP{}
 \cite{gap} where groups almost always have a known generating set.  We should
 note that this set should act as a set of normal subgroup generators, meaning
 that it might be even smaller than a standard set of subgroup generators.  For
 $\sS'$ we choose a minimal spanning tree of depth $1$ for each class of $\sS$, by linking
-each column in the class to a distinguished class representative called $i_1$.
+each column in the class to a distinguished class representative called $i_1$
+(lines 3--7).
 Hence each class requires a number of pairs in $\sS'$ equal to one less than the
 size of the class; and so $|\sS'| = |I| - k_\sS$, where $k_\sS$ is the number
-of classes in $\sS$.  Similarly $|\tT'| = |\Lambda| - k_\tT$, where $k_\tT$ is
+of classes in $\sS$.  We similarly choose a minimal spanning tree of depth 1 for
+$\tT'$ (lines 8--12), so $|\tT'| = |\Lambda| - k_\tT$, where $k_\tT$ is
 the number of classes in $\tT$.
 
 Once our three generating sets have been calculated, we collate them into the
 set of pairs $\R$ as efficiently as possible: each pair we add to $\R$ can
 satisfy the conditions in Theorem \ref{thm:linked-triple-to-pairs} for one pair
 $(i,j) \in \sS'$, one pair $(\lambda, \mu) \in \tT'$, and one element
-$n \in N'$: the pair we add is
+$n \in N'$.  The while-loop on lines 17--26 steps through the three lists, on
+each iteration taking a new element $a$ from $N'$, a new pair of columns $(i,j)$
+from $\sS'$, and a new pair of rows $(\lambda, \mu)$ from $\tT'$.  Then, after
+fixing appropriate $\xi$ and $k$ in lines 24--25 as in Theorem
+\ref{thm:linked-triple-to-pairs} condition (iii), we add the pair
 $$\big((i, p_{\xi i}^{-1}np_{\lambda k}^{-1}, \lambda),
 (j, p_{\xi j}^{-1}p_{\mu k}^{-1}, \mu)\big),$$
 which can be seen by inspection to satisfy (i), (ii) and (iii) for the three
-generators in question.  These pairs are added until all three sets are
+generators in question.
+
+On each iteration of the while-loop, we remove one item from each of $N'$,
+$\sS'$ and $\tT'$ (lines 18--23), and we add one pair to $\R$.
+This is repeated until all three sets are
 exhausted, and so the total number of pairs returned by the algorithm is equal
-to
+to the size of the largest of the three sets -- that is,
 $$\max(|N'|, |I| - k_\sS, |\Lambda| - k_\tT).$$
-If the sets have different sizes, then any element can be reused from one of
-the sets when it runs out -- in Algorithm \ref{alg:linked-triple-to-pairs} the
-last one popped is used repeatedly.  If any of the sets is empty at the
-start, an arbitrary entry can be used instead: for $n$ we can use the identity
+If the sets have different sizes, then on some of the later runs through the
+loop, one or two of the three sets will be empty.  This does not present a
+problem: if a set is empty, it is not popped again and the last value from the
+loop is simply used again.  The set of pairs still satisfies the necessary
+condition from the theorem.  The only remaining case is that one of the sets may
+be empty.  To account for this case, we give each of the three variables a
+default value in lines 14--16, so that even if a set is never popped, there is a
+sensible default value that does not invalidate the condition: for $a$ we can use the identity
 $1_G$ which must always be in $N$; for $(i,j)$ or $(\lambda,\mu)$ we can use a
 reflexive pair, from $\Delta_I$ or $\Delta_\Lambda$ respectively.
 
