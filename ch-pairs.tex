@@ -949,12 +949,20 @@ into row $r$.
 \end{algorithm}
 
 Now that we have these three operations, it is simple to describe the overall
-procedure, as shown in Algorithm \ref{alg:tc}.  We go through the list of used
-rows $\mathbf{N}$, starting with row $1$.  To each
-of these rows we apply each relation from $R$, using \textsc{Trace}.  Each call
-to \textsc{Trace} may, of course, invoke calls to \textsc{Add} and
-\textsc{Coinc}, so rows will be appended to the list as the algorithm
-progresses.  When the end of $\mathbf{N}$ is reached, the table should
+\textsc{ToddCoxeter} procedure, as shown in Algorithm \ref{alg:tc}.  First we
+set up the table as described above: the number of rows $n$ is set to $1$, the
+set of active rows $\mathbf{N}$ contains just this row $1$, and the table $\tau$
+is initialised to have a blank cell in each column, and just one row (lines
+2--6).  Now we go through all the rows $e$ in the table, starting with row $1$.
+For each row, we check whether it is active -- that is, we check whether $e$ is
+in $\mathbf{N}$ (line 10).  If it is not, we do nothing and proceed with the
+next row; if it is, we apply relations to it.  We go through all the relations
+from $R$ (line 11), and apply each one to the current row using \textsc{Trace}
+(line 12).  Each call to \textsc{Trace} may, of course, invoke calls to
+\textsc{Add} and \textsc{Coinc}, so rows will be appended to the table as the
+algorithm progresses, and it may take many iterations of the repeat-loop before
+the bottom of the table is reached.  When the end is reached (line 13), the
+table should
 completely describe the multiplication for the finitely presented semigroup:
 each row in $\mathbf{N} \setminus \{1\}$ represents one element of $S$, and
 $(i, x)\tau$ represents the element denoted by $i$ right-multiplied by the
@@ -972,12 +980,16 @@ generator $x$.
 \For{$x \in X$}
   \State $(1, x)\tau := 0$
 \EndFor
-\For{$e \in \mathbf{N}$}
-  \For{$(u=v) \in R$}
-    \State \Call{Trace}{$e, u=v$}
-  \EndFor
-\EndFor
-\State \Return $\tau$
+\State $e := 0$
+\Repeat
+  \State $e \gets e + 1$
+  \If{$e \in \mathbf{N}$}
+    \For{$(u,v) \in R$}
+      \State \Call{Trace}{$e, u=v$}
+    \EndFor
+  \EndIf
+\Until{$e = n$}  \Comment{There are no rows left to process}
+\State \Return $(n, \mathbf{N}, \tau)$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
