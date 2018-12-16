@@ -675,8 +675,54 @@ $\varepsilon_I$ and $\varepsilon_\Lambda$ and elements of the form
 $q_{\lambda \mu i j}$.  The notation $\llangle N, x \rrangle$ describes the
 least normal subgroup of $G$ containing $N \cup \{x\}$ (see Definition
 \ref{def:normal-closure}); in particular, this is equal to $N$ if $x \in N$.
+We will now give a brief description of how the algorithm operates, with
+reference to the pseudo-code in Algorithm \ref{alg:pairs-to-linked-triple}.
 For a fuller description of the algorithm and how it is justified by Theorem
 \ref{thm:pairs-to-linked-triple}, see \cite[\S 3.2]{mtorpey_msc}.
+
+The \textsc{LinkedTripleFromPairs} algorithm starts with the minimal linked
+triple possible: $(N, \sS, \tT) = \big(\{1_G\}, \Delta_I, \Delta_\Lambda\big)$,
+where $\{1_G\}$ is the trivial subgroup of $G$, and $\Delta_I$ and
+$\Delta_\Lambda$ are the trivial equivalences on the sets of columns and rows in
+the matrix $P$.  This is the linked triple that corresponds to the trivial
+congruence $\Delta_S$, which is the result that should be returned if $\R$ is
+empty.  The rest of the algorithm (lines 5--24) consist of going through each
+pair in $\R$, adding any necessary extra elements to $N$, $\sS$ and $\tT$
+that are implied by that pair, and finally adding further elements to ensure
+that $(N, \sS, \tT)$ remains a linked triple.
+
+For each pair $(x,y) \in \R$, we first check whether $x=y$ (line 6) -- if so, it
+is a pair in $\Delta_S$ and we do not need to do anything to the linked triple
+in order to account for it.  If $x \neq y$, then we need to check whether one of
+$x$ or $y$ is equal to zero; if so, we have a non-zero element related to zero,
+which means that $\Rs$ must be the universal congruence, which has no linked
+triple, and we quit the algorithm immediately returning this information (line
+9).
+
+If neither element is zero, then $x$ and $y$ must be non-zero elements, which we
+can rewrite as $(i,a,\lambda)$ and $(j,b,\mu)$ (lines 10--11).  Before we try
+modifying the linked triple, we check that columns $i$ and $j$, and rows
+$\lambda$ and $\mu$, have zeroes in the same places in the matrix $P$ (line 12);
+if not, they cannot be related by a linked triple, so we again have the
+universal congruence, and quit the algorithm immediately (line 13).  If this
+check does not reveal a problem, we can proceed to add information to the
+triple, first by uniting the columns $(i,j)$ in $\sS$, and then by uniting the
+rows $(\lambda, \mu)$ in $\tT$ (lines 15--16).  This could perhaps be tracked
+using a union--find table for each of $\sS$ and $\tT$ (see Section
+\ref{sec:union-find}).
+
+Next we modify the normal subgroup $N$ by adding an element based on the group
+elements $a$ and $b$ (lines 18--20), in line with the definition of
+$\Gamma^{-1}$ in Definition \ref{def:linked-triple-function}.  As we add this,
+we add any necessary elements to $N$ to make it a normal subgroup (taking its
+\textit{normal closure}).  And finally, we add any necessary elements of the
+form $q_{\lambda \mu i j}$ to make $N$ compatible with Definition
+\ref{def:linked-triple} condition (iii) (lines 21--24).  At the end of this, we
+have a triple $(N,\sS,\tT)$ which is linked, and whose congruence contains every
+pair in $\R$.  Since we added no elements but those required by $\R$ and the
+definition of a linked triple, we can be certain that $(N,\sS,\tT)$ describes
+$\Rs$, the least congruence containing all the pairs in $\R$.  Again, see
+\cite[\S 3.2]{mtorpey_msc} for a full justification of the algorithm.
 
 \begin{algorithm}
 \caption{The \textsc{LinkedTripleFromPairs} algorithm}
