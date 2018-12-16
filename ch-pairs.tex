@@ -1541,51 +1541,81 @@ this graph using the Froidure--Pin algorithm (see Section \ref{sec:find-pres});
 or if the Todd--Coxeter algorithm has been run on $S$, then the resulting table contains all
 the information required for a right Cayley graph.  Either way, this graph tells us, for
 each element $s \in S$ and each generator $x \in X$, the value of $s \cdot x$.
-The graph can then be converted easily into a Todd--Coxeter table, as follows.
+The Cayley graph can then be converted easily into a Todd--Coxeter table, in the
+way we describe now (see Algorithm \ref{alg:tc-prefill} for pseudo-code).
 
-We start with $|S| + 1$
-rows, where row $1$ represents the empty word as usual, and rows $2$ to $|S| + 1$
-represent the elements of $S$.  For each element $s \in S$ and each generator
-$x \in X$, let $i$ be the row corresponding to $s$ and $j$ be the row
-corresponding to $s \cdot x$.  We set $(i, x)\tau := j$.  In this way, we encode
-the right Cayley graph into a Todd--Coxeter table, which we call
-\textbf{pre-filled}.
+We initialise the table with $|S| + 1$ rows (line 2), all of them active (line
+3), where row $1$ represents the empty word as usual, and rows $2$ to $|S| + 1$
+represent the elements of $S$.  We put these elements in some order such that
+$S = \{s_1, s_2, \ldots, s_k\}$.  We now fill in the table, not with empty cells
+as in previous Todd--Coxeter algorithms, but with the values we know they should
+have according to the Cayley graph of $S$.
+
+First, row $1$ represents the identity.  When we multiply the identity by a
+generator $x$, we get $x$ itself.  Hence, for each $x \in X$, we fill in
+$(1, x)\tau$ with the row that corresponds to $x$ -- that is, one more than the
+position of $x$ in $S$ (lines 5--6).  Now, each of the rows beyond row $1$
+corresponds to an element in $S$: row $i$ corresponds to the element $s_{i-1}$.
+For each row $i$ and each generator $x$, we therefore need to fill the table in
+with the row number of the element $s_{i-1} \cdot x$.  Hence we fill in
+$(i, x)\tau$ with the row that corresponds to $s_{i-1} \cdot x$ -- that is, one
+more than the position of $s_{i-1} \cdot x$ in $S$ (lines 7--8).
 
 Recall the notation we defined in Section \ref{sec:program-inputs}: our
 semigroup $S$ is presented by $\pres X R$, and we wish to calculate a congruence
-$\rho$ defined by the generating pairs $W$.  Pre-filling the table with the
-right Cayley graph as described above is equivalent to processing all the
+$\rho$ defined by the generating pairs $W$.  \textbf{Pre-filling} the table with the
+right Cayley graph as described in lines 1--8 above is equivalent to processing all the
 relations $R$ and running the Todd--Coxeter algorithm to completion: we have a table which
-describes the elements of $S$, or the congruence classes of the trivial
-congruence $\Delta_S$.  Since we wish to calculate the classes of $\rho$, we now
+describes the elements of $S$, or in other words, the classes of the trivial
+congruence $\Delta_S$ on $S$.  In fact, the state of $(n, \mathbf{N}, \tau)$ at
+the beginning of line 9 is the same as the output of
+$\textsc{ToddCoxeter}(\pres X R)$, but may have taken much less time to compute.
+
+Since we wish to calculate information about the classes of $\rho$, we now
 have to consider the pairs $W$, and find out which $\Delta_S$-classes should be
-combined to make $\rho$-classes.  Since there are no ``gaps'' in the table (i.e.~we never have
+combined to make $\rho$-classes.  Since there are no blanks in the table (i.e.~we never have
 $(i,x)\tau=0$), we will never be forced to use the \textsc{Add} operation and
 create new rows; the procedure from now on will simply be about tracing
-relations from $W$ and combining rows together.
+relations from $W$ and combining rows together.  As we can see, the remainder of
+the algorithm (lines 9--16) are the same as the final lines of
+\textsc{ToddCoxeterTwoSided}, with the one difference that the two lines which
+trace relations from $R$ have been removed -- these relations are now
+unnecessary, since they are already incorporated into the table by prefilling
+from the Cayley graph of $S$.  This is the main source of time-saving that
+occurs in this algorithm, and is the key to its speed advantage over the
+non-prefilled version (see Figures
+\ref{fig:bench-trans-tc-1p-tccomp},
+\ref{fig:bench-trans-tc-vp-tccomp} and
+\ref{fig:bench-trans-tc-vp-right-bynrclasses} for performance benchmarks).
 
 \begin{algorithm}
 \caption{The \textsc{ToddCoxeterPrefill} algorithm}
 \label{alg:tc-prefill}
 \index{ToddCoxeterPrefill@\textsc{ToddCoxeterPrefill}}
 \begin{algorithmic}[1]
-\Procedure{ToddCoxeterPrefill}{$\pres X R$, $W, S$}
 \Require{$S = \{s_1, s_2, \ldots, s_k\}$ is a semigroup with its elements known in a defined order}
+\Procedure{ToddCoxeterPrefill}{$\pres X R, W, S$}
 \State $n := |S| + 1$
 \State $\mathbf{N} := \{1 \ldots n\}$
 \State $\tau : \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$
 \For{$x \in X$}
-  \State $(1, x)\tau :=$ (position of $x$ in $S$)
+  \State $(1, x)\tau :=$ (position of $x$ in $S$) $+~1$
   \For{$i \in \{2 \ldots n\}$}
-    \State $(i, x)\tau :=$ (position of $s_{i-1} \cdot x$ in $S$)
+    \State $(i, x)\tau :=$ (position of $s_{i-1} \cdot x$ in $S$) $+~1$
   \EndFor
 \EndFor
-\For{$e \in \mathbf{N}$}
-  \For{$(u=v) \in W$}
-    \State \Call{Trace}{$e, u=v$}
-  \EndFor
-\EndFor
-\State \Return $\tau$
+
+\State $e := 0$
+\Repeat
+  \State $e \gets e + 1$
+  \If{$e \in \mathbf{N}$}
+    \For{$(u,v) \in W$}
+      \State \Call{Trace}{$e, u=v$}
+    \EndFor
+  \EndIf
+\Until{$e = n$}  \Comment{There are no rows left to process}
+\State \Return $(n, \mathbf{N}, \tau)$
+
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
@@ -1594,7 +1624,7 @@ relations from $W$ and combining rows together.
   Let $\pres X R$ and $W$ be as in Section \ref{sec:program-inputs}, let $S$ be a
   semigroup presented by $\pres X R$, and assume we have a concrete
   representation for $S$.
-  \textsc{ToddCoxeterPrefill}($\pres X R$, $W$, $S$) has output identical to\\
+  \textsc{ToddCoxeterPrefill}($\pres X R$, $W$, $S$) has output identical to
   \textsc{ToddCoxeterTwoSided}($\pres X R$, $W$), up to relabelling of the rows.
   \begin{proof}
     The only difference between \textsc{Prefill} and \textsc{TwoSided} is that
@@ -1608,9 +1638,9 @@ relations from $W$ and combining rows together.
     % for $S$, there is no extra information it can give us which is not given by
     % $S$ itself.
 
-    In lines 10 and 11 of \textsc{TwoSided} (Algorithm \ref{alg:tc-twosided}),
+    In lines 13 and 14 of \textsc{TwoSided} (Algorithm \ref{alg:tc-twosided}),
     we are doing the equivalent of the original \textsc{ToddCoxeter} algorithm,
-    which produces a right Cayley graph for $S$.  Instead, in lines 5 to 8 of
+    which produces a right Cayley graph for $S$.  Instead, in lines 2--8 of
     \textsc{Prefill} (Algorithm \ref{alg:tc-prefill}) we input a right Cayley
     graph for $S$ directly, without consulting $R$.  These two operations
     produce the same result -- a Todd--Coxeter table filled with a right Cayley
@@ -1624,9 +1654,22 @@ relations from $W$ and combining rows together.
   \end{proof}
 \end{theorem}
 
+It is worth noting that, unlike the other Todd--Coxeter algorithms described in
+this thesis, \textsc{ToddCoxeterPrefill} is guaranteed to halt in finite time.
+Since $X$ and $S$ are finite, the loops in lines 1--8 of the algorithm are
+guaranteed to have a finite number of iterations.  In order to see that the
+repeat-loop in lines 10--15 will also have a finite number of iterations,
+observe that there are no blanks in the table -- that is, that there are no
+values of $(i,x)$ such that $(i,x)\tau = 0$.  Since there are no blanks,
+\textsc{Trace} can never cause a call to \textsc{Add}, and therefore the number
+of rows $n$ will never go above $|S|+1$.  Hence the repeat-loop will go through
+a maximum of $|S| + 1$ iterations, and since the for-loop inside iterates over a
+finite set $W$, we are guaranteed completion in a finite number of steps.
+
 \subsubsection{Implementation}
 
-Rows will be added to the table, and deleted from it.  A list must be kept of
+In the methods described above,
+rows may be added to the table, and deleted from it.  A list must be kept of
 rows which are in use; when a row is added, its position in the table should be
 appended to this list at the end, and when a row is deleted it should be removed
 from its position in the list and added to a list of ``free rows'' which can be
