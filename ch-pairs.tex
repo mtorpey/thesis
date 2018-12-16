@@ -1999,9 +1999,25 @@ rules are applied can have a great effect on the overall runtime of the
 algorithm.  In Algorithm \ref{alg:rewrite} we present one possible strategy,
 known as \textit{rewriting from the left}, which is based on the
 REWRITE\texttt{\char`_}FROM\texttt{\char`_}LEFT procedure described in
-\cite[\S2.4]{sims}.  It takes two arguments -- a word $u$ and a terminating
+\cite[\S2.4]{sims}, where the issues of termination and correctness are
+addressed formally.  The algorithm takes two arguments -- a word $u$ and a terminating
 rewriting system $\rws$ -- and returns the irreducible word produced from $u$ by
 applying rules in $\rws$.
+
+The \textsc{Rewrite} algorithm starts with the original word $u$, and an empty
+word $v$.  We enter a loop that constitutes the rest of the algorithm.  On each
+iteration, we start by removing the first character from $u$ and putting it onto
+the end of $v$ (lines 4--6).  Next we go through each rule $p \to q$ in $\rws$
+(line 7) and attempt to apply it to a suffix of $v$ -- that is, we check whether
+$v$ ends in $p$ (line 8).  If we find a rule $p \to q$ such that $v$ does end in
+$p$, then we remove the occurrence of $p$ from the end of $v$ (line 9) and we
+add the rewritten version $q$ to the beginning of $u$ (line 10) for further
+processing in a later iteration of the repeat-loop.  After finding just one of
+these rules to apply, we stop going through rules (line 11) and if appropriate,
+go back to the beginning of the repeat-loop (line 11).  When the whole word has
+been processed and $u$ is therefore empty (which will happen in finite time so
+long as $\rws$ is terminating and confluent) we return $v$, which is the
+irreducible result of $u$ after a series of rules from $\rws$ have been applied.
 
 \begin{algorithm}
 \caption{The \textsc{Rewrite} algorithm}
@@ -2016,8 +2032,8 @@ applying rules in $\rws$.
   \State Remove the first character of $u$
   \For{$(p,q) \in \rws$}
     \If{$v = rp$ for some $r \in X^*$}
-      \State $u \gets qu$
       \State $v \gets r$
+      \State $u \gets qu$
       \State \Break
     \EndIf
   \EndFor
@@ -2028,8 +2044,8 @@ applying rules in $\rws$.
 \end{algorithm}
 
 It should be noted that, like the Todd--Coxeter procedure, there is no guarantee
-that the algorithm will complete in a finite time unless the presentation
-$\pres X R$ is known to be finite.  More rules may be added continually, which
+that the Knuth--Bendix algorithm will complete in a finite time unless the presentation
+$\pres X R$ is known to define a finite semigroup.  More rules may be added continually, which
 themselves need to be checked for critical pairs, without a complete set ever
 being found.  It may also be that a confluent terminating rewriting system will
 eventually be found, but not for a very long time -- and it is never known in
