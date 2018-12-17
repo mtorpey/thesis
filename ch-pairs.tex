@@ -525,6 +525,14 @@ nor, in general, is it decidable.
 \label{sec:p}
 \index{pair orbit enumeration}
 
+The first method we will describe is \textit{pair orbit enumeration}.  This
+rather simple algorithm consists of taking the pairs in $\R$, and for each pair
+$(a,b)$ finding all pairs $(as, bs)$ and $(sa, sb)$ for all $s \in S$.  We might
+refer to this set of pairs as the \textit{orbit} of $\R$ in $S$, which justifies
+the name.  Although this algorithm is simple and in some ways inefficient, there
+are cases in which it out-performs the other algorithms in this chapter, so it
+is worth including in our parallelised method.
+
 We will now give a brief description of pair orbit enumeration -- a pseudo-code
 description is shown in Algorithm \ref{alg:p}.  We start with a semigroup $S$, a
 set of generators $X$ for $S$, and a set of generating pairs $\mathbf{R}$ for
