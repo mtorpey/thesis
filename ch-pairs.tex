@@ -2074,14 +2074,13 @@ irreducible result of $u$ after a series of rules from $\rws$ have been applied.
 \end{algorithmic}
 \end{algorithm}
 
-It should be noted that, like the Todd--Coxeter procedure, there is no guarantee
-that the Knuth--Bendix algorithm will complete in a finite time unless the presentation
-$\pres X R$ is known to define a finite semigroup.  More rules may be added continually, which
+It should be noted that, like the Todd--Coxeter procedure, there are many inputs
+for which the Knuth--Bendix algorithm will not terminate.  More rules may be added continually, which
 themselves need to be checked for critical pairs, without a complete set ever
 being found.  It may also be that a confluent terminating rewriting system will
-eventually be found, but not for a very long time -- and it is never known in
+eventually be found, but not for a very long time -- and it may not be known in
 advance whether the process is going to terminate.  However, this process has
-one clear advantage over the Todd--Coxeter algorithm, which is that it may complete even when
+one clear advantage over the Todd--Coxeter algorithm, which is that it might complete even when
 the monoid $\pres X R$ is infinite, so long as the set of rules in the rewriting
 system is finite (see Example \ref{ex:bicyclic}).  This is a strong argument in
 favour of trying the Knuth--Bendix process along with other methods.  The
