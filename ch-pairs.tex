@@ -1955,12 +1955,10 @@ in the following theorem, which is key to the Knuth--Bendix completion process.
 
 Now we have all the concepts required to describe the Knuth--Bendix completion
 process.  The process searches through rules in $\rws$ looking for critical
-pairs; when a critical pair $(u, v)$ is found which does not satisfy the
-condition stated in Theorem \ref{thm:knuth-bendix}, $(u, v)$ or $(v, u)$ is
-added to $\rws$ in order to ensure confluence.  As mentioned earlier, the choice
-of which pair we add depends on
-whether $u < v$, since all pairs in $\rws$ must reduce words with respect to the
-chosen ordering on $X^*$ to make sure the system is terminating.
+pairs; when a critical pair is found which does not satisfy the
+condition stated in Theorem \ref{thm:knuth-bendix}, an appropriate word $w$ is
+chosen and the rules required in Theorem \ref{thm:knuth-bendix} are
+added to $\rws$ in order to ensure confluence.
 
 Though, as mentioned in Section \ref{sec:computation-decidability}, the word problem for a
 semigroup presentation is undecidable in general, we do have a result about the
