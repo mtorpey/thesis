@@ -704,13 +704,22 @@ elements in each non-trivial congruence class; this can be produced by calling
 labelled $L_i$ where $i = \textsc{Find}(i)$, creating new lists as necessary --
 once all elements have been considered, these lists are what is required.
 
-This algorithm's run-time is a product of the number of pairs in the congruence:
-its space and time complexity are order $O(r)$, where $r$ is the number of
-non-reflexive pairs in $\rho$.  In the best cases where $r$ is small, this can
-perform quite well, but in the worst case this complexity is $O(|S|^2)$.
-The algorithm is therefore quick to complete for congruences with few
-non-reflexive pairs -- that is, congruences with many classes.  Conversely, it is
-exceedingly slow for congruences with many pairs and few classes.
+This algorithm has rather high complexity.  As we saw in the proof of Theorem
+\ref{thm:p}, the algorithm adds pairs to $\R'$ until it is equal to $\R^c$ (for
+a two-sided congruence -- substitute $\R^l$ or $\R^r$ for a left or right
+congruence).  The repeat-loop will be therefore be executed once for each pair
+in $\R^c$, and it contains a for-loop that iterates over $X$.  Hence, even if we
+treat calls to \textsc{Union} as close to constant time (see Theorem
+\ref{thm:ackermann}) we can only say that \textsc{PairOrbit} has time complexity
+order $O(|\R^c| \cdot |X|)$.  Hence, the algorithm can complete quite quickly
+for congruences which have a small generating set $X$ and only a few pairs in
+$\R^c$ (that is, with many classes).  However, in the worst case, when the
+generating set is large and there are many pairs in $\R^c$, the time complexity
+is order $O(|S|^3)$, since $\R^c = S \times S$ and $X = S$.  Similarly, to store
+all the pairs that are found in $\R^c$ the space complexity in this worst case
+is $O(|S|^2)$.  This makes the algorithm unattractive for congruences with many
+pairs, but in some cases the algorithm can still out-perform the others in this
+chapter (see Section \ref{sec:benchmarking}).
 
 Some improvements can be made to the basic algorithm shown above.  For example,
 the \libsemigroups{} implementation makes use of the symmetry of pairs: a
