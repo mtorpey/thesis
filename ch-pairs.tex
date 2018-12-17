@@ -499,9 +499,11 @@ of information:
 The right Cayley graph can be used by the Todd--Coxeter procedure to pre-fill its
 table (see Section \ref{sec:tc-prefill}).  But more importantly, the rewriting
 system $R$ is a set of pairs which can be used as the relations in a finite
-presentation $\pres X R$ for the semigroup $S$.  The fact that $R$ is confluent
+presentation $\pres X R$ for the semigroup $S$.
+Rewriting systems will be defined later in Section \ref{sec:kb}, along with the
+terms ``confluent'' and ``terminating''.  The fact that $R$ is confluent
 and terminating may also be useful when it is used as part of a rewriting system
-in the Knuth--Bendix process later (see Section \ref{sec:kb}).
+in the Knuth--Bendix process, as we will see in Theorem \ref{thm:kb-halt}.
 
 A full description of the Froidure--Pin algorithm is outside the scope of this
 thesis, but for more information about the algorithm and its implementation in
@@ -1968,6 +1970,7 @@ semigroup presentation is undecidable in general, we do have a result about the
 Knuth--Bendix process which ensures completion in some cases.
 
 \begin{theorem}
+  \label{thm:kb-halt}
   Let $S$ be a semigroup with a finite presentation $\pres X R$, and let $\rws$
   be the rewriting system produced from $R$ by applying a shortlex ordering to
   all pairs, as described above.
