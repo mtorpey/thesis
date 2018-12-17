@@ -1222,18 +1222,19 @@ relatively small.
 \begin{example}
   \label{ex:tc-long}
   Let $\pres X R$ be the semigroup presentation
-  $$\pres{a,b}{a^{100}=b,\ a^{101}=b}.$$
-  By inspection we can see that $a^{101}=a^{100}$, and therefore $a^2=a$, so
-  $a^n = a$ for any $n \in \mathbb{N}$.  Hence $a=a^{100}=b$, and so any string
-  in $X^*$ is equal to $a$, showing that $\pres X R$ defines the trivial
+  $$\pres{a,b}{a^{100}=b,\ a=a^2}.$$
+  By inspection we can see that any string $a^n$ is equal to $a$ by repeated
+  application of the second relation, and therefore that $a = a^{100} = b$ by
+  the first relation.  Hence any string in $X^+$ is equal to $a$, showing that
+  $\pres X R$ defines the trivial
   semigroup.  However, if we apply the Todd--Coxeter procedure to this example,
-  a table with 101 rows will need to be constructed before any coincidences are
+  a table with 100 rows will need to be constructed before any coincidences are
   found, and 100 rows will need to be deleted before the algorithm terminates.
 
-  The numbers $100$ and $101$ in this example can be replaced by $N$ and $N+1$
-  for an arbitrarily large value of $N$; the presentation will still define the
-  trivial semigroup, but computation time will be arbitrarily long, increasing
-  with $N$.  In this way, we can see that although the Todd--Coxeter algorithm is guaranteed
+  The number $100$ in this example can be replaced by
+  any arbitrarily large value; the presentation will still define the
+  trivial semigroup, but computation time will be arbitrarily long.
+  In this way, we can see that although the Todd--Coxeter algorithm is guaranteed
   to terminate in a finite number of steps when the input defines a finite
   semigroup, this number of steps is unbounded.
 \end{example}
