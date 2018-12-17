@@ -328,7 +328,10 @@ concrete representation: by using its Cayley table directly.
   \begin{proof}
     Consider the natural homomorphism $\pi: \bar{S}^+ \to S$ which maps a word
     $\bar{x_1}\bar{x_2}\ldots \bar{x_n}$ to the semigroup element
-    $x_1 x_2\ldots x_n$.  To prove that $\pres{\bar{S}}{R}$ defines $S$ we must
+    $x_1 x_2\ldots x_n$.
+    Note that $\pi$ is surjective, since for any element $x \in S$ we have
+    $(\bar{x})\pi = x$.
+    To prove that $\pres{\bar{S}}{R}$ defines $S$ we must
     show that for any two words $u, v \in \bar{S}^+$, $(u, v) \in R^\sharp$ if
     and only if $(u)\pi = (v)\pi$.
 
