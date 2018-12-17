@@ -1976,9 +1976,11 @@ Knuth--Bendix process which ensures completion in some cases.
     Let $u,v \in X^*$.  We know that $u \lrstar_\rws v$ if and only if $u$ and
     $v$ describe the same element of $S$.  In particular, if $S$ is finite, then
     the $\lrstar_\rws$ relation will have finitely many classes -- one for each
-    element of $S$.  Using \cite[Corollary 12.21]{cgt}, we have that
-    the Knuth--Bendix algorithm will halt with a finite, confluent and terminating set of
-    rules, as required.
+    element of $S$.  Finally, \cite[Corollary 12.21]{cgt} tells us that if the
+    Knuth--Bendix algorithm is run on any rewriting system $R$ such that
+    $\lrstar_R$ has only finitely many classes, it will halt with a finite,
+    confluent and terminating set of rules.  This applies to our rewriting
+    system $\rws$, and so we have the result we need.
   \end{proof}
 \end{theorem}
 
