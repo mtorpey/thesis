@@ -755,9 +755,12 @@ is based closely on an implementation by G\"otz Pfeiffer, found in
 \cite[\texttt{lib/tcsemi.gi}]{gap}, itself based on \cite{walker_thesis}.
 
 We will now describe the Todd--Coxeter method as used in the context of this
-chapter.  Though the method itself does not represent new work, it is an
+chapter.  Though the Todd--Coxeter method itself does not represent new work, it is an
 important part of the overall parallel approach, and in order to understand its
 uses and limitations, it is described here in full.
+The idea of pre-filling the table is original work (see ``Pre-filling the
+table'' below), as is the integration into the overall parallel algorithm this
+chapter describes.
 
 \subsubsection{Setup}
 
@@ -1551,6 +1554,8 @@ found to describe the same congruence class.  However, in the case that we are
 calculating a congruence over a concretely represented semigroup -- or indeed, over a finitely
 presented semigroup on which the Todd--Coxeter algorithm has already been run -- we have certain
 information which we can use to help us with our calculation.
+We now describe how to use this information in a process called
+\textit{pre-filling}, which represents new work in this area.
 
 If we have such a semigroup $S$, then we can find a right Cayley graph $\Gamma$
 for $S$ with respect to its generators $X$: if we have a concrete representation, then we can find
