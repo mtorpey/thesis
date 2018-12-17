@@ -1200,24 +1200,9 @@ This description can be represented as a Cayley graph,
 as shown in Figure \ref{fig:tc-cayley-graph}.
 \begin{figure}[H]
   \centering
-  \begin{dot2tex}
-    //dot
-    digraph {
-      rankdir=LR
-      node [shape=circle]
-      2
-      3
-      4
-      5
-      2 -> 4 [label=a]
-      2 -> 2 [label=b]
-      3 -> 5 [label=a]
-      3 -> 4 [label=b, dir=both]
-      4 -> 5 [label=a, dir=both]
-      4 -> 4 [label=b]
-      5 -> 5 [label=b]
-    }
-  \end{dot2tex}
+  \vspace{-4.0em}
+  \includegraphics{pics/ch-pairs/tc-cayley-graph}
+  \vspace{-4.0em}
   \caption[Todd--Coxeter example: right Cayley graph]
   {Right Cayley graph of $\pres{a, b}{ba=ab,\ b^2=b,\ a^3=ab,\ a^2b=a^2}$}
   \label{fig:tc-cayley-graph}
