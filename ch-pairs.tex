@@ -1552,11 +1552,16 @@ this graph using the Froidure--Pin algorithm (see Section \ref{sec:find-pres});
 or if the Todd--Coxeter algorithm has been run on $S$, then the resulting table contains all
 the information required for a right Cayley graph.  Either way, this graph tells us, for
 each element $s \in S$ and each generator $x \in X$, the value of $s \cdot x$.
-The Cayley graph can then be converted easily into a Todd--Coxeter table, in the
-way we describe now (see Algorithm \ref{alg:tc-prefill} for pseudo-code).
+To \textbf{pre-fill} the table is to convert this Cayley graph into a
+Todd--Coxeter table $(n, \mathbf{N}, \tau)$ with rows that represent the
+elements of $S^1$, instead of starting with just a single row representing the
+identity.  Then we only need to process the pairs in $W$ in order to calculate
+the equivalence classes of $\rho$, and we do not need to use the pairs in $R$ at
+all.  We now describe how this works in more detail, with pseudo-code in
+Algorithm \ref{alg:tc-prefill}.
 
 We initialise the table with $|S| + 1$ rows (line 2), all of them active (line
-3), where row $1$ represents the empty word as usual, and rows $2$ to $|S| + 1$
+3), where row $1$ represents the identity as usual, and rows $2$ to $|S| + 1$
 represent the elements of $S$.  We put these elements in some order such that
 $S = \{s_1, s_2, \ldots, s_k\}$.  We now fill in the table, not with empty cells
 as in previous Todd--Coxeter algorithms, but with the values we know they should
