@@ -1909,39 +1909,48 @@ $\lrstar$.  This is where we use the Knuth--Bendix completion process.
 
 \index{Knuth--Bendix}
 First described by Knuth and Bendix in \cite{knuth_bendix}, the completion
-process adds rules to $\rws$ based on finding and resolving
-\textit{critical pairs}.  Roughly speaking, a critical pair is a pair of rules $(u_1, v_1)$ and
-$(u_2, v_2)$ from $\rws$ such that $u_1$ and $u_2$ overlap and therefore a word could be
-rewritten as either of two different irreducible words.  The formal definition
-is as follows.
+process adds rules to $\rws$ by finding and resolving
+\textit{critical pairs}.  A critical pair is a pair of rules $(u_1, v_1)$ and
+$(u_2, v_2)$ from $\rws$ such that $u_1$ and $u_2$ overlap in a certain way.
+They are defined as follows, as in \cite[Lemma 12.17]{cgt}.
 
 \begin{definition}
   \label{def:critical-pair}
   \index{critical pair}
   Let $\rws$ be a terminating rewriting system over an alphabet $X^*$.  A
-  \textbf{critical pair} is a pair of distinct words
-  $(w_1, w_2) \in X^* \times X^*$ such that $w_1$ and $w_2$ can be produced from
-  the same word by two different rules.
-  Critical pairs arise in two different ways.
-  Let $(u_1, v_1)$ and $(u_2, v_2)$ be rules in $\rws$.
+  \textbf{critical pair} is a pair of rules $(u_1, v_1)$ and $(u_2, v_2)$ in
+  $\rws$ such that one of the following is true:
   \begin{enumerate}[\rm(i)]
-  \item If $u_1 = rs$ and $u_2 = st$ with $r,s,t \in X^*$ and
-    $s \neq \varepsilon$, then $rst \to v_1t$ and $rst \to rv_2$, so
-    $(v_1t, rv_2)$ is a critical pair.
-  \item If $u_1 = ru_2t$ for some $r,t \in X^*$ and $u_2 \neq \varepsilon$, then
-    $u_1 \to v_1$ and $u_1 \to rv_2t$, so $(v_1, rv_2t)$ is a critical
-    pair.
+  \item $u_1 = rs$ and $u_2 = st$ with $r,s,t \in X^*$ and
+    $s \neq \varepsilon$;
+    %then $rst \to v_1t$ and $rst \to rv_2$, so
+    %$(v_1t, rv_2)$ is a critical pair.
+  \item $u_1 = ru_2t$ for some $r,t \in X^*$ and $u_2 \neq \varepsilon$.
+    %then $u_1 \to v_1$ and $u_1 \to rv_2t$, so $(v_1, rv_2t)$ is a critical
+    %pair.
   \end{enumerate}
 \end{definition}
 
-The importance of critical pairs is shown in the following theorem, which is key
-to the Knuth--Bendix completion process.
+A critical pair results in a choice when applying rewriting rules, which leads
+to different results depending on which rule is applied.  A critical pair of
+type (i) allows us to rewrite $rst$ to either $v_1t$ or $rv_2$, depending on
+which rule is applied; and a critical pair of type (ii) allows us to rewrite
+$u_1$ to either $v_1$ or $rv_2t$, depending on which rule is applied.  In order
+for $\rws$ to be confluent, we have to ensure that whichever option is chosen, a
+word is still rewritten to a fixed word later on.  This notion is made precise
+in the following theorem, which is key to the Knuth--Bendix completion process.
 
 \begin{theorem}[{\cite[Lemma 12.17]{cgt}}]
   \label{thm:knuth-bendix}
   A terminating rewriting system $\rws$ over $X$ is confluent if and only if,
-  for each critical pair $(u, v)$, there exists some $w \in X^*$ such that
-  $u \tostar w$ and $v \tostar w$.
+  for each critical pair of rules $(u_1, v_1)$ and $(u_2, v_2)$, the following
+  hold:
+  \begin{enumerate}[\rm(i)]
+  \item if it is a critical pair of type (i), there exists some word $w \in X^*$
+    such that $v_1t \tostar_\rws w$ and $rv_2 \tostar_\rws w$;
+  \item if it is a critical pair of type (ii), there exists some word
+    $w \in X^*$ such that $v_1 \tostar_\rws w$ and $rv_2t \tostar_\rws w$.
+  \end{enumerate}
 \end{theorem}
 
 Now we have all the concepts required to describe the Knuth--Bendix completion
