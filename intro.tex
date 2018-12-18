@@ -566,9 +566,9 @@ $\rho \cap \sigma$ is also a congruence on $S$, as can be seen from the
 definition of a congruence.  Less obvious is that their \textit{join}
 $\rho \vee \sigma$ (the least equivalence containing both $\rho$ and $\sigma$)
 is also a congruence on $S$, as shown in \cite[\S1.5]{howie}.  Hence we have
-three operations $\subseteq$, $\cap$ and $\vee$ which apply to the set of
+a relation $\subseteq$ and two operations $\cap$ and $\vee$ which apply to the set of
 congruences on $S$.  We will soon find that the set of congruences forms a
-special structure under these three operations.  We will first define this
+special structure together with $(\subseteq, \cap, \vee)$.  We will first define this
 structure, and then go on to explain how it can be viewed as a semigroup.
 \nomenclature[^i]{$\cap$}{Intersection of two sets}
 \nomenclature[^j]{$\vee$}{Join of two equivalences}
@@ -587,11 +587,11 @@ other lower bounds.  \index{poset} \index{upper bound} \index{lower bound}
 \begin{definition}
   \label{def:lattice}
   \index{lattice}
-  A \textbf{lattice} is a poset $(X, \leq)$ such that any subset of $X$ has
+  A \textbf{lattice} is a poset $(X, \leq)$ such that any finite subset of $X$ has
   a greatest lower bound and a least upper bound.
 \end{definition}
 
-Given a subset $Y$ of a lattice, we denote by $\bigwedge Y$ the greatest lower
+Given a finite subset $Y$ of a lattice, we denote by $\bigwedge Y$ the greatest lower
 bound (meet) of $Y$, and by $\bigvee Y$ the least upper bound (join).  If
 $Y = \{y_1, y_2\}$, we write the meet as $y_1 \wedge y_2$ and the join as
 $y_1 \vee y_2$.  We can now view a lattice as a semigroup in two different ways:
