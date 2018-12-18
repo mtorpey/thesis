@@ -262,8 +262,15 @@ completely 0-simple semigroups.
 Now we can replace any completely 0-simple semigroup with its isomorphic Rees
 0-matrix semigroup when we wish to perform any isomorphism-invariant
 calculations -- hence we can restrict our further investigations just to this
-type of semigroup.  Note that if $\mathcal{M}^0[G;I,\Lambda;P]$ is finite, then
-$G$, $I$, $\Lambda$ and $P$ are all finite.
+type of semigroup.  Note that methods exist in the \Semigroups{} package for
+performing this replacement: in a session, we can decide whether a finite
+semigroup $S$ is completely 0-simple using \texttt{IsZeroSimpleSemigroup}, and
+if the result is positive we can use \texttt{IsomorphismReesZeroMatrixSemigroup}
+to obtain a Rees 0-matrix semigroup isomorphic to $S$, as well as a map between
+the elements of the two semigroups \cite{semigroups}.
+If $\mathcal{M}^0[G;I,\Lambda;P]$ is finite, then $G$, $I$, $\Lambda$ and $P$
+must all be finite, so all the components of the semigroup that we work with
+will also be finite.
 
 Next we consider the congruences of a finite 0-simple semigroup.
 
