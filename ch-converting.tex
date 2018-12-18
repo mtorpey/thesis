@@ -1779,7 +1779,16 @@ characterisation of a kernel--trace pair (Definition
 \ref{def:kernel-trace-pair}) and a concise description of how this pair
 describes its congruence ($\Psi^{-1}$ in Theorem \ref{thm:kernel-trace-pair}).
 It turns out that the congruences on a regular semigroup can be described in a
-similar way, which we will briefly examine here.
+similar way, which we will briefly examine here.  First we make a definition.
+
+\begin{definition}[{\cite[Result 1.5]{pastijn_1986}}]
+  \label{def:pi_k}
+  Let $S$ be a regular semigroup, and let $K$ be a subset of $S$.  We define
+  $\pi_K$ as the relation on $S$ containing all pairs $(a,b) \in S \times S$
+  such that
+  $$xay \in K \Leftrightarrow xby \in K$$
+  for all $x,y \in S^1$.
+\end{definition}
 
 A congruence on a regular semigroup is uniquely determined by its kernel and
 trace \cite[Corollary 2.11]{pastijn_1986}, and a kernel--trace pair can be
@@ -1789,7 +1798,7 @@ characterised in the following way, analogous to Definition
 
 \begin{definition}[{\cite[Definition 2.12]{pastijn_1986}}]
   \label{def:regular-kernel-trace-pair}
-  \index{kernel--trace pair!for regular semigroups}
+  \index{kernel--trace pair!for a regular semigroup}
   A \textbf{kernel--trace pair} on a regular semigroup $S$ is a pair $(K,\tau)$
   such that the following hold:
   \begin{enumerate}[\rm(i)]
@@ -1798,11 +1807,8 @@ characterised in the following way, analogous to Definition
   \item
     $K \subseteq \ker(\LL\mathrel{\tau}\LL\mathrel{\tau}\LL \cap
     \RR\mathrel{\tau}\RR\mathrel{\tau}\RR)^\flat$;
-  \item $\tau \subseteq \tr \pi_K$;
+  \item $\tau \subseteq \tr \pi_K$.
   \end{enumerate}
-  where
-  $\pi_K = \left\{(a,b) \in S \times S : xay \in K \Leftrightarrow xby \in K
-    \quad (x,y \in S^1)\right\}$.
 \end{definition}
 
 We even have a description of how a kernel--trace pair describes its congruence,
@@ -1822,7 +1828,7 @@ analogue to Theorem \ref{thm:kernel-trace-pair}.
 This characterisation of congruences on regular semigroups falls short of its
 inverse semigroup counterpart.  Firstly, this broader definition of a
 kernel--trace pair is a lot more complicated and harder to compute with: for
-example, calculating $\pi_K$ could be computationally difficult, as could
+example, calculating $\pi_K$ for a subset $K$ could be computationally difficult, as could
 verifying (iii) and (iv) in Definition \ref{def:regular-kernel-trace-pair}.  It is
 certainly difficult to contemplate any analogue of \textsc{KerTraceFromPairs}
 (Algorithm \ref{alg:pairs-to-kertr}) which could find the least kernel--trace
