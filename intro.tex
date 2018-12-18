@@ -1053,19 +1053,25 @@ definition is used to describe a semigroup.
 \begin{definition}
   \label{def:presentation}
   \index{presentation}
-  A \textbf{semigroup presentation} is a pair $\mathfrak{P} = \pres X R$
-  consisting of a set $X$ and a set of pairs $R \subseteq X^+ \times X^+$.  The
-  semigroup \textbf{defined by} the presentation $\mathfrak{P}$ is
+  A \textbf{semigroup presentation} is a pair $\mathfrak{P} = (X, R)$
+  consisting of a set $X$ and a set of pairs $R \subseteq X^+ \times X^+$.  A
+  semigroup is \textbf{defined by} the presentation $\mathfrak{P}$ if it is
+  isomorphic to
   $X^+ / R^\sharp$, i.e.~the quotient of the free semigroup $X^+$ by the least
   congruence containing all the pairs in $R$.
 \end{definition}
+
+We will normally write a presentation $(X,R)$ using the notation $\pres X R$.
+Furthermore, if we refer to explicit pairs with this notation, we will write a
+pair $(a,b)$ as $a = b$, and we will omit the braces $\{\}$ from both sets.
+Example \ref{ex:first-pres} demonstrates this notation.
 
 \begin{definition}
   \label{def:finite-presentation}
   \index{presentation!finite}
   A semigroup presentation $\pres X R$ is \textbf{finite} if $X$ and $R$ are
   finite.  A semigroup is \textbf{finitely presented} if it is defined by a
-  finite presentation.
+  finite presentation, i.e.~if it is isomorphic to $X^+ / R^\sharp$.
 \end{definition}
 
 The exact wording used to talk about a semigroup $S$ defined by a presentation
@@ -1104,6 +1110,7 @@ presentations may define the same semigroup, and those two presentations may not
 look similar at all.  Consider the following example.
 
 \begin{example}
+  \label{ex:first-pres}
   The semigroup presentation $\pres{a}{a=a^{10}}$ defines the cyclic group
   $C_9$: there are $9$ elements which can be represented by the words
   $$\{a, a^2, a^3, a^4, a^5, a^6, a^7, a^8, a^9\}.$$  However, $C_9$ is also
