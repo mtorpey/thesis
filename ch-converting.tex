@@ -352,16 +352,20 @@ is the purpose of this section.  We define the function $\Gamma$ as follows.
   define
   $$N_\rho = \{a \in G ~|~ (k, a, \xi) ~\rho~ (k, 1_G, \xi)\},$$
   where $1_G$ is the identity in the group $G$.
-  The inverse of $\Gamma$ is then such that
-  $(N, \mathcal{S}, \mathcal{T})\Gamma^{-1}$ is equal to
+
+  The inverse of $\Gamma$ is then such that, for a linked triple $(N, \sS, \tT)$,
+  the congruence $(N, \mathcal{S}, \mathcal{T})\Gamma^{-1}$ is equal to
   $$\Big\{
   \big((i, a, \lambda), (j, b, \mu)\big) ~\Big|~
-  (p_{\xi i} a p_{\lambda x}) (p_{\xi j} b p_{\mu x})^{-1} \in N,
+  (p_{\xi i} a p_{\lambda k}) (p_{\xi j} b p_{\mu k})^{-1} \in N,
   (i,j) \in \mathcal{S},
   (\lambda,\mu) \in \mathcal{T}
-  \Big\},$$
-  where $\xi \in \Lambda$ and $x \in I$ can be any elements such that
-  $p_{\xi i}$ and $p_{\lambda x}$ are both non-zero.
+  \Big\}
+  \cup \big\{(0,0)\big\},$$
+  where $\xi \in \Lambda$ and $k \in I$ can be any elements such that
+  $p_{\xi i}$ and $p_{\lambda k}$ are both non-zero.
+  Note that $\xi$ and $k$ definitely exist, since $P$ is a regular matrix, and
+  so column $i$ and row $\lambda$ must each contain a non-zero entry.
 \end{definition}
 
 Note that the definition of $N_\rho$ does not depend on the choice of $\xi$ and
