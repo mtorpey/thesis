@@ -1216,10 +1216,12 @@ to consider the congruence $\rho = \R^\sharp$ and ask questions such as
 whether a pair lies in the congruence, or the number of congruence classes.
 This is certainly possible by various methods, for example the variety of
 algorithms mentioned in Chapter \ref{chap:pairs} -- however, if $S$ is an inverse
-semigroup then any calculation we wish to carry out will be much faster if we
-know the congruence's kernel--trace pair, as described in Section
-\ref{sec:kertr}.  We therefore wish for an algorithm that determines the kernel
-and trace of $\rho$.
+semigroup then the congruence has an associated kernel--trace pair, as described
+in Section \ref{sec:kertr}.  If we know this kernel--trace pair, then we can use
+methods associated with it to carry out calculations, and benchmarking in
+\cite[\S6.1.3]{mtorpey_msc} indicates that these calculations are likely to be
+much faster than by using other methods.  We therefore wish for an algorithm
+that determines the kernel and trace of $\rho$.
 
 One way of calculating the kernel and trace would be simply to enumerate all the
 elements in all the classes of $\rho$, and to search for the idempotents to
