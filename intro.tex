@@ -1604,11 +1604,13 @@ Partial transformations (including transformations) can map points in their
 domain to points in their image in any order.  We now define an interesting
 property a partial transformation may have that will be important when we come
 to consider \textit{planar} bipartitions later (Definition \ref{def:planar}).
+Recall that $\PT_n$ is the monoid of all partial transformations on the set
+$\{1, \ldots, n\}$ for some $n \in \mathbb{N}$.
 
 \begin{definition}
   \label{def:order-preserving}
   \index{order-preserving}
-  A partial transformation $\tau$ is \textbf{order-preserving} if for all
+  A partial transformation $\tau \in \PT_n$ is \textbf{order-preserving} if for all
   $i,j \in \dom\tau$, we have $i \leq j$ if and only if $(i)\tau \leq (j)\tau$.
 \end{definition}
 
@@ -1642,6 +1644,11 @@ containment of these monoids is shown in Figure \ref{fig:ord-pres}.
     their order-preserving submonoids}
   \label{fig:ord-pres}
 \end{figure}
+
+Note that the definition of \textit{order-preserving} only makes sense for
+partial transformations that act on a set with a natural total ordering, such as
+the set $\{1, \ldots, n\}$.  It is not well-defined in $\PT_X$ for an arbitrary
+set $X$.
 
 These order-preserving monoids will be considered in Section
 \ref{sec:princfact-other}, where we will classify the congruences on their
