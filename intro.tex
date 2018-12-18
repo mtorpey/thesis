@@ -1691,14 +1691,14 @@ called an \textbf{upper block} if it only contains points from $\mathbf{n}$, a
 $\mathbf{n}'$.
 \index{block}\index{upper block}\index{lower block}\index{transversal}
 
-The number $n$ is called the \textit{degree} of the
+The number $n$ is called the \textbf{degree} of the
 bipartition. \index{degree!of a bipartition}  Two
 bipartitions $\alpha$ and $\beta$ of the same degree can be composed in the
 following way to make another bipartition, $\alpha \beta$: let
 $\mathbf{n}'' = \{1'', \ldots, n''\}$, let $\alpha^\vee$ be obtained from
-$\alpha$ by changing every point $i \in \mathbf{n}$ to $i''$, and let
+$\alpha$ by changing every point $i' \in \mathbf{n}'$ to $i''$, and let
 $\beta^\wedge$ be obtained from $\beta$ be changing every point
-$i' \in \mathbf{n}'$ to $i''$.  Now let $\Pi$ be the equivalence on
+$i \in \mathbf{n}$ to $i''$.  Now let $\Pi$ be the equivalence on
 $\mathbf{n} \cup \mathbf{n}' \cup \mathbf{n}''$ given by
 $(\alpha^\vee \cup \beta^\wedge)^e$.  We define $\alpha \beta$ as the
 bipartition
@@ -1716,7 +1716,7 @@ line.  Consider the following example.
 
 \begin{example}
   \label{ex:bipartition}
-  Let $\alpha$ be the bipartition of degree $5$ with blocks $\{1, 2', 3'\}$,
+  Let $\alpha$ be the bipartition of degree $5$ with blocks $\{1, 1', 2'\}$,
   $\{2\}$, $\{3, 4, 3', 4'\}$, $\{5\}$ and $\{5'\}$.  Let $\beta$ be the
   bipartition of degree $5$ with blocks $\{1, 2, 5, 1', 2'\}$, $\{3, 4', 5'\}$,
   $\{4\}$ and $\{3'\}$.  The diagrams of these two figures, along with their
@@ -1765,12 +1765,17 @@ come to consider certain bipartition semigroups later.
     % $\{i \in \mathbf{n} : i' \text{~lies in a transversal of~} \alpha\}$;
     \index{codomain}
     \nomenclature[codom]{$\codom$}{Codomain of a bipartition}
-  \item The \textbf{kernel} of $\alpha$, denoted $\ker \alpha$, is equal to
-    $\alpha \cap (\mathbf{n} \times \mathbf{n})$;
+  \item The \textbf{kernel} of $\alpha$, denoted $\ker \alpha$, is the
+    equivalence relation on $\bn$ such that two points $i, j \in \bn$ lie in the
+    same block of $\ker \alpha$ if and only if they lie in the same block of
+    $\alpha$ (equivalently,
+    $\ker \alpha = \alpha \cap (\mathbf{n} \times \mathbf{n})$);
     \index{kernel!of a bipartition}
     \nomenclature[ker]{$\ker$}{Kernel of a bipartition}
-  \item The \textbf{cokernel} of $\alpha$, denoted $\coker \alpha$, is equal to
-    $\alpha \cap (\mathbf{n}' \times \mathbf{n}')$.
+  \item The \textbf{cokernel} of $\alpha$, denoted $\coker \alpha$, is the
+    equivalence relation on $\bn$ such that two points $i, j \in \bn$ lie in the
+    same block of $\coker \alpha$ if and only if the corresponding points
+    $i', j' \in \bn'$ lie in the same block of $\alpha$.
     \index{cokernel}
     \nomenclature[coker]{$\coker$}{Cokernel of a bipartition}
   \end{itemize}
