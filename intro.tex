@@ -153,11 +153,16 @@ study of its linked triples, for example.  We define subgroups along with
 \begin{definition}
   \label{def:subsemigroup}
   \index{subsemigroup}
-  Let $S$ be a semigroup.  A \textbf{subsemigroup} of $S$ is a subset of $S$
-  which forms a semigroup in its own right, under the same operation as $S$.
+  Let $(S, *)$ be a semigroup, consisting of a set $S$ together with an
+  associative binary operation $*: S \times S \to S$.
+  Let $T$ be a subset of $S$, and let $*|_T$ be the restriction of $*$ to $T$.
+  If $(T, *|_T)$ is a semigroup, then it is a \textbf{subsemigroup} of $(S, *)$.
+
+  Where the operations $*$ and $*|_T$ are well-understood, we will simply write
+  that $T$ is a subsemigroup of $S$.
 \end{definition}
 
-Similarly, if $M$ is a monoid, then a subset of $M$ which forms a monoid with
+Similarly, if $M$ is a monoid, then a subsemigroup of $M$ which has
 the same identity is called a \textbf{submonoid} of $M$.  \index{submonoid}
 
 If a subsemigroup of $S$ happens to be a group, we call it a \textbf{subgroup}
