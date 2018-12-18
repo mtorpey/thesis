@@ -1081,14 +1081,14 @@ infinite loop.
     \For{each non-singleton class $\{i_1, i_2, \ldots, i_n\}$ of $\mathcal{S}$}
       \For{$l \in \{2, \ldots, n\}$}
         \State \textsc{Push} $(i_1, i_l)$ onto $\sS'$
-        \LComment All columns in the class are linked through $i_1$
+        \LComment{All columns in the class are linked through $i_1$}
       \EndFor
     \EndFor
     \State $\tT' := \varnothing$
     \For{each non-singleton class $\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$ of $\mathcal{T}$}
       \For{$l \in \{2, \ldots, n\}$}
         \State \textsc{Push} $(\lambda_1, \lambda_l)$ onto $\tT'$
-        \LComment All rows in the class are linked through $\lambda_1$
+        \LComment{All rows in the class are linked through $\lambda_1$}
       \EndFor
     \EndFor
     \State $\R := \varnothing$
