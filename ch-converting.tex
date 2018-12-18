@@ -528,11 +528,29 @@ which could be written as $\rho_S$.  If $S$ has a zero $0$, then $\{0\}$ is an
 ideal and so the trivial congruence $\Delta_S$ is a Rees congruence which could
 be written as $\rho_{\{0\}}$.
 
-As an example, the monoid of all order-preserving transformations $\OO_n$ has
-only Rees congruences, apart from the trivial congruence $\Delta_{\OO_n}$, which
-is not Rees, since $\OO_n$ does not contain a zero \cite{lavers_1999}.
+A good example of a semigroup with many Rees congruences is the monoid of all
+order-preserving transformations $\OO_n$.  All of its congruences are Rees,
+apart from one -- the trivial congruence $\Delta_{\OO_n}$, which is not Rees
+because $\OO_n$ does not contain a zero \cite{lavers_1999}.
 Some examples of semigroups whose congruences are all Rees can be found in
 \cite[\S 5]{garcia_1991}.
+
+In order to use the theory of Rees congruences in a computational setting, we
+must consider how a Rees congruence can be stored on a computer.  To store a
+Rees congruence $\rho_I$ we do not have to store a large set of pairs, or even
+any information about the congruence's classes.  We only need to store the ideal
+$I$ itself, along with the overall semigroup $S$, and we have everything we need
+to know about the congruence.  Furthermore, we do not even need to store all the
+elements of $I$, but just a generating set for it.  This could be a generating
+set for $I$ as a subsemigroup of $S$, or better yet, we can use an ideal
+generating set (see \ref{sec:intro-ideals}).  An ideal generating set can be
+even smaller than a subsemigroup generating set, since a single generator $a$,
+when considered an ideal generator, gives rise to elements $xay$ for all
+$x,y \in S$ rather than just for all $x,y \in I$.
+
+The \Semigroups{} package for \GAP{} takes the approach of storing an ideal to
+represent a Rees congruence, and will store any generating set that is available
+for the ideal, whether as a subsemigroup or as an ideal.
 
 \section{Converting between representations}
 \label{sec:converting}
