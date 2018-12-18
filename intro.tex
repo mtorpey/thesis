@@ -469,12 +469,25 @@ definition of two-sided congruences is embodied in the following proposition.
 
 \begin{proposition}
   \label{prop:cong-def}
-  Let $\rho$ be a congruence on a semigroup $S$.  If $(x, y), (s, t) \in \rho$,
-  then $(xs, yt) \in \rho$.
+  Let $\mathbf{E}$ be an equivalence on a semigroup $S$.  The equivalence
+  $\mathbf{E}$ is a congruence on $S$ if and only if
+  $$(xs, yt) \in \mathbf{E}$$
+  for all pairs $(x,y), (s,t) \in \mathbf{E}$.
   \begin{proof}
-    Since $\rho$ is a left congruence, $xs ~\rho~ xt$, and since it is a right
-    congruence, $xt ~\rho~ yt$.  Hence, by transitivity, $xs ~\rho~ yt$, as
-    required.
+    We prove the ``only if'' direction first, and then consider the ``if''
+    direction.
+
+    First, assume $\mathbf{E}$ is a congruence.  Since $\mathbf{E}$ is a left
+    congruence, we have $(xs, xt) \in \mathbf{E}$, and since it is a right
+    congruence, we have $(xt, yt) \in \mathbf{E}$.  Hence, by transitivity,
+    $(xs, yt) \in \mathbf{E}$, as required.
+
+    For the converse, assume that $(xs, yt) \in \mathbf{E}$ for all pairs
+    $(x,y), (s,t) \in \mathbf{E}$, and let $a \in S$ be arbitrary.  Since
+    $(a,a) \in \mathbf{E}$ by reflexivity, we must have
+    $(xa, ya) \in \mathbf{E}$ by the assumption.  Similarly, we must have
+    $(ax, ay) \in \mathbf{E}$, by using $(x,y)$ in place of $(s,t)$.  Hence
+    $\mathbf{E}$ is a congruence, as required.
   \end{proof}
 \end{proposition}
 
