@@ -1862,16 +1862,17 @@ the symmetric inverse monoid $\I_n$, and the symmetric group $\Sym_n$.
   partial transformation $\transV3-43-$ would be mapped to the bipartition
   $\bipart{c|c|c|c|c}{3-5}{1,4 & 3 & \two{2}{5}}{3 & 4 & 1 & 2 & 5}$.  It would
   be easy to mistake $f$ for a homomorphism; however, consider the following
-  minimal counter-example:
+  simple counter-example:
   $$a = \transII11, \quad b = \transII--,\quad ab = \transII--,$$
   $$(a)f = \bipart{c|c}{2-2}{1,2 &}{1 & 2},\quad
   (b)f = \bipart{c|c}{1-2}{1 & 2}{1 & 2},$$
   $$(a)f(b)f = \bipart{c|c}{1-2}{\mc2{c}{1,2}}{1 & 2} \neq
   \bipart{c|c}{1-2}{1 & 2}{1 & 2} = (ab)f,$$
   showing that $f$ does not respect composition.  Still, $f$ is useful as an
-  embedding for several submonoids of $\PT_n$.  The restricted maps $f|_{\T_n}$,
-  $f|_{\I_n}$ and $f|_{\Sym_n}$ are all monomorphisms, and thus $\Prt_n$
-  contains copies of $\T_n$, $\I_n$ and $\Sym_n$.
+  embedding for several submonoids of $\PT_n$.  The restricted maps $f|_{\T_n}$
+  and $f|_{\I_n}$ are monomorphisms \cite[\S3.1--3.2]{east_2011} and hence,
+  since $\Sym_n = \T_n \cap \I_n$, so is $f|_{\Sym_n}$.  Thus, we can see that
+  $\Prt_n$ contains copies of $\T_n$, $\I_n$ and $\Sym_n$.
 \end{example}
 
 Note that, since each bipartition $\alpha \in \Prt_n$ has an inverse
