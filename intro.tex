@@ -1665,11 +1665,12 @@ understand them in a graphical way, as in Figure \ref{fig:bipartition-example}.
 Bipartition semigroups are thus included in the class of \textit{diagram
   semigroups} \cite{diagram_semigroups}.  The study of bipartition semigroups is
 born out of the study of diagram algebras, for example Temperley--Lieb algebras
-and the bipartition algebra \cite{partition_algebra}.  However, it is of
-independent interest in semigroup theory, being an example of a regular
-$\star$-semigroup \cite{reg_star_smgp}, and containing copies of important
-algebras such as $\Sym_n$, $\T_n$ and $\I_n$, along with other interesting
-features \cite[\S1]{deg_motzkin}.
+and the bipartition algebra \cite{partition_algebra}.  However, they are of
+independent interest in semigroup theory, since the bipartition monoid (defined
+below) contains copies of important algebras such as $\Sym_n$, $\T_n$ and
+$\I_n$.  It also has other interesting features such as being an example of a
+\textit{regular $\star$-semigroup}, also defined below.  For more information
+about bipartition semigroups, see \cite[\S1]{deg_motzkin}.
 
 We begin with the formal definition.
 
@@ -1870,7 +1871,24 @@ the symmetric inverse monoid $\I_n$, and the symmetric group $\Sym_n$.
 
 Note that, since each bipartition $\alpha \in \Prt_n$ has an inverse
 $\alpha^\star \in \Prt_n$, we have that $\Prt_n$ is a regular semigroup.
-Furthermore, it is a regular $\star$-semigroup in the sense of
+Furthermore, consider the following definition.
+
+\begin{definition}[{\cite[Definition 1.1]{reg_star_smgp}}]
+  \label{def:regular-star-semigroup}
+  \index{regular!$\star$-semigroup}
+  A \textbf{regular $\star$-semigroup} is a semigroup $S$ together with a unary
+  operation $^\star: S \to S$ such that the following hold:
+  \begin{enumerate}[\rm(i)]
+  \item $(x^\star)^\star = x$;
+  \item $(xy)^\star = y^\star x^\star$;
+  \item $x = x x^\star x$;
+  \end{enumerate}
+  for all $x, y \in S$.
+\end{definition}
+
+We can see that the $^\star$ operation described above fulfils all three of
+these criteria, and therefore that $(\Prt_n, ^\star)$ is a regular
+$\star$-semigroup.  For more information on regular $\star$-semigroups, see
 \cite{reg_star_smgp}.
 
 As with any semigroup, it will be helpful to describe the Green's relations of
