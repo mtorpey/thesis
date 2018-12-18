@@ -973,12 +973,13 @@ certainly likely to be the case in a computational setting, for example in \GAP{
 \cite{gap} where groups almost always have a known generating set.  We should
 note that this set should act as a set of normal subgroup generators, meaning
 that it might be even smaller than a standard set of subgroup generators.  For
-$\sS'$ we choose a minimal spanning tree of depth $1$ for each class of $\sS$, by linking
-each column in the class to a distinguished class representative called $i_1$
-(lines 3--7).
+$\sS'$ we use as few pairs as possible for each class of $\sS$: for each class
+$C = \{i_1, \ldots, i_n\}$ we include the pair $(i_1, i_l)$ for all $l \in
+\{2, \ldots, n\}$ (lines 3--7).  These pairs relate all elements in the class to
+each other by transitivity, so we do not need to add any other elements.
 Hence each class requires a number of pairs in $\sS'$ equal to one less than the
 size of the class; and so $|\sS'| = |I| - k_\sS$, where $k_\sS$ is the number
-of classes in $\sS$.  We similarly choose a minimal spanning tree of depth 1 for
+of classes in $\sS$.  We similarly choose as small a set as possible for
 $\tT'$ (lines 8--12), so $|\tT'| = |\Lambda| - k_\tT$, where $k_\tT$ is
 the number of classes in $\tT$.
 
@@ -1029,8 +1030,8 @@ any smaller set of pairs could be found which generates the same congruence.
     algorithm to have been known in advance, and hence is not guaranteed to be
     minimal in any way.  However, $\sS'$ and $\tT'$ are created in the
     algorithm, each one consisting of a set of pairs in $I \times I$ or
-    $\Lambda \times \Lambda$ which makes a minimal spanning tree for each class
-    in the relation.  In other words, $\sS'$ and $\tT'$ contain the smallest
+    $\Lambda \times \Lambda$ which makes as few links as possible between
+    elements in a class. In other words, $\sS'$ and $\tT'$ contain the smallest
     possible number of pairs such that $(\sS')^e = \sS$ and $(\tT')^e = \tT$.
     Note that $|\sS'| = |I| - k_\sS$ and $|\tT'| = |\Lambda| - k_\tT$.
 
@@ -1080,14 +1081,14 @@ infinite loop.
     \For{each non-singleton class $\{i_1, i_2, \ldots, i_n\}$ of $\mathcal{S}$}
       \For{$l \in \{2, \ldots, n\}$}
         \State \textsc{Push} $(i_1, i_l)$ onto $\sS'$
-        \LComment This will make $\sS'$ a minimal spanning forest of depth $1$ for $\sS$
+        \LComment All columns in the class are linked through $i_1$
       \EndFor
     \EndFor
     \State $\tT' := \varnothing$
     \For{each non-singleton class $\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$ of $\mathcal{T}$}
       \For{$l \in \{2, \ldots, n\}$}
         \State \textsc{Push} $(\lambda_1, \lambda_l)$ onto $\tT'$
-        \LComment This will make $\tT'$ a minimal spanning forest of depth $1$ for $\tT$
+        \LComment All rows in the class are linked through $\lambda_1$
       \EndFor
     \EndFor
     \State $\R := \varnothing$
@@ -1731,8 +1732,8 @@ straightforward algorithm.  The kernel is the set of elements which are
 $\rho$-congruent to an idempotent.  Hence, if $K'$ is a generating set for $K$,
 then adding $(k,e)$ for each $k \in K'$, where $e$ is some idempotent such that
 $k ~\rho~ e$, would ensure that the kernel contains $K$.  The trace is the
-restriction of $\rho$ to the idempotents; hence, if $\tau'$ is a spanning forest
-for $\tau$ so that $(\tau')^e = \tau$, adding all the pairs from $\tau'$ would
+restriction of $\rho$ to the idempotents; hence, if $\tau'$ is a relation
+such that $(\tau')^e = \tau$, adding all the pairs from $\tau'$ would
 ensure that the trace contains $\tau$.  This approach would result in a very
 large generating set, and could almost certainly be improved in some ways,
 particularly by exploiting (i) and (ii) in Definition \ref{def:kernel-trace-pair}
