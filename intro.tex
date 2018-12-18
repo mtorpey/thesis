@@ -2284,10 +2284,11 @@ $\textsc{Find}(x)$ will return the same result as a call to $\textsc{Find}(y)$
 \end{algorithm}
 
 Note that the algorithms described only ever make $z$ an output of $\tau$ if
-$(z)\tau = z$.  This ensures that when \textsc{Find} traverses a tree towards
-the root, it always moves towards a root, and never gets caught in a cycle.
-Hence, if $\Lambda$ is finite and $\tau$ was created using the methods
-described, all three algorithms will halt in finite time.
+$(z)\tau = z$.  This ensures that when \textsc{Find} traverses a tree, it always
+moves towards the root, and never gets caught in a cycle.  Neither
+\textsc{AddElement} nor \textsc{Union} contain any loops, so if $\Lambda$ is
+finite and $\tau$ was created using the methods described, all three algorithms
+will always halt in finite time.
 
 These three algorithms allow us to use a simple data structure $(\Lambda, \tau)$ to describe any
 equivalence relation on a semigroup.  Whenever a pair $(x,y)$ is found in
