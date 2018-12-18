@@ -1075,7 +1075,7 @@ infinite loop.
 \label{alg:linked-triple-to-pairs}
 \index{PairsFromLinkedTriple@\textsc{PairsFromLinkedTriple}}
 \begin{algorithmic}[1]
-  \Procedure{PairsFromLinkedTriple}{$N, \mathcal{S}, \mathcal{T}$}
+  \Procedure{PairsFromLinkedTriple}{$\mathcal{M}^0[G;I,\Lambda;P], (N, \mathcal{S}, \mathcal{T})$}
     \State $N' := $ normal subgroup generating set for $N$
     \State $\sS' := \varnothing$
     \For{each non-singleton class $\{i_1, i_2, \ldots, i_n\}$ of $\mathcal{S}$}
@@ -1398,9 +1398,10 @@ algorithm.
 The first method, \textsc{EnumerateKernel}, first checks whether there are any
 new elements in $X$ that have not already been added to $K$ (line 17).  If there
 are, it adds all the elements from $X$ to $K$, and then on line 18 it adds any
-necessary elements to $K$ to ensure that it is self-conjugate in the sense of
-Definition \ref{def:kernel-normal} (this is denoted with the notation
-$\llangle \cdot \rrangle$).  Since $K$ starts containing $E$, this is enough to
+necessary elements $a^{-1}xa$ to $K$, as in Definition \ref{def:kernel-normal},
+to ensure that $K$ remains self-conjugate.  This process of adding elements to
+ensure self-conjugacy is denoted with the notation $\llangle \cdot \rrangle$, as
+for normal closure in a group.  Since $K$ starts containing $E$, this is enough to
 guarantee that $K$ is a normal subsemigroup, a fact we can be certain of at the
 end of \textsc{EnumerateKernel}.  If a change was made, we set $\delta$ to true,
 and in any case we empty the set $X$ to indicate that no new elements have been
