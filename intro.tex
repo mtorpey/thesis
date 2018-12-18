@@ -1192,9 +1192,9 @@ other features of a semigroup.
   and $\JJ$ on $S$ as follows:
   \begin{itemize}
   \item $x \LL y$ if and only if $S^1x = S^1y$, i.e.~$ax=y$ and $by=x$ for
-    some $a,b \in S$;
+    some $a,b \in S^1$;
   \item $x \RR y$ if and only if $xS^1 = yS^1$, i.e.~$xa=y$ and $yb=x$ for
-    some $a,b \in S$;
+    some $a,b \in S^1$;
   \item $x \HH y$ if and only if $x \LL y$ and $x \RR y$;
   \item $x \DD y$ if and only if there exists some $z \in S$ such that
     $x \LL z \RR y$;
@@ -1236,7 +1236,7 @@ finite \cite[\S2.1]{howie}.  These containments are shown in Figure
   the relation $\RR$ is a left congruence on $S$.
   \begin{proof}
     Let $(x,y) \in \lL$, and let $s \in S$.  From Definition
-    \ref{def:greens-relations} we have $a,b \in S$ such that $ax=y$ and $by=x$.
+    \ref{def:greens-relations} we have $a,b \in S^1$ such that $ax=y$ and $by=x$.
     We have $xs = bys$ and $ys = axs$, so $(xs,ys) \in \lL$, and $\LL$ is a
     right congruence.  By a similar argument, $\RR$ is a left congruence.
   \end{proof}
