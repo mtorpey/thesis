@@ -246,7 +246,7 @@ of $\Mot_n$ can be found using these two building blocks.
   \index{liftable congruence}
   \nomenclature{$\sigma$}{Liftable congruence}
   Let $S$ be a finite semigroup, with minimal ideal $M$.  A congruence $\sigma$
-  on $M$ is \textbf{liftable congruence} of $S$ if any, and therefore all, of
+  on $M$ is a \textbf{liftable congruence} of $S$ if either, and therefore both, of
   the following equivalent conditions are satisfied:
   \begin{enumerate}[\rm(i)]
   \item $\sigma \cup \Delta_S$ is a congruence on $S$;
@@ -256,6 +256,21 @@ of $\Mot_n$ can be found using these two building blocks.
     elements $x \in S$.
   \end{enumerate}
 \end{definition}
+
+To see that the two conditions in the last definition are equivalent, assume we
+have $S$, $M$ and $\sigma$ such that (i) is satisfied.  Now let
+$(a,b) \in \sigma$ and $x \in S$ be arbitrary.  Since $\sigma \cup \Delta_S$ is
+a congruence and $(a,b) \in \sigma \cup \Delta_S$, we must have
+$(ax,bx) \in \sigma \cup \Delta_S$.  If $(ax,bx) \in \Delta_S$ then $ax=bx$, and
+since $M$ is an ideal we must have both $ax$ and $bx$ in $M$; hence $(ax,bx)$ is
+a reflexive pair and lies in the congruence $\sigma$.  Hence $(ax,bx)$ is in
+$\sigma$, and by a similar argument, so is $(xa,xb)$, so we have (ii).
+
+Conversely, assume that (ii) holds, let $(a,b) \in \sigma \cup \Delta_S$, and
+let $x \in S$.  If $(a,b) \in \Delta_S$ then $a=b$, and so $ax=bx$ and $xa=xb$.
+Otherwise, $(a,b) \in \sigma$ and by (ii) we have $(ax,bx),(xa,xb) \in \sigma$.
+In either case, we have $(ax,bx),(xa,xb) \in \sigma \cup \Delta_S$, and so we
+have (i).
 
 In order to use these building blocks to produce new congruences, we first need
 to establish some results about them.  Note that, since $\Mot_n$ is finite, it
