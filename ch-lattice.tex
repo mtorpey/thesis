@@ -220,7 +220,11 @@ possible principal congruence at some point.
 Starting on line 6, we compare the new congruence $(x,y)^\sharp$ to each of the
 congruences $(a,b)^\sharp$ that we have found and added to $\Gamma$ so far.  If
 the new congruence is equal to the old one, then we discard it and go on looking
-for more congruence (lines 8--9).  If the new congruence is strictly contained
+for more congruences (lines 8--9).  Note that this ``goto'' statement is
+necessary: lines 8--9 do not just avoid the else statement in lines 10--11, but
+actually discard the entire new congruence $(x,y)^\sharp$ and begin the next
+iteration of the outer for-loop on line 4.
+If the new congruence is strictly contained
 in the old congruence (line 10) or if the old is strictly contained in the new
 (line 12) we add a pair to $P$ to show the containment.  Once we have gone
 through all the old congruences in $\Gamma$, if we have not found one that is
