@@ -266,7 +266,9 @@ are ways in which this process is guaranteed to encounter a given congruence
 twice, and therefore waste time.  For example, if we consider a pair $(x,y)$,
 there is no need later to consider $(y,x)$, since it will generate the same
 congruence.  Similarly there is no need to consider every reflexive pair
-$(x,x)$, since each one is guaranteed to generate the trivial congruence.  Thus,
+$(x,x)$, since each one is guaranteed to generate the trivial congruence
+$\Delta_S$; we can instead exclude reflexive pairs from the algorithm, and
+simply add $\Delta_S$ at the end, with an empty set of generating pairs.  Thus,
 if $S$ has $n$ elements, we need only consider $\frac{1}{2}n(n-1)$ pairs, rather
 than all $n^2$ pairs from $S \times S$.  In the best cases, this may reduce the
 runtime of the algorithm by more than 50\%; however, note that the asymptotic
