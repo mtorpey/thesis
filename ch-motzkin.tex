@@ -713,7 +713,8 @@ $\Delta_{\Mot_n}$ and $\nabla_{\Mot_n}$.
     \draw (R1)--(R2);
     \draw[dashed] (R2)--(Rn);
   \end{tikzpicture}
-  \caption[Congruence lattice of $\Mot_n$]{Congruence lattice of $\Mot_n$ (Hasse diagram)}
+  \caption[Congruence lattice of $\Mot_n$]{Congruence lattice of $\Mot_n$ for
+    $n \geq 2$ (Hasse diagram)}
   \label{fig:mn-cong-lattice}
 \end{figure}
 
@@ -778,7 +779,7 @@ readability.
 
 \begin{lemma}
   \label{lem:low-genpairs}
-  Let $\alpha,\beta \in \Mot_n$.  The following hold:
+  Let $\alpha,\beta \in \Mot_n$, where $n \geq 2$.  The following hold:
   \begin{enumerate}[\rm(i)]
   \item $\lambda_0 = (\alpha, \beta)^\sharp$ if and only if
     $(\alpha,\beta) \in \lambda_0 \setminus \Delta$;
@@ -906,7 +907,7 @@ readability.
 
 \begin{lemma}
   \label{lem:high-genpairs}
-  Let $\alpha,\beta \in \Mot_n$.  The following hold:
+  Let $\alpha,\beta \in \Mot_n$, where $n \geq 2$.  The following hold:
   \begin{enumerate}[\rm(i)]
   \item $\lambda_1 = (\alpha, \beta)^\sharp$ if and only if
     $(\alpha,\beta) \in \lambda_1 \setminus (\lambda_0 \cup \delta_1)$;
@@ -1108,7 +1109,7 @@ readability.
 
 \begin{lemma}
   \label{lem:rees-genpairs}
-  Let $\alpha,\beta \in \Mot_n$, and $k \in \{2, \ldots, n\}$.  We have
+  Let $\alpha,\beta \in \Mot_n$, where $n \geq 2$, and let $k \in \{2, \ldots, n\}$.  We have
   $R_k = (\alpha, \beta)^\sharp$ if and only if
   $(\alpha, \beta) \in R_k \setminus R_{k-1}$.
   \begin{proof}
@@ -1351,7 +1352,7 @@ every possible congruence.
 
 \begin{lemma}
   \label{lem:mn-lattice-intra}
-  Let $i \in \{0, 1\}$.  In $\Mot_n$, we have $\lambda_i \cap \rho_i = \delta_i$
+  Let $i \in \{0, 1\}$ and $n \geq 2$.  In $\Mot_n$, we have $\lambda_i \cap \rho_i = \delta_i$
   and $\lambda_i \vee \rho_i = R_i$.
   \begin{proof}
     Using Proposition \ref{prop:mn-cong-char}, we have the following
@@ -1384,7 +1385,7 @@ every possible congruence.
 
 \begin{lemma}
   \label{lem:mn-lattice-inter}
-  The following hold in $\Mot_n$:
+  The following hold in $\Mot_n$, with $n \geq 2$:
   \begin{enumerate}[\rm(i)]
     \begin{multicols}{2}
     \item $\lambda_0 \subseteq \lambda_1$, $\rho_0 \subseteq \rho_1$, and
@@ -1447,8 +1448,8 @@ ideals of $\Mot_n$.
 
 \begin{corollary}
   \label{cor:rk-not-lifted}
-  The ideal $I_k$ of $\Mot_n$ is not retractable, and hence the congruence $R_k$
-  is not a lifted congruence, for $k \geq 2$.
+  Let $n \geq 2$ and $k \geq 2$.  The ideal $I_k$ of $\Mot_n$ is not retractable, and hence the congruence $R_k$
+  is not a lifted congruence.
   \begin{proof}
     Assume that $k \geq 2$, and that $I_k$ exists (i.e.~$n \geq 2$) and is
     retractable.  Then we can choose a liftable congruence and use it with $I_k$
@@ -1771,7 +1772,7 @@ Figure \ref{fig:bn-congs}.
     \draw (R1)--(RA3)--(RS3)--(R3)--(RA5);
     \draw[dashed] (RA5)--(Rno);
   \end{tikzpicture}
-  \caption[Congruence lattice of $\Brau_n$]{Congruence lattice of $\Brau_n$ when
+  \caption[Congruence lattice of $\Brau_n$]{Congruence lattice of $\Brau_n$ for $n \geq 5$ when
     $n$ is odd (upper left) and even (lower right)}
   \label{fig:bn-congs}
 \end{figure}
@@ -1837,7 +1838,7 @@ Figure \ref{fig:jn-congs}.
     \draw (R1)--(R3)--(R5);
     \draw[dashed] (R5)--(Rno);
   \end{tikzpicture}
-  \caption[Congruence lattice of $\Jon_n$]{Congruence lattice of $\Jon_n$ when
+  \caption[Congruence lattice of $\Jon_n$]{Congruence lattice of $\Jon_n$ for $n \geq 4$ when
     $n$ is odd (left) and even (right)}
   \label{fig:jn-congs}
 \end{figure}
@@ -1921,6 +1922,7 @@ shown in Figure \ref{fig:pn-congs}.
     \draw (RS2)--(R2)--(RA3)--(RS3)--(R3);
     \draw[dashed] (R3)--(Rn);
   \end{tikzpicture}
-  \caption{Congruence lattice of $\Prt_n$ (or $\PB_n$)}
+  \caption[Congruence lattice of $\Prt_n$ (or $\PB_n$)]{Congruence lattice of
+    $\Prt_n$ (or $\PB_n$) for $n \geq 3$} 
   \label{fig:pn-congs}
 \end{figure}
