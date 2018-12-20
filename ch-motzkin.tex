@@ -816,7 +816,7 @@ readability.
     of generality, let us assume $m$ lies in $A_1$.  We can now define the
     bipartition $\tau = \bipart{c|c|c|c|c}{3-5}
     {m & p & A_2 & \ldots & A_r}
-    {i & j & k_1 & \ldots & k_{n-2}}$, 
+    {i & j & k_1 & \ldots & k_{n-2}}$,
     where $A_1 = \{m, p\}$.
     We observe that $\tau \alpha \gamma = \gamma = \bipart{c|c|c|c|c}{1-5}
     {\mc2{c|}{m,p} & A_2 & \ldots & A_r}
@@ -824,8 +824,8 @@ readability.
     $\tau \beta \gamma = \bipart{c|c|c|c|c}{1-5}
     {m & p & A_2 & \ldots & A_r}
     {B_1 & B_2 & B_3 & \ldots & B_s}$.
-    Since $\sigma$ is left- and right-compatible, we have
-    $\gamma = \tau\alpha\gamma \mathrel\sigma \tau\beta\gamma$.  Hence $\gamma$
+    Since $\sigma$ is left- and right-compatible, we deduce that
+    $\gamma = \tau\alpha\gamma$ is $\sigma$-related to $\tau\beta\gamma$.  Hence $\gamma$
     is $\sigma$-related to $\tau\beta\gamma$, a bipartition with rank $0$, the
     same cokernel as $\gamma$, and $r+1$ kernel classes.  Applying the same
     process inductively, with $\tau\beta\gamma$ in place of $\gamma$, implies a
@@ -855,28 +855,33 @@ readability.
     $\alpha=\bipart{c|c|c|c}{2-4}
     {i & A_1 & \cdots & A_r}{j & B_1 & \cdots & B_s}$.
     Then $\beta$ has one of the following four forms, where without loss of
-    generality, additional labelled elements are assumed to be from $A_1$:
+    generality, additional labelled elements are assumed to be from $A_1$ or $B_1$:
     \begin{enumerate}[\rm(a)]
     \item $\beta = \bipart{c|c|c|c|c}{1-5}
       {i & A_1 & A_2 & \cdots & A_r}{j & B_1 & B_2 & \cdots & B_s}$,
       so that $\beta = \widehat\alpha$;
     \item $\beta = \bipart{c|c|c|c|c}{2-5}
       {k & i & A_2 & \cdots & A_r}{j & B_1 & B_2 & \cdots & B_s}$,
-      replacing $i$ with $k$, a different point from $\bn$;
+      so that $\beta$ is the same as $\alpha$ but with $k$ in the transversal
+      instead of $i$;
     \item $\beta = \bipart{c|c|c|c|c}{2-5}
       {i & A_1 & A_2 & \cdots & A_r}{l & j & B_2 & \cdots & B_s}$,
-      replacing $j'$ with $l'$, a different point from $\bn'$;
+      so that $\beta$ is the same as $\alpha$ but with $l'$ in the transversal
+      instead of $j'$;
     \item $\beta = \bipart{c|c|c|c|c}{2-5}
       {k & i & A_2 & \cdots & A_r}{l & j & B_2 & \cdots & B_s}$,
-      with a completely different transversal from $\alpha$.
+      so that $\beta$ is the same as $\alpha$ but with transversal $\{k, l'\}$
+      instead of $\{i, j'\}$.
     \end{enumerate}
-    Now, let us denote by $\tau_{ab}$ the bipartition
+    Now, for any $a,b \in \bn$, let us denote by $\tau_{ab}$ the bipartition
     $(a, b')^e \in \Mot_n$ -- this has just one non-trivial block, $\{a,b'\}$.
+    Let us use $\tau_\varnothing$ to denote the bipartition in $\Mot_n$
+    consisting entirely of singletons.
     We will use the bipartitions $\tau_{ii}$ and $\tau_{jj}$. In all four cases
     above, we have
     $\tau_{ii}\alpha\tau_{jj}= \tau_{ij}$ and
-    $\tau_{ii}\beta\tau_{jj}= \tau_\varnothing$, the bipartition consisting
-    entirely of singletons.  Since $\alpha \mathrel\sigma \beta$, we also have
+    $\tau_{ii}\beta\tau_{jj}= \tau_\varnothing$.
+    Since $\alpha \mathrel\sigma \beta$, we also have
     $\tau_{ii}\alpha\tau_{jj} \mathrel\sigma \tau_{ii}\beta\tau_{jj}$, so
     $\tau_{ij} \mathrel\sigma \tau_\varnothing$.
     Next, let $\gamma$ be an arbitrary bipartition in $\Mot_n$ with rank $1$.
