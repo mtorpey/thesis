@@ -625,9 +625,42 @@ congruences in terms of a bipartition's rank, kernel and cokernel.
              \rank\alpha,\rank\beta \leq 1\} \cup \Delta_{\Mot_n}.
   \end{align*}
   \begin{proof}
-    For % TODO: fill this in
+    Apart from reflexive pairs, the congruences $\delta_0, \lambda_0, \rho_0$
+    and $R_0$ contain only pairs from $I_0 \times I_0$.  In $\delta_0$ these
+    pairs are all from $\Delta_{I_0}$, and are therefore are in
+    $\Delta_{\Mot_n}$ anyway, so it is equal to $\Delta_{\Mot_n}$.  In
+    $\lambda_0$, the non-reflexive pairs are precisely those in $\lL^{I_0}$: we
+    know that the elements in $I_0$ are those which have rank $0$, and we know
+    from Proposition \ref{prop:mn-greens}(ii) that elements are $\lL$-related if
+    and only if they share a cokernel, so we have the statement for $\lambda_0$.
+    Similarly using Proposition \ref{prop:mn-greens}(i) we have the statement
+    for $\rho_0$.  In $R_0$ the non-reflexive pairs are those from
+    $\nabla_{I_0}$: this relation simply relates all elements of rank $0$ to
+    each other, so we have the statement.
+
+    Moving onto $\delta_1$, $\lambda_1$, $\rho_1$ and $R_1$, we can see that all
+    the non-reflexive pairs are from $I_1 \times I_1$, and so they all consist
+    of elements of rank less than or equal to $1$.  For $\delta_1$, consider a
+    pair $(\alpha,\beta) \in I_1 \times I_1$ such that
+    $(\widehat\alpha, \widehat\beta) \in \Delta_{I_1}$,
+    i.e.~$\widehat\alpha = \widehat\beta$: by Definition \ref{def:mn-hat} these
+    are precisely the pairs with the same kernel and cokernel, so we have the
+    statement for $\delta_1$.  For $\lambda_1$ we require
+    $(\alpha,\beta) \in I_1 \times I_1$ such that
+    $(\widehat\alpha, \widehat\beta) \in \lL^{I_0}$.  A pair satisfies this if
+    and only if $\widehat\alpha$ and $\widehat\beta$ have the same codomain.
+    Since $\alpha$ and $\widehat\alpha$ share a codomain and $\beta$ and
+    $\widehat\beta$ share a codomain, this is therefore satisfied if and only if
+    $\alpha$ and $\beta$ share a codomain, and so we have the statement for
+    $\lambda_1$.  The statement for $\rho_1$ follows by a similar argument.
+    Finally, observe that $R_1$ contains all pairs
+    $(\alpha,\beta) \in I_1 \times I_1$ such that
+    $(\widehat\alpha,\widehat\beta) \in \nabla_{I_0}$ -- this applies to all
+    pairs in $I_1 \times I_1$, so we have that $R_1$ unites all elements of rank
+    less than or equal to $1$, giving the statement as shown.
   \end{proof}
 \end{proposition}
+
 These characterisations will help us later when we consider generating pairs for
 the congruences.
 We will discover later that these are the only lifted congruences on $\Mot_n$,
