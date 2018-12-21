@@ -243,17 +243,18 @@ trivial, since each $\HH$-class contains just one element.
 Taking all this information together, we can classify all the triples $(N,
 \mathcal{S}, \mathcal{T})$ which satisfy conditions (i) and (ii) as follows:
 \begin{itemize}
-\item $N$ must be a normal subgroup of the trivial group -- hence $N = 1$;
+\item $N$ must be a normal subgroup of the trivial group -- hence $N$ is
+  $\{\id\}$, the trivial group itself.
 \item $\mathcal{S}$ must be a subset of the trivial relation $\Delta_I$ -- hence
   $\mathcal{S} = \Delta_I$;
 \item $\mathcal{T}$ may be any equivalence on $\Lambda$.
 \end{itemize}
-This gives us all triples of the form $(1,\Delta_I,\mathcal{T})$, where
+This gives us all triples of the form $(\{\id\},\Delta_I,\mathcal{T})$, where
 $\mathcal{T}$ can be any partition of the $n$ rows in $\Lambda$.  The number of
 these triples is the Bell number $B_n$.  Now consider condition (iii): since the
 underlying group of $\pf{D_1^n}$ is trivial, and our chosen normal subgroup $N$ is
 also trivial, we have that any four nonzero elements from the matrix $P$ must
-multiply together to give the identity $1$, which will always be in $N$.  Hence all the
+multiply together to give the identity $\id$, which will always be in $N$.  Hence all the
 triples described are \textit{linked}, and there are $B_n$ of them.
 
 \subsubsection{Linked triples for rank 2 and higher}
@@ -270,7 +271,7 @@ $\Sym_k$, so $N$ can be chosen to be any normal subgroup of $\Sym_k$.
 
 The only normal subgroups of $\Sym_k$ for $k=3$ and $k \geq 5$ are the trivial group, the
 alternating group $\Alt_k$, and the symmetric group $\Sym_k$ itself.  For $k=2$ we
-have $1 = \Alt_2 < \Sym_2$, and for $k=4$ alone we must add a fourth normal subgroup,
+have $\{\id\} = \Alt_2 < \Sym_2$, and for $k=4$ alone we must add a fourth normal subgroup,
 $K_4 = \langle (1~2)(3~4), (1~3)(2~4) \rangle$.
 
 To see that all these triples also fulfil condition (iii) we use the triviality of
@@ -278,10 +279,10 @@ the relations $\mathcal{S} = \Delta_I$ and $\mathcal{T} = \Delta_\Lambda$.
 Observe that $(i,j) \in \mathcal{S}$ only if $i = j$, and $(\lambda,\mu) \in
 \mathcal{T}$ only if $\lambda = \mu$.  In the former case, we have
 $$q_{\lambda \mu i j} = p_{\lambda i} (p_{\mu i}^{-1} p_{\mu i}) p_{\lambda
-  i}^{-1} = p_{\lambda i} p_{\lambda i}^{-1} = 1 \in N,$$
+  i}^{-1} = p_{\lambda i} p_{\lambda i}^{-1} = \id \in N,$$
 and in the latter case,
 $$q_{\lambda \mu i j} = (p_{\lambda i} p_{\lambda i}^{-1}) (p_{\lambda j}
-p_{\lambda j}^{-1}) = 1 \cdot 1 = 1 \in N.$$ Hence condition (iii) is fulfilled
+p_{\lambda j}^{-1}) = \id \cdot \id = \id \in N.$$ Hence condition (iii) is fulfilled
 and all of the triples described are \textit{linked}.
 
 \subsubsection{Numbers of Congruence Classes}
@@ -319,12 +320,12 @@ $h_k^n = S(n,k) \cdot \binom{n}{k}$, the number of $\HH$-classes in $D_k^n$.
       \hline
       \multicolumn{1}{|c|}{$k$} & \multicolumn{1}{c|}{\textbf{Congruences of $\pf{D_k^n}$}} & \textbf{Number} & \multicolumn{1}{c|}{\textbf{Number of classes}} \\
       \hline
-      $1$ & $[1, \Delta_I, \mathcal{T}] (\forall \mathcal{T})$ & $B_n$
+      $1$ & $[\{\id\}, \Delta_I, \mathcal{T}] (\forall \mathcal{T})$ & $B_n$
           & from $1$ to $n$ \\
-      $2$ & $[1], [\Sym_2], \nabla$ & $3$ & $2h_2^n+1, h_2^n+1, 1$ \\
-      $3$ & $[1], [\Alt_3], [\Sym_3], \nabla$ & $4$ & $6h_3^n+1, 2h_3^n+1, h_3^n+1, 1$ \\
-      $4$ & $[1], [K_4], [\Alt_4], [\Sym_4], \nabla$ & $5$ & $24h_4^n+1, 6h_4^n+1, 2h_4^n+1, h_4^n+1, 1$ \\
-      $\geq 5$ & $[1], [\Alt_k], [\Sym_k], \nabla$ & $4$ & $k!h_k^n+1, 2h_k^n+1, h_k^n+1, 1$ \\
+      $2$ & $[\{\id\}], [\Sym_2], \nabla$ & $3$ & $2h_2^n+1, h_2^n+1, 1$ \\
+      $3$ & $[\{\id\}], [\Alt_3], [\Sym_3], \nabla$ & $4$ & $6h_3^n+1, 2h_3^n+1, h_3^n+1, 1$ \\
+      $4$ & $[\{\id\}], [K_4], [\Alt_4], [\Sym_4], \nabla$ & $5$ & $24h_4^n+1, 6h_4^n+1, 2h_4^n+1, h_4^n+1, 1$ \\
+      $\geq 5$ & $[\{\id\}], [\Alt_k], [\Sym_k], \nabla$ & $4$ & $k!h_k^n+1, 2h_k^n+1, h_k^n+1, 1$ \\
       \hline
     \end{tabular}
     \caption{Congruences of the principal factors of $\T_n$}
@@ -436,12 +437,12 @@ $D_k^n$.
     \hline
     \multicolumn{1}{|c|}{$k$} & \multicolumn{1}{c|}{\textbf{Congruences of $\pf{D_k^n}$}} & \textbf{Number} & \multicolumn{1}{c|}{\textbf{Number of classes}} \\
     \hline
-    $0$ & $[1]$ & $1$ & $1$ \\
-    $1$ & $[1], \nabla$ & $2$ & $h_1^n+1, 1$ \\
-    $2$ & $[1], [\Sym_2], \nabla$ & $3$ & $2h_2^n+1, h_2^n+1, 1$ \\
-    $3$ & $[1], [\Alt_3], [\Sym_3], \nabla$ & $4$ & $6h_3^n+1, 2h_3^n+1, h_3^n+1, 1$ \\
-    $4$ & $[1], [K_4], [\Alt_4], [\Sym_4], \nabla$ & $5$ & $24h_4^n+1, 6h_4^n+1, 2h_4^n+1, h_4^n+1, 1$ \\
-    $\geq 5$ & $[1], [\Alt_k], [\Sym_k], \nabla$ & $4$ & $k!h_k^n+1, 2h_k^n+1, h_k^n+1, 1$ \\
+    $0$ & $[\{\id\}]$ & $1$ & $1$ \\
+    $1$ & $[\{\id\}], \nabla$ & $2$ & $h_1^n+1, 1$ \\
+    $2$ & $[\{\id\}], [\Sym_2], \nabla$ & $3$ & $2h_2^n+1, h_2^n+1, 1$ \\
+    $3$ & $[\{\id\}], [\Alt_3], [\Sym_3], \nabla$ & $4$ & $6h_3^n+1, 2h_3^n+1, h_3^n+1, 1$ \\
+    $4$ & $[\{\id\}], [K_4], [\Alt_4], [\Sym_4], \nabla$ & $5$ & $24h_4^n+1, 6h_4^n+1, 2h_4^n+1, h_4^n+1, 1$ \\
+    $\geq 5$ & $[\{\id\}], [\Alt_k], [\Sym_k], \nabla$ & $4$ & $k!h_k^n+1, 2h_k^n+1, h_k^n+1, 1$ \\
     \hline
   \end{tabular}
   \caption{Congruences of the principal factors of $\PT_n$ or
@@ -523,11 +524,11 @@ $\RR$-class corresponding to that kernel satisfies the requirement.
 Perhaps the most important difference between $\PO_n$ and $\PT_n$ is that in
 $\PO_n$ a given kernel and image determines a single element, not $k!$ elements,
 since order must be preserved.  This means that the underlying group of $D_k^n$
-is not $\Sym_k$, but simply the trivial group $1$.  This result puts the
+is not $\Sym_k$, but simply the trivial group $\{\id\}$.  This result puts the
 principal factors $\pf{D_k^n}$ into the category of \textit{congruence-free}
 semigroups by Proposition \ref{prop:congruence-free}, meaning that the only
 congruences on $\pf{D_k^n}$ are $\Delta$ and $\nabla$.  Indeed, the only linked
-triple of $\pf{D_k^n}$ is $(1, \Delta, \Delta)$, corresponding to the trivial
+triple of $\pf{D_k^n}$ is $(\{\id\}, \Delta, \Delta)$, corresponding to the trivial
 congruence.  This result is summarised in Table \ref{tab:dkstar-congs-pon},
 where $h_k^n$ is the number of $\HH$-classes in $D_k^n$, given by
 $$\binom{n}{k} \sum_{i=k}^n \binom{n}{i} \binom{i-1}{k-1}.$$
@@ -542,9 +543,9 @@ $$\binom{n}{k} \sum_{i=k}^n \binom{n}{i} \binom{i-1}{k-1}.$$
     & \textbf{Number}
     & \multicolumn{1}{c|}{\textbf{Number of classes}} \\
     \hline
-    $0$ & $[1]$ & $1$ & $1$ \\
+    $0$ & $[\{\id\}]$ & $1$ & $1$ \\
     $\geq 1$
-    & $[1], \nabla$
+    & $[\{\id\}], \nabla$
     & $2$
     & $h_k^n + 1, 1$ \\
     \hline
@@ -566,7 +567,7 @@ $\POI_n$ is isomorphic to that of $\I_n$.  In particular, there are
 $\binom{n}{k}^2$ $\HH$-classes in $D_k^n$.  The main difference between $\POI_n$
 and $\I_n$ is that each $\HH$-class contains just one element, since each
 domain--image pair defines only one order-preserving element.  Hence the
-underlying group of $\pf{D_k^n}$ is the trivial group $1$, and so $\POI_n$ is
+underlying group of $\pf{D_k^n}$ is the trivial group $\{\id\}$, and so $\POI_n$ is
 congruence-free like $\PO_n$.  This information is summarised in Table
 \ref{tab:dkstar-congs-pon}, where in this case the number of $\HH$-classes
 $h_k^n$ is equal to $\binom{n}{k}^2$.
@@ -592,10 +593,10 @@ $(N, \Delta, \tT)$ for other possible values of $\tT$.
 Two elements are $\HH$-related if and only if they share the same image and
 kernel.  Since all elements are order-preserving, there is only one choice of
 element for a given image and kernel; hence $\OO_n$ is $\HH$-trivial.  So the
-only choice of $N$ for linked triples is the trivial group $1$.  Hence, when
-$k \geq 2$ the only linked triple on $\pf{D_k^n}$ is $(1, \Delta, \Delta)$,
+only choice of $N$ for linked triples is the trivial group $\{\id\}$.  Hence, when
+$k \geq 2$ the only linked triple on $\pf{D_k^n}$ is $(\{\id\}, \Delta, \Delta)$,
 corresponding to the trivial congruence; if $k = 1$, as for $\T_n$, we have a
-linked triple $(1, \Delta, \tT)$ for any relation $\tT$ on the $n$ $\LL$-classes
+linked triple $(\{\id\}, \Delta, \tT)$ for any relation $\tT$ on the $n$ $\LL$-classes
 of $D_1^n$.  The congruences are summarised in Table \ref{tab:dkstar-congs-on},
 where the number of $\HH$-classes $h_k^n$ is given by
 $\binom{n}{k} \binom{n-1}{k-1}$.
@@ -607,9 +608,9 @@ $\binom{n}{k} \binom{n-1}{k-1}$.
     \hline
     \multicolumn{1}{|c|}{$k$} & \multicolumn{1}{c|}{\textbf{Congruences of $\pf{D_k^n}$}} & \textbf{Number} & \multicolumn{1}{c|}{\textbf{Number of classes}} \\
     \hline
-    $1$ & $[1, \Delta_I, \mathcal{T}] (\forall \mathcal{T})$ & $B_n$ & from $1$ to $n$ \\
+    $1$ & $[\{\id\}, \Delta_I, \mathcal{T}] (\forall \mathcal{T})$ & $B_n$ & from $1$ to $n$ \\
     $\geq 2$
-    & $[1], \nabla$
+    & $[\{\id\}], \nabla$
     & $2$
     & $h_k^n + 1, 1$ \\
     \hline
