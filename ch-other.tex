@@ -208,9 +208,16 @@ $\mathcal{T}$ on $\Lambda$, such that the following are satisfied:
 We shall first find all the triples which satisfy conditions (i) and (ii), and
 then we shall show that in this case all of them satisfy condition (iii).
 
-% TODO: explain why this is (maybe citation or intro?)
-First, recall that an element $p_{\lambda i}$ is non-zero if and only if the
-corresponding $\HH$-class is a group.  By Lemma \ref{lem:dk-hclasses} we can see
+First, we should observe that an element $p_{\lambda i}$ is non-zero if and only
+if the corresponding $\hH$-class is a group.  To see this, let us denote the
+$\hH$-class as $H_{\lambda i}$ and first assume that $p_{\lambda i} \neq 0$:
+this gives us an idempotent
+$(i, p_{\lambda i}^{-1}, \lambda) \in H_{\lambda i}$, which shows that
+$H_{\lambda i}$ is a group.  Conversely, assume that $p_{\lambda i} = 0$: any
+two elements $(i, x, \lambda)$ and $(i, y, \lambda)$ from $H_{\lambda i}$
+multiply to give $0$, violating closure, so $H_{\lambda i}$ is not a group.
+
+By Lemma \ref{lem:dk-hclasses} we can see
 that for any pair of columns $i,j \in I$ there exists a row
 $\lambda \in \Lambda$ such that $p_{\lambda i} \neq 0 = p_{\lambda j}$.  Hence
 $\varepsilon_I = \Delta_I$.  Similarly, in the limited case that $k>1$, Lemma
@@ -1023,7 +1030,6 @@ experiments for higher values of $n$ is discussed at the end of Section
 
 \section{Small semigroups}
 \label{sec:smallsemi}
-% TODO: replace with isomorphism-based numbers
 The \smallsemi{} package \cite{smallsemi} provides a library of all the
 semigroups of size no more than $8$, up to isomorphism.
 Using this library, it was possible to calculate the congruences of all
