@@ -1304,10 +1304,9 @@ explained more explicitly below.
       \State $\mathbf{T} \gets \mathbf{T} \cup \{(xe, ye)\}$
       \State $\tau \gets (\tau \cup \{(xe, ye)\})^e$
       \For{$a \in S'$}
-        % TODO? check code: should this definitely be a^-1 xe a, with the e?
         \If{$(a^{-1}xea, a^{-1}yea) \notin \tau$}
-          \State $\mathbf{T} \gets \mathbf{T} \cup \{(a^{-1}xa, a^{-1}ya)\}$
-          \State $\tau \gets (\tau \cup \{(a^{-1}xa, a^{-1}ya)\})^e$
+          \State $\mathbf{T} \gets \mathbf{T} \cup \{(a^{-1}xea, a^{-1}yea)\}$
+          \State $\tau \gets (\tau \cup \{(a^{-1}xea, a^{-1}yea)\})^e$
         \EndIf
       \EndFor
     \EndIf
@@ -1432,7 +1431,6 @@ and $\mathbf{T}$ if they are not already present (lines 41--44).  At the end of
 a call to \textsc{EnumerateTrace}, we can thus be sure that $\tau$ is a normal
 congruence.  If any changes are made in this call to \textsc{EnumerateTrace},
 then we must of course set $\delta$ to true (line 38).
-% TODO: a-1xa, a-1ya should be a-1xea, a-1yea ?
 
 Finally, \textsc{EnforceConditions} deals with conditions (i) and (ii) from
 Definition \ref{def:kernel-trace-pair}.  It adds any necessary elements to $X$
