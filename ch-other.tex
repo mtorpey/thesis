@@ -1025,9 +1025,9 @@ experiments for higher values of $n$ is discussed at the end of Section
 \label{sec:smallsemi}
 % TODO: replace with isomorphism-based numbers
 The \smallsemi{} package \cite{smallsemi} provides a library of all the
-semigroups of size no more than $8$, up to isomorphism and anti-isomorphism.
+semigroups of size no more than $8$, up to isomorphism.
 Using this library, it was possible to calculate the congruences of all
-$853303$ semigroups of size no more than $7$, revealing some interesting
+$1658439$ semigroups of size no more than $7$, revealing some interesting
 information about the numbers of congruences of the semigroups, as well as about
 the properties of those semigroups.  Some of these findings are presented here.
 
@@ -1100,7 +1100,7 @@ congruences are all principal, a number which also decreases rapidly.
   \caption[Number of principal congruences on semigroups of size $n$]
   {Number of principal congruences on semigroups of size $n$.  The first column
     is a size $n$; the second column is the number of semigroups of this size up
-    to isomorphism and anti-isomorphism; the third column is the number of these
+    to isomorphism; the third column is the number of these
     semigroups that have only principal congruences; and the final column is the
     percentage of a semigroup's congruences that are principal, on average}
   \label{tab:nr-principal-congs}
@@ -1111,8 +1111,8 @@ congruences (see Section \ref{sec:converting-rees}): Table
 \ref{tab:nr-rees-congs} shows the proportion of congruences that are Rees on an
 average semigroup of size $n$, as well as the number of semigroups whose
 congruences are all Rees.  For $n$ from $2$ to $6$, there are fewer Rees
-congruences than principal congruences, but when $n=7$ there are slightly more
-Rees than principal; indeed, when $n=7$ there are nearly twice as many
+congruences than principal congruences, but when $n=7$ there are more
+Rees than principal; indeed, when $n=7$ there are more than twice as many
 semigroups with all Rees congruences as all principal congruences.  This may
 indicate that the proportion of principal congruences decreases faster than the rate
 of Rees congruences, as $n$ grows; however, with only the first $7$ values, it
@@ -1146,13 +1146,13 @@ is difficult to reach any reliable conclusions.
   \caption[Number of Rees congruences on semigroups of size $n$]
   {Number of Rees congruences on semigroups of size $n$.  The first column is a
     size $n$; the second column is the number of semigroups of this size up to
-    isomorphism and anti-isomorphism; the third column is the number of these
+    isomorphism; the third column is the number of these
     semigroups that have only Rees congruences; and the final column is the
     percentage of a semigroup's congruences that are Rees, on average}
   \label{tab:nr-rees-congs}
 \end{table}
 
-There are 1,843,120,128 semigroups of size 8, more than 2000 times as many as
+There are 3,684,030,417 semigroups of size 8, more than 2000 times as many as
 there are semigroups of size 1 to 7.  It would require a very long time to
 compute all the congruences of all these semigroups on current hardware, with
 the algorithms and implementations that have been described.  However, it would
@@ -1165,7 +1165,7 @@ semigroups of size 8, firstly to see how the trends in Tables
 \ref{tab:nr-rees-congs} continue, but also to test Conjectures
 \ref{conj:not-cong-full} and \ref{conj:cong-nearfull-7}.
 
-There are 52,989,400,714,478 semigroups of size 9 \cite{order_nine}, a huge
+There are 105,978,177,936,292 semigroups of size 9 \citeoeis{A027851}, a huge
 number.  No computational library of all these semigroups currently exists, and
 if one did, it is likely that it would take an unreasonably long time to compute
 all their congruences with anything like the algorithms described in this
@@ -1179,10 +1179,11 @@ It is worth mentioning that, up to isomorphism and anti-isomorphism, almost all
 semigroups are \textit{$3$-nilpotent} -- that is, they contain a zero, and any
 product of three elements is equal to zero.  In \cite{kleitman_1976} a
 construction is given which allows us to enumerate all $3$-nilpotent semigroups,
-and in \cite[\S2.3]{distler_thesis} this is used to produce a formula for the
-number of $3$-nilpotent semigroups up to isomorphism and anti-isomorphism.  As
+and in \cite[Theorem 2.3.5]{distler_thesis} this is used to produce a formula for the
+number of $3$-nilpotent semigroups up to isomorphism.  As
 $n$ increases, the proportion of semigroups that are $3$-nilpotent increases,
-until at $n=9$ they account for over $99.9\%$ of all the semigroups of size $n$. % TODO: cite this
+until at $n=9$ they account for over $99.9\%$ of all the semigroups of size $n$
+\cite[Table 2.1]{distler_thesis}.
 Hence, the trends shown in Tables \ref{tab:nr-congs-smallsemi},
 \ref{tab:nr-principal-congs} and \ref{tab:nr-rees-congs} become increasingly
 dominated by $3$-nilpotent semigroups, and so anything we can say about a
