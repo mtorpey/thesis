@@ -58,11 +58,11 @@ If $J$ is not the minimal ideal, then the principal factor $\pf{J}$ is
 isomorphic to the set $J \cup \{0\}$, with multiplication $\circ$ defined by
 $$a \circ b = \left\{
   \begin{array}{l l}
-    ab & \text{if~} a,b \in J; \\
+    ab & \text{if~} a,b,ab \in J; \\
     0 & \text{otherwise}.
   \end{array}\right.$$
-In the case that $J$ is the minimal ideal of $S$, we do not need to append a
-zero.
+In the case that $J$ is the minimal ideal of $S$, we will always have
+$ab \in J$, and so we do not have the element $0$.
 
 Since $\pf{J}$ is composed of a single $\JJ$-class, possibly with a zero
 appended, it is a simple or 0-simple semigroup.  Hence, if $S$ is finite, we may
@@ -111,8 +111,7 @@ Each $\HH$-class in $D_k^n$ is the intersection of an $\LL$-class and an
 $\RR$-class, so each one corresponds to an image--kernel pair (hence we will talk
 about the \textit{image and kernel of an $\HH$-class}).  For a given kernel with
 $k$ classes and a given image with $k$ elements, there are $k!$ different ways
-to assign image elements to kernel classes, simply the permutations of the set
-$\{1, \dots, k\}$.  Hence there are $k!$ elements in each $\HH$-class.
+to assign image elements to kernel classes -- hence there are $k!$ elements in each $\HH$-class.
 
 \subsubsection{Group $\HH$-classes of $\T_n$}
 To understand the principal factor corresponding to a $\DD$-class $D_k^n$, we need
