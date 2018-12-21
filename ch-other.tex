@@ -338,7 +338,7 @@ We can now summarise the numbers of congruence classes for some small values of
 $n$.  Table \ref{tab:dkstar-nrclasses} gives the number of classes of each
 congruence on each principal factor $\pf{D_k^n}$ of $\T_n$, for $n$ up to $7$.
 Note that for $k=1$ only the set of distinct values has been given, since there
-are $B_n+1$ different congruences which must be considered.
+are $B_n$ different congruences which must be considered.
 
 \begin{table}[ht]
   \centering
@@ -404,7 +404,7 @@ exists an element $0 = \transN---$ with rank $0$, so we have an additional
 $\DD$-class $D_0^n$.  For a given rank $k$, there are still $\binom{n}{k}$
 possible images with size $k$, so the $\DD$-class $D_k^n$ has $\binom{n}{k}$
 $\LL$-classes, like $\T_n$.  However, the possibility of points not being in the
-domain mean that there are not just $S(n,k)$ possible kernels, but
+domain means that there are not just $S(n,k)$ possible kernels, but
 $S(n+1, k+1)$; the intuition behind this is that, instead of considering all
 $k$-partitions of $\{1, \ldots, n\}$, we are considering all $k+1$-partitions of
 $\{1, \ldots, n+1\}$, where the class containing $n+1$ represents those points
@@ -563,7 +563,7 @@ $\POI_n = \PO_n \cap \I_n$.  Like $\I_n$, the $\LL$ and $\RR$ relations are
 determined by image and domain, and so Lemma \ref{lem:dk-hclasses} is proven in
 the same way as for $\I_n$, and applies to all $k$ from $0$ to $n$.  Since the
 kernel of a partial permutation is always a diagonal relation, we do not
-encounter and kernels which cannot preserve order; hence the Green's classes of
+encounter any kernels which cannot preserve order; hence the Green's class structure of
 $\POI_n$ is isomorphic to that of $\I_n$.  In particular, there are
 $\binom{n}{k}^2$ $\HH$-classes in $D_k^n$.  The main difference between $\POI_n$
 and $\I_n$ is that each $\HH$-class contains just one element, since each
@@ -909,7 +909,7 @@ highest number of congruences on a semigroup that is not congruence-full.
 
 \begin{conjecture}
   \label{conj:not-cong-full}
-  A finite semigroup which is not congruence-full has at most
+  A finite semigroup that is not congruence-full has at most
   $2B_{n-1}$ congruences.
 \end{conjecture}
 
@@ -1179,7 +1179,7 @@ construction is given which allows us to enumerate all $3$-nilpotent semigroups,
 and in \cite[\S2.3]{distler_thesis} this is used to produce a formula for the
 number of $3$-nilpotent semigroups up to isomorphism and anti-isomorphism.  As
 $n$ increases, the proportion of semigroups that are $3$-nilpotent increases,
-until at $n=9$ they account for over $99.9\%$ of all the semigroups of size $n$.
+until at $n=9$ they account for over $99.9\%$ of all the semigroups of size $n$. % TODO: cite this
 Hence, the trends shown in Tables \ref{tab:nr-congs-smallsemi},
 \ref{tab:nr-principal-congs} and \ref{tab:nr-rees-congs} become increasingly
 dominated by $3$-nilpotent semigroups, and so anything we can say about a
