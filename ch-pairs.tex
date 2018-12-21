@@ -82,7 +82,7 @@ use shared resources, causing significant slowdown and severely limiting the
 improvements that can be made by parallelising.
 
 When it comes to computing information about a congruence from generating pairs,
-there are various different approaches which can be taken: in Sections
+there are various different approaches that can be taken: in Sections
 \ref{sec:p}, \ref{sec:tc} and \ref{sec:kb}, we describe three possible
 algorithms: pair orbit enumeration, the Todd--Coxeter algorithm, and the Knuth--Bendix algorithm.
 Depending on what sort of semigroup is given as an input (see Section
@@ -406,7 +406,7 @@ therefore might consider an alternative.
 % $\T_5 = \langle \transV23451, \transV21345, \transV12341 \rangle$
 
 If $S$ has a known generating set $X$, we can use it to produce a presentation
-which is likely to much smaller.  Consider the following approach, which is
+which is likely to be much smaller.  Consider the following approach, which is
 adapted from the simplified version of the algorithm shown in
 \cite[\S 3.1]{froidure_pin}, where its correctness is proven in more detail.
 
@@ -748,7 +748,7 @@ efficient, optimised versions have been implemented, one notable example being
 A variation of the Todd--Coxeter algorithm for semigroups was described in 1967
 \cite{neumann_1967}.  The algorithm takes a presentation $\pres X R$
 for a semigroup $S$ and computes the right regular representation of $\Sone{}$ with
-respect to the generators $X$ -- that is, it computes all the elements of $S$ and
+respect to the generators $X$ -- that is, it computes all the elements of $\Sone{}$ and
 the result of right-multiplying each element by each generator (see Section
 \ref{sec:transformations}).  Since the
 original algorithm makes very little use of those properties unique to groups,
@@ -1617,11 +1617,11 @@ non-prefilled version (see Figures
 \Require{$S = \{s_1, s_2, \ldots, s_k\}$ is a semigroup with its elements known in a defined order}
 \Procedure{ToddCoxeterPrefill}{$\pres X R, W, S$}
 \State $n := |S| + 1$
-\State $\mathbf{N} := \{1 \ldots n\}$
+\State $\mathbf{N} := \{1, \ldots, n\}$
 \State $\tau : \mathbf{N} \times X \to \mathbf{N} \cup \{0\}$
 \For{$x \in X$}
   \State $(1, x)\tau :=$ (position of $x$ in $S$) $+~1$
-  \For{$i \in \{2 \ldots n\}$}
+  \For{$i \in \{2, \ldots, n\}$}
     \State $(i, x)\tau :=$ (position of $s_{i-1} \cdot x$ in $S$) $+~1$
   \EndFor
 \EndFor
@@ -1732,7 +1732,7 @@ since it is easy to change between the two by appending or removing an identity
   of ordered pairs $(u,v)$ where $u, v \in X^*$.
 \end{definition}
 
-A pair $(u,v) \in \rws$ is called a \textit{rule}, and can be viewed as
+A pair $(u,v) \in \rws$ is called a \textit{rule}, \index{rule} and can be viewed as
 an operation which transforms an occurrence of $u$ in a word into an occurrence
 of $v$.
 For this section, we will assume that $\rws$ is finite.
