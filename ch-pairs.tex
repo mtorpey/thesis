@@ -301,12 +301,18 @@ congruence when requested:
 \end{enumerate}
 
 Each of our algorithms will produce a data structure that can be used to compute
-these four pieces of information.  After each algorithm is described in Section
-\ref{sec:methods}, we will explain how that algorithm can be used to produce
-each one, as well as pointing out any limits they may have.  Note that item (iv) can only
-be produced by an algorithm if the list happens to be finite -- that is, only if
-all but finitely many elements of the semigroup lie in singletons.
-% TODO: adjust?
+these four pieces of information.  However, note that not every algorithm can
+produce all four pieces of information in all cases.  For example, if $S$ is
+infinite, the Knuth--Bendix algorithm cannot be used to compute (ii), and the
+Todd--Coxeter algorithm cannot be used to produce (iv).  After each algorithm is
+described in Section \ref{sec:methods}, we will explain how that algorithm can
+be used to produce each one of these four outputs, and we will also explain the
+situations in which a given algorithm cannot produce a certain output, while
+pointing out which alternative algorithm will be successful instead.
+
+Note that item (iv) can only be produced by any algorithm if the list happens to
+be finite -- that is, only if all but finitely many elements of the semigroup
+lie in singletons.
 
 \section{Finding a presentation}
 \label{sec:find-pres}
@@ -709,7 +715,9 @@ $$|\{\textsc{Find}(x): x \in \Lambda\}| + |S \setminus \Lambda|.$$
 For (iii), we require an algorithm that takes an element and returns a unique
 integer corresponding to the congruence class in which it lies; we can simply
 use the function $\textsc{Find}$ and create a map of outputs to integers over
-successive calls.  Finally for (iv) we require a list of the % TODO: reference below
+successive calls; for a fuller description, see the \textsc{ClassNo} function
+described in Section \ref{sec:kb-output} under ``Computing program outputs''
+(here we use \textsc{Find} instead of a rewriting system).  Finally for (iv) we require a list of the
 elements in each non-trivial congruence class; this can be produced by calling
 \textsc{Find} on each element $x$ in $\Lambda$, and putting $x$ into a list
 labelled $L_i$ where $i = \textsc{Find}(i)$, creating new lists as necessary --
@@ -1707,7 +1715,7 @@ work as possible.
 \subsection{Rewriting systems}
 \label{sec:kb}
 
-Another approach for solving the word problem in a finitely presented semigroup
+Another approach for solving the word problem in a finite presentation
 is using rewriting systems.  Hence, given a semigroup $S$ with presentation
 $\pres X R$ and a congruence $\rho$ over $S$ with generating pairs given by $W$
 (see Section \ref{sec:program-inputs})
@@ -2037,7 +2045,7 @@ algorithm.  In Algorithm \ref{alg:rewrite} we present one possible strategy,
 known as \textit{rewriting from the left}, which is based on the
 REWRITE\texttt{\char`_}FROM\texttt{\char`_}LEFT procedure described in
 \cite[\S2.4]{sims}, where the issues of termination and correctness are
-addressed formally.  The algorithm takes two arguments -- a word $u$ and a terminating
+addressed formally.  The algorithm takes two arguments -- a word $u$ and a confluent terminating
 rewriting system $\rws$ -- and returns the irreducible word produced from $u$ by
 applying rules in $\rws$.
 
@@ -2051,7 +2059,7 @@ $p$, then we remove the occurrence of $p$ from the end of $v$ (line 9) and we
 add the rewritten version $q$ to the beginning of $u$ (line 10) for further
 processing in a later iteration of the repeat-loop.  After finding just one of
 these rules to apply, we stop going through rules (line 11) and if appropriate,
-go back to the beginning of the repeat-loop (line 11).  When the whole word has
+go back to the beginning of the while-loop (line 4).  When the whole word has
 been processed and $u$ is therefore empty (which will happen in finite time so
 long as $\rws$ is terminating and confluent) we return $v$, which is the
 irreducible result of $u$ after a series of rules from $\rws$ have been applied.
@@ -2136,6 +2144,7 @@ number in this case.  Note that there could still be a finite number of classes,
 in which case the Todd--Coxeter algorithm could return an answer (see
 ``Computing program outputs'' in Section \ref{sec:tc-output}).
 
+\index{ClassNo@\textsc{ClassNo}}
 For (iii) we require an algorithm \textsc{ClassNo} that takes an element $x$ and
 returns the index of the congruence class to which it belongs.  That is, it
 should return a positive integer for any element, and it should have the same
