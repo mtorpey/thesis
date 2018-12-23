@@ -2211,7 +2211,7 @@ singleton.  The set $\Lambda$ only needs to contain the elements that are in non
 starts empty; the function $\tau$ is defined over $\Lambda$, so it is also empty.
 As the algorithm progresses,
 at various times we will find that two distinct elements (say $x$ and $y$) are
-$\mathbf{R}^e$-related, and we will wish to record this.  If either of $x$ or
+$\mathbf{R}^e$-related, and we will wish to record this.  If either $x$ or
 $y$ is not already in $\Lambda$, we call \textsc{AddElement} on it to start tracking
 it in the union--find table; \textsc{AddElement} simply adds an element -- for
 example, $x$ -- to the set $\Lambda$, and redefines $\tau$ such that $(x)\tau = x$.  See Algorithm
@@ -2250,7 +2250,7 @@ same class.  If $x$ is an element in $\Lambda$, then $(x)\tau$ is the parent of
 $x$ in a tree that contains all the elements in the class.  Each class contains a
 single element $r$ such that $(r)\tau = r$, which we can think of as the root of
 the tree.  Hence the \textsc{Find} function takes an element $x$, and traverses
-the tree all the way back to the root by starting with $x$, and calling $\tau$
+the tree all the way back to the root by calling $\tau$
 on it again and again until we reach the root.
 Pseudo-code is given in Algorithm \ref{alg:uf-find}.
 
