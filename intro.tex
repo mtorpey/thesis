@@ -479,7 +479,7 @@ definition of two-sided congruences is embodied in the following proposition.
     We prove the ``only if'' direction first, and then consider the ``if''
     direction.
 
-    First, assume $\mathbf{E}$ is a congruence.  Since $\mathbf{E}$ is a left
+    First, assume $\mathbf{E}$ is a congruence, containing pairs $(x,y)$ and $(s,t)$.  Since $\mathbf{E}$ is a left
     congruence, we have $(xs, xt) \in \mathbf{E}$, and since it is a right
     congruence, we have $(xt, yt) \in \mathbf{E}$.  Hence, by transitivity,
     $(xs, yt) \in \mathbf{E}$, as required.
@@ -1758,7 +1758,7 @@ be represented by several different diagrams; for example, note the two
 different representations of $\alpha \beta$ in Figure
 \ref{fig:bipartition-example}.  In general, it does not matter which diagram is
 used, only that it represents the appropriate bipartition -- we will usually
-choose the diagram which illustrates the bipartition most clearly.  In
+choose the diagram that illustrates the bipartition most clearly.  In
 particular, for each block that contains points from both $\mathbf{n}$ and
 $\mathbf{n}'$, we will usually draw only one line crossing the diagram from top
 to bottom.
@@ -1950,7 +1950,7 @@ The bipartition monoid $\Prt_n$ grows very quickly as $n$ increases: its size is
 the Bell number $B_{2n}$ \citeoeis{A000110}.
 It therefore grows much faster than the symmetric group $\Sym_n$ with $n!$
 elements, the symmetric inverse monoid $\I_n$ with
-$\sum_{k=0}^n \binom{n}{k} \frac{n!}{k!}$ elements, and even the full
+$\sum_{k=0}^n \binom{n}{k} \frac{n!}{(n-k)!}$ elements, and even the full
 transformation monoid $\T_n$ with $n^n$ elements.  The degree of this difference
 is illustrated in Table \ref{tab:pn-size}.
 
@@ -2084,7 +2084,7 @@ example, consider the following presentation.
 
 \begin{example}
   \label{ex:presentation-decidable}
-  Let $S$ be given by the presentation
+  Let $S$ be defined by the presentation
   $$\pres{a,b}{ab=ba}.$$
   The word problem for this presentation is decidable: two words represent the
   same element of $S$ if and only if they contain the same number of occurrences
@@ -2093,7 +2093,7 @@ example, consider the following presentation.
 
 In Example \ref{ex:presentation-decidable}, there is an algorithm to answer the
 word problem; hence, we
-say that $S$ has decidable word problem.  However, we have not shown the word
+say that $\pres{a,b}{ab=ba}$ has decidable word problem.  However, we have not shown the word
 problem in general to be decidable, since our algorithm does not apply to every
 semigroup presentation, only to the one considered in the example.  It turns out
 that there is no single algorithm which can be applied to every presentation to
