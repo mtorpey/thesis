@@ -542,11 +542,11 @@ any information about the congruence's classes.  We only need to store the ideal
 $I$ itself, along with the overall semigroup $S$, and we have everything we need
 to know about the congruence.  Furthermore, we do not even need to store all the
 elements of $I$, but just a generating set for it.  This could be a generating
-set for $I$ as a subsemigroup of $S$, or better yet, we can use an ideal
-generating set (see \ref{sec:intro-ideals}).  An ideal generating set can be
+set for $I$ as a subsemigroup of $S$, or better yet, an ideal
+generating set (see Section \ref{sec:intro-ideals}).  An ideal generating set can be
 even smaller than a subsemigroup generating set, since a single generator $a$,
 when considered an ideal generator, gives rise to elements $xay$ for all
-$x,y \in S$ rather than just for all $x,y \in I$.
+$x,y \in S^1$ rather than just for all $x,y \in I$.
 
 The \Semigroups{} package for \GAP{} takes the approach of storing an ideal to
 represent a Rees congruence, and will store any generating set that is available
@@ -738,8 +738,8 @@ can rewrite as $(i,a,\lambda)$ and $(j,b,\mu)$ (lines 10--11).  Before we try
 modifying the linked triple, we check that columns $i$ and $j$, and rows
 $\lambda$ and $\mu$, have zeroes in the same places in the matrix $P$ (line 12);
 if not, they cannot be related by a linked triple, so we again have the
-universal congruence, and quit the algorithm immediately (line 13).  If this
-check does not reveal a problem, we can proceed to add information to the
+universal congruence, and quit the algorithm immediately (line 13).  Otherwise,
+we can proceed to add information to the
 triple, first by uniting the columns $(i,j)$ in $\sS$, and then by uniting the
 rows $(\lambda, \mu)$ in $\tT$ (lines 15--16).  This could perhaps be tracked
 using a union--find table for each of $\sS$ and $\tT$ (see Section
@@ -992,7 +992,7 @@ each iteration taking a new element $a$ from $N'$, a new pair of columns $(i,j)$
 from $\sS'$, and a new pair of rows $(\lambda, \mu)$ from $\tT'$.  Then, after
 fixing appropriate $\xi$ and $k$ in lines 24--25 as in Theorem
 \ref{thm:linked-triple-to-pairs} condition (iii), we add the pair
-$$\big((i, p_{\xi i}^{-1}np_{\lambda k}^{-1}, \lambda),
+$$\big((i, p_{\xi i}^{-1}ap_{\lambda k}^{-1}, \lambda),
 (j, p_{\xi j}^{-1}p_{\mu k}^{-1}, \mu)\big),$$
 which can be seen by inspection to satisfy (i), (ii) and (iii) for the three
 generators in question.
@@ -1005,10 +1005,10 @@ to the size of the largest of the three sets -- that is,
 $$\max(|N'|, |I| - k_\sS, |\Lambda| - k_\tT).$$
 If the sets have different sizes, then on some of the later runs through the
 loop, one or two of the three sets will be empty.  This does not present a
-problem: if a set is empty, it is not popped again and the last value from the
+problem: if a set is empty, it is not popped, and the last value from the
 loop is simply used again.  The set of pairs still satisfies the necessary
 condition from the theorem.  The only remaining case is that one of the sets may
-be empty.  To account for this case, we give each of the three variables a
+be empty to start with.  To account for this case, we give each of the three variables a
 default value in lines 14--16, so that even if a set is never popped, there is a
 sensible default value that does not invalidate the condition: for $a$ we can use the identity
 $1_G$ which must always be in $N$; for $(i,j)$ or $(\lambda,\mu)$ we can use a
@@ -1046,7 +1046,7 @@ any smaller set of pairs could be found which generates the same congruence.
     size of a set of generating pairs for the congruence.  By similar reasoning,
     $|\tT'|$ is also a lower bound.
 
-    Assume $|N'| \leq |I| - k_\sS$ or $|N'| \leq |\Lambda| - k_\tT|$.  The
+    Assume $|N'| \leq |I| - k_\sS$ or $|N'| \leq |\Lambda| - k_\tT$.  The
     number of pairs returned by the algorithm will be either $|I| - k_\sS$ or
     $|\Lambda| - k_\tT$.  Since we know that these are both lower bounds for the
     possible size of a generating set, we can conclude that the size of $\R$
@@ -1256,7 +1256,7 @@ explained more explicitly below.
 \State $\tau := \Delta_E$
 \State Let $S'$ be a generating set for $S$
 \State Let $E'$ be a generating set for $E$
-\State $X \gets E' \cup \{ab^{-1} : (a,b) \in \R\}$
+\State $X \gets \{ab^{-1} : (a,b) \in \R\}$
 \State $\mathbf{T} \gets \{(a^{-1}a, b^{-1}b) : (a,b) \in \R\}$
 \State $\tau \gets (\tau \cup \mathbf{T})^e$
 \Repeat
@@ -1400,7 +1400,7 @@ are, it adds all the elements from $X$ to $K$, and then on line 18 it adds any
 necessary elements $a^{-1}xa$ to $K$, as in Definition \ref{def:kernel-normal},
 to ensure that $K$ remains self-conjugate.  This process of adding elements to
 ensure self-conjugacy is denoted with the notation $\llangle \cdot \rrangle$, as
-for normal closure in a group.  Since $K$ starts containing $E$, this is enough to
+for normal closure in a group.  Since $K$ contains $E$ from the beginning, this is enough to
 guarantee that $K$ is a normal subsemigroup, a fact we can be certain of at the
 end of \textsc{EnumerateKernel}.  If a change was made, we set $\delta$ to true,
 and in any case we empty the set $X$ to indicate that no new elements have been
@@ -1435,12 +1435,11 @@ then we must of course set $\delta$ to true (line 38).
 Finally, \textsc{EnforceConditions} deals with conditions (i) and (ii) from
 Definition \ref{def:kernel-trace-pair}.  It adds any necessary elements to $X$
 and any necessary pairs to $\mathbf{T}$ and $\tau$, and when finished,
-$(K,\tau)$ is guaranteed to satisfy conditions (i) and (ii), at least on a run
-in which the other two methods make no changes.  To achieve this, we iterate
+$(K,\tau)$ is guaranteed to satisfy conditions (i) and (ii).  To achieve this, we iterate
 through each element $a$ in the semigroup (line 22).  If $a$ is in the kernel
 $K$ (line 23), then we need to ensure that $(aa^{-1}, a^{-1}a)$ is in the trace
-$\tau$ to enforce condition (ii); we add it if necessary (lines 24--26).  If $a$
-is not in the kernel $K$ but $ae \in K$ and $(e, a^{-1}a) \in \tau$ for some
+$\tau$ to enforce condition (ii); we add it if necessary (lines 24--26).  If
+$a \notin K$ but $ae \in K$ and $(e, a^{-1}a) \in \tau$ for some
 idempotent $e$, then we need to add $a$ to the kernel in order to satisfy
 condition (i).  Hence, if $a$ is not in the kernel (line 28), we check any
 idempotents $e$ that are $\tau$-related to $a^{-1}a$ (line 29), and if $ae$ is
@@ -1466,7 +1465,7 @@ corresponding to the congruence $\R^\sharp$.
 Note that, so long as $S$ is finite, the \textsc{KerTraceFromPairs} algorithm is
 guaranteed to complete in finite time.  Due to the way $\delta$ is set, the
 repeat-loop can only continue so long as the last iteration of the loop added
-something new to $K$ or $\tau$.  Since $K$ can only contain elements from $S$
+something new to $K$ or $\tau$.  Since $K$ can only contain elements from $S$,
 and $\tau$ can only contain elements from $E \times E$, we therefore have an
 upper bound of $|K| + |E|^2$ times that the loop can be executed, and the likely
 number of times it will be executed is much lower.  Similarly, there are no
@@ -1777,7 +1776,7 @@ characterisation of a kernel--trace pair (Definition
 \ref{def:kernel-trace-pair}) and a concise description of how this pair
 describes its congruence ($\Psi^{-1}$ in Theorem \ref{thm:kernel-trace-pair}).
 It turns out that the congruences on a regular semigroup can be described in a
-similar way, which we will briefly examine here.  First we make a definition.
+similar way, which we will briefly examine here.  First we will make a definition.
 
 \begin{definition}[{\cite[Result 1.5]{pastijn_1986}}]
   \label{def:pi_k}
