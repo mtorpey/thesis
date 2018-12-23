@@ -1239,6 +1239,7 @@ readability.
   \end{proof}
 \end{lemma}
 
+\pagebreak
 \begin{lemma}
   \label{lem:rees-genpairs}
   Let $\alpha,\beta \in \Mot_n$, where $n \geq 2$, and let $k \in \{2, \ldots, n\}$.  We have
@@ -1260,9 +1261,7 @@ readability.
     size $2$.  Let $\dom\alpha = \{i_1, \ldots, i_k\}$ and
     $\codom\alpha = \{j_1, \ldots, j_k\}$, with $i_1 < \ldots < i_k$ and
     $j_1 < \ldots < j_k$; since $\alpha$ is planar, its transversals must be
-    $\{i_1, j_1'\}, \ldots, \{i_k, j_k'\}$.  We will also write
-    $\bn \setminus \dom\alpha = \{a_1, \ldots, a_{n-k}\}$ and
-    $\bn \setminus \codom\alpha = \{b_1, \ldots, b_{n-k}\}$.
+    $\{i_1, j_1'\}, \ldots, \{i_k, j_k'\}$.
 
     Our proof now splits into two cases.  Since $\alpha \neq \beta$ and
     $\rank\beta \leq \rank\alpha$, one of the following holds:
@@ -1284,6 +1283,9 @@ readability.
     We may write $\gamma = \bipart{c|c|c|c|c|c}{4-6}
     {c_1 & \ldots & c_r & C_1 & \ldots & C_t}
     {d_1 & \ldots & d_r & D_1 & \ldots & D_u}$.
+    For ease of notation, we will also write
+    $\bn \setminus \{i_1, \ldots, i_r\} = \{a_1, \ldots, a_{n-r}\}$ and
+    $\bn \setminus \{j_1, \ldots, j_r\} = \{b_1, \ldots, b_{n-r}\}$.
     First, assume (a) holds.
     Let $x$ be the maximal number such that $1 \leq x \leq r$ and $i_x < a_1$
     (if this is not possible, we instead let $x$ be the minimal number such that
@@ -1295,9 +1297,9 @@ readability.
     {c_1 & \ldots & c_{x-1} & c_x & c_{x+1} & \ldots & c_r
       & \mc2{c|}{C_1} & \ldots & C_t}
     {i_1 & \ldots & i_{x-1} & a_2 & i_{x+1} & \ldots & i_r
-      & i_x, a_1 & a_3 & \ldots & a_{n-k}}$$
+      & i_x, a_1 & a_3 & \ldots & a_{n-r}}$$
     and $$\kappa = \bipart{c|c|c|c|c|c}{4-6}
-    {j_1 & \ldots & j_r & b_1 & \ldots & b_{n-k}}
+    {j_1 & \ldots & j_r & b_1 & \ldots & b_{n-r}}
     {d_1 & \ldots & d_r & D_1 & \ldots & D_u}.$$
     We have $\tau\alpha\kappa = \gamma$, but
     $$\tau\beta\kappa = \bipart{c|c|c|c|c|c|c|c|c|c}{7-10}
@@ -1347,6 +1349,7 @@ readability.
     which has a lower rank.  Hence we have $(\gamma, \gamma') \in \sigma$, and
     repeating this process eventually gives
     $(\gamma, \widehat\gamma) \in \sigma$.
+    % TODO? what if r < x? trivial, but annoying notationally
 
     Next we will show that $R_0 \subseteq \sigma$ -- that is, that $\sigma$
     relates any pair of elements of rank $0$.  We do this by showing that any
@@ -1366,7 +1369,7 @@ readability.
     % {c_1 & c_2 & C_2 & \ldots & C_t}
     % {a_1 & a_2 & a_3 & \ldots & a_n}$,
     $\tau$ to be the bipartition with transversals $\{c_1, a_1'\}$ and
-    $\{c_2, a_2'\}$, upper blocks $C_2, \ldots, C_t$, and the rest singletons.
+    $\{c_2, a_2'\}$, upper (non-transversal) blocks $C_2, \ldots, C_t$, and the rest singletons.
     Observe that $\tau\alpha\gamma = \gamma$ but $\tau\beta\gamma$ is equal
     to a copy of $\gamma$ with the block $\{c_1, c_2\}$ split into two blocks
     $\{c_1\}$ and $\{c_2\}$.  This process is illustrated in Figure
@@ -1398,13 +1401,13 @@ readability.
 
     Next, splitting a lower block: choose a lower block of $\gamma$ of size $2$
     (assume without loss of generality that it is $D_1'$), and label its elements
-    $D_1' = \{d_1', d_2'\}$ with $d_1 < d_2$.  Now choose two points
-    $i_x, i_y \in \dom\alpha$ such that $i_x < i_y < a_1 < a_2$ (or, if this is
-    impossible, such that $a_1 < a_2 < i_x < i_y$ or $i_y < a_1 < a_2 < i_x$).
+    $D_1' = \{d_1', d_2'\}$ with $d_1 < d_2$.  Now choose two indices $p,q \in
+    \{1, \ldots, k\}$ such that $i_p < i_q < a_1 < a_2$ (or, if this is
+    impossible, such that $a_1 < a_2 < i_p < i_q$ or $i_q < a_1 < a_2 < i_p$).
     Let $\tau$ be the bipartition of rank $0$ with the upper blocks of $\gamma$
-    and the lower blocks $\{i_x, a_2\}$, $\{i_y, a_1\}$, and the rest
+    and the lower blocks $\{i_p', a_2'\}$, $\{i_q', a_1'\}$, and the rest
     singletons.  Let $\kappa$ be the bipartition with $2$ transversals
-    $\{j_x, d_1'\}$ and $\{j_y, d_2'\}$, lower blocks $D_2', \ldots, D_u'$, and
+    $\{j_p, d_1'\}$ and $\{j_q, d_2'\}$, lower blocks $D_2', \ldots, D_u'$, and
     the rest of its blocks singletons.  Then $\tau\alpha\kappa = \gamma$, but
     $\tau\beta\kappa$ is equal to a copy of $\gamma$ with the block
     $\{d_1', d_2'\}$ split into two singletons.  This process is illustrated in
