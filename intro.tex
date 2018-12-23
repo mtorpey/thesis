@@ -604,16 +604,22 @@ other lower bounds.  \index{poset} \index{upper bound} \index{lower bound}
 \begin{definition}
   \label{def:lattice}
   \index{lattice}
-  A \textbf{lattice} is a poset $(X, \leq)$ such that any finite subset of $X$ has
+  A \textbf{lattice} is a poset $(X, \leq)$ such that any two elements of $X$ have
   a greatest lower bound and a least upper bound.
 \end{definition}
 
-Given a finite subset $Y$ of a lattice, we denote by $\bigwedge Y$ the greatest lower
-bound (meet) of $Y$, and by $\bigvee Y$ the least upper bound (join).  If
-$Y = \{y_1, y_2\}$, we write the meet as $y_1 \wedge y_2$ and the join as
-$y_1 \vee y_2$.  We can now view a lattice as a semigroup in two different ways:
+If we have two elements $x_1$ and $x_2$ in $X$, we write their greatest lower
+bound (meet) using the notation $x_1 \wedge x_2$ and their least upper bound
+(join) as $x_1 \vee x_2$.
+We can now view a lattice as a semigroup in two different ways:
 the set $X$ together with the binary operation of meet ($\wedge$) or the binary
 operation of join ($\vee$).
+In fact, both of these semigroups are commutative, and all their elements are
+idempotents \cite[Proposition 1.3.2]{howie}, and so any finite subset
+$Y = \{y_1, \ldots y_n\}$ has a meet
+$\bigwedge Y = y_1 \wedge \cdots \wedge y_n$ and a join
+$\bigvee Y = y_1 \vee \cdots \vee y_n$ that do not depend on any ordering of the
+set.
 
 We can now describe how this definition applies to the congruences of a
 semigroup.
