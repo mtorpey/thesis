@@ -114,7 +114,7 @@ a semigroup of transformations could be specified by a set of transformations
 that generates it, or alternatively by a finite presentation.
 Which representation is used affects which methods will be most effective,
 or even which methods will be applicable.  For this purpose, we consider two
-different categories of semigroup representation: finitely presentations, and
+different categories of semigroup representation: finite presentations, and
 \textit{concrete} representations.  Recall Section \ref{sec:intro-presentations} for
 the definitions of terms surrounding finite presentations.
 
@@ -154,7 +154,7 @@ elements in these semigroups have finite degree, and so long as there are only a
 finite number of generators, the semigroup in question will also certainly be
 finite, and we can produce a list of its elements using, for example, the
 Froidure--Pin algorithm (see Section \ref{sec:find-pres}).  Hence, a
-generating set for a semigroups of partial transformations is a concrete
+generating set for a semigroup of partial transformations is a concrete
 representation.
 
 A finite presentation, on the other hand, is an example of a semigroup
@@ -162,13 +162,18 @@ representation that is not concrete.  If $\pres X R$ is a finite presentation,
 and $S$ is the semigroup it defines, then it may be that $S$ is infinite, and so
 a list of elements of $S$ cannot be produced in finite time -- consider, for
 example, the presentation $\pres a \varnothing$ with one generator and no
-relations, which presents the free semigroup $\{a\}^+$.  Hence a finite
+relations, which presents the free semigroup $\{a\}^+$; it has an infinite
+number of elements, and so an attempt to produce a full list of them will never
+complete in finite time.  Hence a finite
 presentation is not, in general, a concrete representation.
 
-The only guarantee that can be given by the algorithm is that an answer will be
+Since some finite presentations define infinite semigroups, the algorithm
+described in this chapter, whose outputs are described in Section
+\ref{sec:program-outputs}, cannot be guaranteed to complete in all cases.
+The only guarantee that can be given is that an answer will be
 returned if $S$ happens to be finite.  In the concrete case, semigroups are
-always finite and so an answer is guaranteed; but in the case of a finitely
-presented semigroup, it is unknown in advance whether a semigroup is finite or
+always finite and so an answer is guaranteed; but in the case of a finite
+presentation, it is unknown in advance whether the semigroup it defines is finite or
 not.  Hence, the user of this algorithm might not know whether a particular run
 is guaranteed to terminate, since a run that is about to finish is
 indistinguishable from one that will run forever.  In some cases, however, we
@@ -203,8 +208,8 @@ $w \in X^+$ which \textit{represents} $s$ in the sense of Figure
 corresponding word $w$.
 \index{factorisation function}
 
-If on the
-other hand $S$ is a finitely presented semigroup, then the elements will not be
+If, on the other hand, we only have a finite presentation for $S$, then the
+elements will not be
 known in advance.  In either case, a finite presentation $\pres X R$ can be
 given -- a technique for efficiently finding a presentation from a concrete
 representation is given in Section \ref{sec:find-pres}.
@@ -295,12 +300,13 @@ congruence when requested:
   finite).
 \end{enumerate}
 
-Each of our algorithms will produce a data structure which allows us to answer
-each of these questions.  After each algorithm is described in Section
+Each of our algorithms will produce a data structure that can be used to compute
+these four pieces of information.  After each algorithm is described in Section
 \ref{sec:methods}, we will explain how that algorithm can be used to produce
-each of these four pieces of information.  Note however that item (iv) can only
+each one, as well as pointing out any limits they may have.  Note that item (iv) can only
 be produced by an algorithm if the list happens to be finite -- that is, only if
 all but finitely many elements of the semigroup lie in singletons.
+% TODO: adjust?
 
 \section{Finding a presentation}
 \label{sec:find-pres}
@@ -321,7 +327,7 @@ concrete representation: by using its Cayley table directly.
   Let $S$ be a semigroup with concrete representation, and assume we have access to its Cayley
   table.  We can produce a presentation as follows.  Let $\bar S$ be a set with
   the same cardinality as $S$, containing an element $\bar{x}$ for each element
-  $x \in S$, and let $R \subseteq \bar{S} \times \bar{S}$ be defined by
+  $x \in S$, and let $R \subseteq \bar{S} \times \bar{S}$ be equal to
   $\{(\bar{x}\bar{y}, \overline{xy}) : (x,y) \in S \times S\}.$ The resulting
   presentation $\pres{\bar{S}}{R}$ defines the semigroup $S$.
 
@@ -381,7 +387,7 @@ Consider the following example.
     d & d & c & c & d \\
   \end{array}
   $$
-  The method from Proposition \ref{meth:trivial-presentation} converts this
+  Method \ref{meth:trivial-presentation} converts this
   Cayley table to the presentation
   \begin{alignat*}{7}
     \langle\, a,b,c,d ~|~
@@ -436,13 +442,13 @@ adapted from the simplified version of the algorithm shown in
   appending $x$ to the end of $w$.  If this new word represents an element of
   $\Sone{}$ that has already been found -- that is, if $(wx)\nu \in L_S$ -- then we
   add a new relation $(wx, w')$ to $R$, where $w'$ is the word we have already
-  stored that represents $(wx)\nu$ (line 12).  If, on the other hand, this new
+  stored that represents $(wx)\nu$ (lines 10--12).  If, on the other hand, this new
   word does not represent an element that we already know, then we have
   encountered a new element which must be added to $L_S$ (line 14) and we have a
   word that represents it, which must be added to $L_X*$ (line 15).
 
   Once the loop is run to the end, this if--else statement (lines 10--15)
-  ensures that every word $w \in X^*$ can be rewritten by a relation in $R$ to a
+  ensures that every word $w \in X^*$ can be rewritten by relations in $R$ to a
   word in $L_{X^*}$, and that every element in $S$ has precisely one word in
   $L_{X^*}$ which represents it.
   Hence the resulting presentation $\pres X R$ defines the semigroup $S$.
@@ -509,7 +515,7 @@ A full description of the Froidure--Pin algorithm is outside the scope of this
 thesis, but for more information about the algorithm and its implementation in
 \libsemigroups{}, see \cite{froidure_pin} and \cite{froidure_pin_jonusas}.
 
-The presentation produced by the algorithms above presents a finite semigroup,
+The presentation produced by the algorithms above defines a finite semigroup,
 and therefore has decidable word problem.  Hence, when we have a concrete
 representation for a semigroup $S$, we can always find a presentation in which
 we can compare two words and say whether they represent the same element of $S$.
@@ -653,8 +659,8 @@ state the following theorem.
     $Q$ is fed into the union--find table using \textsc{Union} on every pair in
     $Q$, then the resulting table describes $Q^e$, the least equivalence
     relation containing $Q$.  Hence, if $\sigma = L$, the table produced by
-    $\textsc{PairOrbit}$ will describe the relation $(R^l)^e$; if $\sigma = R$, it will
-    describe $(R^r)^e$; and if $\sigma = T$, it will describe $(R^c)^e$.  As we
+    $\textsc{PairOrbit}$ will describe the relation $(\R^l)^e$; if $\sigma = R$, it will
+    describe $(\R^r)^e$; and if $\sigma = T$, it will describe $(\R^c)^e$.  As we
     know from Theorem \ref{thm:rsharp}, these relations are respectively the least
     left, right, and two-sided congruence containing $\mathbf{R}$, so the output
     of \textsc{PairOrbit} describes $\rho$ accurately, and \textsc{Find} may be used as
@@ -703,7 +709,7 @@ $$|\{\textsc{Find}(x): x \in \Lambda\}| + |S \setminus \Lambda|.$$
 For (iii), we require an algorithm that takes an element and returns a unique
 integer corresponding to the congruence class in which it lies; we can simply
 use the function $\textsc{Find}$ and create a map of outputs to integers over
-successive calls.  Finally for (iv) we require a list of the
+successive calls.  Finally for (iv) we require a list of the % TODO: reference below
 elements in each non-trivial congruence class; this can be produced by calling
 \textsc{Find} on each element $x$ in $\Lambda$, and putting $x$ into a list
 labelled $L_i$ where $i = \textsc{Find}(i)$, creating new lists as necessary --
@@ -814,13 +820,13 @@ at a given row.
 
 \subsubsection{Elementary operations}
 
-We now describe 3 operations which may be applied to the table.  These
+We now describe three operations which may be applied to the table.  These
 operations will be described in turn to give an understanding of what they are
 designed to do, along with their description in pseudo-code
 (Algorithms \ref{alg:add}, \ref{alg:trace} and \ref{alg:coinc}).  We will then
 describe the overall Todd--Coxeter procedure which uses these operations
 to find all the elements of a semigroup from a presentation
-(Algorithm \ref{alg:tc}).
+(Algorithm \ref{alg:tc}).  The three operations are:
 
 \begin{itemize}
 \item \textsc{Add}: Fill in a blank entry and add a row to the table;
@@ -881,7 +887,7 @@ in the table are equal: we need to ensure that $(s, v_m)\tau = (t, w_n)\tau$.
 We do this by considering four different cases:
 \begin{itemize}
 \item if the two cells are both empty, then we apply \textsc{Add} to
-  $(s, v_m)\tau$ to create a new row for it to point to, and then we copy that
+  $(s, v_m)$ to create a new row for $(s, v_m)\tau$ to point to, and then we copy that
   entry into $(t, w_n)\tau$ (lines 14--16);
 \item if just one of the entries is empty, then the filled entry is copied into
   the empty one (lines 17--20);
@@ -932,14 +938,14 @@ hence that $(e, v)\bar\tau = (e, w)\bar\tau$ as required.
 \end{algorithm}
 
 \textsc{Coinc} is used when two rows in the table are found to refer to the same
-element of $S$; it modifies the table to delete one row and use the other
+element of $\Sone{}$; it modifies the table to delete one row and use the other
 instead.  Pseudo-code for \textsc{Coinc} can be found in Algorithm
 \ref{alg:coinc}.  First, the higher-numbered row $s$ is deleted from the list of
 active rows ($\mathbf{N} \gets \mathbf{N} \setminus \{s\}$), and all occurrences
 of the higher number $s$ are replaced by the lower number $r$ (lines 5--6), in
-every row (line 3) and every column (line 4) of the table.  Next, the two rows
+every active row (line 3) and every column (line 4) of the table.  Next, the two rows
 are combined into one, with all known information being preserved: any columns
-that are filled in the lower row but empty in the upper row are copied (lines
+that are filled in row $s$ but empty in row $r$ are copied (lines
 8--9) and if there is any column that has different non-empty entries in rows
 $r$ and $s$ (line 10), we know that those two entries refer to the same element,
 and the coincidence needs to be processed with another call to \textsc{Coinc}
@@ -1217,7 +1223,7 @@ of $S$.  That is, $S$ is isomorphic to the semigroup generated by the
 transformations $\transV 34554$ and $\transV 22445$, as we can see from Theorem
 \ref{thm:cayley-semigroups}: we have $(a)\phi = \transV 34554$ and
 $(b)\phi = \transV 22445$, and these two transformations generate all the
-elements of $\T_{S^1}$ -- or in this case, $\T_{\Sone}$ -- apart from the identity.
+elements of $S$.
 \end{example}
 
 We now consider another example, which shows that the Todd--Coxeter procedure can
@@ -1234,7 +1240,7 @@ relatively small.
   $\pres X R$ defines the trivial
   semigroup.  However, if we apply the Todd--Coxeter procedure to this example,
   a table with 100 rows will need to be constructed before any coincidences are
-  found, and 100 rows will need to be deleted before the algorithm terminates.
+  found, and 99 of these will need to be deleted before the algorithm terminates.
 
   The number $100$ in this example can be replaced by
   any arbitrarily large value; the presentation will still define the
@@ -1255,9 +1261,9 @@ $s \in \Sone{}$, each column represents one generator $x \in X$, and the cell in
 row of $s$ and the column of $x$ contains the row number of the element $sx$.
 Hence its columns describe a right regular representation of $S$, as described
 in Section \ref{sec:transformations}.  In the language of congruences, this is
-equivalent to finding the classes of the trivial congruence $\Delta_S$ on the
-semigroup $S$, or of the two-sided congruence $R^\sharp$ on the free semigroup
-$X^+$.
+equivalent to finding the classes of the trivial congruence on the
+semigroup $\Sone$, or of the two-sided congruence $R^\sharp$ on the free monoid
+$X^*$.
 
 The original problem we wanted to solve, as described in Section
 \ref{sec:program-inputs}, is to find the classes of the congruence $\rho$
@@ -1319,7 +1325,7 @@ the Todd--Coxeter algorithm to compute a table for the right congruence $\rho$ (
 \ref{alg:tc-right} for pseudo-code).
 
 Let $\pres X R$ and $W$ be as described in Section \ref{sec:program-inputs}, and
-assume that $\rho$ is the right congruence they specify.  Since
+let $\rho$ be the right congruence they specify.  Since
 $\pres X R$ specifies the semigroup over which $\rho$ is defined, we must trace
 all the relations $R$ on every row in the table, as usual (lines 10--15).  This ensures that,
 for a relation $(a,b) \in R$, we have $(i, a)\bar\tau = (i, b)\bar\tau$ for
@@ -1390,7 +1396,7 @@ To see that this algorithm is correct, consider the following theorem.
     corresponding to $b$.  However, we must not run \textsc{Trace($e, a=b$)} for
     any numbers $e$ higher than $1$, since this would be enforcing the
     \textit{left} congruence criterion
-    (that $(sa, sb) \in \rho$ for all $s in S$), which does not apply to the
+    -- that $(sa, sb) \in \rho$ for all $s \in S$ -- which does not apply to the
     \textit{right} congruence $\rho$.
 
     The right congruence criterion, that for any pair $(a,b) \in W$ we have
@@ -1465,8 +1471,8 @@ congruence with left multiplication instead of right multiplication.
     Note that for two words $u, v \in X^*$, $\overline{uv} = \bar v \bar u$, and
     that $\bar{\bar u} = u$.
 
-    Let $S$ be the semigroup specified by the presentation $\pres X R$, and let
-    $\bar S$ be the semigroup specified by the presentation $\pres{X}{\bar R}$.
+    Let $S$ be defined by the presentation $\pres X R$, and let
+    $\bar S$ be defined by the presentation $\pres{X}{\bar R}$.
     If $u$ and $v$ are two words in $X^+$, then $(u, v) \in R$ if and only if
     $(\bar u, \bar v) \in \bar R$.  This gives rise to a natural anti-isomorphism
     $\bar \cdot$ from $S$ to $\bar S$: if $w \in X^+$ represents some $s \in S$,
@@ -1529,14 +1535,14 @@ is finite.  Firstly, we require a list of the elements of $S$: if we have a
 concrete representation, then this is given; if we have only a finite
 presentation $\pres X R$ then \textsc{ToddCoxeter} can be called on the
 presentation, and a representative word for each element can be found during
-this run.  Once a list of elements is found, we can use \textsc{Trace} on each
-element, as for (iii), to find which congruence class it lies in.  These results
+this run.  Once this list of words is found, we can use \textsc{Trace} on each
+one, as for (iii), to find which congruence class its element lies in.  These results
 can then be compiled, and singletons discarded, to produce the desired output.
 
 Note that output (iv) cannot be produced using the Todd--Coxeter algorithm when $S$ is
 infinite.  However, the pair orbit algorithm will succeed for infinite $S$, so
 long as there are only finitely many elements in non-trivial classes.  See
-Section \ref{sec:p} for more detail.
+Section \ref{sec:p} for more details.
 
 \subsubsection{Pre-filling the table}
 \label{sec:tc-prefill}
@@ -1551,7 +1557,7 @@ information which we can use to help us with our calculation.
 We now describe how to use this information in a process called
 \textit{pre-filling}, which represents new work in this area.
 
-If we have such a semigroup $S$, then we can find a right Cayley graph $\Gamma$
+If we have a semigroup $S$, then we may be able to find a right Cayley graph $\Gamma$
 for $S$ with respect to its generators $X$: if we have a concrete representation, then we can find
 this graph using the Froidure--Pin algorithm (see Section \ref{sec:find-pres});
 or if the Todd--Coxeter algorithm has been run on $S$, then the resulting table contains all
