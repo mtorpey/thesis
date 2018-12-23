@@ -55,7 +55,7 @@ classify the congruences of the Motzkin monoid, and helped with general tasks
 towards completing the paper.  As such, this chapter focuses on the Motzkin
 monoid, only presenting the results for $\Prt_n$ and other monoids at the end.
 Many of the results we describe here are contained in some form in
-\cite{ourpaper}, and are included in this thesis with the kind permission of my
+\cite{ourpaper}, and are included in this thesis with the permission of my
 co-authors.
 
 We will start with the definition of the Motzkin monoid $\Mot_n$, then describe
@@ -263,7 +263,8 @@ $(a,b) \in \sigma$ and $x \in S$ be arbitrary.  Since $\sigma \cup \Delta_S$ is
 a congruence and $(a,b) \in \sigma \cup \Delta_S$, we must have
 $(ax,bx) \in \sigma \cup \Delta_S$.  If $(ax,bx) \in \Delta_S$ then $ax=bx$, and
 since $M$ is an ideal we must have both $ax$ and $bx$ in $M$; hence $(ax,bx)$ is
-a reflexive pair and lies in the congruence $\sigma$.  Hence $(ax,bx)$ is in
+a reflexive pair and lies in the congruence $\sigma$.  If $(ax,bx) \notin
+\Delta_S$ then $(ax,bx) \in \sigma$.  Hence, either way, $(ax,bx)$ is in
 $\sigma$, and by a similar argument, so is $(xa,xb)$, so we have (ii).
 
 Conversely, assume that (ii) holds, let $(a,b) \in \sigma \cup \Delta_S$, and
@@ -525,7 +526,8 @@ two rows.  See Figure \ref{fig:hat} for an example.  Note that $\widehat\alpha =
     $\widehat\alpha =
     \bipart{c|c|c|c}{1-4}{A_0&A_1&\ldots&A_r}{B_0&B_1&\ldots&B_s}$,
     $\widehat\beta =
-    \bipart{c|c|c|c}{1-4}{C_0&C_1&\ldots&C_t}{D_0&D_1&\ldots&D_u}$, and finally
+    \bipart{c|c|c|c}{1-4}{C_0&C_1&\ldots&C_t}{D_0&D_1&\ldots&D_u}$, and finally,
+    in either case,
     $\widehat{\alpha\beta} =
     \bipart{c|c|c|c}{1-4}{A_0&A_1&\ldots&A_r}{D_0&D_1&\ldots&D_u} =
     \widehat\alpha \widehat\beta$, so $\phi$ is a homomorphism.
@@ -630,9 +632,10 @@ congruences in terms of a bipartition's rank, kernel and cokernel.
     pairs are all from $\Delta_{I_0}$, and are therefore are in
     $\Delta_{\Mot_n}$ anyway, so it is equal to $\Delta_{\Mot_n}$.  In
     $\lambda_0$, the non-reflexive pairs are precisely those in $\lL^{I_0}$: we
-    know that the elements in $I_0$ are those which have rank $0$, and we know
+    know that the elements in $I_0$ are those that have rank $0$, and therefore
+    all have empty codomains; and we know
     from Proposition \ref{prop:mn-greens}(ii) that elements are $\lL$-related if
-    and only if they share a cokernel, so we have the statement for $\lambda_0$.
+    and only if they share a codomain and cokernel, so we have the statement for $\lambda_0$.
     Similarly using Proposition \ref{prop:mn-greens}(i) we have the statement
     for $\rho_0$.  In $R_0$ the non-reflexive pairs are those from
     $\nabla_{I_0}$: this relation simply relates all elements of rank $0$ to
@@ -647,11 +650,12 @@ congruences in terms of a bipartition's rank, kernel and cokernel.
     are precisely the pairs with the same kernel and cokernel, so we have the
     statement for $\delta_1$.  For $\lambda_1$ we require
     $(\alpha,\beta) \in I_1 \times I_1$ such that
-    $(\widehat\alpha, \widehat\beta) \in \lL^{I_0}$.  A pair satisfies this if
-    and only if $\widehat\alpha$ and $\widehat\beta$ have the same codomain.
-    Since $\alpha$ and $\widehat\alpha$ share a codomain and $\beta$ and
-    $\widehat\beta$ share a codomain, this is therefore satisfied if and only if
-    $\alpha$ and $\beta$ share a codomain, and so we have the statement for
+    $(\widehat\alpha, \widehat\beta) \in \lL^{I_0}$.
+    All elements of $I_0$ have empty codomain, so a pair satisfies this if
+    and only if $\widehat\alpha$ and $\widehat\beta$ have the same cokernel.
+    Since $\alpha$ and $\widehat\alpha$ share a cokernel, and $\beta$ and
+    $\widehat\beta$ share a cokernel, this is therefore satisfied if and only if
+    $\alpha$ and $\beta$ share a cokernel, and so we have the statement for
     $\lambda_1$.  The statement for $\rho_1$ follows by a similar argument.
     Finally, observe that $R_1$ contains all pairs
     $(\alpha,\beta) \in I_1 \times I_1$ such that
@@ -670,7 +674,7 @@ We are now ready to state the main theorem of this chapter, giving a full
 description of the congruence lattice of $\Mot_n$.  Much of the work to prove
 this has already been done, and the rest of this section will be devoted to
 completing the proof.  Note that our main theorem requires $n \geq 2$; if
-$n = 1$ then $\Mot_n$ has only $2$ elements, and its congruences are only
+$n = 1$ then $\Mot_n$ has only $2$ elements, and its only congruences are
 $\Delta_{\Mot_n}$ and $\nabla_{\Mot_n}$.
 
 \begin{theorem}
@@ -680,9 +684,9 @@ $\Delta_{\Mot_n}$ and $\nabla_{\Mot_n}$.
   \item The congruences of $\Mot_n$ are precisely
     $\{\delta_0, \delta_1, \lambda_0, \lambda_1, \rho_0, \rho_1, R_0, R_1,
     \ldots, R_n\}$;
-  \item The congruence lattice of $\Mot_n$ is shown in Figure
+  \item The congruence lattice of $\Mot_n$ is as shown in Figure
     \ref{fig:mn-cong-lattice};
-  \item Every congruence of $\Mot_n$ is principal;
+  \item Every congruence of $\Mot_n$ is principal.
   % \item Each congruence $\sigma$ of $\Mot_n$ is generated by any single pair
   %   from $\sigma$ not contained in any congruence below $\sigma$ in the
   %   congruence lattice.
@@ -743,6 +747,7 @@ joins of congruences, and show that there are no other congruences that can be
 generated by taking meets and joins of congruences in $\Gamma$.
 
 % HERE ARE THE TWO MEET/JOIN LEMMAS
+\pagebreak
 \begin{lemma}
   \label{lem:mn-lattice-intra}
   Let $i \in \{0, 1\}$ and $n \geq 2$.  In $\Mot_n$, we have $\lambda_i \cap \rho_i = \delta_i$
@@ -811,7 +816,7 @@ generated by taking meets and joins of congruences in $\Gamma$.
     $(\mu, \nu) \in \lambda_0 \vee \rho_1$, as required.
 
     For (v), we will prove that $\lambda_0 \vee \delta_1 = \lambda_1$, and
-    observe that the other part follows by a symmetric argument.  Since
+    observe that the other part follows by a similar argument.  Since
     $\lambda_0 \subseteq \lambda_1$ and $\delta_1 \subseteq \lambda_1$, we must
     have $\lambda_0 \vee \delta_1 \subseteq \lambda_1$.  To prove
     $\lambda_1 \subseteq \lambda_0 \vee \delta_1$, let
@@ -903,7 +908,7 @@ readability.
     $\gamma \in I_0$, let $\gamma'$ be the unique bipartition in $I_0$ with
     trivial kernel and $\coker\gamma' = \coker\gamma$.  We claim that
     $(\gamma, \gamma') \in \sigma$ for any such $\gamma$.  This claim is proven
-    by descending induction on $r$, the number of kernel-classes of $\gamma$: if
+    by induction on $r$, the number of kernel-classes of $\gamma$: if
     $r = n$ (trivial kernel) then $\gamma = \gamma'$ and we are done.  Otherwise
     we have $r \leq n-1$, and we write
     $\gamma = \bipart{c|c|c}{1-3}{A_1&\ldots&A_r}{B_1&\ldots&B_s}$.  Since
@@ -1028,13 +1033,14 @@ readability.
   \end{enumerate}
   \begin{proof}
     In each statement, as in the previous lemma, the ``only if'' part is
-    obvious; we just need to consider the left-to-right implications.  First we
+    obvious; we just need to consider the right-to-left implications.  First we
     will prove (i) and observe that (ii) follows from a symmetric argument.
     Then we will prove (iii) and (iv) separately.
 
     For (i), start by supposing
     $(\alpha, \beta) \in \lambda_1 \setminus (\lambda_0 \cup \delta_1)$, as in
-    the premise.  To be outside $\lambda_0$, either $\alpha$ or $\beta$ must
+    the premise.  Clearly $(\alpha,\beta)^\sharp \subseteq \lambda_1$.
+    To be outside $\lambda_0$, either $\alpha$ or $\beta$ must
     have rank $1$ -- without loss of generality, assume $\rank(\alpha)=1$.  We
     may therefore write
     $\alpha=\bipart{c|c|c|c}{2-4}{i&A_1&\cdots&A_r}{j&B_1&\cdots&B_s}$.  Now,
@@ -1067,16 +1073,16 @@ readability.
     so Lemma \ref{lem:low-genpairs}(i) gives us
     $\lambda_0=(\alpha\gamma, \beta\gamma)^\sharp
     \subseteq (\alpha, \beta)^\sharp$.
-    Since $\lambda_1 = \lambda_0 \vee \delta_1$ (by Lemma
-    \ref{lem:mn-lattice-inter} below), we need only show that $\delta_1
+    Since $\lambda_1 = \lambda_0 \vee \delta_1$ by Lemma
+    \ref{lem:mn-lattice-inter}, we need only show that $\delta_1
     \subseteq (\alpha,\beta)^\sharp$, and (i) is complete.
     To do this, we will consider the cases (a)--(e) separately.
 
-    Firstly, assume (a) holds.  We know that $\alpha \alpha^* \alpha = \alpha$,
-    and we can see that $\alpha\alpha^*\beta = \widehat\alpha$.  Hence Lemma
+    Firstly, assume (a) holds.  We know that $\alpha \alpha^\star \alpha = \alpha$,
+    and we can see that $\alpha\alpha^\star\beta = \widehat\alpha$.  Hence Lemma
     \ref{lem:low-genpairs}(iii) gives
-    $\delta_1 = (\alpha, \widehat\alpha)^\sharp = (\alpha\alpha^*\alpha,
-    \alpha\alpha^*\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$, so
+    $\delta_1 = (\alpha, \widehat\alpha)^\sharp = (\alpha\alpha^\star\alpha,
+    \alpha\alpha^\star\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$, so
     $\delta_1 \subseteq (\alpha, \beta)^\sharp$.
 
     Next, suppose (b) holds.
@@ -1113,7 +1119,9 @@ readability.
     {i & A_1 & \cdots & A_r}{i & i_1 & \cdots & i_{n-1}}$, and note that
     $\tau\alpha = \alpha $ and
     $\tau\beta = \bipart{c|c|c|c|c}{2-5}
-    {i & A_1 & A_2 & \cdots & A_r}{l & j & B_2 & \cdots & B_s}$.
+    {i & A_1 & A_2 & \cdots & A_r}{l & j & B_2 & \cdots & B_s}$,
+    so that $\tau\alpha$ and $\tau\beta$ have the same kernel and cokernel but a
+    different transversal.
     We have $(\tau\alpha,\tau\beta) \in \delta_1 \setminus \Delta$, so by
     Lemma \ref{lem:low-genpairs}(iii) we again have
     $\delta_1=(\tau\alpha, \tau\beta)^\sharp\subseteq(\alpha,\beta)^\sharp$.
@@ -1134,16 +1142,19 @@ readability.
     $\delta_1 = (\tau\alpha, \tau\beta)^\sharp \subseteq (\alpha,\beta)^\sharp$.
 
     We have now considered all 5 cases, and shown that we always have
-    $\delta_1 \subseteq (\alpha, \beta)^\sharp$.  Hence the proof of
+    $\delta_1 \subseteq (\alpha, \beta)^\sharp$.  Hence
+    $\lambda_1 \subseteq (\alpha, \beta)^\sharp$, and the proof of
     (i) is complete.  Note that (ii) follows by a symmetric argument.
 
     For (iii), suppose $(\alpha,\beta)\in R_0\setminus(\rho_0\cup\lambda_0)$.
     Since $\rank\alpha = \rank\beta = 0$, we may write
     $\alpha=\bipart{c|c|c}{1-3}{A_1 & \cdots & A_r}{B_1 & \cdots & B_s}$ and
-    $\beta=\bipart{c|c|c}{1-3}{C_1 & \cdots & C_t}{D_1 & \cdots & D_u}$.
-    % noting that $\ker(\alpha)\not=\ker(\beta)$ and
+    $\beta=\bipart{c|c|c}{1-3}{C_1 & \cdots & C_t}{D_1 & \cdots & D_u}$, noting
+    that, since $(\alpha, \beta) \notin \rho_0$, we must have
+    $\{A_1, \ldots, A_r\} \neq \{C_1, \ldots, C_t\}$.
+    % noting that $\ker(\alpha)\not=\ker(\beta)$.
     % $\coker(\alpha)\not=\coker(\beta)$.
-    By Lemma \ref{lem:mn-lattice-intra}(i) below, we have
+    By Lemma \ref{lem:mn-lattice-intra}, we have
     $R_0 = \lambda_0\vee\rho_0$, so we will prove $(\alpha,\beta)^\sharp$
     contains $R_0$ by showing that it contains both $\lambda_0$ and $\rho_0$.
     Let $\gamma = \alpha\beta =
@@ -1155,25 +1166,30 @@ readability.
     = (\alpha\beta, \beta\beta)^\sharp
     \subseteq (\alpha, \beta)^\sharp$.  By a similar argument we have
     $\rho_0 \subseteq (\alpha,\beta)^\sharp$, and hence
-    $R_0 \subseteq (\alpha,\beta)^\sharp$, completing (iii).
+    $R_0 \subseteq (\alpha,\beta)^\sharp$.  It is obvious that
+    $(\alpha,\beta)^\sharp \subseteq R_0$, so (iii) is complete.
 
     Finally, for (iv), suppose
     $(\alpha,\beta) \in R_1 \setminus (\lambda_1 \cup \rho_1 \cup R_0)$, as in
     the premise.  Since the pair is in $R_1$, the elements' ranks must both be
     at most $1$; but since it is not in $R_0$, at least one must be of rank $1$
     (without loss of generality, assume $\alpha$).  Since the pair is in neither
-    $\lambda$ nor $\rho$, we also know that $\ker\alpha \neq \ker\beta$ and
+    $\lambda_1$ nor $\rho_1$, we also know that $\ker\alpha \neq \ker\beta$ and
     $\coker\alpha \neq \coker\beta$.
     Hence we can write
     $\alpha = \bipart{c|c|c|c}{2-4}
     {i & A_1 & \cdots & A_r}{j & B_1 & \cdots & B_s}$, and
-    $\beta = \bipart{c|c|c|c}{2-4}
-    {k & C_1 & \cdots & C_t}{l & D_1 & \cdots & D_u}$ or
     $\beta = \bipart{c|c|c|c}{1-4}
-    {k & C_1 & \cdots & C_t}{l & D_1 & \cdots & D_u}$.  Now, as in (iii),
+    {k & C_1 & \cdots & C_t}{l & D_1 & \cdots & D_u}$ or
+    $\beta = \bipart{c|c|c|c}{2-4}
+    {k & C_1 & \cdots & C_t}{l & D_1 & \cdots & D_u}$, with
+    $\big\{\{i\}, A_1, \ldots, A_r\big\} \neq \big\{\{k\}, C_1, \ldots, C_t\big\}$.
+    Now, as in (iii),
     since $R_1 = \lambda_1 \vee \rho_1$, by Lemma \ref{lem:mn-lattice-intra}, we
-    prove that $(\alpha,\beta)^\sharp = R_1$ by showing that
-    $(\alpha,\beta)^\sharp$ contains $\lambda_1$ and $\rho_1$.  We proceed by
+    prove that $R_1 \subseteq (\alpha,\beta)^\sharp$ by showing that
+    $(\alpha,\beta)^\sharp$ contains $\lambda_1$ and $\rho_1$.  We will prove
+    the statement for $\lambda_1$, and observe that $\rho_1$ follows by a
+    similar argument.  Let us proceed by
     solving three cases separately.  One of the following three statements about
     $\beta$ must hold:
     \begin{enumerate}[\rm(a)]
@@ -1187,11 +1203,16 @@ readability.
     $\gamma = \bipart{c|c|c|c}{2-4}
     {j & B_1 & \cdots & B_s}{j & B_1 & \cdots & B_s}$.  Certainly we have
     $\alpha\gamma = \alpha$.  To find $\beta\gamma$ we separate into two cases:
+    in case (f) we have
     $\beta\gamma = \bipart{c|c|c|c}{1-4}
-    {k & C_1 & \cdots & C_t}{j & B_1 & \cdots & B_s}$ -- case (f) -- or
+    {k & C_1 & \cdots & C_t}{j & B_1 & \cdots & B_s}$,
+    and in case (g) we have
     $\beta\gamma = \bipart{c|c|c|c}{2-4}
-    {k & C_1 & \cdots & C_t}{j & B_1 & \cdots & B_s}$ -- case (g).
-    In either case, using (i), we have
+    {k & C_1 & \cdots & C_t}{j & B_1 & \cdots & B_s}$.
+    In either case, we have
+    $(\alpha\gamma, \beta\gamma) \in
+    \lambda_1 \setminus (\lambda_0 \cup \delta_1)$,
+    so by (i), we have
     $\lambda_1 = (\alpha\gamma, \beta\gamma)^\sharp
     \subseteq (\alpha,\beta)^\sharp$, completing this case.
 
@@ -1203,13 +1224,18 @@ readability.
     {i & A_1 & \cdots & A_r}{j & j_1 & \cdots & j_{n-1}}$ and
     $\beta\tau = \bipart{c|c|c|c}{1-4}
     {k & C_1 & \cdots & C_t}{j & j_1 & \cdots & j_{n-1}}$.
-    Using (i) again gives us
+    We have
+    $(\alpha\tau, \beta\tau) \in
+    \lambda_1 \setminus (\lambda_0 \cup \delta_1)$,
+    so again by (i), we have
     $\lambda_1 = (\alpha\tau, \beta\tau)^\sharp
-    \subseteq (\alpha,\beta)^\sharp$,
-    as required.  This completes the proof that
+    \subseteq (\alpha,\beta)^\sharp$, completing this case.
+    This completes the proof that
     $\lambda_1 \subseteq (\alpha,\beta)^\sharp$, and the proof that
-    $\rho_1 \subseteq (\alpha,\beta)^\sharp$ is similar.  Hence $R_0 \subseteq
-    (\alpha,\beta)^\sharp$, and the proof of (iv) is complete.
+    $\rho_1 \subseteq (\alpha,\beta)^\sharp$ is similar.  Hence
+    $\lambda_1 \vee \rho_1 = R_1 \subseteq (\alpha,\beta)^\sharp$.  It is obvious that
+    $(\alpha, \beta)^\sharp \subseteq R_1$, and so the proof of (iv) is
+    complete.
   \end{proof}
 \end{lemma}
 
