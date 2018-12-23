@@ -1035,7 +1035,7 @@ semigroups of size no more than $8$, up to isomorphism.
 Using this library, it was possible to calculate the congruences of all
 $1658439$ semigroups of size no more than $7$, revealing some interesting
 information about the numbers of congruences of the semigroups, as well as about
-the properties of those semigroups.  Some of these findings are presented here.
+the properties of those congruences.  Some of these findings are presented here.
 
 The average number of congruences on a semigroup of size $n$ is shown in Table
 \ref{tab:nr-congs-smallsemi}.  Since we only have the first few values here, it
@@ -1113,7 +1113,7 @@ congruences are all principal, a number which also decreases rapidly.
 \end{table}
 
 The number of principal congruences compares curiously to the number of Rees
-congruences (see Section \ref{sec:converting-rees}): Table
+congruences (see Definition \ref{def:rees-congruence}): Table
 \ref{tab:nr-rees-congs} shows the proportion of congruences that are Rees on an
 average semigroup of size $n$, as well as the number of semigroups whose
 congruences are all Rees.  For $n$ from $2$ to $6$, there are fewer Rees
@@ -1180,7 +1180,7 @@ congruences of all small simple or 0-simple semigroups, or of all small inverse
 semigroups.  Analysing these categories might reveal interesting trends distinct
 from those in the generic case.
 
-It is worth mentioning that, up to isomorphism and anti-isomorphism, almost all
+It is worth mentioning that, up to isomorphism, almost all
 semigroups are \textit{$3$-nilpotent} -- that is, they contain a zero, and any
 product of three elements is equal to zero.  In \cite{kleitman_1976} a
 construction is given which allows us to enumerate all $3$-nilpotent semigroups,
@@ -1189,7 +1189,8 @@ number of $3$-nilpotent semigroups up to isomorphism.  As
 $n$ increases, the proportion of semigroups that are $3$-nilpotent increases,
 until at $n=9$ they account for over $99.9\%$ of all the semigroups of size $n$:
 this is shown in \cite[Table 2.1]{distler_thesis}, and can also be calculated
-using the appropriate entries in \cite[Table 3]{distler_2012} and \citeoeis{A027851}.
+using the appropriate entries in \cite[Table 3]{distler_2012} and
+\citeoeis{A027851}, or by using the \smallsemi{} software package \cite{smallsemi}.
 Hence, the trends shown in Tables \ref{tab:nr-congs-smallsemi},
 \ref{tab:nr-principal-congs} and \ref{tab:nr-rees-congs} become increasingly
 dominated by $3$-nilpotent semigroups, and so anything we can say about a
