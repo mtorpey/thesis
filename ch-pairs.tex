@@ -441,17 +441,22 @@ adapted from the simplified version of the algorithm shown in
   We now loop over the words $w$ that have been found and added to $L_{X^*}$;
   initially this list contains only one word, but in each iteration of the loop,
   we may discover new words, which we add to the end of the list, and iterate
-  over in course, until we have considered all words (line 16).
+  over in course, until we have considered all words (line 18).
 
   In each iteration of the loop, we take the next word $w \in L_{X^*}$ (line 8)
   and for each generator $x \in X$ in turn we consider the new word $wx$ made by
   appending $x$ to the end of $w$.  If this new word represents an element of
   $\Sone{}$ that has already been found -- that is, if $(wx)\nu \in L_S$ -- then we
   add a new relation $(wx, w')$ to $R$, where $w'$ is the word we have already
-  stored that represents $(wx)\nu$ (lines 10--12).  If, on the other hand, this new
+  stored that represents $(wx)\nu$ (lines 10--12); we do not add anything to
+  $L_{X^*}$, ensuring that all the words in $L_{X^*}$ describe distinct elements
+  (as asserted in line 16).  If, on the other hand, this new
   word does not represent an element that we already know, then we have
   encountered a new element which must be added to $L_S$ (line 14) and we have a
-  word that represents it, which must be added to $L_X*$ (line 15).
+  word that represents it, which must be added to $L_X*$ (line 15); this ensures
+  that $(wx)\nu \in L_S$ for all $x \in X$ at the end of this run of the
+  repeat-loop, which is therefore true for all $u \in L_{X^*}$ considered so far
+  (as asserted in line 17).
 
   Once the loop is run to the end, this if--else statement (lines 10--15)
   ensures that every word $w \in X^*$ can be rewritten by relations in $R$ to a
@@ -486,7 +491,9 @@ adapted from the simplified version of the algorithm shown in
             \State Add $(wx)\nu$ to $L_S$
             \State Add $wx$ to $L_{X^*}$
           \EndIf
+          \LComment{$(u)\nu \neq (v)\nu$ for all $u,v \in L_{X^*}$}
         \EndFor
+        \LComment{$(ux)\nu \in L_S$ for all $x \in X$ and the first $i$ elements $u$ in $L_{X^*}$}
       \Until{$i = |L_{X^*}|$}  \Comment{There are no words left to consider}
       \State \Return $\pres X R$
     \EndProcedure
