@@ -575,15 +575,17 @@ method.
 Now we can describe the overall structure of the pair orbit enumeration method.
 We begin iterating through the pairs in $\mathbf{R}'$ (the repeat loop starting on line 6), and as we do so we
 will add further pairs to $\mathbf{R}'$ which will also need to be iterated on,
-until we reach the end of the list (line 19).  For each pair $(a,b)$ we first need to
+until we reach the end of the list (line 21).  For each pair $(a,b)$ we first need to
 merge the congruence classes of $a$ and $b$ in the union--find table using
-\textsc{Union} (line 13).  However, if either $a$ or $b$ is not
+\textsc{Union} (line 13), ensuring that $\textsc{Find}(a)=\textsc{Find}(b)$
+(line 20).  However, if either $a$ or $b$ is not
 already in $\Lambda$, then it will need to be added first using \textsc{AddElement} (lines 9--12).  Now,
 for each generator $x$, we can find the two pairs $(xa,xb)$ and $(ax,bx)$.
 Depending on whether we are calculating a left, right, or two-sided congruence
 (that is, depending on the value of $\sigma$)
 we add one or both of these pairs to $\mathbf{R}'$ to be processed in its own
-turn (lines 16 and 18).
+turn (lines 16 and 18); note that no pair is ever added from outside $\R^c$
+(line 19).
 
 \begin{algorithm}
 \caption{The \textsc{PairOrbit} algorithm}
@@ -617,7 +619,11 @@ turn (lines 16 and 18).
     \If{$\sigma \in \{R, T\}$}
       \State Add $(ax, bx)$ to $\mathbf{R}'$ if not already present
     \EndIf
+    \LComment{$\R' \subseteq \R^c$ (also, $\R' \subseteq \R^l$ if $\sigma=L$,
+      and $\R' \subseteq \R^r$ if $\sigma=R$)}
   \EndFor
+  \LComment{$\textsc{Find}(a) = \textsc{Find}(b)$ for the first $i$ pairs
+    $(a,b)$ in $\R'$}
 \Until{$i = |\mathbf{R}'|$}  \Comment{There are no pairs left to process}
 \State \Return $(\Lambda, \tau)$
 \EndProcedure
