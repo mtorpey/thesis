@@ -1022,7 +1022,7 @@ from $R$ (line 11), and apply each one to the current row using \textsc{Trace}
 (line 12).  Each call to \textsc{Trace} may, of course, invoke calls to
 \textsc{Add} and \textsc{Coinc}, so rows will be appended to the table as the
 algorithm progresses, and it may take many iterations of the repeat-loop before
-the bottom of the table is reached.  When the end is reached (line 13), the
+the bottom of the table is reached.  When the end is reached (line 15), the
 table should
 completely describe the multiplication for the finitely presented semigroup:
 each row in $\mathbf{N} \setminus \{1\}$ represents one element of $S$, and
@@ -1047,8 +1047,10 @@ generator $x$.
   \If{$e \in \mathbf{N}$}
     \For{$(u,v) \in R$}
       \State \Call{Trace}{$e, u=v$}
+      \LComment{$(e, u)\bar\tau = (e, v)\bar\tau$}
     \EndFor
   \EndIf
+  \LComment{$(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in R$ and $i \in \mathbf{N}$ such that $i < e$}
 \Until{$e = n$}  \Comment{There are no rows left to process}
 \State \Return $(n, \mathbf{N}, \tau)$
 \EndProcedure
