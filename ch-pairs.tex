@@ -898,10 +898,12 @@ the second-last letter (line 5).  At each step, we consider $(s, v_i)\tau$, the
 entry in the table which we must follow next to continue going through the
 word.  If it is not set, we call \textsc{Add} to create a new row to point it
 towards (lines 6--7).  Then we follow it, setting $s$ to the new value (line
-8).  At the end of this loop, we only need to follow the last letter $v_m$ to
+8).  At each stage of the loop, $s = (e, v_1 \ldots v_i)\bar\tau$ (as asserted
+on line 9).  Hence,
+at the end of this loop, we only need to follow the last letter $v_m$ to
 complete the word -- that is, $(s, v_m)\tau = (e, v)\bar\tau$.
 
-We follow a similar process for $w$ in lines 9--13, going through all letters of
+We follow a similar process for $w$ in lines 10--15, going through all letters of
 $w$ except the last one, and finding a row $t$ such that
 $(t, w_n)\tau = (e, w)\bar\tau$.  Now in order to satisfy the objective
 $(e,v)\bar\tau = (e,w)\bar\tau$, we just need to ensure that two specific cells
@@ -910,13 +912,13 @@ We do this by considering four different cases:
 \begin{itemize}
 \item if the two cells are both empty, then we apply \textsc{Add} to
   $(s, v_m)$ to create a new row for $(s, v_m)\tau$ to point to, and then we copy that
-  entry into $(t, w_n)\tau$ (lines 14--16);
+  entry into $(t, w_n)\tau$ (lines 16--18);
 \item if just one of the entries is empty, then the filled entry is copied into
-  the empty one (lines 17--20);
+  the empty one (lines 19--22);
 \item if both entries are filled and equal, we do not need to do anything;
 \item if both entries are filled and are distinct, then we need to force the two
   rows they point towards to be equal, by applying \textsc{Coinc} to the two
-  entries (lines 21--22).
+  entries (lines 23--24).
 \end{itemize}
 After each of these cases, the result is that $(s, v_m)\tau = (t, w_n)\tau$, and
 hence that $(e, v)\bar\tau = (e, w)\bar\tau$ as required.
@@ -935,6 +937,7 @@ hence that $(e, v)\bar\tau = (e, w)\bar\tau$ as required.
     \State \Call{Add}{$s, v_i$}
   \EndIf
   \State $s \gets (s, v_i)\tau$
+  \LComment{$s = (e, v_1 \ldots v_i)\bar\tau$}
 \EndFor
 \State $t \gets e$
 \For{$i \in \{1, \ldots, n-1\}$}
@@ -942,6 +945,7 @@ hence that $(e, v)\bar\tau = (e, w)\bar\tau$ as required.
     \State \Call{Add}{$t, w_i$}
   \EndIf
   \State $t \gets (t, w_i)\tau$
+  \LComment{$t = (e, w_1 \ldots w_i)\bar\tau$}
 \EndFor
 
 \If{$(s, v_m)\tau = (t, w_n)\tau = 0$}
