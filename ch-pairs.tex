@@ -972,10 +972,12 @@ of the higher number $s$ are replaced by the lower number $r$ (lines 5--6), in
 every active row (line 3) and every column (line 4) of the table.  Next, the two rows
 are combined into one, with all known information being preserved: any columns
 that are filled in row $s$ but empty in row $r$ are copied (lines
-8--9) and if there is any column that has different non-empty entries in rows
-$r$ and $s$ (line 10), we know that those two entries refer to the same element,
+9--10) and if there is any column that has different non-empty entries in rows
+$r$ and $s$ (line 11), we know that those two entries refer to the same element,
 and the coincidence needs to be processed with another call to \textsc{Coinc}
-(line 11).  After the algorithm is finished, all references to $s$ have been
+(line 12).  Hence, for each column considered, a cell in row $r$ can only be
+empty if that cell in row $s$ is also empty (as asserted in line 13).
+After the algorithm is finished, all references to $s$ have been
 removed from the table, and all information from row $s$ has been incorporated
 into row $r$.
 
@@ -993,6 +995,7 @@ into row $r$.
       \State $(e, x)\tau \gets r$
     \EndIf
   \EndFor
+  \LComment{$(i,x)\tau \neq s$ for all $x \in X$ and $i \in \mathbf{N}$ such that $i < e$}
 \EndFor
 \For{$x \in X$}
   \If{$(r, x)\tau = 0$}
@@ -1000,6 +1003,7 @@ into row $r$.
   \ElsIf{$(r, x)\tau \neq (s, x)\tau \textbf{~and~} (s, x)\tau \neq 0$}
     \State \Call{Coinc}{$(r, x)\tau, (s, x)\tau$}
   \EndIf
+  \LComment{$(r, x)\tau \neq 0$ unless $(s, x)\tau = 0$}
 \EndFor
 \EndProcedure
 \end{algorithmic}
