@@ -1327,11 +1327,14 @@ relations in $W$, before doing the same for those in $R$.
   \If{$e \in \mathbf{N}$}
     \For{$(u,v) \in W$}
       \State \Call{Trace}{$e, u=v$}
+      \LComment{$(e, u)\bar\tau = (e, v)\bar\tau$}
     \EndFor
     \For{$(u,v) \in R$}
       \State \Call{Trace}{$e, u=v$}
+      \LComment{$(e, u)\bar\tau = (e, v)\bar\tau$}
     \EndFor
   \EndIf
+  \LComment{$(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in R \cup W$ and $i \in \mathbf{N}$ such that $i < e$}
 \Until{$e = n$}  \Comment{There are no rows left to process}
 \State \Return $(n, \mathbf{N}, \tau)$
 \EndProcedure
