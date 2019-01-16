@@ -720,7 +720,7 @@ where $\{1_G\}$ is the trivial subgroup of $G$, and $\Delta_I$ and
 $\Delta_\Lambda$ are the trivial equivalences on the sets of columns and rows in
 the matrix $P$.  This is the linked triple that corresponds to the trivial
 congruence $\Delta_S$, which is the result that should be returned if $\R$ is
-empty.  The rest of the algorithm (lines 5--24) consist of going through each
+empty.  The rest of the algorithm (lines 5--28) consist of going through each
 pair in $\R$, adding any necessary extra elements to $N$, $\sS$ and $\tT$
 that are implied by that pair, and finally adding further elements to ensure
 that $(N, \sS, \tT)$ remains a linked triple.
@@ -751,7 +751,7 @@ $\Gamma^{-1}$ in Definition \ref{def:linked-triple-function}.  As we add this,
 we add any necessary elements to $N$ to make it a normal subgroup (taking its
 \textit{normal closure}).  Finally, we add any necessary elements of the
 form $q_{\lambda \mu i j}$ to make $N$ compatible with Definition
-\ref{def:linked-triple} condition (iii) (lines 21--24).  At the end of this, we
+\ref{def:linked-triple} condition (iii) (lines 21--26).  At the end of this, we
 have a triple $(N,\sS,\tT)$ which is linked, and whose congruence contains every
 pair in $\R$.  Since we added no elements but those required by $\R$ and the
 definition of a linked triple, we can be certain that $(N,\sS,\tT)$ describes
@@ -796,10 +796,13 @@ $\Rs$, the least congruence containing all the pairs in $\R$.  Again, see
 %        \State
         \For{$\xi \in \Lambda \setminus \{\nu\}$ such that $p_{\xi i} \neq 0$}
           \State $N \gets \llangle N, q_{\nu \xi i j} \rrangle$
+          \LComment{$N$ is a normal subgroup of $G$ containing every $q_{\nu \xi i j}$ considered so far}
         \EndFor
         \For{$x \in I \setminus \{k\}$ such that $p_{\lambda x} \neq 0$}
           \State $N \gets \llangle N, q_{\lambda \mu k x} \rrangle$
+          \LComment{$N$ is a normal subgroup of $G$ containing every $q_{\lambda \mu k x}$ considered so far}
         \EndFor
+        \LComment{$(N, \sS, \tT)$ is linked and its congruence contains every pair $(x,y)$ considered so far}
       \EndFor
       \State \Return $(N,\mathcal{S},\mathcal{T})$
     \EndProcedure
