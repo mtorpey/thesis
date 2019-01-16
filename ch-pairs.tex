@@ -995,7 +995,7 @@ into row $r$.
       \State $(e, x)\tau \gets r$
     \EndIf
   \EndFor
-  \LComment{$(i,x)\tau \neq s$ for all $x \in X$ and $i \in \mathbf{N}$ such that $i < e$}
+  \LComment{$(i,x)\tau \neq s$ for all $x \in X$ and $i \in \mathbf{N}$ such that $i \leq e$}
 \EndFor
 \For{$x \in X$}
   \If{$(r, x)\tau = 0$}
@@ -1050,7 +1050,7 @@ generator $x$.
       \LComment{$(e, u)\bar\tau = (e, v)\bar\tau$}
     \EndFor
   \EndIf
-  \LComment{$(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in R$ and $i \in \mathbf{N}$ such that $i < e$}
+  \LComment{$(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in R$ and $i \in \mathbf{N}$ such that $i \leq e$}
 \Until{$e = n$}  \Comment{There are no rows left to process}
 \State \Return $(n, \mathbf{N}, \tau)$
 \EndProcedure
@@ -1334,7 +1334,7 @@ relations in $W$, before doing the same for those in $R$.
       \LComment{$(e, u)\bar\tau = (e, v)\bar\tau$}
     \EndFor
   \EndIf
-  \LComment{$(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in R \cup W$ and $i \in \mathbf{N}$ such that $i < e$}
+  \LComment{$(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in R \cup W$ and $i \in \mathbf{N}$ such that $i \leq e$}
 \Until{$e = n$}  \Comment{There are no rows left to process}
 \State \Return $(n, \mathbf{N}, \tau)$
 \EndProcedure
@@ -1387,7 +1387,7 @@ The rest of the algorithm is the same as \textsc{ToddCoxeter} (Algorithm
 \EndFor
 \For{$(u,v) \in W$}
   \State \Call{Trace}{$1, u=v$}
-  \LComment{$(1, a)\bar\tau = (1, b)\bar\tau$ for every pair $(a,b)$ in $W$ considered so far}
+  \LComment{$(1, u)\bar\tau = (1, v)\bar\tau$ for every pair $(u,v)$ in $W$ considered so far}
 \EndFor
 \State $e := 0$
 \Repeat
@@ -1398,7 +1398,7 @@ The rest of the algorithm is the same as \textsc{ToddCoxeter} (Algorithm
       \LComment{$(e, u)\bar\tau = (e, v)\bar\tau$}
     \EndFor
   \EndIf
-  \LComment{$(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in R$ and $i \in \mathbf{N}$ such that $i < e$}
+  \LComment{$(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in R$ and $i \in \mathbf{N}$ such that $i \leq e$}
 \Until{$e = n$}  \Comment{There are no rows left to process}
 \State \Return $\tau$
 \EndProcedure
@@ -1683,7 +1683,7 @@ non-prefilled version (see Figures
       \LComment{$(e, u)\bar\tau = (e, v)\bar\tau$}
     \EndFor
   \EndIf
-  \LComment{$(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in W$ and $i \in \mathbf{N}$ such that $i < e$}
+  \LComment{$(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in W$ and $i \in \mathbf{N}$ such that $i \leq e$}
 \Until{$e = n$}  \Comment{There are no rows left to process}
 \State \Return $(n, \mathbf{N}, \tau)$
 
