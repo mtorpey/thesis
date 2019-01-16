@@ -1463,7 +1463,7 @@ This is shown in pseudo-code as \textsc{ToddCoxeterLeft} in Algorithm
 \ref{alg:tc-left}.  The
 row given by $(1, w_1 w_2 \ldots w_k)\bar\tau$ does not correspond to the word
 $w_1 w_2 \ldots w_k$ but to the word $w_k w_{k-1} \ldots w_1$.  The words in
-every relation in $R$ and $W$ should be reversed (lines 7 and 11) to make new
+every relation in $R$ and $W$ should be reversed (lines 7 and 12) to make new
 sets of relations $\bar R$ and $\bar W$, and then we should study the
 right congruence defined by the resulting relations -- that is, the result of
 $\textsc{ToddCoxeterRight}(\pres{X}{\bar R}, \bar W)$.  The Todd--Coxeter method
@@ -1483,11 +1483,13 @@ congruence with left multiplication instead of right multiplication.
   \State Let $u = u_1 u_2 \ldots u_m$ \Comment{where each $u_i$ is in $X$}
   \State Let $v = v_1 v_2 \ldots v_n$ \Comment{where each $v_j$ is in $X$}
   \State $\bar R \gets \bar R \cup \{(u_m \ldots u_1, v_n \ldots v_1)\}$
+  \LComment{$(\bar u, \bar v) \in \bar R$ for every $(u,v)$ in $R$ processed so far}
 \EndFor
 \For{$(u,v) \in W$}
   \State Let $u = u_1 u_2 \ldots u_m$ \Comment{where each $u_i$ is in $X$}
   \State Let $v = v_1 v_2 \ldots v_n$ \Comment{where each $v_j$ is in $X$}
   \State $\bar W \gets \bar W \cup \{(u_m \ldots u_1, v_n \ldots v_1)\}$
+  \LComment{$(\bar u, \bar v) \in \bar W$ for every $(u,v)$ in $W$ processed so far}
 \EndFor
 \State \Return \Call{ToddCoxeterRight}{$\pres{X}{\bar R}, \bar W$}
 \EndProcedure
