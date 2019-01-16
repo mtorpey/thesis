@@ -2117,7 +2117,9 @@ irreducible result of $u$ after a series of rules from $\rws$ have been applied.
       \State $u \gets qu$
       \State \Break
     \EndIf
+    \LComment{$vu$ has been rewritten using a rule of $\rws$}
   \EndFor
+  \LComment{$vu$ is $\lrstar_\rws$-related to the original $u$}
 \EndWhile
 \State \Return $v$
 \EndProcedure
