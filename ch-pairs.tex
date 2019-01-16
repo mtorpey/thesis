@@ -1698,14 +1698,14 @@ non-prefilled version (see Figures
     \textsc{Prefill} initialises the Todd--Coxeter table with a right Cayley
     graph for $S$, while \textsc{TwoSided} computes one from scratch using $R$.
 
-    % When, in line 11 of \textsc{TwoSided} (Algorithm \ref{alg:tc-twosided}), we
+    % When, in line ?? of \textsc{TwoSided} (Algorithm \ref{alg:tc-twosided}), we
     % call \textsc{Trace} for a row $e$ and a relation $u=v$ from $R$, we are
     % simply forcing the equation $su = sv$ to hold, where $s$ is the element of
     % $S$ represented by row $e$.  But since $\pres X R$ is just a presentation
     % for $S$, there is no extra information it can give us which is not given by
     % $S$ itself.
 
-    In lines 13 and 14 of \textsc{TwoSided} (Algorithm \ref{alg:tc-twosided}),
+    In lines 14 and 15 of \textsc{TwoSided} (Algorithm \ref{alg:tc-twosided}),
     we are doing the equivalent of the original \textsc{ToddCoxeter} algorithm,
     which produces a right Cayley graph for $S$.  Instead, in lines 2--8 of
     \textsc{Prefill} (Algorithm \ref{alg:tc-prefill}) we input a right Cayley
