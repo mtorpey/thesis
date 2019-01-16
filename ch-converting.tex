@@ -978,22 +978,22 @@ note that this set should act as a set of normal subgroup generators, meaning
 that it might be even smaller than a standard set of subgroup generators.  For
 $\sS'$ we use as few pairs as possible for each class of $\sS$: for each class
 $C = \{i_1, \ldots, i_n\}$ we include the pair $(i_1, i_l)$ for all $l \in
-\{2, \ldots, n\}$ (lines 3--7).  These pairs relate all elements in the class to
-each other by transitivity, so we do not need to add any other elements.
+\{2, \ldots, n\}$ (lines 3--8).  These pairs relate all elements in the class to
+each other by transitivity (line 7), so we do not need to add any other elements.
 Hence each class requires a number of pairs in $\sS'$ equal to one less than the
 size of the class; and so $|\sS'| = |I| - k_\sS$, where $k_\sS$ is the number
 of classes in $\sS$.  We similarly choose as small a set as possible for
-$\tT'$ (lines 8--12), so $|\tT'| = |\Lambda| - k_\tT$, where $k_\tT$ is
+$\tT'$ (lines 9--14), so $|\tT'| = |\Lambda| - k_\tT$, where $k_\tT$ is
 the number of classes in $\tT$.
 
 Once our three generating sets have been calculated, we collate them into the
 set of pairs $\R$ as efficiently as possible: each pair we add to $\R$ can
 satisfy the conditions in Theorem \ref{thm:linked-triple-to-pairs} for one pair
 $(i,j) \in \sS'$, one pair $(\lambda, \mu) \in \tT'$, and one element
-$n \in N'$.  The while-loop on lines 17--26 steps through the three lists, on
+$n \in N'$.  The while-loop on lines 19--29 steps through the three lists, on
 each iteration taking a new element $a$ from $N'$, a new pair of columns $(i,j)$
 from $\sS'$, and a new pair of rows $(\lambda, \mu)$ from $\tT'$.  Then, after
-fixing appropriate $\xi$ and $k$ in lines 24--25 as in Theorem
+fixing appropriate $\xi$ and $k$ in lines 26--27 as in Theorem
 \ref{thm:linked-triple-to-pairs} condition (iii), we add the pair
 $$\big((i, p_{\xi i}^{-1}ap_{\lambda k}^{-1}, \lambda),
 (j, p_{\xi j}^{-1}p_{\mu k}^{-1}, \mu)\big),$$
@@ -1001,7 +1001,7 @@ which can be seen by inspection to satisfy (i), (ii) and (iii) for the three
 generators in question.
 
 On each iteration of the while-loop, we remove one item from each of $N'$,
-$\sS'$ and $\tT'$ (lines 18--23), and we add one pair to $\R$.
+$\sS'$ and $\tT'$ (lines 20--25), and we add one pair to $\R$.
 This is repeated until all three sets are
 exhausted, and so the total number of pairs returned by the algorithm is equal
 to the size of the largest of the three sets -- that is,
@@ -1012,7 +1012,7 @@ problem: if a set is empty, it is not popped, and the last value from the
 loop is simply used again.  The set of pairs still satisfies the necessary
 condition from the theorem.  The only remaining case is that one of the sets may
 be empty to start with.  To account for this case, we give each of the three variables a
-default value in lines 14--16, so that even if a set is never popped, there is a
+default value in lines 16--18, so that even if a set is never popped, there is a
 sensible default value that does not invalidate the condition: for $a$ we can use the identity
 $1_G$ which must always be in $N$; for $(i,j)$ or $(\lambda,\mu)$ we can use a
 reflexive pair, from $\Delta_I$ or $\Delta_\Lambda$ respectively.
@@ -1084,15 +1084,17 @@ infinite loop.
     \For{each non-singleton class $\{i_1, i_2, \ldots, i_n\}$ of $\mathcal{S}$}
       \For{$l \in \{2, \ldots, n\}$}
         \State \textsc{Push} $(i_1, i_l)$ onto $\sS'$
-        \LComment{All columns in the class are linked through $i_1$}
+        \LComment{Columns $i_1, \ldots, i_l$ are all linked together through $i_1$}
       \EndFor
+      \LComment{$\{i_1, i_2, \ldots, i_n\}$ is a class of $(\sS')^e$}
     \EndFor
     \State $\tT' := \varnothing$
     \For{each non-singleton class $\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$ of $\mathcal{T}$}
       \For{$l \in \{2, \ldots, n\}$}
         \State \textsc{Push} $(\lambda_1, \lambda_l)$ onto $\tT'$
-        \LComment{All rows in the class are linked through $\lambda_1$}
+        \LComment{Rows $\lambda_1, \ldots, \lambda_l$ are all linked together through $\lambda_1$}
       \EndFor
+      \LComment{$\{\lambda_1, \lambda_2, \ldots, \lambda_n\}$ is a class of $(\tT')^e$}
     \EndFor
     \State $\R := \varnothing$
     %\State $m := \max (|N'|, |\sS'|, |\tT'|)$
@@ -1115,6 +1117,7 @@ infinite loop.
         (i, p_{\xi i}^{-1}ap_{\lambda k}^{-1}, \lambda),
         (j, p_{\xi j}^{-1}p_{\mu k}^{-1}, \mu)
         \big)\Big\}$
+      \LComment{$\Rs$ is a subset of the congruence defined by $(N,\sS,\tT)$}
     \EndWhile
     \State \Return $\R$
   \EndProcedure
