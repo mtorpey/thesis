@@ -1270,6 +1270,7 @@ explained more explicitly below.
 \State \Call{EnumerateKernel}{ }
 \State \Call{EnforceConditions}{ }
 \State \Call{EnumerateTrace}{ }
+\LComment{$K \subseteq \ker \Rs$ and $\tau \subseteq \tr \Rs$}
 \Until{$\delta = \False$} \Comment{Exit loop if nothing changed}
 \State \Return $(K, \tau)$
 \EndProcedure
@@ -1298,6 +1299,8 @@ explained more explicitly below.
       \EndIf
     \EndFor
   \EndIf
+  \LComment{(i) and (ii) from Definition \ref{def:kernel-trace-pair} hold for
+    each element $a \in S$ considered so far} 
 \EndFor
 \EndProcedure
 
@@ -1314,10 +1317,13 @@ explained more explicitly below.
           \State $\mathbf{T} \gets \mathbf{T} \cup \{(a^{-1}xea, a^{-1}yea)\}$
           \State $\tau \gets (\tau \cup \{(a^{-1}xea, a^{-1}yea)\})^e$
         \EndIf
+        \LComment{$(a^{-1}xea, a^{-1}yea) \in \tau$}
       \EndFor
     \EndIf
+    \LComment{$(xe, ye), (ex, ey) \in \tau$}
   \EndFor
   \State $\mathbf{T} \gets \mathbf{T} \setminus \{(x,y)\}$
+  \LComment{$\tau \subseteq \tr \Rs$}
 \EndWhile
 \EndProcedure
 \end{algorithmic}
@@ -1380,7 +1386,7 @@ Once this has been done, the rule that $(a,b)$ lies in $\rho$ if and only if
 $ab^{-1} \in K$ and $(a^{-1}a, b^{-1}b) \in \tau$ is satisfied for all pairs
 $(a,b) \in \R$.  All that is left to do is to add any elements to $K$
 and pairs to $\tau$ required to make $(K, \tau)$ a kernel--trace pair.  The rest
-of the algorithm (lines 9--15 and the three sub-procedures) focuses on this task.
+of the algorithm (lines 9--16 and the three sub-procedures) focuses on this task.
 
 Recall from Definitions \ref{def:kernel-normal}, \ref{def:trace-normal} and
 \ref{def:kernel-trace-pair} the conditions for a kernel--trace pair.  We require
@@ -1401,8 +1407,8 @@ methods are considered to have access to any of the variables in the overall
 algorithm.
 
 The first method, \textsc{EnumerateKernel}, first checks whether there are any
-new elements in $X$ that have not already been added to $K$ (line 17).  If there
-are, it adds all the elements from $X$ to $K$, and then on line 18 it adds any
+new elements in $X$ that have not already been added to $K$ (line 18).  If there
+are, it adds all the elements from $X$ to $K$, and then on line 19 it adds any
 necessary elements $a^{-1}xa$ to $K$, as in Definition \ref{def:kernel-normal},
 to ensure that $K$ remains self-conjugate.  This process of adding elements to
 ensure self-conjugacy is denoted with the notation $\llangle \cdot \rrangle$, as
@@ -1425,34 +1431,36 @@ pairs are new, they are added to $\mathbf{T}$ so that further multiples can be
 found; this is why we only need to multiply by the generators from $E'$, rather
 than all elements in $E$.
 So, in \textsc{EnumerateTrace}, we go through all the pairs $(x,y)$ in
-$\mathbf{T}$ one at a time (lines 34--35) and apply each generator $e \in E'$ to
-its right-hand side to make the pair $(xe, ye)$ (lines 36--37), which is equal
+$\mathbf{T}$ one at a time (lines 36--37) and apply each generator $e \in E'$ to
+its right-hand side to make the pair $(xe, ye)$ (lines 38--39), which is equal
 to $(ex, ey)$ by commutativity.  For each one of these pairs that is not already
 in $\tau$, we have to add it to $\tau$ to ensure that $\tau$ remains a
-congruence (line 40), and we have to add it to $\mathbf{T}$ (line 39) to ensure
+congruence (line 42), and we have to add it to $\mathbf{T}$ (line 41) to ensure
 that we process all of its right-multiples in a future iteration of the
 while-loop.  In order to ensure that $\tau$ is normal, we also need to conjugate
 the pair by each generator of the semigroup $a$, and add any of these to $\tau$
-and $\mathbf{T}$ if they are not already present (lines 41--44).  At the end of
+and $\mathbf{T}$ if they are not already present (lines 43--47).  At the end of
 a call to \textsc{EnumerateTrace}, we can thus be sure that $\tau$ is a normal
 congruence.  If any changes are made in this call to \textsc{EnumerateTrace},
-then we must of course set $\delta$ to true (line 38).
+then we must of course set $\delta$ to true (line 40).
 
 Finally, \textsc{EnforceConditions} deals with conditions (i) and (ii) from
 Definition \ref{def:kernel-trace-pair}.  It adds any necessary elements to $X$
 and any necessary pairs to $\mathbf{T}$ and $\tau$, and when finished,
 $(K,\tau)$ is guaranteed to satisfy conditions (i) and (ii).  To achieve this, we iterate
-through each element $a$ in the semigroup (line 22).  If $a$ is in the kernel
-$K$ (line 23), then we need to ensure that $(aa^{-1}, a^{-1}a)$ is in the trace
-$\tau$ to enforce condition (ii); we add it if necessary (lines 24--26).  If
+through each element $a$ in the semigroup (line 23).  If $a$ is in the kernel
+$K$ (line 24), then we need to ensure that $(aa^{-1}, a^{-1}a)$ is in the trace
+$\tau$ to enforce condition (ii); we add it if necessary (lines 25--27).  If
 $a \notin K$ but $ae \in K$ and $(e, a^{-1}a) \in \tau$ for some
 idempotent $e$, then we need to add $a$ to the kernel in order to satisfy
-condition (i).  Hence, if $a$ is not in the kernel (line 28), we check any
-idempotents $e$ that are $\tau$-related to $a^{-1}a$ (line 29), and if $ae$ is
-in the kernel (line 30) then we add $a$ to the list $X$ of elements to be added
-to the kernel in the next run of \textsc{EnumerateKernel} (line 31).  If we make
+condition (i).  Hence, if $a$ is not in the kernel (line 29), we check any
+idempotents $e$ that are $\tau$-related to $a^{-1}a$ (line 30), and if $ae$ is
+in the kernel (line 31) then we add $a$ to the list $X$ of elements to be added
+to the kernel in the next run of \textsc{EnumerateKernel} (line 32).  If we make
 any changes to $\mathbf{T}$ or $X$ in this procedure, we again set $\delta$ to
-true (lines 27 and 32).
+true (lines 28 and 33).  Lines 24--33 thus ensure that conditions (i) and (ii)
+hold for the particular value of $a$ in question, hence the assertion on line
+34.
 
 If all three methods complete without any new information being found, they will
 have acted as a test ensuring that
