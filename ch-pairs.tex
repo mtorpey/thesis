@@ -1362,7 +1362,7 @@ the Todd--Coxeter algorithm to compute a table for the right congruence $\rho$ (
 Let $\pres X R$ and $W$ be as described in Section \ref{sec:program-inputs}, and
 let $\rho$ be the right congruence they specify.  Since
 $\pres X R$ specifies the semigroup over which $\rho$ is defined, we must trace
-all the relations $R$ on every row in the table, as usual (lines 10--15).  This ensures that,
+all the relations $R$ on every row in the table, as usual (lines 11--18).  This ensures that,
 for a relation $(a,b) \in R$, we have $(i, a)\bar\tau = (i, b)\bar\tau$ for
 every $i \in \mathbf{N}$, which is equivalent to the left congruence rule that
 for any pair $(a,b) \in R$ we have $(sa, sb) \in \rho$ for every $s \in S$.
@@ -1387,6 +1387,7 @@ The rest of the algorithm is the same as \textsc{ToddCoxeter} (Algorithm
 \EndFor
 \For{$(u,v) \in W$}
   \State \Call{Trace}{$1, u=v$}
+  \LComment{$(1, a)\bar\tau = (1, b)\bar\tau$ for every pair $(a,b)$ in $W$ considered so far}
 \EndFor
 \State $e := 0$
 \Repeat
@@ -1394,8 +1395,10 @@ The rest of the algorithm is the same as \textsc{ToddCoxeter} (Algorithm
   \If{$e \in \mathbf{N}$}
     \For{$(u,v) \in R$}
       \State \Call{Trace}{$e, u=v$}
+      \LComment{$(e, u)\bar\tau = (e, v)\bar\tau$}
     \EndFor
   \EndIf
+  \LComment{$(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in R$ and $i \in \mathbf{N}$ such that $i < e$}
 \Until{$e = n$}  \Comment{There are no rows left to process}
 \State \Return $\tau$
 \EndProcedure
@@ -1420,38 +1423,38 @@ To see that this algorithm is correct, consider the following theorem.
     $\rho$.
 
     \textsc{ToddCoxeterTwoSided} treats pairs from $R$ and pairs from $W$ in
-    essentially the same way: each pair $(a,b)$ is traced starting at
+    essentially the same way: each pair $(u,v)$ is traced starting at
     \textit{every} active row $e \in \mathbf{N}$, using
-    \textsc{Trace}($e, a=b$).  \textsc{ToddCoxeterRight} follows this method for
+    \textsc{Trace}($e, u=v$).  \textsc{ToddCoxeterRight} follows this method for
     pairs in $R$, but traces pairs in $W$ only from row $1$.
 
-    For a pair $(a,b) \in W$ we must certainly have $(a,b) \in \rho$.  Hence we
-    run \textsc{Trace($1, a=b$)} on line 8 to ensure that $(1,a)\bar\tau = (1,b)\bar\tau$
-    and therefore the row corresponding to $a$ is the same as the row
-    corresponding to $b$.  However, we must not run \textsc{Trace($e, a=b$)} for
+    For a pair $(u,v) \in W$ we must certainly have $(u,v) \in \rho$.  Hence we
+    run \textsc{Trace($1, u=v$)} on line 8 to ensure that $(1,u)\bar\tau = (1,v)\bar\tau$
+    and therefore the row corresponding to $u$ is the same as the row
+    corresponding to $v$.  However, we must not run \textsc{Trace($e, u=v$)} for
     any numbers $e$ higher than $1$, since this would be enforcing the
     \textit{left} congruence criterion
-    -- that $(sa, sb) \in \rho$ for all $s \in S$ -- which does not apply to the
+    -- that $(su, sv) \in \rho$ for all $s \in S$ -- which does not apply to the
     \textit{right} congruence $\rho$.
 
-    The right congruence criterion, that for any pair $(a,b) \in W$ we have
-    $(as, bs) \in \rho$ for all $s \in S$, is automatically enforced without
-    additional work, in the following way.  The words $as$ and $bs$ should be in
+    The right congruence criterion, that for any pair $(u,v) \in W$ we have
+    $(us, vs) \in \rho$ for all $s \in S$, is automatically enforced without
+    additional work, in the following way.  The words $us$ and $vs$ should be in
     the same congruence class of $\rho$ if and only if
-    $(1, as)\bar\tau = (1, bs)\bar\tau$; but we already know that
-    $(1, a)\bar\tau = (1, b)\bar\tau$, because it was enforced using
+    $(1, us)\bar\tau = (1, vs)\bar\tau$; but we already know that
+    $(1, u)\bar\tau = (1, v)\bar\tau$, because it was enforced using
     $\textsc{Trace}$ on line 8, and so we have
-    $$(1, as)\bar\tau
-    = ((1, a)\bar\tau, s)\bar\tau
-    = ((1, b)\bar\tau, s)
-    = (1, bs)\bar\tau,$$
-    which is enough to show that $(as, bs) \in \rho$ as required.
+    $$(1, us)\bar\tau
+    = ((1, u)\bar\tau, s)\bar\tau
+    = ((1, v)\bar\tau, s)
+    = (1, vs)\bar\tau,$$
+    which is enough to show that $(us, vs) \in \rho$ as required.
   \end{proof}
 \end{theorem}
 
 In summary, when computing a right congruence with the Todd--Coxeter algorithm, each relation
 $u=v$ from $R$ must be applied to every single row $e \in \mathbf{N}$
-(\textsc{Trace($e, u=v$)} as on line 14), while the relations from $W$ only need to be applied
+(\textsc{Trace($e, u=v$)} as on line 15), while the relations from $W$ only need to be applied
 to the identity row (\textsc{Trace($1, u=v$)} as on line 8).
 
 If, instead of a right congruence, we are considering a left congruence, we may
