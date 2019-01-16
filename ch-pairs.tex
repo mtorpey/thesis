@@ -1634,8 +1634,8 @@ $\rho$ defined by the generating pairs $W$.  \textbf{Pre-filling} the table with
 right Cayley graph as described in lines 1--8 above is equivalent to processing all the
 relations $R$ and running the Todd--Coxeter algorithm to completion: we have a table which
 describes the elements of $S$, or in other words, the classes of the trivial
-congruence $\Delta_S$ on $S$.  In fact, the state of $(n, \mathbf{N}, \tau)$ at
-the beginning of line 9 is the same as the output of
+congruence $\Delta_S$ on $S$.  In fact, the state of $(n, \mathbf{N}, \tau)$ on
+line 9 is the same as the output of
 $\textsc{ToddCoxeter}(\pres X R)$, but may have taken much less time to compute.
 
 Since we wish to calculate information about the classes of $\rho$, we now
@@ -1644,7 +1644,7 @@ combined to make $\rho$-classes.  Since there are no blanks in the table (i.e.~w
 $(i,x)\tau=0$), we will never be forced to use the \textsc{Add} operation and
 create new rows; the procedure from now on will simply be about tracing
 relations from $W$ and combining rows together.  As we can see, the remainder of
-the algorithm (lines 9--16) are the same as the final lines of
+the algorithm (lines 10--18) are the same as the final lines of
 \textsc{ToddCoxeterTwoSided}, with the one difference that the two lines which
 trace relations from $R$ have been removed -- these relations are now
 unnecessary, since they are already incorporated into the table by prefilling
@@ -1671,6 +1671,8 @@ non-prefilled version (see Figures
     \State $(i, x)\tau :=$ (position of $s_{i-1} \cdot x$ in $S$) $+~1$
   \EndFor
 \EndFor
+\LComment{At this point $(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in R$ and $i \in \mathbf{N}$}
+
 
 \State $e := 0$
 \Repeat
@@ -1678,8 +1680,10 @@ non-prefilled version (see Figures
   \If{$e \in \mathbf{N}$}
     \For{$(u,v) \in W$}
       \State \Call{Trace}{$e, u=v$}
+      \LComment{$(e, u)\bar\tau = (e, v)\bar\tau$}
     \EndFor
   \EndIf
+  \LComment{$(i, u)\bar\tau = (i, v)\bar\tau$ for all $(u, v) \in W$ and $i \in \mathbf{N}$ such that $i < e$}
 \Until{$e = n$}  \Comment{There are no rows left to process}
 \State \Return $(n, \mathbf{N}, \tau)$
 
@@ -1725,7 +1729,7 @@ It is worth noting that, unlike the other Todd--Coxeter algorithms described in
 this thesis, \textsc{ToddCoxeterPrefill} is guaranteed to halt in finite time.
 Since $X$ and $S$ are finite, the loops in lines 1--8 of the algorithm are
 guaranteed to have a finite number of iterations.  In order to see that the
-repeat-loop in lines 10--15 will also have a finite number of iterations,
+repeat-loop in lines 11--18 will also have a finite number of iterations,
 observe that there are no blanks in the table -- that is, that there are no
 values of $(i,x)$ such that $(i,x)\tau = 0$.  Since there are no blanks,
 \textsc{Trace} can never cause a call to \textsc{Add}, and therefore the number
