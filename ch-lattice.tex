@@ -176,9 +176,11 @@ is discussed in more detail below.
                 \left\{\big((a,b)^\sharp, (x,y)^\sharp\big)\right\}$
                 \Comment{$(a,b)^\sharp \subseteq (x,y)^\sharp$}
           \EndIf
+          \LComment{$(x,y)^\sharp \neq (a,b)^\sharp$ for each $(a,b)^\sharp$ considered so far}
         \EndFor
         \State $\Gamma \gets \Gamma \cup \{(x,y)^\sharp\}$
         \State $\po \gets \po \cup P$
+        \LComment{$\po$ is equal to the containment relation $\subseteq$ on $\Gamma$}
         % \State Add $(x,y)^\sharp \leq (a,b)^\sharp$ for each $(a,b)^\sharp$ in $P$
         % \State Add $(a,b)^\sharp \leq (x,y)^\sharp$ for each $(a,b)^\sharp$ in $C$
         % \For{$(a,b)^\sharp \in P$}
@@ -229,12 +231,12 @@ in the old congruence (line 10) or if the old is strictly contained in the new
 (line 12) we add a pair to $P$ to show the containment.  Once we have gone
 through all the old congruences in $\Gamma$, if we have not found one that is
 equal to $(x,y)^\sharp$, then we add $(x,y)^\sharp$ to $\Gamma$ as a new
-congruence (line 14), and add the set of pairs $P$ to $\po$ to describe how it
-contains or is contained in the other congruences (line 15).  Since each new
+congruence (line 15), and add the set of pairs $P$ to $\po$ to describe how it
+contains or is contained in the other congruences (line 16).  Since each new
 congruence is compared to every previously found congruence, every possible
 appropriate pair is added to $\po$, and we are therefore guaranteed that $\po$
-will be equal to the containment relation ($\subseteq$) by the end of the
-algorithm.  So long as $S$ is finite, since both the loops in the algorithm are
+will be equal to the containment relation ($\subseteq$) on the set of
+congruences found so far (line 17).  So long as $S$ is finite, since both the loops in the algorithm are
 for-loops based on strictly finite sets, we are guaranteed that this algorithm
 will complete in a finite number of steps.
 
