@@ -1619,14 +1619,14 @@ as in previous Todd--Coxeter algorithms, but with the values we know they should
 have according to the Cayley graph of $S$.
 
 First, row $1$ represents the identity.  When we multiply the identity by a
-generator $x$, we get $x$ itself.  Hence, for each $x \in X$, we fill in
-$(1, x)\tau$ with the row that corresponds to $x$ -- that is, one more than the
-position of $x$ in $S$ (lines 5--6).  Now, each of the rows beyond row $1$
+generator $x$, we get $x$ itself.  Hence, in lines 5--6, for each $x \in X$, we fill in
+$(1, x)\tau$ with the row that corresponds to $x$ (that is, one more than the
+position of $x$ in $S$).  Now, each of the rows beyond row $1$
 corresponds to an element in $S$: row $i$ corresponds to the element $s_{i-1}$.
 For each row $i$ and each generator $x$, we therefore need to fill the table in
-with the row number of the element $s_{i-1} \cdot x$.  Hence we fill in
-$(i, x)\tau$ with the row that corresponds to $s_{i-1} \cdot x$ -- that is, one
-more than the position of $s_{i-1} \cdot x$ in $S$ (lines 7--8).
+with the row number of the element $s_{i-1} \cdot x$.  Hence, in lines 7--8, we fill in
+$(i, x)\tau$ with the row that corresponds to $s_{i-1} \cdot x$ (that is, one
+more than the position of $s_{i-1} \cdot x$ in $S$).
 
 Recall the notation we defined in Section \ref{sec:program-inputs}: our
 semigroup $S$ is presented by $\pres X R$, and we wish to calculate a congruence
