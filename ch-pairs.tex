@@ -125,19 +125,17 @@ the definitions of terms surrounding finite presentations.
   A \textbf{concrete representation} for $S$ is a data structure that can be
   used to:
   \begin{itemize}
-  \item produce a list of all the elements of $S$;
-  \item produce the product of two elements of $S$;
+  \item determine that $S$ is finite, without any processing;
+  \item produce a list of all the elements of $S$ in a finite amount of time;
+  \item produce the product of two elements of $S$ in a finite amount of time.
   \end{itemize}
-  in a finite amount of time.
+  Note that only finite semigroups can have concrete representations.
 \end{definition}
-
-Note that only finite semigroups can have concrete representations, since we
-cannot produce an infinite list of elements in finite time.
 
 There are many different concrete representations for semigroups.  Perhaps the
 most trivial and obvious example would be a semigroup's Cayley table (see
 Definition \ref{def:cayley-table}).  A Cayley table has a finite number of
-rows and columns, and therefore must describe a finite semigroup.  A list of
+rows and columns, and therefore we know immediately that it must describe a finite semigroup.  A list of
 elements of the semigroup can be taken directly from the indices of the table,
 and the product $xy$ of two elements $x$ and $y$ can be found by simply reading
 the entry in row $x$ and column $y$.  Hence Cayley tables are concrete, but in
@@ -145,13 +143,13 @@ practice in computation they are used very little, since they require a great
 deal of space to store -- order $O(|S|^2)$.
 
 It will be more common for us to consider semigroups of partial transformations.
-If $S$ is a semigroup of partial transformations, then a set of generators for
+If $S$ is a semigroup of finite-degree partial transformations, then a finite set of generators for
 $S$ is a concrete representation of $S$.  Two elements can be multiplied and
 compared without reference to the semigroup as a whole: for example, if
 $x = \transV 13342$ and $y = \transV 24422$ then we can calculate
-$xy = \transV 24424$ without knowing anything else about $S$.  So long as all
-elements in these semigroups have finite degree, and so long as there are only a
-finite number of generators, the semigroup in question will also certainly be
+$xy = \transV 24424$ without knowing anything else about $S$.  Since all
+elements in this semigroup have finite degree, and since there are only a
+finite number of generators, we know immediately that the semigroup in question is
 finite, and we can produce a list of its elements using, for example, the
 Froidure--Pin algorithm (see Section \ref{sec:find-pres}).  Hence, a
 generating set for a semigroup of partial transformations is a concrete
@@ -160,12 +158,18 @@ representation.
 A finite presentation, on the other hand, is an example of a semigroup
 representation that is not concrete.  If $\pres X R$ is a finite presentation,
 and $S$ is the semigroup it defines, then it may be that $S$ is infinite, and so
-a list of elements of $S$ cannot be produced in finite time -- consider, for
-example, the presentation $\pres a \varnothing$ with one generator and no
-relations, which presents the free semigroup $\{a\}^+$; it has an infinite
-number of elements, and so an attempt to produce a full list of them will never
-complete in finite time.  Hence a finite
-presentation is not, in general, a concrete representation.
+$\pres X R$ is not concrete -- consider, for example, the presentation
+$\pres a \varnothing$ with one generator and no relations, which presents the
+free semigroup $\{a\}^+$; it has an infinite number of elements, and so an
+attempt to produce a full list of them will never complete in finite time.
+Certain finite presentations do define finite semigroups -- indeed, in Section
+\ref{sec:find-pres} we give an algorithm for finding a presentation for a finite
+semigroup.  However, it cannot be determined that a presentation defines a
+finite semigroup without performing some processing, for example running the
+Todd--Coxeter algorithm, unlike the above examples of concrete representations,
+which require $S$ to be finite by their very nature.  Thus a finite
+presentation does not satisfy the first requirement in Definition
+\ref{def:concrete}, and is therefore not a concrete representation.
 
 Since some finite presentations define infinite semigroups, the algorithm
 described in this chapter, whose outputs are described in Section
