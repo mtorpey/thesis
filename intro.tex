@@ -2247,15 +2247,23 @@ $z$ such that $(z)\tau = (y)\tau$, and updating it so that $(z)\tau = (x)\tau$,
 thus making the two classes equal.  However, this operation has high time
 complexity -- in the worst case, $O(|X|)$ -- and would cause any implementation
 of this algorithm to take a long time to complete.  Instead, the union--find
-algorithm treats $\tau$ as a pointer to a parent element in a tree structure, as
+algorithm treats $\tau$ as a pointer to a parent element in a \textit{forest} structure, as
 follows.
+
+Formally, we say that a forest (that is, a set of rooted trees) describes an
+equivalence relation on a set $X$ if each element of $X$ appears as a node in
+precisely one tree, and the set of nodes in each tree in the forest is equal to
+one equivalence class.  The arrangement of nodes in each tree is not important,
+but it should be noted that each tree will have a single root, which will be one
+element in the equivalence class the tree defines.  We use $\tau$ to describe
+such a forest as follows.
 
 Rather than treating $\tau$ as a simple function such that elements are
 $\mathbf{R}^e$-related if and only if they have the same $\tau$ output,
-we instead have $\tau$ map an element in $\Lambda$ to another element in the
-same class.  If $x$ is an element in $\Lambda$, then $(x)\tau$ is the parent of
-$x$ in a tree that contains all the elements in the class.  Each class contains a
-single element $r$ such that $(r)\tau = r$, which we can think of as the root of
+we instead have $\tau$ map an element in $\Lambda$ to its parent node in the
+forest of $\mathbf{R}^e$.  If $x$ is an element in $\Lambda$, then $(x)\tau$ is the parent of
+$x$ in the tree that contains all the elements in its class.  Each class contains a
+single element $r$ such that $(r)\tau = r$; this is the root of
 the tree.  Hence the \textsc{Find} function takes an element $x$, and traverses
 the tree all the way back to the root by calling $\tau$
 on it again and again until we reach the root.
@@ -2357,13 +2365,13 @@ computed with this method.
   non-singleton class containing both elements.  Next we call
   \textsc{AddElement} on $d$ and $c$, and then \textsc{Union}$(d,c)$, after
   which we have $\Lambda = \{f,b,d,c\}$ and new results $(d)\tau=d$ and
-  $(c)\tau=d$.  This state is shown in tree form in the first diagram of Figure
+  $(c)\tau=d$.  This state is shown in forest form in the first diagram of Figure
   \ref{fig:uf}.
 
   Next we \textsc{AddElement}$(e)$ and call \textsc{Union}$(e,b)$.
   \textsc{Union} follows $b$ to its parent $f$ in the tree, and sets $e$ to
   point to it; hence $\Lambda = \{f,b,d,c,e\}$ and $(e)\tau = f$.  This is
-  represented in tree form in the second diagram of Figure \ref{fig:uf}.
+  represented in forrest form in the second diagram of Figure \ref{fig:uf}.
 
   Finally we process the last pair by calling \textsc{Union}$(b,d)$.  This finds
   the root of $b$, which is $f$, and the root of $d$, which is $d$ itself, and
@@ -2371,7 +2379,7 @@ computed with this method.
   $(d)\tau$ is set equal to $f$.  At this final stage we have
   $\Lambda = \{f,b,d,c,e\}$ as before, and $\tau$ maps the elements $f,b,d,c,e$
   to $f,f,f,d,f$ respectively, representing
-  the tree structure shown in the third diagram of Figure \ref{fig:uf}.
+  the forest structure shown in the third diagram of Figure \ref{fig:uf}.
 
   \begin{figure}[ht]\centering
     $$
