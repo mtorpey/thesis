@@ -990,7 +990,7 @@ Once our three generating sets have been calculated, we collate them into the
 set of pairs $\R$ as efficiently as possible: each pair we add to $\R$ can
 satisfy the conditions in Theorem \ref{thm:linked-triple-to-pairs} for one pair
 $(i,j) \in \sS'$, one pair $(\lambda, \mu) \in \tT'$, and one element
-$n \in N'$.  The while-loop on lines 19--29 steps through the three lists, on
+$n \in N'$.  The while-loop on lines 19--30 steps through the three lists, on
 each iteration taking a new element $a$ from $N'$, a new pair of columns $(i,j)$
 from $\sS'$, and a new pair of rows $(\lambda, \mu)$ from $\tT'$.  Then, after
 fixing appropriate $\xi$ and $k$ in lines 26--27 as in Theorem
@@ -1118,6 +1118,14 @@ infinite loop.
         (j, p_{\xi j}^{-1}p_{\mu k}^{-1}, \mu)
         \big)\Big\}$
       \LComment{$\Rs$ is a subset of the congruence defined by $(N,\sS,\tT)$}
+      \LComment{If $(\bar{N}, \bar{\sS}, \bar{\tT})$ is the linked triple of
+        $\Rs$, then
+        $a \in \bar{N}$,
+        $(i, j) \in \bar{\sS}$, and
+        $(\lambda, \mu) \in \bar{\tT}$
+        \hspace{2em}
+        \phantom{mmmm.}
+        for all $a, (i,j), (\lambda,\mu)$ popped so far}
     \EndWhile
     \State \Return $\R$
   \EndProcedure
