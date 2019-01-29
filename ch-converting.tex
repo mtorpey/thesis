@@ -1331,8 +1331,12 @@ explained more explicitly below.
     \LComment{$(xe, ye), (ex, ey) \in \tau$}
   \EndFor
   \State $\mathbf{T} \gets \mathbf{T} \setminus \{(x,y)\}$
-  \LComment{$\tau \subseteq \tr \Rs$}
+  %\LComment{$\tau \subseteq \tr \Rs$}
+  \LComment{$\tau$ satisfies Definition \ref{def:trace-normal} for all
+    $a \in S'$ and all $(x,y) \in \tau$ considered so far}
 \EndWhile
+\LComment{$\tau$ is a normal congruence on $E$
+  (Definition \ref{def:trace-normal})}
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
@@ -1449,7 +1453,7 @@ while-loop.  In order to ensure that $\tau$ is normal, we also need to conjugate
 the pair by each generator of the semigroup $a$, and add any of these to $\tau$
 and $\mathbf{T}$ if they are not already present (lines 43--47).  At the end of
 a call to \textsc{EnumerateTrace}, we can thus be sure that $\tau$ is a normal
-congruence.  If any changes are made in this call to \textsc{EnumerateTrace},
+congruence (line 51).  If any changes are made in this call to \textsc{EnumerateTrace},
 then we must of course set $\delta$ to true (line 40).
 
 Finally, \textsc{EnforceConditions} deals with conditions (i) and (ii) from
