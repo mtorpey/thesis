@@ -122,13 +122,20 @@ the definitions of terms surrounding finite presentations.
   \label{def:concrete}
   \index{concrete}
   Let $S$ be a semigroup.
-  A \textbf{concrete representation} for $S$ is a data structure that can be
-  used to:
+  A \textbf{concrete representation} for $S$ is one of the following:
   \begin{itemize}
+  \item the Cayley table of $S$, where $S$ is finite;
+  \item a finite generating set for $S$, whose elements are any of the following:
+    \begin{itemize}
+    \item partial transformations (which may be transformations, partial
+      permutations, and permutations);
+    \item bipartitions;
+    \item % TODO
+    \end{itemize}
+  \end{itemize}
   \item determine that $S$ is finite, without any processing;
   \item produce a list of all the elements of $S$ in a finite amount of time;
   \item produce the product of two elements of $S$ in a finite amount of time.
-  \end{itemize}
   Note that only finite semigroups can have concrete representations.
 \end{definition}
 
