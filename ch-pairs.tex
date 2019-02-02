@@ -125,31 +125,39 @@ the definitions of terms surrounding finite presentations.
   A \textbf{concrete representation} for $S$ is one of the following:
   \begin{itemize}
   \item the Cayley table of $S$, where $S$ is finite;
-  \item a finite generating set for $S$, whose elements are any of the following:
+  \item a finite generating set for $S$, whose elements are any of the
+    following:
     \begin{itemize}
-    \item partial transformations (which may be transformations, partial
-      permutations, and permutations);
-    \item bipartitions;
-    \item % TODO
+    \item partial transformations of finite degree (which might include
+      transformations, partial permutations, and permutations);
+    \item bipartitions of finite degree;
+    \item partitioned binary relations of finite degreee (as described in
+      \cite[\S2.1]{diagram_semigroups});
+    \item $n \times n$ boolean matrices for some $n \in \mathbb{N}$ (as
+      described in \cite{boolmat}).
     \end{itemize}
   \end{itemize}
-  \item determine that $S$ is finite, without any processing;
-  \item produce a list of all the elements of $S$ in a finite amount of time;
-  \item produce the product of two elements of $S$ in a finite amount of time.
-  Note that only finite semigroups can have concrete representations.
 \end{definition}
 
-There are many different concrete representations for semigroups.  Perhaps the
-most trivial and obvious example would be a semigroup's Cayley table (see
-Definition \ref{def:cayley-table}).  A Cayley table has a finite number of
+The motivation behind Definition \ref{def:concrete} is to characterise a data
+structure that has certain convenient computational properties.  Observe firstly
+that only finite semigroups can have concrete representations.  Note also that
+we can use any concrete representation to produce a list of all the elements of
+$S$, and to find the product of any two elements, in a finite amount of time, as
+we will now describe.
+
+Let us first consider the
+most trivial type of concrete representation: a finite semigroup's Cayley table (see
+Definition \ref{def:cayley-table}).  Our Cayley table has a finite number of
 rows and columns, and therefore we know immediately that it must describe a finite semigroup.  A list of
 elements of the semigroup can be taken directly from the indices of the table,
 and the product $xy$ of two elements $x$ and $y$ can be found by simply reading
-the entry in row $x$ and column $y$.  Hence Cayley tables are concrete, but in
+the entry in row $x$ and column $y$.  Hence Cayley tables have the convenient
+properties we describe above, but in
 practice in computation they are used very little, since they require a great
 deal of space to store -- order $O(|S|^2)$.
 
-It will be more common for us to consider semigroups of partial transformations.
+It will be more common for us to consider generating sets of partial transformations.
 If $S$ is a semigroup of finite-degree partial transformations, then a finite set of generators for
 $S$ is a concrete representation of $S$.  Two elements can be multiplied and
 compared without reference to the semigroup as a whole: for example, if
@@ -159,24 +167,26 @@ elements in this semigroup have finite degree, and since there are only a
 finite number of generators, we know immediately that the semigroup in question is
 finite, and we can produce a list of its elements using, for example, the
 Froidure--Pin algorithm (see Section \ref{sec:find-pres}).  Hence, a
-generating set for a semigroup of partial transformations is a concrete
-representation.
+generating set for a semigroup of partial transformations also has the
+properties described above.  Note that bipartitions, partitioned binary
+relations, and boolean matrices have similar properties.
 
 A finite presentation, on the other hand, is an example of a semigroup
-representation that is not concrete.  If $\pres X R$ is a finite presentation,
+representation that is not concrete, and which may not possess the convenient
+properties above.  If $\pres X R$ is a finite presentation,
 and $S$ is the semigroup it defines, then it may be that $S$ is infinite, and so
-$\pres X R$ is not concrete -- consider, for example, the presentation
+$\pres X R$ would not have the attractive properties of a concrete
+representation -- consider, for example, the presentation
 $\pres a \varnothing$ with one generator and no relations, which presents the
 free semigroup $\{a\}^+$; it has an infinite number of elements, and so an
 attempt to produce a full list of them will never complete in finite time.
 Certain finite presentations do define finite semigroups -- indeed, in Section
 \ref{sec:find-pres} we give an algorithm for finding a presentation for a finite
-semigroup.  However, it cannot be determined that a presentation defines a
+semigroup.  However, it cannot even be determined that a presentation defines a
 finite semigroup without performing some processing, for example running the
-Todd--Coxeter algorithm, unlike the above examples of concrete representations,
-which require $S$ to be finite by their very nature.  Thus a finite
-presentation does not satisfy the first requirement in Definition
-\ref{def:concrete}, and is therefore not a concrete representation.
+Todd--Coxeter algorithm.  In this way, finite presentations may not be as useful
+as concrete representations, and so will be treated differently in some of the
+algorithms below.
 
 Since some finite presentations define infinite semigroups, the algorithm
 described in this chapter, whose outputs are described in Section
@@ -209,7 +219,7 @@ meaning of ``two-sided congruence''.
 
 If $S$ has a concrete representation (as described in Section
 \ref{sec:applicable-representations-of-a-semigroup}) then we will certainly
-have a generating set for $S$; in this case, it is quick to use these generators
+have a generating set for $S$ (which may be all the elements in $S$); in this case, it is quick to use these generators
 to calculate a list of elements in $S$, along with left and right Cayley graphs
 for $S$, using the Froidure--Pin algorithm (see Section \ref{sec:find-pres}).
 The Froidure--Pin algorithm also gives us, for each element $s \in S$, a word
